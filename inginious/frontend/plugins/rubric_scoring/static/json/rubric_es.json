@@ -1,0 +1,87 @@
+{
+   "Grade 1:":[
+      {
+         "items categoria anterior":"No Aplica."
+      },
+      {
+         "estructuras de datos":"Sin lógica."
+      },
+      {
+         "casos de prueba":"No pasa ningún caso de prueba."
+      },
+      {
+         "entendimiento del problema":"Se muestra una compresión nula del problema."
+      },
+      {
+         "estrategia usada":"Puede ser la solución de otro problema."
+      }
+   ],
+   "Grade 2:":[
+      {
+         "items categoria anterior":"No contiene ningún item perteneciente al grado 1."
+      },
+      {
+         "estructuras de datos":"Tiene las estructuras de datos correctas pero estan mal implementadas, mal usadas o son incoherentes.\nIncluye otras estructuras de datos diferentes a las necesarias para resolver el problema. No interesa como las implemente o que esten bien implementadas."
+      },
+      {
+         "casos de prueba":"No pasa ningún caso de prueba o máximo pasa un caso de prueba."
+      },
+      {
+         "entendimiento del problema":"Se muestra una compresión muy básica o casi nula del problema."
+      },
+      {
+         "estrategia usada":"La solución no usa una aproximación adecuada. Puede ser usando fuerza bruta u otra aproximación que no funcione bien.\nNo se ve un propósito claro en el código y en la estrategia usada. (i.e es difícil seguir la lógica del mismo)."
+      }
+   ],
+   "Grade 3:":[
+      {
+         "items categoria anterior":"No contiene ningún item del grado 2."
+      },
+      {
+         "estructuras de datos":"Las estructuras necesarias para solucionar el problema existen y estan bien implementadas."
+      },
+      {
+         "casos de prueba":"Puede pasar algunos casos de prueba."
+      },
+      {
+         "entendimiento del problema":"Se muestra una compresión parcial del problema a solucionar."
+      },
+      {
+         "estrategia usada":"La solución usa una estrategia medianamente adecuada."
+      }
+   ],
+   "Grade 4:":[
+      {
+         "items categoria anterior":"No Aplica."
+      },
+      {
+         "estructuras de datos":"Presenta problemas en la definición de tipo de datos, condicionales. Presenta mas iteraciones de las necesarias."
+      },
+      {
+         "casos de prueba":"Pasa algunos casos de prueba."
+      },
+      {
+         "entendimiento del problema":"Muestra un entendimiento completo del problema a resolver. No identificó detalles del problema por lo que lo llevan a una solución no aceptada.\nLos casos borde y los límites no estan bien contemplados."
+      },
+      {
+         "estrategia usada":"La estrategia que usa para solucionar el problema es clara, fácil de seguir y acorde con lo esperado."
+      }
+   ],
+   "Grade 5:":[
+      {
+         "items categoria anterior":"No Aplica."
+      },
+      {
+         "estructuras de datos":"No presenta ningún problema con la definición de tipo de datos, condicionales. Las iteraciones son las necesarias."
+      },
+      {
+         "casos de prueba":"Pasa todos los casos de prueba de manera eficiente."
+      },
+      {
+         "entendimiento del problema":"Muestra un entimiento completo del problema y su solucion tiene aceptada como veredicto."
+      },
+      {
+         "estrategia usada":"No Aplica."
+      }
+   ]
+}

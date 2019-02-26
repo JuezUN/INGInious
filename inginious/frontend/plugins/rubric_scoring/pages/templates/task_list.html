@@ -1,0 +1,69 @@
+$def with (course,data,errors, num_students)
+
+$#
+$# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
+$# more information about the licensing of this file.
+$#
+
+
+$var title: $:course.get_name(user_manager.session_language())
+
+$var Column: $:template_helper.call('course_admin_menu',course=course,current='rubric_scoring')
+$ is_admin = user_manager.has_admin_rights_on_course(course)
+
+$def NavbarF():
+    <ol class="nav navbar-nav nav-breadcrumb">
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+            <i class="fa fa-user-secret"></i></a></li>
+        <li class="active"><a href="#"><i class="fa fa-table mr-1"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
+    </ol>
+$var Navbar: $:NavbarF()
+
+<form method="post">
+<h2>$:_("Rubric Scoring"): $:_("Tasks List")</h2>
+<div class="row justify-conte py-2">
+    <div class="col-md-9 col-md-offset-1">
+<table class="table sorted_table table-striped">
+    <thead>
+        <tr>
+            <th><h4>$:_("Task Name")</h4></th>
+            <th><h4># $:_("Student Succeeded")</h4></th>
+            <th><h4># $:_("Students who have tried")</h4></th>
+        </tr>
+    </thead>
+    <tbody>
+    $for taskid in data:
+    	<tr>
+    		<td>
+    			<a href="$get_homepath()/admin/${course.get_id()}/rubric_scoring/task/$taskid" class="font_size">
+                    $if data[taskid]["name"] == "":
+                        $taskid
+                    $else:
+                        $data[taskid]["name"]
+                </a>
+                <input type="hidden" name="task" value="$taskid">
+    		</td>
+            <td class="text-center font_size">$data[taskid]["succeeded"]/$num_students</td>
+            <td class="text-center font_size">$data[taskid]["attempted"]/$num_students</td>
+    	</tr>
+    </tbody>
+</table>
+    </div>
+    </div>
+</form>
+
+
+$if len(errors) != 0:
+    <h3>$:_("Errors while loading tasks")</h3>
+    <table class="table">
+        <tr>
+            <th>$:_("task id")</th>
+            <th>$:_("error")</th>
+        </tr>
+        $for task in errors:
+            <tr>
+                <td>$task['taskid']</td>
+                <td><pre>$task['error']</pre></td>
+            </tr>
+    </table>
+

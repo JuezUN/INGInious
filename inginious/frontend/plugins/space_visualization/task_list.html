@@ -1,0 +1,105 @@
+$def with (course, data, errors, url)
+
+$#
+$# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
+$# more information about the licensing of this file.
+$#
+
+$var title: $:course.get_name(user_manager.session_language())
+
+$var Column: $:template_helper.call('course_admin_menu',course=course,current='tasks')
+$ is_admin = user_manager.has_admin_rights_on_course(course)
+
+$def NavbarF():
+    <ol class="nav navbar-nav nav-breadcrumb">
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()" title="Administration" data-toggle="tooltip" data-placement="bottom">
+            <i class="fa fa-user-secret"></i></a></li>
+        <li class="active"><a href="#"><i class="fa fa-tasks"></i> Tasks <span class="sr-only">(current)</span></a></li>
+    </ol>
+$var Navbar: $:NavbarF()
+
+<form method="post">
+<h2>Tasks - Space Visualization
+    <div class="pull-right">
+        <div class="btn-group">
+            <button type="button" id="switch" class="btn-sm btn btn-default"><i class="fa fa-list-ol"></i> Change task order</button>
+            <button type="submit" id="switch" class="btn-sm btn btn-success"><i class="fa fa-check"></i> Update task order</button>
+        </div>
+    </div>
+</h2>
+
+<table class="table sorted_table">
+    <thead>
+        <tr>
+            <th>task name</th>
+            <th># student viewed</th>
+            <th># student attempted</th>
+            <th># student succeeded</th>
+            <th># attempts</th>
+
+            <th>
+                <div class="btn-group" role="group">
+                    <a href="$get_homepath()/admin/${course.get_id()}/download?format=taskid%2Fusername" class="btn btn-danger btn-xs" title="Download
+                       all submissions" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-download"></i></a>
+                    <a href="$get_homepath()/admin/${course.get_id()}/tasks?csv" class="btn btn-info btn-xs" title="Download
+                       CSV" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-table"></i></a>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    $for taskid in data:
+    	<tr>
+    		<td>
+    			<a href="$get_homepath()/admin/${course.get_id()}/$url/task/$taskid">$data[taskid]["name"]</a>
+                <input type="hidden" name="task" value="$taskid">
+    		</td>
+    		<td>$data[taskid]["viewed"]</td>
+    		<td>$data[taskid]["attempted"]</td>
+            <td>$data[taskid]["succeeded"]</td>
+            <td>$data[taskid]["attempts"]</td>
+    		<td style="min-width:120px">
+
+    		</td>
+    	</tr>
+    </tbody>
+</table>
+</form>
+
+
+$if len(errors) != 0:
+    <h3>Errors while loading tasks</h3>
+    <table class="table">
+        <tr>
+            <th>task id</th>
+            <th>error</th>
+        </tr>
+        $for task in errors:
+            <tr>
+                <td>$task['taskid']</td>
+                <td><pre>$task['error']</pre></td>
+            </tr>
+    </table>
+
+<script type="text/javascript">
+$$('.sorted_table').sortable({
+    containerSelector: 'table',
+    itemPath: '> tbody',
+    itemSelector: 'tr',
+    placeholder: '<tr class="placeholder"/>'
+});
+
+$$('.sorted_table').sortable("disable");
+
+$$("#switch").click(function  (e) {
+    if($$(this).hasClass("active")) {
+        $$(this).removeClass("active");
+        $$(".sorted_table tr").removeAttr("style");
+    } else {
+        $$(this).addClass("active");
+        $$(".sorted_table tr").attr("style", "cursor: pointer;");
+    }
+    $$('.sorted_table').sortable($$(this).hasClass("active") ? "enable" : "disable");
+});
+</script>
