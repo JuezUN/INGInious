@@ -1,0 +1,73 @@
+$def with (course, data, task, task_name, username, name, url)
+
+$#
+$# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
+$# more information about the licensing of this file.
+$#
+
+
+$#
+$# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
+$# more information about the licensing of this file.
+$#
+
+
+$var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
+
+$var Column: $:template_helper.call('course_admin_menu',course=course,current='rubric_scoring')
+$ is_admin = user_manager.has_admin_rights_on_course(course)
+
+
+$def NavbarF():
+    <ol class="nav navbar-nav nav-breadcrumb">
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()/rubric_scoring"><i class="fa fa-table mr-1"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
+        <li><a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()">$:_("Task")<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#">$:_("Student")<span class="sr-only">(current)</span></a></li>
+
+    </ol>
+
+$var Navbar: $:NavbarF()
+
+<h2>
+    $:_("Rubric scoring for Task:")
+    $if task_name == "":
+        "$task.get_id()"
+    $else:
+        "$task_name"
+</h2>
+<h3 class="py-2">
+    $:_("User"):
+    $if name == "":
+        $username
+    $else:
+        $name
+</h3>
+
+<form method="post">
+<div class="row justify-conte py-2">
+   <div class="col-md-11">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th><h4>$:_("Date")</h4></th>
+            <th><h4>$:_("Result Summary")</h4></th>
+            <th><h4>$:_("Score")</h4></th>
+            <th><h4>$:_("Rubric Scoring")</h4></th>
+        </tr>
+    </thead>
+    <tbody>
+    $for submission in data:
+        <tr>
+            <td><a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/submission/$submission"
+                   class="font_size-m">
+                    $data[submission]["date"]</a></td>
+            <td class="font_size-m">$data[submission]["summary_result"]</td>
+            <td class="font_size-m">$data[submission]["grade"]</td>
+            <td class="font_size-m">$data[submission]["rubric_score"]</td>
+        </tr>
+    </tbody>
+</table>
+    </div>
+    </div>
+</form>
