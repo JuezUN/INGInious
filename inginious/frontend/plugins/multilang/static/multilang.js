@@ -96,3 +96,11 @@ function load_input_code_file_multiple_languages(submissionid, key, input){
     load_input_file(submissionid, key, input);
     setDropDownWithTheRightLanguage(key, input[key + "/language"]);
 }
+
+function selectAllLanguages(){
+    $(".checkbox_language").prop("checked", true);
+}
+
+function unselectAllLanguages(){
+    $(".checkbox_language").prop("checked", false);
+}

@@ -8,11 +8,13 @@ $def with (key, available_languages)
 </div>
 <div class="form-group">
     <label for="languages-PID" class="col-sm-2 control-label">$:_("Languages")</label>
+    <div><a class="btn btn-primary btn-sm" type="button" onclick="selectAllLanguages()">Select All</a>
+    <a class="btn btn-danger btn-sm" type="button" onclick="unselectAllLanguages()">Unselect All</a></div>
     <div class="col-sm-10" id="languages-PID">
         $for language in available_languages:
             <div class="checkbox">
                 <label>
-                    <input id="$language-PID" type="checkbox" value="$language" name="problem[PID][languages][$language]"/>$available_languages[language]
+                    <input id="$language-PID" class="checkbox_language" type="checkbox" value="$language" name="problem[PID][languages][$language]"/>$available_languages[language]
                 </label>
             </div>
     </div>
