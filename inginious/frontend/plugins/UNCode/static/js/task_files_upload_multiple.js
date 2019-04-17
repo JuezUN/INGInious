@@ -46,11 +46,12 @@ jQuery(document).ready(function () {
             let inputFiles = $("#upload_multiple_files_input").prop('files');
             inputFiles = $.extend({}, inputFiles);
             let requestsCompleted = 0;
-
+            let inputTestcaseFiles = [];
+            let outputTestcaseFiles = [];
             $('#task_files_upload_multiple_modal').modal('hide');
             if (inputFiles.length) {
                 $("#tab_file_list").html("Uploading files...");
-                $.each(inputFiles, function (_, file) {
+                $.each(inputFiles, function (_, file) {                    
                     let form_data = new FormData();
                     form_data.append('action', 'upload');
                     form_data.append('path', file.name);
@@ -66,11 +67,18 @@ jQuery(document).ready(function () {
                             if (data.search(/alert/i) > 0) {
                                 error = true;
                                 filesFailedUpload.push(file.name);
+                                
                             }
-
+                            parts = file.name.split('.');
+                            if (parts[parts.length - 1] === 'in'){
+                                inputTestcaseFiles.push(file.name)
+                            } else if (parts[parts.length - 1] === 'out'){
+                                outputTestcaseFiles.push(file.name);
+                            }
                             requestsCompleted++;
                             if (requestsCompleted === inputFiles.length) {
                                 callbackLastUploadedFile(error, data, filesFailedUpload);
+                                matchTestCases(inputTestcaseFiles, outputTestcaseFiles);
                             }
                         }
                     });
@@ -101,9 +109,25 @@ jQuery(document).ready(function () {
         }
     }
 
+    function matchTestCases(inputFiles, outputFiles){
+        for(it in inputFiles){        
+            parts = inputFiles[it].split('.');        
+            name = parts.splice(0, parts.length - 1).join(".");
+            if (outputFiles.includes(name + '.out')){
+                test_case = {
+                    'input_file': inputFiles[it],
+                    'output_file': name + '.out'
+                };
+                studio_add_test_case(test_case);
+            }
+        }
+    
+    }
+
     addTaskFilesUploadMultipleButton();
     uploadMultipleFilesOnChange();
     taskFilesUploadMultiple();
     closeModalAction();
 
 });
+
