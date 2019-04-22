@@ -10,8 +10,18 @@
             <div class="modal-body text-justify">
                 <h5>
                     Select multiple files to upload. These files are going to be stored in the root directory of the
-                    task file system.
+                    task file system. 
                 </h5>
+                <div class="alert  alert-info">
+                    
+                    <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>
+                    
+                        <b>
+                        If the files uploaded follow the format 'x.in' and 'x.out', this files will be automatically
+                        match on the test cases.
+                        </b>
+                    
+                </div>
                 <hr>
                 <form id='upload_multiple_files_form' method='post' enctype='multipart/form-data'>
                     <label for="upload_multiple_files_input" class="control-label">File:</label>
