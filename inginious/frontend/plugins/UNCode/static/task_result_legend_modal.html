@@ -5,18 +5,15 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h3 class="modal-title"><i class="fa fa-question-circle"> Understand your result.</i></h3>
+                <h3 class="modal-title"><i class="fa fa-question-circle">Understanding your result</i></h3>
             </div>
             <div class="modal-body text-justify">
                 <h5>
-                    Here you will understand what means the result you receive from your submission.
-                    <br><br>
-                    After you submit the code, you will get an overall result, the grade and the result corresponding
-                    to each test case.
+                   After you submit your code, it will be assessed and a result will be given to you.<br/>
+                   The tables below list all possible results.
                 </h5>
                 <hr>
-                <strong>Results related to your code. These are the different results you can get after assessing your
-                    code</strong>
+                <strong>Results related to your code. Results you may receive after assessing your code</strong>
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="list-group-item-text row">
@@ -24,8 +21,8 @@
                                 <h4><span class="label label-success"><strong>ACCEPTED</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                You can breath with this result. This means that your output is the same as the
-                                expected output.
+                                Awesome. Everything worked as it should have: your code compiled/ran and passed all the
+                                test cases. Congratulations!
                             </div>
                         </div>
                     </li>
@@ -35,11 +32,16 @@
                                 <h4><span class="label label-danger"><strong>WRONG ANSWER</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                This result means that the output given by your code does not coincide with the
-                                expected output.<br>
-                                In some cases you can see the difference of your output and expected output. So that
-                                way, you can determine what is going on in your code.<br>
-                                <strong>TIPS:</strong> Check again your code. Try using the custom input (tools button).
+                                Sorry, but your code failed to solve the problem. Your code does not have any syntax
+                                errors, but it does not solve the problem you were tasked for.<br/>
+                                The output of running your code, what it <i>prints</i> to the screen, is different to
+                                the output the system expected.<br/>
+                                If the administrator allowed it, you may be able to see the difference between your
+                                output and the expected output.<br/>
+                                <strong>Tips:</strong> Read carefully what you are asked to do and check again your
+                                code.<br/>
+                                Test your code with different inputs. You can do it in your machine or you can use the
+                                "custom input" tool from the tools section.
                             </div>
                         </div>
                     </li>
@@ -49,9 +51,12 @@
                                 <h4><span class="label label-danger"><strong>COMPILATION ERROR</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                This message means that your code does not compile, that means there is something wrong
-                                with your code. In order to help you with that, there you can see some help telling you
-                                what is wrong with your code and where you can find the error.
+                                Ugh, your code does not compile :/. Something is faulty in your code: it may be a
+                                misplaced colon, bracket, quotation mark, or symbol; you may be using a reserved keyword
+                                as a variable; you may have chosen a different programming language; or anything,
+                                really.<br/>
+                                The "compilation error" message includes the output that the compiler produced with the
+                                error. Read the message carefully, it is problably telling you what went wrong.
                             </div>
                         </div>
                     </li>
@@ -61,10 +66,10 @@
                                 <h4><span class="label label-danger"><strong>RUNTIME ERROR</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                Runtime error means that your code failed while it was running, so your code exits
-                                unexpectedly. There are many reasons that may cause your code to crash. Some of them
-                                are: division by zero, segmentation fault, invalid memory access, null pointers, among
-                                others.
+                                "Runtime error" means that your code failed while it was executing, which means that your
+                                code compiled but exited unexpectedly when executed. There are many reasons why your
+                                code could crash, some of them are: division by zero, invalid memory access (e.g. bad
+                                index access to an array), and null pointers.
                             </div>
                         </div>
                     </li>
@@ -74,11 +79,13 @@
                                 <h4><span class="label label-warning"><strong>TIME LIMIT</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                When your submission times out, means that your code took too long to run the input
-                                test cases. There are many reasons may cause this, some of them are: infinite loops,
-                                you are considering a not optimal solution for the problem, among others.<br>
-                                <strong>TIPS:</strong> Please check your code and debug it, you might be missing
-                                something. If it is not an optimal solution try to change the idea.
+                                Time limit means that your code has timed out. When your submission times out, it means
+                                that your code took too long to run the input test cases. There are two options: either,
+                                your code got stuck in a nonterminanting loop, an infinite loop, or, your code does
+                                solve the problem but takes much longer than it should.<br/>
+                                <strong>Tips:</strong> Check and debug your code as it may be stuck in a loop. If your
+                                code does in fact solve the problem but it is too slow, try to find another solution, one
+                                that takes less time to compute.
                             </div>
                         </div>
                     </li>
@@ -88,18 +95,15 @@
                                 <h4><span class="label label-warning"><strong>MEMORY LIMIT EXCEEDED</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                Getting this result means that your code is using too much memory while it is running.
-                                There are tons of causes, a possible one might be that you are storing too much data
-                                more than the possible storable, among others.<br>
-                                <strong>TIPS:</strong> Check the data structures you are using or think a more optimal
-                                solution that uses less memory.
+                                Getting this result means your code is using too much memory at runtime.<br/>
+                                <strong>Tips:</strong> Check the data structures you are using, or find a more "optimal"
+                                solution, a solution that uses less memory.
                             </div>
                         </div>
                     </li>
                 </ul>
                 <hr>
-                <strong>Results related to UNCode. These are some unexpected errors that came up while trying to assess
-                    your submission.</strong>
+                <strong>Results related to UNCode. Unexpected errors when your code was been assesed</strong>
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="list-group-item-text row">
@@ -107,11 +111,11 @@
                                 <h4><span class="label label-danger"><strong>INTERNAL ERROR</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                If you get this message, do not worry, THERE'S NOTHING WRONG WITH YOUR CODE.<br>
-                                This error means that UNCode had a problem while running or assessing your code. So the
-                                problem is on our side.<br>
+                                If you get this message, do not worry, There's Nothing Wrong With Your Code!<br>
+                                This error means that UNCode had a problem while running or assessing your code. So,
+                                <b>the problem is on our side.</b> We apologise in advance. Sorry T_T<br/>
                                 <strong>Please reload the page and try submitting again! If you still get the same
-                                    result, please wait a while and try again.</strong>
+                                   result, please wait a while and try again.</strong>
                             </div>
                         </div>
                     </li>
@@ -121,8 +125,8 @@
                                 <h4><span class="label label-danger"><strong>SUBMISSION TIMED OUT</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                If you get this, means that we had a problem running and assessing your code. We had
-                                to kill the process.
+                                If you get this, it means that we had a problem running and assessing your code. We had
+                                to kill the process, your program. Please wait a little and try again.
                             </div>
                         </div>
                     </li>
@@ -135,7 +139,7 @@
                             </div>
                             <div class="col-md-9">
                                 There was a problem while assessing your submission. Please wait a while and reload
-                                the page, after that, try submitting again.
+                                the page, and try submitting again.
                             </div>
                         </div>
                     </li>
