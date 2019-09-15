@@ -29,10 +29,10 @@ $def with (inputId, language, customInputId, type, pythonTutorURL, pythonTutorPy
 
       $if type == "code_multiple_languages":
           <div class="col-md-6">
-            <button type="button" class="btn btn-default btn-md btn-block" onclick="runCustomTest('$inputId')">Test</button>
+            <button type="button" class="btn btn-primary btn-md btn-block" onclick="runCustomTest('$inputId')">Test code!</button>
           </div>
           <div class="col-md-6">
-            <button class="btn btn-default btn-md btn-block" type="button" data-toggle="modal" data-target="#modal-$inputId" onclick="visualizeCode('$language', '$inputId')">Visualize</button>
+            <button class="btn btn-success btn-md btn-block" type="button" data-toggle="modal" data-target="#modal-$inputId" onclick="visualizeCode('$language', '$inputId')">Visualize your code!</button>
           </div>
 
           <div id="modal-$inputId" class="modal modal-wide fade">
