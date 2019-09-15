@@ -2,10 +2,11 @@ import os
 
 from inginious.common.tasks_problems import CodeProblem
 from inginious.frontend.task_problems import DisplayableCodeProblem
-from .constants import get_linter_url, get_python_tutor_url, get_show_tools, get_python_tutor_url_py2
+from .constants import get_linter_url, get_python_tutor_url, get_show_tools, get_python_tutor_py2_url
 from collections import OrderedDict
 
 path_to_plugin = os.path.abspath(os.path.dirname(__file__))
+
 
 class CodeMultipleLanguagesProblem(CodeProblem):
     def __init__(self, task, problemid, content, translations=None):
@@ -30,7 +31,7 @@ class DisplayableCodeMultipleLanguagesProblem(CodeMultipleLanguagesProblem, Disp
         "cpp11": "C++11",
         "c": "C",
         "c11": "C11",
-        "verilog" : "Verilog",
+        "verilog": "Verilog",
         "vhdl": "VHDL"}
 
     @classmethod
@@ -54,12 +55,15 @@ class DisplayableCodeMultipleLanguagesProblem(CodeMultipleLanguagesProblem, Disp
 
         renderer = DisplayableCodeMultipleLanguagesProblem.get_renderer(template_helper)
         allowed_languages = OrderedDict([(lang, allowed_languages[lang]) for lang in sorted(allowed_languages.keys())])
-        multiple_language_render = str(renderer.multilang(self.get_id(), dropdown_id, allowed_languages, self.get_id(), self.get_type()))
-        standard_code_problem_render = super(DisplayableCodeMultipleLanguagesProblem, self).show_input(template_helper, language, seed)
+        multiple_language_render = str(
+            renderer.multilang(self.get_id(), dropdown_id, allowed_languages, self.get_id(), self.get_type()))
+        standard_code_problem_render = super(DisplayableCodeMultipleLanguagesProblem, self).show_input(template_helper,
+                                                                                                       language, seed)
         tools_render = ""
         if get_show_tools():
             tools_render = str(
-                renderer.tools(self.get_id(), "plain", custom_input_id, self.get_type(), get_python_tutor_url(), get_python_tutor_url_py2(),
+                renderer.tools(self.get_id(), "plain", custom_input_id, self.get_type(), get_python_tutor_url(),
+                               get_python_tutor_py2_url(),
                                get_linter_url()))
 
         return multiple_language_render + standard_code_problem_render + tools_render

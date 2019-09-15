@@ -6,7 +6,7 @@ from inginious.frontend.plugins.multilang.problems.code_multiple_languages_probl
 from inginious.frontend.plugins.multilang.problems.code_multiple_file_languages_problem import \
     DisplayableCodeFileMultipleLanguagesProblem
 from inginious.frontend.plugins.multilang.problems.constants import set_linter_url, set_python_tutor_url, \
-    set_python_tutor_url_py2, set_show_tools, get_show_tools
+    set_python_tutor_py2_url, set_show_tools, get_show_tools
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
@@ -46,7 +46,7 @@ def init(plugin_manager, course_factory, client, plugin_config):
         set_python_tutor_url(python_tutor_url)
 
     if python_tutor_url_py2:
-        set_python_tutor_url_py2(python_tutor_url_py2)
+        set_python_tutor_py2_url(python_tutor_url_py2)
 
     linter_url = plugin_config.get("linter_url", "")
     if linter_url != "":

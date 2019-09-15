@@ -1,5 +1,5 @@
 jQuery(document).ready(function () {
-        function load_code_preview_to_codemirror(){            
+        function load_code_preview_to_codemirror(){
             $.get('/api/code_preview/', {
                 task_id: getTaskIdFromUrl(),
                 course_id: getCourseIdFromUrl()
@@ -11,5 +11,4 @@ jQuery(document).ready(function () {
             })
         }
         load_code_preview_to_codemirror();
-
 });
