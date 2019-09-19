@@ -23,7 +23,11 @@ class AddCourseStudentsCsvFile(AdminApi):
         if course is None:
             return 200, {"status": "error", "text": "The course does not exist or the user does not have permissions."}
 
-        text = file.decode("utf-8")
+        try:
+            text = file.decode("utf-8")
+        except:
+            return 200, {"status": "error", "text": "The file is not coded in UTF-8. Please change the encoding."}
+
         parsed_file = self._parse_csv_file(text)
 
         if not self._file_well_formatted(parsed_file):
