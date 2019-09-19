@@ -1,4 +1,4 @@
-$def with (inputId, language, customInputId, type, pythonTutorURL, linterURL)
+$def with (inputId, language, customInputId, type, pythonTutorURL, pythonTutorPy2URL, linterURL)
 
 <br>
 <br>
@@ -59,6 +59,10 @@ $def with (inputId, language, customInputId, type, pythonTutorURL, linterURL)
 <script>
     function getDefaultVisualServerURL() {
         return "$pythonTutorURL";
+    }
+
+    function getPython2VisualServerURL() {
+        return "$pythonTutorPy2URL"
     }
 
     function getLinterServerURL() {
