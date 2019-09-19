@@ -4,7 +4,7 @@ jQuery(document).ready(function () {
 
     function displayRegisterStudentsAlertError(data) {
         let alert_element = $("#register_students_alert");
-        alert_element.prop("class", "alert alert-info");
+        alert_element.prop("class", "alert alert-danger");
         alert_element.text(data);
         alert_element.prop("hidden", false);
     }
