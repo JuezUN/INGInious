@@ -170,7 +170,7 @@ function studio_update_container_name()
   if(container_name === "HDL"){
     try { $("#hdl_grader_form")[0].style.display = "block"; } catch {};
   }
-  if(container_name === "multiple_languages"){
+  if(container_name === "multiple_languages" || container_name === 'Data Science'){
     try{ $("#multilang_grader_form")[0].style.display = "block"; } catch {};
   }
 }
