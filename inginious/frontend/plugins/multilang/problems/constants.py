@@ -12,8 +12,8 @@ def set_python_tutor_url(new_python_tutor_url):
 def set_python_tutor_py2_url(new_python_tutor_py2_url):
     """
     Use a separate python tutor url that only will manage Python 2 visualizations.
-    This is necessary as PythonTutor by default only builds wither for python3 or python 2.
-    Thus, two separate PythonTutors have to be deployed.
+    This is necessary as PythonTutor Docker by default only builds using either Python 3 or Python 2.
+    Thus, two separate PythonTutors are deployed.
     """
     global _python_tutor_py2_url
     _python_tutor_py2_url = new_python_tutor_py2_url
