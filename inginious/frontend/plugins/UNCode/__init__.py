@@ -1,5 +1,8 @@
 import os
 from inginious.frontend.plugins.utils import create_static_resource_page, read_file
+from .constants import set_used_grading_environments, set_used_subproblem_types
+from .api.used_grading_environments import UsedGradingEnvironments
+from .api.used_subproblem_types import UsedSubproblemTypes
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
@@ -20,6 +23,15 @@ def init(plugin_manager, course_factory, client, config):
         plugin_manager.add_hook("javascript_footer", lambda: "/UNCode/static/js/uncode.js")
         plugin_manager.add_hook("javascript_footer", lambda: "/UNCode/static/js/task_files_upload_multiple.js")
         plugin_manager.add_hook("css", lambda: "/UNCode/static/css/uncode.css")
+
+    used_grading_environments = config.get("used_grading_environments", [])
+    set_used_grading_environments(used_grading_environments)
+
+    used_subproblem_types = config.get("used_subproblem_types", [])
+    set_used_subproblem_types(used_subproblem_types)
+
+    plugin_manager.add_page("/api/getUsedGradingEnvironments/", UsedGradingEnvironments)
+    plugin_manager.add_page("/api/getUsedSubproblemTypes/", UsedSubproblemTypes)
 
     plugin_manager.add_hook("additional_body_html", lambda: "<p class='hidden' id='default_task_context'>" +
                                                             read_file(_static_folder_path,
