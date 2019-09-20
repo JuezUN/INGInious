@@ -1,0 +1,137 @@
+$def with (course, container_name, container_title, container_description, container_args, problems, errors, container_contest_args, language)
+
+$#
+$# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
+$# more information about the licensing of this file.
+$#
+
+$var title: $:course.get_name(language) - Start a new plagiarism check
+
+$var Column: $:template_helper.call('course_admin_menu',course=course,current='plagiarism')
+
+$def NavbarF():
+    <ol class="nav navbar-nav nav-breadcrumb">
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(language)</a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()" title="Administration" data-toggle="tooltip" data-placement="bottom">
+            <i class="fa fa-user-secret"></i></a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()/plagiarism" title="plagiarism operations" data-toggle="tooltip" data-placement="bottom">
+            <i class="fa fa-rocket"></i></a></li>
+        <li class="active"><a href="#">$container_title <span class="sr-only">(current)</span></a></li>
+    </ol>
+$var Navbar: $:NavbarF()
+
+<h2>Start a new plagiarism check</h2>
+
+$if errors is not None:
+    $for e in errors:
+        <div class="alert alert-danger" role="alert">$e</div>
+
+<div role="tabpanel">
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#tab_single_problem" aria-controls="problem" role="tab" data-toggle="tab">
+            <i class="fa fa-user fa-fw"></i>&nbsp; Single problem</a>
+        </li>
+        <li role="presentation"><a href="#tab_contest" aria-controls="staff" role="tab" data-toggle="tab">
+            <i class="fa fa-group fa-fw"></i>&nbsp; Contest</a>
+        </li>
+
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tab_single_problem">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="single_problem">
+                <table class="table table-bordered">
+                    $for key, val in container_args.items():
+                        <tr>
+                            $if val.get("description") is not None:
+                                <th rowspan="2"><label for="args-$key">$val.get("name",key)</label></th>
+                            $else:
+                                <th><label for="args-$key">$val.get("name",key)</label></th>
+                            <td>
+                                $if val["type"] == "text":
+                                    $if val["name"]=="Problem to check":
+                                        <select class="form-control" id="args-$key" name="$key" placeholder="Select a problem...">
+                                            $for problem in problems:
+                                                <option value="${problem.get_id()}">${problem.get_id()} - ${problem.get_name(language)}</option>
+                                        </select>
+                                    $elif val["name"]=="Language":
+                                        <select class="form-control" id="args-$key" name="$key" placeholder="Select a language...">
+                                            $for choice in val["choices"]:
+                                                <option value="$choice"
+                                                $if choice == 'c/c++':
+                                                    selected
+                                                >${choice}</option>
+                                        </select>
+                                    $else:
+                                        <input class="form-control" type="text" id="args-$key" name="$key"/>
+                                $else:
+                                    <input class="form-control" type="file" id="args-$key" name="$key"/>
+                            </td>
+                        </tr>
+                        $if val.get("description") is not None:
+                            <tr>
+                                <td>$:val["description"]</td>
+                            </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button type="submit" onclick="HoldOn.open();" class="btn btn-primary btn-block"><i class="fa fa-rocket"></i> Launch!</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tab_contest">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="tab_contest">
+                <table class="table table-bordered">
+
+                    $for key, val in container_contest_args.items():
+                        <tr>
+                            $if val.get("description") is not None:
+                                <th rowspan="2"><label for="args-$key">$val.get("name",key)</label></th>
+                            $else:
+                                <th><label for="args-$key">$val.get("name",key)</label></th>
+                            <td>
+                                $if val["type"] == "text":
+                                    $if val["name"]=="Problem to check":
+                                        <select class="form-control" id="args-$key" name="$key" placeholder="Select a problem...">
+                                            $for problem in problems:
+                                                <option value="${problem.get_id()}">${problem.get_id()} - ${problem.get_name()}</option>
+                                        </select>
+                                    $elif val["name"]=="Language":
+                                        <select class="form-control" id="args-$key" name="$key" placeholder="Select a language...">
+                                            $for choice in val["choices"]:
+                                                <option value="$choice"
+                                                $if choice == 'python3':
+                                                    selected
+                                                >${choice}</option>
+                                        </select>
+                                    $elif val["name"]=="Contests":
+                                        <select class="form-control" id="args-$key" name="$key" placeholder="Select a language...">
+                                            $for k,value in val["choices"].items():
+                                                <option value="$k">$value</option>
+                                        </select>
+                                    $else:
+                                        <input class="form-control" type="text" id="args-$key" name="$key"/>
+                                $else:
+                                    <input class="form-control" type="file" id="args-$key" name="$key"/>
+                            </td>
+                        </tr>
+                        $if val.get("description") is not None:
+                            <tr>
+                                <td>$:val["description"]</td>
+                            </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button type="submit" onclick="HoldOn.open();" class="btn btn-primary btn-block"><i class="fa fa-rocket"></i> Launch!</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Init the javascript for the problem select option -->
+<script type="text/javascript">
+    $$('#args-task').selectize();
+</script>
