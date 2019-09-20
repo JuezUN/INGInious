@@ -18,4 +18,4 @@ recursive-include inginious/frontend/plugins/UN_template *
 recursive-include inginious/frontend/plugins/UNCode *
 recursive-include inginious/frontend/plugins/register_students *
 recursive-include inginious/frontend/plugins/code_preview *
-recursive-include inginious/frontend/plugins/plagiarism
+recursive-include inginious/frontend/plugins/plagiarism *
