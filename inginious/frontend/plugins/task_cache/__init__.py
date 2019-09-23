@@ -57,6 +57,12 @@ def init(plugin_manager, course_factory, client, config):
 
     if "tasks_cache" not in plugin_manager.get_database().collection_names():
         plugin_manager.get_database().create_collection("tasks_cache")
+
+    if "TextSearchIndex" not in plugin_manager.get_database().tasks_cache.index_information():
+        plugin_manager.get_database().tasks_cache.create_index(
+            [("course_id", "text"), ("course_name", "text"), ("task_name", "text"), ("tags", "text"),
+             ("task_id", "text")], name="TextSearchIndex")
+
     plugin_manager.get_database().tasks_cache.create_index([("course_id", 1), ("task_id", 1)], unique=True)
 
     plugin_manager.add_hook('task_updated', on_task_updated)
