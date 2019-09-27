@@ -20,7 +20,7 @@ def on_task_editor_submit(course, taskid, task_data, task_fs):
     task_data["generate_grader"] = "generate_grader" in task_data
 
     if task_data['generate_grader']:
-        if task_data['environment'] == 'multiple_languages':
+        if task_data['environment'] == 'multiple_languages' or task_data['environment'] == 'Data Science':
             form = MultilangForm(task_data, task_fs)
         elif task_data['environment'] == 'HDL':
             form = HDLForm(task_data, task_fs)
