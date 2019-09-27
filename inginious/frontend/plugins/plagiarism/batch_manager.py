@@ -129,7 +129,6 @@ class BatchManager(object):
                     file.write(line)
             with open(os.path.join(inp, "task.txt"), 'w') as file:
                 file.write(inputdata["task"])
-            os.chmod(script, 777)
             retval = subprocess.call(shlex.split("/bin/bash " + script+" "+tmpdirname+" "+plagiarism + " " + data.get('language', 'python3')))
             try:
                 stdout = open(os.path.join(out, "jplag_stdout.txt"), "r").read()

@@ -3,6 +3,7 @@
 tmpdir=$1
 jplag_dir=$2
 lang=$3
+home="$(dirname "$0")"
 
 mkdir $tmpdir/workdir
 mkdir $tmpdir/workdir/course
@@ -35,7 +36,7 @@ do
     cp -R $tmpdir/workdir/submissions/$taskid/$username/*/archive/* $tmpdir/todo/$username/
     cp -R $tmpdir/workdir/submissions/$taskid/$username/*/uploaded_files/* $tmpdir/todo/$username/
     cp $tmpdir/workdir/submissions/$taskid/$username/*/submission.test $tmpdir/todo/$username/
-    python3.5 inginious/frontend/plugins/plagiarism/resources/plagiarism/write_code.py $tmpdir/todo/$username/
+    python3.5 $home/write_code.py $tmpdir/todo/$username/
     echo $PWD
     rm -f $tmpdir/todo/$username/__feedback.json > /dev/null 2> /dev/null
 done
