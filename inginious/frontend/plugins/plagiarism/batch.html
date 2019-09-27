@@ -71,29 +71,6 @@ $var Navbar: $:NavbarF()
 </table>
 
 
-<h3>Plagiarism checks by contest</h3>
-<table class="table table-bordered table-condensed table-hover" id="batch_contest_table">
-    <tr>
-        <th>Plagiarism check name</th>
-        <th colspan="2">Actions</th>
-    </tr>
-    $for op in operations_grouped:
-        <tr>
-            <td>$op["name"]</td>
-            <td class="batch-status-icon text-success" title="Results available" data-toggle="tooltip" data-placement="bottom">
-                <i class="fa fa-check"></i>
-            </td>
-            <td>
-                <div class="btn-group">
-                    <a href="$get_homepath()/admin/$course.get_id()/plagiarism/grouped_summary/$op['hash']" class="btn btn-success btn-xs" title="View results"
-                       data-toggle="tooltip" data-placement="bottom"><i class="fa fa-search fa-fw"></i></a>
-                   <a href="$get_homepath()/admin/$course.get_id()/plagiarism?grouped_drop=$op['hash']" class="btn btn-danger btn-xs" title="Delete"
-                       data-toggle="tooltip" data-placement="bottom"
-                       onclick="return confirm('You are sure you want to delete this plagiarism check?');"><i class="fa fa-remove fa-fw"></i></a>
-                </div>
-            </td>
-        </tr>
-</table>
 
 $if user_manager.has_admin_rights_on_course(course):
     <h3>Start a new plagiarism check</h3>
