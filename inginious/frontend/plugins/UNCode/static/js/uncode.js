@@ -85,23 +85,53 @@ jQuery(document).ready(function () {
         $("#sidebar_affix").css('position', 'static');
     }
 
-    function remove_unused_grader_environments(){
-        let to_remove = ['mcq', 'default'];
-        to_remove.forEach((item, _) => {
-            $(`form #environment option[value=${item}]`).each(function() {
-                $(this).remove();
-            });            
-        });  
+    /**
+     * Hide unused grading environments when creating/editing a task. The allowed environments
+     * are given in the configuration.yaml
+     */
+    function remove_unused_grader_environments() {
+        $.ajax({
+            url: '/api/getUsedGradingEnvironments/',
+            type: 'get',
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function (data) {
+                if (data) {
+                    let used_grading_environments = data;
+                    $('form #environment > option').each(function (_, option) {
+                        let option_value = option.attributes[0].value;
+                        if (used_grading_environments.indexOf(option_value) === -1) option.remove();
+                    });
+                }
+            }
+        });
     }
 
-    function remove_subproblems_problem_type(){
-        // This removes the options of code, single-line code (think about the others)
-        let to_remove = ['code', 'code_single_line', 'file', 'multiple_choice', 'match'];        
-        to_remove.forEach((item, _) => {
-            $(`form #new_subproblem_type option[value=${'subproblem_'.concat(item)}`).each(function() {
-                $(this).remove();
-            });
-        });        
+    /**
+     * Remove unused subproblem types  when creating/editing a task. The allowed subproblems
+     * are given in the configuration.yaml
+     */
+    function remove_unused_subproblem_types() {
+        $.ajax({
+            url: '/api/getUsedSubproblemTypes/',
+            type: 'get',
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function (data) {
+                if (data) {
+                    let used_subproblem_types = data;
+                    // Add 'subproblem_' prefix for every subproblem.
+                    used_subproblem_types = used_subproblem_types.map((subproblem) => {
+                        return "subproblem_" + subproblem;
+                    });
+
+                    $('#new_subproblem_type > option').each(function (_, option) {
+                        let option_value = option.attributes[0].value;
+                        if (used_subproblem_types.indexOf(option_value) === -1) option.remove();
+                    });
+                }
+            }
+        });
     }
 
     function rewrite_task_title(){
@@ -127,7 +157,7 @@ jQuery(document).ready(function () {
     updateCourseDocumentationLinks();
     addTaskResultLegendButton();
     stopSideBar();
-    remove_subproblems_problem_type();
+    remove_unused_subproblem_types();
     remove_unused_grader_environments();
     rewrite_task_title();
 });
