@@ -96,7 +96,7 @@ jQuery(document).ready(function () {
             contentType: 'application/json',
             dataType: 'json',
             success: function (data) {
-                if (data) {
+                if (data.length !== 0) {
                     let used_grading_environments = data;
                     $('form #environment > option').each(function (_, option) {
                         let option_value = option.attributes[0].value;
@@ -118,7 +118,7 @@ jQuery(document).ready(function () {
             contentType: 'application/json',
             dataType: 'json',
             success: function (data) {
-                if (data) {
+                if (data.length !== 0) {
                     let used_subproblem_types = data;
                     // Add 'subproblem_' prefix for every subproblem.
                     used_subproblem_types = used_subproblem_types.map((subproblem) => {
