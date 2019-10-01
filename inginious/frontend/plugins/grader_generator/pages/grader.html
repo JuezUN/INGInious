@@ -8,7 +8,7 @@ $#
 
 
 <div class="form-group">
-    <label for="generate_grader" class="col-sm-4 control-label">Automatically generate grader</label>
+    <label for="generate_grader" class="col-sm-4 control-label">Generate grader automatically</label>
 
     <div class="col-sm-8">
         <div class="checkbox"><label>
@@ -21,7 +21,10 @@ $#
 </div>
 
 <div class="form-group">
-    <label for="grader_problem_id" class="col-sm-4 control-label">Problem ID where the code is located</label>
+    <label for="grader_problem_id" class="col-sm-4 control-label">
+        Problem ID
+        <i class="fa fa-question-circle" title="Problem id where the code is located" data-toggle="tooltip"></i>
+    </label>
     <div class="col-sm-8">
         <select class="form-control" id="grader_problem_id" name="grader_problem_id">
 
@@ -30,7 +33,10 @@ $#
 </div>
 
 <div class="form-group">
-    <label for="grader_diff_max_lines" class="col-sm-4 control-label">Maximum diff lines</label>
+    <label for="grader_diff_max_lines" class="col-sm-4 control-label">
+        Maximum diff lines
+        <i class="fa fa-question-circle" title="The maximum number of lines that the diff tool should show" data-toggle="tooltip"></i>
+    </label>
     <div class="col-sm-8">
         <input type="number" min="10" class="form-control" id="grader_diff_max_lines" name="grader_diff_max_lines"
           value="${task_data.get('grader_diff_max_lines', 100)}">
@@ -47,7 +53,11 @@ $#
 
 
 <div class="form-group">
-    <label for="treat_non_zero_as_runtime_error" class="col-sm-4 control-label">Treat non-zero return codes as runtime errors</label>
+    <label for="treat_non_zero_as_runtime_error" class="col-sm-4 control-label">
+        Show runtime errors
+        <i class="fa fa-question-circle" title="In case is not checked, the response is either ACCEPTED or WRONG_ANSWER.
+        If checked, shows additional errors like RUNTIME_ERROR or TIME_LIMIT_EXCEEDED" data-toggle="tooltip"></i>
+    </label>
 
     <div class="col-sm-8">
         <div class="checkbox"><label>
@@ -81,7 +91,7 @@ $#
           <div class="col-xs-3"><label>Input file</label></div>
           <div class="col-xs-3"><label>Output file</label></div>
           <div class="col-xs-2"><label>Weight</label></div>
-          <div class="col-xs-2"><label>Differences shown</label></div>
+          <div class="col-xs-2"><label>Show differences</label></div>
           <div class="col-xs-2"><label></label></div>
         </div>
     </div>
