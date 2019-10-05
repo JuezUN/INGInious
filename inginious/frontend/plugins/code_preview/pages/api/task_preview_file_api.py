@@ -37,13 +37,11 @@ class TaskPreviewFileAPI(APIAuthenticatedPage):
             raise api.APIError(400, {"error", "The task does not exists in the course"})
         
         try:
-            print("Hola")
             # file_preview = open(os.path.join(task.get_fs().prefix, 'preview'), 'r')
             task_yaml = open(os.path.join(task.get_fs().prefix, 'task.yaml'), 'r')
             try:
                 data = yaml.safe_load(task_yaml)
                 filename = data['code_preview_pairs'][language]
-                print(language)
                 file_preview = open(os.path.join(task.get_fs().prefix, filename), 'r')
                 return 200, file_preview.read()
             except yaml.YAMLError as exc:
