@@ -1,6 +1,7 @@
 import os
 from inginious.frontend.plugins.utils import create_static_resource_page
 from .pages.code_preview import code_preview_tab
+from .pages.code_preview import on_task_editor_submit
 from .pages.api.task_preview_file_api import TaskPreviewFileAPI
 
 
@@ -11,5 +12,7 @@ def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_page(r'/code_preview/static/(.*)', create_static_resource_page(_static_folder_path))
 
     plugin_manager.add_hook('task_editor_tab', code_preview_tab)
-    
+    plugin_manager.add_hook('task_editor_submit', on_task_editor_submit)    
     plugin_manager.add_hook("javascript_footer", lambda: "/code_preview/static/js/code_preview_load.js")
+
+
