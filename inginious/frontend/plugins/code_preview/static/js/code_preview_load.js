@@ -5,10 +5,12 @@ function load_code_preview_to_codemirror(){
             course_id: getCourseIdFromUrl(),
             language: getInginiousLanguageForProblemId(getProblemId())
         }, function write(result) {
-            ks = Object.keys(codeEditors);
-            ks.forEach(element => {
-                codeEditors[element].setValue(result);
-            });
+            if(result !== "" ){
+                ks = Object.keys(codeEditors);
+                ks.forEach(element => {
+                    codeEditors[element].setValue(result);
+                });
+            }
         })
     }
 }
