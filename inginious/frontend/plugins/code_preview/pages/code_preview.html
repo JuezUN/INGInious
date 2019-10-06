@@ -49,7 +49,8 @@ $$('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
         previewFileSelect.empty();
 
         $$.each(files, function(index, file) {
-          if (file.is_directory) {
+          let file_is_test_case = file.complete_name.includes('.in') || file.complete_name.includes('.out')
+          if (file.is_directory || file_is_test_case || file.complete_name === 'run') {
             return;
           }
 
