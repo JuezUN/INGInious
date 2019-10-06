@@ -106,6 +106,9 @@ function remove_code_preview_pair(key){
 }
 
 $$ (document).ready(function() {
+    
     code_preview_languages_used = $:{code_preview_pairs};
+    if(code_preview_languages_used === null)
+        code_preview_languages_used = {}
 });
 </script>
