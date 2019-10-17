@@ -176,6 +176,7 @@ jQuery(document).ready(function () {
                 _deleteFile(fileName);
             });
             studio_update_file_tabs({}, 'GET');
+            remove_all_test_cases();
         });
     }
 
