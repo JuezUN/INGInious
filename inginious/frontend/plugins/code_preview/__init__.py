@@ -4,8 +4,8 @@ from .pages.code_preview import code_preview_tab
 from .pages.code_preview import on_task_editor_submit
 from .pages.api.task_preview_file_api import TaskPreviewFileAPI
 
-
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
+
 
 def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_page('/api/code_preview/', TaskPreviewFileAPI)
