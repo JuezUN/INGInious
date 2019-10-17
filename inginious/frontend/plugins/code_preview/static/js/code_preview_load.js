@@ -16,7 +16,9 @@ function load_code_preview_to_codemirror(){
 }
 
 jQuery(document).ready(function () {
+    if(typeof getProblemId !== "undefined"){
         let last_call = $('#' + getProblemId() + "\\/language").attr('onchange');
         $('#' + getProblemId() + "\\/language").attr('onchange', last_call + ';load_code_preview_to_codemirror();')
         load_code_preview_to_codemirror();
+    }
 });
