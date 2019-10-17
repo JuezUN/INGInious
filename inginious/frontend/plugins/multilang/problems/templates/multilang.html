@@ -28,7 +28,12 @@ $#
 </div>
 $if type == "code_multiple_languages":
 	<script>
+		function getProblemId(){
+			return '$problemid';
+		}
 		$$(document).ready(function() {
 			changeSubmissionLanguage('$problemid');
+
+			
 		});
 	</script>
