@@ -32,6 +32,10 @@ class TaskList extends React.Component{
         }
     };
 
+    addTaskToCourse = (courseId, taskId, bankId) => {
+        this.props.callBackAddTaskToCourse(courseId, taskId, bankId, this.state.query);
+    };
+
     getListOfTasks = () => {
         let tasks = this.props.tasks.map((task, i) => {
             let page = this.props.page;
@@ -43,7 +47,7 @@ class TaskList extends React.Component{
                     task_info={task}
                     key={i}
                     courses={this.props.courses}
-                    callBackAddTaskToCourse={this.props.callBackAddTaskToCourse}
+                    callBackAddTaskToCourse={this.addTaskToCourse}
                 />)
             }
         });
