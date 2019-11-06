@@ -39,6 +39,23 @@
         </select>
 
     </div>
+
+    <div>
+      <select id="service" name="service" onchange="location.reload()">
+          <option name="all" value="" selected>All</option>
+          <option name="python_tutor" value="python_tutor">Python Tutor</option>
+          <option name="statistics" value="statistics">Statistics</option>
+          <option name="custom_input" value="custom_input">Custom Input</option>
+          <option name="linter" value="linter">Linter</option>
+      </select>
+
+  </div>
+
+    <div>
+      <text>Username</text><input id="student_username" name="username" type="text">
+      <button onclick="location.reload()">Update</button>
+    </div>
+
     <div class="calender-map"></div>
     <div id="myDiv"></div>
     <div id="myDiv2"></div>

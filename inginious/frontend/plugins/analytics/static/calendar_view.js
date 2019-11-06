@@ -74,7 +74,22 @@
         .attr("id", function(d,i){ return month[i] })
         .attr("d", monthPath);
 
-    d3.json("http://localhost:8080/api/analytics_consult/?service=python_tutor", function(error, csv) {
+
+    var username = document.getElementById("student_username").value;
+    var service = document.getElementById('service').value;
+    parameters = [];
+
+    var request = "http://localhost:8080/api/analytics_consult/";
+    if(username || service)
+        request += "?"
+    if(username)
+        parameters.push('username=' + username)
+    if(service)
+        parameters.push('service=' + service)
+
+    request += parameters.join('&')
+
+    d3.json(request, function(error, csv) {
 
         visits = {}
         visits_for_table = {}
@@ -109,18 +124,19 @@
             if( day in visits )
                 visits_arr.push( { date: day.replace(/\-/g, ''), visits: visits[day] } )
             else    
-                visits_arr.push( visits_arr.push( { date: day.replace(/\-/g, ''), visits: 0 } ) )                
+                visits_arr.push(  { date: day.replace(/\-/g, ''), visits: 0 } )
 
             day = new Date(day)
             day.setDate( day.getDate() + 1 )
             day = day.toISOString().slice(0, 10)
         }
 
+        console.log(visits_arr);
         var visits_max = d3.max(visits_arr, function(d) { return d.visits; });
 
         var data = d3.nest()
             .key(function(d) { return d.date; })
-            .rollup(function(d) { return  Math.sqrt(d[0].visits / visits_max); })
+            .rollup(function(d) { return  Math.sqrt( visits_max > 0 ? d[0].visits / visits_max : 0); })
             .map(visits_arr);
 
         

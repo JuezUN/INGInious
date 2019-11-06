@@ -1,4 +1,18 @@
-Plotly.d3.json("http://localhost:8080/api/analytics_consult/?service_type=student", function(err, rows){
+var username = document.getElementById("student_username").value;
+    var service = document.getElementById('service').value;
+    parameters = [];
+
+    var request = "http://localhost:8080/api/analytics_consult/";
+    if(username || service)
+        request += "?"
+    if(username)
+        parameters.push('username=' + username)
+    if(service)
+        parameters.push('service=' + service)
+
+    request += parameters.join('&')
+
+Plotly.d3.json(request, function(err, rows){
 
   services_visits = {}
 
