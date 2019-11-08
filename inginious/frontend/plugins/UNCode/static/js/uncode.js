@@ -151,6 +151,14 @@ jQuery(document).ready(function () {
         }
     }
 
+    function modifyCourseCreateAlertMessage(){
+        const alertDiv = $('.alert-danger');
+        if (location.pathname === '/mycourses' && alertDiv.length){
+            const newMsg = "Failed to create the course. It might either already exist or contain an invalid character (only alphanumeric in addition to \"_\" and \"-\" are accepted).";
+            $('.alert-danger')[0].childNodes[2].textContent = newMsg;
+        }
+    }
+
     updateTemplate();
     addTaskContextTemplate();
     addTaskContextHelp();
@@ -160,4 +168,5 @@ jQuery(document).ready(function () {
     remove_unused_subproblem_types();
     remove_unused_grader_environments();
     rewrite_task_title();
+    modifyCourseCreateAlertMessage();
 });
