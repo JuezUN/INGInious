@@ -1,7 +1,7 @@
 const _this = this;
 
 jQuery(document).ready(function () {
-    /*
+    /**
      * Monkey-patch the studio_update_file_tabs function to know when the table is replaced with
      * the values in the table, and that way, modify the buttons.
      */
@@ -12,6 +12,24 @@ jQuery(document).ready(function () {
             method = "GET";
 
         _getAllFiles(data, method, () => {
+        });
+    };
+
+    /**
+     * Patch studio_task_file_upload to detect when a file is uploaded separately, so
+     * the button can be updated once the files table is rendered.
+     */
+    _this.studio_task_file_upload = () => {
+        $('#modal_file_upload').modal('hide');
+        $('#task_upload_form').ajaxSubmit({
+            beforeSend: function () {
+                $("#tab_file_list").html('Loading');
+            },
+            success: function (data) {
+                $("#tab_file_list").replaceWith(data);
+                modifyTabFileListButtons();
+            },
+            url: location.pathname + "/files"
         });
     };
 
