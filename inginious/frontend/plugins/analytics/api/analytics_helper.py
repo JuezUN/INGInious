@@ -11,7 +11,7 @@ class AnalyticsHelperAPI(APIAuthenticatedPage):
     def API_GET(self):
         manager = AnalyticsManager(self.database)
 
-        username = web.input(username=None).username
+        username = self.user_manager.session_username()
         service = web.input(service=None).service
         
         session_id = self.user_manager.session_id()
