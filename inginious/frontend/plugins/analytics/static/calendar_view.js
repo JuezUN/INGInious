@@ -112,6 +112,7 @@
     
         // Complete the dates
         let today = new Date();
+        today.setDate( today.getDate() + 1 );
         let date_start = new Date();
 
         date_start.setFullYear(start_year);date_start.setMonth(0); date_start.setDate(0);
