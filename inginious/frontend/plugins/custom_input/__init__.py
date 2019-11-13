@@ -1,8 +1,10 @@
 import os
 import web
 import json
+import datetime
 
 from inginious.frontend.plugins.utils import create_static_resource_page, get_mandatory_parameter
+from inginious.frontend.plugins.analytics.manager import AnalyticsManager
 from inginious.client.client_sync import ClientSync
 from inginious.frontend.pages.api._api_page import APIAuthenticatedPage
 from inginious.frontend.parsable_text import ParsableText
@@ -14,6 +16,7 @@ def customInputManagerWithCurriedClient(client):
     class CustomInputManager(APIAuthenticatedPage):
         def __init__(self):
             self._client = client
+            self.analyticsmg = AnalyticsManager(self.database)
 
         def add_unsaved_job(self, task, inputdata):
             temp_client = ClientSync(self._client)
@@ -43,6 +46,14 @@ def customInputManagerWithCurriedClient(client):
 
         def API_POST(self):
             request_params = web.input()
+            analytics_params = {
+                'username': self.user_manager.session_username(),
+                'service': 'custom_input',
+                'date' : datetime.datetime.now(),
+                'session_id' : self.user_manager.session_id()
+            }
+            self.analyticsmg.add_visit(**analytics_params)
+
             courseid = get_mandatory_parameter(request_params, "courseid")
             course = self.course_factory.get_course(courseid)
             taskid = get_mandatory_parameter(request_params, "taskid")

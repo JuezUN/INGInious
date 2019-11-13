@@ -110,5 +110,6 @@ var PythonTutor = (function () {
 
 function visualizeCode(language, problemId){
     var pythonTutor = new PythonTutor(problemId, language);
+    $.get('api/analytics_helper/?service=python_tutor')
     pythonTutor.visualize();
 }
