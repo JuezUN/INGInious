@@ -3,12 +3,10 @@ var username = document.getElementById("student_username").value;
     parameters = [];
 
     var request = "http://localhost:8080/api/analytics_consult/";
-    if(username || service)
+    if(username)
         request += "?"
     if(username)
         parameters.push('username=' + username)
-    if(service)
-        parameters.push('service=' + service)
 
     request += parameters.join('&')
 

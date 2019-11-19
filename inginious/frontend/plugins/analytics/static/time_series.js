@@ -24,6 +24,8 @@ function unpack(rows, key) {
 // visits -> key:date -> key:service -> key:visits -> int
 
 visits = {}
+
+
 rows.forEach((item, _) => {
     let date = new Date(item.date);
     // Check for day, accumulate all to a day instead of hours:minutes:seconds
@@ -117,7 +119,7 @@ var two_m_earlier = new Date(today);
 two_m_earlier.setMonth(two_m_earlier.getMonth() - 2);
 
 var layout = {
-title: 'Time Series with Rangeslider', 
+title: 'Student visits by day', 
 xaxis: {
   //autorange: true, 
   range: [two_m_earlier.toISOString().slice(0, 10), (new Date()).toISOString().slice(0, 10)], 

@@ -1,4 +1,4 @@
-Plotly.d3.json("http://localhost:8080/api/analytics_consult/?service_type=student", function(err, rows){
+Plotly.d3.json("http://localhost:8080/api/analytics_consult/", function(err, rows){
    services_visits = {}
 
    dates = []
@@ -68,7 +68,7 @@ Plotly.d3.json("http://localhost:8080/api/analytics_consult/?service_type=studen
    };
 
    layout = {
-      title: 'Points Scored by the Top 9 Scoring NBA Players in 2012',
+      title: 'Plugin Services and Tools Used by the Students',
       yaxis: {
           autorange: true,
           showgrid: true,
