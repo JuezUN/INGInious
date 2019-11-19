@@ -144,7 +144,7 @@ d3.json(request, function(error, csv) {
     
     rect.filter(function(d) { return d in data; })
         .attr("fill", function(d) { return color(data[d]); })
-        .attr("data-title", function(d) { return "visits : "+Math.round(data[d]*100)});   
+        .attr("data-title", function(d) { return d.slice(0, 4) + "-" + d.slice(4, 6) + "-" + d.slice(6, 8) + " " +"visits : "+Math.round(data[d]*100)});   
         $("rect").tooltip({container: 'body', html: true, placement:'top'}); 
 });
 
