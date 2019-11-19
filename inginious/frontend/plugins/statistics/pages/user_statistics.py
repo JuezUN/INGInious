@@ -9,7 +9,7 @@ class UserStatisticsPage(INGIniousAuthPage):
         analyticsmg = AnalyticsManager(self.database)
         analytics_params = {
             'username': self.user_manager.session_username(),
-            'service': 'custom_input',
+            'service': 'statistics',
             'date' : datetime.datetime.now(),
             'session_id' : self.user_manager.session_id()
         }
