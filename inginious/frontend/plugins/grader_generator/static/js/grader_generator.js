@@ -52,7 +52,7 @@ function studio_add_test_case(test_case) {
 }
 
 function studio_load_grader_test_cases(test_cases) {
-    if($("#environment").val() === "Notebook"){
+    if ($("#environment").val() === "Notebook") {
         notebook_load_grader_tests(test_cases)
     } else {
         $.each(test_cases, function (_, test_case) {
@@ -125,6 +125,9 @@ function studio_set_initial_problem(initialProblemId) {
 }
 
 function studio_update_grader_files() {
+    const container_name = $("#environment").val();
+    if (container_name === "Notebook") return;
+
     $.get('/api/grader_generator/test_file_api', {
         course_id: courseId,
         task_id: taskId
@@ -167,42 +170,38 @@ function studio_update_grader_files() {
 function studio_update_container_name() {
     // This function hides the forms which container is not been used
     // Check container (environment) name, and hide all test containers
-    let container_name = $("#environment").val();
-    let test_containers = $(".grader_form");
+    const container_name = $("#environment").val();
+    const test_containers = $(".grader_form");
     $("#tab_grader").find("div.form-group")[2].style.display = "block";
     $("#tab_grader").find("div.form-group")[3].style.display = "block";
     for (let cont = 0; cont < test_containers.length; cont++) {
         test_containers[cont].style.display = "none";
     }
-    if (container_name === "Notebook") {
-        try {
-            $("#notebook_grader_form")[0].style.display = "block";
-            // Do not show diff related inputs
-            $("#tab_grader").find("div.form-group")[2].style.display = "none";
-            $("#tab_grader").find("div.form-group")[3].style.display = "none";
-        } catch {
+
+    try {
+        switch (container_name) {
+            case "Notebook":
+                $("#notebook_grader_form")[0].style.display = "block";
+                // Do not show diff related inputs
+                $("#tab_grader").find("div.form-group")[2].style.display = "none";
+                $("#tab_grader").find("div.form-group")[3].style.display = "none";
+                break;
+            case "HDL":
+                $("#hdl_grader_form")[0].style.display = "block";
+                break;
+            case "multiple_languages":
+            case "Data Science":
+                $("#multilang_grader_form")[0].style.display = "block";
         }
-        ;
-    }
-    if (container_name === "HDL") {
-        try {
-            $("#hdl_grader_form")[0].style.display = "block";
-        } catch {
-        }
-        ;
-    }
-    if (container_name === "multiple_languages" || container_name === 'Data Science') {
-        try {
-            $("#multilang_grader_form")[0].style.display = "block";
-        } catch {
-        }
-        ;
+    } catch {
     }
 }
 
 // Match test cases
-
 function read_files_and_match() {
+    const container_name = $("#environment").val();
+    if (container_name === "Notebook" || container_name === "HDL") return;
+
     // This function reads all the files on the tab "Task files" and
     // matches to test cases
     $.get('/api/grader_generator/test_file_api', {
@@ -233,14 +232,14 @@ function read_files_and_match() {
                     "complete_name": complete_name_output,
                     "name": name_without_extension + '.out',
                     "is_directory": false
-                }
+                };
                 for (ind = 0; ind < files.length; ind++) {
                     var el = files[ind];
                     if (el.complete_name === file_obj.complete_name && el.is_directory === file_obj.is_directory) {
                         entry = {
                             'input_file': file.complete_name,
                             'output_file': file_obj.complete_name
-                        }
+                        };
                         studio_add_test_case(entry);
                     }
                 }

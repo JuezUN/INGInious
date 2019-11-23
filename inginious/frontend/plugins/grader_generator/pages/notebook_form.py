@@ -18,7 +18,6 @@ class NotebookForm(GraderForm):
 
     def tests_to_dict(self):
         """ This method parses the tests cases information in a dictionary """
-        print(self.task_data)
         # Transform grader_test_cases[] entries into an actual array (they are sent as separate keys).
         grader_test_cases = CourseEditTask.dict_from_prefix("notebook_grader_test", self.task_data) or OrderedDict()
         # Remove the repeated information

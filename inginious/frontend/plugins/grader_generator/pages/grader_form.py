@@ -40,7 +40,6 @@ class GraderForm:
 
         # The problem_id does not exists
         if self.task_data['grader_problem_id'] not in self.task_data['problems']:
-            print(self.task_data)
             raise InvalidGraderError("Grader: problem does not exist")
 
         # check the type of problem. (written code or project folder only options)

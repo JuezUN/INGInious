@@ -62,4 +62,4 @@ def grader_generator_tab(course, taskid, task_data, template_helper):
 
 def grader_footer(course, taskid, task_data, template_helper):
     renderer = template_helper.get_custom_renderer(_BASE_RENDERER_PATH, layout=False)
-    return str(renderer.grader_templates()) + str(renderer.notebook_grader_add_test_case_modal())
+    return str(renderer.grader_templates()) + str(renderer.notebook_grader_test_form_modal())

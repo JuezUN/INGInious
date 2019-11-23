@@ -1,4 +1,4 @@
-<div id="notebook_grader_add_test_case_modal" class="modal fade">
+<div id="notebook_grader_test_form_modal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,13 +12,12 @@
                 <div class="row">
                     <div class="form-group col-xs-12">
                         <div class="col-xs-8">
-                            <label for="notebook_test_name" class="col-sm-4 control-label">Test case name</label>
-                            <input type="text" class="form-control" id="notebook_test_name"
-                                   placeholder="Test case name">
+                            <label for="notebook_grader_test_name" class="col-sm-4 control-label">Test case name</label>
+                            <input type="text" class="form-control" id="notebook_grader_test_name" placeholder="Test case name">
                         </div>
                         <div class="col-xs-4">
-                            <label for="notebook_test_weight" class="col-sm-4 control-label">Weight</label>
-                            <input type="number" class="form-control" id="notebook_test_weight"
+                            <label for="notebook_grader_test_weight" class="col-sm-4 control-label">Weight</label>
+                            <input type="number" class="form-control" id="notebook_grader_test_weight"
                                    placeholder="0.0">
                         </div>
                     </div>
@@ -26,8 +25,8 @@
                 <div class="row">
                     <div class="form-group col-xs-12">
                         <div class="col-xs-12">
-                            <label for="notebook_test_setup_code" class="col-sm-4 control-label">Setup code</label>
-                            <textarea type="text" class="form-control" id="notebook_test_setup_code"
+                            <label for="notebook_grader_test_setup_code" class="col-sm-4 control-label">Setup code</label>
+                            <textarea type="text" class="form-control" id="notebook_grader_test_setup_code"
                                       placeholder="Code setup"></textarea>
                         </div>
                     </div>
@@ -37,12 +36,11 @@
                 <div class="row">
                     <div class="form-group col-xs-12">
                         <div class="col-xs-5">
-                            <textarea type="text" class="form-control" name="grader_test_case_input_code"
-                                      id="grader_test_case_input_code" placeholder="Code"></textarea>
+                            <textarea type="text" class="form-control" id="notebook_grader_test_case_input_code"
+                                      placeholder="Code"></textarea>
                         </div>
                         <div class="col-xs-5">
-                            <textarea type="text" class="form-control" name="grader_test_cases_output_code"
-                                      id="grader_test_cases_output_code"
+                            <textarea type="text" class="form-control" id="notebook_grader_test_case_output_code"
                                       placeholder="Expected output"></textarea>
                         </div>
                         <div class="col-xs-2" style="display: flex; height: 100%;">
@@ -66,7 +64,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button class='btn btn-info' id='submit_notebook_test_form'>
+                <button class='btn btn-info' id='notebook_grader_submit_test_form'>
                     Save
                 </button>
             </div>
