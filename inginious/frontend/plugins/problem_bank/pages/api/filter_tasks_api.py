@@ -20,35 +20,33 @@ class FilterTasksApi(AdminApi):
         tasks = []
         for course_id in course_ids:
             ids_tasks = self.database.tasks_cache.aggregate([
-                    {
-                        "$match":
-                            {
-                                "course_id": course_id
+                {
+                    "$match":
+                        {
+                            "$text": {
+                                "$search": task_query
                             }
-                    },
-                    {
-                        "$unwind":
-                            {
-                                "path": "$tags",
-                                "preserveNullAndEmptyArrays": True
-                            }
-                    },
-                    {
-                        "$match":
-                            {
-                                "$or":
-                                    [{"course_id": {"$regex": ".*" + task_query + ".*"}},
-                                     {"course_name": {"$regex": ".*" + task_query + ".*"}},
-                                     {"task_name": {"$regex": ".*" + task_query + ".*"}},
-                                     {"tags": {"$regex": ".*" + task_query + ".*"}}]
-                            }
-                    },
-                    {
-                        "$group":
-                            {
-                                "_id": "$_id"
-                            }
-                    }
+                        }
+                },
+                {
+                    "$match":
+                        {
+                            "course_id": course_id
+                        }
+                },
+                {
+                    "$unwind":
+                        {
+                            "path": "$tags",
+                            "preserveNullAndEmptyArrays": True
+                        }
+                },
+                {
+                    "$group":
+                        {
+                            "_id": "$_id"
+                        }
+                }
             ])
 
             for id_task in ids_tasks:
