@@ -53,7 +53,7 @@ function studio_add_test_case(test_case) {
 
 function studio_load_grader_test_cases(test_cases) {
     if ($("#environment").val() === "Notebook") {
-        notebook_load_grader_tests(test_cases)
+        notebook_grader_load_all_tests(test_cases)
     } else {
         $.each(test_cases, function (_, test_case) {
             studio_add_test_case(test_case);
