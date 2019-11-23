@@ -169,12 +169,17 @@ function studio_update_container_name() {
     // Check container (environment) name, and hide all test containers
     let container_name = $("#environment").val();
     let test_containers = $(".grader_form");
+    $("#tab_grader").find("div.form-group")[2].style.display = "block";
+    $("#tab_grader").find("div.form-group")[3].style.display = "block";
     for (let cont = 0; cont < test_containers.length; cont++) {
         test_containers[cont].style.display = "none";
     }
     if (container_name === "Notebook") {
         try {
             $("#notebook_grader_form")[0].style.display = "block";
+            // Do not show diff related inputs
+            $("#tab_grader").find("div.form-group")[2].style.display = "none";
+            $("#tab_grader").find("div.form-group")[3].style.display = "none";
         } catch {
         }
         ;

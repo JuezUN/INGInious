@@ -1,8 +1,6 @@
 let notebook_grader_tests_sequence = 0;
 let notebook_grader_tests = {};
 let editing_test_id = null;
-// let test_cases_input = [];
-// let ids_test_cases_input = [];
 
 function add_notebook_test_case_from_form() {
     add_notebook_test_case({
@@ -11,21 +9,21 @@ function add_notebook_test_case_from_form() {
     });
 }
 
-function add_notebook_test_case(test_case) {
+function add_notebook_test_case(test_case, case_index = null) {
     test_case = $.extend({
         "input_code": null,
         "output_code": null
     }, test_case);
 
-    const test_id = editing_test_id || notebook_grader_tests_sequence;
-
-    const case_id = notebook_grader_tests[test_id],
-        inputCode = test_case["input_code"],
-        outputCode = test_case["output_code"];
+    const test_id = editing_test_id !== null ? editing_test_id : notebook_grader_tests_sequence;
 
     if (!notebook_grader_tests[test_id]) {
         notebook_grader_tests[test_id] = 0;
     }
+
+    const case_id = case_index !== null ? case_index : notebook_grader_tests[test_id],
+        inputCode = test_case["input_code"],
+        outputCode = test_case["output_code"];
 
     if (!inputCode || !outputCode) return;
 
@@ -50,10 +48,6 @@ function load_notebook_test_case(test_id, case_index, test_data) {
         "output_code": null
     }, test_data);
 
-    // if (!notebook_grader_tests[test_id]) {
-    //     notebook_grader_tests[test_id] = 0;
-    // }
-
     const case_id = case_index,
         inputCode = test_data["input_code"],
         outputCode = test_data["output_code"];
@@ -62,27 +56,19 @@ function load_notebook_test_case(test_id, case_index, test_data) {
 
     let templateElement = _get_test_case_html(test_id, case_id, inputCode, outputCode);
 
-    // notebook_grader_tests[test_id]++;
-    // notebook_grader_test_cases_count++;
-
-    // const first_row = (notebook_grader_test_cases_count === 1);
-
-    // if (first_row) {
-    // }
     $('#notebook_grader_test_cases_header').show();
 
     $('#notebook_grader_test_cases_container').append(templateElement);
 }
 
 function notebook_remove_test_case(test_id, case_id) {
-    $(`#notebook_grader_test_cases_${test_id}_${case_id}`).remove();
+    const element = $("#notebook_grader_test_cases_container").find(`#notebook_grader_test_cases_${test_id}_${case_id}`);
+    // element.remove();
+    element.remove();
     notebook_grader_tests[test_id]--;
     if (notebook_grader_tests[test_id] === 0) {
         $('#notebook_grader_test_cases_header').hide();
     }
-    // let ind_of_test_case = ids_test_cases_input.findIndex(el => el === id);
-    // test_cases_input.splice(ind_of_test_case, 1);
-    // ids_test_cases_input.splice(ind_of_test_case, 1);
 }
 
 function _get_test_case_html(test_id, case_id, input_code, output_code) {
@@ -119,7 +105,7 @@ function notebook_load_grader_tests(tests) {
             add_notebook_test_case({
                 "input_code": test_case["input_code"],
                 "output_code": test_case["output_code"]
-            });
+            }, case_index);
         });
         add_notebook_test(test, test["cases"].length);
     });
@@ -205,7 +191,7 @@ function notebook_grader_edit_test(test_id) {
 }
 
 function update_notebook_test(test_data) {
-   test_data = $.extend({
+    test_data = $.extend({
         "name": "test",
         "weight": 1.0,
         "setup_code": "",
@@ -236,12 +222,12 @@ function update_notebook_test(test_data) {
 
 $("#submit_notebook_test_form").click((e) => {
     e.preventDefault();
-   if(editing_test_id !== null) update_notebook_test({
-       "name": $("#notebook_test_name").val(),
+    if (editing_test_id !== null) update_notebook_test({
+        "name": $("#notebook_test_name").val(),
         "weight": $("#notebook_test_weight").val(),
         "setup_code": $("#notebook_test_setup_code").val()
-   });
-   else add_notebook_test_from_form();
+    });
+    else add_notebook_test_from_form();
 });
 
 $("#notebook_grader_add_test_case_modal").on("hidden.bs.modal", () => {
