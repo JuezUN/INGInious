@@ -77,6 +77,15 @@ function studio_init_template_code_multiple_languages(well, pid, problem)
     }
 }
 
+function studio_init_template_notebook_file(well, pid, problem) {
+    if ("type" in problem)
+        $('#type-' + pid, well).val(problem["type"]);
+}
+
+function load_input_notebook_file(submissionid, key, input) {
+    load_input_file(submissionid, key, input);
+}
+
 function studio_init_template_code_file_multiple_languages(well, pid, problem)
 {
     if("max_size" in problem)

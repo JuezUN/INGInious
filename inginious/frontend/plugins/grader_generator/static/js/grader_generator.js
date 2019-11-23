@@ -52,9 +52,13 @@ function studio_add_test_case(test_case) {
 }
 
 function studio_load_grader_test_cases(test_cases) {
-    $.each(test_cases, function (_, test_case) {
-        studio_add_test_case(test_case);
-    });
+    if($("#environment").val() === "Notebook"){
+        notebook_load_grader_tests(test_cases)
+    } else {
+        $.each(test_cases, function (_, test_case) {
+            studio_add_test_case(test_case);
+        });
+    }
 }
 
 function studio_remove_test_case(id) {
@@ -92,9 +96,9 @@ function studio_update_grader_problems() {
     let currentlySelectedItem = graderSelect.val();
 
     graderSelect.empty();
+    const accepted_problems = ["code_multiple_languages", "code_file_multiple_languages", "notebook_file"];
     $.each(problems, function (index, problem) {
-        if (problem.type === "code_multiple_languages" ||
-            problem.type === "code_file_multiple_languages") {
+        if (accepted_problems.indexOf(problem.type) !== -1) {
             graderSelect.append($("<option>", {
                 "value": problem.id,
                 "text": problem.id
@@ -107,10 +111,9 @@ function studio_update_grader_problems() {
 }
 
 function studio_set_initial_problem(initialProblemId) {
-    let selectedItem = '';
     let graderSelect = $("#grader_problem_id");
     let generateGraderIsChecked = $("#generate_grader").is(':checked');
-    selectedItem = initialProblemId;
+    let selectedItem = initialProblemId;
     if (generateGraderIsChecked && initialProblemId) {
         selectedItem = initialProblemId;
         graderSelect.append($("<option>", {
@@ -168,6 +171,13 @@ function studio_update_container_name() {
     let test_containers = $(".grader_form");
     for (let cont = 0; cont < test_containers.length; cont++) {
         test_containers[cont].style.display = "none";
+    }
+    if (container_name === "Notebook") {
+        try {
+            $("#notebook_grader_form")[0].style.display = "block";
+        } catch {
+        }
+        ;
     }
     if (container_name === "HDL") {
         try {

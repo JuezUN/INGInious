@@ -1,0 +1,17 @@
+test = {
+  'name': {test_name},
+  'points': {test_weight},
+  'suites': [
+    {
+      'cases': [
+        {case_data}
+      ],
+      'scored': True,
+      'setup': r"""
+      {setup_code}
+      """,
+      'teardown': '',
+      'type': 'doctest'
+    }
+  ]
+}
