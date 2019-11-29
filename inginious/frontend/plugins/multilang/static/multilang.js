@@ -97,12 +97,13 @@ function load_input_code_file_multiple_languages(submissionid, key, input){
     setDropDownWithTheRightLanguage(key, input[key + "/language"]);
 }
 
-function selectAllLanguages(){
-    $(".checkbox_language").prop("checked", true);
-}
-
-function unselectAllLanguages(){
-    $(".checkbox_language").prop("checked", false);
+let selected_all_languages = false;
+function toggle_languages_checkboxes() {
+    selected_all_languages = !selected_all_languages;
+    $(".checkbox_language").prop("checked", selected_all_languages);
+    let text_button = "Select all";
+    if (selected_all_languages) text_button = "Unselect All";
+    $("#toggle_select_languages_button").text(text_button);
 }
 
 const original_studio_subproblem_delete = this.studio_subproblem_delete;
