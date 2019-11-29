@@ -77,9 +77,9 @@ class NotebookForm(GraderForm):
     @staticmethod
     def _parse_code_to_doctest(code):
         parsed_code = ""
-        code_lines = code.split('\n')
+        code_lines = [line.strip() for line in code.split('\n') if line.strip()]
         for index, line in enumerate(code_lines):
-            parsed_code += ">>> {}".format(line.strip())
+            parsed_code += ">>> {}".format(line)
             if index + 1 < len(code_lines):
                 parsed_code += "\n"
         return parsed_code
@@ -87,11 +87,10 @@ class NotebookForm(GraderForm):
     def _parse_case(self, case):
         input_code = self._parse_code_to_doctest(case["input_code"])
         output_code = case["output_code"]
-        template = """
-                    {
+        template = """{
                         'code': r\"\"\"
-                        %s
-                        %s
+%s
+%s
                         \"\"\",
                         'hidden': False,
                         'locked': False

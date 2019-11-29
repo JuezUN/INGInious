@@ -26,7 +26,7 @@ function notebook_grader_create_test_case(test_case_data) {
         "output_code": null
     }, test_case_data);
 
-    const test_id = notebook_grader_tests_sequence;
+    const test_id = editing_test_id !== null ? editing_test_id : notebook_grader_tests_sequence;
 
     if (!notebook_grader_tests_cases_count[test_id]) {
         notebook_grader_tests_cases_count[test_id] = 0;
@@ -249,6 +249,7 @@ function notebook_grader_update_test() {
     });
 
     $("#notebook_grader_test_form_modal").modal('hide');
+    editing_test_id = null;
 }
 
 function _clear_modal() {
@@ -267,5 +268,4 @@ $("#notebook_grader_submit_test_form").click((e) => {
 $("#notebook_grader_test_form_modal").on("hidden.bs.modal", () => {
     if (editing_test_id !== null) notebook_grader_update_test();
     _clear_modal();
-    editing_test_id = null;
 });
