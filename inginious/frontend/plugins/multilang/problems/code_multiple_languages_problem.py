@@ -3,7 +3,7 @@ import os
 from inginious.common.tasks_problems import CodeProblem
 from inginious.frontend.task_problems import DisplayableCodeProblem
 from .constants import get_linter_url, get_python_tutor_url, get_show_tools, get_python_tutor_py2_url
-from .languages import get_available_languages
+from .languages import get_all_available_languages
 from collections import OrderedDict
 
 path_to_plugin = os.path.abspath(os.path.dirname(__file__))
@@ -35,10 +35,10 @@ class DisplayableCodeMultipleLanguagesProblem(CodeMultipleLanguagesProblem, Disp
     @classmethod
     def show_editbox(cls, template_helper, key):
         renderer = DisplayableCodeMultipleLanguagesProblem.get_renderer(template_helper)
-        return renderer.multilang_edit(key, get_available_languages())
+        return renderer.multilang_edit(key, get_all_available_languages())
 
     def show_input(self, template_helper, language, seed):
-        allowed_languages = {language: get_available_languages()[language] for language in self._languages}
+        allowed_languages = {language: get_all_available_languages()[language] for language in self._languages}
         dropdown_id = self.get_id() + "/language"
         custom_input_id = self.get_id() + "/input"
 

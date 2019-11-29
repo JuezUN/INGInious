@@ -106,12 +106,20 @@ function toggle_languages_checkboxes() {
     $("#toggle_select_languages_button").text(text_button);
 }
 
+/**
+ * Monkey patch `studio_subproblem_delete` to detect when a subproblem is deleted, that way
+ * the options to create a new subproblem are displayed.
+ */
 const original_studio_subproblem_delete = this.studio_subproblem_delete;
 this.studio_subproblem_delete = (pid) => {
     original_studio_subproblem_delete(pid);
     toggle_display_new_subproblem_option();
 };
 
+/**
+ * Monkey patch `studio_create_new_subproblem` to detect when a subproblem is created, that way
+ * the options to create a new subproblem are hidden.
+ */
 const original_studio_create_new_subproblem = this.studio_create_new_subproblem;
 this.studio_create_new_subproblem = () => {
     original_studio_create_new_subproblem();
