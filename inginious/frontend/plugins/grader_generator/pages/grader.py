@@ -1,13 +1,10 @@
 import json
-import os
+
 from .multilang_form import MultilangForm
 from .hdl_form import HDLForm
 from .notebook_form import NotebookForm
 from .grader_form import InvalidGraderError
-
-from .constants import get_use_minified
-
-_BASE_RENDERER_PATH = os.path.dirname(__file__)
+from .constants import get_use_minified, BASE_TEMPLATE_FOLDER
 
 
 def on_task_editor_submit(course, taskid, task_data, task_fs):
@@ -48,9 +45,9 @@ def grader_generator_tab(course, taskid, task_data, template_helper):
     tab_id = 'tab_grader'
     link = '<i class="fa fa-check-circle fa-fw"></i>&nbsp; Grader'
     grader_test_cases_dump = json.dumps(task_data.get('grader_test_cases', []))
-    content = template_helper.get_custom_renderer(_BASE_RENDERER_PATH, layout=False).grader(task_data,
-                                                                                            grader_test_cases_dump,
-                                                                                            course, taskid)
+    content = template_helper.get_custom_renderer(BASE_TEMPLATE_FOLDER, layout=False).grader(task_data,
+                                                                                             grader_test_cases_dump,
+                                                                                             course, taskid)
     if get_use_minified():
         template_helper.add_javascript('/grader_generator/static/js/grader_generator.min.js')
     else:
@@ -61,5 +58,5 @@ def grader_generator_tab(course, taskid, task_data, template_helper):
 
 
 def grader_footer(course, taskid, task_data, template_helper):
-    renderer = template_helper.get_custom_renderer(_BASE_RENDERER_PATH, layout=False)
+    renderer = template_helper.get_custom_renderer(BASE_TEMPLATE_FOLDER, layout=False)
     return str(renderer.grader_templates()) + str(renderer.notebook_grader_test_form_modal())

@@ -1,14 +1,19 @@
 import os
 import tempfile
+
+from collections import OrderedDict
 from .grader_form import GraderForm, InvalidGraderError
 from inginious.frontend.pages.course_admin.task_edit import CourseEditTask
+from .constants import BASE_TEMPLATE_FOLDER
 
-_MULTILANG_FILE_TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), 'run_file_template.txt')
+_MULTILANG_FILE_TEMPLATE_PATH = os.path.join(BASE_TEMPLATE_FOLDER, 'run_file_template.txt')
+
 
 class MultilangForm(GraderForm):
     """
     This class manage the fields only present on the multilang form.
     """
+
     def tests_to_dict(self):
         """ This method parses the tests cases information in a dictionary """
 
@@ -53,7 +58,7 @@ class MultilangForm(GraderForm):
             raise InvalidGraderError("You must provide test cases to autogenerate the grader")
 
         input_files_are_unique = (len(set(test_case["input_file"] for test_case in test_cases)) ==
-                              len(test_cases))
+                                  len(test_cases))
 
         if not input_files_are_unique:
             raise InvalidGraderError("Duplicated input files in grader")
@@ -67,10 +72,10 @@ class MultilangForm(GraderForm):
 
     def generate_grader(self):
         """ This method generates a grader through the form data """
-    
+
         problem_id = self.task_data["grader_problem_id"]
         test_cases = [(test_case["input_file"], test_case["output_file"])
-                    for test_case in self.task_data["grader_test_cases"]]
+                      for test_case in self.task_data["grader_test_cases"]]
         weights = [test_case["weight"] for test_case in self.task_data["grader_test_cases"]]
         options = {
             "treat_non_zero_as_runtime_error": self.task_data["treat_non_zero_as_runtime_error"],
@@ -90,5 +95,5 @@ class MultilangForm(GraderForm):
                 f.write(run_file_template.format(
                     problem_id=repr(problem_id), test_cases=repr(test_cases),
                     options=repr(options), weights=repr(weights)))
-            
+
             self.task_fs.copy_to(temporary)

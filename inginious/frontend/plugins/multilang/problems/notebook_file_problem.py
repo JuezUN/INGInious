@@ -35,7 +35,7 @@ class DisplayableNotebookFileProblem(NotebookFileProblem, DisplayableFileProblem
     @classmethod
     def show_editbox(cls, template_helper, key):
         renderer = DisplayableNotebookFileProblem.get_renderer(template_helper)
-        return renderer.notebook_file_edit(cls.get_type())
+        return renderer.notebook_file_edit(cls.get_type(), key)
 
     def show_input(self, template_helper, language, seed):
         renderer = DisplayableNotebookFileProblem.get_renderer(template_helper)
