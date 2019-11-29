@@ -104,3 +104,26 @@ function selectAllLanguages(){
 function unselectAllLanguages(){
     $(".checkbox_language").prop("checked", false);
 }
+
+const original_studio_subproblem_delete = this.studio_subproblem_delete;
+this.studio_subproblem_delete = (pid) => {
+    original_studio_subproblem_delete(pid);
+    toggle_display_new_subproblem_option();
+};
+
+const original_studio_create_new_subproblem = this.studio_create_new_subproblem;
+this.studio_create_new_subproblem = () => {
+    original_studio_create_new_subproblem();
+    toggle_display_new_subproblem_option();
+};
+
+function toggle_display_new_subproblem_option() {
+    const container = $("#accordion");
+    const new_subproblem_element = $("#new_subproblem");
+    if (container.children().length) new_subproblem_element.hide();
+    else new_subproblem_element.show();
+}
+
+jQuery(document).ready(function () {
+    toggle_display_new_subproblem_option();
+});
