@@ -150,14 +150,23 @@ $#
 
 <div class="grader_form" id="notebook_grader_form">
     <div class="form-group">
-        <label for="notebook_filename" class="col-sm-4 control-label">Filename</label>
+        <label for="notebook_filename" class="col-sm-4 control-label">
+            Filename
+            <i class="fa fa-question-circle" title="Name for student's notebook file will have (Default: Notebook)"
+               data-toggle="tooltip"></i>
+        </label>
         <div class="col-sm-8">
             <input type="text" class="form-control" id="notebook_filename" name="notebook_filename"
                    value="${task_data.get('notebook_filename', '')}" placeholder="Filename">
         </div>
     </div>
     <div class="form-group">
-        <label for="notebook_setup_code_all_tests" class="col-sm-4 control-label">Setup code for all tests</label>
+        <label for="notebook_setup_code_all_tests" class="col-sm-4 control-label">
+            Setup code for all tests
+            <i class="fa fa-question-circle"
+               title="Python code executed before all tests, useful to setup, for example, initial data and variables to be used in all tests."
+               data-toggle="tooltip"></i>
+        </label>
         <div class="col-sm-8">
             <textarea data-x-language="python" data-x-lines="4" class="code-editor form-control"
                       id="notebook_setup_code_all_tests" name="notebook_setup_code_all_tests" placeholder="Setup code"
