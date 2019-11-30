@@ -2,6 +2,8 @@ let notebook_grader_tests_sequence = 0;
 let notebook_grader_tests_cases_count = {};
 let editing_test_id = null;
 
+const modal_element = $("#notebook_grader_test_form_modal");
+
 function notebook_grader_add_test_case_from_form() {
     const test_id = notebook_grader_tests_sequence;
     const new_test_case = notebook_grader_create_test_case({
@@ -16,8 +18,11 @@ function notebook_grader_add_test_case_from_form() {
     }
 
     $("#notebook_grader_test_cases_container").append(new_test_case);
-    $("#notebook_grader_test_case_input_code").val("");
-    $("#notebook_grader_test_case_output_code").val("");
+    codeEditors["notebook_grader_test_case_input_code"].getDoc().setValue("");
+    codeEditors["notebook_grader_test_case_output_code"].getDoc().setValue("");
+    $(`#${new_test_case.attr('id')} .form-control`).each(function (index, elem) {
+        registerCodeEditor(elem, $(elem).attr('data-x-language'), $(elem).attr('data-x-lines'));
+    });
 }
 
 function notebook_grader_create_test_case(test_case_data) {
@@ -47,6 +52,9 @@ function notebook_grader_remove_test_case(test_id, case_id) {
     container_element.html("");
     $.each(new_test_cases, (_, test_case) => {
         container_element.append(test_case);
+        $(`#${test_case.attr('id')} .form-control`).each(function (index, elem) {
+            registerCodeEditor(elem, $(elem).attr('data-x-language'), $(elem).attr('data-x-lines'));
+        });
     });
 
     notebook_grader_tests_cases_count[test_id]--;
@@ -67,7 +75,8 @@ function _notebook_grader_shift_test_cases(test_id, case_id_to_remove) {
         if (index === case_id_to_remove) continue;
         const input_code = $(`#notebook_grader_test_${test_id}_cases_${index}_input_code`).val();
         const output_code = $(`#notebook_grader_test_${test_id}_cases_${index}_output_code`).val();
-        test_cases.push(_notebook_grader_get_test_case_element(test_id, case_id, input_code, output_code));
+        const new_test_case = _notebook_grader_get_test_case_element(test_id, case_id, input_code, output_code);
+        test_cases.push(new_test_case);
         case_id++;
     }
     return test_cases;
@@ -126,7 +135,7 @@ function notebook_grader_add_test_from_form() {
     }
 
     $('#notebook_grader_tests_container').append(new_test);
-    $("#notebook_grader_test_form_modal").modal('hide');
+    modal_element.modal('hide');
 }
 
 function notebook_grader_create_test(test_data, test_cases) {
@@ -205,7 +214,12 @@ function _notebook_grader_update_tests_ids(test_id_to_remove) {
 }
 
 function _notebook_grader_load_test_case_in_modal(test_case_element) {
-    $('#notebook_grader_test_form_modal').find("#notebook_grader_test_cases_container").append(test_case_element);
+    modal_element.find("#notebook_grader_test_cases_container").append(test_case_element);
+    $("#notebook_grader_test_cases_header").show();
+    $(`#${test_case_element.attr('id')} .form-control`).each(function (index, elem) {
+        if (!codeEditors[elem.name])
+            registerCodeEditor(elem, $(elem).attr('data-x-language'), $(elem).attr('data-x-lines'));
+    });
 }
 
 function notebook_grader_on_edit_test(test_id) {
@@ -218,12 +232,12 @@ function notebook_grader_on_edit_test(test_id) {
 
     $("#notebook_grader_test_name").val(test_data["name"]);
     $("#notebook_grader_test_weight").val(test_data["weight"]);
-    $("#notebook_grader_test_setup_code").val(test_data["setup_code"]);
+    codeEditors["notebook_grader_test_setup_code"].getDoc().setValue(test_data["setup_code"]);
     const test_cases = _notebook_grader_get_test_cases_from_container(test_id, `notebook_grader_test_${test_id}`);
     $.each(test_cases, (case_index, test_case) => {
         _notebook_grader_load_test_case_in_modal(test_case);
     });
-    $("#notebook_grader_test_form_modal").modal('show');
+    modal_element.modal('show');
 }
 
 function notebook_grader_update_test() {
@@ -248,15 +262,18 @@ function notebook_grader_update_test() {
         test_to_update.find(`#notebook_grader_test_${test_id}_cases_container`).append(test_case);
     });
 
-    $("#notebook_grader_test_form_modal").modal('hide');
+    modal_element.modal('hide');
     editing_test_id = null;
 }
 
 function _clear_modal() {
     $('#notebook_grader_test_form_modal input').val("");
-    $('#notebook_grader_test_form_modal textarea').val("");
     $('#notebook_grader_test_cases_header').hide();
     $("#notebook_grader_test_cases_container").html("");
+    const modal = '#notebook_grader_test_form_modal';
+    $(modal + ' .CodeMirror').each(function (i, el) {
+        el.CodeMirror.getDoc().setValue("")
+    });
 }
 
 $("#notebook_grader_submit_test_form").click((e) => {
@@ -265,7 +282,14 @@ $("#notebook_grader_submit_test_form").click((e) => {
     else notebook_grader_add_test_from_form();
 });
 
-$("#notebook_grader_test_form_modal").on("hidden.bs.modal", () => {
+modal_element.on("hidden.bs.modal", () => {
     if (editing_test_id !== null) notebook_grader_update_test();
     _clear_modal();
+});
+
+modal_element.on("shown.bs.modal", () => {
+    const target = '#notebook_grader_test_form_modal';
+    $(target + ' .CodeMirror').each(function (i, el) {
+        el.CodeMirror.refresh();
+    });
 });
