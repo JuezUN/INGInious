@@ -33,18 +33,18 @@
     <div class="row" id="notebook_grader_test_TID_cases_CID">
         <div class="form-group col-xs-12">
             <div class="col-xs-5">
-                <textarea data-x-language="python" data-x-lines="4" class="form-control"
-                          name="notebook_grader_test[TID][cases][CID][input_code]"
-                          id="notebook_grader_test_TID_cases_CID_input_code"
+                <textarea data-x-language="python" data-x-lines="4" class="notebook_code form-control"
+                          name="notebook_grader_test[TID][cases][CID][code]"
+                          id="notebook_grader_test_TID_cases_CID_code"
                           style="display: none;"></textarea>
             </div>
             <div class="col-xs-5">
-                <textarea data-x-language="python" data-x-lines="4" class="form-control"
-                          name="notebook_grader_test[TID][cases][CID][output_code]"
-                          id="notebook_grader_test_TID_cases_CID_output_code"
-                          style="display: none;"></textarea>
+                <textarea class="form-control" rows="3"
+                          name="notebook_grader_test[TID][cases][CID][expected_output]"
+                          id="notebook_grader_test_TID_cases_CID_expected_output"
+                          style="resize: vertical;"></textarea>
             </div>
-            <div class="col-xs-2" style="display: flex; height: 100%;">
+            <div class="col-xs-2" style="display: flex; height: 60px;">
                 <button type="button" class="btn btn-danger btn-block"
                         style="align-self: flex-end;"
                         onclick="notebook_grader_remove_test_case(TID, CID);"><i class="fa fa-times"></i>

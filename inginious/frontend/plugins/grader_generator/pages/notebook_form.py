@@ -18,10 +18,6 @@ class NotebookForm(GraderForm):
     This class manage the fields only present on the Notebook form.
     """
 
-    def _get_test_setup_code(self, test):
-        notebook_import_code = "from {} import *\n".format(self.task_data["notebook_filename"])
-        return notebook_import_code + self.task_data["notebook_setup_code_all_tests"] + test["setup_code"]
-
     def tests_to_dict(self):
         """ This method parses the tests cases information in a dictionary """
         # Transform grader_test_cases[] entries into an actual array (they are sent as separate keys).
@@ -53,9 +49,14 @@ class NotebookForm(GraderForm):
                 raise InvalidGraderError("The name for grader tests must be a string")
 
             try:
-                test["setup_code"] = str(test.get("setup_code", ""))
+                test["setup_code"] = str(test.get("setup_code", "")).strip()
             except (ValueError, TypeError):
                 raise InvalidGraderError("The setup code for grader tests must be a string")
+
+            # Strip test cases
+            for case_index, case in test["cases"].items():
+                case["code"] = case["code"].strip()
+                case["expected_output"] = case["expected_output"].rstrip('\n')
 
             notebook_tests.append(test)
 
@@ -67,8 +68,9 @@ class NotebookForm(GraderForm):
     def parse(self):
         super(NotebookForm, self).parse()
         # Parse test cases
-        self.task_data["notebook_filename"] = self.task_data.get("notebook_filename", "task")
-        self.task_data["notebook_setup_code_all_tests"] = self.task_data.get("notebook_setup_code_all_tests", "")
+        self.task_data["notebook_filename"] = self.task_data.get("notebook_filename", "notebook").strip()
+        self.task_data["notebook_setup_code_all_tests"] = self.task_data.get("notebook_setup_code_all_tests",
+                                                                             "").strip()
         self.task_data['grader_test_cases'] = self.parse_and_validate_tests()
 
     def validate(self):
@@ -87,12 +89,9 @@ class NotebookForm(GraderForm):
                     "You must provide test cases for test '%s' to autogenerate the grader" % test["name"])
 
             for case_index, case in test["cases"].items():
-                if not _is_python_syntax_code_right(case["input_code"]):
+                if not _is_python_syntax_code_right(case["code"]):
                     raise InvalidGraderError(
-                        "Syntax error in input code on test '%s', case %s" % (test["name"], int(case_index) + 1))
-                if not _is_python_syntax_code_right(case["output_code"]):
-                    raise InvalidGraderError(
-                        "Syntax error in output code on test '%s', case %s" % (test["name"], int(case_index) + 1))
+                        "Syntax error in code on test '%s', case %s" % (test["name"], int(case_index) + 1))
 
     def generate_grader(self):
         """ This method generates a grader through the form data """
@@ -102,9 +101,9 @@ class NotebookForm(GraderForm):
         self._generate_ok_test_files()
 
     @staticmethod
-    def _parse_case_ok_template(case):
-        input_code = _parse_code_to_doctest(case["input_code"])
-        output_code = case["output_code"]
+    def _parse_case_to_ok_case(case):
+        case_code = _parse_code_to_doctest(case["code"])
+        expected_output = case["expected_output"]
         template = """{
                         'code': r\"\"\"
 %s
@@ -112,8 +111,12 @@ class NotebookForm(GraderForm):
                         \"\"\",
                         'hidden': False,
                         'locked': False
-                    },""" % (input_code, output_code)
+                    },""" % (case_code, expected_output)
         return template
+
+    def _get_test_setup_code(self, test):
+        notebook_import_code = "from {} import *\n".format(self.task_data["notebook_filename"])
+        return notebook_import_code + self.task_data["notebook_setup_code_all_tests"] + test["setup_code"]
 
     def _generate_ok_test_files(self):
         for test_index, test in enumerate(self.task_data["grader_test_cases"]):
@@ -123,7 +126,7 @@ class NotebookForm(GraderForm):
             test_cases = test["cases"]
             test_cases_str = ""
             for index, case in test_cases.items():
-                result = self._parse_case_ok_template(case)
+                result = self._parse_case_to_ok_case(case)
                 test_cases_str += result
 
             with open(_NOTEBOOK_TEST_FILE_TEMPLATE_PATH, "r") as template, tempfile.TemporaryDirectory() as temporary:
@@ -169,13 +172,13 @@ class NotebookForm(GraderForm):
         filename = self.task_data["notebook_filename"]
         filename_py_src = filename + ".py"
         task_name = self.task_data.get("name", filename)
+        ok_file_name = filename + ".ok"
         with open(_NOTEBOOK_OK_FILE_TEMPLATE_PATH, "r") as template, tempfile.TemporaryDirectory() as temporary:
             ok_file_template = json.load(template)
-
-            ok_file_name = filename + ".ok"
-            target_ok_file = os.path.join(temporary, ok_file_name)
             ok_file_template["name"] = task_name
             ok_file_template["src"] = [filename_py_src]
+            target_ok_file = os.path.join(temporary, ok_file_name)
+
             with open(target_ok_file, "w") as file:
                 file.write(json.dumps(ok_file_template, indent=2, sort_keys=True))
             self.task_fs.copy_to(temporary)
