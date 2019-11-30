@@ -90,7 +90,7 @@ $#
                 <div class="col-xs-3"><label>Output file</label></div>
                 <div class="col-xs-2"><label>Weight</label></div>
                 <div class="col-xs-2"><label>Show differences</label></div>
-                <div class="col-xs-2"><label></label></div>
+                <div class="col-xs-2"><label>Options</label></div>
             </div>
         </div>
 
@@ -169,7 +169,7 @@ $#
         </label>
         <div class="col-sm-8">
             <textarea data-x-language="python" data-x-lines="4" class="code-editor form-control"
-                      id="notebook_setup_code_all_tests" name="notebook_setup_code_all_tests" placeholder="Setup code"
+                      id="notebook_setup_code_all_tests" name="notebook_setup_code_all_tests"
                       style="display: none;">${task_data.get('notebook_setup_code_all_tests', '')}</textarea>
         </div>
     </div>
@@ -198,10 +198,9 @@ $#
 </div>
 
 <script type="text/javascript">
-    let grader_test_cases = $:{grader_test_cases_dump};
-
-    let courseId = "$:course.get_id()";
-    let taskId = "$:taskid";
+    const grader_test_cases = $:{grader_test_cases_dump};
+    const courseId = "$:course.get_id()";
+    const taskId = "$:taskid";
     $$(document).ready(function () {
         let problem_id = "${task_data.get('grader_problem_id', '')}";
         studio_set_initial_problem(problem_id);

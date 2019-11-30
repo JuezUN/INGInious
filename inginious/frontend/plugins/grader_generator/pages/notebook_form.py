@@ -10,7 +10,7 @@ from .constants import BASE_TEMPLATE_FOLDER
 
 _NOTEBOOK_OK_FILE_TEMPLATE_PATH = os.path.join(BASE_TEMPLATE_FOLDER, 'notebook_ok_config_file_template.txt')
 _RUN_FILE_TEMPLATE_PATH = os.path.join(BASE_TEMPLATE_FOLDER, 'run_file_template.txt')
-_NOTEBOOK_TEST_FILE_TEMPLATE_PATH = os.path.join(BASE_TEMPLATE_FOLDER, 'notebook_test_file_template.txt')
+_NOTEBOOK_TEST_FILE_TEMPLATE_PATH = os.path.join(BASE_TEMPLATE_FOLDER, 'notebook_ok_test_file_template.txt')
 
 
 class NotebookForm(GraderForm):

@@ -4,8 +4,8 @@ from inginious.frontend.plugins.utils import create_static_resource_page
 from .problems.code_multiple_languages_problem import DisplayableCodeMultipleLanguagesProblem
 from .problems.code_multiple_file_languages_problem import DisplayableCodeFileMultipleLanguagesProblem
 from .problems.notebook_file_problem import DisplayableNotebookFileProblem
-from .problems.constants import set_linter_url, set_python_tutor_url, \
-    set_python_tutor_py2_url, set_show_tools, get_show_tools
+from .problems.constants import set_linter_url, set_python_tutor_url, set_python_tutor_py2_url, set_show_tools, \
+    get_show_tools
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
