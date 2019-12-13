@@ -101,10 +101,21 @@ class NotebookForm(GraderForm):
         self._generate_ok_test_files()
 
     @staticmethod
-    def _parse_case_to_ok_case(case):
+    def _parse_case_to_ok_suite(case, setup_code):
         case_code = _parse_code_to_doctest(case["code"])
         expected_output = case["expected_output"]
-        template = """{
+        suite_template = """{
+                'cases': [
+                    {case_data}
+                ],
+                'scored': True,
+                'setup': r\"\"\"
+{setup_code}
+                \"\"\",
+                'teardown': '',
+                'type': 'doctest'
+        },"""
+        case_template = """{
                         'code': r\"\"\"
 %s
 %s
@@ -112,11 +123,12 @@ class NotebookForm(GraderForm):
                         'hidden': False,
                         'locked': False
                     },""" % (case_code, expected_output)
-        return template
+        return suite_template.replace("{case_data}", case_template).replace("{setup_code}", setup_code)
 
     def _get_test_setup_code(self, test):
-        notebook_import_code = "from {} import *\n".format(self.task_data["notebook_filename"])
-        return notebook_import_code + self.task_data["notebook_setup_code_all_tests"] + test["setup_code"]
+        notebook_import_code = "from {} import *".format(self.task_data["notebook_filename"])
+        return "%s\n%s\n%s" % (
+            notebook_import_code, self.task_data["notebook_setup_code_all_tests"], test["setup_code"])
 
     def _generate_ok_test_files(self):
         for test_index, test in enumerate(self.task_data["grader_test_cases"]):
@@ -124,18 +136,17 @@ class NotebookForm(GraderForm):
             test_weight = test["weight"]
             test_setup_code = _parse_code_to_doctest(self._get_test_setup_code(test))
             test_cases = test["cases"]
-            test_cases_str = ""
+            test_suites_str = ""
             for index, case in test_cases.items():
-                result = self._parse_case_to_ok_case(case)
-                test_cases_str += result
+                result = self._parse_case_to_ok_suite(case, test_setup_code)
+                test_suites_str += '\n' + result
 
             with open(_NOTEBOOK_TEST_FILE_TEMPLATE_PATH, "r") as template, tempfile.TemporaryDirectory() as temporary:
                 test_file_template = template.read()
                 result = test_file_template \
                     .replace("{test_name}", test_name) \
                     .replace("{test_weight}", str(test_weight)) \
-                    .replace("{case_data}", test_cases_str) \
-                    .replace("{setup_code}", test_setup_code)
+                    .replace("{test_suites}", test_suites_str)
 
                 test_filename = "q{:02d}.py".format(test_index)
                 target_test_file = os.path.join(temporary, test_filename)
@@ -147,8 +158,8 @@ class NotebookForm(GraderForm):
 
     def _generate_run_file(self):
         problem_id = self.task_data["grader_problem_id"]
-        test_cases = [(test_case["name"], "q{:02d}".format(index))
-                      for index, test_case in enumerate(self.task_data["grader_test_cases"])]
+        tests = [(test_case["name"], "q{:02d}".format(index)) for index, test_case in
+                 enumerate(self.task_data["grader_test_cases"])]
         weights = [test_case["weight"] for test_case in self.task_data["grader_test_cases"]]
         options = {
             "treat_non_zero_as_runtime_error": self.task_data["treat_non_zero_as_runtime_error"],
@@ -163,7 +174,7 @@ class NotebookForm(GraderForm):
 
             with open(target_run_file, "w") as f:
                 f.write(run_file_template.format(
-                    problem_id=repr(problem_id), test_cases=repr(test_cases),
+                    problem_id=repr(problem_id), test_cases=repr(tests),
                     options=repr(options), weights=repr(weights)))
 
             self.task_fs.copy_to(temporary)
