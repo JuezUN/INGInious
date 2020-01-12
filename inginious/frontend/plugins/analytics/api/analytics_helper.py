@@ -15,9 +15,5 @@ class AnalyticsHelperAPI(APIAuthenticatedPage):
         service = web.input(service=None).service
         
         session_id = self.user_manager.session_id()
-        date = datetime.datetime.now()
-
-
-        print(manager.add_visit(service, username, date, session_id))
-        
+        date = datetime.datetime.now()        
         return 200, ""
