@@ -16,7 +16,7 @@ def customInputManagerWithCurriedClient(client):
     class CustomInputManager(APIAuthenticatedPage):
         def __init__(self):
             self._client = client
-            self.analyticsmg = AnalyticsManager(self.database)
+            self.analytics_manager = AnalyticsManager(self.database)
 
         def add_unsaved_job(self, task, inputdata):
             temp_client = ClientSync(self._client)
@@ -52,7 +52,7 @@ def customInputManagerWithCurriedClient(client):
                 'date' : datetime.datetime.now(),
                 'session_id' : self.user_manager.session_id()
             }
-            self.analyticsmg.add_visit(**analytics_params)
+            self.analytics_manager.add_visit(**analytics_params)
 
             courseid = get_mandatory_parameter(request_params, "courseid")
             course = self.course_factory.get_course(courseid)

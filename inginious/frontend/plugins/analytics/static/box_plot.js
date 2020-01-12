@@ -1,4 +1,4 @@
-Plotly.d3.json("http://localhost:8080/api/analytics_consult/", function(err, rows){
+Plotly.d3.json("/api/analytics_consult/", function(err, rows){
    services_visits = {}
 
    dates = []

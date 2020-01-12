@@ -2,7 +2,7 @@ var username = document.getElementById("student_username").value;
     var service = document.getElementById('service').value;
     parameters = [];
 
-    var request = "http://localhost:8080/api/analytics_consult/";
+    var request = "/api/analytics_consult/";
     if(username)
         request += "?"
     if(username)

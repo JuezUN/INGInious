@@ -3,7 +3,7 @@ var username = document.getElementById("student_username").value;
 var service = document.getElementById('service').value;
 parameters = [];
 
-var request = "http://localhost:8080/api/analytics_consult/";
+var request = "/api/analytics_consult/";
 if(username || service)
     request += "?"
 if(username)
@@ -86,19 +86,6 @@ Object.keys(data_by_service).forEach((service, index) => {
         line: {color: color_scale( index * (1.0/(len_by_service-1)))}
     }
 })
-        
-
-
-/*
-var trace2 = {
-type: "scatter",
-mode: "lines",
-name: 'AAPL Low',
-x: unpack(rows, 'Date'),
-y: unpack(rows, 'AAPL.Low'),
-line: {color: '#7F7F7F'}
-}
-*/
 
 var data = [trace1];
 
