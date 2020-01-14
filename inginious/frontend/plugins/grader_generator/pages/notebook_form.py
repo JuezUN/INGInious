@@ -158,7 +158,7 @@ class NotebookForm(GraderForm):
 
     def _generate_run_file(self):
         problem_id = self.task_data["grader_problem_id"]
-        tests = [(test_case["name"], "q{:02d}".format(index)) for index, test_case in
+        tests = [(test["name"], "q{:02d}".format(index), len(test["cases"])) for index, test in
                  enumerate(self.task_data["grader_test_cases"])]
         weights = [test_case["weight"] for test_case in self.task_data["grader_test_cases"]]
         options = {
