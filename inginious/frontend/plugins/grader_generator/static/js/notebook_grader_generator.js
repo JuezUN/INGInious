@@ -94,12 +94,13 @@ function _notebook_grader_get_test_case_element(test_id, case_id, case_code, exp
 function _notebook_grader_get_test_element(test_id, test_data, test_cases) {
     const template = $("#notebook_grader_test_template").html().replace(/TID/g, test_id);
     const test_name = test_data["name"], test_weight = test_data["weight"],
-        setup_code = test_data["setup_code"];
+        setup_code = test_data["setup_code"], show_debug_info = test_data["show_debug_info"];
 
     const template_element = $(template);
     template_element.find(`#notebook_grader_test_${test_id}_name`).val(test_name);
     template_element.find(`#notebook_grader_test_${test_id}_weight`).val(test_weight);
     template_element.find(`#notebook_grader_test_${test_id}_setup_code`).text(setup_code);
+    template_element.find(`#notebook_grader_test_${test_id}_show_debug_info`).prop('checked', show_debug_info);
 
     $.each(test_cases, (_, test_case) => {
         template_element.find(`#notebook_grader_test_${test_id}_cases_container`).append(test_case);

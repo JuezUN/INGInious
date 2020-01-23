@@ -53,6 +53,8 @@ class NotebookForm(GraderForm):
             except (ValueError, TypeError):
                 raise InvalidGraderError("The setup code for grader tests must be a string")
 
+            test["show_debug_info"] = "show_debug_info" in test
+
             # Strip test cases
             for case_index, case in test["cases"].items():
                 case["code"] = case["code"].strip()
@@ -163,7 +165,9 @@ class NotebookForm(GraderForm):
         weights = [test_case["weight"] for test_case in self.task_data["grader_test_cases"]]
         options = {
             "treat_non_zero_as_runtime_error": self.task_data["treat_non_zero_as_runtime_error"],
-            "filename": "{}.ipynb".format(self.task_data["notebook_filename"])
+            "filename": "{}.ipynb".format(self.task_data["notebook_filename"]),
+            "show_debug_info_for": [index for index, test_case in enumerate(self.task_data["grader_test_cases"])
+                                    if test_case["show_debug_info"]]
         }
 
         with open(_RUN_FILE_TEMPLATE_PATH, "r") as template, tempfile.TemporaryDirectory() as temporary:
