@@ -1,10 +1,7 @@
 import web
 import datetime
-import json
 from collections import OrderedDict
-import inginious.frontend.pages.api._api_page as api
 from inginious.frontend.pages.api._api_page import APIAuthenticatedPage
-from inginious.frontend.plugins.analytics.manager import AnalyticsManager
 
 
 class AnalyticsConsultAPI(APIAuthenticatedPage):
@@ -16,9 +13,9 @@ class AnalyticsConsultAPI(APIAuthenticatedPage):
         courseid = web.input(courseid=None).courseid
         service_type = web.input(service_type=None).service_type
 
-
         # Do all the consult
         consult_parameters = {}
+        users = OrderedDict()
         if username:
             consult_parameters['username'] = username
         if service:
@@ -26,16 +23,17 @@ class AnalyticsConsultAPI(APIAuthenticatedPage):
         if start_date and end_date:
             start_date = datetime.datetime(*map(int, start_date.split('-')))
             end_date = datetime.datetime(*map(int, end_date.split('-')))
-            consult_parameters['date'] = {'$gte' : start_date, '$lt' : end_date}
+            consult_parameters['date'] = {'$gte': start_date, '$lt': end_date}
         if service_type:
             consult_parameters['service_type'] = service_type
         if courseid is not None:
             course = self.course_factory.get_course(courseid)
-            users = sorted(list(self.user_manager.get_users_info(self.user_manager.get_course_registered_users(course, False)).items()),
-                       key=lambda k: k[1][0] if k[1] is not None else "")
-        
+            users = sorted(list(
+                self.user_manager.get_users_info(self.user_manager.get_course_registered_users(course, False)).items()),
+                key=lambda k: k[1][0] if k[1] is not None else "")
+
             users = OrderedDict(sorted(list(self.user_manager.get_users_info(course.get_staff()).items()),
-                                   key=lambda k: k[1][0] if k[1] is not None else "") + users)
+                                       key=lambda k: k[1][0] if k[1] is not None else "") + users)
 
         results = []
         for result in self.database.analytics.find(consult_parameters):
