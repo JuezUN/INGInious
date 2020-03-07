@@ -1,19 +1,18 @@
 import datetime
 from inginious.frontend.pages.utils import INGIniousAuthPage
-from inginious.frontend.plugins.analytics.manager import AnalyticsManager
+from inginious.frontend.plugins.analytics.analytics_collection_manager import AnalyticsCollectionManager
 from .constants import base_renderer_path, get_use_minified
 
 class UserStatisticsPage(INGIniousAuthPage):
-
     def GET_AUTH(self, course_id):
-        analyticsmg = AnalyticsManager(self.database)
+        analytics_collection_manager = AnalyticsCollectionManager(self.database)
         analytics_params = {
             'username': self.user_manager.session_username(),
             'service': 'statistics',
-            'date' : datetime.datetime.now(),
-            'session_id' : self.user_manager.session_id()
+            'date': datetime.datetime.now(),
+            'session_id': self.user_manager.session_id()
         }
-        analyticsmg.add_visit(**analytics_params)
+        analytics_collection_manager.add_visit(**analytics_params)
 
         self.template_helper.add_javascript("https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.6/papaparse.min.js")
         self.template_helper.add_javascript("https://cdn.plot.ly/plotly-1.30.0.min.js")

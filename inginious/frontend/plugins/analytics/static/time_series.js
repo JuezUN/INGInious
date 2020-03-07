@@ -2,7 +2,7 @@ const username = document.getElementById("student_username").value;
 const service = document.getElementById('service').value;
 parameters = [];
 
-let request = "/api/analytics_consult/";
+let request = "/api/analytics/";
 if (username || service)
     request += "?";
 if (username)

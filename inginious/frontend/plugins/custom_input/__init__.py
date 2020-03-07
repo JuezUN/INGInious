@@ -4,7 +4,7 @@ import json
 import datetime
 
 from inginious.frontend.plugins.utils import create_static_resource_page, get_mandatory_parameter
-from inginious.frontend.plugins.analytics.manager import AnalyticsManager
+from inginious.frontend.plugins.analytics.analytics_collection_manager import AnalyticsCollectionManager
 from inginious.client.client_sync import ClientSync
 from inginious.frontend.pages.api._api_page import APIAuthenticatedPage
 from inginious.frontend.parsable_text import ParsableText
@@ -16,7 +16,7 @@ def customInputManagerWithCurriedClient(client):
     class CustomInputManager(APIAuthenticatedPage):
         def __init__(self):
             self._client = client
-            self.analytics_manager = AnalyticsManager(self.database)
+            self.analytics_manager = AnalyticsCollectionManager(self.database)
 
         def add_unsaved_job(self, task, inputdata):
             temp_client = ClientSync(self._client)

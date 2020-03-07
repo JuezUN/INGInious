@@ -1,11 +1,25 @@
 import web
 import datetime
 from collections import OrderedDict
-from inginious.frontend.pages.api._api_page import APIAuthenticatedPage
+
+from inginious.frontend.plugins.utils.superadmin_api import SuperadminAPI
+from ..analytics_collection_manager import AnalyticsCollectionManager
 
 
-class AnalyticsConsultAPI(APIAuthenticatedPage):
+class AnalyticsAPI(SuperadminAPI):
+    def API_POST(self):
+        manager = AnalyticsCollectionManager(self.database)
+
+        username = self.user_manager.session_username()
+        service = web.input(service=None).service
+
+        session_id = self.user_manager.session_id()
+        date = datetime.datetime.now()
+        manager.add_visit(service, username, date, session_id)
+        return 200, ""
+
     def API_GET(self):
+        self.check_superadmin_rights()
         username = web.input(username=None).username
         service = web.input(service=None).service
         start_date = web.input(start_date=None).start_date

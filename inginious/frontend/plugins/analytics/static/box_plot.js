@@ -1,4 +1,4 @@
-Plotly.d3.json("/api/analytics_consult/", function(err, rows){
+Plotly.d3.json("/api/analytics/", function(err, rows){
    const services_visits = {};
    const dates = [];
 

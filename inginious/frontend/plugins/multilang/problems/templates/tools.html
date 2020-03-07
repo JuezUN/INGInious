@@ -84,7 +84,7 @@ $def with (inputId, language, customInputId, type, pythonTutorURL, pythonTutorPy
             cm = cm.CodeMirror;
             cm.performLint();
         }
-        $$.get('/api/analytics_helper/?service=linter');
+        $$.post('/api/analytics/', {service: "linter"});
     }
 
 </script>

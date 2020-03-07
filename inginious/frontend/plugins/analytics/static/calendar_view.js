@@ -93,7 +93,7 @@ svg.selectAll(".month")
 const username = document.getElementById("student_username").value;
 const service = document.getElementById('service').value;
 const parameters = [];
-let request = "/api/analytics_consult/";
+let request = "/api/analytics/";
 
 if (username || service)
     request += "?";
@@ -173,13 +173,13 @@ d3.json(request, function (error, csv) {
     $("rect").tooltip({container: 'body', html: true, placement: 'top'});
 });
 
-function numberWithCommas(x) {
-    x = x.toString();
-    const pattern = /(-?\d+)(\d{3})/;
-    while (pattern.test(x))
-        x = x.replace(pattern, "$1,$2");
-    return x;
-}
+// function numberWithCommas(x) {
+//     x = x.toString();
+//     const pattern = /(-?\d+)(\d{3})/;
+//     while (pattern.test(x))
+//         x = x.replace(pattern, "$1,$2");
+//     return x;
+// }
 
 function monthPath(t0) {
     const t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),

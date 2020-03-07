@@ -2,7 +2,7 @@ const username = document.getElementById("student_username").value;
 const service = document.getElementById('service').value;
 const parameters = [];
 
-let request = "/api/analytics_consult/";
+let request = "/api/analytics/";
 if (username)
     request += "?";
 if (username)
@@ -20,7 +20,7 @@ Plotly.d3.json(request, function (err, rows) {
             services_visits[item.service] = 1;
     });
 
-    const services = Object.keys(services_visits)
+    const services = Object.keys(services_visits);
     const visits = services.map((service) => {
         return services_visits[service];
     });
@@ -37,7 +37,7 @@ Plotly.d3.json(request, function (err, rows) {
             fill: 'toself',
             name: 'Group A'
         }
-    ]
+    ];
 
     const layout = {
         polar: {
