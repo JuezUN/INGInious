@@ -25,8 +25,8 @@ function changeSubmissionLanguage(key){
     editor.setOption("inginiousLanguage", getInginiousLanguageForProblemId(key));
 
     editor.setOption("mode", mode.mime);
-    editor.setOption("lint", lintingOptions);
     editor.setOption("gutters",["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers"]);
+    editor.setOption("lint", lintingOptions);
     CodeMirror.autoLoadMode(editor, mode["mode"]);
 }
 
