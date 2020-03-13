@@ -165,7 +165,7 @@ class NotebookForm(GraderForm):
         weights = [test_case["weight"] for test_case in self.task_data["grader_test_cases"]]
         options = {
             "treat_non_zero_as_runtime_error": self.task_data["treat_non_zero_as_runtime_error"],
-            "filename": "{}.ipynb".format(self.task_data["notebook_filename"]),
+            "filename": "{}".format(self.task_data["notebook_filename"]),
             "show_debug_info_for": [index for index, test_case in enumerate(self.task_data["grader_test_cases"])
                                     if test_case["show_debug_info"]]
         }
@@ -185,7 +185,7 @@ class NotebookForm(GraderForm):
 
     def _generate_ok_config_file(self):
         filename = self.task_data["notebook_filename"]
-        filename_py_src = filename + ".py"
+        filename_py_src = "{}.py".format(filename)
         task_name = self.task_data.get("name", filename)
         ok_file_name = filename + ".ok"
         with open(_NOTEBOOK_OK_FILE_TEMPLATE_PATH, "r") as template, tempfile.TemporaryDirectory() as temporary:
