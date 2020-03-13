@@ -2,6 +2,7 @@ function updateWaveDromBlock(blockId) {
     let block = $("#" + blockId);
     let htmlbeg = block.html();
     block.html(parseOutputDiff(htmlbeg)+parseHDL(htmlbeg));
+    WaveDrom.ProcessAll();
 }
 
 function parseHDL(diff){
@@ -18,8 +19,6 @@ function parseHDL(diff){
   let result = [];
   let lastTimeGood = 0;
   let lastTimeBad = 0;
-  result.push('<script src="http://wavedrom.com/skins/default.js" type="text/javascript"></script>');
-  result.push('<script src="http://wavedrom.com/wavedrom.min.js" type="text/javascript"></script>');
   result.push('<script type="WaveDrom">');
 
   result.push("{signal: [");
@@ -300,7 +299,6 @@ function parseHDL(diff){
             lastTimeGood = time;
             lastTimeBad = time;
         }
-        //output = '<span class="diff-common">' + line.substring(1) + '</span>';
       } else if (line.startsWith("...")) {
         output = '<span class="diff-position-control">' + line + '</span>';
       } else if (line === "") {
@@ -308,8 +306,6 @@ function parseHDL(diff){
         // unformatted to avoid misleading the user (they are not actually part of any of the outputs)
         output = line;
       }
-
-      //result.push(output);
   }
   result.push('{name:"Inputs:"},');
   let start = 65; // ASCII for 'A'
@@ -366,10 +362,7 @@ function parseHDL(diff){
   }
   result.push("}");
   result.push('</script>');
-  result.push('<script type="text/javascript">function loadWaveDrom(){ var x = document.getElementById("loadButtonWD"); WaveDrom.ProcessAll(); x.style.display = "none";}</script>');
-  result.push('<button id="loadButtonWD" onclick="loadWaveDrom()">Load</button> ');
 
-  //return result;
   return result.join("\n");
 }
 
@@ -407,11 +400,7 @@ function parseDiffWaveDrom(code, golden, start){
 }
 
 function parseDiffWaveDromBus(wcode, wgolden, dcode, dgolden){
-/*
-{name:"tot[1:0]C", wave: "2..2.....2...........2.....2........", data:['x','0','1','2','1']},
-{name:"tot[1:0]G", wave: "2..2..2.....2..2..2.....2..2........", data:['x','0','1','2','1','2','3','2']},
-*/
-    //wave: "'+outputsG[signal]+'", data:['+dataG[signal]+']
+    //Compare the wave of the golden model with the student solution
     let wave = "";
     let ndata = [];
     let lastC = "";
@@ -452,7 +441,6 @@ function parseDiffWaveDromBus(wcode, wgolden, dcode, dgolden){
 
       }
     }
-    //wave: "'+outputsG[signal]+'", data:['+dataG[signal]+']
     return 'wave: "'+wave+'", data:['+ndata+']';
 }
 
