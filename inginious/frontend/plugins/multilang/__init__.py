@@ -26,7 +26,6 @@ def init(plugin_manager, course_factory, client, plugin_config):
     else:
         plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/multilang.js")
         plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/grader.js")
-        plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/hdlgrader.js")
         plugin_manager.add_hook("css", lambda: "/multilang/static/multilang.css")
     if get_show_tools():
         if use_minified:
@@ -57,4 +56,8 @@ def init(plugin_manager, course_factory, client, plugin_config):
     if use_wavedrom:
         plugin_manager.add_hook("javascript_footer", lambda: "http://wavedrom.com/skins/default.js")
         plugin_manager.add_hook("javascript_footer", lambda: "http://wavedrom.com/wavedrom.min.js")
+        if use_minified:
+            plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/hdlgrader.min.js")
+        else:
+            plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/hdlgrader.js")
 
