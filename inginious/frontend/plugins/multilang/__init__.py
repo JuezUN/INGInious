@@ -51,3 +51,13 @@ def init(plugin_manager, course_factory, client, plugin_config):
     linter_url = plugin_config.get("linter_url", "")
     if linter_url != "":
         set_linter_url(linter_url)
+
+    use_wavedrom = plugin_config.get("use_wavedrom", False)
+    if use_wavedrom:
+        plugin_manager.add_hook("javascript_footer", lambda: "http://wavedrom.com/skins/default.js")
+        plugin_manager.add_hook("javascript_footer", lambda: "http://wavedrom.com/wavedrom.min.js")
+        if use_minified:
+            plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/hdlgrader.min.js")
+        else:
+            plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/hdlgrader.js")
+
