@@ -1,6 +1,6 @@
 $def with (key, available_languages)
 
-<div class="form-group">
+<div class="form-group" hidden>
     <label for="header-PID" class="col-sm-2 control-label">$:_("Context")</label>
     <div class="col-sm-10">
         <textarea id="header-PID" class="form-control" name="problem[PID][header]"></textarea>
@@ -8,9 +8,12 @@ $def with (key, available_languages)
 </div>
 <div class="form-group">
     <label for="languages-PID" class="col-sm-2 control-label">$:_("Languages")</label>
-    <div><a class="btn btn-primary btn-sm" type="button" onclick="selectAllLanguages()">Select All</a>
-    <a class="btn btn-danger btn-sm" type="button" onclick="unselectAllLanguages()">Unselect All</a></div>
     <div class="col-sm-10" id="languages-PID">
+        <div>
+            <button class="btn btn-info btn-sm" type="button" onclick="toggle_languages_checkboxes()"
+                    id="toggle_select_languages_button">Select All
+            </button>
+        </div>
         $for language in available_languages:
             <div class="checkbox">
                 <label>
@@ -23,15 +26,7 @@ $def with (key, available_languages)
     <label class="col-sm-2 control-label">$:_("Type")</label>
     <div class="col-sm-10">
         <select class="form-control" disabled="disabled">
-            <option value="$key">$:_("Multiline code")</option>
+            <option value="$key">$:_("Code multiple languages")</option>
         </select>
-    </div>
-</div>
-<div class="form-group">
-    <label for="optional-PID" class="col-sm-2 control-label">$:_("Optional?")</label>
-    <div class="col-sm-10">
-        <div class="checkbox"><label>
-            <input type="checkbox" id="optional-PID" name="problem[PID][optional]"/>&nbsp;
-        </label></div>
     </div>
 </div>

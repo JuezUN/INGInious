@@ -1,0 +1,234 @@
+$def with (task_data, grader_test_cases_dump, course, taskid)
+
+$#
+$# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
+$# more information about the licensing of this file.
+$#
+
+<div class="form-group">
+    <label for="generate_grader" class="col-sm-4 control-label">Generate grader automatically</label>
+    <div class="col-sm-8">
+        <div class="checkbox"><label>
+            <input type="checkbox" id="generate_grader" name="generate_grader"
+                $if task_data.get('generate_grader', False):
+                    checked="checked"
+            />&nbsp;
+        </label></div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="grader_problem_id" class="col-sm-4 control-label">
+        Problem ID
+        <i class="fa fa-question-circle" title="Problem id where the code is located" data-toggle="tooltip"></i>
+    </label>
+    <div class="col-sm-8">
+        <select class="form-control" id="grader_problem_id" name="grader_problem_id">
+
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="grader_diff_max_lines" class="col-sm-4 control-label">
+        Maximum diff lines
+        <i class="fa fa-question-circle" title="The maximum number of lines that the diff tool should show"
+           data-toggle="tooltip"></i>
+    </label>
+    <div class="col-sm-8">
+        <input type="number" min="10" class="form-control" id="grader_diff_max_lines" name="grader_diff_max_lines"
+               value="${task_data.get('grader_diff_max_lines', 100)}">
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="grader_diff_context_lines" class="col-sm-4 control-label">Diff context lines</label>
+    <div class="col-sm-8">
+        <input type="number" min="3" class="form-control" id="grader_diff_context_lines"
+               name="grader_diff_context_lines"
+               value="${task_data.get('grader_diff_context_lines', 3)}">
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="treat_non_zero_as_runtime_error" class="col-sm-4 control-label">
+        Show runtime errors
+        <i class="fa fa-question-circle" title="In case is not checked, the response is either ACCEPTED or WRONG_ANSWER.
+        If checked, shows additional errors like RUNTIME_ERROR or TIME_LIMIT_EXCEEDED" data-toggle="tooltip"></i>
+    </label>
+
+    <div class="col-sm-8">
+        <div class="checkbox"><label>
+            <input type="checkbox" id="treat_non_zero_as_runtime_error" name="treat_non_zero_as_runtime_error"
+                $if task_data.get('treat_non_zero_as_runtime_error', True):
+                    checked="checked"
+            />&nbsp;
+        </label></div>
+    </div>
+</div>
+
+<div class="grader_form" id="multilang_grader_form">
+    <hr/>
+    <h4 align="center">Test cases</h4>
+    <div class="col-4" style="height: 100%;">
+        <div class="btn btn-success" onclick="toggle_selection_tests_cases()">
+            <input id="toggle_select_test_cases" type="checkbox"
+                   onchange="toggle_selection_tests_cases()">
+            All diffs</input>
+        </div>
+        <button type="button" class="btn btn-danger" style=""
+                onclick="remove_all_test_cases()">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            Remove all tests
+        </button>
+        <br>
+    </div>
+    <div class="jumbotron">
+        <div class="row" id="grader_test_cases_header" style="display: none;">
+            <div class="form-group col-xs-12" style="text-align: center;">
+                <div class="col-xs-3"><label>Input file</label></div>
+                <div class="col-xs-3"><label>Output file</label></div>
+                <div class="col-xs-2"><label>Weight</label></div>
+                <div class="col-xs-2"><label>Show differences</label></div>
+                <div class="col-xs-2"><label>Options</label></div>
+            </div>
+        </div>
+
+        <div id="grader_test_cases_container">
+        </div>
+
+        <div class="row" id="new_grader_test_case" style="display: flex;">
+            <div class="form-group col-xs-12">
+                <div class="col-xs-4">
+                    <div><label for="grader_test_case_in" class="control-label">Input file</label></div>
+                    <select class="form-control" id="grader_test_case_in" name="grader_test_case_in">
+                    </select>
+                </div>
+                <div class="col-xs-4">
+                    <div><label for="grader_test_case_out" class="control-label">Output file</label></div>
+                    <select class="form-control" id="grader_test_case_out" name="grader_test_case_out">
+                    </select>
+                </div>
+                <div class="col-xs-4" style="display: flex; height: 100%;">
+                    <button type="button" class="btn btn-default btn-block" style="align-self: flex-end;"
+                            onclick="studio_add_test_case_from_form();">Add
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="grader_form" id="hdl_grader_form">
+    <!-- Add select options of files for select the testbench and expected output -->
+    <div class="form-group">
+        <label for="vhdl_entity" class="col-sm-4 control-label">Entity (only on VHDL)</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" id="vhdl_entity" name="vhdl_entity"
+                   value="${task_data.get('vhdl_entity', '')}">
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        <div class="row" id="testbench_test" style="display: flex;">
+            <div class="form-group col-xs-12">
+                <div class="col-xs-6">
+                    <div><label for="testbench_file_name" class="control-label">Testbench</label></div>
+                    <select class="form-control" id="testbench_file_name" name="testbench_file_name">
+                    </select>
+                </div>
+                <div class="col-xs-6">
+                    <div><label for="hdl_expected_output" class="control-label">Golden Model</label></div>
+                    <select class="form-control" id="hdl_expected_output" name="hdl_expected_output">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="grader_form" id="notebook_grader_form">
+    <div class="form-group">
+        <label for="notebook_filename" class="col-sm-4 control-label">
+            Filename
+            <i class="fa fa-question-circle" title="Student's submitted notebook name (Default: Notebook)"
+               data-toggle="tooltip"></i>
+        </label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" id="notebook_filename" name="notebook_filename"
+                   value="${task_data.get('notebook_filename', '')}" placeholder="Filename">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="notebook_setup_code_all_tests" class="col-sm-4 control-label">
+            Setup code for all tests
+            <i class="fa fa-question-circle"
+               title="Python code executed before all tests. Useful to setup, for example, initial data and variables to be used in all tests."
+               data-toggle="tooltip"></i>
+        </label>
+        <div class="col-sm-8">
+            <textarea data-x-language="python" data-x-lines="4" class="code-editor form-control"
+                      id="notebook_setup_code_all_tests" name="notebook_setup_code_all_tests"
+                      style="display: none;">${task_data.get('notebook_setup_code_all_tests', '')}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-4 control-label">
+            Notebook example
+        </label>
+        <div class="col-sm-8">
+            <a href="https://drive.google.com/file/d/14wcrdFicQoPqRVDamUClv0CgWXcXvpGy/view?usp=sharing" target="_blank">
+                Click here to open a notebook example
+            </a>
+        </div>
+    </div>
+    <hr/>
+    <h4 align="center">Tests</h4>
+    <div class="col-4" style="height: 100%;">
+        <button type="button" class="btn btn-success" data-toggle="modal"
+                data-target="#notebook_grader_test_form_modal"
+                onclick="">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Add a test
+        </button>
+        <br>
+    </div>
+      <div class="jumbotron">
+        <div class="row" id="notebook_grader_tests_header" style="display: none;">
+            <div class="form-group col-xs-12" style="text-align: center;">
+                <div class="col-xs-5"><label>Name</label></div>
+                <div class="col-xs-2"><label>Weight</label></div>
+                <div class="col-xs-2"><label>Show debug info</label></div>
+                <div class="col-xs-3"><label>Options</label></div>
+            </div>
+        </div>
+        <div id="notebook_grader_tests_container">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    const grader_test_cases = $:{grader_test_cases_dump};
+    const courseId = "$:course.get_id()";
+    const taskId = "$:taskid";
+    $$(document).ready(function () {
+        let problem_id = "${task_data.get('grader_problem_id', '')}";
+        studio_set_initial_problem(problem_id);
+        studio_load_grader_test_cases(grader_test_cases);
+
+        $$('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            if (e.target.hash === '#tab_grader') {
+                studio_update_container_name();
+                studio_update_grader_problems();
+                studio_update_grader_files();
+                read_files_and_match();
+            }
+        });
+    });
+</script>
+<style>
+    #notebook_grader_form .CodeMirror-scroll {
+        max-height: 150px;
+    }
+</style>

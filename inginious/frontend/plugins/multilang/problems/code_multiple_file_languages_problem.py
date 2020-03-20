@@ -2,7 +2,7 @@ import os
 
 from inginious.common.tasks_problems import FileProblem
 from inginious.frontend.task_problems import DisplayableFileProblem
-from .languages import available_languages
+from .languages import get_all_available_languages
 from .constants import get_show_tools
 
 path_to_plugin = os.path.abspath(os.path.dirname(__file__))
@@ -36,10 +36,10 @@ class DisplayableCodeFileMultipleLanguagesProblem(CodeFileMultipleLanguagesProbl
     @classmethod
     def show_editbox(cls, template_helper, key):
         renderer = DisplayableCodeFileMultipleLanguagesProblem.get_renderer(template_helper)
-        return renderer.file_multilang_edit(key, available_languages())
+        return renderer.file_multilang_edit(key, get_all_available_languages())
 
     def show_input(self, template_helper, language, seed):
-        allowed_languages = {language: available_languages()[language] for language in self._languages}
+        allowed_languages = {language: get_all_available_languages()[language] for language in self._languages}
         dropdown_id = self.get_id() + "/language"
         custom_input_id = self.get_id() + "/input"
 
@@ -51,6 +51,6 @@ class DisplayableCodeFileMultipleLanguagesProblem(CodeFileMultipleLanguagesProbl
         if get_show_tools():
             tools_render = str(
                 renderer.tools(self.get_id(), "plain", custom_input_id, self.get_type(), "python_tutor_url",
-                               "linter_url"))
+                               "python_tutor_url_py2", "linter_url"))
 
         return multiple_language_render + standard_code_problem_render + tools_render

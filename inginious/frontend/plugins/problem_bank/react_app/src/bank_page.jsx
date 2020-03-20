@@ -213,11 +213,10 @@ class BankPage extends React.Component {
         });
     }
 
-    addTaskToCourse(targetId, taskId, bankId){
+    addTaskToCourse(targetId, taskId, bankId, query){
         $.post( "/plugins/problems_bank/api/copy_task",
             {"target_id": targetId, "task_id": taskId, "bank_id": bankId} ,( data ) => {
-
-            this.updateTasksAsync();
+            this.updateFilteredTasksAsync(query);
         }).done((data) => {
             this.setState( {
                 dataAlertTaskList:{

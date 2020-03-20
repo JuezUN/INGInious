@@ -1,0 +1,7 @@
+test = {
+  'name': {test_name},
+  'points': {test_weight},
+  'suites': [
+  {test_suites}
+  ]
+}

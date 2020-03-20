@@ -25,8 +25,8 @@ function changeSubmissionLanguage(key){
     editor.setOption("inginiousLanguage", getInginiousLanguageForProblemId(key));
 
     editor.setOption("mode", mode.mime);
-    editor.setOption("lint", lintingOptions);
     editor.setOption("gutters",["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers"]);
+    editor.setOption("lint", lintingOptions);
     CodeMirror.autoLoadMode(editor, mode["mode"]);
 }
 
@@ -77,6 +77,15 @@ function studio_init_template_code_multiple_languages(well, pid, problem)
     }
 }
 
+function studio_init_template_notebook_file(well, pid, problem) {
+    if ("type" in problem)
+        $('#type-' + pid, well).val(problem["type"]);
+}
+
+function load_input_notebook_file(submissionid, key, input) {
+    load_input_file(submissionid, key, input);
+}
+
 function studio_init_template_code_file_multiple_languages(well, pid, problem)
 {
     if("max_size" in problem)
@@ -97,10 +106,42 @@ function load_input_code_file_multiple_languages(submissionid, key, input){
     setDropDownWithTheRightLanguage(key, input[key + "/language"]);
 }
 
-function selectAllLanguages(){
-    $(".checkbox_language").prop("checked", true);
+let selected_all_languages = false;
+function toggle_languages_checkboxes() {
+    selected_all_languages = !selected_all_languages;
+    $(".checkbox_language").prop("checked", selected_all_languages);
+    let text_button = "Select all";
+    if (selected_all_languages) text_button = "Unselect All";
+    $("#toggle_select_languages_button").text(text_button);
 }
 
-function unselectAllLanguages(){
-    $(".checkbox_language").prop("checked", false);
+/**
+ * Monkey patch `studio_subproblem_delete` to detect when a subproblem is deleted, that way
+ * the options to create a new subproblem are displayed.
+ */
+const original_studio_subproblem_delete = this.studio_subproblem_delete;
+this.studio_subproblem_delete = (pid) => {
+    original_studio_subproblem_delete(pid);
+    toggle_display_new_subproblem_option();
+};
+
+/**
+ * Monkey patch `studio_create_new_subproblem` to detect when a subproblem is created, that way
+ * the options to create a new subproblem are hidden.
+ */
+const original_studio_create_new_subproblem = this.studio_create_new_subproblem;
+this.studio_create_new_subproblem = () => {
+    original_studio_create_new_subproblem();
+    toggle_display_new_subproblem_option();
+};
+
+function toggle_display_new_subproblem_option() {
+    const container = $("#accordion");
+    const new_subproblem_element = $("#new_subproblem");
+    if (container.children().length) new_subproblem_element.hide();
+    else new_subproblem_element.show();
 }
+
+jQuery(document).ready(function () {
+    toggle_display_new_subproblem_option();
+});
