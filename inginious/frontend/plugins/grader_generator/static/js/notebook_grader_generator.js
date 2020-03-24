@@ -52,9 +52,8 @@ function notebook_grader_remove_test_case(test_id, case_id) {
     container_element.html("");
     $.each(new_test_cases, (_, test_case) => {
         container_element.append(test_case);
-        $(`#${test_case.attr('id')} .form-control`).each(function (index, elem) {
-            registerCodeEditor(elem, $(elem).attr('data-x-language'), $(elem).attr('data-x-lines'));
-        });
+        const case_code_element = $(`#${test_case.attr('id')}_code`)[0];
+        registerCodeEditor(case_code_element, $(case_code_element).attr('data-x-language'), $(case_code_element).attr('data-x-lines'));
     });
 
     notebook_grader_tests_cases_count[test_id]--;
