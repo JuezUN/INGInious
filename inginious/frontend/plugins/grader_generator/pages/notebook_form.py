@@ -71,6 +71,8 @@ class NotebookForm(GraderForm):
         super(NotebookForm, self).parse()
         # Parse test cases
         self.task_data["notebook_filename"] = self.task_data.get("notebook_filename", "notebook").strip()
+        if not self.task_data["notebook_filename"]:
+            self.task_data["notebook_filename"] = "notebook"
         self.task_data["notebook_setup_code_all_tests"] = self.task_data.get("notebook_setup_code_all_tests",
                                                                              "").strip()
         self.task_data['grader_test_cases'] = self.parse_and_validate_tests()
