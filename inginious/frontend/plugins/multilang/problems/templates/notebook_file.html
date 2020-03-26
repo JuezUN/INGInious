@@ -6,6 +6,83 @@ $# more information about the licensing of this file.
 $#
 
 <div class="row panel-body">
-	<input type="hidden" name="$inputId/type" value="$type">
-	<input type="hidden" name="$inputId/language" value="python">
+    <input type="hidden" name="$inputId/type" value="$type">
+    <input type="hidden" name="$inputId/language" value="python">
+    <a href='#' type='button' data-toggle='modal' data-target='#notebook_help_modal'>
+        <i class='fa fa-lightbulb-o'> What is supported in your Notebook?</i>
+    </a>
+</div>
+<div id="notebook_help_modal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title"><i class="fa fa-lightbulb-o"> What is supported in your
+                    notebook?</i></h3>
+            </div>
+            <div class="modal-body text-justify">
+                <h5>
+                    In general, when submitting a notebook, all python 3.5 code is supported on UNCode. However,
+                    Ipython notebooks and python code differ in some functionalities, then UNCode might support them
+                    or not. Also, there are some things you should bear in mind when creating your notebook.
+                </h5>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Additional python modules:</strong><br><br>
+                        You are able to use the next python modules in addition to the pre installed python modules:<br>
+                        <code>import pandas, numpy, matplotlib, scipy, scikit-learn, seaborn, datascience, plotly,
+                            cufflinks, bokeh, tabulate, nltk</code><br><br>
+                        In case you want to use one module and it is not in the previous list, do not hesitate on
+                        reaching out for support.
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Not internet access from the grading environment:</strong><br><br>
+                        When you submit your notebook, take care of not using code that requires internet
+                        access.
+                        For instance installing a python module or installing data with <code>nltk.download()</code>.
+                        All the modules and data you require are already installed and supported by UNCode.<br>
+                        Then, when you have lines installing a module, for instance:
+                        <code class="multiline-code">!pip install pandas</code>
+                        These lines are automatically removed from your notebook to avoid runtime execution errors.
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Magic functionality execution:</strong><br><br>
+                        Magics function are automatically removed from your notebook. For example the next line:<br>
+                        <code class="multiline-code">%matplotlib inline</code>
+                        In case your notebook contains some lines like this, they will be automatically removed
+                        to avoid runtime execution problems.
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Commands execution:</strong><br><br>
+                        As notebooks provide a functionality to execute commands like these:<br>
+                        <code class="multiline-code">!ls</code><br>
+                        <code class="multiline-code">!pwd</code><br>
+                        These kind of lines are transformed to be able to run the commands, for example <code>!ls</code>
+                        is turned into the following code:
+                        <code class="multiline-code"><br>import subprocess<br>call = subprocess.run(["ls"],
+                            stdout=subprocess.PIPE)<br>print(call.stdout.decode('utf-8')<br></code>
+
+                        That code will do the same for you as in the notebook.
+                        However, you are not allowed to assign the result of command execution to a variables, for
+                        instance: <code>result = !ls</code>. In that case, your code will return an error.
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Reading files from Google Drive:</strong><br><br>
+                        When you use Google Colaboratory (Colab) and you want to load and read data from Google Drive,
+                        you are
+                        required to use some python modules unique in Colab. These modules are not supported by UNCode,
+                        thus, make sure when you submit your notebook, you do not include it.<br><br>
+                        In order to read data, for example a .csv file, you should run your notebook locally using
+                        Jupyter.
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
