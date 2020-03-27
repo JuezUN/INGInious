@@ -53,10 +53,9 @@ $#
 <div class="form-group">
     <label for="treat_non_zero_as_runtime_error" class="col-sm-4 control-label">
         Show runtime errors
-        <i class="fa fa-question-circle" title="In case is not checked, the response is either ACCEPTED or WRONG_ANSWER.
-        If checked, shows additional errors like RUNTIME_ERROR or TIME_LIMIT_EXCEEDED" data-toggle="tooltip"></i>
+        <i class="fa fa-question-circle" title="In case it is not checked, the student's result is either ACCEPTED or WRONG_ANSWER.
+        If checked, it shows additional errors like RUNTIME_ERROR or TIME_LIMIT_EXCEEDED." data-toggle="tooltip"></i>
     </label>
-
     <div class="col-sm-8">
         <div class="checkbox"><label>
             <input type="checkbox" id="treat_non_zero_as_runtime_error" name="treat_non_zero_as_runtime_error"
@@ -164,7 +163,10 @@ $#
         <label for="notebook_setup_code_all_tests" class="col-sm-4 control-label">
             Setup code for all tests
             <i class="fa fa-question-circle"
-               title="Python code executed before all tests. Useful to setup, for example, initial data and variables to be used in all tests."
+               title="Python code executed before all tests. Useful to setup, for example, initial data and variables
+               to be used in all tests. This code must be like Python interactive shell, where each line is a different
+               command in the shell. Control structures that require more than one line like: 'if' 'for', 'try'
+               'functions' are not allowed."
                data-toggle="tooltip"></i>
         </label>
         <div class="col-sm-8">
@@ -199,7 +201,15 @@ $#
             <div class="form-group col-xs-12" style="text-align: center;">
                 <div class="col-xs-5"><label>Name</label></div>
                 <div class="col-xs-2"><label>Weight</label></div>
-                <div class="col-xs-2"><label>Show debug info</label></div>
+                <div class="col-xs-2">
+                    <label>
+                        Show debug info
+                        <i class="fa fa-question-circle"
+                           title="Check to show more info the student like output difference and runtime errors"
+                           data-toggle="tooltip">
+                        </i>
+                    </label>
+                </div>
                 <div class="col-xs-3"><label>Options</label></div>
             </div>
         </div>
