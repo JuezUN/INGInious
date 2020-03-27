@@ -44,7 +44,7 @@ function notebook_grader_create_test_case(test_case_data) {
         toggle_test_case_form_alert(true, message);
         setTimeout(() => {
             toggle_test_case_form_alert(false, "");
-        }, 5000);
+        }, 60000);
     }
 
     const test_id = editing_test_id !== null ? editing_test_id : notebook_grader_tests_sequence;
@@ -166,7 +166,7 @@ function notebook_grader_create_test(test_data, test_cases) {
         toggle_test_case_form_alert(true, message);
         setTimeout(() => {
             toggle_test_case_form_alert(false, "");
-        }, 5000);
+        }, 60000);
         return;
     }
 
@@ -277,7 +277,7 @@ function notebook_grader_update_test() {
         toggle_test_case_form_alert(true, message);
         setTimeout(() => {
             toggle_test_case_form_alert(false, "");
-        }, 5000);
+        }, 60000);
         return;
     }
 

@@ -20,13 +20,22 @@ def init(plugin_manager, course_factory, client, plugin_config):
 
     use_minified = plugin_config.get("use_minified", True)
 
+    plugin_manager.add_hook("javascript_footer", lambda: "https://cdn.jsdelivr.net/npm/marked/marked.min.js")
+    plugin_manager.add_hook("javascript_footer",
+                            lambda: "https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-core.min.js")
+    plugin_manager.add_hook("javascript_footer",
+                            lambda: "https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-python.min.js")
+    plugin_manager.add_hook("css", lambda: "https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css")
     if use_minified:
+        plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/notebook_renderer.min.js")
         plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/multilang.min.js")
         plugin_manager.add_hook("css", lambda: "/multilang/static/multilang.min.css")
     else:
+        plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/notebook_renderer.js")
         plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/multilang.js")
         plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/grader.js")
         plugin_manager.add_hook("css", lambda: "/multilang/static/multilang.css")
+
     if get_show_tools():
         if use_minified:
             plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/tools.min.js")
@@ -60,4 +69,3 @@ def init(plugin_manager, course_factory, client, plugin_config):
             plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/hdlgrader.min.js")
         else:
             plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/hdlgrader.js")
-
