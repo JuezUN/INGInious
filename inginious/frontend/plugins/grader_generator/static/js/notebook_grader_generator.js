@@ -4,12 +4,20 @@ let editing_test_id = null;
 
 const modal_element = $("#notebook_grader_test_form_modal");
 
+function toggle_test_case_form_alert(show, message) {
+    const alert = $("#test_case_alert");
+    alert.text(message);
+    if (show) alert.show();
+    else alert.hide();
+}
+
 function notebook_grader_add_test_case_from_form() {
     const test_id = notebook_grader_tests_sequence;
     const new_test_case = notebook_grader_create_test_case({
         "code": $("#notebook_grader_test_case_code").val(),
         "expected_output": $("#notebook_grader_test_case_expected_output").val(),
     });
+
     if (!new_test_case) return;
 
     const first_row = (notebook_grader_tests_cases_count[test_id] === 1);
@@ -30,6 +38,14 @@ function notebook_grader_create_test_case(test_case_data) {
         "code": null,
         "expected_output": null
     }, test_case_data);
+
+    if (!test_case_data["code"] || !test_case_data["expected_output"]) {
+        const message = "Please complete all the fields to add a test case.";
+        toggle_test_case_form_alert(true, message);
+        setTimeout(() => {
+            toggle_test_case_form_alert(false, "");
+        }, 60000);
+    }
 
     const test_id = editing_test_id !== null ? editing_test_id : notebook_grader_tests_sequence;
 
@@ -145,6 +161,15 @@ function notebook_grader_create_test(test_data, test_cases) {
         "setup_code": "",
     }, test_data);
 
+    if (!test_data["name"]) {
+        const message = "Please add a name to test.";
+        toggle_test_case_form_alert(true, message);
+        setTimeout(() => {
+            toggle_test_case_form_alert(false, "");
+        }, 60000);
+        return;
+    }
+
     const test_id = notebook_grader_tests_sequence, test_name = test_data["name"],
         test_weight = test_data["weight"];
 
@@ -246,6 +271,16 @@ function notebook_grader_update_test() {
         "weight": $("#notebook_grader_test_weight").val(),
         "setup_code": $("#notebook_grader_test_setup_code").val()
     };
+
+    if (!test_data["name"]) {
+        const message = "Please add a name to test.";
+        toggle_test_case_form_alert(true, message);
+        setTimeout(() => {
+            toggle_test_case_form_alert(false, "");
+        }, 60000);
+        return;
+    }
+
     const test_id = editing_test_id, test_name = test_data["name"],
         test_weight = test_data["weight"], setup_code = test_data["setup_code"];
     const test_cases = _notebook_grader_get_test_cases_from_container(test_id, "notebook_grader_test_cases_container");

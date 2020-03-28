@@ -1,18 +1,16 @@
-function load_input_code_multiple_languages(submissionid, key, input)
-{
+function load_input_code_multiple_languages(submissionid, key, input) {
     load_input_code(submissionid, key, input);
     setDropDownWithTheRightLanguage(key, input[key + "/language"]);
     changeSubmissionLanguage(key);
 }
 
 
-function setDropDownWithTheRightLanguage(key, language)
-{
+function setDropDownWithTheRightLanguage(key, language) {
     var dropDown = document.getElementById(key + '/language');
     dropDown.value = language;
 }
 
-function changeSubmissionLanguage(key){
+function changeSubmissionLanguage(key) {
     var language = getLanguageForProblemId(key);
     var editor = codeEditors[key];
     var mode = CodeMirror.findModeByName(language);
@@ -20,12 +18,12 @@ function changeSubmissionLanguage(key){
     var lintingOptions = {
         async: true
     };
-    
+
     //This should be first because setOption("mode", ...) triggers callbacks that call the linter
     editor.setOption("inginiousLanguage", getInginiousLanguageForProblemId(key));
 
     editor.setOption("mode", mode.mime);
-    editor.setOption("gutters",["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers"]);
+    editor.setOption("gutters", ["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers"]);
     editor.setOption("lint", lintingOptions);
     CodeMirror.autoLoadMode(editor, mode["mode"]);
 }
@@ -34,9 +32,9 @@ function getLanguageForProblemId(key) {
     return convertInginiousLanguageToCodemirror(getInginiousLanguageForProblemId(key));
 }
 
-function getInginiousLanguageForProblemId(key){
+function getInginiousLanguageForProblemId(key) {
     var dropDown = document.getElementById(key + '/language');
-    if(dropDown == null)
+    if (dropDown == null)
         return "plain";
 
     var inginiousLanguage = dropDown.options[dropDown.selectedIndex].value;
@@ -55,22 +53,21 @@ function convertInginiousLanguageToCodemirror(inginiousLanguage) {
         "python2": "python",
         "python3": "python",
         "ruby": "ruby",
-        "vhdl" : "vhdl",
-        "verilog" : "verilog"
+        "vhdl": "vhdl",
+        "verilog": "verilog"
     };
 
     return languages[inginiousLanguage];
 }
 
-function studio_init_template_code_multiple_languages(well, pid, problem)
-{
-    if("type" in problem)
+function studio_init_template_code_multiple_languages(well, pid, problem) {
+    if ("type" in problem)
         $('#type-' + pid, well).val(problem["type"]);
-    if("optional" in problem && problem["optional"])
+    if ("optional" in problem && problem["optional"])
         $('#optional-' + pid, well).attr('checked', true);
 
     if ("languages" in problem) {
-        jQuery.each(problem["languages"], function(language, allowed) {
+        jQuery.each(problem["languages"], function (language, allowed) {
             if (allowed)
                 $("#" + language + "-" + pid, well).attr("checked", true);
         });
@@ -86,27 +83,27 @@ function load_input_notebook_file(submissionid, key, input) {
     load_input_file(submissionid, key, input);
 }
 
-function studio_init_template_code_file_multiple_languages(well, pid, problem)
-{
-    if("max_size" in problem)
+function studio_init_template_code_file_multiple_languages(well, pid, problem) {
+    if ("max_size" in problem)
         $('#maxsize-' + pid, well).val(problem["max_size"]);
-    if("allowed_exts" in problem)
+    if ("allowed_exts" in problem)
         $('#extensions-' + pid, well).val(problem["allowed_exts"].join());
 
     if ("languages" in problem) {
-        jQuery.each(problem["languages"], function(language, allowed) {
+        jQuery.each(problem["languages"], function (language, allowed) {
             if (allowed)
                 $("#" + language + "-" + pid, well).attr("checked", true);
         });
     }
 }
 
-function load_input_code_file_multiple_languages(submissionid, key, input){
+function load_input_code_file_multiple_languages(submissionid, key, input) {
     load_input_file(submissionid, key, input);
     setDropDownWithTheRightLanguage(key, input[key + "/language"]);
 }
 
 let selected_all_languages = false;
+
 function toggle_languages_checkboxes() {
     selected_all_languages = !selected_all_languages;
     $(".checkbox_language").prop("checked", selected_all_languages);
@@ -142,6 +139,43 @@ function toggle_display_new_subproblem_option() {
     else new_subproblem_element.show();
 }
 
+function notebook_start_renderer() {
+    const root = this;
+    const file_input = $("input[name='1']")[0];
+    const notebook_holder = $("#notebook-holder")[0];
+
+    const render_notebook = function (ipynb) {
+        $("#notebook-holder").hide();
+        const notebook = root.notebook = nb.parse(ipynb);
+        while (notebook_holder.hasChildNodes()) {
+            notebook_holder.removeChild(notebook_holder.lastChild);
+        }
+        notebook_holder.appendChild(notebook.render());
+        Prism.highlightAll();
+        $("#notebook-holder").show();
+    };
+
+    const load_file = function (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const parsed = JSON.parse(this.result);
+            render_notebook(parsed);
+        };
+        reader.readAsText(file);
+    };
+
+    file_input.onchange = function (e) {
+        const file = this.files[0];
+        if (file.name.split('.')[1] !== 'ipynb') {
+            $("#notebook-holder").hide();
+            return;
+        }
+
+        load_file(this.files[0]);
+    };
+}
+
 jQuery(document).ready(function () {
     toggle_display_new_subproblem_option();
+    notebook_start_renderer();
 });
