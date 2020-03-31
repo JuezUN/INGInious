@@ -141,7 +141,6 @@ function toggle_display_new_subproblem_option() {
 
 function notebook_start_renderer() {
     const root = this;
-    const file_input = $("input[name=" + getProblemId() + "]")[0];
     const notebook_holder = $("#notebook-holder")[0];
 
     const render_notebook = function (ipynb) {
@@ -164,15 +163,19 @@ function notebook_start_renderer() {
         reader.readAsText(file);
     };
 
-    file_input.onchange = function (e) {
-        const file = this.files[0];
-        if (file.name.split('.')[1] !== 'ipynb') {
-            $("#notebook-holder").hide();
-            return;
-        }
-
-        load_file(this.files[0]);
-    };
+    try {
+        // Handle exception when getProblemId does not exists
+        const file_input = $("input[name=" + getProblemId() + "]")[0];
+        file_input.onchange = function (e) {
+            const file = this.files[0];
+            if (file.name.split('.')[1] !== 'ipynb') {
+                $("#notebook-holder").hide();
+                return;
+            }
+            load_file(this.files[0]);
+        };
+    } catch (e) {
+    }
 }
 
 jQuery(document).ready(function () {
