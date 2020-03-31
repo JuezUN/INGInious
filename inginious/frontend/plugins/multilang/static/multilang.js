@@ -141,7 +141,7 @@ function toggle_display_new_subproblem_option() {
 
 function notebook_start_renderer() {
     const root = this;
-    const file_input = $("input[name='1']")[0];
+    const file_input = $("input[name=" + getProblemId() + "]")[0];
     const notebook_holder = $("#notebook-holder")[0];
 
     const render_notebook = function (ipynb) {
