@@ -168,7 +168,7 @@ function notebook_start_renderer() {
         const file_input = $("input[name=" + getProblemId() + "]")[0];
         file_input.onchange = function (e) {
             const file = this.files[0];
-            if (file && file.name.split('.')[1] !== 'ipynb') {
+            if (!file && file.name.split('.')[1] !== 'ipynb') {
                 $("#notebook-holder").hide();
                 return;
             }
