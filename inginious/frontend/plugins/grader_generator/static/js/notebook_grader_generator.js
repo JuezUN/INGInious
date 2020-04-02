@@ -161,8 +161,8 @@ function notebook_grader_create_test(test_data, test_cases) {
         "setup_code": "",
     }, test_data);
 
-    if (!test_data["name"]) {
-        const message = "Please add a name to test.";
+    if (!test_data["name"] || !test_data["weight"]) {
+        const message = "Please complete all mandatory fields.";
         toggle_test_case_form_alert(true, message);
         setTimeout(() => {
             toggle_test_case_form_alert(false, "");
@@ -273,7 +273,7 @@ function notebook_grader_update_test() {
     };
 
     if (!test_data["name"]) {
-        const message = "Please add a name to test.";
+        const message = "Please complete all mandatory fields.";
         toggle_test_case_form_alert(true, message);
         setTimeout(() => {
             toggle_test_case_form_alert(false, "");
