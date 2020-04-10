@@ -1,6 +1,6 @@
 .. class:: text-justify
 
-    **Este mensaje es optional:** Esta tarea tiene como objetivo evaluar su conocimiento en el tema de **Reemplazar con el tema a evaluar**, por eso se espera que para este problema lo aplique.
+    **Este mensaje es opcional:** Esta tarea tiene como objetivo evaluar su conocimiento en el tema de **Reemplazar con el tema a evaluar**, por eso se espera que para este problema lo aplique. **Debido a que este mensaje evidencia de que trata el problema o con cuáles herramientas podra resolverle, al igual que en los tags, si es crucial para resolverlo, es aconsejable no describirlo**
 
 |
 
@@ -16,7 +16,13 @@ UNCode_.
 
 |
 
-Aquí puede poner un segundo parrafo para el enunciado. Para poder agregar más parrafos tiene que agregar un salto de línea, el caractér '|' en otra línea, agregar otra línea en blaco y ahí si puede poner el otro parrafo. Así como están separados el parrafo 1 y el 2.
+Asi se pueden agregar imagenes al problema con un tamaño determinado, debe poner la imagen en la carpeta /public/image_name para que el servidor pueda reconocerla.
+.. image:: task_id/image_name
+   :height: 180px
+
+Aquí puede poner un segundo parrafo para el enunciado. Para poder agregar más parrafos tiene que agregar un salto de línea, el caractér '|' en otra línea, agregar otra línea en blaco y ahí si puede poner el otro parrafo. Así como están separados el parrafo 1 y el 2. Los caracteres especiales también deben escaparse como '\\t' Para agregar saltos de linea solo deben estar separados por un salto de linea y empezar por el caracter de tuberia '|'
+
+| Como esta línea que aparecerá en una nueva.
 
 |
 |
@@ -26,7 +32,7 @@ Entrada
 
 .. class:: text-justify
 
-Esta sección está intentada para hacer la descripción de las entradas del problema, donde por ejemplo: "se dice que tiene que leer un número **n** tal que ``0 <= n <= 2000000000``.".
+Esta sección está intentada para hacer la descripción de las entradas del problema, por ejemplo: se dice que tiene que leer un número **n** tal que ``0 <= n <= 2000000000``.
 
 |
 
@@ -82,7 +88,27 @@ Ejemplos
 
 |
 
+.. container:: row
+
+    .. container:: col-md-6 text-justify
+
+        **Entrada Ejemplo 3**
+
+        ::
+
+            Ejemplo de entrada #2
+
+    .. container:: col-md-6 text-justify
+
+        **Salida Ejemplo 3**
+
+        ::
+
+            Ejemplo de salida #2
+
+|
+
 Notas
 -----
 
-Esta sección esta intentada para escribir las notas o sugerencias que se deseen o amerite agregar. La siguiente es una nota de ejemplo: "**La salida debe tener un caractér de nueva línea al final del archivo, de contrariolo contrario puede recibir el veredicto de respuesta incorrecta.**".
+Esta sección tiene la intención de describir notas adicionales o sugerencias que se deseen o amerite agregar. La siguiente es una nota de ejemplo: "**La salida debe tener un caracter de nueva línea al final del archivo, de lo contrario puede recibir el veredicto de respuesta incorrecta.**".
