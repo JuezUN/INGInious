@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "react": "^16.8.3",
     "react-autosuggest": "^9.3.2",
     "react-bootstrap": "^0.31.5",
