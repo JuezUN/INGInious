@@ -76,23 +76,23 @@
                     <li class="list-group-item">
                         <div class="list-group-item-text row">
                             <div class="col-md-3 text-center">
-                                <h4><span class="label label-warning"><strong>TIME LIMIT</strong></span></h4>
+                                <h4><span class="label label-danger"><strong>TIME LIMIT EXCEEDED</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                Time limit means that your code has timed out. When your submission times out, it means
-                                that your code took too long to run the input test cases. There are two options: either,
-                                your code got stuck in a nonterminanting loop, an infinite loop, or, your code does
-                                solve the problem but takes much longer than it should.<br/>
+                                Time limit means that your code exceeded the time limit. This means that your code
+                                took too long to run the input test cases. There are two options: either  your code
+                                got stuck in an infinite loop or your code does solve the problem but takes much longer
+                                than it should.<br/>
                                 <strong>Tips:</strong> Check and debug your code as it may be stuck in a loop. If your
-                                code does in fact solve the problem but it is too slow, try to find another solution, one
-                                that takes less time to compute.
+                                code does in fact solve the problem but it is too slow, try to find another solution,
+                                one that takes less time to compute.
                             </div>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="list-group-item-text row">
                             <div class="col-md-3 text-center">
-                                <h4><span class="label label-warning"><strong>MEMORY LIMIT EXCEEDED</strong></span></h4>
+                                <h4><span class="label label-danger"><strong>MEMORY LIMIT EXCEEDED</strong></span></h4>
                             </div>
                             <div class="col-md-9">
                                 Getting this result means your code is using too much memory at runtime.<br/>
@@ -101,9 +101,20 @@
                             </div>
                         </div>
                     </li>
+                    <li class="list-group-item">
+                        <div class="list-group-item-text row">
+                            <div class="col-md-3 text-center">
+                                <h4><span class="label label-danger"><strong>OUTPUT LIMIT EXCEEDED</strong></span></h4>
+                            </div>
+                            <div class="col-md-9">
+                                Getting this result means the output of your code is longer that the allowed.<br/>
+                                <strong>Tips:</strong> Check for printing statements in a loop.
+                            </div>
+                        </div>
+                    </li>
                 </ul>
                 <hr>
-                <strong>Results related to UNCode. Unexpected errors when your code was been assesed</strong>
+                <strong>Results related to UNCode. Unexpected errors when your code was been executed.</strong>
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="list-group-item-text row">
@@ -112,29 +123,46 @@
                             </div>
                             <div class="col-md-9">
                                 If you get this message, do not worry, There's Nothing Wrong With Your Code!<br>
-                                This error means that UNCode had a problem while running or assessing your code. So,
-                                <b>the problem is on our side.</b> We apologise in advance. Sorry T_T<br/>
+                                This error means UNCode had a problem while running or assessing your code. So,
+                                <b>the problem is on our side.</b> We apologise in advance.<br/>
                                 <strong>Please reload the page and try submitting again! If you still get the same
-                                   result, please wait a while and try again.</strong>
+                                   result, please wait a while and try again or contact your professor.</strong>
                             </div>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="list-group-item-text row">
                             <div class="col-md-3 text-center">
-                                <h4><span class="label label-danger"><strong>SUBMISSION TIMED OUT</strong></span></h4>
+                                <h4><span class="label label-warning"><strong>SUBMISSION TIMED OUT</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                If you get this, it means that we had a problem running and assessing your code. We had
-                                to kill the process, your program. Please wait a little and try again.
+                                If you get this, it means that we had a problem running and assessing your code. Wait
+                                for a while and try to send a submission again.
+                                This might be also caused by a too small time limit in the task configuration (talk to
+                                your professor about it).
                             </div>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="list-group-item-text row">
                             <div class="col-md-3 text-center">
-                                <h4><span
-                                        class="label label-danger"><strong>ENVIRONMENT NOT <br> AVAILABLE</strong></span>
+                                <h4><span class="label label-warning"><strong>OVERFLOW</strong></span></h4>
+                            </div>
+                            <div class="col-md-9">
+                                If you get this, it means the grading environment run out of memory. There might be two
+                                possible causes: 1. the configured memory is to low to solve this problem (talk to your
+                                professor about it). 2. Your code is printing too much data, possibly caused by prints
+                                in an infinite loop.
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="list-group-item-text row">
+                            <div class="col-md-3 text-center">
+                                <h4>
+                                    <span class="label label-danger">
+                                        <strong>ENVIRONMENT NOT <br> AVAILABLE</strong>
+                                    </span>
                                 </h4>
                             </div>
                             <div class="col-md-9">

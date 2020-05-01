@@ -1,5 +1,6 @@
 import os
 import tempfile
+from math import ceil
 
 from collections import OrderedDict
 from .grader_form import GraderForm, InvalidGraderError
@@ -25,6 +26,8 @@ class MultilangForm(GraderForm):
         for key in keys_to_remove:
             del self.task_data[key]
 
+        # Order test cases to load them correctly
+        grader_test_cases = OrderedDict(sorted(grader_test_cases.items(), key=lambda test: test[1]["input_file"]))
         return grader_test_cases
 
     def parse_and_validate_test_cases(self):
@@ -69,6 +72,19 @@ class MultilangForm(GraderForm):
         super(MultilangForm, self).parse()
         # Parse test cases
         self.task_data['grader_test_cases'] = self.parse_and_validate_test_cases()
+        total_cases = len(self.task_data['grader_test_cases'])
+        self.task_data['time_limit_test_case'] = int(ceil(float(self.task_data.get("time_limit_test_case", 2))))
+        self.task_data['memory_limit_test_case'] = int(ceil(float(self.task_data.get("memory_limit_test_case", 50))))
+        self.task_data['output_limit_test_case'] = int(ceil(float(self.task_data.get("output_limit_test_case", 2))))
+
+        # Additional time to calculate submission feedback.
+        _additional_time_limit = 15
+        # Additional memory to calculate submission feedback.
+        _additional_memory_limit = 70
+        # Update the grading container time and memory limit depending on amount of tests.
+        self.task_data['limits']['time'] = total_cases * self.task_data['time_limit_test_case'] + _additional_time_limit
+        self.task_data['limits']['memory'] = total_cases * self.task_data['output_limit_test_case'] + \
+                                             _additional_memory_limit
 
     def generate_grader(self):
         """ This method generates a grader through the form data """
@@ -77,12 +93,19 @@ class MultilangForm(GraderForm):
         test_cases = [(test_case["input_file"], test_case["output_file"])
                       for test_case in self.task_data["grader_test_cases"]]
         weights = [test_case["weight"] for test_case in self.task_data["grader_test_cases"]]
+        time = self.task_data["time_limit_test_case"]
+        # Set output limit in Bytes
+        output_limit = (2 ** 20) * self.task_data["output_limit_test_case"]
         options = {
             "treat_non_zero_as_runtime_error": self.task_data["treat_non_zero_as_runtime_error"],
             "diff_max_lines": self.task_data["grader_diff_max_lines"],
             "diff_context_lines": self.task_data["grader_diff_context_lines"],
             "output_diff_for": [test_case["input_file"] for test_case in self.task_data["grader_test_cases"]
-                                if test_case["diff_shown"]]
+                                if test_case["diff_shown"]],
+            "time_limit": time,
+            "hard_time_limit": time,
+            "output_limit": output_limit,
+            "memory_limit": self.task_data["memory_limit_test_case"]
         }
 
         with open(_MULTILANG_FILE_TEMPLATE_PATH, "r") as template, tempfile.TemporaryDirectory() as temporary:

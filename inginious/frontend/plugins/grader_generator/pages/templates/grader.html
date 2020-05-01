@@ -67,6 +67,37 @@ $#
 </div>
 
 <div class="grader_form" id="multilang_grader_form">
+    <div class="row">
+        <div class="form-group col-xs-12">
+            <div class="col-xs-4">
+                <label for="time_limit_test_case" class="control-label">
+                    Time limit test cases*
+                    <i class="fa fa-question-circle" title="Time limit for each test case in seconds."
+                       data-toggle="tooltip"></i>
+                </label>
+                <input type="number" class="form-control" id="time_limit_test_case" min="0" step="1"
+                    name="time_limit_test_case" value="${task_data.get('time_limit_test_case', '2')}">
+            </div>
+            <div class="col-xs-4">
+                <label for="memory_limit_test_case" class="control-label">
+                    Memory limit test cases*
+                    <i class="fa fa-question-circle" title="Memory limit for each test case in MBs."
+                       data-toggle="tooltip"></i>
+                </label>
+                <input type="number" class="form-control" id="memory_limit_test_case" min="0" step="1"
+                       name="memory_limit_test_case" value="${task_data.get('memory_limit_test_case', '50')}">
+            </div>
+            <div class="col-xs-4">
+                <label for="output_limit_test_case" class="control-label">
+                    Output limit test cases*                                                                                                                                                                                                                                                                                </Output> limit test cases*
+                    <i class="fa fa-question-circle" title="Output limit for each test case in MBs."
+                       data-toggle="tooltip"></i>
+                </label>
+                <input type="number" class="form-control" id="output_limit_test_case" min="0" step="1"
+                       name="output_limit_test_case" value="${task_data.get('output_limit_test_case', '2')}">
+            </div>
+        </div>
+    </div>
     <hr/>
     <h4 align="center">Test cases</h4>
     <div class="col-4" style="height: 100%;">

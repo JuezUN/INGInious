@@ -1,18 +1,20 @@
-function updateDiffBlock(blockId) {
+// Function called in he returned feedback from submission
+function updateDiffBlock(blockId, text) {
     let block = $("#" + blockId);
-    block.html(parseOutputDiff(block.html()));
+    block.html(parseOutputDiff(text));
 }
 
+// Function called in he returned feedback from submission
 function createDownloadLink(filename, text){
-    var attributes = 'class="btn-link" download="' + filename + '"';
-    var element = '<a ' + attributes + 'href="data:text/plain;charset=utf-8,' + encodeURIComponent(text) + '">Download</a>';
+    const attributes = 'class="btn-link" download="' + filename + '"';
+    const element = '<a ' + attributes + 'href="data:text/plain;charset=utf-8,' + encodeURIComponent(text) + '">Download</a>';
     // Write our new downloadable link. On div placeholder
     document.getElementById(filename + '_download_link').innerHTML = element + "<br/><br/>";
 }
 
 function parseOutputDiff(diff) {
     let result = [];
-    let lines = diff.split('\\n');
+    let lines = diff.split('\n');
 
     // Convention
     result.push('<strong>Legend:</strong> <span class="diff-missing-output">Only in the expected output</span> ' +
