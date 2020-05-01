@@ -1,6 +1,5 @@
 function updateWaveDromBlock(blockId, text) {
     let block = $("#" + blockId);
-    // let htmlbeg = block.html();
     block.html(parseOutputDiff(text)+parseHDL(text));
     WaveDrom.ProcessAll();
 }
