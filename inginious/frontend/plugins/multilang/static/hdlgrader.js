@@ -1,12 +1,12 @@
-function updateWaveDromBlock(blockId) {
+function updateWaveDromBlock(blockId, text) {
     let block = $("#" + blockId);
-    let htmlbeg = block.html();
-    block.html(parseOutputDiff(htmlbeg)+parseHDL(htmlbeg));
+    // let htmlbeg = block.html();
+    block.html(parseOutputDiff(text)+parseHDL(text));
     WaveDrom.ProcessAll();
 }
 
 function parseHDL(diff){
-  let lines = diff.split('\\n');
+  let lines = diff.split('\n');
   let inputsG = {};
   let outputsG = {};
   let inputsC = {};
