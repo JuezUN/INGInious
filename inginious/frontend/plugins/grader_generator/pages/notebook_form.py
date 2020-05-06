@@ -136,9 +136,9 @@ class NotebookForm(GraderForm):
 
     def _generate_ok_test_files(self):
         for test_index, test in enumerate(self.task_data["grader_test_cases"]):
-            test_name = "\'{}\'".format(test["name"])
+            test_name = "\'{}\'".format(test["name"].replace('\'', '\\\''))
             test_weight = test["weight"]
-            test_setup_code = _parse_code_to_doctest(self._get_test_setup_code(test))
+            test_setup_code = _parse_code_to_doctest(self._get_test_setup_code(test)).replace('"""', "'''")
             test_cases = test["cases"]
             test_suites_str = ""
             for index, case in test_cases.items():
@@ -210,10 +210,18 @@ def _is_python_syntax_code_right(code):
 
 
 def _parse_code_to_doctest(code):
-    parsed_code = ""
-    code_lines = [line.strip() for line in code.split('\n') if line.strip()]
+    parsed_code = []
+    # Parse the code in a Abstract Syntax Tree to parse correctly the code
+    parser = ast.parse(code)
+    # Generate a set with line numbers of lines that must start with a '>>>'.
+    # This let us know the code that uses more than une line.
+    main_lines = {child_node.lineno - 1 for child_node in parser.body}
+    code_lines = [line for line in code.split('\n') if line]
     for index, line in enumerate(code_lines):
-        parsed_code += ">>> {}".format(line)
+        if index not in main_lines:
+            parsed_code.append("... {}".format(line))
+        else:
+            parsed_code.append(">>> {}".format(line))
         if index + 1 < len(code_lines):
-            parsed_code += "\n"
-    return parsed_code
+            parsed_code.append("\n")
+    return ''.join(parsed_code)
