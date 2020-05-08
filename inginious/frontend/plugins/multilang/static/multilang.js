@@ -6,16 +6,15 @@ function load_input_code_multiple_languages(submissionid, key, input) {
 
 
 function setDropDownWithTheRightLanguage(key, language) {
-    var dropDown = document.getElementById(key + '/language');
+    const dropDown = document.getElementById(key + '/language');
     dropDown.value = language;
 }
 
 function changeSubmissionLanguage(key) {
-    var language = getLanguageForProblemId(key);
-    var editor = codeEditors[key];
-    var mode = CodeMirror.findModeByName(language);
-    var editor = codeEditors[key];
-    var lintingOptions = {
+    const language = getLanguageForProblemId(key);
+    const mode = CodeMirror.findModeByName(language);
+    const editor = codeEditors[key];
+    const lintingOptions = {
         async: true
     };
 
@@ -33,16 +32,16 @@ function getLanguageForProblemId(key) {
 }
 
 function getInginiousLanguageForProblemId(key) {
-    var dropDown = document.getElementById(key + '/language');
+    const dropDown = document.getElementById(key + '/language');
     if (dropDown == null)
         return "plain";
 
-    var inginiousLanguage = dropDown.options[dropDown.selectedIndex].value;
+    const inginiousLanguage = dropDown.options[dropDown.selectedIndex].value;
     return inginiousLanguage;
 }
 
 function convertInginiousLanguageToCodemirror(inginiousLanguage) {
-    var languages = {
+    const languages = {
         "java7": "java",
         "java8": "java",
         "js": "javascript",
@@ -81,6 +80,15 @@ function studio_init_template_notebook_file(well, pid, problem) {
 
 function load_input_notebook_file(submissionid, key, input) {
     load_input_file(submissionid, key, input);
+    const url = $('form#task').attr("action") + "?submissionid=" + submissionid + "&questionid=" + key;
+    $.ajax({
+        url: url,
+        method: "GET",
+        dataType: 'json',
+        success: function (data) {
+            render_notebook(data)
+        }
+    });
 }
 
 function studio_init_template_code_file_multiple_languages(well, pid, problem) {
@@ -139,21 +147,22 @@ function toggle_display_new_subproblem_option() {
     else new_subproblem_element.show();
 }
 
-function notebook_start_renderer() {
-    const root = this;
+const render_notebook = function (ipynb) {
     const notebook_holder = $("#notebook-holder")[0];
+    $("#notebook-holder").hide();
+    const notebook = this.notebook = nb.parse(ipynb);
+    while (notebook_holder.hasChildNodes()) {
+        notebook_holder.removeChild(notebook_holder.lastChild);
+    }
+    notebook_holder.appendChild(notebook.render());
+    Prism.highlightAll();
+    $("#notebook-holder").show();
+};
 
-    const render_notebook = function (ipynb) {
-        $("#notebook-holder").hide();
-        const notebook = root.notebook = nb.parse(ipynb);
-        while (notebook_holder.hasChildNodes()) {
-            notebook_holder.removeChild(notebook_holder.lastChild);
-        }
-        notebook_holder.appendChild(notebook.render());
-        Prism.highlightAll();
-        $("#notebook-holder").show();
-    };
-
+function notebook_start_renderer() {
+    const notebook_holder_html = '<div class="DivToScroll DivWithScroll" id="notebook-holder" hidden></div>'
+    let taskAlert = $("#task_alert");
+    taskAlert.after(notebook_holder_html);
     const load_file = function (file) {
         const reader = new FileReader();
         reader.onload = function (e) {
@@ -169,10 +178,16 @@ function notebook_start_renderer() {
         file_input.onchange = function (e) {
             const file = this.files[0];
             if (file === undefined || file.name.split('.')[1] !== 'ipynb') {
+                $("#notebook-holder").html("");
                 $("#notebook-holder").hide();
                 return;
             }
             load_file(file);
+        };
+        file_input.onclick = function () {
+            this.value = null;
+            $("#notebook-holder").html("");
+            $("#notebook-holder").hide();
         };
     } catch (e) {
     }

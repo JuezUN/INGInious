@@ -3,6 +3,7 @@ import tempfile
 import json
 import ast
 from collections import OrderedDict
+from math import ceil
 
 from inginious.frontend.pages.course_admin.task_edit import CourseEditTask
 from .grader_form import GraderForm, InvalidGraderError
@@ -75,11 +76,31 @@ class NotebookForm(GraderForm):
             self.task_data["notebook_filename"] = "notebook"
         self.task_data["notebook_setup_code_all_tests"] = self.task_data.get("notebook_setup_code_all_tests",
                                                                              "").strip()
+
+        self.task_data["notebook_time_limit_test_case"] = int(
+            ceil(float(self.task_data.get("notebook_time_limit_test_case", 5))))
+        self.task_data["notebook_memory_limit_test_case"] = int(
+            ceil(float(self.task_data.get("notebook_memory_limit_test_case", 50))))
         self.task_data['grader_test_cases'] = self.parse_and_validate_tests()
+
+        total_cases = len(self.task_data['grader_test_cases'])
+        # Additional time to calculate submission feedback.
+        _additional_time_limit = 20
+        # Update the grading container time and memory limit depending on amount of tests.
+        self.task_data['limits']['time'] = total_cases * self.task_data[
+            'notebook_time_limit_test_case'] + _additional_time_limit
+        self.task_data['limits']['memory'] = total_cases * self.task_data[
+            'notebook_memory_limit_test_case']
 
     def validate(self):
         if not _is_python_syntax_code_right(self.task_data["notebook_setup_code_all_tests"]):
             raise InvalidGraderError("Syntax error in setup code for all tests")
+
+        if self.task_data["notebook_time_limit_test_case"] < 1:
+            raise InvalidGraderError("Time limit for test cases must be positive and integer")
+
+        if self.task_data["notebook_memory_limit_test_case"] < 1:
+            raise InvalidGraderError("Memory limit for test cases must be positive and integer")
 
         for test_index, test in enumerate(self.task_data["grader_test_cases"]):
             if not _is_python_syntax_code_right(test["setup_code"]):
@@ -136,9 +157,9 @@ class NotebookForm(GraderForm):
 
     def _generate_ok_test_files(self):
         for test_index, test in enumerate(self.task_data["grader_test_cases"]):
-            test_name = "\'{}\'".format(test["name"])
+            test_name = "\'{}\'".format(test["name"].replace('\'', '\\\''))
             test_weight = test["weight"]
-            test_setup_code = _parse_code_to_doctest(self._get_test_setup_code(test))
+            test_setup_code = _parse_code_to_doctest(self._get_test_setup_code(test)).replace('"""', "'''")
             test_cases = test["cases"]
             test_suites_str = ""
             for index, case in test_cases.items():
@@ -161,6 +182,7 @@ class NotebookForm(GraderForm):
                 self.task_fs.copy_to(temporary, dest="ok_tests/")
 
     def _generate_run_file(self):
+        time = self.task_data["notebook_time_limit_test_case"]
         problem_id = self.task_data["grader_problem_id"]
         tests = [(test["name"], "q{:02d}".format(index), len(test["cases"])) for index, test in
                  enumerate(self.task_data["grader_test_cases"])]
@@ -169,7 +191,10 @@ class NotebookForm(GraderForm):
             "treat_non_zero_as_runtime_error": self.task_data["treat_non_zero_as_runtime_error"],
             "filename": "{}".format(self.task_data["notebook_filename"]),
             "show_debug_info_for": [index for index, test_case in enumerate(self.task_data["grader_test_cases"])
-                                    if test_case["show_debug_info"]]
+                                    if test_case["show_debug_info"]],
+            "time_limit": time,
+            "hard_time_limit": time * 2 + 5,
+            "memory_limit": self.task_data["notebook_memory_limit_test_case"]
         }
 
         with open(_RUN_FILE_TEMPLATE_PATH, "r") as template, tempfile.TemporaryDirectory() as temporary:
@@ -210,10 +235,18 @@ def _is_python_syntax_code_right(code):
 
 
 def _parse_code_to_doctest(code):
-    parsed_code = ""
-    code_lines = [line.strip() for line in code.split('\n') if line.strip()]
+    parsed_code = []
+    # Parse the code in a Abstract Syntax Tree to parse correctly the code
+    parser = ast.parse(code)
+    # Generate a set with line numbers of lines that must start with a '>>>'.
+    # This let us know the code that uses more than une line.
+    main_lines = {child_node.lineno - 1 for child_node in parser.body}
+    code_lines = [line for line in code.split('\n') if line]
     for index, line in enumerate(code_lines):
-        parsed_code += ">>> {}".format(line)
+        if index not in main_lines:
+            parsed_code.append("... {}".format(line))
+        else:
+            parsed_code.append(">>> {}".format(line))
         if index + 1 < len(code_lines):
-            parsed_code += "\n"
-    return parsed_code
+            parsed_code.append("\n")
+    return ''.join(parsed_code)
