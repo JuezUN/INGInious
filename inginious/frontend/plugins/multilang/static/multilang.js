@@ -89,6 +89,7 @@ function load_input_notebook_file(submissionid, key, input) {
             render_notebook(data)
         }
     });
+    highlight_code();
 }
 
 function studio_init_template_code_file_multiple_languages(well, pid, problem) {
@@ -155,7 +156,7 @@ const render_notebook = function (ipynb) {
         notebook_holder.removeChild(notebook_holder.lastChild);
     }
     notebook_holder.appendChild(notebook.render());
-    Prism.highlightAll();
+    highlight_code();
     $("#notebook-holder").show();
 };
 
@@ -191,6 +192,10 @@ function notebook_start_renderer() {
         };
     } catch (e) {
     }
+}
+
+function highlight_code() {
+    Prism.highlightAll();
 }
 
 jQuery(document).ready(function () {
