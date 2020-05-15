@@ -30,10 +30,7 @@
                 <div class="form-group col-xs-12">
                     <label for="notebook_grader_test_setup_code" class="control-label">
                         Setup code
-                        <i class="fa fa-question-circle" title="Python code executed before running test cases.
-                        This code must be like Python interactive shell, where each line is a different command in the
-                        shell. Control structures that require more than one line like: 'if' 'for', 'try', 'functions'
-                        are not allowed."
+                        <i class="fa fa-question-circle" title="Python3.5 code executed before running test cases."
                            data-toggle="tooltip"></i>
                     </label>
                     <textarea data-x-language="python" data-x-lines="4" class="code-editor form-control"
@@ -48,11 +45,10 @@
                             <label for="notebook_grader_test_case_code">
                                 Case code*
                                 <i class="fa fa-question-circle"
-                                   title="Code to test student's notebook. This code must be like in Python interactive
-                                   shell, where each line a different command in the shell. Control structures that
-                                   require more than one line like: 'if' 'for', 'try', 'functions' are not allowed.
-                                   The last line must print the output and only once, which is compared with the
-                                   expected output."
+                                   title="Python3.5 Code to test student's notebook. This code is run like in Python
+                                   Shell, thus there are some lines that might generate an output as in Python Shell.
+                                   Then, the first line that generates an output will be compared with the expected
+                                   output."
                                    data-toggle="tooltip"></i>
                             </label>
                             <textarea data-x-language="python" data-x-lines="4" class="code-editor form-control"
