@@ -1,10 +1,10 @@
 import web
 import os
 import yaml
-import inginious.frontend.pages.api._api_page as api
 
-from inginious.frontend.pages.api._api_page import APIAuthenticatedPage
+from inginious.frontend.pages.api._api_page import APIAuthenticatedPage, APIError
 from inginious.common.course_factory import CourseNotFoundException, CourseUnreadableException, InvalidNameException
+
 
 class TaskPreviewFileAPI(APIAuthenticatedPage):
     def API_GET(self):
@@ -14,28 +14,25 @@ class TaskPreviewFileAPI(APIAuthenticatedPage):
         task_id = web.input(task_id=None).task_id
         language = web.input(language=None).language
         if course_id is None:
-            raise api.APIError(400, {"error" : "course_id is mandatory"})
+            raise APIError(400, {"error": "course_id is mandatory"})
         if task_id is None:
-            raise api.APIError(400, {"error": "task_id is mandatory"})
+            raise APIError(400, {"error": "task_id is mandatory"})
         if language is None:
-            raise api.APIError(400, {'error': 'language is mandatory'})
+            raise APIError(400, {'error': 'language is mandatory'})
 
         try:
             course = self.course_factory.get_course(course_id)
         except (CourseNotFoundException, InvalidNameException, CourseUnreadableException):
-            raise api.APIError(400, {"error", "The course does not exists or the user does not have permissions"})
-        
+            raise APIError(400, {"error", "The course does not exists or the user does not have permissions"})
+
         if not self.user_manager.course_is_user_registered(course, username):
-            raise api.APIError(400, {"error", "The course does not exists or the user does not have permissions"})
-
-        
-
+            raise APIError(400, {"error", "The course does not exists or the user does not have permissions"})
 
         try:
             task = course.get_task(task_id)
         except:
-            raise api.APIError(400, {"error", "The task does not exists in the course"})
-        
+            raise APIError(400, {"error", "The task does not exists in the course"})
+
         try:
             # file_preview = open(os.path.join(task.get_fs().prefix, 'preview'), 'r')
             task_yaml = open(os.path.join(task.get_fs().prefix, 'task.yaml'), 'r')
@@ -49,4 +46,3 @@ class TaskPreviewFileAPI(APIAuthenticatedPage):
                 return 200, ""
         except:
             return 200, ""
-        
