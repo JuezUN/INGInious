@@ -1,14 +1,17 @@
 import os
 import json
-from collections import OrderedDict
+
 from inginious.frontend.pages.course_admin.task_edit import CourseEditTask
+
 _BASE_RENDERER_PATH = os.path.dirname(__file__)
+
 
 def code_preview_tab(course, taskid, task_data, template_helper):
     tab_id = 'tab_preview'
     link = '<i class="fa fa-check-circle fa-fw"></i>&nbsp; Preview'
     code_preview_pairs = json.dumps(task_data.get('code_preview_pairs', []))
-    content = template_helper.get_custom_renderer(_BASE_RENDERER_PATH, layout=False).code_preview(taskid, code_preview_pairs)
+    content = template_helper.get_custom_renderer(_BASE_RENDERER_PATH, layout=False).code_preview(taskid,
+                                                                                                  code_preview_pairs)
     return tab_id, link, content
 
 
