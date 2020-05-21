@@ -59,7 +59,7 @@ class NotebookForm(GraderForm):
             # Strip test cases
             for case_index, case in test["cases"].items():
                 case["code"] = case["code"].strip()
-                case["expected_output"] = case["expected_output"].rstrip('\n')
+                case["expected_output"] = case["expected_output"]
 
             notebook_tests.append(test)
 
@@ -127,7 +127,7 @@ class NotebookForm(GraderForm):
 
     @staticmethod
     def _parse_case_to_ok_suite(case, setup_code):
-        case_code = _parse_code_to_doctest(case["code"])
+        case_code = _parse_code_to_doctest(case["code"]).replace('"""', "'''")
         expected_output = case["expected_output"]
         suite_template = """{
                 'cases': [
@@ -218,7 +218,7 @@ class NotebookForm(GraderForm):
         with open(_NOTEBOOK_OK_FILE_TEMPLATE_PATH, "r") as template, tempfile.TemporaryDirectory() as temporary:
             ok_file_template = json.load(template)
             ok_file_template["name"] = task_name
-            ok_file_template["src"] = [filename_py_src]
+            ok_file_template["src"] = ["/task/student/" + filename_py_src]
             target_ok_file = os.path.join(temporary, ok_file_name)
 
             with open(target_ok_file, "w") as file:
