@@ -1,77 +1,73 @@
 $def with (taskid, code_preview_pairs)
 
 <div class="jumbotron">
-    <div class="row" id="testbench_test" style="display: flex;">
+    <div class="row" id="code_preview" style="display: flex;">
         <div class="form-group col-xs-12">
             <div class="col-xs-4">
-                <div><label  class="control-label">Languages</label></div>
+                <div><label class="control-label">Languages</label></div>
                 <select class="form-control" id="languages_for_code_preview">
                 </select>
             </div>
             <div class="col-xs-4">
-                <div><label  class="control-label">Files</label></div>
+                <div><label class="control-label">Files</label></div>
                 <select class="form-control" id="files_for_code_preview">
                 </select>
             </div>
             <div class="col-xs-4" style="display: flex; height: 100%;">
                 <button type="button" class="btn btn-default btn-block" style="align-self: flex-end;"
-                onclick="add_code_preview_file()">Add/Update</button>
+                        onclick="add_code_preview_file()">Add/Update
+                </button>
             </div>
-        </div>        
+        </div>
     </div>
     <div id="code_preview_files_box">
-
     </div>
 </div>
 
-
-
 <script type="text/javascript">
+    code_preview_languages_used = {};
+
+    $$('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+        const languages = $$(".checkbox_language");
+        $$(".code_preview_option").remove();
+        for (let i = 0; i < languages.length; i++) {
+            if (languages[i].checked)
+                $$('#languages_for_code_preview').append('<option class="code_preview_option" value="' +
+                    languages[i].value + '">' + languages[i].value + '</option>');
+        }
 
 
-code_preview_languages_used = {};
+        $$.get('/api/grader_generator/test_file_api', {
+            course_id: courseId,
+            task_id: taskId
+        }, function (files) {
+            let previewFileSelect = $$("#files_for_code_preview");
 
-$$('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-    var languages = $$(".checkbox_language")
-    $$(".code_preview_option").remove();
-    for(var i = 0; i < languages.length; i++){
-        if( languages[i].checked )
-            $$('#languages_for_code_preview').append('<option class="code_preview_option" value="' + languages[i].value + '">' +  languages[i].value +'</option>');
-    }
+            previewFileSelect.empty();
 
+            $$.each(files, function (index, file) {
+                const file_is_test_case = file.complete_name.includes('.in') || file.complete_name.includes('.out');
+                if (file.is_directory || file_is_test_case || file.complete_name === 'run') {
+                    return;
+                }
 
-    $$.get('/api/grader_generator/test_file_api', {
-        course_id: courseId,
-        task_id: taskId
-    }, function(files) {
-        let previewFileSelect = $$("#files_for_code_preview");
+                let entry = $$("<option>", {
+                    "value": file.complete_name,
+                    "text": file.complete_name
+                });
 
-        previewFileSelect.empty();
+                previewFileSelect.append(entry);
 
-        $$.each(files, function(index, file) {
-          let file_is_test_case = file.complete_name.includes('.in') || file.complete_name.includes('.out')
-          if (file.is_directory || file_is_test_case || file.complete_name === 'run') {
-            return;
-          }
+            });
+        }, "json");
 
-          let entry = $$("<option>", {
-            "value": file.complete_name,
-            "text": file.complete_name
-          });
+        update_code_preview_files();
+    });
 
-          previewFileSelect.append(entry);
-
-        });
-    }, "json");
-
-    update_code_preview_files();
-
-});
-
-function update_code_preview_files(){
-    $$('#code_preview_files_box').empty()
-    for( key in code_preview_languages_used ){
-        let template = `
+    function update_code_preview_files() {
+        $$('#code_preview_files_box').empty();
+        for (let key in code_preview_languages_used) {
+            const template = `
             <div class="row" id="code-preview-$${key}-row">
                 <div class="form-group col-xs-12">
                     <div class="col-xs-4">
@@ -85,30 +81,28 @@ function update_code_preview_files(){
                         onclick="remove_code_preview_pair('$${key}');">Remove</button>
                 </div>
             </div>
-            `
+            `;
 
             $$('#code_preview_files_box').append(template);
+        }
     }
 
-}
+    function add_code_preview_file() {
+        const lang = $$('#languages_for_code_preview > option:selected')[0].value;
+        const file = $$('#files_for_code_preview > option:selected')[0].value;
 
-function add_code_preview_file(){
-    let lang = $$('#languages_for_code_preview > option:selected')[0].value
-    let file = $$('#files_for_code_preview > option:selected')[0].value
+        code_preview_languages_used[lang] = file;
+        update_code_preview_files();
+    }
 
-    code_preview_languages_used[lang] = file;
-    update_code_preview_files();
-}
+    function remove_code_preview_pair(key) {
+        delete code_preview_languages_used[key];
+        $$(`#code-preview-$${key}-row`).remove()
+    }
 
-function remove_code_preview_pair(key){
-    delete code_preview_languages_used[key];
-    $$(`#code-preview-$${key}-row`).remove()
-}
-
-$$ (document).ready(function() {
-    
-    code_preview_languages_used = $:{code_preview_pairs};
-    if(code_preview_languages_used === null)
-        code_preview_languages_used = {}
-});
+    $$ (document).ready(function() {
+        code_preview_languages_used = $:{code_preview_pairs};
+        if(code_preview_languages_used === null)
+            code_preview_languages_used = {}
+    });
 </script>

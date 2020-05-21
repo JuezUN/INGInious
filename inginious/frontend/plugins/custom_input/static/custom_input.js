@@ -18,6 +18,14 @@ function displayCustomTestAlertError(content) {
     displayTaskStudentAlertWithProblems(content, "danger");
 }
 
+function displayTimeOutAlert(content) {
+    displayTaskStudentAlertWithProblems(content, "warning");
+}
+
+function displayOverflowAlert(content) {
+    displayTaskStudentAlertWithProblems(content, "danger");
+}
+
 function apiCustomInputRequest(inputId, taskform){
     // POST REQUEST for running code with custom input
     let customTestOutputArea = $('#customoutput-'+inputId);
@@ -41,20 +49,25 @@ function apiCustomInputRequest(inputId, taskform){
                     displayTimeOutAlert(data);
                 } else if (result == "overflow") {
                     displayOverflowAlert(data);
-                } else if (result != "success" ){
+                } else if (result != "success") {
                     displayCustomTestAlertError(data);
                 }
             }
         } else if ('status' in data && data['status'] == 'error') {
             customTestOutputArea.html(placeholderSpan);
-            displayCustomTestAlertError(data);
+            if (data["result"] == "timeout") {
+                data["text"] = "Your code did not finished. Your code TIMED OUT.";
+                displayTimeOutAlert(data);
+            } else {
+                displayCustomTestAlertError(data);
+            }
         } else {
             customTestOutputArea.html(placeholderSpan);
             displayCustomTestAlertError({});
         }
 
         unblurTaskForm();
-    }
+    };
 
     blurTaskForm();
     resetAlerts();

@@ -16,10 +16,7 @@ def init(plugin_manager, course_factory, client, config):
     if use_minified:
         plugin_manager.add_hook("javascript_footer", lambda: "/code_preview/static/js/code_preview_load.min.js")
     else:
-        plugin_manager.add_hook("javascript_footer", lambda: "/code_preview/static/js/code_preview_load.js")    
+        plugin_manager.add_hook("javascript_footer", lambda: "/code_preview/static/js/code_preview_load.js")
 
     plugin_manager.add_hook('task_editor_tab', code_preview_tab)
-    plugin_manager.add_hook('task_editor_submit', on_task_editor_submit)    
-    
-
-
+    plugin_manager.add_hook('task_editor_submit', on_task_editor_submit)

@@ -81,7 +81,7 @@ jQuery(document).ready(function () {
         documentationElement.attr("target", "_blank");
     }
 
-    function stopSideBar(){
+    function stopSideBar() {
         $("#sidebar_affix").css('position', 'static');
     }
 
@@ -134,26 +134,26 @@ jQuery(document).ready(function () {
         });
     }
 
-    function rewrite_task_title(){
+    function rewrite_task_title() {
         /**
          * This function writes the name of the task instead of the id
          * on the 'edit task' section.
          */
-        if( location.href.indexOf("/edit/task") > -1){
+        if (location.href.indexOf("/edit/task") > -1) {
             let title = $('#main_container #content h2')[0].innerHTML
             let firstletter = title.search("\"") + 1;
             let lastletter = title.substring(firstletter).search("\"");
-            
+
             let new_title = $("#edit_task_tabs_content #name").val();
-            if (new_title !== ""){
+            if (new_title !== "") {
                 $('#main_container #content h2')[0].innerHTML = title.substring(0, firstletter) + new_title + title.substring(firstletter + lastletter);
             }
         }
     }
 
-    function modifyCourseCreateAlertMessage(){
+    function modifyCourseCreateAlertMessage() {
         const alertDiv = $('.alert-danger');
-        if (location.pathname === '/mycourses' && alertDiv.length){
+        if (location.pathname === '/mycourses' && alertDiv.length) {
             const newMsg = "Failed to create the course. It might either already exist or contain an invalid character (only alphanumeric in addition to \"_\" and \"-\" are accepted).";
             $('.alert-danger')[0].childNodes[2].textContent = newMsg;
         }
@@ -170,3 +170,16 @@ jQuery(document).ready(function () {
     rewrite_task_title();
     modifyCourseCreateAlertMessage();
 });
+
+this.studio_display_task_submit_message = (content, type, dismissible) => {
+    const code = getAlertCode(content, type, dismissible);
+    $('#task_edit_submit_status').html(code);
+
+    if (dismissible) {
+        window.setTimeout(function () {
+            $("#task_edit_submit_status").children().fadeTo(1000, 0).slideUp(1000, function () {
+                $(this).remove();
+            });
+        }, 10000);
+    }
+};
