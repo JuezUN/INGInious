@@ -93,30 +93,37 @@ class NotebookForm(GraderForm):
             'notebook_memory_limit_test_case']
 
     def validate(self):
+        super(NotebookForm, self).validate()
         if not _is_python_syntax_code_right(self.task_data["notebook_setup_code_all_tests"]):
-            raise InvalidGraderError("Syntax error in setup code for all tests")
+            raise InvalidGraderError("Grader: Syntax error in setup code for all tests")
 
         if self.task_data["notebook_time_limit_test_case"] < 1:
-            raise InvalidGraderError("Time limit for test cases must be positive and integer")
+            raise InvalidGraderError("Grader: Time limit for test cases must be positive and integer")
+
+        if self.task_data["notebook_time_limit_test_case"] > 30:
+            raise InvalidGraderError("Grader: Time limit exceeds the maximum allowed (30 s.).")
 
         if self.task_data["notebook_memory_limit_test_case"] < 1:
-            raise InvalidGraderError("Memory limit for test cases must be positive and integer")
+            raise InvalidGraderError("Grader: Memory limit for test cases must be positive and integer")
+
+        if self.task_data["notebook_memory_limit_test_case"] > 600:
+            raise InvalidGraderError("Grader: Memory limit exceeds the maximum allowed (600 MBs).")
 
         for test_index, test in enumerate(self.task_data["grader_test_cases"]):
             if not _is_python_syntax_code_right(test["setup_code"]):
-                raise InvalidGraderError("Syntax error in setup code of '%s' test" % test["name"])
+                raise InvalidGraderError("Grader: Syntax error in setup code of '%s' test" % test["name"])
 
             if test["weight"] <= 0:
-                raise InvalidGraderError("The weight must be a positive number")
+                raise InvalidGraderError("Grader: The weight must be a positive number")
 
             if not test.get("cases", None):
                 raise InvalidGraderError(
-                    "You must provide test cases for test '%s' to autogenerate the grader" % test["name"])
+                    "Grader: You must provide test cases for test '%s' to autogenerate the grader" % test["name"])
 
             for case_index, case in test["cases"].items():
                 if not _is_python_syntax_code_right(case["code"]):
                     raise InvalidGraderError(
-                        "Syntax error in code on test '%s', case %s" % (test["name"], int(case_index) + 1))
+                        "Grader: Syntax error in code on test '%s', case %s" % (test["name"], int(case_index) + 1))
 
     def generate_grader(self):
         """ This method generates a grader through the form data """

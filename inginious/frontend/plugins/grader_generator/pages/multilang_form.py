@@ -86,6 +86,18 @@ class MultilangForm(GraderForm):
         self.task_data['limits']['memory'] = total_cases * self.task_data['output_limit_test_case'] + \
                                              _additional_memory_limit
 
+    def validate(self):
+        super(MultilangForm, self).validate()
+
+        if self.task_data['memory_limit_test_case'] > 500:
+            raise InvalidGraderError("Grader: Memory limit exceeds the maximum allowed (500 MBs).")
+
+        if self.task_data['time_limit_test_case'] > 30:
+            raise InvalidGraderError("Grader: Time limit exceeds the maximum allowed (30 s).")
+
+        if self.task_data['output_limit_test_case'] > 30:
+            raise InvalidGraderError("Grader: Output limit exceeds the maximum allowed (30 MBs).")
+
     def generate_grader(self):
         """ This method generates a grader through the form data """
 
