@@ -34,7 +34,7 @@ class AnalyticsAPI(SuperadminAPI):
         service = input_dict.get('service', None)
         start_date = input_dict.get('start_date', None)
 
-        # Do all the consult
+        # Generate query
         consult_parameters = {}
         users = OrderedDict()
         if username:
@@ -44,21 +44,13 @@ class AnalyticsAPI(SuperadminAPI):
         if start_date:
             start_date = datetime.datetime(*map(int, start_date.split('-')))
             consult_parameters['date'] = {'$gte': start_date}
-        # if courseid is not None:
-        #     course = self.course_factory.get_course(courseid)
-        #     users = sorted(list(
-        #         self.user_manager.get_users_info(self.user_manager.get_course_registered_users(course, False)).items()),
-        #         key=lambda k: k[1][0] if k[1] is not None else "")
-        #
-        #     users = OrderedDict(sorted(list(self.user_manager.get_users_info(course.get_staff()).items()),
-        #                                key=lambda k: k[1][0] if k[1] is not None else "") + users)
 
         results = []
         for result in self.database.analytics.find(consult_parameters):
             result['date'] = result['date'].isoformat()
             result['_id'] = str(result['_id'])
             if result['username'] in users:
-                    results.append(result)
+                results.append(result)
             else:
                 results.append(result)
         return 200, results
