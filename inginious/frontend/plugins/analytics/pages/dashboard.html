@@ -1,4 +1,4 @@
-$def with(duration_time, service, username, services)
+$def with(services)
 
 $var title: Analytics
 
@@ -12,50 +12,70 @@ $var Navbar: $:NavbarF()
 
 <h2>UNCode Analytics</h2>
 <div>
-    <form>
-        <div class="form-group col-xs-12">
-            <div class="col-xs-4">
-                <label for="analytics_duration_time" class="control-label">
-                    Duration time:
-                </label>
-                <select id="analytics_duration_time" name="analytics_duration_time">
-                    <option name="1" value=1 selected>Last year</option>
-                    <option name="3" value=3>Last 3 year</option>
-                    <option name="5" value=5>Last 5 year</option>
-                </select>
-            </div>
-            <div class="col-xs-4">
-                <label for="analytics_service" class="control-label">
-                    Service:
-                </label>
-                <select id="analytics_service" name="analytics_service">
-                    <option name="all" value="" selected>All</option>
-                    $for key, value in services.items():
+    <div class="panel panel-default">
+        <div class="panel-heading">Apply filters</div>
+        <div class="panel-body">
+            <div class="form-group col-xs-12">
+                <div class="col-xs-4">
+                    <label for="analytics_date_filter" class="control-label">
+                        Analytics since:
+                    </label>
+                    <div class='input-group date' id='analytics_date_filter'>
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input id="analytics_date" name="analytics_date" data-date-format="YYYY-MM-DD"
+                               placeholder="2020-01-01" type='text' class="form-control"/>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <label for="analytics_service" class="control-label">
+                        Service:
+                    </label>
+                    <select id="analytics_service" name="analytics_service" class="form-control">
+                        <option name="all" value="" selected>All</option>
+                        $for key, value in services.items():
                         <option name="$key" value="$key">$value</option>
-                </select>
+                    </select>
+                </div>
+                <div class="col-xs-4">
+                    <label for="analytics_username" class="control-label">
+                        Username:
+                    </label>
+                    <input id="analytics_username" name="analytics_username" type="text" placeholder="username"
+                           class="form-control">
+                </div>
             </div>
-            <div class="col-xs-4">
-                <label for="analytics_username" class="control-label">
-                    Student username:
-                </label>
-                <input id="analytics_username" name="analytics_username" type="text" value="$username">
+            <div class="col-xs-12 text-center">
+                <button onclick="on_search();" class="btn btn-success">Update</button>
             </div>
         </div>
-        <button onclick="on_search();" class="btn btn-success">Update</button>
-    </form>
-    <hr>
-    <div class="calender-map" id="analytics_calendar_map"></div>
-    <div id="analytics_time_series"></div>
-    <div style="display: flex">
-        <div id="analytics_box_plot" style="width: 50%"></div>
-        <div id="analytics_radar" style="width: 50%"></div>
+    </div>
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a id="heat-map-tab" data-toggle="tab" href="#heat-map-tab-content">Heat map</a></li>
+    <li><a id="plot-visits-per-day-tab" data-toggle="tab" href="#plot-visits-per-day-tab-content">Visits per day</a></li>
+    <li><a id="box-plot-tab" data-toggle="tab" href="#box-plot-tab-content">Box plot</a></li>
+    <li><a id="radar-plot-tab" data-toggle="tab" href="#radar-plot-tab-content">Radar plot</a></li>
+</ul>
+
+<div class="tab-content">
+    <div id="heat-map-tab-content" class="tab-pane fade in active">
+        <h3 class="text-center">Calendar visits</h3>
+        <div id="analytics_heat_map_calendar" class="statistics-plot calender-map"><!-- Chart will be drawn inside this DIV --></div>
+    </div>
+    <div id="plot-visits-per-day-tab-content" class="tab-pane fade in">
+        <h3>Visits per day</h3>
+        <div id="analytics_plot_visits_per_day" class="statistics-plot"><!-- Chart will be drawn inside this DIV --></div>
+    </div>
+    <div id="box-plot-tab-content" class="tab-pane fade in">
+        <h3>Box plot</h3>
+        <div id="analytics_box_plot" class="statistics-plot"><!-- Chart will be drawn inside this DIV --></div>
+    </div>
+    <div id="radar-plot-tab-content" class="tab-pane fade in">
+        <h3>Radar plot</h3>
+        <div id="analytics_radar_plot" class="statistics-plot"><!-- Chart will be drawn inside this DIV --></div>
     </div>
 </div>
 <script type="text/javascript">
-    const analytics_duration_time = '$duration_time';
-    const analytics_service = '$service';
-    const analytics_username = '$username';
     const all_services = $:{dict(services)};
-    $$("#analytics_duration_time").val(analytics_duration_time);
-    $$("#analytics_service").val(analytics_service);
 </script>

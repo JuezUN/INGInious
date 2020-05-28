@@ -11,18 +11,66 @@ function get_services_names(services = []) {
 function generate_get_url_plot(path) {
     const request = [path];
     const parameters = [];
-    if (analytics_username || analytics_service || analytics_duration_time)
+
+    const analytics_username_filter = $("#analytics_username").val();
+    const analytics_start_date_filter = $("#analytics_date").val();
+    const analytics_service_filter = $("#analytics_service").val();
+
+    if (analytics_username_filter || analytics_start_date_filter || analytics_service_filter)
         request.push("?");
-    if (analytics_username)
-        parameters.push('username=' + analytics_username);
-    if (analytics_service)
-        parameters.push('service=' + analytics_service);
-    if (analytics_duration_time)
-        parameters.push('time=' + analytics_duration_time);
+    if (analytics_username_filter)
+        parameters.push('username=' + analytics_username_filter);
+    if (analytics_service_filter)
+        parameters.push('service=' + analytics_service_filter);
+    if (analytics_start_date_filter)
+        parameters.push('start_date=' + analytics_start_date_filter);
     request.push(parameters.join('&'));
     return request.join('');
 }
 
 function on_search() {
-    location.replace(location.pathname + "?");
+    $('.active > a[data-toggle="tab"]').trigger('shown.bs.tab');
+}
+
+
+const AnalyticsDiagram = (function () {
+    function AnalyticsDiagram() {
+        this._cachedPromise = null;
+    }
+
+    AnalyticsDiagram.prototype.plot = function () {
+        this._plotData();
+    };
+
+    AnalyticsDiagram.prototype._plotData = function () {
+        throw 'Not implemented';
+    };
+
+    return AnalyticsDiagram;
+})();
+
+$(function () {
+
+    const tabToAnalyticsPlot = {
+        "heat-map-tab": new HeatMap(),
+        "plot-visits-per-day-tab": new VisitsPerDayChart(),
+        "box-plot-tab": new BoxPlot(),
+        "radar-plot-tab": new RadarPlot()
+    };
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        const analytics_plot = tabToAnalyticsPlot[e.target.id];
+        if (analytics_plot) {
+            analytics_plot.plot();
+        }
+    });
+    $('.active > a[data-toggle="tab"]').trigger('shown.bs.tab');
+
+    $('#analytics_date_filter').datetimepicker({locale: 'en', sideBySide: true, maxDate: moment(), format:'YYYY-MM-DD'});
+
+    $("#analytics_date").val(`${new Date().getFullYear()}-01-01`);
+    $("#analytics_service").val("");
+});
+
+function parse_str_to_date(str_date){
+    return new Date(str_date);
 }
