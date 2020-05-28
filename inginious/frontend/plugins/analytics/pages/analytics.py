@@ -11,20 +11,19 @@ class AnalyticsPage(SuperadminAuthPage):
         self.template_helper.add_javascript("https://cdn.plot.ly/plotly-latest.min.js", position="header")
 
         if use_minified():
-            self.template_helper.add_javascript("/analytics/static/analytics.min.js")
-            self.template_helper.add_css("/analytics/static/analytics.min.css")
-
+            self.template_helper.add_javascript("/analytics/static/js/analytics.min.js")
+            self.template_helper.add_css("/analytics/static/css/analytics.min.css")
         else:
-            self.template_helper.add_javascript("/analytics/static/analytics.js")
-            self.template_helper.add_javascript("/analytics/static/calendar_view.js")
-            self.template_helper.add_javascript("/analytics/static/time_series.js")
-            self.template_helper.add_javascript("/analytics/static/box_plot.js")
-            self.template_helper.add_javascript("/analytics/static/radar.js")
-            self.template_helper.add_css("/analytics/static/dashboard.css")
+            self.template_helper.add_javascript("/analytics/static/js/analytics.js")
+            self.template_helper.add_javascript("/analytics/static/js/calendar_view.js")
+            self.template_helper.add_javascript("/analytics/static/js/time_series.js")
+            self.template_helper.add_javascript("/analytics/static/js/box_plot.js")
+            self.template_helper.add_javascript("/analytics/static/js/radar.js")
+            self.template_helper.add_css("/analytics/static/css/analytics.css")
 
         all_services = ServicesCollectionManagerSingleton.get_instance().get_all_services()
         return (
             self.template_helper
                 .get_custom_renderer('frontend/plugins/analytics/pages')
-                .dashboard(services=all_services)
+                .analytics(services=all_services)
         )

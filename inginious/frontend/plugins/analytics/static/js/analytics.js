@@ -32,6 +32,9 @@ function on_search() {
     $('.active > a[data-toggle="tab"]').trigger('shown.bs.tab');
 }
 
+function parse_str_to_date(str_date){
+    return new Date(str_date);
+}
 
 const AnalyticsDiagram = (function () {
     function AnalyticsDiagram() {
@@ -70,7 +73,3 @@ $(function () {
     $("#analytics_date").val(`${new Date().getFullYear()}-01-01`);
     $("#analytics_service").val("");
 });
-
-function parse_str_to_date(str_date){
-    return new Date(str_date);
-}
