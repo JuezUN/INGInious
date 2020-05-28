@@ -109,5 +109,6 @@ function runCustomTest (inputId) {
             taskForm.set("taskid", result['taskid']);
             apiCustomInputRequest(inputId, taskForm);
         }) 
-    }    
+    }
+    $.post('/api/analytics/', {service: {"key": "custom_input", "name": "Custom input"}});
 }

@@ -1,18 +1,9 @@
-const username = document.getElementById("student_username").value;
-const service = document.getElementById('service').value;
-parameters = [];
+// const username = document.getElementById("student_username").value;
+// const service = document.getElementById('service').value;
+// parameters = [];
+const time_series_request = generate_get_url_plot("/api/analytics/");
 
-let request = "/api/analytics/";
-if (username || service)
-    request += "?";
-if (username)
-    parameters.push('username=' + username);
-if (service)
-    parameters.push('service=' + service);
-
-request += parameters.join('&');
-
-Plotly.d3.json(request, function (err, rows) {
+Plotly.d3.json(time_series_request, function (err, rows) {
 
     function unpack(rows, key) {
         return rows.map(function (row) {
@@ -20,7 +11,7 @@ Plotly.d3.json(request, function (err, rows) {
         });
     }
 
-// visits -> key:date -> key:service -> key:visits -> int
+    // visits -> key:date -> key:service -> key:visits -> int
     const visits = {};
 
     rows.forEach((item, _) => {
@@ -42,7 +33,7 @@ Plotly.d3.json(request, function (err, rows) {
 
     const visits_keys_sorted = Object.keys(visits).sort();
 
-    data = [];
+    let data = [];
     const data_by_service = {};
     visits_keys_sorted.forEach((str_date, _) => {
         // Sum over all the services
@@ -81,14 +72,14 @@ Plotly.d3.json(request, function (err, rows) {
         traces[service] = {
             type: "scatter",
             mode: "lines",
-            name: service,
+            name: get_service_name_by_key(service),
             x: unpack(data_by_service[service], 'date'),
             y: unpack(data_by_service[service], 'visits'),
             line: {color: color_scale(index * (1.0 / (len_by_service - 1)))}
         }
     });
 
-    const data = [trace1];
+    data = [trace1];
     for (let service_visit in traces) {
         data.push(traces[service_visit]);
     }
@@ -134,5 +125,5 @@ Plotly.d3.json(request, function (err, rows) {
         }
     };
 
-    Plotly.newPlot('myDiv', data, layout, {showSendToCloud: true});
+    Plotly.newPlot('analytics_time_series', data, layout, {showSendToCloud: true});
 });

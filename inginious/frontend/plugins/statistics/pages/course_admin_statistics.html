@@ -82,7 +82,8 @@ $var Navbar: $:NavbarF()
 
 
 <script type="text/javascript">
-    var adminStatistics = {
+    let adminStatistics = {
         courseId: "$:course.get_id()"
     };
+    $$.post('/api/analytics/', {service: {key: "admin_statistics", name: "Course admin statistics"}});
 </script>

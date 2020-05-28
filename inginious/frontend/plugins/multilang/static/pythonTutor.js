@@ -110,6 +110,6 @@ var PythonTutor = (function () {
 
 function visualizeCode(language, problemId){
     var pythonTutor = new PythonTutor(problemId, language);
-    $.post('/api/analytics/', {service: "python_tutor"});
+    $.post('/api/analytics/', {service: {key: "python_tutor", name: "Python tutor"}});
     pythonTutor.visualize();
 }

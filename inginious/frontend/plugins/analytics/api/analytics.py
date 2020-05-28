@@ -2,21 +2,30 @@ import web
 import datetime
 from collections import OrderedDict
 
-from inginious.frontend.plugins.utils.superadmin_api import SuperadminAPI
-from ..analytics_collection_manager import AnalyticsCollectionManager
+from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
+from ..analytics_collection_manager import AnalyticsCollectionManagerSingleton
+from ..services_collection_manager import ServicesCollectionManagerSingleton
 
 
 class AnalyticsAPI(SuperadminAPI):
     def API_POST(self):
-        manager = AnalyticsCollectionManager(self.database)
+        analytics_manager = AnalyticsCollectionManagerSingleton.get_instance()
+        services_manager = ServicesCollectionManagerSingleton.get_instance()
 
         username = self.user_manager.session_username()
-        service = web.input(service=None).service
-
         session_id = self.user_manager.session_id()
         date = datetime.datetime.now()
-        manager.add_visit(service, username, date, session_id)
-        return 200, ""
+        try:
+            input_dict = web.input()
+            service = {
+                "key": input_dict.get("service[key]", None),
+                "name": input_dict.get("service[name]", None)
+            }
+            analytics_manager.add_visit(service, username, date, session_id)
+            services_manager.add_service(service)
+            return 200, ""
+        except:
+            return 400, "Bad Request."
 
     def API_GET(self):
         self.check_superadmin_rights()

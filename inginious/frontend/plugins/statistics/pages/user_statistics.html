@@ -29,4 +29,5 @@ $var title: My Statistics
     function getCourseId() {
        return "$:course_id";
     }
+    $$.post('/api/analytics/', {service: {key: "user_statistics", name: "User statistics"}});
 </script>

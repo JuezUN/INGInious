@@ -1,3 +1,5 @@
+const color = d3.scale.linear().range(['#ebedf0', '#e2e45b', '#196127']).domain([0, 0.5, 1]);
+let start_year = (new Date).getFullYear() - Number(document.getElementById('analytics_duration_time').value);
 const width = 900,
     height = 105,
     cellSize = 12; // cell size
@@ -8,10 +10,8 @@ const day = d3.time.format("%w"),
     week = d3.time.format("%U"),
     percent = d3.format(".1%"),
     format = d3.time.format("%Y%m%d");
-const color = d3.scale.linear().range(['grey', 'yellow', 'green']).domain([0, 0.5, 1]);
-let start_year = (new Date).getFullYear() - Number(document.getElementById('duration_time').value);
 
-const svg = d3.select(".calender-map").selectAll("svg")
+const svg = d3.select("#analytics_calendar_map").selectAll("svg")
     .data(d3.range((new Date).getFullYear(), start_year, -1))
     .enter().append("svg")
     .attr("width", '100%')
@@ -89,27 +89,25 @@ svg.selectAll(".month")
     })
     .attr("d", monthPath);
 
+function monthPath(t0) {
+    const t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
+        d0 = +day(t0), w0 = +week(t0),
+        d1 = +day(t1), w1 = +week(t1);
+    return "M" + (w0 + 1) * cellSize + "," + d0 * cellSize
+        + "H" + w0 * cellSize + "V" + 7 * cellSize
+        + "H" + w1 * cellSize + "V" + (d1 + 1) * cellSize
+        + "H" + (w1 + 1) * cellSize + "V" + 0
+        + "H" + (w0 + 1) * cellSize + "Z";
+}
 
-const username = document.getElementById("student_username").value;
-const service = document.getElementById('service').value;
-const parameters = [];
-let request = "/api/analytics/";
+const calendar_request = generate_get_url_plot("/api/analytics/");
 
-if (username || service)
-    request += "?";
-if (username)
-    parameters.push('username=' + username);
-if (service)
-    parameters.push('service=' + service);
-
-request += parameters.join('&');
-
-d3.json(request, function (error, csv) {
+d3.json(calendar_request, function (error, csv) {
 
     const visits = {};
     const visits_for_table = {};
 
-    csv.forEach(function (item, index) {
+    csv.forEach(function (item, _) {
         let date = new Date(item.date);
         date.setHours(0);
         date.setMinutes(0);
@@ -118,7 +116,7 @@ d3.json(request, function (error, csv) {
         if (date in visits) {
             visits[date] += 1
         } else {
-            visits[date] = 1
+            visits[date] = 1;
             visits_for_table[date] = []
         }
         visits_for_table[date].push(item);
@@ -168,26 +166,10 @@ d3.json(request, function (error, csv) {
             return color(data[d]);
         })
         .attr("data-title", function (d) {
-            return d.slice(0, 4) + "-" + d.slice(4, 6) + "-" + d.slice(6, 8) + " " + "visits : " + (visits[d.slice(0, 4) + "-" + d.slice(4, 6) + "-" + d.slice(6, 8)] ? visits[d.slice(0, 4) + "-" + d.slice(4, 6) + "-" + d.slice(6, 8)] : 0)
+            return d.slice(0, 4) + "-" + d.slice(4, 6) + "-" + d.slice(6, 8) + " " + "visits : " +
+                (visits[d.slice(0, 4) + "-" + d.slice(4, 6) + "-" + d.slice(6, 8)] ? visits[d.slice(0, 4) + "-" +
+                d.slice(4, 6) + "-" + d.slice(6, 8)] : 0)
         });
     $("rect").tooltip({container: 'body', html: true, placement: 'top'});
 });
 
-// function numberWithCommas(x) {
-//     x = x.toString();
-//     const pattern = /(-?\d+)(\d{3})/;
-//     while (pattern.test(x))
-//         x = x.replace(pattern, "$1,$2");
-//     return x;
-// }
-
-function monthPath(t0) {
-    const t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
-        d0 = +day(t0), w0 = +week(t0),
-        d1 = +day(t1), w1 = +week(t1);
-    return "M" + (w0 + 1) * cellSize + "," + d0 * cellSize
-        + "H" + w0 * cellSize + "V" + 7 * cellSize
-        + "H" + w1 * cellSize + "V" + (d1 + 1) * cellSize
-        + "H" + (w1 + 1) * cellSize + "V" + 0
-        + "H" + (w0 + 1) * cellSize + "Z";
-}

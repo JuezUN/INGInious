@@ -1,16 +1,8 @@
-const username = document.getElementById("student_username").value;
-const service = document.getElementById('service').value;
-const parameters = [];
+// const username = document.getElementById("student_username").value;
+// const service = document.getElementById('service').value;
+let radar_request = generate_get_url_plot("/api/analytics/");
 
-let request = "/api/analytics/";
-if (username)
-    request += "?";
-if (username)
-    parameters.push('username=' + username);
-
-request += parameters.join('&');
-
-Plotly.d3.json(request, function (err, rows) {
+Plotly.d3.json(radar_request, function (err, rows) {
     const services_visits = {};
 
     rows.forEach((item, _) => {
@@ -33,7 +25,7 @@ Plotly.d3.json(request, function (err, rows) {
         {
             type: 'scatterpolar',
             r: visits,
-            theta: services,
+            theta: get_services_names(services),
             fill: 'toself',
             name: 'Group A'
         }
@@ -48,5 +40,5 @@ Plotly.d3.json(request, function (err, rows) {
         }
     };
 
-    Plotly.plot("myDiv3", data, layout, {showSendToCloud: true})
+    Plotly.plot("analytics_radar", data, layout, {showSendToCloud: true})
 });

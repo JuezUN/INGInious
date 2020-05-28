@@ -1,51 +1,61 @@
-$def with() 
+$def with(duration_time, service, username, services)
 
 $var title: Analytics
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="static/dashboard.css">
 
+$def NavbarF():
+    <ol class="nav navbar-nav nav-breadcrumb">
+      <a href="$get_homepath()"></a>
+      <li class="active"><a href="/analytics">Analytics</a></li>
+    </ol>
 
-<script src="https://d3js.org/d3.v3.min.js"></script>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+$var Navbar: $:NavbarF()
 
-<body>
+<h2>UNCode Analytics</h2>
+<div>
+    <form>
+        <div class="form-group col-xs-12">
+            <div class="col-xs-4">
+                <label for="analytics_duration_time" class="control-label">
+                    Duration time:
+                </label>
+                <select id="analytics_duration_time" name="analytics_duration_time">
+                    <option name="1" value=1 selected>Last year</option>
+                    <option name="3" value=3>Last 3 year</option>
+                    <option name="5" value=5>Last 5 year</option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <label for="analytics_service" class="control-label">
+                    Service:
+                </label>
+                <select id="analytics_service" name="analytics_service">
+                    <option name="all" value="" selected>All</option>
+                    $for key, value in services.items():
+                        <option name="$key" value="$key">$value</option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <label for="analytics_username" class="control-label">
+                    Student username:
+                </label>
+                <input id="analytics_username" name="analytics_username" type="text" value="$username">
+            </div>
+        </div>
+        <button onclick="on_search();" class="btn btn-success">Update</button>
+    </form>
+    <hr>
+    <div class="calender-map" id="analytics_calendar_map"></div>
+    <div id="analytics_time_series"></div>
     <div style="display: flex">
-      <div style="margin: 5px">
-          <select id="duration_time" name="duration" onchange="location.reload()">
-              <option name="1" value=1 selected>Last year</option>
-              <option name="3" value=3>Last 3 year</option>
-              <option name="5" value=5>Last 5 year</option>
-          </select>
-
-      </div>
-
-      <div style="margin: 5px">
-        <select id="service" name="service" onchange="location.reload()">
-            <option name="all" value="" selected>All</option>
-            <option name="python_tutor" value="python_tutor">Python Tutor</option>
-            <option name="statistics" value="statistics">Statistics</option>
-            <option name="custom_input" value="custom_input">Custom Input</option>
-            <option name="linter" value="linter">Linter</option>
-        </select>
-
+        <div id="analytics_box_plot" style="width: 50%"></div>
+        <div id="analytics_radar" style="width: 50%"></div>
     </div>
-
-      <div style="margin: 5px">
-        <text>Username</text><input id="student_username" name="username" type="text">
-        <button onclick="location.reload()">Update</button>
-      </div>
-
-  </div>
-
-    <div class="calender-map"></div>
-    <div id="myDiv"></div>
-    <div style="display: flex">
-      <div id="myDiv2" style="width: 50%"></div>
-      <div id="myDiv3" style="width: 50%"></div>
-    </div>
-    
-    <script src="static/calendar_view.js"></script>
-    <script src="static/time_series.js"></script>
-    <script src="static/box_plot.js"></script>
-    <script src="static/radar.js"></script>
-</body>
+</div>
+<script type="text/javascript">
+    const analytics_duration_time = '$duration_time';
+    const analytics_service = '$service';
+    const analytics_username = '$username';
+    const all_services = $:{dict(services)};
+    $$("#analytics_duration_time").val(analytics_duration_time);
+    $$("#analytics_service").val(analytics_service);
+</script>
