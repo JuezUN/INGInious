@@ -2,6 +2,7 @@ import os
 import tempfile
 import json
 import ast
+import re
 from collections import OrderedDict
 from math import ceil
 
@@ -77,6 +78,9 @@ class NotebookForm(GraderForm):
         self.task_data["notebook_setup_code_all_tests"] = self.task_data.get("notebook_setup_code_all_tests",
                                                                              "").strip()
 
+        self.task_data["notebook_data_set_url"] = self.task_data.get("notebook_data_set_url", "")
+        self.task_data["notebook_data_set_name"] = self.task_data.get("notebook_data_set_name", "")
+
         self.task_data["notebook_time_limit_test_case"] = int(
             ceil(float(self.task_data.get("notebook_time_limit_test_case", 5))))
         self.task_data["notebook_memory_limit_test_case"] = int(
@@ -89,13 +93,31 @@ class NotebookForm(GraderForm):
         # Update the grading container time and memory limit depending on amount of tests.
         self.task_data['limits']['time'] = total_cases * self.task_data[
             'notebook_time_limit_test_case'] + _additional_time_limit
-        self.task_data['limits']['memory'] = total_cases * self.task_data[
+        self.task_data['limits']['memory'] = self.task_data[
             'notebook_memory_limit_test_case']
 
     def validate(self):
         super(NotebookForm, self).validate()
         if not _is_python_syntax_code_right(self.task_data["notebook_setup_code_all_tests"]):
             raise InvalidGraderError("Grader: Syntax error in setup code for all tests")
+
+        url_pattern = re.compile(
+            r'^(?:http)s?://'  # http:// or https://
+            r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|'  # domain...
+            r'localhost|'  # localhost...
+            r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'  # ...or ip
+            r'(?::\d+)?'  # optional port
+            r'(?:/?|[/?]\S+)$', re.IGNORECASE)
+
+        filename_pattern = re.compile(r'[A-Za-z]+\.[A-Za-z]+')
+
+        if self.task_data["notebook_data_set_url"] and not re.match(url_pattern,
+                                                                    self.task_data["notebook_data_set_url"]):
+            raise InvalidGraderError("Grader: Dataset url is not a valid URL")
+
+        if self.task_data["notebook_data_set_name"] and not re.match(filename_pattern,
+                                                                     self.task_data["notebook_data_set_name"]):
+            raise InvalidGraderError("Grader: Dataset filename is not a valid name.")
 
         if self.task_data["notebook_time_limit_test_case"] < 1:
             raise InvalidGraderError("Grader: Time limit for test cases must be positive and integer")
@@ -201,7 +223,9 @@ class NotebookForm(GraderForm):
                                     if test_case["show_debug_info"]],
             "time_limit": time,
             "hard_time_limit": time * 2 + 5,
-            "memory_limit": self.task_data["notebook_memory_limit_test_case"]
+            "memory_limit": self.task_data["notebook_memory_limit_test_case"],
+            "dataset": {"url": self.task_data["notebook_data_set_url"],
+                        "filename": self.task_data["notebook_data_set_name"]}
         }
 
         with open(_RUN_FILE_TEMPLATE_PATH, "r") as template, tempfile.TemporaryDirectory() as temporary:
