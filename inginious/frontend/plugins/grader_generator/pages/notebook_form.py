@@ -2,6 +2,7 @@ import os
 import tempfile
 import json
 import ast
+import re
 from collections import OrderedDict
 from math import ceil
 
@@ -77,6 +78,9 @@ class NotebookForm(GraderForm):
         self.task_data["notebook_setup_code_all_tests"] = self.task_data.get("notebook_setup_code_all_tests",
                                                                              "").strip()
 
+        self.task_data["notebook_data_set_url"] = self.task_data.get("notebook_data_set_url", "")
+        self.task_data["notebook_data_set_name"] = self.task_data.get("notebook_data_set_name", "")
+
         self.task_data["notebook_time_limit_test_case"] = int(
             ceil(float(self.task_data.get("notebook_time_limit_test_case", 5))))
         self.task_data["notebook_memory_limit_test_case"] = int(
@@ -89,34 +93,63 @@ class NotebookForm(GraderForm):
         # Update the grading container time and memory limit depending on amount of tests.
         self.task_data['limits']['time'] = total_cases * self.task_data[
             'notebook_time_limit_test_case'] + _additional_time_limit
-        self.task_data['limits']['memory'] = total_cases * self.task_data[
+        self.task_data['limits']['memory'] = self.task_data[
             'notebook_memory_limit_test_case']
 
     def validate(self):
+        super(NotebookForm, self).validate()
         if not _is_python_syntax_code_right(self.task_data["notebook_setup_code_all_tests"]):
-            raise InvalidGraderError("Syntax error in setup code for all tests")
+            raise InvalidGraderError("Grader: Syntax error in setup code for all tests")
+
+        url_pattern = re.compile(
+            r'^(?:http)s?://'  # http:// or https://
+            r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|'  # domain...
+            r'localhost|'  # localhost...
+            r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'  # ...or ip
+            r'(?::\d+)?'  # optional port
+            r'(?:/?|[/?]\S+)$', re.IGNORECASE)
+
+        filename_pattern = re.compile(r'[A-Za-z]+\.[A-Za-z]+')
+
+        if self.task_data["notebook_data_set_url"]:
+            if not re.match(url_pattern, self.task_data["notebook_data_set_url"]):
+                raise InvalidGraderError("Grader: Dataset url is not a valid URL.")
+            if not self.task_data["notebook_data_set_name"]:
+                raise InvalidGraderError("Grader: To download a dataset, you must also set the dataset filename.")
+
+        if self.task_data["notebook_data_set_name"]:
+            if not re.match(filename_pattern, self.task_data["notebook_data_set_name"]):
+                raise InvalidGraderError("Grader: Dataset filename is not a valid name.")
+            if not self.task_data["notebook_data_set_url"]:
+                raise InvalidGraderError("Grader: To download a dataset, you must also set the dataset URL.")
 
         if self.task_data["notebook_time_limit_test_case"] < 1:
-            raise InvalidGraderError("Time limit for test cases must be positive and integer")
+            raise InvalidGraderError("Grader: Time limit for test cases must be positive and integer.")
+
+        if self.task_data["notebook_time_limit_test_case"] > 30:
+            raise InvalidGraderError("Grader: Time limit exceeds the maximum allowed (30 s.).")
 
         if self.task_data["notebook_memory_limit_test_case"] < 1:
-            raise InvalidGraderError("Memory limit for test cases must be positive and integer")
+            raise InvalidGraderError("Grader: Memory limit for test cases must be positive and integer")
+
+        if self.task_data["notebook_memory_limit_test_case"] > 600:
+            raise InvalidGraderError("Grader: Memory limit exceeds the maximum allowed (600 MBs).")
 
         for test_index, test in enumerate(self.task_data["grader_test_cases"]):
             if not _is_python_syntax_code_right(test["setup_code"]):
-                raise InvalidGraderError("Syntax error in setup code of '%s' test" % test["name"])
+                raise InvalidGraderError("Grader: Syntax error in setup code of '%s' test" % test["name"])
 
             if test["weight"] <= 0:
-                raise InvalidGraderError("The weight must be a positive number")
+                raise InvalidGraderError("Grader: The weight must be a positive number")
 
             if not test.get("cases", None):
                 raise InvalidGraderError(
-                    "You must provide test cases for test '%s' to autogenerate the grader" % test["name"])
+                    "Grader: You must provide test cases for test '%s' to autogenerate the grader" % test["name"])
 
             for case_index, case in test["cases"].items():
                 if not _is_python_syntax_code_right(case["code"]):
                     raise InvalidGraderError(
-                        "Syntax error in code on test '%s', case %s" % (test["name"], int(case_index) + 1))
+                        "Grader: Syntax error in code on test '%s', case %s" % (test["name"], int(case_index) + 1))
 
     def generate_grader(self):
         """ This method generates a grader through the form data """
@@ -194,7 +227,9 @@ class NotebookForm(GraderForm):
                                     if test_case["show_debug_info"]],
             "time_limit": time,
             "hard_time_limit": time * 2 + 5,
-            "memory_limit": self.task_data["notebook_memory_limit_test_case"]
+            "memory_limit": self.task_data["notebook_memory_limit_test_case"],
+            "dataset": {"url": self.task_data["notebook_data_set_url"],
+                        "filename": self.task_data["notebook_data_set_name"]}
         }
 
         with open(_RUN_FILE_TEMPLATE_PATH, "r") as template, tempfile.TemporaryDirectory() as temporary:
@@ -241,11 +276,11 @@ def _parse_code_to_doctest(code):
     # Generate a set with line numbers of lines that must start with a '>>>'.
     # This let us know the code that uses more than une line.
     main_lines = {child_node.lineno - 1 for child_node in parser.body}
-    code_lines = [line for line in code.split('\n') if line]
+    code_lines = code.split('\n')
     for index, line in enumerate(code_lines):
         if index not in main_lines:
             parsed_code.append("... {}".format(line))
-        else:
+        elif line:
             parsed_code.append(">>> {}".format(line))
         if index + 1 < len(code_lines):
             parsed_code.append("\n")
