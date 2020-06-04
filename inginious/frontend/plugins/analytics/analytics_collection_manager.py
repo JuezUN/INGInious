@@ -18,18 +18,22 @@ class AnalyticsCollectionManagerSingleton:
             self.db = database
             AnalyticsCollectionManagerSingleton.__instance = self
 
-    def add_visit(self, service, username, date, session_id):
+    def add_visit(self, service, username, date, session_id, course_id):
         """ Adds record of visit to a service """
         return self.db.analytics.insert({'username': username,
                                          'service': service["key"],
                                          'date': date,
-                                         'session_id': session_id})
+                                         'session_id': session_id,
+                                         'course_id': course_id})
 
     def check_record(self, record_id):
         return self.db.analytics.find_one({'_id': record_id})
 
     def check_user_records(self, username):
         return self.db.analytics.find({'username': username})
+
+    def get_course_records(self, course_id):
+        return self.db.analytics.find({'course_id': course_id})
 
     def _reset_records(self):
         self.db.analytics.drop()

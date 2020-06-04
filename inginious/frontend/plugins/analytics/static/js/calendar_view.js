@@ -20,7 +20,7 @@ const HeatMap = (function () {
     HeatMap.prototype = Object.create(AnalyticsDiagram.prototype);
 
     HeatMap.prototype.update_year = function(){
-        this.start_year = Number(parse_str_to_date(document.getElementById('analytics_date').value).getFullYear()) - 1;
+        this.start_year = Number(parse_str_to_date($('#analytics_date').val()).getFullYear()) - 1;
         if (!this.start_year){
             this.start_year = (new Date).getFullYear() - 1;
         }

@@ -25,5 +25,14 @@ class AnalyticsPage(SuperadminAuthPage):
         return (
             self.template_helper
                 .get_custom_renderer('frontend/plugins/analytics/pages')
-                .analytics(services=all_services)
+                .analytics(services=all_services, all_courses=self.get_all_courses())
         )
+
+    def get_all_courses(self):
+        all_courses = self.course_factory.get_all_courses()
+        available_courses = sorted([{
+            'id': course_id,
+            'name': course.get_name(self.user_manager.session_language())
+        } for course_id, course in all_courses.items()], key=lambda x: x['name'])
+
+        return available_courses

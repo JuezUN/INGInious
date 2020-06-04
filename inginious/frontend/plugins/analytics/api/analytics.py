@@ -21,7 +21,8 @@ class AnalyticsAPI(SuperadminAPI):
                 "key": input_dict.get("service[key]", None),
                 "name": input_dict.get("service[name]", None)
             }
-            analytics_manager.add_visit(service, username, date, session_id)
+            course_id = input_dict.get("course_id", None)
+            analytics_manager.add_visit(service, username, date, session_id, course_id)
             services_manager.add_service(service)
             return 200, ""
         except:
@@ -33,14 +34,16 @@ class AnalyticsAPI(SuperadminAPI):
         username = input_dict.get('username', None)
         service = input_dict.get('service', None)
         start_date = input_dict.get('start_date', None)
+        course_id = input_dict.get('course_id', None)
 
         # Generate query
         consult_parameters = {}
-        users = OrderedDict()
         if username:
             consult_parameters['username'] = username
         if service:
             consult_parameters['service'] = service
+        if course_id:
+            consult_parameters['course_id'] = course_id
         if start_date:
             start_date = datetime.datetime(*map(int, start_date.split('-')))
             consult_parameters['date'] = {'$gte': start_date}
@@ -49,8 +52,5 @@ class AnalyticsAPI(SuperadminAPI):
         for result in self.database.analytics.find(consult_parameters):
             result['date'] = result['date'].isoformat()
             result['_id'] = str(result['_id'])
-            if result['username'] in users:
-                results.append(result)
-            else:
-                results.append(result)
+            results.append(result)
         return 200, results

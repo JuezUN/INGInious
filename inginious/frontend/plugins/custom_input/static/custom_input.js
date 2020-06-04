@@ -110,5 +110,11 @@ function runCustomTest (inputId) {
             apiCustomInputRequest(inputId, taskForm);
         }) 
     }
-    $.post('/api/analytics/', {service: {"key": "custom_input", "name": "Custom input"}});
+    $.post('/api/analytics/', {
+        service: {
+            key: "custom_input",
+            name: "Custom input"
+        },
+        course_id: getCourseId(),
+    });
 }

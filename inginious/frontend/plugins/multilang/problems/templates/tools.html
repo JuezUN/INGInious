@@ -1,4 +1,4 @@
-$def with (inputId, language, customInputId, type, pythonTutorURL, pythonTutorPy2URL, linterURL)
+$def with (inputId, language, customInputId, type, pythonTutorURL, pythonTutorPy2URL, linterURL, course_id)
 
 <br>
 <br>
@@ -69,6 +69,10 @@ $def with (inputId, language, customInputId, type, pythonTutorURL, pythonTutorPy
         return "$linterURL";
     }
 
+    function getCourseId(){
+        return "$course_id";
+    }
+
     function toggleElement(id) {
         var element = document.getElementById(id);
         if (element.style.display === 'none') {
@@ -84,7 +88,12 @@ $def with (inputId, language, customInputId, type, pythonTutorURL, pythonTutorPy
             cm = cm.CodeMirror;
             cm.performLint();
         }
-        $$.post('/api/analytics/', {service: {key: "linter", name: "Linter"}});
+        $$.post('/api/analytics/', {
+            service: {
+                key: "linter",
+                name: "Linter"
+            }, course_id: getCourseId(),
+        });
     }
 
 </script>

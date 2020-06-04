@@ -85,5 +85,11 @@ $var Navbar: $:NavbarF()
     let adminStatistics = {
         courseId: "$:course.get_id()"
     };
-    $$.post('/api/analytics/', {service: {key: "admin_statistics", name: "Course admin statistics"}});
+    $$.post('/api/analytics/', {
+        service: {
+                key: "admin_statistics",
+                name: "Course admin statistics"
+            },
+        course_id: "$:course.get_id()",
+    });
 </script>
