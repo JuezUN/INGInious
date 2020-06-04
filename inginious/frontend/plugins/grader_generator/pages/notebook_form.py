@@ -111,16 +111,20 @@ class NotebookForm(GraderForm):
 
         filename_pattern = re.compile(r'[A-Za-z]+\.[A-Za-z]+')
 
-        if self.task_data["notebook_data_set_url"] and not re.match(url_pattern,
-                                                                    self.task_data["notebook_data_set_url"]):
-            raise InvalidGraderError("Grader: Dataset url is not a valid URL")
+        if self.task_data["notebook_data_set_url"]:
+            if not re.match(url_pattern, self.task_data["notebook_data_set_url"]):
+                raise InvalidGraderError("Grader: Dataset url is not a valid URL.")
+            if not self.task_data["notebook_data_set_name"]:
+                raise InvalidGraderError("Grader: To download a dataset, you must also set the dataset filename.")
 
-        if self.task_data["notebook_data_set_name"] and not re.match(filename_pattern,
-                                                                     self.task_data["notebook_data_set_name"]):
-            raise InvalidGraderError("Grader: Dataset filename is not a valid name.")
+        if self.task_data["notebook_data_set_name"]:
+            if not re.match(filename_pattern, self.task_data["notebook_data_set_name"]):
+                raise InvalidGraderError("Grader: Dataset filename is not a valid name.")
+            if not self.task_data["notebook_data_set_url"]:
+                raise InvalidGraderError("Grader: To download a dataset, you must also set the dataset URL.")
 
         if self.task_data["notebook_time_limit_test_case"] < 1:
-            raise InvalidGraderError("Grader: Time limit for test cases must be positive and integer")
+            raise InvalidGraderError("Grader: Time limit for test cases must be positive and integer.")
 
         if self.task_data["notebook_time_limit_test_case"] > 30:
             raise InvalidGraderError("Grader: Time limit exceeds the maximum allowed (30 s.).")
