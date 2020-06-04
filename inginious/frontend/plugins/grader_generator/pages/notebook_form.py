@@ -272,11 +272,11 @@ def _parse_code_to_doctest(code):
     # Generate a set with line numbers of lines that must start with a '>>>'.
     # This let us know the code that uses more than une line.
     main_lines = {child_node.lineno - 1 for child_node in parser.body}
-    code_lines = [line for line in code.split('\n') if line]
+    code_lines = code.split('\n')
     for index, line in enumerate(code_lines):
         if index not in main_lines:
             parsed_code.append("... {}".format(line))
-        else:
+        elif line:
             parsed_code.append(">>> {}".format(line))
         if index + 1 < len(code_lines):
             parsed_code.append("\n")
