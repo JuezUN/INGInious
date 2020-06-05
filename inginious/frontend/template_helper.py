@@ -41,6 +41,8 @@ class TemplateHelper(object):
                               "body_footer": (lambda **kwargs: self._generic_hook('body_footer', **kwargs)),
                               "additional_body_html": (lambda **kwargs: self._generic_hook('additional_body_html',
                                                                                            **kwargs)),
+                              "superadmin_options": (
+                                  lambda **kwargs: self._generic_hook('superadmin_options', **kwargs)),
                               }
         self._plugin_manager = plugin_manager
         self._template_dir = default_template_dir

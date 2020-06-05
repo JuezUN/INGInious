@@ -1,0 +1,91 @@
+$def with(services, all_courses)
+
+$var title: Analytics
+
+$def NavbarF():
+    <ol class="nav navbar-nav nav-breadcrumb">
+      <a href="$get_homepath()"></a>
+      <li class="active"><a href="/analytics">Analytics</a></li>
+    </ol>
+
+$var Navbar: $:NavbarF()
+
+<h2>UNCode Analytics</h2>
+<div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Apply filters</div>
+        <div class="panel-body">
+            <div class="form-group col-xs-12">
+                <div class="col-xs-6">
+                    <label for="analytics_date_filter" class="control-label">
+                        Analytics since:
+                    </label>
+                    <div class='input-group date' id='analytics_date_filter'>
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input id="analytics_date" name="analytics_date" data-date-format="YYYY-MM-DD"
+                               placeholder="2020-01-01" type='text' class="form-control"/>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <label for="analytics_service" class="control-label">
+                        Service:
+                    </label>
+                    <select id="analytics_service" name="analytics_service" class="form-control">
+                        <option name="all" value="" selected>All services</option>
+                        $for key, value in services.items():
+                            <option name="$key" value="$key">$value</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-xs-12">
+                <div class="col-xs-6">
+                    <label for="analytics_username" class="control-label">
+                        Username:
+                    </label>
+                    <input id="analytics_username" name="analytics_username" type="text" placeholder="username"
+                           class="form-control">
+                </div>
+                <div class="col-xs-6">
+                    <label for="analytics_course" class="control-label">
+                        Course:
+                    </label>
+                    <select class="dropdown-toggle form-control" name="analytics_course" id="analytics_course">
+                        <option value="">All courses</option>
+                        $for course in all_courses:
+                            <option value="$course['id']">$course['name']</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12 text-center">
+                <button onclick="on_search();" class="btn btn-success">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a id="heat-map-tab" data-toggle="tab" href="#heat-map-tab-content">Heat map</a></li>
+    <li><a id="plot-visits-per-day-tab" data-toggle="tab" href="#plot-visits-per-day-tab-content">Visits per day</a></li>
+    <li><a id="box-plot-tab" data-toggle="tab" href="#box-plot-tab-content">Box plot</a></li>
+    <li><a id="radar-plot-tab" data-toggle="tab" href="#radar-plot-tab-content">Radar plot</a></li>
+</ul>
+
+<div class="tab-content">
+    <div id="heat-map-tab-content" class="tab-pane fade in active">
+        <h3 class="text-center">Calendar visits</h3>
+        <div id="analytics_heat_map_calendar" class="statistics-plot calender-map"><!-- Chart will be drawn inside this DIV --></div>
+    </div>
+    <div id="plot-visits-per-day-tab-content" class="tab-pane fade in">
+        <div id="analytics_plot_visits_per_day" class="statistics-plot"><!-- Chart will be drawn inside this DIV --></div>
+    </div>
+    <div id="box-plot-tab-content" class="tab-pane fade in">
+        <div id="analytics_box_plot" class="statistics-plot"><!-- Chart will be drawn inside this DIV --></div>
+    </div>
+    <div id="radar-plot-tab-content" class="tab-pane fade in">
+        <h3 class="text-center">Radar plot</h3>
+        <div id="analytics_radar_plot" class="statistics-plot"><!-- Chart will be drawn inside this DIV --></div>
+    </div>
+</div>
+<script type="text/javascript">
+    const all_services = $:{dict(services)};
+</script>

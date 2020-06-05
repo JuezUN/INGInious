@@ -110,6 +110,7 @@ $:template_helper.call('header_hook')
                                     <li><a href="$get_homepath()/preferences" class="navbar-link"><i class="fa fa-gears fa-fw"></i> $:_("Preferences")</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="$get_homepath()/queue" class="navbar-link"><i class="fa fa-dashboard fa-fw"></i> $:_("Service status")</a></li>
+                                    $:template_helper.call('superadmin_options')
                                     <li role="separator" class="divider"></li>
                                     <li><a href="$get_homepath()/logout" id="logoff_button" class="navbar-link"><i class="fa fa-sign-out"></i> $:_("Log out")</a></li>
                                 </ul>

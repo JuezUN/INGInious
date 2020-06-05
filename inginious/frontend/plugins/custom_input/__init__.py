@@ -10,6 +10,7 @@ from bson.objectid import ObjectId
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
+
 def customInputManagerWithCurriedClient(client):
     class CustomInputManager(APIAuthenticatedPage):
         def __init__(self):
@@ -27,12 +28,12 @@ def customInputManagerWithCurriedClient(client):
             # How do i do this?
             things = self.database.submissions.aggregate([
                 {
-                    '$match' : {
-                        "_id" : ObjectId(submission_id)
+                    '$match': {
+                        "_id": ObjectId(submission_id)
                     }
                 },
                 {
-                    "$project" : {
+                    "$project": {
                         "_id": 0,
                         "taskid": 1,
                         "courseid": 1
@@ -43,6 +44,7 @@ def customInputManagerWithCurriedClient(client):
 
         def API_POST(self):
             request_params = web.input()
+
             courseid = get_mandatory_parameter(request_params, "courseid")
             course = self.course_factory.get_course(courseid)
             taskid = get_mandatory_parameter(request_params, "taskid")
@@ -73,6 +75,7 @@ def customInputManagerWithCurriedClient(client):
                 return 200, json.dumps({"status": "error", "text": str(ex)})
 
     return CustomInputManager
+
 
 def init(plugin_manager, course_factory, client, plugin_config):
     plugin_manager.add_page(r'/custom_input/static/(.*)', create_static_resource_page(_static_folder_path))
