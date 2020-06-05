@@ -109,7 +109,7 @@ class NotebookForm(GraderForm):
             r'(?::\d+)?'  # optional port
             r'(?:/?|[/?]\S+)$', re.IGNORECASE)
 
-        filename_pattern = re.compile(r'[A-Za-z]+\.[A-Za-z]+')
+        filename_pattern = re.compile(r'[A-Za-z0-9]+\.[A-Za-z]+')
 
         if self.task_data["notebook_data_set_url"]:
             if not re.match(url_pattern, self.task_data["notebook_data_set_url"]):
