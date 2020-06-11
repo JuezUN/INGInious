@@ -9,19 +9,25 @@
             </div>
             <div class="modal-body text-justify">
                 <h5>
-                    Select multiple files to upload. These files are going to be stored in the root directory of the
-                    task file system.
+                    Select multiple files to upload. In case the path is not specified, the files are going to be
+                    stored in the root directory of the task file system.
                 </h5>
                 <hr>
                 <form id='upload_multiple_files_form' method='post' enctype='multipart/form-data'>
-                    <label for="upload_multiple_files_input" class="control-label">File:</label>
-                    <input type="file" id="upload_multiple_files_input" multiple="">
+                    <div class="form-group">
+                        <label for="upload_multiple_files_input" class="control-label">Files: </label>
+                        <input type="file" id="upload_multiple_files_input" multiple="">
+                    </div>
+                    <div class="form-group">
+                        <label for="upload_multiple_files_path" class="control-label">Files Path: </label>
+                        <input class="form-control" type="text" id="upload_multiple_files_path"
+                               name="upload_multiple_files_path" placeholder="/file/path">
+                    </div>
+                    <div id="list_all_files" hidden>
+                        <p><strong>List of files to upload:</strong></p>
+                        <p name="list_files"></p>
+                    </div>
                 </form>
-                <br>
-                <div id="list_all_files" hidden>
-                    <p><strong>List of files to upload.</strong></p>
-                    <p name="list_files"></p>
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>

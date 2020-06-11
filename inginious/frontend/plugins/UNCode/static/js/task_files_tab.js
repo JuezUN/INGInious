@@ -97,6 +97,7 @@ jQuery(document).ready(function () {
         // Function to describe the process to follow when the modal is closed.
         $('#task_files_upload_multiple_modal').on('hidden.bs.modal', function () {
             $("#upload_multiple_files_input").val('');
+            $("#upload_multiple_files_path").val('');
             $("#list_all_files").prop("hidden", true);
         });
     }
@@ -107,6 +108,7 @@ jQuery(document).ready(function () {
             let error = false;
             let filesFailedUpload = [];
             let inputFiles = $("#upload_multiple_files_input").prop('files');
+            let files_path = $("#upload_multiple_files_path").val();
             inputFiles = $.extend({}, inputFiles);
 
             $('#task_files_upload_multiple_modal').modal('hide');
@@ -115,7 +117,7 @@ jQuery(document).ready(function () {
                 $.each(inputFiles, function (file_index, file) {
                     let form_data = new FormData();
                     form_data.append('action', 'upload');
-                    form_data.append('path', file.name);
+                    form_data.append('path', `${files_path}/${file.name}`);
                     form_data.append('file', file);
                     $.ajax({
                         url: location.pathname + '/files',
