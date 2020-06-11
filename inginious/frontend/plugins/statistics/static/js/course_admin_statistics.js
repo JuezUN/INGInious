@@ -5,7 +5,6 @@ const COLOR_RUNTIME_ERROR = 'rgb(2,164,174)';
 const COLOR_WRONG_ANSWER = 'rgb(227,79,54)';
 const COLOR_OUTPUT_LIMIT_EXCEEDED = 'rgb(137,139,37)';
 const COLOR_GRADING_RUNTIME_ERROR = 'rgb(139,62,0)';
-const COLOR_INTERNAL_ERROR = 'rgb(139,0,58)';
 const COLOR_ACCEPTED = 'rgb(35,181,100)';
 const COLOR_LABEL = 'rgb(107, 107, 107)';
 
@@ -65,8 +64,6 @@ function plotVerdictStatisticsChart(id_div, data, statistic_title, normalized, a
         COLOR_RUNTIME_ERROR, get_function);
     const wrong_answer_data = createObjectToPlotData(data, data_count_obj, tasks_ids, "WRONG_ANSWER",
         COLOR_WRONG_ANSWER, get_function);
-    const internal_error_data = createObjectToPlotData(data, data_count_obj, tasks_ids, "INTERNAL_ERROR",
-        COLOR_INTERNAL_ERROR, get_function);
     const output_limit_error_data = createObjectToPlotData(data, data_count_obj, tasks_ids, "OUTPUT_LIMIT_EXCEEDED",
         COLOR_OUTPUT_LIMIT_EXCEEDED, get_function);
     const grading_error_data = createObjectToPlotData(data, data_count_obj, tasks_ids, "GRADING_RUNTIME_ERROR",
@@ -75,7 +72,7 @@ function plotVerdictStatisticsChart(id_div, data, statistic_title, normalized, a
         COLOR_ACCEPTED, get_function);
 
     const plotData = [compilation_error_data, time_limit_data, memory_limit_data, runtime_error_data, wrong_answer_data,
-        output_limit_error_data, accepted_data, grading_error_data, internal_error_data];
+        output_limit_error_data, accepted_data, grading_error_data];
 
     const layout = {
         barmode: 'stack',
