@@ -108,6 +108,8 @@ class MultilangForm(GraderForm):
         time = self.task_data["time_limit_test_case"]
         # Set output limit in Bytes
         output_limit = (2 ** 20) * self.task_data["output_limit_test_case"]
+        output_diff_for = [test_case["input_file"] for test_case in self.task_data["grader_test_cases"] if
+                           test_case["diff_shown"]]
         options = {
             "treat_non_zero_as_runtime_error": self.task_data["treat_non_zero_as_runtime_error"],
             "diff_max_lines": self.task_data["grader_diff_max_lines"],
@@ -132,3 +134,28 @@ class MultilangForm(GraderForm):
                     options=repr(options), weights=repr(weights)))
 
             self.task_fs.copy_to(temporary)
+        all_input_files = [test_case[0] for test_case in test_cases]
+        self.publish_files_diff_for(output_diff_for, all_input_files)
+
+    def publish_files_diff_for(self, files_diff_for, input_files):
+        """
+        Function that copies input files that show diff to public/ folder, that way students can download it
+        from backend.
+        :param files_diff_for: Files to copy in public folder
+        :param input_files: All input files must be deleted to avoid leaving public a non-public file
+        :return: None
+        """
+        for file in input_files:
+            path = 'public/{}'.format(file)
+            try:
+                self.task_fs.delete(path)
+            except:
+                pass
+
+        for file in files_diff_for:
+            src = '{dir}{file}'.format(dir=self.task_fs.prefix, file=file)
+            dest = 'public/{}'.format(file)
+            try:
+                self.task_fs.copy_to(src, dest)
+            except:
+                pass

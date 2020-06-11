@@ -45,7 +45,8 @@ class DisplayableCodeMultipleLanguagesProblem(CodeMultipleLanguagesProblem, Disp
         renderer = DisplayableCodeMultipleLanguagesProblem.get_renderer(template_helper)
         allowed_languages = OrderedDict([(lang, allowed_languages[lang]) for lang in sorted(allowed_languages.keys())])
         multiple_language_render = str(
-            renderer.multilang(self.get_id(), dropdown_id, allowed_languages, self.get_id(), self.get_type()))
+            renderer.multilang(self.get_id(), dropdown_id, allowed_languages, self.get_id(), self.get_type(),
+                               task_id=self.get_task().get_id()))
         standard_code_problem_render = super(DisplayableCodeMultipleLanguagesProblem, self).show_input(template_helper,
                                                                                                        language, seed)
         tools_render = ""
