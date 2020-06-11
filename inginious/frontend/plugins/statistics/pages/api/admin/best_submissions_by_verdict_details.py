@@ -4,6 +4,7 @@ import web
 from .admin_api import AdminApi
 from .utils import project_detail_user_tasks
 
+
 class BestSubmissionsByVerdictStatisticsDetailApi(AdminApi):
 
     def _compute_details(self, course_id, task_id, summary_result):
@@ -44,7 +45,6 @@ class BestSubmissionsByVerdictStatisticsDetailApi(AdminApi):
             }
         ])
         return project_detail_user_tasks(user_tasks)
-
 
     def API_GET(self):
         parameters = web.input()

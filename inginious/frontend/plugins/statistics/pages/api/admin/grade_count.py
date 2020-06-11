@@ -4,6 +4,7 @@ import os
 
 from .admin_api import AdminApi
 
+
 class GradeCountApi(AdminApi):
     def _compute_grade_count_statistics(self, course_id):
         statistics_by_grade = self.database.user_tasks.aggregate([
@@ -37,6 +38,7 @@ class GradeCountApi(AdminApi):
         statistics_by_grade_count = self.convert_task_dict_to_sorted_list(course, grade_count_statistics, 'grades',
                                                                           include_all_tasks=True)
         sorted_tasks = sorted(statistics_by_grade_count,
-                            key=lambda task_inf: os.path.getctime(  course.get_task(task_inf['task_id']).get_fs().prefix + 'task.yaml'))
+                              key=lambda task_inf: os.path.getctime(
+                                  course.get_task(task_inf['task_id']).get_fs().prefix + 'task.yaml'))
 
         return 200, sorted_tasks

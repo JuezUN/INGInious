@@ -1,6 +1,7 @@
 import inginious.frontend.pages.api._api_page as api
 from inginious.common.course_factory import CourseNotFoundException, CourseUnreadableException, InvalidNameException
 
+
 class AdminApi(api.APIAuthenticatedPage):
     def get_course_and_check_rights(self, course_id):
         try:
@@ -19,7 +20,8 @@ class AdminApi(api.APIAuthenticatedPage):
 
         return parameters[parameter_name]
 
-    def convert_task_dict_to_sorted_list(self, course, task_dict, key_name, include_task_id=True, include_task_name=True,
+    def convert_task_dict_to_sorted_list(self, course, task_dict, key_name, include_task_id=True,
+                                         include_task_name=True,
                                          include_all_tasks=False):
         """
         Converts a task dictionary (where the key is the task id) to a list sorted by the task order, where each element

@@ -1,13 +1,13 @@
-var CsvConverter = (function () {
+const CsvConverter = (function () {
     function CsvConverter(data) {
         this.data = data;
     }
 
     CsvConverter.prototype.downloadCsv = function () {
-        var filename = 'export.csv';
-        var csv = 'data:text/csv;charset=utf-8,' + Papa.unparse(this.data);
-        var data = encodeURI(csv);
-        var link = document.createElement('a');
+        const filename = 'export.csv';
+        const csv = 'data:text/csv;charset=utf-8,' + Papa.unparse(this.data);
+        const data = encodeURI(csv);
+        const link = document.createElement('a');
 
         link.setAttribute('href', data);
         link.setAttribute('download', filename);
@@ -22,7 +22,7 @@ var CsvConverter = (function () {
     return CsvConverter;
 }());
 
-var Statistic = (function () {
+const Statistic = (function () {
     function Statistic() {
         this._cachedPromise = null;
     }
@@ -36,7 +36,7 @@ var Statistic = (function () {
     };
 
     Statistic.prototype.plotAsync = function () {
-        var statistic = this;
+        const statistic = this;
         this._fetchAndCacheData().then(function (data) {
             statistic._plotData(data);
         });
@@ -48,7 +48,7 @@ var Statistic = (function () {
 
     Statistic.prototype.downloadCsvAsync = function () {
         this._fetchCsvData().then(function (data) {
-            var csvConverter = new CsvConverter(data);
+            const csvConverter = new CsvConverter(data);
             csvConverter.downloadCsv();
         });
     };
@@ -65,35 +65,36 @@ var Statistic = (function () {
 })();
 
 function createSubmissionLink(submissionId) {
-    var urlTemplate = _.template("/submission/${ submissionId }");
+    const urlTemplate = _.template("/submission/${ submissionId }");
 
     return urlTemplate({
         submissionId: submissionId
     });
 }
 
-function generateVerdictSubmissionTable(tableId, submissions){
-    var table = $("#" + tableId);
+function generateVerdictSubmissionTable(tableId, submissions) {
+    const table = $("#" + tableId);
 
-    table.html("<thead><tr><th>Username</th><th>Grade</th><th>Status</th><th>Summary result</th><th>Submitted on</th><th>Submission</th></tr></thead>");
-    var tableBody = $("<tbody/>");
+    table.html("<thead><tr><th>Username</th><th>Grade</th><th>Status</th><th>Summary result</th><th>Submitted on" +
+        "</th><th>Submission</th></tr></thead>");
+    const tableBody = $("<tbody/>");
 
-    for(var i = 0; i < submissions.length; ++i) {
-        var row = $("<tr/>");
-        var entry = submissions[i];
+    for (let i = 0; i < submissions.length; ++i) {
+        const row = $("<tr/>");
+        const entry = submissions[i];
 
-        var cells = [entry.username, entry.grade, entry.status || '-', entry.summary_result || '-',
+        const cells = [entry.username, entry.grade, entry.status || '-', entry.summary_result || '-',
             entry.submitted_on || '-'];
 
-        for(var j = 0; j < cells.length; ++j) {
-            var cell = $("<td/>");
+        for (let j = 0; j < cells.length; ++j) {
+            const cell = $("<td/>");
             cell.text(cells[j]);
             row.append(cell);
         }
 
-        var submissionCell = $("<td/>");
+        const submissionCell = $("<td/>");
         if (entry.id) {
-            var submissionLink = $("<a>", {
+            const submissionLink = $("<a>", {
                 text: entry.id,
                 href: createSubmissionLink(entry.id)
             });
@@ -112,28 +113,29 @@ function generateVerdictSubmissionTable(tableId, submissions){
 }
 
 function generateSubmissionTable(tableId, userTasks) {
-    var table = $("#" + tableId);
+    const table = $("#" + tableId);
 
-    table.html("<thead><tr><th>Username</th><th>Grade</th><th>Status</th><th>Summary result</th><th>Submitted on</th><th>Submission</th></tr></thead>");
-    var tableBody = $("<tbody/>");
+    table.html("<thead><tr><th>Username</th><th>Grade</th><th>Status</th><th>Summary result</th><th>Submitted on" +
+        "</th><th>Submission</th></tr></thead>");
+    const tableBody = $("<tbody/>");
 
-    for(var i = 0; i < userTasks.length; ++i) {
-        var row = $("<tr/>");
-        var entry = userTasks[i];
-        var submission = entry.submission || {};
+    for (let i = 0; i < userTasks.length; ++i) {
+        const row = $("<tr/>");
+        const entry = userTasks[i];
+        const submission = entry.submission || {};
 
-        var cells = [entry.username, entry.grade, submission.status || '-', submission.summary_result || '-',
+        const cells = [entry.username, entry.grade, submission.status || '-', submission.summary_result || '-',
             submission.submitted_on || '-'];
 
-        for(var j = 0; j < cells.length; ++j) {
-            var cell = $("<td/>");
+        for (let j = 0; j < cells.length; ++j) {
+            const cell = $("<td/>");
             cell.text(cells[j]);
             row.append(cell);
         }
 
-        var submissionCell = $("<td/>");
+        const submissionCell = $("<td/>");
         if (submission.id) {
-            var submissionLink = $("<a>", {
+            const submissionLink = $("<a>", {
                 text: submission.id,
                 href: createSubmissionLink(submission.id)
             });
@@ -152,9 +154,9 @@ function generateSubmissionTable(tableId, userTasks) {
 }
 
 function createAlertHtml(alertClass, content) {
-    var alertHtml = '<div class="alert ' + alertClass + ' alert-dismissible" role="alert">' +
-        '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
-        content + '</div>';
+    const alertHtml = '<div class="alert ' + alertClass + ' alert-dismissible" role="alert">' +
+        '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+        '<span aria-hidden="true">&times;</span></button>' + content + '</div>';
 
     return alertHtml;
 }

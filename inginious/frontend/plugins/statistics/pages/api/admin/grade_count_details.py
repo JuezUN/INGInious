@@ -4,6 +4,7 @@ import web
 from .admin_api import AdminApi
 from .utils import project_detail_user_tasks
 
+
 class GradeCountDetailsApi(AdminApi):
     def _compute_details(self, course_id, grade, task_id):
         user_tasks = self.database.user_tasks.aggregate([

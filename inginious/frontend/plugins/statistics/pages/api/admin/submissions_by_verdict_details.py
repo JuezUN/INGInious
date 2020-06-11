@@ -4,6 +4,7 @@ import web
 from .admin_api import AdminApi
 from .utils import task_submissions_detail
 
+
 class SubmissionsByVerdictDetailsApi(AdminApi):
 
     def _compute_details(self, course_id, task_id, summary_result):
@@ -12,7 +13,7 @@ class SubmissionsByVerdictDetailsApi(AdminApi):
                 {
                     "courseid": course_id,
                     "custom.custom_summary_result": summary_result,
-                    "taskid" : task_id
+                    "taskid": task_id
                 }
             },
             {"$unwind":

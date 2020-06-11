@@ -2,6 +2,7 @@ import web
 import os
 from .admin_api import AdminApi
 
+
 class SubmissionsByVerdictApi(AdminApi):
 
     def get_statistics_by_verdict(self, course):
@@ -12,7 +13,7 @@ class SubmissionsByVerdictApi(AdminApi):
                 "$group": {
                     "_id": {"summary_result": "$custom.custom_summary_result",
                             "task_id": "$taskid"
-                           },
+                            },
                     "count": {"$sum": 1}
                 }
             },
@@ -36,7 +37,8 @@ class SubmissionsByVerdictApi(AdminApi):
 
         statistics_by_verdict = self.get_statistics_by_verdict(course)
         course_tasks = course.get_tasks()
-        sorted_tasks = sorted(course_tasks.values(), key=lambda task: os.path.getctime(task.get_fs().prefix + 'task.yaml'))
+        sorted_tasks = sorted(course_tasks.values(),
+                              key=lambda task: os.path.getctime(task.get_fs().prefix + 'task.yaml'))
         task_id_to_statistics = {}
         for element in statistics_by_verdict:
             task_id = element["task_id"]
@@ -48,7 +50,6 @@ class SubmissionsByVerdictApi(AdminApi):
                 "count": element["count"],
                 "summary_result": element["summary_result"]
             })
-
 
         statistics_by_verdict = []
 

@@ -26,6 +26,7 @@ from .pages.constants import set_use_minified
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
+
 def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_page(r'/statistics/static/(.*)', create_static_resource_page(_static_folder_path))
 
@@ -48,7 +49,8 @@ def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_page('/api/stats/admin/grade_distribution_details', GradeDistributionDetailsApi)
 
     plugin_manager.add_page('/api/stats/admin/best_submissions_verdict', BestSubmissionsByVerdictApi)
-    plugin_manager.add_page('/api/stats/admin/best_submissions_verdict_details', BestSubmissionsByVerdictStatisticsDetailApi)
+    plugin_manager.add_page('/api/stats/admin/best_submissions_verdict_details',
+                            BestSubmissionsByVerdictStatisticsDetailApi)
 
     plugin_manager.add_page('/api/stats/admin/submissions_verdict', SubmissionsByVerdictApi)
     plugin_manager.add_page('/api/stats/admin/submissions_verdict_details', SubmissionsByVerdictDetailsApi)
