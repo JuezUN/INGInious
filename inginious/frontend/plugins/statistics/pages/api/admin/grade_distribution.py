@@ -4,6 +4,7 @@ import os
 
 from .admin_api import AdminApi
 
+
 class GradeDistributionApi(AdminApi):
     def _compute_grade_distribution_statistics(self, course_id):
         all_grades = self.database.user_tasks.find(
@@ -19,7 +20,6 @@ class GradeDistributionApi(AdminApi):
 
         return grouped_grades
 
-
     def API_GET(self):
         parameters = web.input()
 
@@ -30,5 +30,6 @@ class GradeDistributionApi(AdminApi):
         statistics_by_grade_distribution = self.convert_task_dict_to_sorted_list(course, grade_distribution_statistics,
                                                                                  'grades', include_all_tasks=True)
         sorted_tasks = sorted(statistics_by_grade_distribution,
-                            key=lambda task_inf: os.path.getctime(course.get_task(task_inf['task_id']).get_fs().prefix + 'task.yaml'))
+                              key=lambda task_inf: os.path.getctime(
+                                  course.get_task(task_inf['task_id']).get_fs().prefix + 'task.yaml'))
         return 200, sorted_tasks

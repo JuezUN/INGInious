@@ -1,6 +1,7 @@
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from .constants import base_renderer_path, get_use_minified
 
+
 class CourseAdminStatisticsPage(INGIniousAdminPage):
     def GET_AUTH(self, course_id):
         course, _ = self.get_course_and_check_rights(course_id)
