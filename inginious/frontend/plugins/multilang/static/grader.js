@@ -5,9 +5,11 @@ function updateDiffBlock(blockId, text) {
 }
 
 // Function called in he returned feedback from submission
-function createDownloadLink(filename, text){
+function createDownloadLink(filename, _){
+    // Second parameter is not longer used. However must be kept to steel support previous submissions.
     const attributes = 'class="btn-link" download="' + filename + '"';
-    const element = '<a ' + attributes + 'href="data:text/plain;charset=utf-8,' + encodeURIComponent(text) + '">Download</a>';
+    const url = `/course/${getCourseId()}/${getTaskId()}/${filename}`;
+    const element = `<a ${attributes} href="${url}" target="_blank">Download</a>`;
     // Write our new downloadable link. On div placeholder
     document.getElementById(filename + '_download_link').innerHTML = element + "<br/><br/>";
 }

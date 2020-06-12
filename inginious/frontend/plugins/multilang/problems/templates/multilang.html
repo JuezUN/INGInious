@@ -1,4 +1,4 @@
-$def with (inputId, dropdownId, languages, problemid, type)
+$def with (inputId, dropdownId, languages, problemid, type, task_id)
 
 $#
 $# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
@@ -28,6 +28,10 @@ $#
 </div>
 $if type == "code_multiple_languages":
 	<script>
+		function getTaskId() {
+			return '$task_id';
+		}
+
 		function getProblemId(){
 			return '$problemid';
 		}
