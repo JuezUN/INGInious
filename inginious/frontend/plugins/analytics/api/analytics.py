@@ -1,6 +1,5 @@
 import web
 import datetime
-from collections import OrderedDict
 
 from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
 from ..analytics_collection_manager import AnalyticsCollectionManagerSingleton

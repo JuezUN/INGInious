@@ -1,7 +1,7 @@
 const HeatMap = (function () {
     function HeatMap() {
         this.div_id = "analytics_heat_map_calendar";
-        this._calendar_request = "/api/analytics/";
+        this._calendar_request = "/api/calendar_plot_analytics/";
         this.color = d3.scale.linear().range(['#ebedf0', '#e2e45b', '#196127']).domain([0, 0.5, 1]);
         this.width = 900;
         this.height = 105;
@@ -128,25 +128,7 @@ const HeatMap = (function () {
     HeatMap.prototype._plotData = function () {
         const _this = this;
         $('#' + this.div_id).html("");
-        d3.json(generate_get_url_plot(_this._calendar_request), function (error, csv) {
-            const visits = {};
-            const visits_for_table = {};
-
-            csv.forEach(function (item, _) {
-                let date = new Date(item.date);
-                date.setHours(0);
-                date.setMinutes(0);
-                date.setSeconds(0);
-                date = date.toISOString().slice(0, 10);
-                if (date in visits) {
-                    visits[date] += 1
-                } else {
-                    visits[date] = 1;
-                    visits_for_table[date] = []
-                }
-                visits_for_table[date].push(item);
-            });
-
+        d3.json(generate_get_url_plot(_this._calendar_request), function (error, visits) {
             // Complete the dates
             let today = new Date();
             today.setDate(today.getDate() + 1);
