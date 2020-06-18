@@ -98,7 +98,8 @@ function _notebook_grader_shift_test_cases(test_id, case_id_to_remove) {
 }
 
 function _notebook_grader_get_test_case_element(test_id, case_id, case_code, expected_output) {
-    const template = $("#notebook_test_case_template").html().replace(/TID/g, test_id).replace(/CID/g, case_id);
+    const template = $("#notebook_test_case_template").html().replace(/TID/g, test_id)
+        .replace(/CID/g, case_id).replace(/case_label/g, case_id + 1);
     const template_element = $(template);
 
     template_element.find(`#notebook_grader_test_${test_id}_cases_${case_id}_code`).text(case_code);
@@ -312,7 +313,7 @@ function _clear_modal() {
     });
 }
 
-$("#notebook_grader_submit_test_form").click((e) => {
+$(".notebook_grader_submit_test_form").click((e) => {
     e.preventDefault();
     if (editing_test_id !== null) notebook_grader_update_test();
     else notebook_grader_add_test_from_form();
