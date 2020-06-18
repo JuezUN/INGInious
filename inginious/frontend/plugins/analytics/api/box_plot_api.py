@@ -43,9 +43,16 @@ class BoxPlotAPI(SuperadminAPI):
                 "$group": {
                     "_id": {
                         "service": "$service",
-                        "date": {"$dateToString": {"format": "%Y-%m-%d", "date": "$date"}}
+                        "date": {
+                            "$dateToString": {
+                                "format": "%Y-%m-%d",
+                                "date": "$date"
+                            }
+                        }
                     },
-                    "visits": {"$sum": 1}
+                    "visits": {
+                        "$sum": 1
+                    }
                 }
             },
             {
@@ -65,7 +72,11 @@ class BoxPlotAPI(SuperadminAPI):
                 }
             },
             {
-                "$project": {"service": "$_id", "dates": 1, "_id": 0}
+                "$project": {
+                    "service": "$_id",
+                    "dates": 1,
+                    "_id": 0
+                }
             }
         ])
         return results

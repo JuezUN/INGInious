@@ -32,9 +32,16 @@ class TimeSeriesPlotAPI(SuperadminAPI):
                 "$group": {
                     "_id": {
                         "service": "$service",
-                        "date": {"$dateToString": {"format": "%Y-%m-%d", "date": "$date"}}
+                        "date": {
+                            "$dateToString": {
+                                "format": "%Y-%m-%d",
+                                "date": "$date"
+                            }
+                        }
                     },
-                    "visits": {"$sum": 1}
+                    "visits": {
+                        "$sum": 1
+                    }
                 }
             },
             {
@@ -54,7 +61,11 @@ class TimeSeriesPlotAPI(SuperadminAPI):
                 }
             },
             {
-                "$project": {"service": "$_id", "dates": 1, "_id": 0}
+                "$project": {
+                    "service": "$_id",
+                    "dates": 1,
+                    "_id": 0
+                }
             }
         ])
         return results
@@ -66,8 +77,15 @@ class TimeSeriesPlotAPI(SuperadminAPI):
             },
             {
                 "$group": {
-                    "_id": {"$dateToString": {"format": "%Y-%m-%d", "date": "$date"}},
-                    "counts": {"$sum": 1},
+                    "_id": {
+                        "$dateToString": {
+                            "format": "%Y-%m-%d",
+                            "date": "$date"
+                        }
+                    },
+                    "counts": {
+                        "$sum": 1
+                    },
                 }
             },
             {
@@ -76,7 +94,11 @@ class TimeSeriesPlotAPI(SuperadminAPI):
                 }
             },
             {
-                "$project": {"date": "$_id", "counts": 1, "_id": 0}
+                "$project": {
+                    "date": "$_id",
+                    "counts": 1,
+                    "_id": 0
+                }
             }
         ])
         return results

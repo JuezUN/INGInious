@@ -24,12 +24,23 @@ class CalendarPlotAPI(SuperadminAPI):
             },
             {
                 "$group": {
-                    "_id": {"$dateToString": {"format": "%Y-%m-%d", "date": "$date"}},
-                    "count": {"$sum": 1},
+                    "_id": {
+                        "$dateToString": {
+                            "format": "%Y-%m-%d",
+                            "date": "$date"
+                        }
+                    },
+                    "count": {
+                        "$sum": 1
+                    },
                 }
             },
             {
-                "$project": {"date": "$_id", "count": 1, "_id": 0}
+                "$project": {
+                    "date": "$_id",
+                    "count": 1,
+                    "_id": 0
+                }
             }
         ])
         return results

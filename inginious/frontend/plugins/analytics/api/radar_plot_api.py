@@ -25,7 +25,9 @@ class RadarPlotAPI(SuperadminAPI):
             {
                 "$group": {
                     "_id": "$service",
-                    "visits": {"$sum": 1}
+                    "visits": {
+                        "$sum": 1
+                    }
                 }
             },
             {
@@ -34,7 +36,11 @@ class RadarPlotAPI(SuperadminAPI):
                 }
             },
             {
-                "$project": {"service": "$_id", "visits": 1, "_id": 0}
+                "$project": {
+                    "service": "$_id",
+                    "visits": 1,
+                    "_id": 0
+                }
             }
         ])
         return results
