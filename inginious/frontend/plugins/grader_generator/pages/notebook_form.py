@@ -29,10 +29,12 @@ class NotebookForm(GraderForm):
         for key in keys_to_remove:
             del self.task_data[key]
 
+        grader_test_cases = {int(key): val for key, val in grader_test_cases.items()}
+
         grader_test_cases = OrderedDict(sorted(grader_test_cases.items()))
         for index, test in grader_test_cases.items():
+            test["cases"] = {int(key): val for key, val in test["cases"].items()}
             test["cases"] = OrderedDict(sorted(test["cases"].items()))
-
         return grader_test_cases
 
     def parse_and_validate_tests(self):
