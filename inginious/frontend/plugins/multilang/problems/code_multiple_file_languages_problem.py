@@ -7,7 +7,8 @@ from .constants import get_show_tools
 
 path_to_plugin = os.path.abspath(os.path.dirname(__file__))
 
-class CodeFileMultipleLanguagesProblem (FileProblem):
+
+class CodeFileMultipleLanguagesProblem(FileProblem):
     """Code file problem with multiple languages"""
 
     def __init__(self, task, problemid, content, translations=None):
@@ -17,6 +18,7 @@ class CodeFileMultipleLanguagesProblem (FileProblem):
     @classmethod
     def get_type(cls):
         return "code_file_multiple_languages"
+
 
 class DisplayableCodeFileMultipleLanguagesProblem(CodeFileMultipleLanguagesProblem, DisplayableFileProblem):
     """ A displayable code file problem with multiple languages """
@@ -45,12 +47,15 @@ class DisplayableCodeFileMultipleLanguagesProblem(CodeFileMultipleLanguagesProbl
 
         renderer = DisplayableCodeFileMultipleLanguagesProblem.get_renderer(template_helper)
 
-        multiple_language_render = str(renderer.multilang(self.get_id(), dropdown_id, allowed_languages, self.get_id(), self.get_type()))
-        standard_code_problem_render = super(DisplayableCodeFileMultipleLanguagesProblem, self).show_input(template_helper, language, seed)
+        multiple_language_render = str(
+            renderer.multilang(self.get_id(), dropdown_id, allowed_languages, self.get_id(), self.get_type(),
+                               task_id=self.get_task().get_id()))
+        standard_code_problem_render = super(DisplayableCodeFileMultipleLanguagesProblem, self).show_input(
+            template_helper, language, seed)
         tools_render = ""
         if get_show_tools():
             tools_render = str(
                 renderer.tools(self.get_id(), "plain", custom_input_id, self.get_type(), "python_tutor_url",
-                               "python_tutor_url_py2", "linter_url"))
+                               "python_tutor_url_py2", "linter_url", course_id=self.get_task().get_course_id()))
 
         return multiple_language_render + standard_code_problem_render + tools_render
