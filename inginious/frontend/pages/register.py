@@ -103,8 +103,8 @@ class RegistrationPage(INGIniousPage):
                                             "bindings": {},
                                             "language": self.user_manager._session.get("language", "en")})
                 try:
-                    web.sendmail(web.config.smtp_sendername, data["email"], _("Welcome on INGInious"),
-                                 _("""Welcome on INGInious !
+                    web.sendmail(web.config.smtp_sendername, data["email"], _("Welcome on UNCode"),
+                                 _("""Welcome on UNCode !
 
 To activate your account, please click on the following link :
 """)
@@ -138,10 +138,10 @@ To activate your account, please click on the following link :
                 msg = _("This email address was not found in database.")
             else:
                 try:
-                    web.sendmail(web.config.smtp_sendername, data["recovery_email"], _("INGInious password recovery"),
+                    web.sendmail(web.config.smtp_sendername, data["recovery_email"], _("UNCode password recovery"),
                                  _("""Dear {realname},
 
-Someone (probably you) asked to reset your INGInious password. If this was you, please click on the following link :
+Someone (probably you) asked to reset your UNCode password. If this was you, please click on the following link :
 """).format(realname=user["realname"]) + web.ctx.home + "/register?reset=" + reset_hash)
                     msg = _("An email has been sent to you to reset your password.")
                 except:

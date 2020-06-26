@@ -51,7 +51,7 @@ class TwitterAuthMethod(AuthMethod):
         if twitter:
             r = twitter.post(
                 "https://api.twitter.com/1.1/statuses/update.json",
-                {"status": _("Check out INGInious course {course} and beat my score of {score}% on task {task} !").format(
+                {"status": _("Check out UNCode course {course} and beat my score of {score}% on task {task} !").format(
                     course=course.get_name(language),
                     task=task.get_name(language),
                     score=submission["grade"]

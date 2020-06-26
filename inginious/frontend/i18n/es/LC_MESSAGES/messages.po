@@ -100,11 +100,11 @@ msgstr "Error durante la validación de la petición LTI"
 
 #: inginious/frontend/pages/lti.py:177
 msgid ""
-"In order to send grade back to the TC, INGInious needs the parameters "
+"In order to send grade back to the TC, UNCode needs the parameters "
 "lis_outcome_service_url and lis_outcome_result_id in the LTI basic-"
 "launch-request. Please contact your administrator."
 msgstr ""
-"Para enviar la evaluación al TC, INGInious necesita los atributos "
+"Para enviar la evaluación al TC, UNCode necesita los atributos "
 "lis_outcome_service_url y lis_outcome_result_id en la petición LTI basic-"
 "launch-request. Contacte a su administrador para  más detalles."
 
@@ -151,16 +151,16 @@ msgid "This email address is already in use !"
 msgstr "¡La dirección de correo electrónico ya existe!"
 
 #: inginious/frontend/pages/register.py:106
-msgid "Welcome on INGInious"
-msgstr "Bienvenido a INGInious"
+msgid "Welcome on UNCode"
+msgstr "Bienvenido a UNCode"
 
 #: inginious/frontend/pages/register.py:107
 msgid ""
-"Welcome on INGInious !\n"
+"Welcome on UNCode !\n"
 "\n"
 "To activate your account, please click on the following link :\n"
 msgstr ""
-"¡Bienvenido a INGInious!\n"
+"¡Bienvenido a UNCode!\n"
 "\n"
 "Para activar tu cuenta, haz clic en el siguiente enlace:\n"
 
@@ -185,20 +185,20 @@ msgid "This email address was not found in database."
 msgstr "El correo electrónico no se encontró en la base de datos."
 
 #: inginious/frontend/pages/register.py:141
-msgid "INGInious password recovery"
-msgstr "Recuperación de la contraseña INGInious"
+msgid "UNCode password recovery"
+msgstr "Recuperación de la contraseña UNCode"
 
 #: inginious/frontend/pages/register.py:142
 msgid ""
 "Dear {realname},\n"
 "\n"
-"Someone (probably you) asked to reset your INGInious password. If this "
+"Someone (probably you) asked to reset your UNCode password. If this "
 "was you, please click on the following link :\n"
 msgstr ""
 "Estimado {realname},\n"
 "\n"
 "Alguien (quizá usted) a realizado una petición para actualizar tu "
-"contraseña INGInious. Si usted no realizó esta petición, por favor, haga "
+"contraseña UNCode. Si usted no realizó esta petición, por favor, haga "
 "clic en el siguiente enlace:\n"
 
 #: inginious/frontend/pages/register.py:146
@@ -250,15 +250,15 @@ msgid "Internal error"
 msgstr "Error interno"
 
 #: inginious/frontend/pages/tasks.py:308
-msgid "<b>INGInious is currently grading your answers.<b/> (almost done)"
-msgstr "<b>INGInious está evaluando tus respuestas.<b/> (sea paciente)"
+msgid "<b>UNCode is currently grading your answers.<b/> (almost done)"
+msgstr "<b>UNCode está evaluando tus respuestas.<b/> (sea paciente)"
 
 #: inginious/frontend/pages/tasks.py:310
 msgid ""
-"<b>INGInious is currently grading your answers.<b/> (Approx. wait time: "
+"<b>UNCode is currently grading your answers.<b/> (Approx. wait time: "
 "{} seconds)"
 msgstr ""
-"<b>INGInious está evaluando tus respuestas.<b/> (Tiempo aproximado: {} "
+"<b>UNCode está evaluando tus respuestas.<b/> (Tiempo aproximado: {} "
 "segundos)"
 
 #: inginious/frontend/pages/tasks.py:313
@@ -708,8 +708,8 @@ msgstr "Elimina mi cuenta"
 
 #: inginious/frontend/plugins/auth/facebook_auth.py:51
 #: inginious/frontend/plugins/auth/linkedin_auth.py:58
-msgid "INGInious | {course} - {task}"
-msgstr "INGInious | {cursi} - {tarea}"
+msgid "UNCode | {course} - {task}"
+msgstr "UNCode | {cursi} - {tarea}"
 
 #: inginious/frontend/plugins/auth/facebook_auth.py:55
 #: inginious/frontend/plugins/auth/linkedin_auth.py:51
@@ -1015,17 +1015,17 @@ msgstr "Registrarse"
 
 #: inginious/frontend/templates/layout.html:171
 #: inginious/frontend/templates/maintenance.html:93
-msgid "INGInious is distributed under AGPL license"
-msgstr "INGInious sigue la especificación de la licencia AGPL"
+msgid "UNCode is distributed under AGPL license"
+msgstr "UNCode sigue la especificación de la licencia AGPL"
 
 #: inginious/frontend/templates/layout_lti.html:88
 msgid ""
 "Powered by <a href=\"http://www.inginious.org\" "
-"target=\"_blank\">INGInious</a>, a free and open-source grading tool."
+"target=\"_blank\">UNCode</a>, a free and open-source grading tool."
 msgstr ""
 "Sitio generado con <a href=\"http://www.inginious.org\" "
-"target=\"_blank\">INGInious</a>, una plataforma de evaluación académica. "
-"El código fuente de INGInious es libre y abierto (open source)."
+"target=\"_blank\">UNCode</a>, una plataforma de evaluación académica. "
+"El código fuente de UNCode es libre y abierto (open source)."
 
 #: inginious/frontend/templates/lti_bind.html:8
 msgid "Bind LTI"
@@ -1041,10 +1041,10 @@ msgstr "Se requiere autorización"
 
 #: inginious/frontend/templates/lti_bind.html:22
 msgid ""
-"You are going to bind your INGInious account <strong>{realname} "
+"You are going to bind your UNCode account <strong>{realname} "
 "[{username}]</strong> with the following LTI tool and context:"
 msgstr ""
-"Estas por agregar una dependencia LTI a tu cuenta INGInious "
+"Estas por agregar una dependencia LTI a tu cuenta UNCode "
 "<strong>{realname} [{username}]</strong>, aquí se muestra el contenido:"
 
 #: inginious/frontend/templates/lti_bind.html:24
@@ -1085,16 +1085,16 @@ msgstr "Cancelar"
 
 #: inginious/frontend/templates/lti_login.html:16
 msgid ""
-"<h2 class=\"text-justify\">Hello!<br/><small>Welcome on the INGInious "
+"<h2 class=\"text-justify\">Hello!<br/><small>Welcome on the UNCode "
 "platform.</small></h2>"
 msgstr ""
 
 #: inginious/frontend/templates/lti_login.html:25
 msgid ""
-"In order to use INGInious via this platform, please bind your existing "
+"In order to use UNCode via this platform, please bind your existing "
 "account or create a new one."
 msgstr ""
-"Para poder utilizar  INGInious con esta plataforma, crea un enlace a tu "
+"Para poder utilizar  UNCode con esta plataforma, crea un enlace a tu "
 "cuenta o crea un nuevo enlace."
 
 #: inginious/frontend/templates/lti_login.html:31
@@ -1102,8 +1102,8 @@ msgid "Invalid login/password"
 msgstr "Credenciales no validas"
 
 #: inginious/frontend/templates/lti_login.html:34
-msgid "Bind your INGInious account"
-msgstr "Crea un enlace a tu cuenta INGInious"
+msgid "Bind your UNCode account"
+msgstr "Crea un enlace a tu cuenta UNCode"
 
 #: inginious/frontend/templates/lti_login.html:35
 msgid "Refresh"
@@ -1115,9 +1115,9 @@ msgstr "Mantenimiento"
 
 #: inginious/frontend/templates/maintenance.html:79
 msgid ""
-"<b>This INGInious instance is currently under maintenance.</b> Please "
+"<b>This UNCode instance is currently under maintenance.</b> Please "
 "come back in a few minutes!"
-msgstr "<b>INGInious esta actualmente en mantenimiento.</b> ¡Regrese más tarde!"
+msgstr "<b>UNCode esta actualmente en mantenimiento.</b> ¡Regrese más tarde!"
 
 #: inginious/frontend/templates/mycourses.html:58
 msgid "LTI course"
@@ -1270,8 +1270,8 @@ msgid "There are no jobs waiting in queue"
 msgstr "No hay tareas en la lista de espera"
 
 #: inginious/frontend/templates/register.html:24
-msgid "Register in INGInious"
-msgstr "Crear un registro en INGInious"
+msgid "Register in UNCode"
+msgstr "Crear un registro en UNCode"
 
 #: inginious/frontend/templates/register.html:28
 msgid "Username (min. 4 alphanumerical characters) :"
@@ -2001,20 +2001,20 @@ msgstr "\"Descargar respaldo\""
 #: inginious/frontend/templates/course_admin/danger_zone.html:136
 msgid ""
 "<p> This will <b>permanently</b> remove the course and all its data "
-"(including tasks and backups) from INGInious.</p><p>To confirm your will,"
+"(including tasks and backups) from UNCode.</p><p>To confirm your will,"
 " please type the course id below :</p>"
 msgstr ""
 "<p>Esta acción eliminará <b>permanentemente</b> este curso y toda su "
-"información (incluyendo tareas y respaldos) de INGInious.</p><p>Para "
+"información (incluyendo tareas y respaldos) de UNCode.</p><p>Para "
 "confirmar esta acción, escriba aquí el identificador del curso:</p>"
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:157
 msgid ""
 "<p>This will <b>permanently</b> remove the course and all its data "
-"(including tasks and backups) from INGInious. Are you really sure ?</p>"
+"(including tasks and backups) from UNCode. Are you really sure ?</p>"
 msgstr ""
 "<p>Esta acción <b>eliminará permanentemente</b> el curso y toda su "
-"información (incluyendo las tareas y los respaldos) de INGInious. ¿Esta "
+"información (incluyendo las tareas y los respaldos) de UNCode. ¿Esta "
 "seguro de realizar esta acción?</p>"
 
 #: inginious/frontend/templates/course_admin/download.html:31
@@ -2108,7 +2108,7 @@ msgstr "Permitir LTI"
 
 #: inginious/frontend/templates/course_admin/settings.html:55
 msgid ""
-"Enable this option to allow your INGInious course to be used in external "
+"Enable this option to allow your UNCode course to be used in external "
 "Learning Management Systems (LMS) such as Moodle or edX. Note that this "
 "will deactivate the access to the course from the main page for non-staff"
 " members of the course, and the team/classroom system."
@@ -2620,7 +2620,7 @@ msgid "Delete task"
 msgstr "Borrar tarea"
 
 #: inginious/frontend/templates/course_admin/task_edit.html:99
-msgid "This will <b>permanently</b> remove the task and its files from INGInious."
+msgid "This will <b>permanently</b> remove the task and its files from UNCode."
 msgstr ""
 "Esto borrará <b>permanentemente</b> la tarea y todos sus archivos de "
 "UNCode."
@@ -3154,11 +3154,11 @@ msgstr "Extensiones permitidas"
 #~ msgid "Multiple Choice Question solver"
 #~ msgstr ""
 
-#~ msgid "<b>INGInious is currently grading your answers.</b> (almost done)"
+#~ msgid "<b>UNCode is currently grading your answers.</b> (almost done)"
 #~ msgstr "<b>UNCode está evaluando sus respuestas.</b> (casi finalizado)"
 
 #~ msgid ""
-#~ "<b>INGInious is currently grading your "
+#~ "<b>UNCode is currently grading your "
 #~ "answers.</b> (Approx. wait time: {} "
 #~ "seconds)"
 #~ msgstr ""
@@ -3181,7 +3181,7 @@ msgstr "Extensiones permitidas"
 #~ "Couldn't fetch the required information "
 #~ "from the service. Please check the "
 #~ "provided permissions (name, email) and "
-#~ "contact your INGInious administrator if "
+#~ "contact your UNCode administrator if "
 #~ "the error persists."
 #~ msgstr ""
 
@@ -3313,8 +3313,8 @@ msgstr "Extensiones permitidas"
 #~ msgid "Hello!"
 #~ msgstr "¡Hola!"
 
-#~ msgid "Welcome on the INGInious platform."
-#~ msgstr "Bienvenido a la plataforma INGInious."
+#~ msgid "Welcome on the UNCode platform."
+#~ msgstr "Bienvenido a la plataforma UNCode."
 
 #~ msgid "Find new courses on the course list page"
 #~ msgstr ""
@@ -3416,7 +3416,7 @@ msgstr "Extensiones permitidas"
 
 #~ msgid ""
 #~ "Enable this option to allow your "
-#~ "INGInious course to be used in "
+#~ "UNCode course to be used in "
 #~ "external Learning Management Systems (LMS) "
 #~ "such as Moodle or edX. Note that"
 #~ " this will deactivate the group "
@@ -3435,7 +3435,7 @@ msgstr "Extensiones permitidas"
 #~ "Enable this to send back grades to"
 #~ " the calling Tool Consumer (which is,"
 #~ " most of the time, your LMS). "
-#~ "INGInious will deactivate students' access "
+#~ "UNCode will deactivate students' access "
 #~ "to the course and tasks from the"
 #~ " web application when enabled. Tasks "
 #~ "will be only available from the "
@@ -3444,7 +3444,7 @@ msgstr "Extensiones permitidas"
 #~ "Al permitir esta acción, las "
 #~ "calificaciones serán enviadas al sistema "
 #~ "Tool Consumer (típicamente tu sistema "
-#~ "LMS). INGInious restringirá el acceso a"
+#~ "LMS). UNCode restringirá el acceso a"
 #~ " los estudiantes del curso y también"
 #~ " a las tareas. Las tareas solo "
 #~ "estarán disponibles desde la interfaz "
@@ -3536,7 +3536,7 @@ msgstr "Extensiones permitidas"
 
 #~ msgid ""
 #~ "Enable this option to allow your "
-#~ "INGInious course to be used in "
+#~ "UNCode course to be used in "
 #~ "external Learning Management Systems (LMS) "
 #~ "such as Moodle or edX. Note that"
 #~ " this will deactivate the team/classroom"
