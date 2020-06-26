@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-26 00:39-0500\n"
+"POT-Creation-Date: 2020-06-26 02:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -663,6 +663,90 @@ msgstr ""
 msgid "Delete my account"
 msgstr ""
 
+#: inginious/frontend/plugins/analytics/__init__.py:30
+msgid ""
+"\"<li><a href='/analytics/' class='navbar-link'>\n"
+"            <i class='fa fa-bar-chart fa-fw'></i> Analytics</a></li>"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:13
+msgid "Analytics"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:16
+msgid "Apply filters"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:21
+msgid "Analytics since"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:31
+msgid "Service"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:34
+msgid "All services"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:43
+#: inginious/frontend/plugins/auth/custom_auth_form.html:29
+#: inginious/frontend/templates/auth.html:23
+msgid "Username"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:50
+#: inginious/frontend/templates/mycourses.html:88
+#: inginious/frontend/templates/mycourses.html:109
+msgid "Course"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:53
+msgid "All courses"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:60
+#: inginious/frontend/templates/course_admin/classroom_edit.html:161
+#: inginious/frontend/templates/course_admin/teams_edit.html:226
+msgid "Update"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:67
+msgid "Heat map"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:68
+msgid "Visits per day"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:69
+msgid "Box plot"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:70
+#: inginious/frontend/plugins/analytics/pages/analytics.html:85
+msgid "Radar plot"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:75
+msgid "Calendar visits"
+msgstr ""
+
+#: inginious/frontend/plugins/auth/custom_auth_form.html:32
+#: inginious/frontend/templates/auth.html:26
+#: inginious/frontend/templates/mycourses.html:120
+#: inginious/frontend/templates/register_button.html:31
+msgid "Password"
+msgstr ""
+
+#: inginious/frontend/plugins/auth/custom_auth_form.html:34
+#: inginious/frontend/templates/auth.html:28
+#: inginious/frontend/templates/layout.html:135
+#: inginious/frontend/templates/signin_button.html:8
+#: inginious/frontend/templates/signin_button.html:15
+msgid "Sign in"
+msgstr ""
+
 #: inginious/frontend/plugins/auth/facebook_auth.py:51
 #: inginious/frontend/plugins/auth/linkedin_auth.py:58
 msgid "UNCode | {course} - {task}"
@@ -678,16 +762,275 @@ msgid ""
 "{task} !"
 msgstr ""
 
+#: inginious/frontend/plugins/code_preview/pages/code_preview.html:3
+msgid "Remove"
+msgstr ""
+
+#: inginious/frontend/plugins/code_preview/pages/code_preview.html:8
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:23
+#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:10
+msgid "Languages"
+msgstr ""
+
+#: inginious/frontend/plugins/code_preview/pages/code_preview.html:13
+msgid "Files"
+msgstr ""
+
+#: inginious/frontend/plugins/code_preview/pages/code_preview.html:19
+msgid "Add/Update"
+msgstr ""
+
+#: inginious/frontend/plugins/code_preview/pages/code_preview.py:11
+msgid "Preview"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/grader.py:46
+msgid "Grader"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:9
+msgid "Generate grader automatically"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:24
+msgid "\"Problem id where the code is located\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:36
+msgid "Maximum diff lines"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:38
+msgid "\"The maximum number of lines that the diff tool should show\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:48
+msgid "Diff context lines"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:58
+msgid "Show runtime errors"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:60
+msgid ""
+"\"In case it is not checked, the student's result is either ACCEPTED or "
+"WRONG_ANSWER. If checked, it shows additional errors like RUNTIME_ERROR "
+"or TIME_LIMIT_EXCEEDED.\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:78
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:236
+msgid "Time limit test cases (s)"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:80
+msgid "\"Time limit for each test case in seconds. (Max. 30s)\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:88
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:245
+msgid "Memory limit test cases (MB)"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:90
+msgid "\"Memory limit for each test case in MBs. (Max. 500 MBs)\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:98
+msgid "Output limit test cases (MB)"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:100
+msgid "\"Output limit for each test case in MBs. (Max. 30 MBs)\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:109
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:43
+msgid "Test cases"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:114
+msgid "All diffs"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:119
+msgid "Remove all tests"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:126
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:140
+msgid "Input file"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:127
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:145
+msgid "Output file"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:128
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:279
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:27
+msgid "Weight"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:129
+msgid "Show differences"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:130
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:289
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:85
+msgid "Options"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:151
+#: inginious/frontend/templates/course_admin/edit_tabs/subproblems.html:24
+msgid "Add"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:163
+msgid "Entity (only on VHDL)"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:174
+msgid "Testbench"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:179
+msgid "Golden Model"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:191
+msgid "Setup code for all tests"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:207
+msgid "Dataset URL"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:221
+msgid "Dataset filename"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:256
+msgid "Notebook example"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:260
+msgid "Click here to open a notebook example"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:271
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:8
+msgid "Add a test"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:278
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:23
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
+#: inginious/frontend/templates/course_admin/settings.html:29
+#: inginious/frontend/templates/course_admin/task_edit.html:143
+#: inginious/frontend/templates/queue.html:29
+#: inginious/frontend/templates/queue.html:59
+msgid "Name"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:282
+msgid "Show debug info"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:284
+msgid ""
+"\"Check to show more info the student like output difference and runtime "
+"errors\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:11
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:94
+msgid "Save"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:20
+msgid "Test name"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:35
+msgid "Setup code"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:48
+msgid "Case code"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:63
+msgid "Case expected output"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:82
+msgid "ID"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:83
+msgid "Code"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:84
+msgid "Expected output"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:93
+#: inginious/frontend/templates/course_admin/classroom_edit.html:86
+#: inginious/frontend/templates/course_admin/danger_zone.html:81
+#: inginious/frontend/templates/course_admin/danger_zone.html:160
+#: inginious/frontend/templates/course_admin/student_list_table.html:82
+#: inginious/frontend/templates/course_admin/submissions.html:255
+#: inginious/frontend/templates/course_admin/task_edit.html:107
+#: inginious/frontend/templates/course_admin/teams_edit.html:60
+#: inginious/frontend/templates/lti_bind.html:36
+#: inginious/frontend/templates/unregister_button.html:21
+msgid "Cancel"
+msgstr ""
+
 #: inginious/frontend/plugins/multilang/problems/code_multiple_file_languages_problem.py:36
 msgid "code file multiple languages"
 msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/code_multiple_languages_problem.py:33
+#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:29
 msgid "Code multiple languages"
 msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/notebook_file_problem.py:33
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:24
 msgid "Notebook"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:4
+#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:4
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:4
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:36
+#: inginious/frontend/templates/course_admin/subproblems/code.html:9
+#: inginious/frontend/templates/course_admin/subproblems/file.html:9
+#: inginious/frontend/templates/course_admin/subproblems/match.html:9
+#: inginious/frontend/templates/course_admin/subproblems/multiple_choice.html:9
+msgid "Context"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:44
+#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:26
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:21
+#: inginious/frontend/templates/course_admin/download.html:47
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:92
+#: inginious/frontend/templates/course_admin/subproblems/code.html:22
+#: inginious/frontend/templates/course_admin/subproblems/file.html:27
+#: inginious/frontend/templates/queue.html:26
+#: inginious/frontend/templates/queue.html:57
+msgid "Type"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:47
+msgid "Code file multiple languages"
 msgstr ""
 
 #: inginious/frontend/templates/auth.html:8
@@ -701,25 +1044,8 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: inginious/frontend/templates/auth.html:23
-msgid "Username"
-msgstr ""
-
-#: inginious/frontend/templates/auth.html:26
-#: inginious/frontend/templates/mycourses.html:120
-#: inginious/frontend/templates/register_button.html:31
-msgid "Password"
-msgstr ""
-
 #: inginious/frontend/templates/auth.html:26
 msgid "Lost password?"
-msgstr ""
-
-#: inginious/frontend/templates/auth.html:28
-#: inginious/frontend/templates/layout.html:135
-#: inginious/frontend/templates/signin_button.html:8
-#: inginious/frontend/templates/signin_button.html:15
-msgid "Sign in"
 msgstr ""
 
 #: inginious/frontend/templates/auth.html:38
@@ -1010,18 +1336,6 @@ msgstr ""
 msgid "Bind my account"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/classroom_edit.html:86
-#: inginious/frontend/templates/course_admin/danger_zone.html:81
-#: inginious/frontend/templates/course_admin/danger_zone.html:160
-#: inginious/frontend/templates/course_admin/student_list_table.html:82
-#: inginious/frontend/templates/course_admin/submissions.html:255
-#: inginious/frontend/templates/course_admin/task_edit.html:107
-#: inginious/frontend/templates/course_admin/teams_edit.html:60
-#: inginious/frontend/templates/lti_bind.html:36
-#: inginious/frontend/templates/unregister_button.html:21
-msgid "Cancel"
-msgstr ""
-
 #: inginious/frontend/templates/lti_login.html:16
 msgid ""
 "<h2 class=\"text-justify\">Hello!<br/><small>Welcome on the UNCode "
@@ -1089,11 +1403,6 @@ msgstr ""
 msgid "Failed to create the course."
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:88
-#: inginious/frontend/templates/mycourses.html:109
-msgid "Course"
-msgstr ""
-
 #: inginious/frontend/templates/mycourses.html:92
 msgid "Create new course"
 msgstr ""
@@ -1133,30 +1442,12 @@ msgstr ""
 msgid "Running jobs"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/download.html:47
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:92
-#: inginious/frontend/templates/course_admin/subproblems/code.html:22
-#: inginious/frontend/templates/course_admin/subproblems/file.html:27
-#: inginious/frontend/templates/queue.html:26
-#: inginious/frontend/templates/queue.html:57
-msgid "Type"
-msgstr ""
-
 #: inginious/frontend/templates/queue.html:27
 msgid "Local client"
 msgstr ""
 
 #: inginious/frontend/templates/queue.html:28
 msgid "Agent name"
-msgstr ""
-
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:23
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
-#: inginious/frontend/templates/course_admin/settings.html:29
-#: inginious/frontend/templates/course_admin/task_edit.html:143
-#: inginious/frontend/templates/queue.html:29
-#: inginious/frontend/templates/queue.html:59
-msgid "Name"
 msgstr ""
 
 #: inginious/frontend/templates/queue.html:30
@@ -1824,11 +2115,6 @@ msgstr ""
 #: inginious/frontend/templates/course_admin/classroom_edit.html:156
 #: inginious/frontend/templates/course_admin/teams_edit.html:158
 msgid "Add tutor"
-msgstr ""
-
-#: inginious/frontend/templates/course_admin/classroom_edit.html:161
-#: inginious/frontend/templates/course_admin/teams_edit.html:226
-msgid "Update"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:169
@@ -2611,14 +2897,6 @@ msgstr ""
 msgid "Filetype"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:36
-#: inginious/frontend/templates/course_admin/subproblems/code.html:9
-#: inginious/frontend/templates/course_admin/subproblems/file.html:9
-#: inginious/frontend/templates/course_admin/subproblems/match.html:9
-#: inginious/frontend/templates/course_admin/subproblems/multiple_choice.html:9
-msgid "Context"
-msgstr ""
-
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:42
 msgid "Author"
 msgstr ""
@@ -2780,10 +3058,6 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/subproblems.html:16
 msgid "Problem type"
-msgstr ""
-
-#: inginious/frontend/templates/course_admin/edit_tabs/subproblems.html:24
-msgid "Add"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:9
