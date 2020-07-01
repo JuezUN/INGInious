@@ -4,17 +4,17 @@ $def with (inputId, language, customInputId, type, pythonTutorURL, pythonTutorPy
 <br>
 <div>
     $if type == "code_multiple_languages":
-        <button type="button" class="btn btn-success" id="btn-lint" onclick="onClickLintButton()">Perform lint</button>
-  &nbsp;<button type="button" class="btn btn-primary" onclick="toggleElement('tools-$inputId')">Tools</button>
+        <button type="button" class="btn btn-success" id="btn-lint" onclick="onClickLintButton()">$:_("Perform lint")</button>
+  &nbsp;<button type="button" class="btn btn-primary" onclick="toggleElement('tools-$inputId')">$:_("Tools")</button>
   <div id="tools-$inputId" style="display: none">
     <div class="row panel-body">
       <div class="col-md-6 pr-1">
-        Paste your input
+        $:_("Paste your input")
         <textarea
           id="custominput-$inputId"
           name="$customInputId"
           class="form-control noresize in-out-area"
-          placeholder="Your input goes here"
+          placeholder=$:_("'Your input goes here'")
           data-optional="True"
         ></textarea>
       </div>
@@ -22,17 +22,22 @@ $def with (inputId, language, customInputId, type, pythonTutorURL, pythonTutorPy
         <br>
         <pre
             id="customoutput-$inputId"
-            class="form-control noresize in-out-area"><span class="placeholder-text">Your output goes here</span>
+            class="form-control noresize in-out-area"><span class="placeholder-text">$:_("Your output goes here")</span>
         </pre>
         <br>
       </div>
 
       $if type == "code_multiple_languages":
           <div class="col-md-6">
-            <button type="button" class="btn btn-primary btn-md btn-block" onclick="runCustomTest('$inputId')">Test code!</button>
+            <button type="button" class="btn btn-primary btn-md btn-block" onclick="runCustomTest('$inputId')">
+                $:_("Test code!")
+            </button>
           </div>
           <div class="col-md-6">
-            <button class="btn btn-success btn-md btn-block" type="button" data-toggle="modal" data-target="#modal-$inputId" onclick="visualizeCode('$language', '$inputId')">Visualize your code!</button>
+            <button class="btn btn-success btn-md btn-block" type="button" data-toggle="modal"
+                    data-target="#modal-$inputId" onclick="visualizeCode('$language', '$inputId')">
+                $:_("Visualize your code!")
+            </button>
           </div>
 
           <div id="modal-$inputId" class="modal modal-wide fade">
@@ -40,18 +45,20 @@ $def with (inputId, language, customInputId, type, pythonTutorURL, pythonTutorPy
                   <div class="modal-content">
                       <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                          <h4 class="modal-title">Visualize your code!</h4>
+                          <h4 class="modal-title">$:_("Visualize your code!")</h4>
                       </div>
                       <div class="modal-body"></div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" data-dismiss="modal">$:_("Close")</button>
                       </div>
                   </div><!-- /.modal-content -->
               </div><!-- /.modal-dialog -->
           </div><!-- /.modal -->
       $elif type == 'code_file_multiple_languages':
           <div class="col-md-12">
-            <button type="button" class="btn btn-default btn-md btn-block" onclick="runCustomTest('$inputId')">Test</button>
+            <button type="button" class="btn btn-default btn-md btn-block" onclick="runCustomTest('$inputId')">
+                $:_("Test")
+            </button>
           </div>
     </div>
   </div>

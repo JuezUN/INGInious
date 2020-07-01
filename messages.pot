@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-26 02:15-0500\n"
+"POT-Creation-Date: 2020-07-01 16:58-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -792,6 +792,10 @@ msgstr ""
 msgid "Generate grader automatically"
 msgstr ""
 
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:22
+msgid "Problem ID"
+msgstr ""
+
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:24
 msgid "\"Problem id where the code is located\""
 msgstr ""
@@ -1017,6 +1021,23 @@ msgstr ""
 msgid "Context"
 msgstr ""
 
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:10
+msgid "Allowed file extensions"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:17
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:12
+#: inginious/frontend/templates/course_admin/subproblems/file.html:21
+msgid "Maximum file size (in bytes)"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:27
+#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:14
+#: inginious/frontend/templates/course_admin/submissions_tabs/tasks.html:15
+#: inginious/frontend/templates/course_admin/submissions_tabs/users.html:29
+msgid "Select all"
+msgstr ""
+
 #: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:44
 #: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:26
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:21
@@ -1033,15 +1054,272 @@ msgstr ""
 msgid "Code file multiple languages"
 msgstr ""
 
-#: inginious/frontend/templates/auth.html:8
-msgid "Welcome"
+#: inginious/frontend/plugins/multilang/problems/templates/multilang.html:12
+msgid "Paste your code or <a href='#' id='link-$inputId'>load it from file</a>"
 msgstr ""
 
+#: inginious/frontend/plugins/multilang/problems/templates/multilang.html:14
+msgid "Select your language"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:12
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:23
+msgid " About IPython Notebook submissions"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:27
+msgid ""
+"In general, when submitting a notebook, all <strong>Python 3.5 "
+"code</strong> is supported on UNCode. However, Ipython notebooks and "
+"python code differ in some functionalities, then UNCode might support "
+"them or not. Also, there are some things you should bear in mind when "
+"creating your notebook."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:32
+msgid "Python modules"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:33
+msgid ""
+"You are able to use the next python modules in addition to the pre "
+"installed python modules:"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:39
+msgid "Installing modules"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:41
+msgid ""
+"All the modules and data you require are already installed and supported "
+"by UNCode.<br> Then, when you have lines installing a module, for "
+"instance"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:42
+msgid "or using "
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:44
+msgid ""
+"these lines are automatically removed from your notebook to avoid runtime"
+" execution errors."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:46
+msgid ""
+"In case you want to use one module and it is not in the previous list, do"
+" not hesitate on reaching out for support."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:49
+msgid "Print expressions"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:50
+msgid ""
+"Usually while executing your notebook on your runtime you might add some "
+"<code class='language-python' data-language='python'>print</code> "
+"expressions, though, these expressions are deleted and these outputs are "
+"not shown in the submission feedback."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:53
+msgid "Internet access in grading environment"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:54
+msgid ""
+"The internet access when your code is being graded is dependant on the "
+"task. Some tasks might allow it or not."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:56
+msgid ""
+"In case you are allowed to access internet, this mainly will work to "
+"download files or data, for instance datasets. As stated above, you "
+"cannot install modules."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:58
+msgid ""
+"In case there is not access, be careful when using code that requires "
+"internet access as it will fail while grading."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:61
+msgid "Magic functionality execution"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:62
+msgid ""
+" functions are not allowed when your notebook is graded. For example the "
+"next line"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:66
+msgid ""
+"In case your notebook contains some lines like this, they will be "
+"automatically removed to avoid runtime execution errors."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:69
+msgid "Commands execution"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:70
+msgid "IPython Notebooks provide a functionality to execute commands like these"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:73
+msgid "However, this kind of lines are transformed as follows"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:75
+msgid "is turned into the following code:"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:89
+msgid ""
+"That code will do the same for you as in the notebook. However, you are "
+"not allowed to assign the result of command execution to variables, for "
+"instance the next line will return an error"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:94
+msgid "Google Colab modules"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:95
+msgid ""
+"When you use Google Colaboratory (Colab) and you want to load and read "
+"data from Google Drive, you are required to use some python modules "
+"unique in Colab. These modules are not supported by UNCode. Then, make "
+"sure when you submit your notebook, you do not include it."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:52
 #: inginious/frontend/templates/auth.html:16
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
 #: inginious/frontend/templates/lti_login.html:30
 #: inginious/frontend/templates/register_button.html:36
 msgid "Close"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:7
+msgid "Perform lint"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:8
+msgid "Tools"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:12
+msgid "Paste your input"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:17
+msgid "'Your input goes here'"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:25
+msgid "Your output goes here"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:33
+msgid "Test code!"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:39
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:48
+msgid "Visualize your code!"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:60
+msgid "Test"
+msgstr ""
+
+#: inginious/frontend/plugins/problem_bank/index.html:7
+#: inginious/frontend/plugins/problem_bank/index.html:12
+#: inginious/frontend/plugins/problem_bank/problem_bank_div.html:2
+msgid "Problem bank"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:3
+#: inginious/frontend/plugins/statistics/pages/user_statistics.py:26
+#: inginious/frontend/templates/course_admin/submissions.html:210
+msgid "Statistics"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:8
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.py:27
+msgid "Course statistics"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:13
+msgid "Statistics for course"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:21
+msgid "Grade count"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:25
+msgid "Grade distribution"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:30
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:63
+msgid "Submissions Verdict (ALL)"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:35
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:77
+msgid "Submissions Verdict (BEST)"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:43
+msgid "Submissions by grade"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:46
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:57
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:66
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:80
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:22
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:32
+msgid "Download CSV"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:54
+msgid "Final grade distribution"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:72
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:86
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:29
+msgid "Toggle normalize"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:3
+#: inginious/frontend/plugins/statistics/pages/user_statistics.py:27
+msgid "My statistics"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:8
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:20
+msgid "Trials and Best Grade"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:13
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:25
+msgid "Bar Submissions Per Tasks"
+msgstr ""
+
+#: inginious/frontend/templates/auth.html:8
+msgid "Welcome"
 msgstr ""
 
 #: inginious/frontend/templates/auth.html:26
@@ -2633,10 +2911,6 @@ msgstr ""
 msgid "Limit"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:210
-msgid "Statistics"
-msgstr ""
-
 #: inginious/frontend/templates/course_admin/submissions.html:212
 msgid "No statistics"
 msgstr ""
@@ -3118,11 +3392,6 @@ msgstr ""
 msgid "Tasks to replay submissions from"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions_tabs/tasks.html:15
-#: inginious/frontend/templates/course_admin/submissions_tabs/users.html:29
-msgid "Select all"
-msgstr ""
-
 #: inginious/frontend/templates/course_admin/submissions_tabs/tasks.html:16
 #: inginious/frontend/templates/course_admin/submissions_tabs/users.html:30
 msgid "Deselect all"
@@ -3174,10 +3443,6 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/subproblems/file.html:15
 msgid "Allowed file extensions (including the dot, separated by spaces)"
-msgstr ""
-
-#: inginious/frontend/templates/course_admin/subproblems/file.html:21
-msgid "Maximum file size (in bytes)"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/subproblems/file.html:30

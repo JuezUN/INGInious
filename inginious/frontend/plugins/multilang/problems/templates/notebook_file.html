@@ -9,7 +9,7 @@ $#
     <input type="hidden" name="$inputId/type" value="$type">
     <input type="hidden" name="$inputId/language" value="python">
     <a href='#' type='button' data-toggle='modal' data-target='#notebook_help_modal'>
-        <i class='fa fa-lightbulb-o'> About IPython Notebook submissions</i>
+        <i class='fa fa-lightbulb-o'>$:_(" About IPython Notebook submissions")</i>
     </a>
 </div>
 <div class="DivToScroll DivWithScroll" id="notebook-holder" hidden></div>
@@ -20,72 +20,59 @@ $#
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h3 class="modal-title"><i class="fa fa-lightbulb-o"> About IPython Notebook submissions</i></h3>
+                <h3 class="modal-title"><i class="fa fa-lightbulb-o">$:_(" About IPython Notebook submissions")</i></h3>
             </div>
             <div class="modal-body text-justify">
                 <h5>
-                    In general, when submitting a notebook, all <strong>Python 3.5 code</strong> is supported on UNCode.
-                    However, Ipython notebooks and python code differ in some functionalities, then UNCode might support
-                    them or not. Also, there are some things you should bear in mind when creating your notebook.
+                    $:_("In general, when submitting a notebook, all <strong>Python 3.5 code</strong> is supported on UNCode. However, Ipython notebooks and python code differ in some functionalities, then UNCode might support them or not. Also, there are some things you should bear in mind when creating your notebook.")
                 </h5>
                 <hr>
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <strong>Python modules:</strong><br>
-                        You are able to use the next python modules in addition to the pre installed python modules:<br>
+                        <strong>$:_("Python modules"):</strong><br>
+                        $:_("You are able to use the next python modules in addition to the pre installed python modules:")<br>
                         <code class="language-python" data-language="python">
                             import pandas, numpy, matplotlib, scipy, scikit-learn, seaborn, datascience, plotly,
-                            cufflinks,
-                            bokeh, tabulate, nltk, tensorflow, Keras
+                            cufflinks, bokeh, tabulate, nltk, tensorflow, Keras
                         </code>
                         <br><br>
-                        <strong>Installing modules:</strong>
+                        <strong>$:_("Installing modules"):</strong>
                         <br>
-                        All the modules and data you require are already installed and supported by UNCode.<br>
-                        Then, when you have lines installing a module, for instance:
-                        <code class="language-python" data-language="python">!pip install pandas</code> or
-                        using <code class="language-python" data-language="python">conda</code>, these
-                        lines are automatically removed from your notebook to avoid runtime execution errors.
+                        $:_("All the modules and data you require are already installed and supported by UNCode.<br> Then, when you have lines installing a module, for instance"):
+                        <code class="language-python" data-language="python">!pip install pandas</code> $:_("or using ")
+                        <code class="language-python" data-language="python">conda</code>,
+                        $:_("these lines are automatically removed from your notebook to avoid runtime execution errors.")
                         <br><br>
-                        In case you want to use one module and it is not in the previous list, do not hesitate on
-                        reaching out for support.
+                        $:_("In case you want to use one module and it is not in the previous list, do not hesitate on reaching out for support.")
                     </li>
                     <li class="list-group-item">
-                        <strong>Print expressions:</strong><br>
-                        Usually while executing your notebook on your runtime you might add some
-                        <code class="language-python" data-language="python">print</code>
-                        expressions, though, these expressions are deleted and these outputs are not shown in the
-                        submission feedback.
+                        <strong>$:_("Print expressions"):</strong><br>
+                        $:_("Usually while executing your notebook on your runtime you might add some <code class='language-python' data-language='python'>print</code> expressions, though, these expressions are deleted and these outputs are not shown in the submission feedback.")
                     </li>
                     <li class="list-group-item">
-                        <strong>Internet access in grading environment:</strong><br>
-                        The internet access when your code is being graded is dependant on the task. Some tasks might
-                        allow it or not.
+                        <strong>$:_("Internet access in grading environment"):</strong><br>
+                        $:_("The internet access when your code is being graded is dependant on the task. Some tasks might allow it or not.")
                         <br>
-                        In case you are allowed to access internet, this mainly will work to download files or data,
-                        for instance datasets. As stated above, you cannot install modules.
+                        $:_("In case you are allowed to access internet, this mainly will work to download files or data, for instance datasets. As stated above, you cannot install modules.")
                         <br>
-                        In case there is not access, be careful when using code that requires internet access as it
-                        will fail while grading.
+                        $:_("In case there is not access, be careful when using code that requires internet access as it will fail while grading.")
                     </li>
                     <li class="list-group-item">
-                        <strong>Magic functionality execution:</strong><br>
-                        <i>Magic</i> functions are allowed when your notebook is graded. For example the next line:
+                        <strong>$:_("Magic functionality execution"):</strong><br>
+                        <i>Magic</i> $:_(" functions are not allowed when your notebook is graded. For example the next line"):
                         <br>
                         <code class="language-python" data-language="python">%matplotlib inline</code>
                         <br>
-                        In case your notebook contains some lines like this, they will be automatically removed
-                        to avoid runtime execution errors.
+                        $:_("In case your notebook contains some lines like this, they will be automatically removed to avoid runtime execution errors.")
                     </li>
                     <li class="list-group-item">
-                        <strong>Commands execution:</strong><br>
-                        IPython Notebooks provide a functionality to execute commands like these:<br>
+                        <strong>$:_("Commands execution"):</strong><br>
+                        $:_("IPython Notebooks provide a functionality to execute commands like these"):<br>
                         <code class="language-python" data-language="python">!ls</code><br>
                         <code class="language-python" data-language="python">!pwd</code><br>
-                        However, this kind of lines are transformed as follows:
+                        $:_("However, this kind of lines are transformed as follows"):
                         <br>
-                        <code class="language-python" data-language="python">!ls</code> is turned into the following
-                        code:
+                        <code class="language-python" data-language="python">!ls</code> $:_("is turned into the following code:")
                         <br>
                         <code class="language-python" data-language="python">
                             import subprocess
@@ -99,23 +86,19 @@ $#
                             print(call.stdout.decode('utf-8')
                         </code>
                         <br>
-                        That code will do the same for you as in the notebook.
-                        However, you are not allowed to assign the result of command execution to variables, for
-                        instance the next line will return an error:
+                        $:_("That code will do the same for you as in the notebook. However, you are not allowed to assign the result of command execution to variables, for instance the next line will return an error"):
                         <br>
                         <code class="language-python" data-language="python">result = !ls</code>.
                     </li>
                     <li class="list-group-item">
-                        <strong>Google Colab modules</strong><br>
-                        When you use Google Colaboratory (Colab) and you want to load and read data from Google Drive,
-                        you are required to use some python modules unique in Colab. These modules are not supported
-                        by UNCode.
-                        Then, make sure when you submit your notebook, you do not include it.<br><br>
+                        <strong>$:_("Google Colab modules")</strong><br>
+                        $:_("When you use Google Colaboratory (Colab) and you want to load and read data from Google Drive, you are required to use some python modules unique in Colab. These modules are not supported by UNCode. Then, make sure when you submit your notebook, you do not include it.")
+                        <br><br>
                     </li>
                 </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">$:_("Close")</button>
             </div>
         </div>
     </div>
