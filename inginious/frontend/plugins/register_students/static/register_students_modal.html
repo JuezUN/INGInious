@@ -5,40 +5,38 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h3 class="modal-title"><i class="fa fa-users"> Register students.</i></h3>
+                <h3 class="modal-title"><i class="fa fa-users"> $:_("Register students").</i></h3>
             </div>
             <div class="modal-body text-justify text-center">
                 <div class='alert' role='alert' id='register_students_alert' hidden></div>
                 <form id='upload_students_file' method='post' enctype='multipart/form-data'>
-                    <label for="students_file"><strong>Select a file to upload:</strong></label>
+                    <label for="students_file"><strong>$:_("Select a file to upload"):</strong></label>
                     <input type='file' id='students_file'>
                 </form>
                 <br>
                 <div id="notes_file">
-                    <h2 class="text-center"><i class="fa fa-info-circle"></i>Notes about the file:</h2>
+                    <h2 class="text-center"><i class="fa fa-info-circle"></i>$:_("Notes about the file"):</h2>
                     <div>
-                        The uploaded file must be a <strong>CSV</strong> file. Make sure it is separated by commas.
-                        This file must contain the <strong>name,last name,email</strong> of each student you want
-                        to register.
+                        $:_("The uploaded file must be a <strong>CSV</strong> file. Make sure it is separated by commas.")
+                        <br>
+                        $:_("This file must contain the <strong>name,last name,email</strong> of each student you want to register.")
                     </div>
                     <br>
-                    Here you have an example of a parsed file with the students' information: <br>
+                    $:_("Here you have an example of a parsed file with the students' information"): <br>
                     <div id="examples_file"><strong>
                         Cristian David,Gonzalez Carrillo,crdgonzalezca@unal.edu.co<br>
                         Felipe,Restrepo Calle,ferestrepoca@unal.edu.co<br>
                     </strong></div>
                     <br>
                     <div>
-                        All the students are going to be registered on UNCode and the course. If the students does not
-                        exists it will be registered using a provisional password and will receive an email asking them
-                        to confirm the account and after that, the student can change the password.
+                        $:_("All the students are going to be registered on UNCode and the course. If the students does not exists it will be registered using a provisional password and will receive an email asking them to confirm the account and after that, the student can change the password.")
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">$:_("Cancel")</button>
                 <button class='btn btn-success' form="upload_students_file" id='submit_register_students' type='submit'>
-                    Register students
+                    $:_("Register students")
                 </button>
             </div>
         </div>

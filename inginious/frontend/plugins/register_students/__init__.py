@@ -17,5 +17,7 @@ def init(plugin_manager, course_factory, client, config):
     else:
         plugin_manager.add_hook("javascript_footer", lambda: "/register_students/static/js/register.js")
         plugin_manager.add_hook("css", lambda: "/register_students/static/css/register_students.css")
-    plugin_manager.add_hook("additional_body_html",
-                            lambda: read_file(_static_folder_path, _REGISTER_STUDENTS_MODAL_HTML_FILE))
+
+    renderer = plugin_manager._app.template_helper.get_custom_renderer(_static_folder_path, False)
+    print(str(renderer.register_students_modal()))
+    plugin_manager.add_hook("additional_body_html", lambda: str(renderer.register_students_modal()))

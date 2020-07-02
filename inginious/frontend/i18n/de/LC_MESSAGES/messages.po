@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-01 23:44-0500\n"
+"POT-Creation-Date: 2020-07-02 18:03-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -21,81 +21,79 @@ msgstr ""
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
-msgstr "Das unten stehende Feedback ist für Schüler verborgen bis {}."
+msgstr ""
 
 #: inginious/frontend/parsable_text.py:61
 msgid ""
 "A part of this feedback is hidden until {}. Please come back later and "
 "reload the submission to see the full feedback."
 msgstr ""
-"Ein Teil des Feedbacks ist verborgen bis {}. Bitte komm später wieder und"
-" lade die Seite neu um das gesamte Feedback zu sehen."
 
 #: inginious/frontend/parsable_text.py:153
 msgid "<b>Parsing failed</b>: <pre>{}</pre>"
-msgstr "<b>Parsing ist fehlgeschlagen</b>: <pre>{}</pre>"
+msgstr ""
 
 #: inginious/frontend/task_problems.py:61
 msgid "code"
-msgstr "Code"
+msgstr ""
 
 #: inginious/frontend/task_problems.py:92
 msgid "single-line code"
-msgstr "einzeiliger Code"
+msgstr ""
 
 #: inginious/frontend/task_problems.py:118
 msgid "file upload"
-msgstr "Datei Upload"
+msgstr ""
 
 #: inginious/frontend/task_problems.py:151
 msgid "multiple choice"
-msgstr "Multiple Choice"
+msgstr ""
 
 #: inginious/frontend/task_problems.py:218
 msgid "match"
-msgstr "Übereinstimmung"
+msgstr ""
 
 #: inginious/frontend/tasks.py:80
 msgid "No deadline"
-msgstr "Keine Frist"
+msgstr ""
 
 #: inginious/frontend/tasks.py:82
 msgid "It's too late"
-msgstr "Zu spät"
+msgstr ""
 
 #: inginious/frontend/pages/aggregation.py:51
 #: inginious/frontend/pages/aggregation.py:72
 msgid "Couldn't register to the specified group."
-msgstr "Registrierung zur angegebenen Gruppe fehlgeschlagen."
+msgstr ""
 
 #: inginious/frontend/pages/aggregation.py:77
 #: inginious/frontend/pages/aggregation.py:93
 msgid "You are not allowed to change group."
-msgstr "Sie sind nicht berechtigt diese Gruppe zu ändern."
+msgstr ""
 
 #: inginious/frontend/pages/aggregation.py:90
 msgid "You're not registered in a group."
-msgstr "Sie sind in keiner Gruppe registriert."
+msgstr ""
 
 #: inginious/frontend/pages/lti.py:46 inginious/frontend/pages/lti.py:58
 msgid "Missing LTI session id"
-msgstr "Fehlende LTI session id"
+msgstr ""
 
 #: inginious/frontend/pages/lti.py:51 inginious/frontend/pages/lti.py:63
 msgid "Invalid LTI session id"
-msgstr "Ungültige LTI session id"
+msgstr ""
 
 #: inginious/frontend/pages/lti.py:70
 msgid "Invalid LTI data"
-msgstr "Ungültige LTI Daten"
+msgstr ""
 
 #: inginious/frontend/pages/lti.py:90
 msgid "Your account is already bound with this context."
-msgstr "Ihr Account ist bereits mit diesem Kontext verbunden."
+msgstr ""
 
 #: inginious/frontend/pages/lti.py:162
 msgid "Error while validating LTI request"
-msgstr "Fehler während der Validierung des LTI Requests"
+msgstr ""
 
 #: inginious/frontend/pages/lti.py:177
 msgid ""
@@ -103,55 +101,53 @@ msgid ""
 "lis_outcome_service_url and lis_outcome_result_id in the LTI basic-"
 "launch-request. Please contact your administrator."
 msgstr ""
-"Um die Note an TC zurückzusenden benötigt UNCode die Parameter "
-"lis_outcome_service_url und  lis_outcome_result_id im LTI basic-launch-"
-"request. Bitte kontaktieren Sie den Administrator."
 
 #: inginious/frontend/pages/lti.py:197
 msgid "Couldn't validate LTI request"
-msgstr "Konnte den LTI Request nicht validieren"
+msgstr ""
 
 #: inginious/frontend/pages/register.py:57
 msgid "Invalid activation hash."
-msgstr "Invalider Aktivierungs-Hash."
+msgstr ""
 
 #: inginious/frontend/pages/register.py:59
 msgid "You are now activated. You can proceed to login."
-msgstr "Sie sind jetzt aktiviert. Sie können sich nun einloggen."
+msgstr ""
 
 #: inginious/frontend/pages/preferences/profile.py:27
 #: inginious/frontend/pages/register.py:76
 msgid "Invalid username format."
-msgstr "Nutzername hat invalides Format."
+msgstr ""
 
 #: inginious/frontend/pages/register.py:79
 #: inginious/frontend/pages/register.py:131
 msgid "Invalid email format."
-msgstr "E-Mail hat invalides Format."
+msgstr ""
 
 #: inginious/frontend/pages/preferences/profile.py:47
 #: inginious/frontend/pages/register.py:82
 #: inginious/frontend/pages/register.py:161
 msgid "Password too short."
-msgstr "Passwort ist zu kurz."
+msgstr ""
 
 #: inginious/frontend/pages/preferences/profile.py:51
 #: inginious/frontend/pages/register.py:85
 #: inginious/frontend/pages/register.py:164
 msgid "Passwords don't match !"
-msgstr "Passwörter stimmen nicht überein !"
+msgstr ""
 
 #: inginious/frontend/pages/register.py:92
 msgid "This username is already taken !"
-msgstr "Dieser Nutzername ist bereits vergeben !"
+msgstr ""
 
 #: inginious/frontend/pages/register.py:94
 msgid "This email address is already in use !"
-msgstr "Diese E-Mail Adresse wird bereits benutzt !"
+msgstr ""
 
 #: inginious/frontend/pages/register.py:106
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:92
 msgid "Welcome on UNCode"
-msgstr "Willkommen bei UNCode"
+msgstr ""
 
 #: inginious/frontend/pages/register.py:107
 msgid ""
@@ -159,33 +155,26 @@ msgid ""
 "\n"
 "To activate your account, please click on the following link :\n"
 msgstr ""
-"Willkommen bei UNCode !\n"
-"\n"
-"Um ihren Account zu aktivieren, bitte auf den folgenden Link klicken :\n"
 
 #: inginious/frontend/pages/register.py:112
 msgid ""
 "You are succesfully registered. An email has been sent to you for "
 "activation."
 msgstr ""
-"Sie wurden erfolgreich registriert. Ihnen wurde eine E-Mail zur "
-"Aktivierung geschickt."
 
 #: inginious/frontend/pages/register.py:115
 msgid ""
 "Something went wrong while sending you activation email. Please contact "
 "the administrator."
 msgstr ""
-"Irgendetwas ging schief beim senden der Aktivierungs-E-Mail. Bitte "
-"kontaktieren sie den Administrator."
 
 #: inginious/frontend/pages/register.py:138
 msgid "This email address was not found in database."
-msgstr "Diese E-Mail wurde nicht in der Datenbank gefunden."
+msgstr ""
 
 #: inginious/frontend/pages/register.py:141
 msgid "UNCode password recovery"
-msgstr "UNCode Passwort Wiederherstellung"
+msgstr ""
 
 #: inginious/frontend/pages/register.py:142
 msgid ""
@@ -194,39 +183,32 @@ msgid ""
 "Someone (probably you) asked to reset your UNCode password. If this was "
 "you, please click on the following link :\n"
 msgstr ""
-"Lieber {realname},\n"
-"\n"
-"Jemand (wahrscheinlich Sie) hat beantragt ihr UNCode Passwort "
-"zurückzusetzen. Wenn das Sie waren, klicken Sie bitte auf den folgenden "
-"Link :\n"
 
 #: inginious/frontend/pages/register.py:146
 msgid "An email has been sent to you to reset your password."
-msgstr "Ihnen wurde eine E-Mail geschickt um das Passwort zurückzusetzen."
+msgstr ""
 
 #: inginious/frontend/pages/register.py:149
 msgid ""
 "Something went wrong while sending you reset email. Please contact the "
 "administrator."
 msgstr ""
-"Irgendetwas ging schief beim senden der Zurücksetzungs-E-Mail. Bitte "
-"kontaktieren sie den Administrator."
 
 #: inginious/frontend/pages/register.py:173
 msgid "Invalid reset hash."
-msgstr "Ungültiger Zurücksetzungs-Hash."
+msgstr ""
 
 #: inginious/frontend/pages/register.py:175
 msgid "Your password has been successfully changed."
-msgstr "Ihr Passwort wurde erfolgreich geändert."
+msgstr ""
 
 #: inginious/frontend/pages/tasks.py:197
 msgid "You are not allowed to submit for this task."
-msgstr "Sie sind nicht berechtigt etwas für diese Aufgabe abzugeben."
+msgstr ""
 
 #: inginious/frontend/pages/tasks.py:205
 msgid "Your task has been regenerated. This current task is outdated."
-msgstr "Ihre Aufgabe wurde neu erstellt. Die aktuelle Aufgabe ist  veraltet."
+msgstr ""
 
 #: inginious/frontend/pages/tasks.py:216
 msgid ""
@@ -243,7 +225,7 @@ msgstr ""
 #: inginious/frontend/pages/course_admin/task_edit_file.py:227
 #: inginious/frontend/pages/tasks.py:240 inginious/frontend/pages/tasks.py:256
 msgid "Internal error"
-msgstr "Interner Fehler"
+msgstr ""
 
 #: inginious/frontend/pages/tasks.py:308
 msgid "<b>UNCode is currently grading your answers.<b/> (almost done)"
@@ -257,31 +239,31 @@ msgstr ""
 
 #: inginious/frontend/pages/tasks.py:313
 msgid "<b>You are next in the waiting queue!</b>"
-msgstr "<b>Sie sind der nächste in der Warteschlange</b>"
+msgstr ""
 
 #: inginious/frontend/pages/tasks.py:315
 msgid "<b>There is one task in front of you in the waiting queue.</b>"
-msgstr "<b>Es befindet sich eine Aufgabe vor Ihren in der Warteschlange.</b>"
+msgstr ""
 
 #: inginious/frontend/pages/tasks.py:317
 msgid "<b>There are {} tasks in front of you in the waiting queue.</b>"
-msgstr "<b>Es befinden sich {} Aufgaben vor Ihnen in der Warteschlange.</b>"
+msgstr ""
 
 #: inginious/frontend/pages/tasks.py:341
 msgid "There are some errors in your answer. Your score is {score}%."
-msgstr "Es sind Fehler in Ihrer Abgabe. Ihre Punktzahl ist {score}%."
+msgstr ""
 
 #: inginious/frontend/pages/tasks.py:343
 msgid "Your answer passed the tests! Your score is {score}%."
-msgstr "Ihre Abgabe hat bestanden! Ihre Punktzahl ist {score}%."
+msgstr ""
 
 #: inginious/frontend/pages/tasks.py:345
 msgid "Your submission timed out. Your score is {score}%."
-msgstr "Die Zeit Ihrer Abgabe wurde überschritten. Ihre Punktzahl ist {score}%."
+msgstr ""
 
 #: inginious/frontend/pages/tasks.py:347
 msgid "Your submission made an overflow. Your score is {score}%."
-msgstr "Ihre Abgabe hat einen Überlauf erzeugt. Ihre Punktzahl ist {score}&."
+msgstr ""
 
 #: inginious/frontend/pages/tasks.py:349
 msgid "Your submission was killed."
@@ -292,13 +274,10 @@ msgid ""
 "An internal error occurred. Please retry later. If the error persists, "
 "send an email to the course administrator."
 msgstr ""
-"Ein interner Fehler ist aufgetreten. Bitte versuchen Sie es später noch "
-"einmal. Wenn dieser Fehler erneut auftritt, senden Sie bitte eine E-Mail "
-"an den Kursverwalter."
 
 #: inginious/frontend/pages/tasks.py:354
 msgid "[Submission #{submissionid}]"
-msgstr "[Abgabe #{submissionid}]"
+msgstr ""
 
 #: inginious/frontend/pages/course_admin/aggregation_edit.py:184
 msgid "Classroom with id {} not found."
@@ -322,7 +301,7 @@ msgstr ""
 #: inginious/frontend/pages/course_admin/aggregation_edit.py:229
 #: inginious/frontend/pages/course_admin/classroom_edit.py:177
 msgid "Changes couldn't be applied for following students :"
-msgstr "Änderungen konnten für folgende Teilnehmer nicht übernommen werden:"
+msgstr ""
 
 #: inginious/frontend/pages/course_admin/aggregation_edit.py:235
 msgid "Teams updated."
@@ -331,7 +310,7 @@ msgstr ""
 #: inginious/frontend/pages/course_admin/aggregation_edit.py:237
 #: inginious/frontend/pages/course_admin/classroom_edit.py:187
 msgid "An error occurred while parsing the data."
-msgstr "Ein Fehler ist beim Parsen der Daten aufgetreten."
+msgstr ""
 
 #: inginious/frontend/pages/course_admin/aggregation_list.py:63
 msgid "New classroom created."
@@ -360,16 +339,16 @@ msgstr ""
 
 #: inginious/frontend/pages/course_admin/danger_zone.py:146
 msgid "Operation aborted due to invalid token."
-msgstr "Operation wegen eines ungültigen Tokens abgebrochen."
+msgstr ""
 
 #: inginious/frontend/pages/course_admin/danger_zone.py:150
 #: inginious/frontend/pages/course_admin/danger_zone.py:173
 msgid "Wrong course id."
-msgstr "Falsche Kurs-ID."
+msgstr ""
 
 #: inginious/frontend/pages/course_admin/danger_zone.py:155
 msgid "All course data have been deleted."
-msgstr "Alle Kursdaten wurden gelöscht."
+msgstr ""
 
 #: inginious/frontend/pages/course_admin/danger_zone.py:157
 msgid "An error occurred while dumping course from database."
@@ -377,15 +356,15 @@ msgstr ""
 
 #: inginious/frontend/pages/course_admin/danger_zone.py:167
 msgid "Course restored to date : {}."
-msgstr "Kurs zurückgesetzt auf Datum: {}."
+msgstr ""
 
 #: inginious/frontend/pages/course_admin/danger_zone.py:169
 msgid "An error occurred while restoring backup."
-msgstr "Beim Zurückspielen der Sicherung ist ein Fehler aufgetreten."
+msgstr ""
 
 #: inginious/frontend/pages/course_admin/danger_zone.py:180
 msgid "An error occurred while deleting the course data."
-msgstr "Beim Löschen der Kursdaten ist ein Fehler aufgetreten."
+msgstr ""
 
 #: inginious/frontend/pages/course_admin/download.py:21
 #: inginious/frontend/pages/course_admin/submissions.py:26
@@ -699,6 +678,7 @@ msgstr ""
 #: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:16
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:36
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:93
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:37
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
 #: inginious/frontend/templates/course_admin/danger_zone.html:81
 #: inginious/frontend/templates/course_admin/danger_zone.html:160
@@ -1224,7 +1204,6 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:78
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:236
 msgid "Time limit test cases (s)"
 msgstr ""
 
@@ -1233,7 +1212,7 @@ msgid "\"Time limit for each test case in seconds. (Max. 30s)\""
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:88
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:245
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:239
 msgid "Memory limit test cases (MB)"
 msgstr ""
 
@@ -1273,7 +1252,7 @@ msgid "Output file"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:128
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:279
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:273
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:27
 msgid "Weight"
 msgstr ""
@@ -1283,7 +1262,7 @@ msgid "Show differences"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:130
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:289
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:283
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:85
 msgid "Options"
 msgstr ""
@@ -1309,28 +1288,53 @@ msgstr ""
 msgid "Setup code for all tests"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:207
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:193
+msgid ""
+"\"Python code executed before all tests. Useful to setup, for example, "
+"initial data and variables to be used in all tests. This code must be "
+"like Python interactive shell, where each line is a different command in "
+"the shell. Control structures that require more than one line like: 'if' "
+"'for', 'try' 'functions' are not allowed.\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:204
 msgid "Dataset URL"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:221
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:206
+msgid ""
+"\"Dataset URL to download file before running grading code. This is "
+"helpful when dataset is too long and cannot be uploaded in the files tab."
+" Remember to allow internet access to the grading environment in "
+"'Container setup' tab. Also, set a filename in the field below.\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:216
 msgid "Dataset filename"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:256
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:230
+msgid "Time limit for each test case in seconds. (Max. 30 s)\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:240
+msgid "\"Memory limit for each test case in MBs. (Max 600 MBs)\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:250
 msgid "Notebook example"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:260
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:254
 msgid "Click here to open a notebook example"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:271
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:265
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:8
 msgid "Add a test"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:278
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:272
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:23
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
 #: inginious/frontend/templates/course_admin/settings.html:29
@@ -1340,11 +1344,11 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:282
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:276
 msgid "Show debug info"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:284
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:278
 msgid ""
 "\"Check to show more info the student like output difference and runtime "
 "errors\""
@@ -1623,6 +1627,66 @@ msgstr ""
 #: inginious/frontend/plugins/problem_bank/index.html:12
 #: inginious/frontend/plugins/problem_bank/problem_bank_div.html:2
 msgid "Problem bank"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:25
+msgid "The course does not exist or the user does not have permissions."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:30
+msgid "The file is not coded in UTF-8. Please change the encoding."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:36
+msgid "The file is not formatted as expected, check it is comma separated "
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:36
+msgid "and emails are actual emails."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:41
+msgid ""
+"The process finished successfully. Registered students on the course: "
+"{0!s}. \n"
+"            Registered students on UNCode: {1!s}."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:8
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:39
+msgid "Register students"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:13
+msgid "Select a file to upload"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:18
+msgid "Notes about the file"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:20
+msgid ""
+"The uploaded file must be a <strong>CSV</strong> file. Make sure it is "
+"separated by commas."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:22
+msgid ""
+"This file must contain the <strong>name,last name,email</strong> of each "
+"student you want to register."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:25
+msgid "Here you have an example of a parsed file with the students' information"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:32
+msgid ""
+"All the students are going to be registered on UNCode and the course. If "
+"the students does not exists it will be registered using a provisional "
+"password and will receive an email asking them to confirm the account and"
+" after that, the student can change the password."
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:3
@@ -2006,7 +2070,7 @@ msgstr ""
 
 #: inginious/frontend/templates/lti_login.html:31
 msgid "Invalid login/password"
-msgstr "Ungültiger Login/Passwort"
+msgstr ""
 
 #: inginious/frontend/templates/lti_login.html:34
 msgid "Bind your UNCode account"
@@ -3934,4 +3998,2973 @@ msgstr ""
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr ""
+
+#~ msgid "The feedback below will be hidden to the students until {}."
+#~ msgstr "Das unten stehende Feedback ist für Schüler verborgen bis {}."
+
+#~ msgid ""
+#~ "A part of this feedback is hidden"
+#~ " until {}. Please come back later "
+#~ "and reload the submission to see "
+#~ "the full feedback."
+#~ msgstr ""
+#~ "Ein Teil des Feedbacks ist verborgen "
+#~ "bis {}. Bitte komm später wieder "
+#~ "und lade die Seite neu um das "
+#~ "gesamte Feedback zu sehen."
+
+#~ msgid "<b>Parsing failed</b>: <pre>{}</pre>"
+#~ msgstr "<b>Parsing ist fehlgeschlagen</b>: <pre>{}</pre>"
+
+#~ msgid "code"
+#~ msgstr "Code"
+
+#~ msgid "single-line code"
+#~ msgstr "einzeiliger Code"
+
+#~ msgid "file upload"
+#~ msgstr "Datei Upload"
+
+#~ msgid "multiple choice"
+#~ msgstr "Multiple Choice"
+
+#~ msgid "match"
+#~ msgstr "Übereinstimmung"
+
+#~ msgid "No deadline"
+#~ msgstr "Keine Frist"
+
+#~ msgid "It's too late"
+#~ msgstr "Zu spät"
+
+#~ msgid "Couldn't register to the specified group."
+#~ msgstr "Registrierung zur angegebenen Gruppe fehlgeschlagen."
+
+#~ msgid "You are not allowed to change group."
+#~ msgstr "Sie sind nicht berechtigt diese Gruppe zu ändern."
+
+#~ msgid "You're not registered in a group."
+#~ msgstr "Sie sind in keiner Gruppe registriert."
+
+#~ msgid "Missing LTI session id"
+#~ msgstr "Fehlende LTI session id"
+
+#~ msgid "Invalid LTI session id"
+#~ msgstr "Ungültige LTI session id"
+
+#~ msgid "Invalid LTI data"
+#~ msgstr "Ungültige LTI Daten"
+
+#~ msgid "Your account is already bound with this context."
+#~ msgstr "Ihr Account ist bereits mit diesem Kontext verbunden."
+
+#~ msgid "Error while validating LTI request"
+#~ msgstr "Fehler während der Validierung des LTI Requests"
+
+#~ msgid ""
+#~ "In order to send grade back to "
+#~ "the TC, UNCode needs the parameters "
+#~ "lis_outcome_service_url and lis_outcome_result_id in"
+#~ " the LTI basic-launch-request. Please"
+#~ " contact your administrator."
+#~ msgstr ""
+#~ "Um die Note an TC zurückzusenden "
+#~ "benötigt UNCode die Parameter "
+#~ "lis_outcome_service_url und  lis_outcome_result_id "
+#~ "im LTI basic-launch-request. Bitte "
+#~ "kontaktieren Sie den Administrator."
+
+#~ msgid "Couldn't validate LTI request"
+#~ msgstr "Konnte den LTI Request nicht validieren"
+
+#~ msgid "Invalid activation hash."
+#~ msgstr "Invalider Aktivierungs-Hash."
+
+#~ msgid "You are now activated. You can proceed to login."
+#~ msgstr "Sie sind jetzt aktiviert. Sie können sich nun einloggen."
+
+#~ msgid "Invalid username format."
+#~ msgstr "Nutzername hat invalides Format."
+
+#~ msgid "Invalid email format."
+#~ msgstr "E-Mail hat invalides Format."
+
+#~ msgid "Password too short."
+#~ msgstr "Passwort ist zu kurz."
+
+#~ msgid "Passwords don't match !"
+#~ msgstr "Passwörter stimmen nicht überein !"
+
+#~ msgid "This username is already taken !"
+#~ msgstr "Dieser Nutzername ist bereits vergeben !"
+
+#~ msgid "This email address is already in use !"
+#~ msgstr "Diese E-Mail Adresse wird bereits benutzt !"
+
+#~ msgid "Welcome on UNCode"
+#~ msgstr "Willkommen bei UNCode"
+
+#~ msgid ""
+#~ "Welcome on UNCode !\n"
+#~ "\n"
+#~ "To activate your account, please click on the following link :\n"
+#~ msgstr ""
+#~ "Willkommen bei UNCode !\n"
+#~ "\n"
+#~ "Um ihren Account zu aktivieren, bitte"
+#~ " auf den folgenden Link klicken :"
+#~ "\n"
+
+#~ msgid ""
+#~ "You are succesfully registered. An email"
+#~ " has been sent to you for "
+#~ "activation."
+#~ msgstr ""
+#~ "Sie wurden erfolgreich registriert. Ihnen "
+#~ "wurde eine E-Mail zur Aktivierung "
+#~ "geschickt."
+
+#~ msgid ""
+#~ "Something went wrong while sending you"
+#~ " activation email. Please contact the "
+#~ "administrator."
+#~ msgstr ""
+#~ "Irgendetwas ging schief beim senden der"
+#~ " Aktivierungs-E-Mail. Bitte kontaktieren sie "
+#~ "den Administrator."
+
+#~ msgid "This email address was not found in database."
+#~ msgstr "Diese E-Mail wurde nicht in der Datenbank gefunden."
+
+#~ msgid "UNCode password recovery"
+#~ msgstr "UNCode Passwort Wiederherstellung"
+
+#~ msgid ""
+#~ "Dear {realname},\n"
+#~ "\n"
+#~ "Someone (probably you) asked to reset"
+#~ " your UNCode password. If this was"
+#~ " you, please click on the following"
+#~ " link :\n"
+#~ msgstr ""
+#~ "Lieber {realname},\n"
+#~ "\n"
+#~ "Jemand (wahrscheinlich Sie) hat beantragt "
+#~ "ihr UNCode Passwort zurückzusetzen. Wenn "
+#~ "das Sie waren, klicken Sie bitte "
+#~ "auf den folgenden Link :\n"
+
+#~ msgid "An email has been sent to you to reset your password."
+#~ msgstr "Ihnen wurde eine E-Mail geschickt um das Passwort zurückzusetzen."
+
+#~ msgid ""
+#~ "Something went wrong while sending you"
+#~ " reset email. Please contact the "
+#~ "administrator."
+#~ msgstr ""
+#~ "Irgendetwas ging schief beim senden der"
+#~ " Zurücksetzungs-E-Mail. Bitte kontaktieren sie"
+#~ " den Administrator."
+
+#~ msgid "Invalid reset hash."
+#~ msgstr "Ungültiger Zurücksetzungs-Hash."
+
+#~ msgid "Your password has been successfully changed."
+#~ msgstr "Ihr Passwort wurde erfolgreich geändert."
+
+#~ msgid "You are not allowed to submit for this task."
+#~ msgstr "Sie sind nicht berechtigt etwas für diese Aufgabe abzugeben."
+
+#~ msgid "Your task has been regenerated. This current task is outdated."
+#~ msgstr "Ihre Aufgabe wurde neu erstellt. Die aktuelle Aufgabe ist  veraltet."
+
+#~ msgid ""
+#~ "Please answer to all the questions "
+#~ "and verify the extensions of the "
+#~ "files you want to upload. Your "
+#~ "responses were not tested."
+#~ msgstr ""
+
+#~ msgid "<b>Your submission has been sent...</b>"
+#~ msgstr ""
+
+#~ msgid "Internal error"
+#~ msgstr "Interner Fehler"
+
+#~ msgid "<b>UNCode is currently grading your answers.<b/> (almost done)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "<b>UNCode is currently grading your "
+#~ "answers.<b/> (Approx. wait time: {} "
+#~ "seconds)"
+#~ msgstr ""
+
+#~ msgid "<b>You are next in the waiting queue!</b>"
+#~ msgstr "<b>Sie sind der nächste in der Warteschlange</b>"
+
+#~ msgid "<b>There is one task in front of you in the waiting queue.</b>"
+#~ msgstr "<b>Es befindet sich eine Aufgabe vor Ihren in der Warteschlange.</b>"
+
+#~ msgid "<b>There are {} tasks in front of you in the waiting queue.</b>"
+#~ msgstr "<b>Es befinden sich {} Aufgaben vor Ihnen in der Warteschlange.</b>"
+
+#~ msgid "There are some errors in your answer. Your score is {score}%."
+#~ msgstr "Es sind Fehler in Ihrer Abgabe. Ihre Punktzahl ist {score}%."
+
+#~ msgid "Your answer passed the tests! Your score is {score}%."
+#~ msgstr "Ihre Abgabe hat bestanden! Ihre Punktzahl ist {score}%."
+
+#~ msgid "Your submission timed out. Your score is {score}%."
+#~ msgstr "Die Zeit Ihrer Abgabe wurde überschritten. Ihre Punktzahl ist {score}%."
+
+#~ msgid "Your submission made an overflow. Your score is {score}%."
+#~ msgstr "Ihre Abgabe hat einen Überlauf erzeugt. Ihre Punktzahl ist {score}&."
+
+#~ msgid "Your submission was killed."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "An internal error occurred. Please retry"
+#~ " later. If the error persists, send"
+#~ " an email to the course "
+#~ "administrator."
+#~ msgstr ""
+#~ "Ein interner Fehler ist aufgetreten. "
+#~ "Bitte versuchen Sie es später noch "
+#~ "einmal. Wenn dieser Fehler erneut "
+#~ "auftritt, senden Sie bitte eine E-Mail"
+#~ " an den Kursverwalter."
+
+#~ msgid "[Submission #{submissionid}]"
+#~ msgstr "[Abgabe #{submissionid}]"
+
+#~ msgid "Classroom with id {} not found."
+#~ msgstr ""
+
+#~ msgid "Team with id {} not found."
+#~ msgstr ""
+
+#~ msgid "You can't remove your default classroom."
+#~ msgstr ""
+
+#~ msgid "Classroom updated."
+#~ msgstr ""
+
+#~ msgid "Changes couldn't be applied for following students :"
+#~ msgstr "Änderungen konnten für folgende Teilnehmer nicht übernommen werden:"
+
+#~ msgid "Teams updated."
+#~ msgstr ""
+
+#~ msgid "An error occurred while parsing the data."
+#~ msgstr "Ein Fehler ist beim Parsen der Daten aufgetreten."
+
+#~ msgid "New classroom created."
+#~ msgstr ""
+
+#~ msgid "Default classroom changed."
+#~ msgstr ""
+
+#~ msgid "Invalid classroom selected."
+#~ msgstr ""
+
+#~ msgid "You have no rights to add/change classrooms"
+#~ msgstr ""
+
+#~ msgid "User returned an invalid form."
+#~ msgstr ""
+
+#~ msgid "Classroom not found."
+#~ msgstr ""
+
+#~ msgid "Operation aborted due to invalid token."
+#~ msgstr "Operation wegen eines ungültigen Tokens abgebrochen."
+
+#~ msgid "Wrong course id."
+#~ msgstr "Falsche Kurs-ID."
+
+#~ msgid "All course data have been deleted."
+#~ msgstr "Alle Kursdaten wurden gelöscht."
+
+#~ msgid "An error occurred while dumping course from database."
+#~ msgstr ""
+
+#~ msgid "Course restored to date : {}."
+#~ msgstr "Kurs zurückgesetzt auf Datum: {}."
+
+#~ msgid "An error occurred while restoring backup."
+#~ msgstr "Beim Zurückspielen der Sicherung ist ein Fehler aufgetreten."
+
+#~ msgid "An error occurred while deleting the course data."
+#~ msgstr "Beim Löschen der Kursdaten ist ein Fehler aufgetreten."
+
+#~ msgid "taskid/username"
+#~ msgstr ""
+
+#~ msgid "taskid/aggregation"
+#~ msgstr ""
+
+#~ msgid "username/taskid"
+#~ msgstr ""
+
+#~ msgid "aggregation/taskid"
+#~ msgstr ""
+
+#~ msgid "Selected submissions were set for replay."
+#~ msgstr ""
+
+#~ msgid "Task with id {} does not exist !"
+#~ msgstr ""
+
+#~ msgid "Invalid name"
+#~ msgstr ""
+
+#~ msgid "You cannot remove yourself from the administrators of this course"
+#~ msgstr ""
+
+#~ msgid "Invalid accessibility dates"
+#~ msgstr ""
+
+#~ msgid "Invalid registration dates"
+#~ msgstr ""
+
+#~ msgid "Invalid ACL value"
+#~ msgstr ""
+
+#~ msgid "LTI keys must be alphanumerical."
+#~ msgstr ""
+
+#~ msgid "Number of submissions"
+#~ msgstr ""
+
+#~ msgid "Evaluation submissions (Total)"
+#~ msgstr ""
+
+#~ msgid "Evaluation submissions (Succeeded)"
+#~ msgstr ""
+
+#~ msgid "Evaluation submissions (Failed)"
+#~ msgstr ""
+
+#~ msgid "Submitted on"
+#~ msgstr ""
+
+#~ msgid "User"
+#~ msgstr ""
+
+#~ msgid "Grade"
+#~ msgstr ""
+
+#~ msgid "Task id"
+#~ msgstr ""
+
+#~ msgid "{0} selected submissions were set for replay."
+#~ msgstr ""
+
+#~ msgid "No submissions found"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The result contains more than {0} "
+#~ "submissions. The displayed submissions are "
+#~ "truncated.\n"
+#~ msgstr ""
+
+#~ msgid "You can not use spaces in the tag id field."
+#~ msgstr ""
+
+#~ msgid "Invalid tag id: {}"
+#~ msgstr ""
+
+#~ msgid "Some tags have the same id! The id of a tag must be unique."
+#~ msgstr ""
+
+#~ msgid "Invalid file type: {}"
+#~ msgstr ""
+
+#~ msgid "You cannot create a task without subproblems"
+#~ msgstr ""
+
+#~ msgid "Grade weight must be a floating-point number"
+#~ msgstr ""
+
+#~ msgid "The number of stored submission must be positive!"
+#~ msgstr ""
+
+#~ msgid "Invalid submission limit!"
+#~ msgstr ""
+
+#~ msgid "Your browser returned an invalid form ({})"
+#~ msgstr ""
+
+#~ msgid "Error while reading course's informations"
+#~ msgstr ""
+
+#~ msgid "Invalid data: {}"
+#~ msgstr ""
+
+#~ msgid "Cannot read zip file. Files were not modified"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "There was a problem while extracting "
+#~ "the zip archive. Some files may "
+#~ "have been modified"
+#~ msgstr ""
+
+#~ msgid "Invalid new path"
+#~ msgstr ""
+
+#~ msgid "An error occurred while writing the file"
+#~ msgstr ""
+
+#~ msgid "An error occurred while moving the files"
+#~ msgstr ""
+
+#~ msgid "An error occurred while deleting the files"
+#~ msgstr ""
+
+#~ msgid "Course settings"
+#~ msgstr ""
+
+#~ msgid "Students"
+#~ msgstr ""
+
+#~ msgid "Classrooms"
+#~ msgstr ""
+
+#~ msgid "Teams"
+#~ msgstr ""
+
+#~ msgid "Tasks"
+#~ msgstr ""
+
+#~ msgid "View submissions"
+#~ msgstr ""
+
+#~ msgid "Download submissions"
+#~ msgstr ""
+
+#~ msgid "Replay submissions"
+#~ msgstr ""
+
+#~ msgid "Danger zone"
+#~ msgstr ""
+
+#~ msgid "Incorrect authentication binding."
+#~ msgstr ""
+
+#~ msgid "You must set a password before removing all bindings."
+#~ msgstr ""
+
+#~ msgid "The specified email is incorrect."
+#~ msgstr ""
+
+#~ msgid "Username already taken"
+#~ msgstr ""
+
+#~ msgid "Incorrect email."
+#~ msgstr ""
+
+#~ msgid "Profile updated."
+#~ msgstr ""
+
+#~ msgid "Incorrect old password."
+#~ msgstr ""
+
+#~ msgid "Incorrect username."
+#~ msgstr ""
+
+#~ msgid "Name is too short."
+#~ msgstr ""
+
+#~ msgid "My profile"
+#~ msgstr ""
+
+#~ msgid "Authentication bindings"
+#~ msgstr ""
+
+#~ msgid "Delete my account"
+#~ msgstr ""
+
+#~ msgid "Delete all files"
+#~ msgstr ""
+
+#~ msgid "Are you sure you want to delete all files?"
+#~ msgstr ""
+
+#~ msgid "Cancel"
+#~ msgstr ""
+
+#~ msgid "Confirm"
+#~ msgstr ""
+
+#~ msgid "Help related to the task context."
+#~ msgstr ""
+
+#~ msgid "Here you will find some information related to the language"
+#~ msgstr ""
+
+#~ msgid " and how you can use it to make a good description."
+#~ msgstr ""
+
+#~ msgid "Bold text"
+#~ msgstr ""
+
+#~ msgid "**Text between will be stronger**."
+#~ msgstr ""
+
+#~ msgid "Text between will be stronger."
+#~ msgstr ""
+
+#~ msgid "Italic text"
+#~ msgstr ""
+
+#~ msgid "*Text between will be rendered as italic*."
+#~ msgstr ""
+
+#~ msgid "Text between will be rendered as italic"
+#~ msgstr ""
+
+#~ msgid "Math text"
+#~ msgstr ""
+
+#~ msgid "The area of a square is"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The math role marks its content as"
+#~ " mathematical notation (inline formula)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The input format is <strong>LaTeX</strong>,"
+#~ " math syntax without the \"math "
+#~ "delimiters\" ($$ $$). The example is "
+#~ "rendered as:"
+#~ msgstr ""
+
+#~ msgid "Monospaced text"
+#~ msgstr ""
+
+#~ msgid "Text between will be rendered as monospaced text."
+#~ msgstr ""
+
+#~ msgid "Bullet list"
+#~ msgstr ""
+
+#~ msgid "Add image"
+#~ msgstr ""
+
+#~ msgid "The desired image will be rendered."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Remember that you have to put the"
+#~ " task id and the image name. "
+#~ "You have to upload the image in"
+#~ " the tab <em>Task files</em>. This "
+#~ "file must be in the <em>public/</em> "
+#~ "folder."
+#~ msgstr ""
+
+#~ msgid "Add literal HTML"
+#~ msgstr ""
+
+#~ msgid "After the '.. raw:: html' you can add your HTML code."
+#~ msgstr ""
+
+#~ msgid "The previous HTML code is rendered as follows"
+#~ msgstr ""
+
+#~ msgid "More information"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "For more information please visit "
+#~ "<strong>RST</strong> language <a "
+#~ "href=\"http://docutils.sourceforge.net/rst.html\" "
+#~ "target=\"_blank\"> documentation</a>."
+#~ msgstr ""
+
+#~ msgid "Close"
+#~ msgstr ""
+
+#~ msgid "Upload multiple files"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Select multiple files to upload. In "
+#~ "case the path is not specified, "
+#~ "the files are going to be stored"
+#~ " in the root directory of the "
+#~ "task file system."
+#~ msgstr ""
+
+#~ msgid "Files"
+#~ msgstr ""
+
+#~ msgid "Files Path"
+#~ msgstr ""
+
+#~ msgid "List of selected files"
+#~ msgstr ""
+
+#~ msgid "Upload files"
+#~ msgstr ""
+
+#~ msgid "Understanding your result"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "After you submit your code, it "
+#~ "will be assessed and a result will"
+#~ " be given to you."
+#~ msgstr ""
+
+#~ msgid "The tables below list all possible results."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Results related to your code. Results"
+#~ " you may receive after assessing your"
+#~ " code"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Awesome! Everything worked as it should"
+#~ " have: your code passed all the "
+#~ "test cases. Congratulations!"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Sorry, but your code failed to "
+#~ "solve the problem. It does not "
+#~ "solve correctly the problem you were "
+#~ "asked for."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The output after running your code "
+#~ "(what it <i>prints</i> to the screen),"
+#~ " is different from the output the "
+#~ "system expected."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If the administrator allowed it, you "
+#~ "may be able to see the difference"
+#~ " between your output and the expected"
+#~ " output."
+#~ msgstr ""
+
+#~ msgid "Read carefully what you are asked to do and check again your code."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Test your code with different inputs."
+#~ " You can do it in your machine"
+#~ " or you can use the \"custom "
+#~ "input\" in the tools section."
+#~ msgstr ""
+
+#~ msgid "Your code does not compile :/. Something is faulty in your code:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "It may be a misplaced colon, "
+#~ "bracket, quotation mark, or symbol; you"
+#~ " may be using a reserved keyword "
+#~ "as a variable; you may have chosen"
+#~ " a different programming language; among"
+#~ " other options."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The \"compilation error\" message includes "
+#~ "the output that the compiler produced"
+#~ " with the error. Read the message "
+#~ "carefully, it is tells you what "
+#~ "went wrong."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This means that your code failed "
+#~ "while it was executing, which means "
+#~ "that your code compiled but exited "
+#~ "unexpectedly when executed."
+#~ msgstr ""
+
+#~ msgid "There are many reasons why your code could crashed, some of them are:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Division by zero, invalid memory access"
+#~ " (e.g. bad index access to an "
+#~ "array), null pointers, among many "
+#~ "options."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Your code exceeded the time limit. "
+#~ "Thus, your code took too long to"
+#~ " run the input for a given test"
+#~ " case."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "There are two options: either  your "
+#~ "code  got stuck in an infinite "
+#~ "loop or your code takes much "
+#~ "longer than it should."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Check for infinite loops. Try to "
+#~ "find another solution, one that takes"
+#~ " less time to compute."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Getting this result means your code "
+#~ "is using too much memory at "
+#~ "runtime."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Check the data structures you are "
+#~ "using, or find a more \"optimal\" "
+#~ "solution, a solution that uses less "
+#~ "memory."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Getting this result means the output "
+#~ "of your code is longer that the"
+#~ " allowed."
+#~ msgstr ""
+
+#~ msgid "Check for print expressions in a loop."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Error related to notebook file "
+#~ "submissions. This points out a runtime"
+#~ " error while running the grading "
+#~ "testing code."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This might be either an error in"
+#~ " the grading code (i.e. calling non"
+#~ " existent variable or function) or "
+#~ "student code (i.e. the function to "
+#~ "be tested is not present in the"
+#~ " notebook)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Check that your code implements all "
+#~ "that was requested with the correct "
+#~ "signature."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Results related to UNCode. Unexpected "
+#~ "errors when your code was been "
+#~ "executed."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If you get this message, do not"
+#~ " worry, There's Nothing Wrong With "
+#~ "Your Code!"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This error means UNCode had a "
+#~ "problem while running or assessing your"
+#~ " code. So, <b>the problem is on "
+#~ "our side.</b>"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We apologise in advance. Please reload"
+#~ " the page and try submitting again!"
+#~ " If you still get the same "
+#~ "result, please wait a while and "
+#~ "try again or contact your professor."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If you get this, it means that "
+#~ "we had a problem running and "
+#~ "assessing your code. Wait for a "
+#~ "while and try to send a submission"
+#~ " again."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This might be also caused by a "
+#~ "too small time limit in the task"
+#~ " configuration (talk to your professor "
+#~ "about it)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If you get this, it means the "
+#~ "grading environment run out of memory."
+#~ " There might be two possible causes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The configured memory is to low to"
+#~ " solve this problem (talk to your "
+#~ "professor about it)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Your code is printing too much "
+#~ "data, possibly caused by prints in "
+#~ "an infinite loop."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "There was a problem while assessing "
+#~ "your submission. Please wait a while "
+#~ "and reload the page, and try "
+#~ "submitting again."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\"<li><a href='/analytics/' class='navbar-link'>\n"
+#~ "            <i class='fa fa-bar-chart fa-fw'></i> Analytics</a></li>"
+#~ msgstr ""
+
+#~ msgid "Analytics"
+#~ msgstr ""
+
+#~ msgid "Apply filters"
+#~ msgstr ""
+
+#~ msgid "Analytics since"
+#~ msgstr ""
+
+#~ msgid "Service"
+#~ msgstr ""
+
+#~ msgid "All services"
+#~ msgstr ""
+
+#~ msgid "Username"
+#~ msgstr ""
+
+#~ msgid "Course"
+#~ msgstr ""
+
+#~ msgid "All courses"
+#~ msgstr ""
+
+#~ msgid "Update"
+#~ msgstr ""
+
+#~ msgid "Heat map"
+#~ msgstr ""
+
+#~ msgid "Visits per day"
+#~ msgstr ""
+
+#~ msgid "Box plot"
+#~ msgstr ""
+
+#~ msgid "Radar plot"
+#~ msgstr ""
+
+#~ msgid "Calendar visits"
+#~ msgstr ""
+
+#~ msgid "Password"
+#~ msgstr ""
+
+#~ msgid "Sign in"
+#~ msgstr ""
+
+#~ msgid "UNCode | {course} - {task}"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Check out UNCode course {course} and "
+#~ "beat my score of {score}% on task"
+#~ " {task} !"
+#~ msgstr ""
+
+#~ msgid "Remove"
+#~ msgstr ""
+
+#~ msgid "Languages"
+#~ msgstr ""
+
+#~ msgid "Add/Update"
+#~ msgstr ""
+
+#~ msgid "Preview"
+#~ msgstr ""
+
+#~ msgid "Grader"
+#~ msgstr ""
+
+#~ msgid "Generate grader automatically"
+#~ msgstr ""
+
+#~ msgid "Problem ID"
+#~ msgstr ""
+
+#~ msgid "\"Problem id where the code is located\""
+#~ msgstr ""
+
+#~ msgid "Maximum diff lines"
+#~ msgstr ""
+
+#~ msgid "\"The maximum number of lines that the diff tool should show\""
+#~ msgstr ""
+
+#~ msgid "Diff context lines"
+#~ msgstr ""
+
+#~ msgid "Show runtime errors"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\"In case it is not checked, the"
+#~ " student's result is either ACCEPTED "
+#~ "or WRONG_ANSWER. If checked, it shows"
+#~ " additional errors like RUNTIME_ERROR or"
+#~ " TIME_LIMIT_EXCEEDED.\""
+#~ msgstr ""
+
+#~ msgid "Time limit test cases (s)"
+#~ msgstr ""
+
+#~ msgid "\"Time limit for each test case in seconds. (Max. 30s)\""
+#~ msgstr ""
+
+#~ msgid "Memory limit test cases (MB)"
+#~ msgstr ""
+
+#~ msgid "\"Memory limit for each test case in MBs. (Max. 500 MBs)\""
+#~ msgstr ""
+
+#~ msgid "Output limit test cases (MB)"
+#~ msgstr ""
+
+#~ msgid "\"Output limit for each test case in MBs. (Max. 30 MBs)\""
+#~ msgstr ""
+
+#~ msgid "Test cases"
+#~ msgstr ""
+
+#~ msgid "All diffs"
+#~ msgstr ""
+
+#~ msgid "Remove all tests"
+#~ msgstr ""
+
+#~ msgid "Input file"
+#~ msgstr ""
+
+#~ msgid "Output file"
+#~ msgstr ""
+
+#~ msgid "Weight"
+#~ msgstr ""
+
+#~ msgid "Show differences"
+#~ msgstr ""
+
+#~ msgid "Options"
+#~ msgstr ""
+
+#~ msgid "Add"
+#~ msgstr ""
+
+#~ msgid "Entity (only on VHDL)"
+#~ msgstr ""
+
+#~ msgid "Testbench"
+#~ msgstr ""
+
+#~ msgid "Golden Model"
+#~ msgstr ""
+
+#~ msgid "Setup code for all tests"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\"Python code executed before all tests."
+#~ " Useful to setup, for example, "
+#~ "initial data and variables to be "
+#~ "used in all tests. This code must"
+#~ " be like Python interactive shell, "
+#~ "where each line is a different "
+#~ "command in the shell. Control structures"
+#~ " that require more than one line "
+#~ "like: 'if' 'for', 'try' 'functions' are"
+#~ " not allowed.\""
+#~ msgstr ""
+
+#~ msgid "Dataset URL"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\"Dataset URL to download file before"
+#~ " running grading code. This is "
+#~ "helpful when dataset is too long "
+#~ "and cannot be uploaded in the "
+#~ "files tab. Remember to allow internet"
+#~ " access to the grading environment in"
+#~ " 'Container setup' tab. Also, set a"
+#~ " filename in the field below.\""
+#~ msgstr ""
+
+#~ msgid "Dataset filename"
+#~ msgstr ""
+
+#~ msgid "Time limit for each test case in seconds. (Max. 30 s)\""
+#~ msgstr ""
+
+#~ msgid "\"Memory limit for each test case in MBs. (Max 600 MBs)\""
+#~ msgstr ""
+
+#~ msgid "Notebook example"
+#~ msgstr ""
+
+#~ msgid "Click here to open a notebook example"
+#~ msgstr ""
+
+#~ msgid "Add a test"
+#~ msgstr ""
+
+#~ msgid "Name"
+#~ msgstr ""
+
+#~ msgid "Show debug info"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\"Check to show more info the "
+#~ "student like output difference and "
+#~ "runtime errors\""
+#~ msgstr ""
+
+#~ msgid "Save"
+#~ msgstr ""
+
+#~ msgid "Test name"
+#~ msgstr ""
+
+#~ msgid "Setup code"
+#~ msgstr ""
+
+#~ msgid "Case code"
+#~ msgstr ""
+
+#~ msgid "Case expected output"
+#~ msgstr ""
+
+#~ msgid "ID"
+#~ msgstr ""
+
+#~ msgid "Code"
+#~ msgstr ""
+
+#~ msgid "Expected output"
+#~ msgstr ""
+
+#~ msgid "code file multiple languages"
+#~ msgstr ""
+
+#~ msgid "Code multiple languages"
+#~ msgstr ""
+
+#~ msgid "Notebook"
+#~ msgstr ""
+
+#~ msgid "Context"
+#~ msgstr ""
+
+#~ msgid "Allowed file extensions"
+#~ msgstr ""
+
+#~ msgid "Maximum file size (in bytes)"
+#~ msgstr ""
+
+#~ msgid "Select all"
+#~ msgstr ""
+
+#~ msgid "Type"
+#~ msgstr ""
+
+#~ msgid "Code file multiple languages"
+#~ msgstr ""
+
+#~ msgid "Paste your code or <a href='#' id='link-$inputId'>load it from file</a>"
+#~ msgstr ""
+
+#~ msgid "Select your language"
+#~ msgstr ""
+
+#~ msgid "About Python Notebook submissions"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In general, when submitting a notebook,"
+#~ " all <strong>Python 3.5 code</strong> is"
+#~ " supported on UNCode. However, Ipython "
+#~ "notebooks and python code differ in "
+#~ "some functionalities, then UNCode might "
+#~ "support them or not. Also, there "
+#~ "are some things you should bear in"
+#~ " mind when creating your notebook."
+#~ msgstr ""
+
+#~ msgid "Python modules"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You are able to use the next "
+#~ "python modules in addition to the "
+#~ "pre installed python modules:"
+#~ msgstr ""
+
+#~ msgid "Installing modules"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "All the modules and data you "
+#~ "require are already installed and "
+#~ "supported by UNCode.<br> Then, when you"
+#~ " have lines installing a module, for"
+#~ " instance"
+#~ msgstr ""
+
+#~ msgid "or using "
+#~ msgstr ""
+
+#~ msgid ""
+#~ "these lines are automatically removed "
+#~ "from your notebook to avoid runtime "
+#~ "execution errors."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In case you want to use one "
+#~ "module and it is not in the "
+#~ "previous list, do not hesitate on "
+#~ "reaching out for support."
+#~ msgstr ""
+
+#~ msgid "Print expressions"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Usually while executing your notebook on"
+#~ " your runtime you might add some "
+#~ "<code class='language-python' data-"
+#~ "language='python'>print</code> expressions, though, "
+#~ "these expressions are deleted and these"
+#~ " outputs are not shown in the "
+#~ "submission feedback."
+#~ msgstr ""
+
+#~ msgid "Internet access in grading environment"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The internet access when your code "
+#~ "is being graded is dependant on "
+#~ "the task. Some tasks might allow "
+#~ "it or not."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In case you are allowed to access"
+#~ " internet, this mainly will work to"
+#~ " download files or data, for instance"
+#~ " datasets. As stated above, you "
+#~ "cannot install modules."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In case there is not access, be"
+#~ " careful when using code that "
+#~ "requires internet access as it will "
+#~ "fail while grading."
+#~ msgstr ""
+
+#~ msgid "Magic functionality execution"
+#~ msgstr ""
+
+#~ msgid ""
+#~ " functions are not allowed when "
+#~ "your notebook is graded. For example "
+#~ "the next line"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In case your notebook contains some "
+#~ "lines like this, they will be "
+#~ "automatically removed to avoid runtime "
+#~ "execution errors."
+#~ msgstr ""
+
+#~ msgid "Commands execution"
+#~ msgstr ""
+
+#~ msgid "Python Notebooks provide a functionality to execute commands like these"
+#~ msgstr ""
+
+#~ msgid "However, this kind of lines are transformed as follows"
+#~ msgstr ""
+
+#~ msgid "is turned into the following code:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "That code will do the same for "
+#~ "you as in the notebook. However, "
+#~ "you are not allowed to assign the"
+#~ " result of command execution to "
+#~ "variables, for instance the next line"
+#~ " will return an error"
+#~ msgstr ""
+
+#~ msgid "Google Colab modules"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "When you use Google Colaboratory (Colab)"
+#~ " and you want to load and read"
+#~ " data from Google Drive, you are "
+#~ "required to use some python modules "
+#~ "unique in Colab. These modules are "
+#~ "not supported by UNCode. Then, make "
+#~ "sure when you submit your notebook, "
+#~ "you do not include it."
+#~ msgstr ""
+
+#~ msgid "Perform lint"
+#~ msgstr ""
+
+#~ msgid "Tools"
+#~ msgstr ""
+
+#~ msgid "Paste your input"
+#~ msgstr ""
+
+#~ msgid "'Your input goes here'"
+#~ msgstr ""
+
+#~ msgid "Your output goes here"
+#~ msgstr ""
+
+#~ msgid "Test code!"
+#~ msgstr ""
+
+#~ msgid "Visualize your code!"
+#~ msgstr ""
+
+#~ msgid "Test"
+#~ msgstr ""
+
+#~ msgid "Problem bank"
+#~ msgstr ""
+
+#~ msgid "The course does not exist or the user does not have permissions."
+#~ msgstr ""
+
+#~ msgid "The file is not coded in UTF-8. Please change the encoding."
+#~ msgstr ""
+
+#~ msgid "The file is not formatted as expected, check it is comma separated "
+#~ msgstr ""
+
+#~ msgid "and emails are actual emails."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The process finished successfully. Registered"
+#~ " students on the course: {0!s}. \n"
+#~ "            Registered students on UNCode: {1!s}."
+#~ msgstr ""
+
+#~ msgid "Register students"
+#~ msgstr ""
+
+#~ msgid "Select a file to upload"
+#~ msgstr ""
+
+#~ msgid "Notes about the file"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The uploaded file must be a "
+#~ "<strong>CSV</strong> file. Make sure it "
+#~ "is separated by commas."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This file must contain the "
+#~ "<strong>name,last name,email</strong> of each "
+#~ "student you want to register."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Here you have an example of a "
+#~ "parsed file with the students' "
+#~ "information"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "All the students are going to be"
+#~ " registered on UNCode and the course."
+#~ " If the students does not exists "
+#~ "it will be registered using a "
+#~ "provisional password and will receive an"
+#~ " email asking them to confirm the "
+#~ "account and after that, the student "
+#~ "can change the password."
+#~ msgstr ""
+
+#~ msgid "Statistics"
+#~ msgstr ""
+
+#~ msgid "Course statistics"
+#~ msgstr ""
+
+#~ msgid "Statistics for course"
+#~ msgstr ""
+
+#~ msgid "Grade count"
+#~ msgstr ""
+
+#~ msgid "Grade distribution"
+#~ msgstr ""
+
+#~ msgid "Submissions Verdict (ALL)"
+#~ msgstr ""
+
+#~ msgid "Submissions Verdict (BEST)"
+#~ msgstr ""
+
+#~ msgid "Submissions by grade"
+#~ msgstr ""
+
+#~ msgid "Download CSV"
+#~ msgstr ""
+
+#~ msgid "Final grade distribution"
+#~ msgstr ""
+
+#~ msgid "Toggle normalize"
+#~ msgstr ""
+
+#~ msgid "My statistics"
+#~ msgstr ""
+
+#~ msgid "Trials and Best Grade"
+#~ msgstr ""
+
+#~ msgid "Bar Submissions Per Tasks"
+#~ msgstr ""
+
+#~ msgid "Welcome"
+#~ msgstr ""
+
+#~ msgid "Lost password?"
+#~ msgstr ""
+
+#~ msgid "Sign in with"
+#~ msgstr ""
+
+#~ msgid "Last tried exercises"
+#~ msgstr ""
+
+#~ msgid "No submissions"
+#~ msgstr ""
+
+#~ msgid "(current)"
+#~ msgstr ""
+
+#~ msgid "Members"
+#~ msgstr ""
+
+#~ msgid "Groups"
+#~ msgstr ""
+
+#~ msgid "Tutors"
+#~ msgstr ""
+
+#~ msgid "My group"
+#~ msgstr ""
+
+#~ msgid "Group #{}"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "No set group in this classroom. If"
+#~ " you think this is a mistake, "
+#~ "please contact the course administrator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You're not registered to a group. "
+#~ "Please consider registration in one of"
+#~ " the group below to take part "
+#~ "in all course activities. If no "
+#~ "more group is available, please contact"
+#~ " the course administrator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You're not yet registered to a "
+#~ "group. Please contact the course "
+#~ "administrator for more information."
+#~ msgstr ""
+
+#~ msgid "All groups"
+#~ msgstr ""
+
+#~ msgid "No registered member."
+#~ msgstr ""
+
+#~ msgid "Current grade"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This course is currently invisible for"
+#~ " students. You can change this by "
+#~ "modifying the \"accessibility\" option in "
+#~ "the configuration of the course."
+#~ msgstr ""
+
+#~ msgid "Course administration"
+#~ msgstr ""
+
+#~ msgid "Classroom : {}"
+#~ msgstr ""
+
+#~ msgid "Team : {}"
+#~ msgstr ""
+
+#~ msgid "Teams management"
+#~ msgstr ""
+
+#~ msgid "\"My courses\""
+#~ msgstr ""
+
+#~ msgid "\"Course list\""
+#~ msgstr ""
+
+#~ msgid "{course_name} - List of exercises"
+#~ msgstr ""
+
+#~ msgid "Filter tasks by tags"
+#~ msgstr ""
+
+#~ msgid "No filter"
+#~ msgstr ""
+
+#~ msgid "task hidden to students"
+#~ msgstr ""
+
+#~ msgid "deadline reached"
+#~ msgstr ""
+
+#~ msgid "Error 403"
+#~ msgstr ""
+
+#~ msgid "You are not registered to this course."
+#~ msgstr ""
+
+#~ msgid "Course list"
+#~ msgstr ""
+
+#~ msgid "Public courses"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This page lists all the courses "
+#~ "that are available now. If you are"
+#~ " a course administrator, go to your"
+#~ " 'My courses' page to see all "
+#~ "of them."
+#~ msgstr ""
+
+#~ msgid "My courses / Register for a course"
+#~ msgstr ""
+
+#~ msgid "'External platform'"
+#~ msgstr ""
+
+#~ msgid "'Auto-registration'"
+#~ msgstr ""
+
+#~ msgid "'Password needed'"
+#~ msgstr ""
+
+#~ msgid "My courses"
+#~ msgstr ""
+
+#~ msgid "Preferences"
+#~ msgstr ""
+
+#~ msgid "Service status"
+#~ msgstr ""
+
+#~ msgid "Log out"
+#~ msgstr ""
+
+#~ msgid "English"
+#~ msgstr ""
+
+#~ msgid "Register"
+#~ msgstr ""
+
+#~ msgid "UNCode is distributed under AGPL license"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Powered by <a href=\"http://www.inginious.org\" "
+#~ "target=\"_blank\">UNCode</a>, a free and "
+#~ "open-source grading tool."
+#~ msgstr ""
+
+#~ msgid "Bind LTI"
+#~ msgstr ""
+
+#~ msgid "Binding to an existing LMS"
+#~ msgstr ""
+
+#~ msgid "Authorization required"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You are going to bind your UNCode"
+#~ " account <strong>{realname} [{username}]</strong> "
+#~ "with the following LTI tool and "
+#~ "context:"
+#~ msgstr ""
+
+#~ msgid "Tool name:"
+#~ msgstr ""
+
+#~ msgid "Tool description:"
+#~ msgstr ""
+
+#~ msgid "Tool URL:"
+#~ msgstr ""
+
+#~ msgid "Tool context:"
+#~ msgstr ""
+
+#~ msgid "Tool identifiers:"
+#~ msgstr ""
+
+#~ msgid "Bind my account"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "<h2 class=\"text-justify\">Hello!<br/><small>Welcome "
+#~ "on the UNCode platform.</small></h2>"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In order to use UNCode via this"
+#~ " platform, please bind your existing "
+#~ "account or create a new one."
+#~ msgstr ""
+
+#~ msgid "Invalid login/password"
+#~ msgstr "Ungültiger Login/Passwort"
+
+#~ msgid "Bind your UNCode account"
+#~ msgstr ""
+
+#~ msgid "Refresh"
+#~ msgstr ""
+
+#~ msgid "Maintenance"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "<b>This UNCode instance is currently "
+#~ "under maintenance.</b> Please come back "
+#~ "in a few minutes!"
+#~ msgstr ""
+
+#~ msgid "LTI course"
+#~ msgstr ""
+
+#~ msgid "Hidden course"
+#~ msgstr ""
+
+#~ msgid "Administrator"
+#~ msgstr ""
+
+#~ msgid "Tutor"
+#~ msgstr ""
+
+#~ msgid "Student"
+#~ msgstr ""
+
+#~ msgid "You are not registered to any course"
+#~ msgstr ""
+
+#~ msgid "Course created."
+#~ msgstr ""
+
+#~ msgid "Failed to create the course."
+#~ msgstr ""
+
+#~ msgid "Create new course"
+#~ msgstr ""
+
+#~ msgid "Register for a course"
+#~ msgstr ""
+
+#~ msgid "Registration complete."
+#~ msgstr ""
+
+#~ msgid "Registration failed. Please check that you properly typed the password."
+#~ msgstr ""
+
+#~ msgid "Select a course"
+#~ msgstr ""
+
+#~ msgid "Error 404"
+#~ msgstr ""
+
+#~ msgid "Job queue"
+#~ msgstr ""
+
+#~ msgid "This page shows a <strong>snapshot</strong> of the job queue."
+#~ msgstr ""
+
+#~ msgid "Running jobs"
+#~ msgstr ""
+
+#~ msgid "Local client"
+#~ msgstr ""
+
+#~ msgid "Agent name"
+#~ msgstr ""
+
+#~ msgid "Launcher name"
+#~ msgstr ""
+
+#~ msgid "Started at"
+#~ msgstr ""
+
+#~ msgid "Timeout at"
+#~ msgstr ""
+
+#~ msgid "Yes"
+#~ msgstr ""
+
+#~ msgid "No"
+#~ msgstr ""
+
+#~ msgid "There are no jobs running"
+#~ msgstr ""
+
+#~ msgid "Jobs in queue"
+#~ msgstr ""
+
+#~ msgid "Local"
+#~ msgstr ""
+
+#~ msgid "Maximum runtime in seconds"
+#~ msgstr ""
+
+#~ msgid "There are no jobs waiting in queue"
+#~ msgstr ""
+
+#~ msgid "Register in UNCode"
+#~ msgstr ""
+
+#~ msgid "Username (min. 4 alphanumerical characters) :"
+#~ msgstr ""
+
+#~ msgid "Complete name :"
+#~ msgstr ""
+
+#~ msgid "Email address :"
+#~ msgstr ""
+
+#~ msgid "Password (min. 6 characters) :"
+#~ msgstr ""
+
+#~ msgid "Confirm password :"
+#~ msgstr ""
+
+#~ msgid "Sign up"
+#~ msgstr ""
+
+#~ msgid "Lost password ?"
+#~ msgstr ""
+
+#~ msgid "Reset my password"
+#~ msgstr ""
+
+#~ msgid "Set new password"
+#~ msgstr ""
+
+#~ msgid "Enroll in the course"
+#~ msgstr ""
+
+#~ msgid "Please enroll in the course to be able to submit answers to problems."
+#~ msgstr ""
+
+#~ msgid "This will enroll you in the course {}."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Please register or sign in to see"
+#~ " the complete list of courses and "
+#~ "be able to submit answers to "
+#~ "problems."
+#~ msgstr ""
+
+#~ msgid "Information"
+#~ msgstr ""
+
+#~ msgid "Author(s)"
+#~ msgstr ""
+
+#~ msgid "Deadline"
+#~ msgstr ""
+
+#~ msgid "Status"
+#~ msgstr ""
+
+#~ msgid "Not yet attempted"
+#~ msgstr ""
+
+#~ msgid "Succeeded"
+#~ msgstr ""
+
+#~ msgid "Waiting for verification"
+#~ msgstr ""
+
+#~ msgid "Failed"
+#~ msgstr ""
+
+#~ msgid "Grading weight"
+#~ msgstr ""
+
+#~ msgid "Attempts"
+#~ msgstr ""
+
+#~ msgid "Submission limit"
+#~ msgstr ""
+
+#~ msgid "No limitation"
+#~ msgstr ""
+
+#~ msgid "{nb_submissions} submissions<br /> every {nb_hours} hour(s)"
+#~ msgstr ""
+
+#~ msgid "{nb_submissions} submissions"
+#~ msgstr ""
+
+#~ msgid "Tags"
+#~ msgstr ""
+
+#~ msgid "Administration"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This course is currently invisible for"
+#~ " students.  You can change this by"
+#~ " modifying the \"accessible\" option in "
+#~ "the configuration of the course."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This task is currently invisible for "
+#~ "students. You can change this by "
+#~ "modifying the \"accessible\" option in "
+#~ "the configuration of the task."
+#~ msgstr ""
+
+#~ msgid "Edit task"
+#~ msgstr ""
+
+#~ msgid "Debug information"
+#~ msgstr ""
+
+#~ msgid "Submitting as"
+#~ msgstr ""
+
+#~ msgid "Group"
+#~ msgstr ""
+
+#~ msgid "Team"
+#~ msgstr ""
+
+#~ msgid "For evaluation"
+#~ msgstr ""
+
+#~ msgid "Last submission"
+#~ msgstr ""
+
+#~ msgid "Best submission"
+#~ msgstr ""
+
+#~ msgid "Selected submission"
+#~ msgstr ""
+
+#~ msgid "No submission"
+#~ msgstr ""
+
+#~ msgid "Share my result"
+#~ msgstr ""
+
+#~ msgid "Submission history"
+#~ msgstr ""
+
+#~ msgid "\"Previous task\""
+#~ msgstr ""
+
+#~ msgid "\"Next task\""
+#~ msgstr ""
+
+#~ msgid "Alternatively, you can also paste this command into your terminal:"
+#~ msgstr ""
+
+#~ msgid "Paste this command into your terminal:"
+#~ msgstr ""
+
+#~ msgid "The password to connect is {}"
+#~ msgstr ""
+
+#~ msgid "Please answer to all the questions."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The raw data from the container "
+#~ "will be displayed here, helping you "
+#~ "to debug the task.<br/> This box "
+#~ "is only displayed because you are "
+#~ "an administrator of this course. It "
+#~ "is not displayed to students."
+#~ msgstr ""
+
+#~ msgid "Question {}"
+#~ msgstr ""
+
+#~ msgid "Please enroll in the course to submit."
+#~ msgstr ""
+
+#~ msgid "Submit"
+#~ msgstr ""
+
+#~ msgid "\"Start remote SSH console with this input\""
+#~ msgstr ""
+
+#~ msgid "The deadline is over, you cannot submit anymore"
+#~ msgstr ""
+
+#~ msgid "Please register in a group"
+#~ msgstr ""
+
+#~ msgid "Please register in a team"
+#~ msgstr ""
+
+#~ msgid "You have reached the submission limit."
+#~ msgstr ""
+
+#~ msgid "Your group have reached the submission limit."
+#~ msgstr ""
+
+#~ msgid "Your team have reached the submission limit."
+#~ msgstr ""
+
+#~ msgid "It will be refilled within the next {} hour(s)"
+#~ msgstr ""
+
+#~ msgid "You are not allowed to submit"
+#~ msgstr ""
+
+#~ msgid "Share my result on: "
+#~ msgstr ""
+
+#~ msgid "Task unavailable"
+#~ msgstr ""
+
+#~ msgid "Register for a group"
+#~ msgstr ""
+
+#~ msgid "My team : {}"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "No set team in this course. If "
+#~ "you think this is a mistake, "
+#~ "please contact the course administrator."
+#~ msgstr ""
+
+#~ msgid "My team"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You're not registered to a team. "
+#~ "Please consider registration in one of"
+#~ " the team below to take part in"
+#~ " all course activities. If no more"
+#~ " team is available, please contact "
+#~ "the course administrator."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You're not yet registered to a "
+#~ "team. Please contact the course "
+#~ "administrator for more information."
+#~ msgstr ""
+
+#~ msgid "All teams"
+#~ msgstr ""
+
+#~ msgid "(available : {})"
+#~ msgstr ""
+
+#~ msgid "Unregister from {}"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This will keep your submissions saved"
+#~ " but will remove you from your "
+#~ "classroom/teams."
+#~ msgstr ""
+
+#~ msgid "Are you sure ?"
+#~ msgstr ""
+
+#~ msgid "Unregister"
+#~ msgstr ""
+
+#~ msgid "Unregister from this course"
+#~ msgstr ""
+
+#~ msgid "'Administration'"
+#~ msgstr ""
+
+#~ msgid "\"Classrooms\""
+#~ msgstr ""
+
+#~ msgid "\"Teams\""
+#~ msgstr ""
+
+#~ msgid "Statistics for classroom {}"
+#~ msgstr ""
+
+#~ msgid "Statistics for group {}"
+#~ msgstr ""
+
+#~ msgid "Task"
+#~ msgstr ""
+
+#~ msgid "# submissions"
+#~ msgstr ""
+
+#~ msgid "\"Download all submissions\""
+#~ msgstr ""
+
+#~ msgid "\"Replay all submissions\""
+#~ msgstr ""
+
+#~ msgid "Not viewed"
+#~ msgstr ""
+
+#~ msgid "Not attempted (viewed)"
+#~ msgstr ""
+
+#~ msgid "\"View submissions\""
+#~ msgstr ""
+
+#~ msgid "\"Download submissions\""
+#~ msgstr ""
+
+#~ msgid "\"Replay submissions\""
+#~ msgstr ""
+
+#~ msgid "\"Administration\""
+#~ msgstr ""
+
+#~ msgid "Edit teams"
+#~ msgstr ""
+
+#~ msgid "Upload structure"
+#~ msgstr ""
+
+#~ msgid "Download structure"
+#~ msgstr ""
+
+#~ msgid "Upload course structure"
+#~ msgstr ""
+
+#~ msgid "Note : Please refer to documentation for file format"
+#~ msgstr ""
+
+#~ msgid "Course structure"
+#~ msgstr ""
+
+#~ msgid "Upload (will erase current settings)"
+#~ msgstr ""
+
+#~ msgid "Classroom"
+#~ msgstr ""
+
+#~ msgid "# students"
+#~ msgstr ""
+
+#~ msgid "# task tried"
+#~ msgstr ""
+
+#~ msgid "# task done"
+#~ msgstr ""
+
+#~ msgid "\"Download CSV\""
+#~ msgstr ""
+
+#~ msgid "My classroom(s)"
+#~ msgstr ""
+
+#~ msgid "Other classroom(s)"
+#~ msgstr ""
+
+#~ msgid "My team(s)"
+#~ msgstr ""
+
+#~ msgid "Other team(s)"
+#~ msgstr ""
+
+#~ msgid "\"Edit classroom\""
+#~ msgstr ""
+
+#~ msgid "Default classroom :"
+#~ msgstr ""
+
+#~ msgid "Set as default"
+#~ msgstr ""
+
+#~ msgid "New classroom description"
+#~ msgstr ""
+
+#~ msgid "New classroom"
+#~ msgstr ""
+
+#~ msgid "Edit classroom {}"
+#~ msgstr ""
+
+#~ msgid "Add student"
+#~ msgstr ""
+
+#~ msgid "Registered student"
+#~ msgstr ""
+
+#~ msgid "New student"
+#~ msgstr ""
+
+#~ msgid "Choose student :"
+#~ msgstr ""
+
+#~ msgid "Student username (will be registered) :"
+#~ msgstr ""
+
+#~ msgid "Basic settings"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This is your default classroom. It "
+#~ "can't be deleted and students can't "
+#~ "be removed from."
+#~ msgstr ""
+
+#~ msgid "Delete classroom"
+#~ msgstr ""
+
+#~ msgid "Tutor list"
+#~ msgstr ""
+
+#~ msgid "Add tutor"
+#~ msgstr ""
+
+#~ msgid "Ungrouped users"
+#~ msgstr ""
+
+#~ msgid "Max group size :"
+#~ msgstr ""
+
+#~ msgid "New group"
+#~ msgstr ""
+
+#~ msgid "Clean groups"
+#~ msgstr ""
+
+#~ msgid "Delete all groups"
+#~ msgstr ""
+
+#~ msgid "Archive data"
+#~ msgstr ""
+
+#~ msgid "Delete course"
+#~ msgstr ""
+
+#~ msgid "Archive course data"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "<p>This will reset and backup all "
+#~ "course data (submissions, classrooms/teams, "
+#~ "user statistics) from the database.</p><p>To"
+#~ " confirm your will, please type the"
+#~ " course id below :</p>"
+#~ msgstr ""
+
+#~ msgid "Restore backup from {}"
+#~ msgstr ""
+
+#~ msgid "<p>This will restore your course data to {}. Are you sure ?</p>"
+#~ msgstr ""
+
+#~ msgid "Restore backup"
+#~ msgstr ""
+
+#~ msgid "Backups"
+#~ msgstr ""
+
+#~ msgid "backup date"
+#~ msgstr ""
+
+#~ msgid "download"
+#~ msgstr ""
+
+#~ msgid "\"Download backup\""
+#~ msgstr ""
+
+#~ msgid ""
+#~ "<p> This will <b>permanently</b> remove "
+#~ "the course and all its data "
+#~ "(including tasks and backups) from "
+#~ "UNCode.</p><p>To confirm your will, please "
+#~ "type the course id below :</p>"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "<p>This will <b>permanently</b> remove the "
+#~ "course and all its data (including "
+#~ "tasks and backups) from UNCode. Are "
+#~ "you really sure ?</p>"
+#~ msgstr ""
+
+#~ msgid "Other options"
+#~ msgstr ""
+
+#~ msgid "Folder format"
+#~ msgstr ""
+
+#~ msgid "aggregation"
+#~ msgstr ""
+
+#~ msgid "classroom"
+#~ msgstr ""
+
+#~ msgid "team"
+#~ msgstr ""
+
+#~ msgid "Download only the evaluation submission for each task/user"
+#~ msgstr ""
+
+#~ msgid "Download all the submissions"
+#~ msgstr ""
+
+#~ msgid "Download"
+#~ msgstr ""
+
+#~ msgid "How to create a task?"
+#~ msgstr ""
+
+#~ msgid "Documentation"
+#~ msgstr ""
+
+#~ msgid "This feature is under testing and is not made for production use."
+#~ msgstr ""
+
+#~ msgid "Replay"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Only the evaluation submission (Warning: "
+#~ "the best submission may change)"
+#~ msgstr ""
+
+#~ msgid "All the submissions"
+#~ msgstr ""
+
+#~ msgid "Settings"
+#~ msgstr ""
+
+#~ msgid "Settings saved."
+#~ msgstr ""
+
+#~ msgid "Administrators"
+#~ msgstr ""
+
+#~ msgid "\"Usernames of the administrators, separated by commas\""
+#~ msgstr ""
+
+#~ msgid "\"Usernames of the tutors, separated by commas\""
+#~ msgstr ""
+
+#~ msgid "Enable LTI"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Enable this option to allow your "
+#~ "UNCode course to be used in "
+#~ "external Learning Management Systems (LMS) "
+#~ "such as Moodle or edX. Note that"
+#~ " this will deactivate the access to"
+#~ " the course from the main page "
+#~ "for non-staff members of the "
+#~ "course, and the team/classroom system."
+#~ msgstr ""
+
+#~ msgid "Course preview"
+#~ msgstr ""
+
+#~ msgid "Allowed (read-only for non-registered users)"
+#~ msgstr ""
+
+#~ msgid "Not allowed"
+#~ msgstr ""
+
+#~ msgid "Students aggregations"
+#~ msgstr ""
+
+#~ msgid "Classrooms with groups"
+#~ msgstr ""
+
+#~ msgid "(Warning : changing this will unregister all students)"
+#~ msgstr ""
+
+#~ msgid "Group/Team attribution"
+#~ msgstr ""
+
+#~ msgid "Staff only"
+#~ msgstr ""
+
+#~ msgid "Staff and students"
+#~ msgstr ""
+
+#~ msgid "Accessibility"
+#~ msgstr ""
+
+#~ msgid "Course hidden from students"
+#~ msgstr ""
+
+#~ msgid "Always accessible"
+#~ msgstr ""
+
+#~ msgid "Custom:"
+#~ msgstr ""
+
+#~ msgid "From"
+#~ msgstr ""
+
+#~ msgid "To"
+#~ msgstr ""
+
+#~ msgid "Registration"
+#~ msgstr ""
+
+#~ msgid "Closed"
+#~ msgstr ""
+
+#~ msgid "Always open"
+#~ msgstr ""
+
+#~ msgid "Allow auto-unregistration"
+#~ msgstr ""
+
+#~ msgid "Registration password"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\"Password needed for registration. Leave "
+#~ "blank if you don't want to set "
+#~ "a password.\""
+#~ msgstr ""
+
+#~ msgid "Access control"
+#~ msgstr ""
+
+#~ msgid "No access control (everyone can register)"
+#~ msgstr ""
+
+#~ msgid "Check by username"
+#~ msgstr ""
+
+#~ msgid "Check by authentication binding"
+#~ msgstr ""
+
+#~ msgid "Check by email"
+#~ msgstr ""
+
+#~ msgid "Access control list"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\"Only used if access control is "
+#~ "activated. Separate users by new "
+#~ "lines.\""
+#~ msgstr ""
+
+#~ msgid "LTI keys"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\"LTI keys in the form name:key, "
+#~ "separated by newlines. Please ensure "
+#~ "keys are long enough and random.\""
+#~ msgstr ""
+
+#~ msgid "Send back grades"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Enable this to send back grades to"
+#~ " the calling Tool Consumer (which is,"
+#~ " most of the time, your LMS)."
+#~ msgstr ""
+
+#~ msgid "Save changes"
+#~ msgstr ""
+
+#~ msgid "\"Students\""
+#~ msgstr ""
+
+#~ msgid "Statistics for student {realname} ({username})"
+#~ msgstr ""
+
+#~ msgid "task"
+#~ msgstr ""
+
+#~ msgid "status"
+#~ msgstr ""
+
+#~ msgid "\"View all submissions\""
+#~ msgstr ""
+
+#~ msgid "Teaching staff"
+#~ msgstr ""
+
+#~ msgid "member"
+#~ msgstr ""
+
+#~ msgid "student"
+#~ msgstr ""
+
+#~ msgid "current grade"
+#~ msgstr ""
+
+#~ msgid "\"Download  all submissions\""
+#~ msgstr ""
+
+#~ msgid "\"Unregister all\""
+#~ msgstr ""
+
+#~ msgid "This will remove {} from the course. Are you sure ?"
+#~ msgstr ""
+
+#~ msgid "Remove {}"
+#~ msgstr ""
+
+#~ msgid "Submission {}"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This page show what was shown to"
+#~ " the student when (s)he made his/her"
+#~ " submission."
+#~ msgstr ""
+
+#~ msgid "Click here to hide/display context informations"
+#~ msgstr ""
+
+#~ msgid "Download full submission"
+#~ msgstr ""
+
+#~ msgid "Replay submission"
+#~ msgstr ""
+
+#~ msgid "Replay as {}"
+#~ msgstr ""
+
+#~ msgid "Replay/debug as {}"
+#~ msgstr ""
+
+#~ msgid "\"Download as file\""
+#~ msgstr ""
+
+#~ msgid "This problem id is not defined in the task."
+#~ msgstr ""
+
+#~ msgid "This problem is not present in the submission."
+#~ msgstr ""
+
+#~ msgid "Submissions for task \"{0}\" - {1} ({2})"
+#~ msgstr ""
+
+#~ msgid "Submissions for the task \"{0}\" - {1}"
+#~ msgstr ""
+
+#~ msgid "Query submissions"
+#~ msgstr ""
+
+#~ msgid "Users"
+#~ msgstr ""
+
+#~ msgid "Tasks based on organisational tags"
+#~ msgstr ""
+
+#~ msgid "Advanced query"
+#~ msgstr ""
+
+#~ msgid "Only evaluation submissions"
+#~ msgstr ""
+
+#~ msgid "Show tags"
+#~ msgstr ""
+
+#~ msgid "Show submission id"
+#~ msgstr ""
+
+#~ msgid "Show task name"
+#~ msgstr ""
+
+#~ msgid "Show student name"
+#~ msgstr ""
+
+#~ msgid "Min grade"
+#~ msgstr ""
+
+#~ msgid "Max grade"
+#~ msgstr ""
+
+#~ msgid "After date"
+#~ msgstr ""
+
+#~ msgid "Before date"
+#~ msgstr ""
+
+#~ msgid "The tag"
+#~ msgstr ""
+
+#~ msgid "is"
+#~ msgstr ""
+
+#~ msgid "present"
+#~ msgstr ""
+
+#~ msgid "not present"
+#~ msgstr ""
+
+#~ msgid "Sort by"
+#~ msgstr ""
+
+#~ msgid "Order"
+#~ msgstr ""
+
+#~ msgid "Descending"
+#~ msgstr ""
+
+#~ msgid "Ascending"
+#~ msgstr ""
+
+#~ msgid "Limit"
+#~ msgstr ""
+
+#~ msgid "No statistics"
+#~ msgstr ""
+
+#~ msgid "With statistics"
+#~ msgstr ""
+
+#~ msgid "With weighted statistics"
+#~ msgstr ""
+
+#~ msgid "Filter"
+#~ msgstr ""
+
+#~ msgid "Reset"
+#~ msgstr ""
+
+#~ msgid "Download format"
+#~ msgstr ""
+
+#~ msgid "Submissions statistics"
+#~ msgstr ""
+
+#~ msgid "Tag statistics"
+#~ msgstr ""
+
+#~ msgid "Tag"
+#~ msgstr ""
+
+#~ msgid "All submissions"
+#~ msgstr ""
+
+#~ msgid "Best submissions"
+#~ msgstr ""
+
+#~ msgid "student name"
+#~ msgstr ""
+
+#~ msgid "username"
+#~ msgstr ""
+
+#~ msgid "task name"
+#~ msgstr ""
+
+#~ msgid "taskid"
+#~ msgstr ""
+
+#~ msgid "id"
+#~ msgstr ""
+
+#~ msgid "submitted on"
+#~ msgstr ""
+
+#~ msgid "result"
+#~ msgstr ""
+
+#~ msgid "tags"
+#~ msgstr ""
+
+#~ msgid "\"Download current selection\""
+#~ msgstr ""
+
+#~ msgid "\"Replay current selection\""
+#~ msgstr ""
+
+#~ msgid "Waiting"
+#~ msgstr ""
+
+#~ msgid "\"View submission\""
+#~ msgstr ""
+
+#~ msgid "\"Download submission\""
+#~ msgstr ""
+
+#~ msgid "\"Replay submission\""
+#~ msgstr ""
+
+#~ msgid "\"Waiting\""
+#~ msgstr ""
+
+#~ msgid "Edit {}"
+#~ msgstr ""
+
+#~ msgid "\"Tasks\""
+#~ msgstr ""
+
+#~ msgid "Edit task \"{}\""
+#~ msgstr ""
+
+#~ msgid "View task"
+#~ msgstr ""
+
+#~ msgid "Container setup"
+#~ msgstr ""
+
+#~ msgid "Subproblems"
+#~ msgstr ""
+
+#~ msgid "Task files"
+#~ msgstr ""
+
+#~ msgid "File list"
+#~ msgstr ""
+
+#~ msgid "Delete task"
+#~ msgstr ""
+
+#~ msgid "This will <b>permanently</b> remove the task and its files from UNCode."
+#~ msgstr ""
+
+#~ msgid "Wipe all submissions"
+#~ msgstr ""
+
+#~ msgid "Problem id:"
+#~ msgstr ""
+
+#~ msgid "Results for task \"{}\""
+#~ msgstr ""
+
+#~ msgid "Individual results"
+#~ msgstr ""
+
+#~ msgid "Classroom results"
+#~ msgstr ""
+
+#~ msgid "Team results"
+#~ msgstr ""
+
+#~ msgid "\"Download  submissions\""
+#~ msgstr ""
+
+#~ msgid "Change task order"
+#~ msgstr ""
+
+#~ msgid "Update task order"
+#~ msgstr ""
+
+#~ msgid "# student viewed"
+#~ msgstr ""
+
+#~ msgid "# student attempted"
+#~ msgstr ""
+
+#~ msgid "# student succeeded"
+#~ msgstr ""
+
+#~ msgid "# attempts"
+#~ msgstr ""
+
+#~ msgid "\"Edit task\""
+#~ msgstr ""
+
+#~ msgid "\"View results\""
+#~ msgstr ""
+
+#~ msgid "\"New task id\""
+#~ msgstr ""
+
+#~ msgid "Create new task"
+#~ msgstr ""
+
+#~ msgid "Errors while loading tasks"
+#~ msgstr ""
+
+#~ msgid "task id"
+#~ msgstr ""
+
+#~ msgid "error"
+#~ msgstr ""
+
+#~ msgid "Non teamed students"
+#~ msgstr ""
+
+#~ msgid "Max team size :"
+#~ msgstr ""
+
+#~ msgid "\"Delete team\""
+#~ msgstr ""
+
+#~ msgid "New team"
+#~ msgstr ""
+
+#~ msgid "Clean teams"
+#~ msgstr ""
+
+#~ msgid "Delete all teams"
+#~ msgstr ""
+
+#~ msgid "Filetype"
+#~ msgstr ""
+
+#~ msgid "Author"
+#~ msgstr ""
+
+#~ msgid "Grade weight (in comparison to other tasks)"
+#~ msgstr ""
+
+#~ msgid "Submission mode"
+#~ msgstr ""
+
+#~ msgid "Individually"
+#~ msgstr ""
+
+#~ msgid "Per group/team"
+#~ msgstr ""
+
+#~ msgid "Submission storage"
+#~ msgstr ""
+
+#~ msgid "Only the last {nbr_submissions} submissions"
+#~ msgstr ""
+
+#~ msgid "Submission limits"
+#~ msgstr ""
+
+#~ msgid "Hard limit: {nbr_submissions} submission(s)"
+#~ msgstr ""
+
+#~ msgid "Soft limit: {nbr_submissions} submission(s) every {nbr_hours} hour(s)"
+#~ msgstr ""
+
+#~ msgid "Evaluation submission"
+#~ msgstr ""
+
+#~ msgid "Student choice"
+#~ msgstr ""
+
+#~ msgid "Accessible"
+#~ msgstr ""
+
+#~ msgid "Never"
+#~ msgstr ""
+
+#~ msgid "Always"
+#~ msgstr ""
+
+#~ msgid "Custom, from: {} to: {}"
+#~ msgstr ""
+
+#~ msgid "Random inputs"
+#~ msgstr ""
+
+#~ msgid "Regenerate input random"
+#~ msgstr ""
+
+#~ msgid "Timeout limit (in seconds)"
+#~ msgstr ""
+
+#~ msgid "Hard timeout limit (in seconds) <small>Default to 3*timeout</small>"
+#~ msgstr ""
+
+#~ msgid "Memory limit (in megabytes)"
+#~ msgstr ""
+
+#~ msgid "Output limit (in megabytes)"
+#~ msgstr ""
+
+#~ msgid "Grading environment"
+#~ msgstr ""
+
+#~ msgid "Allow internet access inside the grading container?"
+#~ msgstr ""
+
+#~ msgid "Are the task's responses written in HTML instead of restructuredText?"
+#~ msgstr ""
+
+#~ msgid "Upload a file"
+#~ msgstr ""
+
+#~ msgid "File:"
+#~ msgstr ""
+
+#~ msgid "File path:"
+#~ msgstr ""
+
+#~ msgid "Upload"
+#~ msgstr ""
+
+#~ msgid "Path"
+#~ msgstr ""
+
+#~ msgid "Edit"
+#~ msgstr ""
+
+#~ msgid "Move"
+#~ msgstr ""
+
+#~ msgid "Delete"
+#~ msgstr ""
+
+#~ msgid "\"Download\""
+#~ msgstr ""
+
+#~ msgid "\"Edit\""
+#~ msgstr ""
+
+#~ msgid "\"Move/Rename\""
+#~ msgstr ""
+
+#~ msgid "\"Delete\""
+#~ msgstr ""
+
+#~ msgid "Create a new file"
+#~ msgstr ""
+
+#~ msgid "New problem id"
+#~ msgstr ""
+
+#~ msgid "Problem type"
+#~ msgstr ""
+
+#~ msgid "Tag editor"
+#~ msgstr ""
+
+#~ msgid "Import tags"
+#~ msgstr ""
+
+#~ msgid "Id"
+#~ msgstr ""
+
+#~ msgid "Description"
+#~ msgstr ""
+
+#~ msgid "Show to students"
+#~ msgstr ""
+
+#~ msgid "Type "
+#~ msgstr ""
+
+#~ msgid "Skill"
+#~ msgstr ""
+
+#~ msgid "Misconception"
+#~ msgstr ""
+
+#~ msgid "Category"
+#~ msgstr ""
+
+#~ msgid " New tag"
+#~ msgstr ""
+
+#~ msgid "Import"
+#~ msgstr ""
+
+#~ msgid "Tasks to download submissions from"
+#~ msgstr ""
+
+#~ msgid "Tasks to replay submissions from"
+#~ msgstr ""
+
+#~ msgid "Deselect all"
+#~ msgstr ""
+
+#~ msgid "Select students"
+#~ msgstr ""
+
+#~ msgid "Select classrooms"
+#~ msgstr ""
+
+#~ msgid "Select teams"
+#~ msgstr ""
+
+#~ msgid "No user to display"
+#~ msgstr ""
+
+#~ msgid "No classroom to display"
+#~ msgstr ""
+
+#~ msgid "No team to display"
+#~ msgstr ""
+
+#~ msgid "Language"
+#~ msgstr ""
+
+#~ msgid "Multiline code"
+#~ msgstr ""
+
+#~ msgid "Single-line code"
+#~ msgstr ""
+
+#~ msgid "Optional?"
+#~ msgstr ""
+
+#~ msgid "Default value"
+#~ msgstr ""
+
+#~ msgid "Allowed file extensions (including the dot, separated by spaces)"
+#~ msgstr ""
+
+#~ msgid "File upload"
+#~ msgstr ""
+
+#~ msgid "Answer"
+#~ msgstr ""
+
+#~ msgid "Can select multiple answers"
+#~ msgstr ""
+
+#~ msgid "Count error only at top of the page?"
+#~ msgstr ""
+
+#~ msgid "Number of choices to display (0 = all choices)"
+#~ msgstr ""
+
+#~ msgid "Success message"
+#~ msgstr ""
+
+#~ msgid "Error message"
+#~ msgstr ""
+
+#~ msgid "Choices"
+#~ msgstr ""
+
+#~ msgid "Add new choice"
+#~ msgstr ""
+
+#~ msgid "Content"
+#~ msgstr ""
+
+#~ msgid "Feedback message (displayed when selected)"
+#~ msgstr ""
+
+#~ msgid "Valid ?"
+#~ msgstr ""
+
+#~ msgid "\"Refresh fields\""
+#~ msgstr ""
+
+#~ msgid "\"Revoke access\""
+#~ msgstr ""
+
+#~ msgid "Identifier:"
+#~ msgstr ""
+
+#~ msgid "Add a new binding"
+#~ msgstr ""
+
+#~ msgid "Select a authentication binding"
+#~ msgstr ""
+
+#~ msgid "Add new binding"
+#~ msgstr ""
+
+#~ msgid "Please set a new username"
+#~ msgstr ""
+
+#~ msgid "Username :"
+#~ msgstr ""
+
+#~ msgid "Language :"
+#~ msgstr ""
+
+#~ msgid "Old password :"
+#~ msgstr ""
+
+#~ msgid "New password (min. 6 characters) :"
+#~ msgstr ""
+
+#~ msgid "Confirm new password :"
+#~ msgstr ""
+
+#~ msgid "Save my profile"
+#~ msgstr ""
+
+#~ msgid "Click here to download the file you submitted previously"
+#~ msgstr ""
+
+#~ msgid "Max file size:"
+#~ msgstr ""
+
+#~ msgid "Allowed extensions:"
+#~ msgstr ""
 

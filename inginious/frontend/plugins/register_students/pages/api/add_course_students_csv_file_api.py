@@ -21,23 +21,27 @@ class AddCourseStudentsCsvFile(AdminApi):
 
         course = self._get_course_and_check_rights(course_id)
         if course is None:
-            return 200, {"status": "error", "text": "The course does not exist or the user does not have permissions."}
+            return 200, {"status": "error",
+                         "text": _("The course does not exist or the user does not have permissions.")}
 
         try:
             text = file.decode("utf-8")
         except:
-            return 200, {"status": "error", "text": "The file is not coded in UTF-8. Please change the encoding."}
+            return 200, {"status": "error", "text": _("The file is not coded in UTF-8. Please change the encoding.")}
 
         parsed_file = self._parse_csv_file(text)
 
         if not self._file_well_formatted(parsed_file):
-            return 200, {"status": "error", "text": "The file is not formatted as expected, check it is comma separated"
-                                                    " and emails are actual emails."}
+            return 200, {"status": "error",
+                         "text": _("The file is not formatted as expected, check it is comma separated ") + _(
+                             "and emails are actual emails.")}
 
         registered_on_course, registered_users = self.register_all_students(parsed_file, course)
 
-        message = "The process finished successfully. Registered students on the course: {0!s}. Registered students " \
-                  "in UNCode: {1!s}.".format(registered_on_course, registered_users)
+        message = _(
+            """The process finished successfully. Registered students on the course: {0!s}. 
+            Registered students on UNCode: {1!s}.""").format(
+            registered_on_course, registered_users)
 
         return 200, {"status": "success", "text": message}
 
@@ -85,7 +89,7 @@ class AddCourseStudentsCsvFile(AdminApi):
             try:
                 activate_account_link = web.ctx.home + "/register?activate=" + activate_hash
                 email_template = read_file(_static_folder_path, "email_template.txt")
-                web.sendmail(web.config.smtp_sendername, data["email"], "Welcome on UNCode",
+                web.sendmail(web.config.smtp_sendername, data["email"], _("Welcome on UNCode"),
                              email_template.format(activate_account_link))
             except:
                 pass
