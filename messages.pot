@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-01 22:47-0500\n"
+"POT-Creation-Date: 2020-07-01 23:44-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -663,207 +663,381 @@ msgstr ""
 msgid "Delete my account"
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:8
+#: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:8
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:2
+msgid "Delete all files"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:12
+msgid "Are you sure you want to delete all files?"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:16
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:36
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:93
+#: inginious/frontend/templates/course_admin/classroom_edit.html:86
+#: inginious/frontend/templates/course_admin/danger_zone.html:81
+#: inginious/frontend/templates/course_admin/danger_zone.html:160
+#: inginious/frontend/templates/course_admin/student_list_table.html:82
+#: inginious/frontend/templates/course_admin/submissions.html:255
+#: inginious/frontend/templates/course_admin/task_edit.html:107
+#: inginious/frontend/templates/course_admin/teams_edit.html:60
+#: inginious/frontend/templates/lti_bind.html:36
+#: inginious/frontend/templates/unregister_button.html:21
+msgid "Cancel"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:18
+msgid "Confirm"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:9
+msgid "Help related to the task context."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:14
+msgid "Here you will find some information related to the language"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:15
+msgid " and how you can use it to make a good description."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:20
+msgid "Bold text"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:23
+msgid "**Text between will be stronger**."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:26
+msgid "Text between will be stronger."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:31
+msgid "Italic text"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:34
+msgid "*Text between will be rendered as italic*."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:37
+msgid "Text between will be rendered as italic"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:42
+msgid "Math text"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:45
+msgid "The area of a square is"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:48
+msgid "The math role marks its content as mathematical notation (inline formula)."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:50
+msgid ""
+"The input format is <strong>LaTeX</strong>, math syntax without the "
+"\"math delimiters\" ($$ $$). The example is rendered as:"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:57
+msgid "Monospaced text"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:60
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:63
+msgid "Text between will be rendered as monospaced text."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:68
+msgid "Bullet list"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:94
+msgid "Add image"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:104
+msgid "The desired image will be rendered."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:106
+msgid ""
+"Remember that you have to put the task id and the image name. You have to"
+" upload the image in the tab <em>Task files</em>. This file must be in "
+"the <em>public/</em> folder."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:114
+msgid "Add literal HTML"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:125
+msgid "After the '.. raw:: html' you can add your HTML code."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:127
+msgid "The previous HTML code is rendered as follows"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:135
+msgid "More information"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:138
+msgid ""
+"For more information please visit <strong>RST</strong> language <a "
+"href=\"http://docutils.sourceforge.net/rst.html\" target=\"_blank\"> "
+"documentation</a>."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:144
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:195
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:52
+#: inginious/frontend/templates/auth.html:16
+#: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
+#: inginious/frontend/templates/lti_login.html:30
+#: inginious/frontend/templates/register_button.html:36
+msgid "Close"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:3
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:12
+msgid "Upload multiple files"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:16
+msgid ""
+"Select multiple files to upload. In case the path is not specified, the "
+"files are going to be stored in the root directory of the task file "
+"system."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:21
+#: inginious/frontend/plugins/code_preview/pages/code_preview.html:13
+msgid "Files"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:25
+msgid "Files Path"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:30
+msgid "List of selected files"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:38
+msgid "Upload files"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:2
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:11
 msgid "Understanding your result"
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:12
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:15
 msgid ""
 "After you submit your code, it will be assessed and a result will be "
 "given to you."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:13
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:16
 msgid "The tables below list all possible results."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:16
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:19
 msgid ""
 "Results related to your code. Results you may receive after assessing "
 "your code"
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:24
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:27
 msgid ""
 "Awesome! Everything worked as it should have: your code passed all the "
 "test cases. Congratulations!"
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:34
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:37
 msgid ""
 "Sorry, but your code failed to solve the problem. It does not solve "
 "correctly the problem you were asked for."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:36
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:39
 msgid ""
 "The output after running your code (what it <i>prints</i> to the screen),"
 " is different from the output the system expected."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:38
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:41
 msgid ""
 "If the administrator allowed it, you may be able to see the difference "
 "between your output and the expected output."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:40
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:43
 msgid "Read carefully what you are asked to do and check again your code."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:42
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:45
 msgid ""
 "Test your code with different inputs. You can do it in your machine or "
 "you can use the \"custom input\" in the tools section."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:52
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:55
 msgid "Your code does not compile :/. Something is faulty in your code:"
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:54
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:57
 msgid ""
 "It may be a misplaced colon, bracket, quotation mark, or symbol; you may "
 "be using a reserved keyword as a variable; you may have chosen a "
 "different programming language; among other options."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:56
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:59
 msgid ""
 "The \"compilation error\" message includes the output that the compiler "
 "produced with the error. Read the message carefully, it is tells you what"
 " went wrong."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:66
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:69
 msgid ""
 "This means that your code failed while it was executing, which means that"
 " your code compiled but exited unexpectedly when executed."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:68
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:71
 msgid "There are many reasons why your code could crashed, some of them are:"
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:70
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:73
 msgid ""
 "Division by zero, invalid memory access (e.g. bad index access to an "
 "array), null pointers, among many options."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:80
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:83
 msgid ""
 "Your code exceeded the time limit. Thus, your code took too long to run "
 "the input for a given test case."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:82
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:85
 msgid ""
 "There are two options: either  your code  got stuck in an infinite loop "
 "or your code takes much longer than it should."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:84
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:87
 msgid ""
 "Check for infinite loops. Try to find another solution, one that takes "
 "less time to compute."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:94
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:97
 msgid "Getting this result means your code is using too much memory at runtime."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:96
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:99
 msgid ""
 "Check the data structures you are using, or find a more \"optimal\" "
 "solution, a solution that uses less memory."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:106
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:109
 msgid ""
 "Getting this result means the output of your code is longer that the "
 "allowed."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:108
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:111
 msgid "Check for print expressions in a loop."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:118
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:121
 msgid ""
 "Error related to notebook file submissions. This points out a runtime "
 "error while running the grading testing code."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:120
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:123
 msgid ""
 "This might be either an error in the grading code (i.e. calling non "
 "existent variable or function) or student code (i.e. the function to be "
 "tested is not present in the notebook)."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:122
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:125
 msgid ""
 "Check that your code implements all that was requested with the correct "
 "signature."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:128
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:131
 msgid ""
 "Results related to UNCode. Unexpected errors when your code was been "
 "executed."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:136
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:139
 msgid ""
 "If you get this message, do not worry, There's Nothing Wrong With Your "
 "Code!"
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:138
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:141
 msgid ""
 "This error means UNCode had a problem while running or assessing your "
 "code. So, <b>the problem is on our side.</b>"
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:140
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:143
 msgid ""
 "We apologise in advance. Please reload the page and try submitting again!"
 " If you still get the same result, please wait a while and try again or "
 "contact your professor."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:150
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:153
 msgid ""
 "If you get this, it means that we had a problem running and assessing "
 "your code. Wait for a while and try to send a submission again."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:152
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:155
 msgid ""
 "This might be also caused by a too small time limit in the task "
 "configuration (talk to your professor about it)."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:162
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:165
 msgid ""
 "If you get this, it means the grading environment run out of memory. "
 "There might be two possible causes:"
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:166
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:169
 msgid ""
 "The configured memory is to low to solve this problem (talk to your "
 "professor about it)."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:169
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:172
 msgid ""
 "Your code is printing too much data, possibly caused by prints in an "
 "infinite loop."
 msgstr ""
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:185
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:188
 msgid ""
 "There was a problem while assessing your submission. Please wait a while "
 "and reload the page, and try submitting again."
@@ -976,10 +1150,6 @@ msgstr ""
 #: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:23
 #: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:10
 msgid "Languages"
-msgstr ""
-
-#: inginious/frontend/plugins/code_preview/pages/code_preview.html:13
-msgid "Files"
 msgstr ""
 
 #: inginious/frontend/plugins/code_preview/pages/code_preview.html:19
@@ -1189,19 +1359,6 @@ msgstr ""
 msgid "Expected output"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:93
-#: inginious/frontend/templates/course_admin/classroom_edit.html:86
-#: inginious/frontend/templates/course_admin/danger_zone.html:81
-#: inginious/frontend/templates/course_admin/danger_zone.html:160
-#: inginious/frontend/templates/course_admin/student_list_table.html:82
-#: inginious/frontend/templates/course_admin/submissions.html:255
-#: inginious/frontend/templates/course_admin/task_edit.html:107
-#: inginious/frontend/templates/course_admin/teams_edit.html:60
-#: inginious/frontend/templates/lti_bind.html:36
-#: inginious/frontend/templates/unregister_button.html:21
-msgid "Cancel"
-msgstr ""
-
 #: inginious/frontend/plugins/multilang/problems/code_multiple_file_languages_problem.py:36
 msgid "code file multiple languages"
 msgstr ""
@@ -1403,15 +1560,6 @@ msgid ""
 "data from Google Drive, you are required to use some python modules "
 "unique in Colab. These modules are not supported by UNCode. Then, make "
 "sure when you submit your notebook, you do not include it."
-msgstr ""
-
-#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:52
-#: inginious/frontend/templates/auth.html:16
-#: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
-#: inginious/frontend/templates/lti_login.html:30
-#: inginious/frontend/templates/register_button.html:36
-msgid "Close"
 msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:7

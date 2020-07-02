@@ -1,3 +1,6 @@
+
+$ legend_label = _("Understanding your result")
+
 <div id="task_result_legend_modal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -189,8 +192,11 @@
                 </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">$:_("Close")</button>
             </div>
         </div>
     </div>
 </div>
+<script >
+    const legend_label = "$:legend_label";
+</script>

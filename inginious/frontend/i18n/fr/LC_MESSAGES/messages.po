@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-25 23:37-0500\n"
+"POT-Creation-Date: 2020-07-01 23:44-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -189,8 +189,8 @@ msgstr "Récupération de votre mot de passe UNCode"
 msgid ""
 "Dear {realname},\n"
 "\n"
-"Someone (probably you) asked to reset your UNCode password. If this "
-"was you, please click on the following link :\n"
+"Someone (probably you) asked to reset your UNCode password. If this was "
+"you, please click on the following link :\n"
 msgstr ""
 "{realname},\n"
 "\n"
@@ -252,11 +252,9 @@ msgstr "<b>UNCode corrige votre réponse.</b> (bientôt terminé)"
 
 #: inginious/frontend/pages/tasks.py:310
 msgid ""
-"<b>UNCode is currently grading your answers.<b/> (Approx. wait time: "
-"{} seconds)"
-msgstr ""
-"<b>UNCode corrige votre réponse.</b> (Temps restant approx.: {} "
-"secondes)"
+"<b>UNCode is currently grading your answers.<b/> (Approx. wait time: {} "
+"seconds)"
+msgstr "<b>UNCode corrige votre réponse.</b> (Temps restant approx.: {} secondes)"
 
 #: inginious/frontend/pages/tasks.py:313
 msgid "<b>You are next in the waiting queue!</b>"
@@ -705,6 +703,470 @@ msgstr "Méthodes d'authentification"
 msgid "Delete my account"
 msgstr "Supprimer mon compte"
 
+#: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:8
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:2
+msgid "Delete all files"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:12
+msgid "Are you sure you want to delete all files?"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:16
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:36
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:93
+#: inginious/frontend/templates/course_admin/classroom_edit.html:86
+#: inginious/frontend/templates/course_admin/danger_zone.html:81
+#: inginious/frontend/templates/course_admin/danger_zone.html:160
+#: inginious/frontend/templates/course_admin/student_list_table.html:82
+#: inginious/frontend/templates/course_admin/submissions.html:255
+#: inginious/frontend/templates/course_admin/task_edit.html:107
+#: inginious/frontend/templates/course_admin/teams_edit.html:60
+#: inginious/frontend/templates/lti_bind.html:36
+#: inginious/frontend/templates/unregister_button.html:21
+msgid "Cancel"
+msgstr "Annuler"
+
+#: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:18
+msgid "Confirm"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:9
+msgid "Help related to the task context."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:14
+msgid "Here you will find some information related to the language"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:15
+msgid " and how you can use it to make a good description."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:20
+msgid "Bold text"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:23
+msgid "**Text between will be stronger**."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:26
+msgid "Text between will be stronger."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:31
+msgid "Italic text"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:34
+msgid "*Text between will be rendered as italic*."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:37
+msgid "Text between will be rendered as italic"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:42
+msgid "Math text"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:45
+msgid "The area of a square is"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:48
+msgid "The math role marks its content as mathematical notation (inline formula)."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:50
+msgid ""
+"The input format is <strong>LaTeX</strong>, math syntax without the "
+"\"math delimiters\" ($$ $$). The example is rendered as:"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:57
+msgid "Monospaced text"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:60
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:63
+msgid "Text between will be rendered as monospaced text."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:68
+msgid "Bullet list"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:94
+msgid "Add image"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:104
+msgid "The desired image will be rendered."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:106
+msgid ""
+"Remember that you have to put the task id and the image name. You have to"
+" upload the image in the tab <em>Task files</em>. This file must be in "
+"the <em>public/</em> folder."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:114
+msgid "Add literal HTML"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:125
+msgid "After the '.. raw:: html' you can add your HTML code."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:127
+msgid "The previous HTML code is rendered as follows"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:135
+msgid "More information"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:138
+msgid ""
+"For more information please visit <strong>RST</strong> language <a "
+"href=\"http://docutils.sourceforge.net/rst.html\" target=\"_blank\"> "
+"documentation</a>."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:144
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:195
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:52
+#: inginious/frontend/templates/auth.html:16
+#: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
+#: inginious/frontend/templates/lti_login.html:30
+#: inginious/frontend/templates/register_button.html:36
+msgid "Close"
+msgstr "Fermer"
+
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:3
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:12
+msgid "Upload multiple files"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:16
+msgid ""
+"Select multiple files to upload. In case the path is not specified, the "
+"files are going to be stored in the root directory of the task file "
+"system."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:21
+#: inginious/frontend/plugins/code_preview/pages/code_preview.html:13
+msgid "Files"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:25
+msgid "Files Path"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:30
+msgid "List of selected files"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:38
+msgid "Upload files"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:2
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:11
+msgid "Understanding your result"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:15
+msgid ""
+"After you submit your code, it will be assessed and a result will be "
+"given to you."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:16
+msgid "The tables below list all possible results."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:19
+msgid ""
+"Results related to your code. Results you may receive after assessing "
+"your code"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:27
+msgid ""
+"Awesome! Everything worked as it should have: your code passed all the "
+"test cases. Congratulations!"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:37
+msgid ""
+"Sorry, but your code failed to solve the problem. It does not solve "
+"correctly the problem you were asked for."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:39
+msgid ""
+"The output after running your code (what it <i>prints</i> to the screen),"
+" is different from the output the system expected."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:41
+msgid ""
+"If the administrator allowed it, you may be able to see the difference "
+"between your output and the expected output."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:43
+msgid "Read carefully what you are asked to do and check again your code."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:45
+msgid ""
+"Test your code with different inputs. You can do it in your machine or "
+"you can use the \"custom input\" in the tools section."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:55
+msgid "Your code does not compile :/. Something is faulty in your code:"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:57
+msgid ""
+"It may be a misplaced colon, bracket, quotation mark, or symbol; you may "
+"be using a reserved keyword as a variable; you may have chosen a "
+"different programming language; among other options."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:59
+msgid ""
+"The \"compilation error\" message includes the output that the compiler "
+"produced with the error. Read the message carefully, it is tells you what"
+" went wrong."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:69
+msgid ""
+"This means that your code failed while it was executing, which means that"
+" your code compiled but exited unexpectedly when executed."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:71
+msgid "There are many reasons why your code could crashed, some of them are:"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:73
+msgid ""
+"Division by zero, invalid memory access (e.g. bad index access to an "
+"array), null pointers, among many options."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:83
+msgid ""
+"Your code exceeded the time limit. Thus, your code took too long to run "
+"the input for a given test case."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:85
+msgid ""
+"There are two options: either  your code  got stuck in an infinite loop "
+"or your code takes much longer than it should."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:87
+msgid ""
+"Check for infinite loops. Try to find another solution, one that takes "
+"less time to compute."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:97
+msgid "Getting this result means your code is using too much memory at runtime."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:99
+msgid ""
+"Check the data structures you are using, or find a more \"optimal\" "
+"solution, a solution that uses less memory."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:109
+msgid ""
+"Getting this result means the output of your code is longer that the "
+"allowed."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:111
+msgid "Check for print expressions in a loop."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:121
+msgid ""
+"Error related to notebook file submissions. This points out a runtime "
+"error while running the grading testing code."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:123
+msgid ""
+"This might be either an error in the grading code (i.e. calling non "
+"existent variable or function) or student code (i.e. the function to be "
+"tested is not present in the notebook)."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:125
+msgid ""
+"Check that your code implements all that was requested with the correct "
+"signature."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:131
+msgid ""
+"Results related to UNCode. Unexpected errors when your code was been "
+"executed."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:139
+msgid ""
+"If you get this message, do not worry, There's Nothing Wrong With Your "
+"Code!"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:141
+msgid ""
+"This error means UNCode had a problem while running or assessing your "
+"code. So, <b>the problem is on our side.</b>"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:143
+msgid ""
+"We apologise in advance. Please reload the page and try submitting again!"
+" If you still get the same result, please wait a while and try again or "
+"contact your professor."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:153
+msgid ""
+"If you get this, it means that we had a problem running and assessing "
+"your code. Wait for a while and try to send a submission again."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:155
+msgid ""
+"This might be also caused by a too small time limit in the task "
+"configuration (talk to your professor about it)."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:165
+msgid ""
+"If you get this, it means the grading environment run out of memory. "
+"There might be two possible causes:"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:169
+msgid ""
+"The configured memory is to low to solve this problem (talk to your "
+"professor about it)."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:172
+msgid ""
+"Your code is printing too much data, possibly caused by prints in an "
+"infinite loop."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:188
+msgid ""
+"There was a problem while assessing your submission. Please wait a while "
+"and reload the page, and try submitting again."
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/__init__.py:30
+msgid ""
+"\"<li><a href='/analytics/' class='navbar-link'>\n"
+"            <i class='fa fa-bar-chart fa-fw'></i> Analytics</a></li>"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:13
+msgid "Analytics"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:16
+msgid "Apply filters"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:21
+msgid "Analytics since"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:31
+msgid "Service"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:34
+msgid "All services"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:43
+#: inginious/frontend/plugins/auth/custom_auth_form.html:29
+#: inginious/frontend/templates/auth.html:23
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:50
+#: inginious/frontend/templates/mycourses.html:88
+#: inginious/frontend/templates/mycourses.html:109
+msgid "Course"
+msgstr "Cours"
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:53
+msgid "All courses"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:60
+#: inginious/frontend/templates/course_admin/classroom_edit.html:161
+#: inginious/frontend/templates/course_admin/teams_edit.html:226
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:67
+msgid "Heat map"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:68
+msgid "Visits per day"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:69
+msgid "Box plot"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:70
+#: inginious/frontend/plugins/analytics/pages/analytics.html:85
+msgid "Radar plot"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:75
+msgid "Calendar visits"
+msgstr ""
+
+#: inginious/frontend/plugins/auth/custom_auth_form.html:32
+#: inginious/frontend/templates/auth.html:26
+#: inginious/frontend/templates/mycourses.html:120
+#: inginious/frontend/templates/register_button.html:31
+msgid "Password"
+msgstr "Mot de passe"
+
+#: inginious/frontend/plugins/auth/custom_auth_form.html:34
+#: inginious/frontend/templates/auth.html:28
+#: inginious/frontend/templates/layout.html:135
+#: inginious/frontend/templates/signin_button.html:8
+#: inginious/frontend/templates/signin_button.html:15
+msgid "Sign in"
+msgstr "Se connecter"
+
 #: inginious/frontend/plugins/auth/facebook_auth.py:51
 #: inginious/frontend/plugins/auth/linkedin_auth.py:58
 msgid "UNCode | {course} - {task}"
@@ -716,8 +1178,225 @@ msgstr ""
 #: inginious/frontend/plugins/auth/twitter_auth.py:54
 #, python-format
 msgid ""
-"Check out UNCode course {course} and beat my score of {score}% on task"
-" {task} !"
+"Check out UNCode course {course} and beat my score of {score}% on task "
+"{task} !"
+msgstr ""
+
+#: inginious/frontend/plugins/code_preview/pages/code_preview.html:3
+msgid "Remove"
+msgstr ""
+
+#: inginious/frontend/plugins/code_preview/pages/code_preview.html:8
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:23
+#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:10
+msgid "Languages"
+msgstr ""
+
+#: inginious/frontend/plugins/code_preview/pages/code_preview.html:19
+msgid "Add/Update"
+msgstr ""
+
+#: inginious/frontend/plugins/code_preview/pages/code_preview.py:11
+msgid "Preview"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/grader.py:46
+msgid "Grader"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:9
+msgid "Generate grader automatically"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:22
+msgid "Problem ID"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:24
+msgid "\"Problem id where the code is located\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:36
+msgid "Maximum diff lines"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:38
+msgid "\"The maximum number of lines that the diff tool should show\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:48
+msgid "Diff context lines"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:58
+msgid "Show runtime errors"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:60
+msgid ""
+"\"In case it is not checked, the student's result is either ACCEPTED or "
+"WRONG_ANSWER. If checked, it shows additional errors like RUNTIME_ERROR "
+"or TIME_LIMIT_EXCEEDED.\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:78
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:236
+msgid "Time limit test cases (s)"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:80
+msgid "\"Time limit for each test case in seconds. (Max. 30s)\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:88
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:245
+msgid "Memory limit test cases (MB)"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:90
+msgid "\"Memory limit for each test case in MBs. (Max. 500 MBs)\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:98
+msgid "Output limit test cases (MB)"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:100
+msgid "\"Output limit for each test case in MBs. (Max. 30 MBs)\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:109
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:43
+msgid "Test cases"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:114
+msgid "All diffs"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:119
+msgid "Remove all tests"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:126
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:140
+msgid "Input file"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:127
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:145
+msgid "Output file"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:128
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:279
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:27
+msgid "Weight"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:129
+msgid "Show differences"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:130
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:289
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:85
+msgid "Options"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:151
+#: inginious/frontend/templates/course_admin/edit_tabs/subproblems.html:24
+msgid "Add"
+msgstr "Ajouter"
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:163
+msgid "Entity (only on VHDL)"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:174
+msgid "Testbench"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:179
+msgid "Golden Model"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:191
+msgid "Setup code for all tests"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:207
+msgid "Dataset URL"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:221
+msgid "Dataset filename"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:256
+msgid "Notebook example"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:260
+msgid "Click here to open a notebook example"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:271
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:8
+msgid "Add a test"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:278
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:23
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
+#: inginious/frontend/templates/course_admin/settings.html:29
+#: inginious/frontend/templates/course_admin/task_edit.html:143
+#: inginious/frontend/templates/queue.html:29
+#: inginious/frontend/templates/queue.html:59
+msgid "Name"
+msgstr "Nom"
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:282
+msgid "Show debug info"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:284
+msgid ""
+"\"Check to show more info the student like output difference and runtime "
+"errors\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:11
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:94
+msgid "Save"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:20
+msgid "Test name"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:35
+msgid "Setup code"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:48
+msgid "Case code"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:63
+msgid "Case expected output"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:82
+msgid "ID"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:83
+msgid "Code"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:84
+msgid "Expected output"
 msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/code_multiple_file_languages_problem.py:36
@@ -725,44 +1404,321 @@ msgid "code file multiple languages"
 msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/code_multiple_languages_problem.py:33
+#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:29
 msgid "Code multiple languages"
 msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/notebook_file_problem.py:33
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:24
 msgid "Notebook"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:4
+#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:4
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:4
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:36
+#: inginious/frontend/templates/course_admin/subproblems/code.html:9
+#: inginious/frontend/templates/course_admin/subproblems/file.html:9
+#: inginious/frontend/templates/course_admin/subproblems/match.html:9
+#: inginious/frontend/templates/course_admin/subproblems/multiple_choice.html:9
+msgid "Context"
+msgstr "Énoncé"
+
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:10
+msgid "Allowed file extensions"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:17
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:12
+#: inginious/frontend/templates/course_admin/subproblems/file.html:21
+msgid "Maximum file size (in bytes)"
+msgstr "Taille de fichier max. (en octets)"
+
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:27
+#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:14
+#: inginious/frontend/templates/course_admin/submissions_tabs/tasks.html:15
+#: inginious/frontend/templates/course_admin/submissions_tabs/users.html:29
+msgid "Select all"
+msgstr "Sélectionner tout"
+
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:44
+#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:26
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:21
+#: inginious/frontend/templates/course_admin/download.html:47
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:92
+#: inginious/frontend/templates/course_admin/subproblems/code.html:22
+#: inginious/frontend/templates/course_admin/subproblems/file.html:27
+#: inginious/frontend/templates/queue.html:26
+#: inginious/frontend/templates/queue.html:57
+msgid "Type"
+msgstr "Type"
+
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:47
+msgid "Code file multiple languages"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/multilang.html:12
+msgid "Paste your code or <a href='#' id='link-$inputId'>load it from file</a>"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/multilang.html:14
+msgid "Select your language"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:12
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:23
+msgid "About Python Notebook submissions"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:27
+msgid ""
+"In general, when submitting a notebook, all <strong>Python 3.5 "
+"code</strong> is supported on UNCode. However, Ipython notebooks and "
+"python code differ in some functionalities, then UNCode might support "
+"them or not. Also, there are some things you should bear in mind when "
+"creating your notebook."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:32
+msgid "Python modules"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:33
+msgid ""
+"You are able to use the next python modules in addition to the pre "
+"installed python modules:"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:39
+msgid "Installing modules"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:41
+msgid ""
+"All the modules and data you require are already installed and supported "
+"by UNCode.<br> Then, when you have lines installing a module, for "
+"instance"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:42
+msgid "or using "
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:44
+msgid ""
+"these lines are automatically removed from your notebook to avoid runtime"
+" execution errors."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:46
+msgid ""
+"In case you want to use one module and it is not in the previous list, do"
+" not hesitate on reaching out for support."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:49
+msgid "Print expressions"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:50
+msgid ""
+"Usually while executing your notebook on your runtime you might add some "
+"<code class='language-python' data-language='python'>print</code> "
+"expressions, though, these expressions are deleted and these outputs are "
+"not shown in the submission feedback."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:53
+msgid "Internet access in grading environment"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:54
+msgid ""
+"The internet access when your code is being graded is dependant on the "
+"task. Some tasks might allow it or not."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:56
+msgid ""
+"In case you are allowed to access internet, this mainly will work to "
+"download files or data, for instance datasets. As stated above, you "
+"cannot install modules."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:58
+msgid ""
+"In case there is not access, be careful when using code that requires "
+"internet access as it will fail while grading."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:61
+msgid "Magic functionality execution"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:62
+msgid ""
+" functions are not allowed when your notebook is graded. For example the "
+"next line"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:66
+msgid ""
+"In case your notebook contains some lines like this, they will be "
+"automatically removed to avoid runtime execution errors."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:69
+msgid "Commands execution"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:70
+msgid "Python Notebooks provide a functionality to execute commands like these"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:73
+msgid "However, this kind of lines are transformed as follows"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:75
+msgid "is turned into the following code:"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:89
+msgid ""
+"That code will do the same for you as in the notebook. However, you are "
+"not allowed to assign the result of command execution to variables, for "
+"instance the next line will return an error"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:94
+msgid "Google Colab modules"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:95
+msgid ""
+"When you use Google Colaboratory (Colab) and you want to load and read "
+"data from Google Drive, you are required to use some python modules "
+"unique in Colab. These modules are not supported by UNCode. Then, make "
+"sure when you submit your notebook, you do not include it."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:7
+msgid "Perform lint"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:8
+msgid "Tools"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:12
+msgid "Paste your input"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:17
+msgid "'Your input goes here'"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:25
+msgid "Your output goes here"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:33
+msgid "Test code!"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:39
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:48
+msgid "Visualize your code!"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:60
+msgid "Test"
+msgstr ""
+
+#: inginious/frontend/plugins/problem_bank/index.html:7
+#: inginious/frontend/plugins/problem_bank/index.html:12
+#: inginious/frontend/plugins/problem_bank/problem_bank_div.html:2
+msgid "Problem bank"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:3
+#: inginious/frontend/plugins/statistics/pages/user_statistics.py:26
+#: inginious/frontend/templates/course_admin/submissions.html:210
+msgid "Statistics"
+msgstr "Statistiques"
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:8
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.py:27
+msgid "Course statistics"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:13
+msgid "Statistics for course"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:21
+msgid "Grade count"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:25
+msgid "Grade distribution"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:30
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:63
+msgid "Submissions Verdict (ALL)"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:35
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:77
+msgid "Submissions Verdict (BEST)"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:43
+msgid "Submissions by grade"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:46
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:57
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:66
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:80
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:22
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:32
+msgid "Download CSV"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:54
+msgid "Final grade distribution"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:72
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:86
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:29
+msgid "Toggle normalize"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:3
+#: inginious/frontend/plugins/statistics/pages/user_statistics.py:27
+msgid "My statistics"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:8
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:20
+msgid "Trials and Best Grade"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:13
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:25
+msgid "Bar Submissions Per Tasks"
 msgstr ""
 
 #: inginious/frontend/templates/auth.html:8
 msgid "Welcome"
 msgstr "Bienvenue"
 
-#: inginious/frontend/templates/auth.html:16
-#: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
-#: inginious/frontend/templates/lti_login.html:30
-#: inginious/frontend/templates/register_button.html:36
-msgid "Close"
-msgstr "Fermer"
-
-#: inginious/frontend/templates/auth.html:23
-msgid "Username"
-msgstr "Nom d'utilisateur"
-
-#: inginious/frontend/templates/auth.html:26
-#: inginious/frontend/templates/mycourses.html:120
-#: inginious/frontend/templates/register_button.html:31
-msgid "Password"
-msgstr "Mot de passe"
-
 #: inginious/frontend/templates/auth.html:26
 msgid "Lost password?"
 msgstr "Mot de passe perdu?"
-
-#: inginious/frontend/templates/auth.html:28
-#: inginious/frontend/templates/layout.html:135
-#: inginious/frontend/templates/signin_button.html:8
-#: inginious/frontend/templates/signin_button.html:15
-msgid "Sign in"
-msgstr "Se connecter"
 
 #: inginious/frontend/templates/auth.html:38
 msgid "Sign in with"
@@ -1068,18 +2024,6 @@ msgstr "Identifiants de l'outil:"
 msgid "Bind my account"
 msgstr "Lier mon compte"
 
-#: inginious/frontend/templates/course_admin/classroom_edit.html:86
-#: inginious/frontend/templates/course_admin/danger_zone.html:81
-#: inginious/frontend/templates/course_admin/danger_zone.html:160
-#: inginious/frontend/templates/course_admin/student_list_table.html:82
-#: inginious/frontend/templates/course_admin/submissions.html:255
-#: inginious/frontend/templates/course_admin/task_edit.html:107
-#: inginious/frontend/templates/course_admin/teams_edit.html:60
-#: inginious/frontend/templates/lti_bind.html:36
-#: inginious/frontend/templates/unregister_button.html:21
-msgid "Cancel"
-msgstr "Annuler"
-
 #: inginious/frontend/templates/lti_login.html:16
 msgid ""
 "<h2 class=\"text-justify\">Hello!<br/><small>Welcome on the UNCode "
@@ -1093,8 +2037,8 @@ msgid ""
 "In order to use UNCode via this platform, please bind your existing "
 "account or create a new one."
 msgstr ""
-"Afin d'utiliser UNCode via cette platforme, veuillez lier votre compte"
-" existant ou en créer un nouveau"
+"Afin d'utiliser UNCode via cette platforme, veuillez lier votre compte "
+"existant ou en créer un nouveau"
 
 #: inginious/frontend/templates/lti_login.html:31
 msgid "Invalid login/password"
@@ -1114,11 +2058,11 @@ msgstr "Maintenance"
 
 #: inginious/frontend/templates/maintenance.html:79
 msgid ""
-"<b>This UNCode instance is currently under maintenance.</b> Please "
-"come back in a few minutes!"
+"<b>This UNCode instance is currently under maintenance.</b> Please come "
+"back in a few minutes!"
 msgstr ""
-"<b>Cette instance d'UNCode est sous maintenance.</b> Veuillez "
-"réessayer dans quelques minutes!"
+"<b>Cette instance d'UNCode est sous maintenance.</b> Veuillez réessayer "
+"dans quelques minutes!"
 
 #: inginious/frontend/templates/mycourses.html:58
 msgid "LTI course"
@@ -1152,11 +2096,6 @@ msgstr "Cours créé."
 #: inginious/frontend/templates/mycourses.html:84
 msgid "Failed to create the course."
 msgstr "Une erreur s'est produite lors de la création du cours"
-
-#: inginious/frontend/templates/mycourses.html:88
-#: inginious/frontend/templates/mycourses.html:109
-msgid "Course"
-msgstr "Cours"
 
 #: inginious/frontend/templates/mycourses.html:92
 msgid "Create new course"
@@ -1199,15 +2138,6 @@ msgstr "Cette page affiche un <strong>instantané</strong> de la file d'attente.
 msgid "Running jobs"
 msgstr "Tâches en cours d'exécution"
 
-#: inginious/frontend/templates/course_admin/download.html:47
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:92
-#: inginious/frontend/templates/course_admin/subproblems/code.html:22
-#: inginious/frontend/templates/course_admin/subproblems/file.html:27
-#: inginious/frontend/templates/queue.html:26
-#: inginious/frontend/templates/queue.html:57
-msgid "Type"
-msgstr "Type"
-
 #: inginious/frontend/templates/queue.html:27
 msgid "Local client"
 msgstr "Client local"
@@ -1215,15 +2145,6 @@ msgstr "Client local"
 #: inginious/frontend/templates/queue.html:28
 msgid "Agent name"
 msgstr "Nom de l'agent"
-
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:23
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
-#: inginious/frontend/templates/course_admin/settings.html:29
-#: inginious/frontend/templates/course_admin/task_edit.html:143
-#: inginious/frontend/templates/queue.html:29
-#: inginious/frontend/templates/queue.html:59
-msgid "Name"
-msgstr "Nom"
 
 #: inginious/frontend/templates/queue.html:30
 #: inginious/frontend/templates/queue.html:60
@@ -1915,11 +2836,6 @@ msgstr "Liste des tuteurs"
 msgid "Add tutor"
 msgstr "Ajouter un tuteur"
 
-#: inginious/frontend/templates/course_admin/classroom_edit.html:161
-#: inginious/frontend/templates/course_admin/teams_edit.html:226
-msgid "Update"
-msgstr "Mettre à jour"
-
 #: inginious/frontend/templates/course_admin/classroom_edit.html:169
 msgid "Ungrouped users"
 msgstr "Utilisateurs non groupés"
@@ -2000,12 +2916,12 @@ msgstr "\"Télécharger la sauvegarde\""
 #: inginious/frontend/templates/course_admin/danger_zone.html:136
 msgid ""
 "<p> This will <b>permanently</b> remove the course and all its data "
-"(including tasks and backups) from UNCode.</p><p>To confirm your will,"
-" please type the course id below :</p>"
+"(including tasks and backups) from UNCode.</p><p>To confirm your will, "
+"please type the course id below :</p>"
 msgstr ""
 "<p> Ceci va supprimer <b>définitement</b> le cours et toutes ses données "
-"d'UNCode (y compris les exercices et sauvegardes).</p><p>Pour "
-"confirmer, veuillez entrer l'identifiant de cours ci-dessous :</p>"
+"d'UNCode (y compris les exercices et sauvegardes).</p><p>Pour confirmer, "
+"veuillez entrer l'identifiant de cours ci-dessous :</p>"
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:157
 msgid ""
@@ -2013,8 +2929,8 @@ msgid ""
 "(including tasks and backups) from UNCode. Are you really sure ?</p>"
 msgstr ""
 "<p>Ceci va supprimer <b>définitivement</b> le cours et toutes ses données"
-" d'UNCode(y compris les exercices et ssauvegardes). Êtes-vous vraiment"
-" sûr ?</p>"
+" d'UNCode(y compris les exercices et ssauvegardes). Êtes-vous vraiment "
+"sûr ?</p>"
 
 #: inginious/frontend/templates/course_admin/download.html:31
 #: inginious/frontend/templates/course_admin/replay.html:46
@@ -2463,10 +3379,6 @@ msgstr "Croissant"
 msgid "Limit"
 msgstr "Limite"
 
-#: inginious/frontend/templates/course_admin/submissions.html:210
-msgid "Statistics"
-msgstr "Statistiques"
-
 #: inginious/frontend/templates/course_admin/submissions.html:212
 msgid "No statistics"
 msgstr "Sans statistiques"
@@ -2615,9 +3527,7 @@ msgstr "Supprimer l'exercice"
 
 #: inginious/frontend/templates/course_admin/task_edit.html:99
 msgid "This will <b>permanently</b> remove the task and its files from UNCode."
-msgstr ""
-"Ceci supprimera <b>définitivement</b> l'exercice et ses fichier "
-"d'UNCode."
+msgstr "Ceci supprimera <b>définitivement</b> l'exercice et ses fichier d'UNCode."
 
 #: inginious/frontend/templates/course_admin/task_edit.html:102
 msgid "Wipe all submissions"
@@ -2728,14 +3638,6 @@ msgstr "Supprimer toutes les équipes"
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:22
 msgid "Filetype"
 msgstr "Type de fichier"
-
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:36
-#: inginious/frontend/templates/course_admin/subproblems/code.html:9
-#: inginious/frontend/templates/course_admin/subproblems/file.html:9
-#: inginious/frontend/templates/course_admin/subproblems/match.html:9
-#: inginious/frontend/templates/course_admin/subproblems/multiple_choice.html:9
-msgid "Context"
-msgstr "Énoncé"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:42
 msgid "Author"
@@ -2904,10 +3806,6 @@ msgstr "Nouvel identifiant de problème"
 msgid "Problem type"
 msgstr "Type de problème"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/subproblems.html:24
-msgid "Add"
-msgstr "Ajouter"
-
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:9
 msgid "Tag editor"
 msgstr "Edition des étiquettes"
@@ -2966,11 +3864,6 @@ msgstr "Exercices pour lesquels télécharger les soumissions"
 msgid "Tasks to replay submissions from"
 msgstr "Exercices pour lesquels rejouer les soumissions"
 
-#: inginious/frontend/templates/course_admin/submissions_tabs/tasks.html:15
-#: inginious/frontend/templates/course_admin/submissions_tabs/users.html:29
-msgid "Select all"
-msgstr "Sélectionner tout"
-
 #: inginious/frontend/templates/course_admin/submissions_tabs/tasks.html:16
 #: inginious/frontend/templates/course_admin/submissions_tabs/users.html:30
 msgid "Deselect all"
@@ -3025,10 +3918,6 @@ msgid "Allowed file extensions (including the dot, separated by spaces)"
 msgstr ""
 "Extensions de fichier autorisées (incluant le point, séparées par des "
 "espaces)"
-
-#: inginious/frontend/templates/course_admin/subproblems/file.html:21
-msgid "Maximum file size (in bytes)"
-msgstr "Taille de fichier max. (en octets)"
 
 #: inginious/frontend/templates/course_admin/subproblems/file.html:30
 msgid "File upload"

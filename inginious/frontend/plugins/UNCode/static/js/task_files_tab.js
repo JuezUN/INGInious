@@ -51,13 +51,13 @@ jQuery(document).ready(function () {
 
     function _addTaskFilesDeleteAllFilesButton() {
         const deleteAllFilesButton = `&nbsp;<button  type="button" class='btn btn-sm btn-danger' data-toggle='modal' 
-                data-target="#delete_all_files_confirm_modal">Delete all files</button>`;
+                data-target="#delete_all_files_confirm_modal">${delete_all_files_msg}</button>`;
         $('#task_files_options_buttons').append(deleteAllFilesButton);
     }
 
     function _addTaskFilesUploadMultipleButton() {
-        const uploadMultipleFilesButton = "<a href='#' class='btn btn-sm btn-info' data-toggle='modal' " +
-            "data-target='#task_files_upload_multiple_modal' id='open_multiple_files_modal'>Upload multiple files</a>";
+        const uploadMultipleFilesButton = `<a href='#' class='btn btn-sm btn-info' data-toggle='modal' 
+                data-target='#task_files_upload_multiple_modal' id='open_multiple_files_modal'>${upload_files_msg}</a>`;
         $('#task_files_options_buttons').append(uploadMultipleFilesButton);
     }
 
