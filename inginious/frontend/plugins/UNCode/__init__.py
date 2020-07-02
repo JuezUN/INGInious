@@ -7,10 +7,6 @@ from .api.used_subproblem_types import UsedSubproblemTypes
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
 _CONTEXT_TASK_TEMPLATE_FILE = "context_task_template.rst"
-_TASK_CONTEXT_HELP_MODAL_FILE = "task_context_help_modal.html"
-_TASK_FILES_UPLOAD_MULTIPLE_MODAL = "task_files_upload_multiple_modal.html"
-_TASK_RESULT_LEGEND_MODAL_FILE = "task_result_legend_modal.html"
-_DELETE_ALL_FILES_MODAL_FILE = "delete_all_files_confirm_modal.html"
 
 
 def init(plugin_manager, course_factory, client, config):
@@ -34,15 +30,12 @@ def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_page("/api/getUsedGradingEnvironments/", UsedGradingEnvironments)
     plugin_manager.add_page("/api/getUsedSubproblemTypes/", UsedSubproblemTypes)
 
+    renderer = plugin_manager._app.template_helper.get_custom_renderer('frontend/plugins/UNCode/static', False)
+
     plugin_manager.add_hook("additional_body_html", lambda: "<p class='hidden' id='default_task_context'>" +
                                                             read_file(_static_folder_path,
                                                                       _CONTEXT_TASK_TEMPLATE_FILE) + "</p>")
-    print(plugin_manager.call_hook("template_helper"))
-    plugin_manager.add_hook("additional_body_html",
-                            lambda: read_file(_static_folder_path, _TASK_CONTEXT_HELP_MODAL_FILE))
-    plugin_manager.add_hook("additional_body_html",
-                            lambda: read_file(_static_folder_path, _TASK_FILES_UPLOAD_MULTIPLE_MODAL))
-    plugin_manager.add_hook("additional_body_html",
-                            lambda: read_file(_static_folder_path, _TASK_RESULT_LEGEND_MODAL_FILE))
-    plugin_manager.add_hook("additional_body_html",
-                            lambda: read_file(_static_folder_path, _DELETE_ALL_FILES_MODAL_FILE))
+    plugin_manager.add_hook("additional_body_html", str(renderer.task_context_help_modal()))
+    plugin_manager.add_hook("additional_body_html", lambda: str(renderer.task_files_upload_multiple_modal()))
+    plugin_manager.add_hook("additional_body_html", lambda: str(renderer.task_result_legend_modal()))
+    plugin_manager.add_hook("additional_body_html", lambda: str(renderer.delete_all_files_confirm_modal()))

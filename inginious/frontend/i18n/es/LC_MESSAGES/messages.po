@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-01 16:58-0500\n"
+"POT-Creation-Date: 2020-07-01 22:47-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Raziel CG <raziel.carvajal-gomez@uclouvain.be>\n"
 "Language: es\n"
@@ -706,6 +706,271 @@ msgstr "Enlaces de autenticación"
 msgid "Delete my account"
 msgstr "Elimina mi cuenta"
 
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:8
+msgid "Understanding your result"
+msgstr "Entendiendo tus resultados"
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:12
+msgid ""
+"After you submit your code, it will be assessed and a result will be "
+"given to you."
+msgstr ""
+"Después de realizar el envío, éste será calificado y un resultado te será"
+" mostrado."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:13
+msgid "The tables below list all possible results."
+msgstr "Las siguientes tablas explican estos posibles resultados."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:16
+msgid ""
+"Results related to your code. Results you may receive after assessing "
+"your code"
+msgstr "Resultados relacionados a tu código."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:24
+msgid ""
+"Awesome! Everything worked as it should have: your code passed all the "
+"test cases. Congratulations!"
+msgstr ""
+"¡Grandioso! Todo funcionó como lo esperado: tu código pasó todos los "
+"casos de prueba. ¡Felicitaciones!"
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:34
+msgid ""
+"Sorry, but your code failed to solve the problem. It does not solve "
+"correctly the problem you were asked for."
+msgstr ""
+"Lo siento pero tu código falló al resolver el problema ya que no resuelve"
+" correctamente la tarea esperada."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:36
+msgid ""
+"The output after running your code (what it <i>prints</i> to the screen),"
+" is different from the output the system expected."
+msgstr ""
+"La sálida después de ejecutar tu código (lo que se <i>imprime</i> en la "
+"pantalla), es  diferente a la esperada."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:38
+msgid ""
+"If the administrator allowed it, you may be able to see the difference "
+"between your output and the expected output."
+msgstr ""
+"Si el administrador lo permitió, podrías mirar la diferencia entre tu "
+"salida y la esperada."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:40
+msgid "Read carefully what you are asked to do and check again your code."
+msgstr "Lea cuidadosamente las instrucciones y vuela a revisar su código."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:42
+msgid ""
+"Test your code with different inputs. You can do it in your machine or "
+"you can use the \"custom input\" in the tools section."
+msgstr ""
+"Prueba tu código con diferentes entradas. Puedes hacerlo localmente o "
+"puedes usar la herramienta \"Probar código\" en el botón de herramientas."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:52
+msgid "Your code does not compile :/. Something is faulty in your code:"
+msgstr "Tu código no compila :/. Algo falla en éste:"
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:54
+msgid ""
+"It may be a misplaced colon, bracket, quotation mark, or symbol; you may "
+"be using a reserved keyword as a variable; you may have chosen a "
+"different programming language; among other options."
+msgstr ""
+"Puede ser la falta de un punto y coma, llave, comillas o símbolo; podrías"
+" estar usando una palabra reservada como variable; el lenguaje "
+"seleccionado no es el correcto; entre muchas otra opciones."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:56
+msgid ""
+"The \"compilation error\" message includes the output that the compiler "
+"produced with the error. Read the message carefully, it is tells you what"
+" went wrong."
+msgstr ""
+"El mensaje \"compilation error\" incluye la salida con el error producido"
+" por el compilador. Lea el mensaje con cuidado, este puede contener "
+"información importante sobre el error."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:66
+msgid ""
+"This means that your code failed while it was executing, which means that"
+" your code compiled but exited unexpectedly when executed."
+msgstr ""
+"Tu código falló mientras era ejecutado, esto significa que  compiló pero "
+"finalizó inesperadamente al ser ejecutado."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:68
+msgid "There are many reasons why your code could crashed, some of them are:"
+msgstr "Hay muchas razones del por qué tu código falló, algunas de estas son:"
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:70
+msgid ""
+"Division by zero, invalid memory access (e.g. bad index access to an "
+"array), null pointers, among many options."
+msgstr ""
+"División por cero, acceso inválido a memoria (por ejemplo índice no "
+"válido en un arreglo), apuntadores nulos, entre muchas opciones."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:80
+msgid ""
+"Your code exceeded the time limit. Thus, your code took too long to run "
+"the input for a given test case."
+msgstr ""
+"Tu código excedió el tiempo límite, por ende tomó mucho tiempo para "
+"finalizar un caso de prueba dado."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:82
+msgid ""
+"There are two options: either  your code  got stuck in an infinite loop "
+"or your code takes much longer than it should."
+msgstr ""
+"Hay dos opciones: ya sea que tu código se quedó un ciclo infinito o o tu "
+"código toma más tiempo del que debería."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:84
+msgid ""
+"Check for infinite loops. Try to find another solution, one that takes "
+"less time to compute."
+msgstr ""
+"Busca ciclos infinitos. Intenta encontrar otra solución, una que tome "
+"menos tiempo."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:94
+msgid "Getting this result means your code is using too much memory at runtime."
+msgstr ""
+"Al obtener este resultado, tu código toma mucha memoria en tiempo de "
+"ejecución."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:96
+msgid ""
+"Check the data structures you are using, or find a more \"optimal\" "
+"solution, a solution that uses less memory."
+msgstr ""
+"Revisa la estructuras de datos usadas, o encuentre una solución más "
+"\"óptima\". una que use menos memoria."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:106
+msgid ""
+"Getting this result means the output of your code is longer that the "
+"allowed."
+msgstr "Esto significa que la salida de tu código es más grande que lo permitido."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:108
+msgid "Check for print expressions in a loop."
+msgstr "Revisa expresiones 'print' en un ciclo."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:118
+msgid ""
+"Error related to notebook file submissions. This points out a runtime "
+"error while running the grading testing code."
+msgstr ""
+"Error relacionado a submissions de Notebooks. Esto indica un error en "
+"tiempo de ejecución mientras se ejecutaba el código de evaluación."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:120
+msgid ""
+"This might be either an error in the grading code (i.e. calling non "
+"existent variable or function) or student code (i.e. the function to be "
+"tested is not present in the notebook)."
+msgstr ""
+"Este error puede ser ya sea en el código de evaluación (llamando una "
+"función o que no existe) o en el código del estudiante (por ejemplo la "
+"función a ser probada no está en el código del estudiante)."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:122
+msgid ""
+"Check that your code implements all that was requested with the correct "
+"signature."
+msgstr ""
+"Revisa que tu código implementa todos lo solicitado siguiendo las "
+"instrucciones, así como las las firmas de variables y funciones sin "
+"modificar."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:128
+msgid ""
+"Results related to UNCode. Unexpected errors when your code was been "
+"executed."
+msgstr ""
+"Resultados relacionado a UNCode. Errores internos al momento de ejecutar "
+"tu código."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:136
+msgid ""
+"If you get this message, do not worry, There's Nothing Wrong With Your "
+"Code!"
+msgstr "Si obtienes este mensaje, no te preocupes, tu código no está mal!"
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:138
+msgid ""
+"This error means UNCode had a problem while running or assessing your "
+"code. So, <b>the problem is on our side.</b>"
+msgstr ""
+"Este error indica que UNCode tuvo un problema al ejecutar el código. Por "
+"ende, <b>el problema se aloja en nuestro lado.</b>"
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:140
+msgid ""
+"We apologise in advance. Please reload the page and try submitting again!"
+" If you still get the same result, please wait a while and try again or "
+"contact your professor."
+msgstr ""
+"Nos disculpamos por esto. Por recargue la página e intente enviar de "
+"nuevo! Si el error persiste, por favor espere un tiempo y vuelva a "
+"intentar o contacte a su profesor."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:150
+msgid ""
+"If you get this, it means that we had a problem running and assessing "
+"your code. Wait for a while and try to send a submission again."
+msgstr ""
+"Tuvimos un problema ejecutando tu código. Espere por un tiempo y vuelva a"
+" realizar el envío."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:152
+msgid ""
+"This might be also caused by a too small time limit in the task "
+"configuration (talk to your professor about it)."
+msgstr ""
+"Esto también puede se causado por un tiempo límite muy pequeño al "
+"configurar la tarea (háblele a su profesor al respecto)."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:162
+msgid ""
+"If you get this, it means the grading environment run out of memory. "
+"There might be two possible causes:"
+msgstr ""
+"El ambiente de evaluación se quedó sin memoria. Pueden haber dos posibles"
+" causas:"
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:166
+msgid ""
+"The configured memory is to low to solve this problem (talk to your "
+"professor about it)."
+msgstr ""
+"La memoria configurada es muy baja para resolver el problema (comuníquese"
+" con su profesor)."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:169
+msgid ""
+"Your code is printing too much data, possibly caused by prints in an "
+"infinite loop."
+msgstr ""
+"Tu código tiene una salida muy grande, probablemente causado por imprimir"
+" en ciclos infinitos."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:185
+msgid ""
+"There was a problem while assessing your submission. Please wait a while "
+"and reload the page, and try submitting again."
+msgstr ""
+"Hubo un problema al evaluar tu submission. Por favor espere un momento, "
+"recargue la página e intente de nuevo."
+
 #: inginious/frontend/plugins/analytics/__init__.py:30
 msgid ""
 "\"<li><a href='/analytics/' class='navbar-link'>\n"
@@ -1116,8 +1381,8 @@ msgstr "Seleccione el lenguaje"
 
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:12
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:23
-msgid " About IPython Notebook submissions"
-msgstr "Sobre submissions de Notebooks de IPython"
+msgid "About Python Notebook submissions"
+msgstr "Acerca de submissions de Notebooks de Python"
 
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:27
 msgid ""
@@ -1250,9 +1515,9 @@ msgid "Commands execution"
 msgstr "Ejecutar comandos"
 
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:70
-msgid "IPython Notebooks provide a functionality to execute commands like these"
+msgid "Python Notebooks provide a functionality to execute commands like these"
 msgstr ""
-"Notebooks de IPython proveen una funcionalidad para ejecutar comandos "
+"Los Notebooks de Python proveen una funcionalidad para ejecutar comandos "
 "como estos"
 
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:73
@@ -3732,7 +3997,3 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
-
-#~ msgid "My Statistics"
-#~ msgstr "Mis estadísticas"
-
