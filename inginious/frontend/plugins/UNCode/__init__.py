@@ -35,7 +35,8 @@ def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_hook("additional_body_html", lambda: "<p class='hidden' id='default_task_context'>" +
                                                             read_file(_static_folder_path,
                                                                       _CONTEXT_TASK_TEMPLATE_FILE) + "</p>")
-    plugin_manager.add_hook("additional_body_html", str(renderer.task_context_help_modal()))
+    plugin_manager.add_hook("additional_body_html", lambda: str(renderer.task_context_help_modal()))
     plugin_manager.add_hook("additional_body_html", lambda: str(renderer.task_files_upload_multiple_modal()))
+    # print(str(renderer.task_result_legend_modal()))
     plugin_manager.add_hook("additional_body_html", lambda: str(renderer.task_result_legend_modal()))
     plugin_manager.add_hook("additional_body_html", lambda: str(renderer.delete_all_files_confirm_modal()))
