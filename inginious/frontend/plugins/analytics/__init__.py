@@ -27,8 +27,8 @@ def init(plugin_manager, course_factory, client, plugin_config):
 
     def analytics_hook():
         if plugin_manager.get_user_manager().user_is_superadmin():
-            return """<li><a href='/analytics/' class='navbar-link'>
-            <i class='fa fa-bar-chart fa-fw'></i> Analytics</a></li>"""
+            return _(""""<li><a href='/analytics/' class='navbar-link'>
+            <i class='fa fa-bar-chart fa-fw'></i> Analytics</a></li>""")
 
     plugin_manager.add_hook("superadmin_options", lambda: analytics_hook())
 

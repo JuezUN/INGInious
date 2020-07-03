@@ -1,3 +1,6 @@
+
+$ legend_label = _("Understanding your result")
+
 <div id="task_result_legend_modal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -5,15 +8,15 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h3 class="modal-title"><i class="fa fa-question-circle">Understanding your result</i></h3>
+                <h3 class="modal-title"><i class="fa fa-question-circle">$:_("Understanding your result")</i></h3>
             </div>
             <div class="modal-body text-justify">
                 <h5>
-                   After you submit your code, it will be assessed and a result will be given to you.<br/>
-                   The tables below list all possible results.
+                   $:_("After you submit your code, it will be assessed and a result will be given to you.")<br/>
+                   $:_("The tables below list all possible results.")
                 </h5>
                 <hr>
-                <strong>Results related to your code. Results you may receive after assessing your code</strong>
+                <strong>$:_("Results related to your code. Results you may receive after assessing your code")</strong>
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="list-group-item-text row">
@@ -21,8 +24,7 @@
                                 <h4><span class="label label-success"><strong>ACCEPTED</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                Awesome. Everything worked as it should have: your code compiled/ran and passed all the
-                                test cases. Congratulations!
+                                $:_("Awesome! Everything worked as it should have: your code passed all the test cases. Congratulations!")
                             </div>
                         </div>
                     </li>
@@ -32,16 +34,15 @@
                                 <h4><span class="label label-danger"><strong>WRONG ANSWER</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                Sorry, but your code failed to solve the problem. Your code does not have any syntax
-                                errors, but it does not solve the problem you were tasked for.<br/>
-                                The output of running your code, what it <i>prints</i> to the screen, is different to
-                                the output the system expected.<br/>
-                                If the administrator allowed it, you may be able to see the difference between your
-                                output and the expected output.<br/>
-                                <strong>Tips:</strong> Read carefully what you are asked to do and check again your
-                                code.<br/>
-                                Test your code with different inputs. You can do it in your machine or you can use the
-                                "custom input" tool from the tools section.
+                                $:_("Sorry, but your code failed to solve the problem. It does not solve correctly the problem you were asked for.")
+                                <br/>
+                                $:_("The output after running your code (what it <i>prints</i> to the screen), is different from the output the system expected.")
+                                <br/>
+                                $:_("If the administrator allowed it, you may be able to see the difference between your output and the expected output.")
+                                <br/>
+                                <strong>Tips:</strong> $:_("Read carefully what you are asked to do and check again your code.")
+                                <br/>
+                                $:_("Test your code with different inputs. You can do it in your machine or you can use the \"custom input\" in the tools section.")
                             </div>
                         </div>
                     </li>
@@ -51,12 +52,11 @@
                                 <h4><span class="label label-danger"><strong>COMPILATION ERROR</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                Ugh, your code does not compile :/. Something is faulty in your code: it may be a
-                                misplaced colon, bracket, quotation mark, or symbol; you may be using a reserved keyword
-                                as a variable; you may have chosen a different programming language; or anything,
-                                really.<br/>
-                                The "compilation error" message includes the output that the compiler produced with the
-                                error. Read the message carefully, it is problably telling you what went wrong.
+                                $:_("Your code does not compile :/. Something is faulty in your code:")
+                                <br/>
+                                $:_("It may be a misplaced colon, bracket, quotation mark, or symbol; you may be using a reserved keyword as a variable; you may have chosen a different programming language; among other options.")
+                                <br/>
+                                $:_("The \"compilation error\" message includes the output that the compiler produced with the error. Read the message carefully, it is tells you what went wrong.")
                             </div>
                         </div>
                     </li>
@@ -66,10 +66,11 @@
                                 <h4><span class="label label-danger"><strong>RUNTIME ERROR</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                "Runtime error" means that your code failed while it was executing, which means that your
-                                code compiled but exited unexpectedly when executed. There are many reasons why your
-                                code could crash, some of them are: division by zero, invalid memory access (e.g. bad
-                                index access to an array), and null pointers.
+                                $:_("This means that your code failed while it was executing, which means that your code compiled but exited unexpectedly when executed.")
+                                <br>
+                                $:_("There are many reasons why your code could crashed, some of them are:")
+                                <br>
+                                $:_("Division by zero, invalid memory access (e.g. bad index access to an array), null pointers, among many options.")
                             </div>
                         </div>
                     </li>
@@ -79,13 +80,11 @@
                                 <h4><span class="label label-danger"><strong>TIME LIMIT EXCEEDED</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                Time limit means that your code exceeded the time limit. This means that your code
-                                took too long to run the input test cases. There are two options: either  your code
-                                got stuck in an infinite loop or your code does solve the problem but takes much longer
-                                than it should.<br/>
-                                <strong>Tips:</strong> Check and debug your code as it may be stuck in a loop. If your
-                                code does in fact solve the problem but it is too slow, try to find another solution,
-                                one that takes less time to compute.
+                                $:_("Your code exceeded the time limit. Thus, your code took too long to run the input for a given test case.")
+                                <br/>
+                                $:_("There are two options: either  your code  got stuck in an infinite loop or your code takes much longer than it should.")
+                                <br/>
+                                <strong>Tips:</strong> $:_("Check for infinite loops. Try to find another solution, one that takes less time to compute.")
                             </div>
                         </div>
                     </li>
@@ -95,9 +94,9 @@
                                 <h4><span class="label label-danger"><strong>MEMORY LIMIT EXCEEDED</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                Getting this result means your code is using too much memory at runtime.<br/>
-                                <strong>Tips:</strong> Check the data structures you are using, or find a more "optimal"
-                                solution, a solution that uses less memory.
+                                $:_("Getting this result means your code is using too much memory at runtime.")
+                                <br/>
+                                <strong>Tips:</strong> $:_("Check the data structures you are using, or find a more \"optimal\" solution, a solution that uses less memory.")
                             </div>
                         </div>
                     </li>
@@ -107,8 +106,9 @@
                                 <h4><span class="label label-danger"><strong>OUTPUT LIMIT EXCEEDED</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                Getting this result means the output of your code is longer that the allowed.<br/>
-                                <strong>Tips:</strong> Check for printing statements in a loop.
+                                $:_("Getting this result means the output of your code is longer that the allowed.")
+                                <br/>
+                                <strong>Tips:</strong> $:_("Check for print expressions in a loop.")
                             </div>
                         </div>
                     </li>
@@ -118,19 +118,17 @@
                                 <h4><span class="label label-danger"><strong>GRADING RUNTIME ERROR</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                Error related to notebook file submissions. This points out a runtime error while
-                                running the grading testing code.<br/>
-                                This might be either an error in the grading code (i.e. calling non existent variable
-                                or function) or student code (i.e. the function to be tested is not present in the
-                                notebook). <br/>
-                                <strong>Tips:</strong> Check that your code implements all that was requested with the
-                                correct signature.
+                                $:_("Error related to notebook file submissions. This points out a runtime error while running the grading testing code.")
+                                <br/>
+                                $:_("This might be either an error in the grading code (i.e. calling non existent variable or function) or student code (i.e. the function to be tested is not present in the notebook).")
+                                <br/>
+                                <strong>Tips:</strong> $:_("Check that your code implements all that was requested with the correct signature.")
                             </div>
                         </div>
                     </li>
                 </ul>
                 <hr>
-                <strong>Results related to UNCode. Unexpected errors when your code was been executed.</strong>
+                <strong>$:_("Results related to UNCode. Unexpected errors when your code was been executed.")</strong>
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="list-group-item-text row">
@@ -138,11 +136,11 @@
                                 <h4><span class="label label-danger"><strong>INTERNAL ERROR</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                If you get this message, do not worry, There's Nothing Wrong With Your Code!<br>
-                                This error means UNCode had a problem while running or assessing your code. So,
-                                <b>the problem is on our side.</b> We apologise in advance.<br/>
-                                <strong>Please reload the page and try submitting again! If you still get the same
-                                   result, please wait a while and try again or contact your professor.</strong>
+                                $:_("If you get this message, do not worry, There's Nothing Wrong With Your Code!")
+                                <br/>
+                                $:_("This error means UNCode had a problem while running or assessing your code. So, <b>the problem is on our side.</b>")
+                                <br>
+                                $:_("We apologise in advance. Please reload the page and try submitting again! If you still get the same result, please wait a while and try again or contact your professor.")
                             </div>
                         </div>
                     </li>
@@ -152,10 +150,9 @@
                                 <h4><span class="label label-warning"><strong>SUBMISSION TIMED OUT</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                If you get this, it means that we had a problem running and assessing your code. Wait
-                                for a while and try to send a submission again.
-                                This might be also caused by a too small time limit in the task configuration (talk to
-                                your professor about it).
+                                $:_("If you get this, it means that we had a problem running and assessing your code. Wait for a while and try to send a submission again.")
+                                <br/>
+                                $:_("This might be also caused by a too small time limit in the task configuration (talk to your professor about it).")
                             </div>
                         </div>
                     </li>
@@ -165,10 +162,16 @@
                                 <h4><span class="label label-warning"><strong>OVERFLOW</strong></span></h4>
                             </div>
                             <div class="col-md-9">
-                                If you get this, it means the grading environment run out of memory. There might be two
-                                possible causes: 1. the configured memory is to low to solve this problem (talk to your
-                                professor about it). 2. Your code is printing too much data, possibly caused by prints
-                                in an infinite loop.
+                                $:_("If you get this, it means the grading environment run out of memory. There might be two possible causes:")
+                                <br>
+                                <ol>
+                                    <li>
+                                        $:_("The configured memory is to low to solve this problem (talk to your professor about it).")
+                                    </li>
+                                    <li>
+                                        $:_("Your code is printing too much data, possibly caused by prints in an infinite loop.")
+                                    </li>
+                                </ol>
                             </div>
                         </div>
                     </li>
@@ -182,16 +185,18 @@
                                 </h4>
                             </div>
                             <div class="col-md-9">
-                                There was a problem while assessing your submission. Please wait a while and reload
-                                the page, and try submitting again.
+                                $:_("There was a problem while assessing your submission. Please wait a while and reload the page, and try submitting again.")
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">$:_("Close")</button>
             </div>
         </div>
     </div>
 </div>
+<script >
+    const legend_label = "$:legend_label";
+</script>

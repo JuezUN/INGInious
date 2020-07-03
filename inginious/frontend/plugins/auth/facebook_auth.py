@@ -48,11 +48,11 @@ class FacebookAuthMethod(AuthMethod):
             r = facebook.post("https://graph.facebook.com/me/objects/website",
                               {
                                   "object": json.dumps({
-                                      "og:title": _("INGInious | {course} - {task}").format(
+                                      "og:title": _("UNCode | {course} - {task}").format(
                                           course=course.get_name(language),
                                           task=task.get_name(language)
                                       ),
-                                      "og:description": _("Check out INGInious course {course} and beat my score of {score}% on task {task} !").format(
+                                      "og:description": _("Check out UNCode course {course} and beat my score of {score}% on task {task} !").format(
                                           course=course.get_name(language),
                                           task=task.get_name(language),
                                           score=submission["grade"]

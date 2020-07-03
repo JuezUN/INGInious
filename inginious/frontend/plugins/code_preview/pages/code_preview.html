@@ -1,21 +1,22 @@
 $def with (taskid, code_preview_pairs)
 
+$ remove_str = _("Remove")
 <div class="jumbotron">
     <div class="row" id="code_preview" style="display: flex;">
         <div class="form-group col-xs-12">
             <div class="col-xs-4">
-                <div><label class="control-label">Languages</label></div>
+                <div><label class="control-label">$:_("Languages")</label></div>
                 <select class="form-control" id="languages_for_code_preview">
                 </select>
             </div>
             <div class="col-xs-4">
-                <div><label class="control-label">Files</label></div>
+                <div><label class="control-label">$:_("Files")</label></div>
                 <select class="form-control" id="files_for_code_preview">
                 </select>
             </div>
             <div class="col-xs-4" style="display: flex; height: 100%;">
                 <button type="button" class="btn btn-default btn-block" style="align-self: flex-end;"
-                        onclick="add_code_preview_file()">Add/Update
+                        onclick="add_code_preview_file()">$:_("Add/Update")
                 </button>
             </div>
         </div>
@@ -78,7 +79,7 @@ $def with (taskid, code_preview_pairs)
                     </div>
                     <div class="col-xs-4" style="display: flex; height: 100%">
                         <button type="button" class="btn btn-danger btn-block" style="align-self: flex-end;"
-                        onclick="remove_code_preview_pair('$${key}');">Remove</button>
+                        onclick="remove_code_preview_pair('$${key}');">$:{remove_str}</button>
                 </div>
             </div>
             `;

@@ -180,7 +180,7 @@ class BatchManager(object):
                 web.sendmail(web.config.smtp_sendername, send_mail, "Batch job {} finished".format(batch_job_id),
                              """This is an automated message.
 
-The batch job you launched on INGInious is done. You can see the results on the "batch operation" page of your course
+The batch job you launched on UNCode is done. You can see the results on the "batch operation" page of your course
 administration.""")
             except Exception as e:
                 self._logger.error("Cannot send mail: " + str(e))
