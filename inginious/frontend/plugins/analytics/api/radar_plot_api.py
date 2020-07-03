@@ -31,11 +31,6 @@ class RadarPlotAPI(SuperadminAPI):
                 }
             },
             {
-                "$sort": {
-                    "_id": 1,
-                }
-            },
-            {
                 "$project": {
                     "service": "$_id",
                     "visits": 1,
