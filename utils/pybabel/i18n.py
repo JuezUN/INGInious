@@ -34,10 +34,11 @@ def compile_messages():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process automatically i18n folders.')
-    parser.add_argument('--actions', metavar='-a', choices=['extract', 'update', 'compile', 'all'], nargs='+',
-                        help='Actions to apply using pybabel')
+    parser.add_argument('--repo-path', type=str, help='UNCode repository path')
+    parser.add_argument('--actions', choices=['extract', 'update', 'compile', 'all'], nargs='+',
+                        help="Actions to apply on messages and i18n. The available actions are: 'extract', "
+                             "'update', 'compile' and 'all'. You can chose more than one action")
 
-    parser.add_argument('--path', metavar='-f', type=str, help='UNCode repository path')
     args = parser.parse_args()
 
     _frontend_path = os.path.join(args.path, 'inginious/frontend')
