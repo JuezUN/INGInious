@@ -13,7 +13,7 @@ const BoxPlot = (function () {
                 autorange: true,
                 showgrid: true,
                 zeroline: true,
-                dtick: 5,
+                tickmode: 'auto',
                 gridcolor: 'rgb(255, 255, 255)',
                 gridwidth: 1,
                 zerolinecolor: 'rgb(255, 255, 255)',
