@@ -44,14 +44,11 @@ function convertInginiousLanguageToCodemirror(inginiousLanguage) {
     const languages = {
         "java7": "java",
         "java8": "java",
-        "js": "javascript",
         "cpp": "cpp",
         "cpp11": "cpp",
         "c": "c",
         "c11": "c",
-        "python2": "python",
         "python3": "python",
-        "ruby": "ruby",
         "vhdl": "vhdl",
         "verilog": "verilog"
     };

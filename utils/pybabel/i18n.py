@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    _frontend_path = os.path.join(args.path, 'inginious/frontend')
+    _frontend_path = os.path.join(args.repo_path, 'inginious/frontend')
     _i18n_path = os.path.join(_frontend_path, 'i18n')
     _pybabel_conf_path = os.path.join(_frontend_path, 'babel.cfg')
 
