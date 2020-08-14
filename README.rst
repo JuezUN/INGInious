@@ -8,7 +8,7 @@ INGInious
 .. image:: https://readthedocs.org/projects/inginious/badge/?version=latest
     :target: https://readthedocs.org/projects/inginious/?badge=latest
 .. image:: https://badges.gitter.im/Join%20Chat.svg
-    :target: https://gitter.im/UCL-INGI/INGInious?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+    :target: https://gitter.im/uncode-unal/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
 
 
 INGInious is an intelligent grader that allows secured and automated testing of code made by students.
