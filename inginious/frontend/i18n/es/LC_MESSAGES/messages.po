@@ -1930,7 +1930,7 @@ msgstr "Bienvenido"
 
 #: inginious/frontend/templates/auth.html:26
 msgid "Lost password?"
-msgstr "¿Haz olvidado tu contraseña?"
+msgstr "¿Has olvidado tu contraseña?"
 
 #: inginious/frontend/templates/auth.html:38
 msgid "Sign in with"
