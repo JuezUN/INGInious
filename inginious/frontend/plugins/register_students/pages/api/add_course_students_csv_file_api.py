@@ -52,7 +52,7 @@ class AddCourseStudentsCsvFile(AdminApi):
         for user_data in parsed_file:
             data = self._parse_user_data(user_data)
 
-            result = self._register_student(data)
+            result = self._register_student(data, course)
             if result:
                 registered_users += 1
             try:
@@ -64,7 +64,7 @@ class AddCourseStudentsCsvFile(AdminApi):
 
         return registered_on_course, registered_users
 
-    def _register_student(self, data):
+    def _register_student(self, data, course):
         """
         Registers the student in UNCode and sends a verification email to the user. If the user already exists, nothing
         happens.
@@ -92,7 +92,7 @@ class AddCourseStudentsCsvFile(AdminApi):
                 activate_account_link = web.ctx.home + "/register?activate=" + activate_hash
                 email_template = read_file(_static_folder_path, "email_template.txt").format(
                     activation_link=activate_account_link, username=data["username"],
-                    password=data["password"])
+                    password=data["password"], course_name=course.get_name("en"))
                 web.sendmail(web.config.smtp_sendername, data["email"], _("Welcome on UNCode"),
                              email_template)
             except:

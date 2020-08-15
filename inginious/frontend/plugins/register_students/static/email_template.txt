@@ -1,5 +1,7 @@
 Welcome on UNCode!
 
+You have been registered for the course: {course_name} at Universidad Nacional de Colombia
+
 To activate your account, please click on the following link:
 {activation_link}
 
