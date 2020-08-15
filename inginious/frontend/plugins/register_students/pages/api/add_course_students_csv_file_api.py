@@ -19,6 +19,11 @@ class AddCourseStudentsCsvFile(AdminApi):
         """
         file = get_mandatory_parameter(web.input(), "file")
         course_id = get_mandatory_parameter(web.input(), "course")
+        email_language = get_mandatory_parameter(web.input(), "language")
+
+        if email_language not in self.app.available_languages:
+            return 200, {"status": "error",
+                         "text": _("Language is not available.")}
 
         course = self._get_course_and_check_rights(course_id)
         if course is None:
@@ -37,7 +42,10 @@ class AddCourseStudentsCsvFile(AdminApi):
                          "text": _("The file is not formatted as expected, check it is comma separated ") + _(
                              "and emails are actual emails.")}
 
-        registered_on_course, registered_users = self.register_all_students(parsed_file, course)
+        session_language = self.user_manager.session_language()
+        self.user_manager.set_session_language(email_language)
+        registered_on_course, registered_users = self.register_all_students(parsed_file, course, email_language)
+        self.user_manager.set_session_language(session_language)
 
         message = _(
             """The process finished successfully. Registered students on the course: {0!s}. 
@@ -46,13 +54,13 @@ class AddCourseStudentsCsvFile(AdminApi):
 
         return 200, {"status": "success", "text": message}
 
-    def register_all_students(self, parsed_file, course):
+    def register_all_students(self, parsed_file, course, email_language):
         registered_on_course = 0
         registered_users = 0
         for user_data in parsed_file:
             data = self._parse_user_data(user_data)
 
-            result = self._register_student(data, course)
+            result = self._register_student(data, course, email_language)
             if result:
                 registered_users += 1
             try:
@@ -64,7 +72,7 @@ class AddCourseStudentsCsvFile(AdminApi):
 
         return registered_on_course, registered_users
 
-    def _register_student(self, data, course):
+    def _register_student(self, data, course, email_language):
         """
         Registers the student in UNCode and sends a verification email to the user. If the user already exists, nothing
         happens.
@@ -86,15 +94,17 @@ class AddCourseStudentsCsvFile(AdminApi):
                                         "password": passwd_hash,
                                         "activate": activate_hash,
                                         "bindings": {},
-                                        "language": "es"
+                                        "language": email_language
                                         })
             try:
                 activate_account_link = web.ctx.home + "/register?activate=" + activate_hash
-                email_template = read_file(_static_folder_path, "email_template.txt").format(
+                content = str(
+                    self.template_helper.get_custom_renderer(_static_folder_path, False).email_template()).format(
                     activation_link=activate_account_link, username=data["username"],
                     password=data["password"], course_name=course.get_name("en"))
-                web.sendmail(web.config.smtp_sendername, data["email"], _("Welcome on UNCode"),
-                             email_template)
+                subject = _("Welcome on UNCode")
+                headers = {"Content-Type": 'text/html'}
+                web.sendmail(web.config.smtp_sendername, data["email"], subject, content, headers)
             except:
                 pass
 

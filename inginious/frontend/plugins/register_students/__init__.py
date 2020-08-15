@@ -19,4 +19,5 @@ def init(plugin_manager, course_factory, client, config):
         plugin_manager.add_hook("css", lambda: "/register_students/static/css/register_students.css")
 
     renderer = plugin_manager._app.template_helper.get_custom_renderer(_static_folder_path, False)
-    plugin_manager.add_hook("additional_body_html", lambda: str(renderer.register_students_modal()))
+    languages = plugin_manager._app.available_languages
+    plugin_manager.add_hook("additional_body_html", lambda: str(renderer.register_students_modal(languages)))

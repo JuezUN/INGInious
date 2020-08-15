@@ -1,3 +1,5 @@
+$def with (languages)
+
 <div id="register_students_modal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -10,8 +12,31 @@
             <div class="modal-body text-justify text-center">
                 <div class='alert' role='alert' id='register_students_alert' hidden></div>
                 <form id='upload_students_file' method='post' enctype='multipart/form-data'>
-                    <label for="students_file"><strong>$:_("Select a file to upload"):</strong></label>
-                    <input type='file' id='students_file'>
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <div class="col-xs-6">
+                                <label class="control-label" for="students_file"><strong>$:_("Select a file to upload"):</strong></label>
+                                <input type='file' id='students_file' class="form-control">
+                            </div>
+                            <div class="col-xs-6">
+                                <label class="control-label" for="students_file"><strong>$:_("Email language:"):</strong></label>
+                                <select
+                                    class="btn dropdown-toggle form-control"
+                                    name="email_language"
+                                    id="email_language">
+                                    $for key, language in languages.items():
+                                        $if key == "es":
+                                            <option value="$key" selected>
+                                                $language
+                                            </option>
+                                        $else:
+                                            <option value="$key">
+                                                $language
+                                            </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </form>
                 <br>
                 <div id="notes_file">

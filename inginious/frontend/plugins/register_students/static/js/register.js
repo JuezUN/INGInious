@@ -57,6 +57,7 @@ jQuery(document).ready(function () {
         $("form#upload_students_file").submit(function (e) {
             e.preventDefault();
             let file = $("#students_file").prop('files')[0];
+            let language = $("#email_language").val();
             const file_extensions = /(\.csv)$/i;
             if (file === undefined) {
                 displayRegisterStudentsAlertError("Please select a file before submitting it.");
@@ -66,6 +67,7 @@ jQuery(document).ready(function () {
                 let formData = new FormData();
                 formData.append("file", file);
                 formData.append("course", getCourseId());
+                formData.append("language", language);
                 $.ajax({
                     url: '/api/addStudents/',
                     method: "POST",
