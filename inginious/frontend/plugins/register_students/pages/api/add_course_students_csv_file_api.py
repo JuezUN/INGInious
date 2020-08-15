@@ -86,7 +86,8 @@ class AddCourseStudentsCsvFile(AdminApi):
                                         "password": passwd_hash,
                                         "activate": activate_hash,
                                         "bindings": {},
-                                        "language": self.user_manager._session.get("language", "es")})
+                                        "language": "es"
+                                        })
             try:
                 activate_account_link = web.ctx.home + "/register?activate=" + activate_hash
                 email_template = read_file(_static_folder_path, "email_template.txt").format(
