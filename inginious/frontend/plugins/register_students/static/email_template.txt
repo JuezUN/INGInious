@@ -1,9 +1,13 @@
 Welcome on UNCode!
 
 To activate your account, please click on the following link:
-{}
+{activation_link}
 
-After you active the account, you can log in to UNCode using your username and password (which is the same as your username).
+After you active the account, you can log in to UNCode using next credentials:
+
+Username: {username}
+Password: {password}
+
 Remember to change your password in 'preferences' section.
 
 How to change the password?

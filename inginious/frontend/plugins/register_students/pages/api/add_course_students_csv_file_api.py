@@ -3,6 +3,7 @@ import re
 import hashlib
 import random
 import csv
+import string
 
 from os.path import dirname, join
 from inginious.frontend.plugins.utils.admin_api import AdminApi
@@ -77,7 +78,7 @@ class AddCourseStudentsCsvFile(AdminApi):
         if existing_user is not None:
             success = False
         else:
-            passwd_hash = hashlib.sha512(data["passwd"].encode("utf-8")).hexdigest()
+            passwd_hash = hashlib.sha512(data["password"].encode("utf-8")).hexdigest()
             activate_hash = hashlib.sha512(str(random.getrandbits(256)).encode("utf-8")).hexdigest()
             self.database.users.insert({"username": data["username"],
                                         "realname": data["realname"],
@@ -85,12 +86,14 @@ class AddCourseStudentsCsvFile(AdminApi):
                                         "password": passwd_hash,
                                         "activate": activate_hash,
                                         "bindings": {},
-                                        "language": self.user_manager._session.get("language", "en")})
+                                        "language": self.user_manager._session.get("language", "es")})
             try:
                 activate_account_link = web.ctx.home + "/register?activate=" + activate_hash
-                email_template = read_file(_static_folder_path, "email_template.txt")
+                email_template = read_file(_static_folder_path, "email_template.txt").format(
+                    activation_link=activate_account_link, username=data["username"],
+                    password=data["password"])
                 web.sendmail(web.config.smtp_sendername, data["email"], _("Welcome on UNCode"),
-                             email_template.format(activate_account_link))
+                             email_template)
             except:
                 pass
 
@@ -113,14 +116,15 @@ class AddCourseStudentsCsvFile(AdminApi):
         """
         name = user_data[0]
         lastname = user_data[1]
-        email = user_data[2]
-        username = email.split("@")[0]
+        username = user_data[2]
+        email = user_data[-1]
 
+        _password_length = 15
         data = {
             "realname": name + " " + lastname,
             "username": username,
             "email": email,
-            "passwd": username
+            "password": random_password(_password_length).replace("{", "{{").replace("}", "}}")
         }
 
         return data
@@ -132,9 +136,9 @@ class AddCourseStudentsCsvFile(AdminApi):
         :return: True if the file correctly formatted. Otherwise returns False.
         """
         for data in parsed_file:
-            if len(data) != 3:
+            if len(data) != 4:
                 return False
-            elif self._check_email_format(data[2]) is None:
+            elif self._check_email_format(data[-1]) is None:
                 return False
 
         return True
@@ -142,8 +146,8 @@ class AddCourseStudentsCsvFile(AdminApi):
     def _parse_csv_file(self, csv_file):
         """
         Method that parses the csv file, splitting each row by commas and strips every cell.
-        :param csv_file: receives a string containing all information (e.g. "  name,  lastname,  email \n")
-        :return: Matrix with the file parsed. The returned value looks like: [["name","lastnanme","email"]]
+        :param csv_file: receives a string containing all information (e.g. "  name,  lastname, username, email \n")
+        :return: Matrix with the file parsed. The returned value looks like: [["name","lastnanme","username", "email"]]
         """
         csv_file = csv.reader(csv_file.splitlines(), delimiter=',')
         return [[cell.strip() for cell in row if cell] for row in csv_file if row]
@@ -159,3 +163,8 @@ class AddCourseStudentsCsvFile(AdminApi):
             return None
 
         return course
+
+
+def random_password(length):
+    pool = string.ascii_letters + string.digits + string.punctuation
+    return ''.join(random.choice(pool) for _ in range(length))
