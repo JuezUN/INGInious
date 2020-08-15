@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-10 19:18-0500\n"
+"POT-Creation-Date: 2020-08-15 14:22-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -148,7 +148,7 @@ msgid "This email address is already in use !"
 msgstr "Cette adresse email est déjà utilisée !"
 
 #: inginious/frontend/pages/register.py:106
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:92
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:95
 msgid "Welcome on UNCode"
 msgstr "Bienvenue sur UNCode"
 
@@ -1674,23 +1674,23 @@ msgstr ""
 msgid "Problem bank"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:25
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:26
 msgid "The course does not exist or the user does not have permissions."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:30
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:31
 msgid "The file is not coded in UTF-8. Please change the encoding."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:36
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:37
 msgid "The file is not formatted as expected, check it is comma separated "
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:36
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:37
 msgid "and emails are actual emails."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:41
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:42
 msgid ""
 "The process finished successfully. Registered students on the course: "
 "{0!s}. \n"
@@ -1707,7 +1707,7 @@ msgid "Select a file to upload"
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:18
-msgid "Notes about the file"
+msgid "About the file"
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:20
@@ -1718,8 +1718,8 @@ msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:22
 msgid ""
-"This file must contain the <strong>name,last name,email</strong> of each "
-"student you want to register."
+"This file must contain the <strong>name,last name,username,email</strong>"
+" of each student you want to register."
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:25
@@ -4123,4 +4123,13 @@ msgstr "Taille fichier max.:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensions autorisées:"
+
+#~ msgid "Notes about the file"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This file must contain the "
+#~ "<strong>name,last name,email</strong> of each "
+#~ "student you want to register."
+#~ msgstr ""
 
