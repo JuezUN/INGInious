@@ -4201,27 +4201,3 @@ msgstr "Taille fichier max.:"
 msgid "Allowed extensions:"
 msgstr "Extensions autorisées:"
 
-#~ msgid "Notes about the file"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "This file must contain the "
-#~ "<strong>name,last name,email</strong> of each "
-#~ "student you want to register."
-#~ msgstr ""
-
-#~ msgid "Welcome on UNCode!"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "You have been registered for the "
-#~ "course: <h4><string>{course_name}</string></h4> at "
-#~ "Universidad Nacional de Colombia."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "You have been registered for the "
-#~ "course: <string>{course_name}</string> at "
-#~ "Universidad Nacional de Colombia."
-#~ msgstr ""
-
