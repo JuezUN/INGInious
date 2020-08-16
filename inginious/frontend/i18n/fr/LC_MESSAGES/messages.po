@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-15 14:22-0500\n"
+"POT-Creation-Date: 2020-08-15 19:25-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -148,7 +148,8 @@ msgid "This email address is already in use !"
 msgstr "Cette adresse email est déjà utilisée !"
 
 #: inginious/frontend/pages/register.py:106
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:95
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:105
+#: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr "Bienvenue sur UNCode"
 
@@ -716,7 +717,7 @@ msgstr ""
 #: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:16
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:36
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:93
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:37
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:62
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
 #: inginious/frontend/templates/course_admin/danger_zone.html:81
 #: inginious/frontend/templates/course_admin/danger_zone.html:160
@@ -1113,6 +1114,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:43
 #: inginious/frontend/plugins/auth/custom_auth_form.html:29
+#: inginious/frontend/plugins/register_students/static/email_template.html:13
 #: inginious/frontend/templates/auth.html:23
 msgid "Username"
 msgstr "Nom d'utilisateur"
@@ -1155,6 +1157,7 @@ msgid "Calendar visits"
 msgstr ""
 
 #: inginious/frontend/plugins/auth/custom_auth_form.html:32
+#: inginious/frontend/plugins/register_students/static/email_template.html:14
 #: inginious/frontend/templates/auth.html:26
 #: inginious/frontend/templates/mycourses.html:120
 #: inginious/frontend/templates/register_button.html:31
@@ -1675,58 +1678,132 @@ msgid "Problem bank"
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:26
-msgid "The course does not exist or the user does not have permissions."
+msgid "Language is not available."
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:31
+msgid "The course does not exist or the user does not have permissions."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:36
 msgid "The file is not coded in UTF-8. Please change the encoding."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:37
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:42
 msgid "The file is not formatted as expected, check it is comma separated "
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:37
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:42
 msgid "and emails are actual emails."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:42
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:50
 msgid ""
 "The process finished successfully. Registered students on the course: "
 "{0!s}. \n"
 "            Registered students on UNCode: {1!s}."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:8
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:39
+#: inginious/frontend/plugins/register_students/static/email_template.html:6
+msgid ""
+"You have been registered for the course: <strong>{course_name}</strong> "
+"at Universidad Nacional de Colombia."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_template.html:8
+msgid "To activate your account, please click on the following link:"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_template.html:11
+msgid ""
+"After you active the account, you can login to UNCode using next "
+"credentials:"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_template.html:16
+msgid "Remember to change your password in 'Preferences' option."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_template.html:18
+msgid "How to change the password?"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_template.html:20
+#: inginious/frontend/plugins/register_students/static/email_template.html:27
+msgid "In top nav bar, click on the option displaying your name."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_template.html:21
+msgid "Click on 'Preferences' option."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_template.html:22
+msgid ""
+"Now you can change your password setting your current password and the "
+"new password."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_template.html:25
+msgid "How to authenticate using Google Authentication method?"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_template.html:28
+msgid ""
+"Click on 'Preferences' option, this will display a page with a menu in "
+"the right side. Click on the 'Authentication binding' option."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_template.html:29
+msgid ""
+"To add the Google Authentication method, select 'Google' then click on "
+"'Add new binding' button."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_template.html:30
+msgid ""
+"After adding Google Authentication you can log in to UNCode using either "
+"the normal Authentication (username and password) or Google "
+"Authentication."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_template.html:34
+msgid "Code and learn!"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:10
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:64
 msgid "Register students"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:13
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:18
 msgid "Select a file to upload"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:18
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:22
+msgid "Email language:"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:43
 msgid "About the file"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:20
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:45
 msgid ""
 "The uploaded file must be a <strong>CSV</strong> file. Make sure it is "
 "separated by commas."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:22
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:47
 msgid ""
 "This file must contain the <strong>name,last name,username,email</strong>"
 " of each student you want to register."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:25
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:50
 msgid "Here you have an example of a parsed file with the students' information"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:32
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:57
 msgid ""
 "All the students are going to be registered on UNCode and the course. If "
 "the students does not exists it will be registered using a provisional "
@@ -4123,13 +4200,4 @@ msgstr "Taille fichier max.:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensions autorisées:"
-
-#~ msgid "Notes about the file"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "This file must contain the "
-#~ "<strong>name,last name,email</strong> of each "
-#~ "student you want to register."
-#~ msgstr ""
 
