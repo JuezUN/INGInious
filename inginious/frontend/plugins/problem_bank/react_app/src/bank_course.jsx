@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button, Alert } from 'react-bootstrap';
+import {Modal, Button, Alert} from 'react-bootstrap';
 
 class BankCourse extends React.Component {
 
@@ -15,15 +15,15 @@ class BankCourse extends React.Component {
         this.onDeleteCourse = this.onDeleteCourse.bind(this);
     }
 
-    open(){
-        this.setState({ showModal: true });
+    open() {
+        this.setState({showModal: true});
     };
 
-    close(){
-        this.setState({ showModal: false });
+    close() {
+        this.setState({showModal: false});
     };
 
-    onDeleteCourse(){
+    onDeleteCourse() {
         let courseId = this.props.id;
         let deleteCourse = this.props.callbackOnDeleteCourse;
 
@@ -33,12 +33,13 @@ class BankCourse extends React.Component {
     };
 
     render() {
-        if(this.props.removable){
+        if (this.props.removable) {
             return (
                 <div>
-                    <a type="button" className="list-group-item" >
+                    <a className="list-group-item">
                         <b>{this.props.name}</b>
-                        <span role="button" className="glyphicon glyphicon-remove pull-right text-danger" onClick={this.open}/>
+                        <span role="button" className="glyphicon glyphicon-remove pull-right text-danger"
+                              onClick={this.open}/>
                     </a>
                     <Modal className="modal-container"
                            show={this.state.showModal}
@@ -52,7 +53,8 @@ class BankCourse extends React.Component {
 
                         <Modal.Body>
                             <Alert bsStyle="warning">
-                                <h5><strong>Are you sure that you want to remove the bank privileges from this course?</strong></h5>
+                                <h5><strong>Are you sure that you want to remove the bank privileges from this
+                                    course?</strong></h5>
                                 <h6>* The course won't be removed, only the permits to be a bank will be removed.</h6>
                             </Alert>
                         </Modal.Body>
@@ -67,7 +69,7 @@ class BankCourse extends React.Component {
         } else {
             return (
                 <div>
-                    <a type="button" className="list-group-item" >
+                    <a className="list-group-item">
                         <b>{this.props.name}</b>
                     </a>
                 </div>
@@ -75,4 +77,5 @@ class BankCourse extends React.Component {
         }
     }
 }
+
 export default BankCourse;

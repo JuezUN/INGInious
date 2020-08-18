@@ -1,12 +1,13 @@
 import React from 'react';
-import { Tabs, Tab } from 'react-bootstrap';
+import {Tabs, Tab} from 'react-bootstrap';
 import BankCourseList from './bank_course_list';
 import TaskList from './task_list';
+
 /*global $:false*/
 
 class BankPage extends React.Component {
 
-     constructor(props) {
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -16,18 +17,18 @@ class BankPage extends React.Component {
             availableCoursesToCopy: [],
             pageTasks: 1,
             pageCourses: 1,
-            pageAvailableCourses:1,
+            pageAvailableCourses: 1,
             totalPagesTasks: 1,
             totalPagesCourses: 1,
             totalPagesAvailableCourses: 1,
             dataAlertCourseList: {
-                data: {"message" : ""},
+                data: {"message": ""},
                 isVisibleAlert: false,
                 titleAlert: '',
                 styleAlert: ''
             },
             dataAlertTaskList: {
-                data: {"message" : ""},
+                data: {"message": ""},
                 isVisibleAlert: false,
                 titleAlert: '',
                 styleAlert: ''
@@ -63,7 +64,7 @@ class BankPage extends React.Component {
         $.getJSON("/plugins/problems_bank/api/bank_courses").then((courses) => {
             let newCourses = courses;
             let newTotalPages = Math.ceil(newCourses.length / this.limit);
-            if(newTotalPages === 0){
+            if (newTotalPages === 0) {
                 newTotalPages = 1;
             }
             this.setState({
@@ -78,7 +79,7 @@ class BankPage extends React.Component {
         $.getJSON("/plugins/problems_bank/api/bank_tasks").then((tasks) => {
             let newTasksLength = tasks.length;
             let newTotalPages = Math.ceil(newTasksLength / this.limit);
-            if(newTotalPages === 0){
+            if (newTotalPages === 0) {
                 newTotalPages = 1;
             }
 
@@ -94,7 +95,7 @@ class BankPage extends React.Component {
         $.getJSON("/plugins/problems_bank/api/available_courses").then((availableCourses) => {
             let newCourses = availableCourses;
             let newTotalPages = Math.ceil(newCourses.length / this.limit);
-            if(newTotalPages === 0){
+            if (newTotalPages === 0) {
                 newTotalPages = 1;
             }
             this.setState({
@@ -113,7 +114,7 @@ class BankPage extends React.Component {
         });
     }
 
-    deleteCourse(course_id){
+    deleteCourse(course_id) {
         $.ajax({
             url: '/plugins/problems_bank/api/bank_courses?' + $.param({"course_id": course_id}),
             type: "DELETE",
@@ -123,8 +124,8 @@ class BankPage extends React.Component {
                 this.updateTasksAsync();
             }
         }).done((data) => {
-            this.setState( {
-                dataAlertCourseList:{
+            this.setState({
+                dataAlertCourseList: {
                     data: data,
                     isVisibleAlert: true,
                     titleAlert: "Success!",
@@ -132,7 +133,7 @@ class BankPage extends React.Component {
                 }
             });
         }).error((data) => {
-            this.setState( {
+            this.setState({
                 dataAlertCourseList: {
                     isVisibleAlert: true,
                     data: {"message": data["responseJSON"]["error"]},
@@ -143,12 +144,12 @@ class BankPage extends React.Component {
         });
     };
 
-    updateFilteredTasksAsync(query){
-        $.post( "/plugins/problems_bank/api/filter_bank_tasks", { "task_query": query }, (filteredTasks) => {
+    updateFilteredTasksAsync(query) {
+        $.post("/plugins/problems_bank/api/filter_bank_tasks", {"task_query": query}, (filteredTasks) => {
             let newTotalPages = Math.ceil(filteredTasks.length / this.limit);
             let newPage = this.state.pageTasks;
-            if( newTotalPages >= 1) {
-                if( this.state.pageTasks > newTotalPages){
+            if (newTotalPages >= 1) {
+                if (this.state.pageTasks > newTotalPages) {
                     newPage = newTotalPages
                 }
             } else {
@@ -157,22 +158,22 @@ class BankPage extends React.Component {
             }
 
             this.setState({
-                tasks : filteredTasks,
-                pageTasks : newPage,
-                totalPagesTasks : newTotalPages
+                tasks: filteredTasks,
+                pageTasks: newPage,
+                totalPagesTasks: newTotalPages
             });
         });
     }
 
-    addCourse(courseId){
+    addCourse(courseId) {
 
-        $.post( "/plugins/problems_bank/api/bank_courses", { "course_id": courseId }, (data) => {
+        $.post("/plugins/problems_bank/api/bank_courses", {"course_id": courseId}, (data) => {
             this.updateBankCoursesAsync();
             this.updateAvailableCoursesAsync();
             this.updateTasksAsync();
         }).done((data) => {
-            this.setState( {
-                dataAlertCourseList:{
+            this.setState({
+                dataAlertCourseList: {
                     data: data,
                     isVisibleAlert: true,
                     titleAlert: "Success!",
@@ -180,7 +181,7 @@ class BankPage extends React.Component {
                 }
             });
         }).error((data) => {
-            this.setState( {
+            this.setState({
                 dataAlertCourseList: {
                     isVisibleAlert: true,
                     data: {"message": data["responseJSON"]["error"]},
@@ -191,35 +192,35 @@ class BankPage extends React.Component {
         });
     }
 
-    onAlertTaskListClose(isVisible){
+    onAlertTaskListClose(isVisible) {
         this.setState({
-           dataAlertTaskList: {
-               isVisibleAlert: isVisible,
-               data: {"message" : ""},
-               titleAlert: '',
-               styleAlert: ''
-           }
+            dataAlertTaskList: {
+                isVisibleAlert: isVisible,
+                data: {"message": ""},
+                titleAlert: '',
+                styleAlert: ''
+            }
         });
     }
 
-    onAlertCourseListClose(isVisible){
+    onAlertCourseListClose(isVisible) {
         this.setState({
-           dataAlertCourseList: {
-               isVisibleAlert: isVisible,
-               data: {"message" : ""},
-               titleAlert: '',
-               styleAlert: ''
-           }
+            dataAlertCourseList: {
+                isVisibleAlert: isVisible,
+                data: {"message": ""},
+                titleAlert: '',
+                styleAlert: ''
+            }
         });
     }
 
-    addTaskToCourse(targetId, taskId, bankId, query){
-        $.post( "/plugins/problems_bank/api/copy_task",
-            {"target_id": targetId, "task_id": taskId, "bank_id": bankId} ,( data ) => {
-            this.updateFilteredTasksAsync(query);
-        }).done((data) => {
-            this.setState( {
-                dataAlertTaskList:{
+    addTaskToCourse(targetId, taskId, bankId, query) {
+        $.post("/plugins/problems_bank/api/copy_task",
+            {"target_id": targetId, "task_id": taskId, "bank_id": bankId}, (data) => {
+                this.updateFilteredTasksAsync(query);
+            }).done((data) => {
+            this.setState({
+                dataAlertTaskList: {
                     data: data,
                     isVisibleAlert: true,
                     titleAlert: "Success!",
@@ -227,7 +228,7 @@ class BankPage extends React.Component {
                 }
             });
         }).error((data) => {
-            this.setState( {
+            this.setState({
                 dataAlertTaskList: {
                     isVisibleAlert: true,
                     data: {"message": data["responseJSON"]["error"]},
@@ -238,25 +239,25 @@ class BankPage extends React.Component {
         });
     };
 
-    setAlertCourseListInvisible(){
+    setAlertCourseListInvisible() {
         this.setState({
-           dataAlertCourseList: {
-                data: {"message" : ""},
+            dataAlertCourseList: {
+                data: {"message": ""},
                 isVisibleAlert: false,
                 titleAlert: '',
                 styleAlert: ''
-           }
+            }
         });
     }
 
-    setAlertTaskListInvisible(){
+    setAlertTaskListInvisible() {
         this.setState({
-           dataAlertTaskList: {
-                data: {"message" : ""},
+            dataAlertTaskList: {
+                data: {"message": ""},
                 isVisibleAlert: false,
                 titleAlert: '',
                 styleAlert: ''
-           }
+            }
         });
     }
 
@@ -273,7 +274,7 @@ class BankPage extends React.Component {
         this.setState({pageAvailableCourses: page});
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.updateBankCoursesAsync();
         this.updateAvailableCoursesAsync();
         this.updateAvailableCoursesToCopyAsync();

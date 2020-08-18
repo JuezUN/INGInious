@@ -1,10 +1,10 @@
 import React from "react";
-import { FormControl } from 'react-bootstrap';
+import {FormControl} from 'react-bootstrap';
 import Task from './task';
 import CustomAlert from './custom_alert';
-import UltimatePagination from  './ultimate_pagination';
+import UltimatePagination from './ultimate_pagination';
 
-class TaskList extends React.Component{
+class TaskList extends React.Component {
     constructor(props) {
         super(props);
 
@@ -21,13 +21,13 @@ class TaskList extends React.Component{
         let updateFilteredTasks = this.props.callbackUpdateFilteredTasks;
 
         clearTimeout(this.state.timer);
-        if( newStateQuery === "" ){
+        if (newStateQuery === "") {
             let updateTasks = this.props.callbackUpdateTasks;
             updateTasks();
         } else {
             this.setState({
-               query: newStateQuery,
-               timer: setTimeout(() => updateFilteredTasks(newStateQuery), 250)
+                query: newStateQuery,
+                timer: setTimeout(() => updateFilteredTasks(newStateQuery), 250)
             });
         }
     };
@@ -42,7 +42,7 @@ class TaskList extends React.Component{
             let limit = this.props.limit;
             let taskIsInBoundsOfPage = i >= ((page - 1) * limit) && i < (page * limit);
 
-            if(taskIsInBoundsOfPage){
+            if (taskIsInBoundsOfPage) {
                 return (<Task
                     task_info={task}
                     key={i}
@@ -52,7 +52,7 @@ class TaskList extends React.Component{
             }
         });
 
-        if(!tasks.length){
+        if (!tasks.length) {
             tasks = "There are no tasks available.";
         }
         return tasks
@@ -80,14 +80,14 @@ class TaskList extends React.Component{
                     />
                 </form>
 
-                <div>The following tasks are available for copying: </div>
+                <div>The following tasks are available for copying:</div>
 
                 <div className="list-group">{this.getListOfTasks()}</div>
 
                 <UltimatePagination
-                     currentPage={this.props.page}
-                     totalPages={this.props.totalPages}
-                     onChange={this.props.callbackOnPageChange}
+                    currentPage={this.props.page}
+                    totalPages={this.props.totalPages}
+                    onChange={this.props.callbackOnPageChange}
                 />
 
             </div>

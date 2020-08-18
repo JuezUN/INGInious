@@ -5,6 +5,7 @@ import './index.css';
 import BankPage from "./bank_page";
 
 ReactDOM.render(
-    (<BankPage/>),
+    ( < BankPage / >),
     document.getElementById('reactRoot')
-);
+)
+;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button, Row, Col, Well } from 'react-bootstrap';
+import {Modal, Button, Row, Col, Well} from 'react-bootstrap';
 import CourseAutosuggest from './course_autosuggest';
 
 class Task extends React.Component {
@@ -14,16 +14,16 @@ class Task extends React.Component {
         this.close = this.close.bind(this);
         this.open = this.open.bind(this);
     }
-    
-    open(){
-        this.setState({ showModal: true });
+
+    open() {
+        this.setState({showModal: true});
     };
 
-    close(){
-        this.setState({ showModal: false });
+    close() {
+        this.setState({showModal: false});
     };
 
-    onClick(courseId){
+    onClick(courseId) {
         let taskId = this.props.task_info.task_id;
         let bankId = this.props.task_info.course_id;
         let addTaskToCourse = this.props.callBackAddTaskToCourse;
@@ -42,10 +42,10 @@ class Task extends React.Component {
                     {this.props.task_info.tags.join(', ')}
                 </button>
                 <Modal className="modal-container"
-                    show={this.state.showModal}
-                    onHide={this.close}
-                    animation={true}
-                    bsSize="large">
+                       show={this.state.showModal}
+                       onHide={this.close}
+                       animation={true}
+                       bsSize="large">
 
                     <Modal.Header closeButton>
                         <Modal.Title> {this.props.task_info.task_name} </Modal.Title>
@@ -54,21 +54,22 @@ class Task extends React.Component {
                     <Modal.Body>
 
                         <Row>
-                          <Col md={1}>
-                            <h5>Author</h5>
-                          </Col>
-                          <Col md={11}>
-                              <Well bsSize="small">{this.props.task_info.task_author}</Well>
-                          </Col>
+                            <Col md={1}>
+                                <h5>Author</h5>
+                            </Col>
+                            <Col md={11}>
+                                <Well bsSize="small">{this.props.task_info.task_author}</Well>
+                            </Col>
                         </Row>
 
                         <Row>
-                          <Col md={1}>
-                            <h5>Context</h5>
-                          </Col>
-                          <Col md={11}>
-                              <Well bsSize="small" dangerouslySetInnerHTML={{ __html: this.props.task_info.task_context }}></Well>
-                          </Col>
+                            <Col md={1}>
+                                <h5>Context</h5>
+                            </Col>
+                            <Col md={11}>
+                                <Well bsSize="small"
+                                      dangerouslySetInnerHTML={{__html: this.props.task_info.task_context}}></Well>
+                            </Col>
                         </Row>
 
                         <Well bsSize="small">
@@ -97,4 +98,5 @@ class Task extends React.Component {
         );
     }
 }
+
 export default Task;
