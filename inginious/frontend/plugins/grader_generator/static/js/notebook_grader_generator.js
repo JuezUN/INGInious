@@ -159,6 +159,7 @@ function notebook_grader_create_test(test_data, test_cases) {
     test_data = $.extend({
         "name": "test",
         "weight": 1.0,
+        "show_debug_info": false,
         "setup_code": "",
     }, test_data);
 
@@ -230,6 +231,7 @@ function _notebook_grader_update_tests_ids(test_id_to_remove) {
             "name": $(`#notebook_grader_test_${test_index}_name`).val(),
             "weight": $(`#notebook_grader_test_${test_index}_weight`).val(),
             "setup_code": $(`#notebook_grader_test_${test_index}_setup_code`).val(),
+            "show_debug_info": $(`#notebook_grader_test_${test_index}_show_debug_info`).prop("checked"),
         };
         tests.push(_notebook_grader_get_test_element(new_test_id, test, test_cases));
         delete notebook_grader_tests_cases_count[test_index];

@@ -39,18 +39,20 @@ class AddCourseStudentsCsvFile(AdminApi):
 
         if not self._file_well_formatted(parsed_file):
             return 200, {"status": "error",
-                         "text": _("The file is not formatted as expected, check it is comma separated ") + _(
-                             "and emails are actual emails.")}
+                         "text": _(
+                             """The file is not formatted as expected, check it is comma separated and 
+                             emails are actual emails.""")}
 
         session_language = self.user_manager.session_language()
         self.user_manager.set_session_language(email_language)
         registered_on_course, registered_users = self.register_all_students(parsed_file, course, email_language)
         self.user_manager.set_session_language(session_language)
 
+        total_to_register = len(parsed_file)
         message = _(
-            """The process finished successfully. Registered students on the course: {0!s}. 
-            Registered students on UNCode: {1!s}.""").format(
-            registered_on_course, registered_users)
+            """The process finished. Registered students on the course: {0!s}. 
+            Registered students on UNCode: {1!s} out of {2!s}.""").format(
+            registered_on_course, registered_users, total_to_register)
 
         return 200, {"status": "success", "text": message}
 
@@ -88,14 +90,14 @@ class AddCourseStudentsCsvFile(AdminApi):
         else:
             passwd_hash = hashlib.sha512(data["password"].encode("utf-8")).hexdigest()
             activate_hash = hashlib.sha512(str(random.getrandbits(256)).encode("utf-8")).hexdigest()
-            self.database.users.insert({"username": data["username"],
-                                        "realname": data["realname"],
-                                        "email": data["email"],
-                                        "password": passwd_hash,
-                                        "activate": activate_hash,
-                                        "bindings": {},
-                                        "language": email_language
-                                        })
+            data = {"username": data["username"],
+                    "realname": data["realname"],
+                    "email": data["email"],
+                    "password": passwd_hash,
+                    "activate": activate_hash,
+                    "bindings": {},
+                    "language": email_language
+                    }
             try:
                 activate_account_link = web.ctx.home + "/register?activate=" + activate_hash
                 content = str(
@@ -105,8 +107,9 @@ class AddCourseStudentsCsvFile(AdminApi):
                 subject = _("Welcome on UNCode")
                 headers = {"Content-Type": 'text/html'}
                 web.sendmail(web.config.smtp_sendername, data["email"], subject, content, headers)
+                self.database.users.insert(data)
             except:
-                pass
+                success = False
 
         return success
 
