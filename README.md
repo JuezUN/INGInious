@@ -1,14 +1,7 @@
-INGInious
-=========
+# UNCode
 
-.. image:: http://jenkins2.info.ucl.ac.be/job/INGInious/badge/icon
-    :target: http://jenkins2.info.ucl.ac.be/job/INGInious/
-.. image:: https://landscape.io/github/UCL-INGI/INGInious/master/landscape.svg?style=flat
-    :target: https://landscape.io/github/UCL-INGI/INGInious/master
-.. image:: https://readthedocs.org/projects/inginious/badge/?version=latest
-    :target: https://readthedocs.org/projects/inginious/?badge=latest
-.. image:: https://badges.gitter.im/Join%20Chat.svg
-    :target: https://gitter.im/uncode-unal/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
+[![CLA assistant](https://cla-assistant.io/readme/badge/JuezUN/INGInious)](https://cla-assistant.io/JuezUN/INGInious)
+[![Gitter](https://badges.gitter.im/uncode-unal/community.svg)](https://gitter.im/uncode-unal/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 
 INGInious is an intelligent grader that allows secured and automated testing of code made by students.
@@ -21,11 +14,9 @@ The backend is independent of the frontend and was made to be used as a library.
 
 INGInious can be used as an external grader for EDX. The course `Paradigms of Computer Programming - Fundamentals`_ uses INGInious to correct students' code.
 
-.. _Docker: https://www.docker.com/
-.. _Paradigms of Computer Programming - Fundamentals: https://www.edx.org/course/louvainx/louvainx-louv1-1x-paradigms-computer-2751
+[Docker](https://www.docker.com/)
 
-Documentation
--------------
+## Documentation
 
 The documentation is available on Read the Docs:
 
@@ -35,14 +26,10 @@ The documentation is available on Read the Docs:
 On Linux, run ``make html`` in the directory ``/doc`` to create a html version of the documentation.
 
 
-Notes on security
------------------
+## Notes on security
 
 Docker containers can be used securely with SELinux enabled. Please do not run untrusted code without activating SELinux.
 
-Mailing list
-------------
+## Mailing list
 
 A mailing list for both usage and development discussion can be joined by registering here_.
-
-..  _here: https://sympa-2.sipr.ucl.ac.be/sympa/info/inginious
