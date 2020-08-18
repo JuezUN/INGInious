@@ -17,7 +17,7 @@ $#
     </div>
 </div>
 
-<div class="form-group">
+<div class="form-group" hidden>
     <label for="grader_problem_id" class="col-sm-4 control-label">
         $:_("Problem ID")
         <i class="fa fa-question-circle"
@@ -25,9 +25,7 @@ $#
             data-toggle="tooltip"></i>
     </label>
     <div class="col-sm-8">
-        <select class="form-control" id="grader_problem_id" name="grader_problem_id">
-
-        </select>
+        <select class="form-control" id="grader_problem_id" name="grader_problem_id"></select>
     </div>
 </div>
 
@@ -190,7 +188,7 @@ $#
         <label for="notebook_setup_code_all_tests" class="col-sm-4 control-label">
             $:_("Setup code for all tests")
             <i class="fa fa-question-circle"
-               title=$:_("\"Python code executed before all tests. Useful to setup, for example, initial data and variables to be used in all tests. This code must be like Python interactive shell, where each line is a different command in the shell. Control structures that require more than one line like: 'if' 'for', 'try' 'functions' are not allowed.\"")
+               title=$:_("\"Python code executed before all tests. Useful to setup, for example, initial data and variables to be used in all tests. This code must be like Python interactive shell, where each line is a different command in the shell.\"")
                data-toggle="tooltip"></i>
         </label>
         <div class="col-sm-8">
@@ -243,16 +241,6 @@ $#
                 <input type="number" class="form-control" id="notebook_memory_limit_test_case" min="0" step="1" max="600"
                        name="notebook_memory_limit_test_case" value="${task_data.get('notebook_memory_limit_test_case', '100')}">
             </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-4 control-label">
-            $:_("Notebook example")
-        </label>
-        <div class="col-sm-8">
-            <a href="https://drive.google.com/file/d/14wcrdFicQoPqRVDamUClv0CgWXcXvpGy/view?usp=sharing" target="_blank">
-                $:_("Click here to open a notebook example")
-            </a>
         </div>
     </div>
     <hr/>
