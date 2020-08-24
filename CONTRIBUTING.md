@@ -52,9 +52,10 @@ clear and has sufficient instructions to be able to reproduce the issue.
 
 ## License
 In short, when you submit code changes, your submissions are understood to be under the 
-same [Apache 2.0 License](https://choosealicense.com/licenses/apache-2.0/) that covers the project. 
+same [GNU AGPL v3](https://github.com/JuezUN/INGInious/blob/master/LICENSE) that covers the project. 
 Feel free to contact the maintainers if that's a concern.
 
 ## Community
 
-Chat with us on https://gitter.im/uncode-unal/community. We will response for sure on weekdays at GMT-5 time.
+Chat with us on [Gitter](https://gitter.im/uncode-unal/community). 
+We will reply for sure on weekdays at GMT-5 time.

@@ -33,3 +33,5 @@ Docker containers can be used securely with SELinux enabled. Please do not run u
 ## Mailing list
 
 A mailing list for both usage and development discussion can be joined by registering here_.
+
+## Publications
