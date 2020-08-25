@@ -67,3 +67,8 @@
 .custom-search-input {
     margin-bottom: 15px;
 }
+
+.new-modal-title{
+    @extend .modal-title;
+    text-align: center;
+}

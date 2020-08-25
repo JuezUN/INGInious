@@ -35,7 +35,7 @@ class Task extends React.Component {
     render() {
         return (
             <div>
-                <button type="button" className="list-group-item" onClick={this.open}>
+                <button className="list-group-item" onClick={this.open}>
                     <b>{this.props.task_info.course_name + " - " + this.props.task_info.task_name}</b>
                     <br/>
 
@@ -46,25 +46,29 @@ class Task extends React.Component {
                        onHide={this.close}
                        animation={true}
                        bsSize="large">
-
                     <Modal.Header closeButton>
-                        <Modal.Title> {this.props.task_info.course_name - this.props.task_info.task_name} </Modal.Title>
+                        <Modal.Title componentClass="h3" bsClass="new-modal-title"> {this.props.task_info.task_name} </Modal.Title>
                     </Modal.Header>
-
                     <Modal.Body>
-
                         <Row>
                             <Col md={1}>
-                                <h5>Author</h5>
+                                <h5>Course:</h5>
+                            </Col>
+                            <Col md={11}>
+                                <Well bsSize="small">{this.props.task_info.course_name}</Well>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md={1}>
+                                <h5>Author:</h5>
                             </Col>
                             <Col md={11}>
                                 <Well bsSize="small">{this.props.task_info.task_author}</Well>
                             </Col>
                         </Row>
-
                         <Row>
                             <Col md={1}>
-                                <h5>Context</h5>
+                                <h5>Context:</h5>
                             </Col>
                             <Col md={11}>
                                 <Well bsSize="small"
