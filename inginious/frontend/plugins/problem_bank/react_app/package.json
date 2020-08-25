@@ -1,5 +1,5 @@
 {
-  "name": "react_app",
+  "name": "UNCode_problem_bank",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,8 +8,8 @@
     "react-autosuggest": "^9.3.2",
     "react-bootstrap": "^0.31.5",
     "react-bootstrap-sweetalert": "^4.4.1",
-    "react-dom": "^16.0.0",
-    "react-scripts": "^2.1.5",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.3",
     "react-ultimate-pagination": "^1.0.2"
   },
   "scripts": {

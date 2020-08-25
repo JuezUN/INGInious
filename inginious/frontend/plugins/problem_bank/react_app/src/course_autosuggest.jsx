@@ -1,7 +1,7 @@
 import React from "react";
 import Autosuggest from 'react-autosuggest';
 import SweetAlert from 'react-bootstrap-sweetalert';
-import { Row, Col } from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import './index.css';
 
 class CourseAutosuggest extends React.Component {
@@ -35,26 +35,26 @@ class CourseAutosuggest extends React.Component {
         );
     };
 
-    onChange = (event, { newValue }) => {
+    onChange = (event, {newValue}) => {
         this.setState({
-                value: newValue
-            });
+            value: newValue
+        });
     };
 
-    open(){
-        this.setState({ show: true });
+    open() {
+        this.setState({show: true});
     };
 
-    close(){
-        this.setState({ show: false });
+    close() {
+        this.setState({show: false});
     };
 
     onConfirm = () => {
         let courseId = "";
-        if(this.state.selectedCourse.name.toUpperCase() === this.state.value.toUpperCase()){
+        if (this.state.selectedCourse.name.toUpperCase() === this.state.value.toUpperCase()) {
             courseId = this.state.selectedCourse.id;
         }
-        let callbackOnClick = this.props.callbackOnClick;
+        const callbackOnClick = this.props.callbackOnClick;
         callbackOnClick(courseId);
         this.setState({
             value: '',
@@ -83,37 +83,38 @@ class CourseAutosuggest extends React.Component {
         return (
 
             <Row>
-              <Col md={this.props.mdInput}>
-                <Autosuggest
-                    suggestions={this.state.suggestions}
-                    onSuggestionsFetchRequested={({value}) => this.setState({suggestions: this.getSuggestions(value)})}
-                    onSuggestionsClearRequested={() => this.setState({suggestions: []}) }
-                    getSuggestionValue={this.getSuggestionValue}
-                    renderSuggestion={this.renderSuggestion}
-                    inputProps={inputProps}
-                />
-              </Col>
-              <Col md={this.props.mdButton}>
-                <button onClick={this.open} className="btn btn-primary" disabled={!this.state.value}>
-                    {this.props.messageButton}
-                </button>
-              </Col>
-              <SweetAlert
-                  warning
-                  showCancel
-                  confirmBtnText={"Yes!"}
-                  confirmBtnBsStyle={"warning"}
-                  cancelBtnBsStyle={"danger"}
-                  show={this.state.show}
-                  title={this.props.alertTitle}
-                  onConfirm={this.onConfirm}
-                  onCancel={this.close}
-              >
-                  {this.props.alertText}
-              </SweetAlert>
-              <Col mdHidden={6}/>
+                <Col md={this.props.mdInput}>
+                    <Autosuggest
+                        suggestions={this.state.suggestions}
+                        onSuggestionsFetchRequested={({value}) => this.setState({suggestions: this.getSuggestions(value)})}
+                        onSuggestionsClearRequested={() => this.setState({suggestions: []})}
+                        getSuggestionValue={this.getSuggestionValue}
+                        renderSuggestion={this.renderSuggestion}
+                        inputProps={inputProps}
+                    />
+                </Col>
+                <Col md={this.props.mdButton}>
+                    <button onClick={this.open} className="btn btn-primary" disabled={!this.state.value}>
+                        {this.props.messageButton}
+                    </button>
+                </Col>
+                <SweetAlert
+                    warning
+                    showCancel
+                    confirmBtnText={"Yes!"}
+                    confirmBtnBsStyle={"warning"}
+                    cancelBtnBsStyle={"danger"}
+                    show={this.state.show}
+                    title={this.props.alertTitle}
+                    onConfirm={this.onConfirm}
+                    onCancel={this.close}
+                >
+                    {this.props.alertText}
+                </SweetAlert>
+                <Col mdHidden={6}/>
             </Row>
         );
     }
 }
+
 export default CourseAutosuggest;

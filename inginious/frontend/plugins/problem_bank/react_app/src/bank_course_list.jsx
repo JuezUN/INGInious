@@ -1,5 +1,5 @@
 import React from "react";
-import { Well, Row, Col } from 'react-bootstrap';
+import {Well, Row, Col} from 'react-bootstrap';
 import './index.css';
 
 import UltimatePagination from './ultimate_pagination';
@@ -11,11 +11,11 @@ class BankCourseList extends React.Component {
 
     getListOfCourses = () => {
         let courses = this.props.courses.map((course, i) => {
-            let page = this.props.page;
-            let limit = this.props.limit;
-            let courseIsInBoundsOfPage = i >= ((page - 1) * limit) && i < (page * limit);
+            const page = this.props.page;
+            const limit = this.props.limit;
+            const courseIsInBoundsOfPage = i >= ((page - 1) * limit) && i < (page * limit);
 
-            if(courseIsInBoundsOfPage) {
+            if (courseIsInBoundsOfPage) {
                 return (
                     <BankCourse
                         name={course.name}
@@ -28,7 +28,7 @@ class BankCourseList extends React.Component {
             }
         });
 
-        if(!courses.length){
+        if (!courses.length) {
             courses = "There are no available courses";
         }
         return courses;
@@ -36,11 +36,11 @@ class BankCourseList extends React.Component {
 
     getListOfAvailableCourses = () => {
         let availableCourses = this.props.availableCourses.map((course, i) => {
-            let page = this.props.pageAvailableCourses;
-            let limit = this.props.limit;
-            let courseIsInBoundsOfPage = i >= ((page - 1) * limit) && i < (page * limit);
+            const page = this.props.pageAvailableCourses;
+            const limit = this.props.limit;
+            const courseIsInBoundsOfPage = i >= ((page - 1) * limit) && i < (page * limit);
 
-            if(courseIsInBoundsOfPage) {
+            if (courseIsInBoundsOfPage) {
                 return (
                     <BankCourse
                         name={course.name}
@@ -53,7 +53,7 @@ class BankCourseList extends React.Component {
             }
         });
 
-        if(!availableCourses.length){
+        if (!availableCourses.length) {
             availableCourses = "There are no available courses";
         }
         return availableCourses;
@@ -88,15 +88,15 @@ class BankCourseList extends React.Component {
                         <div>
                             The following courses are marked as task sources:
                             <br/>
-                            <small> (You are free to copy the tasks from these courses) </small>
+                            <small> (You are free to copy the tasks from these courses)</small>
                         </div>
 
                         <div className="list-group">{this.getListOfCourses()}</div>
 
                         <UltimatePagination
-                             currentPage={this.props.page}
-                             totalPages={this.props.totalPages}
-                             onChange={this.props.callbackOnPageChange}
+                            currentPage={this.props.page}
+                            totalPages={this.props.totalPages}
+                            onChange={this.props.callbackOnPageChange}
                         />
                     </Col>
                     <Col md={6}>
@@ -109,9 +109,9 @@ class BankCourseList extends React.Component {
                         <div className="list-group">{this.getListOfAvailableCourses()}</div>
 
                         <UltimatePagination
-                             currentPage={this.props.pageAvailableCourses}
-                             totalPages={this.props.totalAvailableCoursePages}
-                             onChange={this.props.callbackOnPageAvailableCourseChange}
+                            currentPage={this.props.pageAvailableCourses}
+                            totalPages={this.props.totalAvailableCoursePages}
+                            onChange={this.props.callbackOnPageAvailableCourseChange}
                         />
                     </Col>
                 </Row>
