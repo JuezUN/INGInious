@@ -37,7 +37,6 @@ class BankPage extends React.Component {
 
         this.limit = 10;
 
-        this.onPageTaskChange = this.onPageTaskChange.bind(this);
         this.onPageCourseChange = this.onPageCourseChange.bind(this);
         this.addTaskToCourse = this.addTaskToCourse.bind(this);
 
@@ -55,45 +54,39 @@ class BankPage extends React.Component {
         this.setAlertCourseListInvisible = this.setAlertCourseListInvisible.bind(this);
         this.setAlertTaskListInvisible = this.setAlertTaskListInvisible.bind(this);
 
-        this.onPageTaskChange = this.onPageTaskChange.bind(this);
-        this.onPageCourseChange = this.onPageCourseChange.bind(this);
         this.onPageAvailableCourseChange = this.onPageAvailableCourseChange.bind(this);
     }
 
     updateBankCoursesAsync() {
         $.getJSON("/plugins/problems_bank/api/bank_courses").then((courses) => {
-            let newCourses = courses;
-            let newTotalPages = Math.ceil(newCourses.length / this.limit);
-            if (newTotalPages === 0) {
-                newTotalPages = 1;
+            const newCourses = courses;
+            let totalPages = Math.ceil(newCourses.length / this.limit);
+            if (totalPages === 0) {
+                totalPages = 1;
             }
             this.setState({
-                totalPagesCourses: newTotalPages,
+                totalPagesCourses: totalPages,
                 pageCourses: 1,
                 courses: newCourses
             })
         });
     }
 
-    updateTasksAsync() {
-        $.getJSON("/plugins/problems_bank/api/bank_tasks").then((tasks) => {
-            let newTasksLength = tasks.length;
-            let newTotalPages = Math.ceil(newTasksLength / this.limit);
-            if (newTotalPages === 0) {
-                newTotalPages = 1;
-            }
-
+    updateTasksAsync(page = 1) {
+        const url = `/plugins/problems_bank/api/bank_tasks?limit=${this.limit}&page=${page}`;
+        $.getJSON(url).then((response) => {
+            const newTotalPages = response['total_pages'];
             this.setState({
                 totalPagesTasks: newTotalPages,
-                pageTasks: 1,
-                tasks,
+                pageTasks: page,
+                tasks: response['tasks'],
             });
         });
     }
 
     updateAvailableCoursesAsync() {
         $.getJSON("/plugins/problems_bank/api/available_courses").then((availableCourses) => {
-            let newCourses = availableCourses;
+            const newCourses = availableCourses;
             let newTotalPages = Math.ceil(newCourses.length / this.limit);
             if (newTotalPages === 0) {
                 newTotalPages = 1;
@@ -144,23 +137,20 @@ class BankPage extends React.Component {
         });
     };
 
-    updateFilteredTasksAsync(query) {
-        $.post("/plugins/problems_bank/api/filter_bank_tasks", {"task_query": query}, (filteredTasks) => {
-            let newTotalPages = Math.ceil(filteredTasks.length / this.limit);
-            let newPage = this.state.pageTasks;
-            if (newTotalPages >= 1) {
-                if (this.state.pageTasks > newTotalPages) {
-                    newPage = newTotalPages
-                }
-            } else {
-                newPage = 1;
-                newTotalPages = 1;
-            }
+    updateFilteredTasksAsync(query, page = 1) {
+        const data = {
+            "task_query": query,
+            "limit": this.limit,
+            "page": page
+        };
+        $.post("/plugins/problems_bank/api/filter_bank_tasks", data, (response) => {
+            const totalPages = response['total_pages'];
+            const filteredTasks = response['tasks'];
 
             this.setState({
                 tasks: filteredTasks,
-                pageTasks: newPage,
-                totalPagesTasks: newTotalPages
+                pageTasks: page,
+                totalPagesTasks: totalPages
             });
         });
     }
@@ -215,10 +205,15 @@ class BankPage extends React.Component {
     }
 
     addTaskToCourse(targetId, taskId, bankId, query) {
-        $.post("/plugins/problems_bank/api/copy_task",
-            {"target_id": targetId, "task_id": taskId, "bank_id": bankId}, (data) => {
-                this.updateFilteredTasksAsync(query);
-            }).done((data) => {
+        const request_data = {
+            "target_id": targetId,
+            "task_id": taskId,
+            "bank_id": bankId
+        };
+        $.post("/plugins/problems_bank/api/copy_task", request_data, (data) => {
+            if (query === "") this.updateTasksAsync();
+            else this.updateFilteredTasksAsync(query);
+        }).done((data) => {
             this.setState({
                 dataAlertTaskList: {
                     data: data,
@@ -259,11 +254,6 @@ class BankPage extends React.Component {
                 styleAlert: ''
             }
         });
-    }
-
-
-    onPageTaskChange(page) {
-        this.setState({pageTasks: page});
     }
 
     onPageCourseChange(page) {
@@ -314,7 +304,6 @@ class BankPage extends React.Component {
                         courses={this.state.availableCoursesToCopy}
                         dataAlert={this.state.dataAlertTaskList}
                         callbackOnChildChangedClose={this.onAlertTaskListClose}
-                        callbackOnPageChange={this.onPageTaskChange}
                         callbackUpdateTasks={this.updateTasksAsync}
                         callbackUpdateFilteredTasks={this.updateFilteredTasksAsync}
                         callBackAddTaskToCourse={this.addTaskToCourse}

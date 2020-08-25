@@ -11,7 +11,7 @@ class CustomAlert extends React.Component {
 
     handleAlertDismiss() {
         clearTimeout(this.timer);
-        let updateParent = this.props.callbackParent;
+        const updateParent = this.props.callbackParent;
         updateParent(false);
 
         this.forceUpdate();

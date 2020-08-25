@@ -54,7 +54,7 @@ class CourseAutosuggest extends React.Component {
         if (this.state.selectedCourse.name.toUpperCase() === this.state.value.toUpperCase()) {
             courseId = this.state.selectedCourse.id;
         }
-        let callbackOnClick = this.props.callbackOnClick;
+        const callbackOnClick = this.props.callbackOnClick;
         callbackOnClick(courseId);
         this.setState({
             value: '',

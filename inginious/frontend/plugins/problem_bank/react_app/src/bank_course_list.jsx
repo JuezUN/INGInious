@@ -11,9 +11,9 @@ class BankCourseList extends React.Component {
 
     getListOfCourses = () => {
         let courses = this.props.courses.map((course, i) => {
-            let page = this.props.page;
-            let limit = this.props.limit;
-            let courseIsInBoundsOfPage = i >= ((page - 1) * limit) && i < (page * limit);
+            const page = this.props.page;
+            const limit = this.props.limit;
+            const courseIsInBoundsOfPage = i >= ((page - 1) * limit) && i < (page * limit);
 
             if (courseIsInBoundsOfPage) {
                 return (
@@ -36,9 +36,9 @@ class BankCourseList extends React.Component {
 
     getListOfAvailableCourses = () => {
         let availableCourses = this.props.availableCourses.map((course, i) => {
-            let page = this.props.pageAvailableCourses;
-            let limit = this.props.limit;
-            let courseIsInBoundsOfPage = i >= ((page - 1) * limit) && i < (page * limit);
+            const page = this.props.pageAvailableCourses;
+            const limit = this.props.limit;
+            const courseIsInBoundsOfPage = i >= ((page - 1) * limit) && i < (page * limit);
 
             if (courseIsInBoundsOfPage) {
                 return (

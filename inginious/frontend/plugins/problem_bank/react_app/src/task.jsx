@@ -24,9 +24,9 @@ class Task extends React.Component {
     };
 
     onClick(courseId) {
-        let taskId = this.props.task_info.task_id;
-        let bankId = this.props.task_info.course_id;
-        let addTaskToCourse = this.props.callBackAddTaskToCourse;
+        const taskId = this.props.task_info.task_id;
+        const bankId = this.props.task_info.course_id;
+        const addTaskToCourse = this.props.callBackAddTaskToCourse;
 
         addTaskToCourse(courseId, taskId, bankId);
         this.close();
@@ -48,7 +48,7 @@ class Task extends React.Component {
                        bsSize="large">
 
                     <Modal.Header closeButton>
-                        <Modal.Title> {this.props.task_info.task_name} </Modal.Title>
+                        <Modal.Title> {this.props.task_info.course_name - this.props.task_info.task_name} </Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>

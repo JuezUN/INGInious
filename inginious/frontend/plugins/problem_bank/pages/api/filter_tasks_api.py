@@ -10,6 +10,9 @@ class FilterTasksApi(AdminApi):
 
         parameters = web.input()
         task_query = get_mandatory_parameter(parameters, "task_query")
+        limit = int(get_mandatory_parameter(parameters, "limit"))
+        page = int(get_mandatory_parameter(parameters, "page"))
+
         course_ids = set(bank["courseid"]
                          for bank in self.database.problem_banks.find())
 
@@ -18,45 +21,41 @@ class FilterTasksApi(AdminApi):
                 course_ids.add(course_id)
 
         tasks = []
-        for course_id in course_ids:
-            ids_tasks = self.database.tasks_cache.aggregate([
-                {
-                    "$match":
-                        {
-                            "$text": {
-                                "$search": task_query
-                            }
+        result_tasks = self.database.tasks_cache.aggregate([
+            {
+                "$match":
+                    {
+                        "$text": {
+                            "$search": task_query,
                         }
-                },
-                {
-                    "$match":
-                        {
-                            "course_id": course_id
-                        }
-                },
-                {
-                    "$unwind":
-                        {
-                            "path": "$tags",
-                            "preserveNullAndEmptyArrays": True
-                        }
-                },
-                {
-                    "$group":
-                        {
-                            "_id": "$_id"
-                        }
-                }
-            ])
+                    }
+            },
+            {
+                "$match":
+                    {
+                        "course_id": {"$in": list(course_ids)}
+                    }
+            },
+        ])
 
-            for id_task in ids_tasks:
+        for task in result_tasks:
+            dict_task = {"course_id": task["course_id"], "task_id": task["task_id"], "task_name": task["task_name"],
+                         "task_author": task["task_author"], "task_context": task["task_context"],
+                         "tags": task.get("tags", []), "course_name": task["course_name"]
+                         }
+            tasks.append(dict_task)
 
-                task = self.database.tasks_cache.find_one({"_id": id_task["_id"]})
+        left = limit * (page - 1)
+        right = left + limit
+        tasks = list(sorted(tasks, key=lambda k: (k['course_name'], k['task_name'])))
+        total_pages = len(tasks) // limit
+        if len(tasks) % limit != 0 or total_pages == 0:
+            total_pages += 1
 
-                dict_task = {"course_id": task["course_id"], "task_id": task["task_id"], "task_name": task["task_name"],
-                             "task_author": task["task_author"], "task_context": task["task_context"],
-                             "tags": task["tags"], "course_name": task["course_name"]
-                             }
-                tasks.append(dict_task)
+        if right >= len(tasks):
+            tasks = tasks[left:]
+        else:
+            tasks = tasks[left:right]
 
-        return 200, sorted(tasks, key=lambda k: (k['course_id'], k['task_id']))
+        response = {'total_pages': total_pages, "tasks": tasks}
+        return 200, response

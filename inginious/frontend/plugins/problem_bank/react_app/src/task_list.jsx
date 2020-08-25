@@ -17,18 +17,30 @@ class TaskList extends React.Component {
     }
 
     handleChange(e) {
-        let newStateQuery = e.target.value;
-        let updateFilteredTasks = this.props.callbackUpdateFilteredTasks;
+        const newStateQuery = e.target.value;
+        const updateFilteredTasks = this.props.callbackUpdateFilteredTasks;
 
         clearTimeout(this.state.timer);
         if (newStateQuery === "") {
-            let updateTasks = this.props.callbackUpdateTasks;
-            updateTasks();
+            this.props.callbackUpdateTasks();
+            this.setState({
+                query: newStateQuery,
+                timer: 0
+            });
         } else {
             this.setState({
                 query: newStateQuery,
-                timer: setTimeout(() => updateFilteredTasks(newStateQuery), 250)
+                timer: setTimeout(() => updateFilteredTasks(newStateQuery), 500)
             });
+        }
+    };
+
+    onChangePage = (page) => {
+        console.log(this.state.query);
+        if (this.state.query === "") {
+            this.props.callbackUpdateTasks(page);
+        } else {
+            this.props.callbackUpdateFilteredTasks(this.state.query, page);
         }
     };
 
@@ -38,18 +50,12 @@ class TaskList extends React.Component {
 
     getListOfTasks = () => {
         let tasks = this.props.tasks.map((task, i) => {
-            let page = this.props.page;
-            let limit = this.props.limit;
-            let taskIsInBoundsOfPage = i >= ((page - 1) * limit) && i < (page * limit);
-
-            if (taskIsInBoundsOfPage) {
-                return (<Task
-                    task_info={task}
-                    key={i}
-                    courses={this.props.courses}
-                    callBackAddTaskToCourse={this.addTaskToCourse}
-                />)
-            }
+            return (<Task
+                task_info={task}
+                key={i}
+                courses={this.props.courses}
+                callBackAddTaskToCourse={this.addTaskToCourse}
+            />)
         });
 
         if (!tasks.length) {
@@ -87,7 +93,7 @@ class TaskList extends React.Component {
                 <UltimatePagination
                     currentPage={this.props.page}
                     totalPages={this.props.totalPages}
-                    onChange={this.props.callbackOnPageChange}
+                    onChange={this.onChangePage}
                 />
 
             </div>
