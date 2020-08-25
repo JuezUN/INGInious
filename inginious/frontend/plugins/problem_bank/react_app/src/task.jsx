@@ -47,7 +47,8 @@ class Task extends React.Component {
                        animation={true}
                        bsSize="large">
                     <Modal.Header closeButton>
-                        <Modal.Title componentClass="h3" bsClass="new-modal-title"> {this.props.task_info.task_name} </Modal.Title>
+                        <Modal.Title componentClass="h3"
+                                     bsClass="new-modal-title"> {this.props.task_info.task_name} </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Row>
