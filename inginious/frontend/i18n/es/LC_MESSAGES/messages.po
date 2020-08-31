@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-18 18:02-0500\n"
+"POT-Creation-Date: 2020-08-31 16:13-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1322,7 +1322,7 @@ msgstr ""
 "adicionales cómo RUNTIME_ERROR or TIME_LIMIT_EXCEEDED.\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:76
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:228
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:212
 msgid "Time limit test cases (s)"
 msgstr "Tiempo límite casos de prueba (s)"
 
@@ -1331,7 +1331,7 @@ msgid "\"Time limit for each test case in seconds. (Max. 30s)\""
 msgstr "\"Tiempo límite para cada caso de prueba en segundos. (Max. 30s)\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:86
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:237
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:222
 msgid "Memory limit test cases (MB)"
 msgstr "Límite de memoria casos de prueba (MB)"
 
@@ -1352,74 +1352,62 @@ msgstr "\"Límite de salida para cada caso de prueba en MBs. (Máx. 30 MBs)\""
 msgid "Test cases"
 msgstr "Casos de prueba"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:112
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:111
 msgid "All diffs"
 msgstr "Todas las diferencias"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:117
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:114
 msgid "Remove all tests"
 msgstr "Eliminar todas las pruebas"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:124
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:138
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:121
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:135
 msgid "Input file"
 msgstr "Archivo de entrada"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:125
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:143
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:122
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:140
 msgid "Output file"
 msgstr "Archivo de salida"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:126
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:261
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:123
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:260
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:27
 msgid "Weight"
 msgstr "Peso"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:127
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:124
 msgid "Show differences"
 msgstr "Mostrar diferencias"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:128
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:271
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:125
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:270
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:85
 msgid "Options"
 msgstr "Opciones"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:149
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:146
 #: inginious/frontend/templates/course_admin/edit_tabs/subproblems.html:24
 msgid "Add"
 msgstr "Agregar"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:161
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:158
 msgid "Entity (only on VHDL)"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:172
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:169
 msgid "Testbench"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:177
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:174
 msgid "Golden Model"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:189
-msgid "Setup code for all tests"
-msgstr "Setup code para todos los casos"
-
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:191
-msgid ""
-"\"Python code executed before all tests. Useful to setup, for example, "
-"initial data and variables to be used in all tests. This code must be "
-"like Python interactive shell, where each line is a different command in "
-"the shell.\""
-msgstr ""
-
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:202
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:186
 msgid "Dataset URL"
 msgstr "Enlace del dataset"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:204
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:188
 msgid ""
 "\"Dataset URL to download file before running grading code. This is "
 "helpful when dataset is too long and cannot be uploaded in the files tab."
@@ -1427,22 +1415,34 @@ msgid ""
 "'Container setup' tab. Also, set a filename in the field below.\""
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:214
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:198
 msgid "Dataset filename"
 msgstr "Nombre de archivo de datos"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:216
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:200
 msgid ""
 "\"Filename with extension for downloaded dataset (i.e. data.csv). This "
 "filename is the one used to load the dataset in the code.\""
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:229
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:213
 msgid "\"Time limit for each test case in seconds. (Max. 30 s)\""
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:238
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:223
 msgid "\"Memory limit for each test case in MBs. (Max 600 MBs)\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:238
+msgid "Setup code for all tests"
+msgstr "Setup code para todos los casos"
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:240
+msgid ""
+"\"Python code executed before all tests. Useful to setup, for example, "
+"initial data and variables to be used in all tests. This code must be "
+"like Python interactive shell, where each line is a different command in "
+"the shell.\""
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:253
@@ -1450,7 +1450,7 @@ msgstr ""
 msgid "Add a test"
 msgstr "Agregar prueba"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:260
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:259
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:23
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
 #: inginious/frontend/templates/course_admin/settings.html:29
@@ -1460,11 +1460,11 @@ msgstr "Agregar prueba"
 msgid "Name"
 msgstr "Nombre"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:264
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:263
 msgid "Show debug info"
 msgstr "Mostrar más información"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:266
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:265
 msgid ""
 "\"Check to show more info the student like output difference and runtime "
 "errors\""
@@ -1868,8 +1868,9 @@ msgid ""
 "Click on 'Preferences' option, this will display a page with a menu in "
 "the right side. Click on the 'Authentication binding' option."
 msgstr ""
-"Haz Clic en la opción 'Preferencias', esto mostrará una página con un menú"
-" en en el lado derecho. Selecciona la opción 'Enlaces de Autenticación'."
+"Haz Clic en la opción 'Preferencias', esto mostrará una página con un "
+"menú en en el lado derecho. Selecciona la opción 'Enlaces de "
+"Autenticación'."
 
 #: inginious/frontend/plugins/register_students/static/email_template.html:29
 msgid ""
@@ -2391,8 +2392,14 @@ msgid "Course created."
 msgstr "El curso ha sido creado."
 
 #: inginious/frontend/templates/mycourses.html:84
-msgid "Failed to create the course."
-msgstr "Error durante la creación del curso."
+msgid ""
+"Failed to create the course. It might either already exist or contain an "
+"invalid character (only alphanumeric in addition to '_' and '-' are "
+"accepted)."
+msgstr ""
+"Error durante la creación del curso. Puede que ya exista este ID o el ID "
+"especificado contiene un carácter inválido (solamente alfanumérico y  '_'"
+" y '-' son aceptados)."
 
 #: inginious/frontend/templates/mycourses.html:92
 msgid "Create new course"
@@ -2428,8 +2435,8 @@ msgstr "Tarea en lista de espera"
 #: inginious/frontend/templates/queue.html:20
 msgid "This page shows a <strong>snapshot</strong> of the job queue."
 msgstr ""
-"Esta página muestra un <strong>respaldo</strong> de las tareas en la lista "
-"de espera."
+"Esta página muestra un <strong>respaldo</strong> de las tareas en la "
+"lista de espera."
 
 #: inginious/frontend/templates/queue.html:22
 msgid "Running jobs"
@@ -2650,8 +2657,7 @@ msgid ""
 "modifying the \"accessible\" option in the configuration of the task."
 msgstr ""
 "Esta tarea está actualmente oculta para los estudiantes. Puede cambiar "
-"esto en la opción \"control de acceso\" en la configuración de "
-"tareas."
+"esto en la opción \"control de acceso\" en la configuración de tareas."
 
 #: inginious/frontend/templates/task.html:122
 msgid "Edit task"
