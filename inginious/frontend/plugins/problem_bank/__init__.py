@@ -26,7 +26,7 @@ def init(plugin_manager, course_factory, client, config):
         if not plugin_manager.get_user_manager().has_admin_rights_on_course(course):
             return None
         else:
-            return "problems_bank", '<i class="fa fa-database" aria-hidden="true"></i> Problem bank'
+            return "problem_bank", '<i class="fa fa-database" aria-hidden="true"></i> Problem bank'
 
     if "problem_banks" not in plugin_manager.get_database().collection_names():
         plugin_manager.get_database().create_collection("problem_banks")

@@ -1,10 +1,16 @@
-$def with ()
+$def with (course)
 
-$var title: Problem bank
+$var title: $:course.get_name(user_manager.session_language()) - $:_("Problem bank")
+
+$var Column: $:template_helper.call('course_admin_menu', course=course, current='problem_bank')
 
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
-      <li class="active"><a href="#">$:_("Problem bank") <span class="sr-only">(current)</span></a></li>
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()" title=$:_('"Administration"') data-toggle="tooltip"
+               data-placement="bottom">
+            <i class="fa fa-user-secret"></i></a></li>
+        <li class="active"><a href="#">$:_("Problem bank") <span class="sr-only">(current)</span></a></li>
     </ol>
 
 $var Navbar: $:NavbarF()

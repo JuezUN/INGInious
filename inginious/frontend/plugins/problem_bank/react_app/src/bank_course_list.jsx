@@ -78,7 +78,7 @@ class BankCourseList extends React.Component {
                         alertText={"* The course and tasks from this course will be public and every user could copy"}
                         callbackOnClick={this.props.callbackAddCourse}
                         messageButton={"Add course to bank"}
-                        mdInput={3}
+                        mdInput={4}
                         mdButton={2}
                     />
                 </Well>

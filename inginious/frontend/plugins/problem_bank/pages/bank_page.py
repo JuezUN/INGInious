@@ -8,7 +8,8 @@ _BASE_RENDERER_PATH = 'frontend/plugins/problem_bank'
 
 class BankPage(INGIniousAdminPage):
     def _list_files_recursive(self, folder):
-        return [os.path.relpath(os.path.join(root, name), folder) for root, _, files in os.walk(folder) for name in files]
+        return [os.path.relpath(os.path.join(root, name), folder) for root, _, files in os.walk(folder) for name in
+                files]
 
     def _set_up_compiled_resources(self, build_folder, base_url):
         if not base_url.endswith('/'):
@@ -31,7 +32,7 @@ class BankPage(INGIniousAdminPage):
     def GET_AUTH(self, course_id):
         self._set_up_compiled_resources(_REACT_BUILD_FOLDER, _REACT_BASE_URL)
         self.get_course_and_check_rights(course_id, None, False)
-
+        course = self.course_factory.get_course(course_id)
         return (
-            self.template_helper.get_custom_renderer(_BASE_RENDERER_PATH).index()
+            self.template_helper.get_custom_renderer(_BASE_RENDERER_PATH).index(course)
         )

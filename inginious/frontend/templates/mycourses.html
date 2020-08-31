@@ -81,7 +81,7 @@ $if user_manager.user_is_superadmin():
     $if success == False:
         <div class="alert alert-danger alert-dismissable" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            $:_("Failed to create the course.")
+            $:_("Failed to create the course. It might either already exist or contain an invalid character (only alphanumeric in addition to '_' and '-' are accepted).")
         </div>
     <form class="form row" role="form" method="post">
         <div class="form-group col-sm-8">

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-18 18:02-0500\n"
+"POT-Creation-Date: 2020-08-31 16:54-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -1238,7 +1238,7 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:76
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:228
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:212
 msgid "Time limit test cases (s)"
 msgstr ""
 
@@ -1247,7 +1247,7 @@ msgid "\"Time limit for each test case in seconds. (Max. 30s)\""
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:86
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:237
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:222
 msgid "Memory limit test cases (MB)"
 msgstr ""
 
@@ -1268,74 +1268,62 @@ msgstr ""
 msgid "Test cases"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:112
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:111
 msgid "All diffs"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:117
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:114
 msgid "Remove all tests"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:124
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:138
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:121
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:135
 msgid "Input file"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:125
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:143
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:122
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:140
 msgid "Output file"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:126
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:261
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:123
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:260
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:27
 msgid "Weight"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:127
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:124
 msgid "Show differences"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:128
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:271
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:125
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:270
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:85
 msgid "Options"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:149
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:146
 #: inginious/frontend/templates/course_admin/edit_tabs/subproblems.html:24
 msgid "Add"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:161
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:158
 msgid "Entity (only on VHDL)"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:172
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:169
 msgid "Testbench"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:177
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:174
 msgid "Golden Model"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:189
-msgid "Setup code for all tests"
-msgstr ""
-
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:191
-msgid ""
-"\"Python code executed before all tests. Useful to setup, for example, "
-"initial data and variables to be used in all tests. This code must be "
-"like Python interactive shell, where each line is a different command in "
-"the shell.\""
-msgstr ""
-
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:202
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:186
 msgid "Dataset URL"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:204
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:188
 msgid ""
 "\"Dataset URL to download file before running grading code. This is "
 "helpful when dataset is too long and cannot be uploaded in the files tab."
@@ -1343,22 +1331,34 @@ msgid ""
 "'Container setup' tab. Also, set a filename in the field below.\""
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:214
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:198
 msgid "Dataset filename"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:216
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:200
 msgid ""
 "\"Filename with extension for downloaded dataset (i.e. data.csv). This "
 "filename is the one used to load the dataset in the code.\""
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:229
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:213
 msgid "\"Time limit for each test case in seconds. (Max. 30 s)\""
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:238
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:223
 msgid "\"Memory limit for each test case in MBs. (Max 600 MBs)\""
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:238
+msgid "Setup code for all tests"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:240
+msgid ""
+"\"Python code executed before all tests. Useful to setup, for example, "
+"initial data and variables to be used in all tests. This code must be "
+"like Python interactive shell, where each line is a different command in "
+"the shell.\""
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:253
@@ -1366,7 +1366,7 @@ msgstr ""
 msgid "Add a test"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:260
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:259
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:23
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
 #: inginious/frontend/templates/course_admin/settings.html:29
@@ -1376,11 +1376,11 @@ msgstr ""
 msgid "Name"
 msgstr "Nome"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:264
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:263
 msgid "Show debug info"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:266
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:265
 msgid ""
 "\"Check to show more info the student like output difference and runtime "
 "errors\""
@@ -1655,11 +1655,29 @@ msgstr ""
 msgid "Test"
 msgstr ""
 
-#: inginious/frontend/plugins/problem_bank/index.html:7
-#: inginious/frontend/plugins/problem_bank/index.html:12
+#: inginious/frontend/plugins/problem_bank/index.html:3
+#: inginious/frontend/plugins/problem_bank/index.html:13
+#: inginious/frontend/plugins/problem_bank/index.html:18
 #: inginious/frontend/plugins/problem_bank/problem_bank_div.html:2
 msgid "Problem bank"
 msgstr ""
+
+#: inginious/frontend/plugins/problem_bank/index.html:10
+#: inginious/frontend/templates/course_admin/aggregation_list.html:17
+#: inginious/frontend/templates/course_admin/classroom_edit.html:17
+#: inginious/frontend/templates/course_admin/download.html:17
+#: inginious/frontend/templates/course_admin/replay.html:17
+#: inginious/frontend/templates/course_admin/settings.html:15
+#: inginious/frontend/templates/course_admin/student_info.html:17
+#: inginious/frontend/templates/course_admin/student_list.html:15
+#: inginious/frontend/templates/course_admin/submission.html:18
+#: inginious/frontend/templates/course_admin/submissions.html:21
+#: inginious/frontend/templates/course_admin/task_edit.html:18
+#: inginious/frontend/templates/course_admin/task_info.html:18
+#: inginious/frontend/templates/course_admin/task_list.html:16
+#: inginious/frontend/templates/course_admin/teams_edit.html:17
+msgid "\"Administration\""
+msgstr "\"Administração\""
 
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:26
 msgid "Language is not available."
@@ -2244,8 +2262,11 @@ msgid "Course created."
 msgstr "Curso criado."
 
 #: inginious/frontend/templates/mycourses.html:84
-msgid "Failed to create the course."
-msgstr "Falha ao criar o curso."
+msgid ""
+"Failed to create the course. It might either already exist or contain an "
+"invalid character (only alphanumeric in addition to '_' and '-' are "
+"accepted)."
+msgstr ""
 
 #: inginious/frontend/templates/mycourses.html:92
 msgid "Create new course"
@@ -2813,22 +2834,6 @@ msgstr "\"Baixar submissões\""
 #: inginious/frontend/templates/course_admin/task_list.html:71
 msgid "\"Replay submissions\""
 msgstr "\"Reproduzir submissões\""
-
-#: inginious/frontend/templates/course_admin/aggregation_list.html:17
-#: inginious/frontend/templates/course_admin/classroom_edit.html:17
-#: inginious/frontend/templates/course_admin/download.html:17
-#: inginious/frontend/templates/course_admin/replay.html:17
-#: inginious/frontend/templates/course_admin/settings.html:15
-#: inginious/frontend/templates/course_admin/student_info.html:17
-#: inginious/frontend/templates/course_admin/student_list.html:15
-#: inginious/frontend/templates/course_admin/submission.html:18
-#: inginious/frontend/templates/course_admin/submissions.html:21
-#: inginious/frontend/templates/course_admin/task_edit.html:18
-#: inginious/frontend/templates/course_admin/task_info.html:18
-#: inginious/frontend/templates/course_admin/task_list.html:16
-#: inginious/frontend/templates/course_admin/teams_edit.html:17
-msgid "\"Administration\""
-msgstr "\"Administração\""
 
 #: inginious/frontend/templates/course_admin/aggregation_list.html:31
 #: inginious/frontend/templates/course_admin/teams_edit.html:8
@@ -4183,5 +4188,11 @@ msgstr ""
 #~ "The process finished successfully. Registered"
 #~ " students on the course: {0!s}. \n"
 #~ "            Registered students on UNCode: {1!s}."
+#~ msgstr ""
+
+#~ msgid "Failed to create the course."
+#~ msgstr "Falha ao criar o curso."
+
+#~ msgid " are accepted)."
 #~ msgstr ""
 

@@ -34,7 +34,7 @@ class BankPage extends React.Component {
                 styleAlert: ''
             }
         };
-
+        this.tasksQuery = "";
         this.limit = 10;
 
         this.onPageCourseChange = this.onPageCourseChange.bind(this);
@@ -114,7 +114,7 @@ class BankPage extends React.Component {
             success: (data) => {
                 this.updateBankCoursesAsync();
                 this.updateAvailableCoursesAsync();
-                this.updateTasksAsync();
+                this.tasksQuery === "" ? this.updateTasksAsync() : this.updateFilteredTasksAsync(this.tasksQuery);
             }
         }).done((data) => {
             this.setState({
@@ -143,6 +143,7 @@ class BankPage extends React.Component {
             "limit": this.limit,
             "page": page
         };
+        this.tasksQuery = query;
         $.post("/plugins/problems_bank/api/filter_bank_tasks", data, (response) => {
             const totalPages = response['total_pages'];
             const filteredTasks = response['tasks'];
@@ -160,7 +161,7 @@ class BankPage extends React.Component {
         $.post("/plugins/problems_bank/api/bank_courses", {"course_id": courseId}, (data) => {
             this.updateBankCoursesAsync();
             this.updateAvailableCoursesAsync();
-            this.updateTasksAsync();
+            this.tasksQuery === "" ? this.updateTasksAsync() : this.updateFilteredTasksAsync(this.tasksQuery);
         }).done((data) => {
             this.setState({
                 dataAlertCourseList: {
