@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-31 16:13-0500\n"
+"POT-Creation-Date: 2020-08-31 16:54-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1780,11 +1780,29 @@ msgstr "¡Visualizar código!"
 msgid "Test"
 msgstr "Probar"
 
-#: inginious/frontend/plugins/problem_bank/index.html:7
-#: inginious/frontend/plugins/problem_bank/index.html:12
+#: inginious/frontend/plugins/problem_bank/index.html:3
+#: inginious/frontend/plugins/problem_bank/index.html:13
+#: inginious/frontend/plugins/problem_bank/index.html:18
 #: inginious/frontend/plugins/problem_bank/problem_bank_div.html:2
 msgid "Problem bank"
 msgstr "Banco de problemas"
+
+#: inginious/frontend/plugins/problem_bank/index.html:10
+#: inginious/frontend/templates/course_admin/aggregation_list.html:17
+#: inginious/frontend/templates/course_admin/classroom_edit.html:17
+#: inginious/frontend/templates/course_admin/download.html:17
+#: inginious/frontend/templates/course_admin/replay.html:17
+#: inginious/frontend/templates/course_admin/settings.html:15
+#: inginious/frontend/templates/course_admin/student_info.html:17
+#: inginious/frontend/templates/course_admin/student_list.html:15
+#: inginious/frontend/templates/course_admin/submission.html:18
+#: inginious/frontend/templates/course_admin/submissions.html:21
+#: inginious/frontend/templates/course_admin/task_edit.html:18
+#: inginious/frontend/templates/course_admin/task_info.html:18
+#: inginious/frontend/templates/course_admin/task_list.html:16
+#: inginious/frontend/templates/course_admin/teams_edit.html:17
+msgid "\"Administration\""
+msgstr "\"Administración\""
 
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:26
 msgid "Language is not available."
@@ -2969,22 +2987,6 @@ msgstr "\"Descargar las tareas enviadas\""
 #: inginious/frontend/templates/course_admin/task_list.html:71
 msgid "\"Replay submissions\""
 msgstr "\"Responder a las tareas enviadas\""
-
-#: inginious/frontend/templates/course_admin/aggregation_list.html:17
-#: inginious/frontend/templates/course_admin/classroom_edit.html:17
-#: inginious/frontend/templates/course_admin/download.html:17
-#: inginious/frontend/templates/course_admin/replay.html:17
-#: inginious/frontend/templates/course_admin/settings.html:15
-#: inginious/frontend/templates/course_admin/student_info.html:17
-#: inginious/frontend/templates/course_admin/student_list.html:15
-#: inginious/frontend/templates/course_admin/submission.html:18
-#: inginious/frontend/templates/course_admin/submissions.html:21
-#: inginious/frontend/templates/course_admin/task_edit.html:18
-#: inginious/frontend/templates/course_admin/task_info.html:18
-#: inginious/frontend/templates/course_admin/task_list.html:16
-#: inginious/frontend/templates/course_admin/teams_edit.html:17
-msgid "\"Administration\""
-msgstr "\"Administración\""
 
 #: inginious/frontend/templates/course_admin/aggregation_list.html:31
 #: inginious/frontend/templates/course_admin/teams_edit.html:8
