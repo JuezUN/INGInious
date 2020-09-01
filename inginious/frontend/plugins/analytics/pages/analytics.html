@@ -32,7 +32,7 @@ $var Navbar: $:NavbarF()
                     </label>
                     <select id="analytics_service" name="analytics_service" class="form-control">
                         <option name="all" value="" selected>$:_("All services")</option>
-                        $for key, value in services.items():
+                        $for (key, value) in services:
                             <option name="$key" value="$key">$value</option>
                     </select>
                 </div>
