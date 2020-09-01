@@ -8,14 +8,14 @@ def project_detail_user_tasks(user_tasks):
 
 def task_submissions_detail(submissions):
     return [{
-        "grade": s["grade"],
-        "username": s["username"],
-        "id": str(s["_id"]),
-        "status": s["status"],
-        "submitted_on": str(s["submitted_on"]),
-        "summary_result": s["custom"]["custom_summary_result"]
+        "grade": submission["grade"],
+        "username": submission["username"],
+        "id": str(submission["_id"]),
+        "status": submission["status"],
+        "submitted_on": str(submission["submitted_on"]),
+        "summary_result": submission["custom"]["custom_summary_result"]
 
-    } for s in submissions]
+    } for submission in submissions]
 
 
 def project_submission(submission):

@@ -7,11 +7,14 @@ class BestSubmissionsByVerdictApi(AdminApi):
 
     def get_best_statistics_by_verdict(self, course):
         course_id = course.get_id()
+        admins = list(set(course.get_staff() + self.user_manager._superadmins))
+
         best_statistics_by_verdict = self.database.user_tasks.aggregate([
             {
                 "$match":
                     {
-                        "courseid": course_id
+                        "courseid": course_id,
+                        "username": {"$nin": admins}
                     }
             },
             {

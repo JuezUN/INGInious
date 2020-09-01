@@ -6,9 +6,20 @@ from .utils import project_detail_user_tasks
 
 
 class GradeDistributionDetailsApi(AdminApi):
-    def _compute_details(self, course_id, task_id):
+    def _compute_details(self, course, task_id):
+        course_id = course.get_id()
+        admins = list(set(course.get_staff() + self.user_manager._superadmins))
+
         user_tasks = self.database.user_tasks.aggregate([
-            {"$match": {"$and": [{"courseid": course_id}, {"taskid": task_id}]}},
+            {
+                "$match": {
+                    "$and": [
+                        {"courseid": course_id},
+                        {"taskid": task_id},
+                        {"username": {"$nin": admins}}
+                    ]
+                }
+            },
             {
                 "$lookup": {
                     "from": "submissions",
@@ -38,10 +49,10 @@ class GradeDistributionDetailsApi(AdminApi):
         parameters = web.input()
 
         course_id = self.get_mandatory_parameter(parameters, 'course_id')
-        self.get_course_and_check_rights(course_id)
+        course = self.get_course_and_check_rights(course_id)
 
         task_id = self.get_mandatory_parameter(parameters, 'task_id')
 
-        submissions = self._compute_details(course_id, task_id)
+        submissions = self._compute_details(course, task_id)
 
         return 200, submissions
