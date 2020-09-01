@@ -21,12 +21,8 @@ jQuery(document).ready(function () {
     }
 
     function updatePageIcon(imagePath) {
+        $('link[rel="shortcut icon"]').attr('href', imagePath);
         $('link[rel="icon"]').attr('href', imagePath);
-    }
-
-    function updateTitle() {
-        let title = document.title.split("|");
-        document.title = title[0] + " |  UNCode";
     }
 
     function updateTemplate() {
@@ -35,7 +31,6 @@ jQuery(document).ready(function () {
         updateNavbarLogo(imagePath);
         updatePageIcon(imagePath);
         updateFooter();
-        updateTitle();
     }
 
     function addTaskContextTemplate() {
@@ -150,6 +145,7 @@ jQuery(document).ready(function () {
             }
         }
     }
+
     updateTemplate();
     addTaskContextTemplate();
     addTaskContextHelp();
