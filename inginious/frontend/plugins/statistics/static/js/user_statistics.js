@@ -66,7 +66,13 @@ const UserTrialsAndBestGradeStatistic = (function () {
             xaxis: {title: 'Task'},
             yaxis: {title: 'Grade', range: [-10, 110]},
             margin: {t: 20},
-            hovermode: 'closest'
+            hovermode: 'closest',
+            legend: {
+                font: {
+                    size: 10,
+                },
+                itemsizing: 'constant'
+            },
         };
         Plotly.purge(this.div_id);
         Plotly.plot(this.div_id, data, layout, {showLink: false});

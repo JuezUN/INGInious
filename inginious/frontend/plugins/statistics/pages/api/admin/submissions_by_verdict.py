@@ -7,13 +7,22 @@ class SubmissionsByVerdictApi(AdminApi):
 
     def get_statistics_by_verdict(self, course):
         course_id = course.get_id()
+        admins = list(set(course.get_staff() + self.user_manager._superadmins))
+
         statistics_by_verdict = self.database.submissions.aggregate([
-            {"$match": {"courseid": course_id, "custom.custom_summary_result": {"$ne": None}}},
+            {
+                "$match": {
+                    "courseid": course_id,
+                    "custom.custom_summary_result": {"$ne": None},
+                    "username": {"$nin": admins},
+                }
+            },
             {
                 "$group": {
-                    "_id": {"summary_result": "$custom.custom_summary_result",
-                            "task_id": "$taskid"
-                            },
+                    "_id": {
+                        "summary_result": "$custom.custom_summary_result",
+                        "task_id": "$taskid"
+                    },
                     "count": {"$sum": 1}
                 }
             },

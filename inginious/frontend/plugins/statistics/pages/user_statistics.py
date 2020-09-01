@@ -6,7 +6,7 @@ class UserStatisticsPage(INGIniousAuthPage):
     def GET_AUTH(self, course_id):
 
         self.template_helper.add_javascript("https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.6/papaparse.min.js")
-        self.template_helper.add_javascript("https://cdn.plot.ly/plotly-1.30.0.min.js")
+        self.template_helper.add_javascript("https://cdn.plot.ly/plotly-latest.min.js")
         if get_use_minified():
             self.template_helper.add_javascript("/statistics/static/js/user_statistics.min.js")
             self.template_helper.add_css("/statistics/static/css/statistics.min.css")
@@ -15,10 +15,11 @@ class UserStatisticsPage(INGIniousAuthPage):
             self.template_helper.add_javascript("/statistics/static/js/user_statistics.js")
             self.template_helper.add_css("/statistics/static/css/statistics.css")
 
+        course = self.course_factory.get_course(course_id)
         return (
             self.template_helper
                 .get_custom_renderer(base_renderer_path())
-                .user_statistics(course_id)
+                .user_statistics(course)
         )
 
 

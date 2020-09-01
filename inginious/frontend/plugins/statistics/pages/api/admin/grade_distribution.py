@@ -6,10 +6,13 @@ from .admin_api import AdminApi
 
 
 class GradeDistributionApi(AdminApi):
-    def _compute_grade_distribution_statistics(self, course_id):
+    def _compute_grade_distribution_statistics(self, course):
+        course_id = course.get_id()
+        admins = list(set(course.get_staff() + self.user_manager._superadmins))
+
         all_grades = self.database.user_tasks.find(
-            {"courseid": course_id},
-            {"taskid": 1, "grade": 1, "username": 1}
+            {"courseid": course_id, "username": {"$nin": admins}},
+            {"taskid": 1, "grade": 1, "username": 1},
         )
 
         grouped_grades = collections.defaultdict(list)
@@ -26,7 +29,7 @@ class GradeDistributionApi(AdminApi):
         course_id = self.get_mandatory_parameter(parameters, 'course_id')
         course = self.get_course_and_check_rights(course_id)
 
-        grade_distribution_statistics = self._compute_grade_distribution_statistics(course_id)
+        grade_distribution_statistics = self._compute_grade_distribution_statistics(course)
         statistics_by_grade_distribution = self.convert_task_dict_to_sorted_list(course, grade_distribution_statistics,
                                                                                  'grades', include_all_tasks=True)
         sorted_tasks = sorted(statistics_by_grade_distribution,
