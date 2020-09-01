@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 #
-# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
+# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
 # more information about the licensing of this file.
+
 import hashlib
 import tarfile
 import mimetypes
 import urllib.request, urllib.parse, urllib.error
 import tempfile
-import copy
 import web
 from datetime import datetime
 
-from inginious.frontend.accessible_time import AccessibleTime
 from inginious.frontend.parsable_text import ParsableText
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from inginious.frontend.plugins.plagiarism.batch_manager import BatchManager
@@ -36,26 +35,27 @@ class PlagiarismPage(INGIniousAdminPage):
         try:
             data = web.input()
             new_data['name'] = data['name']
-            new_data['lang'] = data.get('lang','c/c++')
+            new_data['lang'] = data.get('lang', 'c/c++')
 
         except:
             errors.append('User returned an invalid form.')
 
         if len(errors) == 0:
             errors = None
-            course, _ = self.get_course_and_check_rights(courseid, allow_all_staff=False)  # don't forget to reload the modified course
+            course, _ = self.get_course_and_check_rights(courseid,
+                                                         allow_all_staff=False)  # don't forget to reload the modified course
 
         return self.page(course, errors, errors is None)
 
     def page(self, course, errors=None, saved=False):
         """ Get all data and display the page """
-        self.template_helper.add_javascript(web.ctx.homepath + '/static/webapp/js/selectize.min.js', "header")
-        self.template_helper.add_css(web.ctx.homepath + '/static/webapp/css/selectize.bootstrap3.css')
-        self.template_helper.add_javascript(web.ctx.homepath + '/static/webapp/js/pace.min.js', "header")
-        self.template_helper.add_css(web.ctx.homepath + '/static/webapp/css/pace-theme-center-radar.css')
+        # self.template_helper.add_javascript(web.ctx.homepath + '/static/webapp/js/selectize.min.js', "header")
+        # self.template_helper.add_css(web.ctx.homepath + '/static/webapp/css/selectize.bootstrap3.css')
+        # self.template_helper.add_javascript(web.ctx.homepath + '/static/webapp/js/pace.min.js', "header")
+        # self.template_helper.add_css(web.ctx.homepath + '/static/webapp/css/pace-theme-center-radar.css')
         problems = [self.task_factory.get_task(course, x) for x in
                     course.get_tasks()]
-        renderer = self.template_helper.get_custom_renderer('frontend/plugins/plagiarism')
+        renderer = self.template_helper.get_custom_renderer('frontend/plugins/plagiarism/templates')
         language = self.user_manager.session_language()
         return renderer.plagiarism(course, problems, errors, saved, language)
 
@@ -98,7 +98,6 @@ class CourseBatchOperations(INGIniousAdminPage):
             operations.append(ne)
         operations = sorted(operations, key=(lambda o: o["submitted_on"]), reverse=True)
 
-
         operations_grouped = []
 
         grouped_entries = self.batch_manager.get_all_grouped_batch_jobs_for_course(courseid)
@@ -112,10 +111,10 @@ class CourseBatchOperations(INGIniousAdminPage):
                 names.append(entry[0])
                 grouped_entries.append(entry)
 
-        for name,hash,subm in grouped_entries:
+        for name, hash, subm in grouped_entries:
             ne = {"name": name,
                   "hash": hash,
-                  "submitted_on":subm}
+                  "submitted_on": subm}
             operations_grouped.append(ne)
         operations_grouped = sorted(operations_grouped, key=(lambda o: o["submitted_on"]), reverse=True)
         renderer = self.template_helper.get_custom_renderer('frontend/plugins/plagiarism')
@@ -158,12 +157,15 @@ class GroupedListPage(INGIniousAdminPage):
         renderer = self.template_helper.get_custom_renderer('frontend/plugins/plagiarism')
         return renderer.grouped_batch(course, operations)
 
+
 class CourseBatchJobCreate(INGIniousAdminPage):
     """ Creates new batch jobs """
+
     def __init__(self):
         super().__init__()
-        self.contest_manager = ContestManager(self.user_manager, self.database, self.course_factory, self.template_helper, 
-        self.template_helper, None)
+        self.contest_manager = ContestManager(self.user_manager, self.database, self.course_factory,
+                                              self.template_helper,
+                                              self.template_helper, None)
 
     @property
     def batch_manager(self) -> BatchManager:
@@ -172,44 +174,50 @@ class CourseBatchJobCreate(INGIniousAdminPage):
 
     def GET_AUTH(self, courseid):  # pylint: disable=arguments-differ
         """ GET request """
-        course, container_title, container_description, container_args, container_contest_args = self.get_basic_info(courseid)
+        course, container_title, container_description, container_args, container_contest_args = self.get_basic_info(
+            courseid)
         return self.page(course, container_title, container_description, container_args, container_contest_args)
 
     def POST_AUTH(self, courseid):  # pylint: disable=arguments-differ
-        """ POST request """        
-        course, container_title, container_description, container_args, container_contest_args = self.get_basic_info(courseid)
+        """ POST request """
+        course, container_title, container_description, container_args, container_contest_args = self.get_basic_info(
+            courseid)
         errors = []
 
         new_data = {}
         try:
             data = web.input()
             new_data['name'] = data['name']
-            new_data['lang'] = data.get('lang','c/c++')
+            new_data['lang'] = data.get('lang', 'c/c++')
         except:
             print("Wrong")
         # Verify that we have the right keys
         try:
             container_all = container_args.copy()
             container_all.update(container_contest_args)
-            file_args = {key: {} for key in container_all if key != "submissions" and key != "course" and container_all[key]["type"] == "file"}
+            file_args = {key: {} for key in container_all if
+                         key != "submissions" and key != "course" and container_all[key]["type"] == "file"}
 
             batch_input = web.input(**file_args)
-            #web.debug(batch_input)
+            # web.debug(batch_input)
             is_single = "single_problem" in batch_input
             for key in container_all:
                 if (key != "submissions" and key != "course") or container_all[key]["type"] != "file":
                     if container_all[key]["type"] == "file":
                         batch_input[key] = batch_input[key].file.read()
         except Exception as e:
-            #web.debug(e)
+            # web.debug(e)
             errors.append("Please fill all the fields.")
 
         if len(errors) == 0:
-            #try:
+            # try:
             if "single_problem" in batch_input:
-                batch_input["real_title"] = batch_input["task"] + " - " + self.task_factory.get_task(course, batch_input["task"]).get_name(self.user_manager.session_language())
-                #web.debug(batch_input)
-                #web.debug()
+                batch_input["real_title"] = batch_input["task"] + " - " + self.task_factory.get_task(course,
+                                                                                                     batch_input[
+                                                                                                         "task"]).get_name(
+                    self.user_manager.session_language())
+                # web.debug(batch_input)
+                # web.debug()
                 self.batch_manager.add_batch_job(course, batch_input,
                                                  self.user_manager.session_username(),
                                                  self.user_manager.session_email())
@@ -221,21 +229,22 @@ class CourseBatchJobCreate(INGIniousAdminPage):
                 # web.debug(batch_input)
                 # web.debug()
                 for problem in contest_data["content"]:
-                    #web.debug(contest_data)
+                    # web.debug(contest_data)
                     batch_input["task"] = problem
                     batch_input["real_title"] = contest_data["name"] + " - " + problem
                     self.batch_manager.add_batch_job(course, batch_input,
-                                                 self.user_manager.session_username(),
-                                                 self.user_manager.session_email())
-            #except Exception as e:
-                #web.debug(e)
+                                                     self.user_manager.session_username(),
+                                                     self.user_manager.session_email())
+            # except Exception as e:
+            # web.debug(e)
 
-                #errors.append("An error occurred while starting the job")
+            # errors.append("An error occurred while starting the job")
 
         if len(errors) == 0:
             raise web.seeother('/admin/{}/plagiarism'.format(courseid))
         else:
-            return self.page(course, container_title, container_description, container_args, container_contest_args, errors)
+            return self.page(course, container_title, container_description, container_args, container_contest_args,
+                             errors)
 
     def get_basic_info(self, courseid):
         course, _ = self.get_course_and_check_rights(courseid, allow_all_staff=False)
@@ -266,18 +275,20 @@ class CourseBatchJobCreate(INGIniousAdminPage):
             "type": "text",
             "name": "Contests",
             "description": "The contest you want to check",
-            "choices": {x:y["name"] for x,y in self.contest_manager.get_all_contest_data(course).items()}
+            "choices": {x: y["name"] for x, y in self.contest_manager.get_all_contest_data(course).items()}
         }
 
         del container_contest_args["task"]
 
         for val in container_args.values():
             if "description" in val:
-                val['description'] = ParsableText(val['description'].encode('utf-8').decode("unicode_escape"), 'rst').parse()
+                val['description'] = ParsableText(val['description'].encode('utf-8').decode("unicode_escape"),
+                                                  'rst').parse()
 
         return course, container_title, container_description, container_args, container_contest_args
 
-    def page(self, course, container_title, container_description, container_args, container_contest_args, error=None, container_name="JPlag"):
+    def page(self, course, container_title, container_description, container_args, container_contest_args, error=None,
+             container_name="JPlag"):
 
         if "submissions" in container_args and container_args["submissions"]["type"] == "file":
             del container_args["submissions"]
@@ -291,7 +302,7 @@ class CourseBatchJobCreate(INGIniousAdminPage):
         renderer = self.template_helper.get_custom_renderer('frontend/plugins/plagiarism')
         language = self.user_manager.session_language()
         return renderer.batch_create(course, container_name, container_title, container_description,
-                                                                             container_args, problems, error, container_contest_args, language)
+                                     container_args, problems, error, container_contest_args, language)
 
 
 class CourseBatchJobDownload(INGIniousAdminPage):
@@ -305,7 +316,7 @@ class CourseBatchJobDownload(INGIniousAdminPage):
     def GET_AUTH(self, courseid, bid, path=""):  # pylint: disable=arguments-differ
         """ GET request """
 
-        self.get_course_and_check_rights(courseid) # simply verify rights
+        self.get_course_and_check_rights(courseid)  # simply verify rights
         batch_job = self.batch_manager.get_batch_job_status(bid)
 
         if batch_job is None:
@@ -410,13 +421,13 @@ class CourseBatchJobSummary(INGIniousAdminPage):
         renderer = self.template_helper.get_custom_renderer('frontend/plugins/plagiarism')
         language = self.user_manager.session_language()
         return renderer.batch_summary(course, bid, done, container_name, container_title,
-                                                                              container_description, submitted_on, retval, stdout, stderr, file_list, language)
+                                      container_description, submitted_on, retval, stdout, stderr, file_list, language)
 
 
-
-def add_admin_menu(course): # pylint: disable=unused-argument
+def add_admin_menu(course):  # pylint: disable=unused-argument
     """ Add a menu for the plagiarism checker in the administration """
     return ("plagiarism", "<i class='fa fa-check-circle-o fa-fw'></i>&nbsp; Plagiarism")
+
 
 def init(plugin_manager, _, client, conf):
     """
@@ -427,11 +438,12 @@ def init(plugin_manager, _, client, conf):
             - plugin_module: "inginious.frontend.plugins.plagiarism"
             - storage_path: 'path/to/storage/results'
     """
-    #page_pattern_course =  r'/admin/([^/]+)/plagiarism'
-    #plugin_manager.add_page(page_pattern_course, PlagiarismPage)
+    # page_pattern_course =  r'/admin/([^/]+)/plagiarism'
+    # plugin_manager.add_page(page_pattern_course, PlagiarismPage)
     plugin_manager._app.batch_manager = BatchManager(client, plugin_manager.get_database(), plugin_manager._app.gridfs,
-                                                     plugin_manager.get_submission_manager(), plugin_manager.get_user_manager(),
-                                  plugin_manager._app.task_factory._filesystem.prefix)
+                                                     plugin_manager.get_submission_manager(),
+                                                     plugin_manager.get_user_manager(),
+                                                     plugin_manager._app.task_factory._filesystem.prefix)
 
     plugin_manager.add_page(r'/admin/([^/]+)/plagiarism', CourseBatchOperations)
     plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/create', CourseBatchJobCreate)
@@ -441,5 +453,3 @@ def init(plugin_manager, _, client, conf):
     plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/download/([^/]+)(/.*)', CourseBatchJobDownload)
 
     plugin_manager.add_hook('course_admin_menu', add_admin_menu)
-    #plugin_manager.add_hook('course_menu', course_menu)
-    #plugin_manager.add_hook('task_menu', task_menu)

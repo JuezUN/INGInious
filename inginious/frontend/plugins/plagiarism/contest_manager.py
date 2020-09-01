@@ -6,6 +6,7 @@ import pymongo
 import web
 import random
 
+
 class ContestManager():
 
     def __init__(self, user_manager, database, course_factory, template_helper, task_factory, bank_name):
@@ -26,25 +27,26 @@ class ContestManager():
         return ret
 
     def get_all_techniques(self, courseid):
-        #problems = [self.task_factory.get_task_descriptor_content(courseid, x).get("category","") for x in
+        # problems = [self.task_factory.get_task_descriptor_content(courseid, x).get("category","") for x in
         #            self.course_factory.get_course(courseid).get_tasks()]
-        #retval = set([x for x in problems if len(x)>0])
+        # retval = set([x for x in problems if len(x)>0])
 
         retval = ["Ad hoc", "Programación dinámica", "Greedy", "Dividir y conquistar", "Recursión", "Ordenamiento"]
         return retval
 
     def get_all_structures(self, courseid):
-        #problems = [self.task_factory.get_task_descriptor_content(courseid, x).get("structure","") for x in
+        # problems = [self.task_factory.get_task_descriptor_content(courseid, x).get("structure","") for x in
         #            self.course_factory.get_course(courseid).get_tasks()]
-        #retval = set([x for x in problems if len(x) > 0])
+        # retval = set([x for x in problems if len(x) > 0])
 
-        retval = ["Lista 1D", "Pila", "Cola", "Grafo", "Diccionario", "Cola de prioridad", "Árbol binario", "Lista encadenada", "Ninguna", "Lista 2D", "Conjuntos"]
+        retval = ["Lista 1D", "Pila", "Cola", "Grafo", "Diccionario", "Cola de prioridad", "Árbol binario",
+                  "Lista encadenada", "Ninguna", "Lista 2D", "Conjuntos"]
         return retval
 
     def contest_is_enabled(self, courseid, contestid):
         course = self.course_factory.get_course(courseid)
         data = self.get_contest_data(course, contestid)
-        return data["enabled"]==True
+        return data["enabled"] == True
 
     def get_problems(self, technique, structure, difficulty, other_problems):
         problems = [(self.task_factory.get_task(self.course_factory.get_course(self.bank_name), x),
@@ -62,8 +64,8 @@ class ContestManager():
         problems = self.get_problems(technique, structure, difficulty, other_problems)
         if len(problems) < quantity:
             raise Exception("Inconsistent information: There are not enough problems for this type: "
-                            "Technique:"+technique+
-                            " Difficulty:"+str(difficulty))
+                            "Technique:" + technique +
+                            " Difficulty:" + str(difficulty))
         retval = random.sample(problems, quantity)
         return retval
 
@@ -78,7 +80,6 @@ class ContestManager():
             problems.extend(retval)
         return problems
 
-
     def get_all_contest_data(self, course):
         contests = course.get_descriptor().get('contest', {})
         scorebs = {i: val for i, val in enumerate(contests)}
@@ -88,12 +89,13 @@ class ContestManager():
 
     def add_headers(self):
         self.template_helper.add_css(web.ctx.homepath + '/static/webapp/plugins/contests/scoreboard.css')
-        self.template_helper.add_javascript(web.ctx.homepath + '/static/webapp/plugins/contests/jquery.countdown.min.js', "header")
+        self.template_helper.add_javascript(
+            web.ctx.homepath + '/static/webapp/plugins/contests/jquery.countdown.min.js', "header")
         self.template_helper.add_javascript(web.ctx.homepath + '/static/webapp/plugins/contests/contests.js', "header")
 
     def delete_contest(self, course, contestid):
         course_content = self.course_factory.get_course_descriptor_content(course)
-        if len(course_content["contest"])>int(contestid):
+        if len(course_content["contest"]) > int(contestid):
             del course_content["contest"][int(contestid)]
             self.course_factory.update_course_descriptor_content(course, course_content)
             self.database.clarifications.delete_many({"course": course, "contest": contestid})
@@ -109,27 +111,27 @@ class ContestManager():
 
     def get_admin_pending_clarifications(self, courseid):
         return self.database.clarifications.find(
-            ({"course": courseid, "answered_by" : -1}))
+            ({"course": courseid, "answered_by": -1}))
 
     def get_admin_pending_clarifications_by_contest(self, courseid, contestid):
         return self.database.clarifications.find(
-            ({"course": courseid, "answered_by" : -1, "contest": str(contestid)}))
+            ({"course": courseid, "answered_by": -1, "contest": str(contestid)}))
 
     def get_contestant_pending_clarifications_by_contest(self, courseid, contestid):
         username = self.user_manager.session_username()
         web.debug(courseid, contestid)
         result = self.database.clarifications.find(
             ({
-                "$or":  [
-                            {"to": username},
-                            {"to": "*"},
-                            {"from": username}
-                        ],
+                "$or": [
+                    {"to": username},
+                    {"to": "*"},
+                    {"from": username}
+                ],
                 "course": courseid,
-                "answered_by" : {"$ne": -1},
+                "answered_by": {"$ne": -1},
                 "contest": str(contestid)
             }))
-        result = list([x for x in result if username not in x.get('seen_by',[])])
+        result = list([x for x in result if username not in x.get('seen_by', [])])
         web.debug(list(result))
         return result
 
@@ -139,7 +141,7 @@ class ContestManager():
         contestid = max([i for i, val in enumerate(contests)], default=0)
         return contestid
 
-    def get_data(self, courseid, contestid, all_ranks=False, allowed_users = []):
+    def get_data(self, courseid, contestid, all_ranks=False, allowed_users=[]):
         course = self.course_factory.get_course(courseid)
         contest_data = self.get_contest_data(course, contestid)
         if not contest_data['enabled']:
@@ -156,26 +158,29 @@ class ContestManager():
 
         db_results = self.database.submissions.find(
             {'$or': [{
-            "username": {"$in": users},
-            "courseid": courseid,
-            "submitted_on": {"$gte": start, "$lt": blackout},
-            "status": "error",
-            "result": {'$in': ["timeout", "overflow"]}},
-            {
-            "username": {"$in": users},
-            "courseid": courseid,
-            "submitted_on": {"$gte": start, "$lt": blackout},
-            "status": "done"}]},
+                "username": {"$in": users},
+                "courseid": courseid,
+                "submitted_on": {"$gte": start, "$lt": blackout},
+                "status": "error",
+                "result": {'$in': ["timeout", "overflow"]}},
+                {
+                    "username": {"$in": users},
+                    "courseid": courseid,
+                    "submitted_on": {"$gte": start, "$lt": blackout},
+                    "status": "done"}]},
             {"username": True, "_id": False, "taskid": True, "result": True, "submitted_on": True, "text": True}).sort(
             [("submitted_on", pymongo.ASCENDING)])
 
         task_status = {taskid: {"status": "NA", "tries": 0} for taskid in tasks}
         results = {
-        username: {"flag": self.user_manager.get_user_flag(username), "realname": self.user_manager.get_user_realname(username), "name": username, "tasks": copy.deepcopy(task_status)} for
-        username in users}
+            username: {"flag": self.user_manager.get_user_flag(username),
+                       "realname": self.user_manager.get_user_realname(username), "name": username,
+                       "tasks": copy.deepcopy(task_status)} for
+            username in users}
         activity = []
         contest_name = contest_data["name"]
-        conversor = {'AC': 'Accepted', 'ACF': 'Accepted', 'WA': 'Wrong Answer', 'TLE': 'Time Limit Exceed', 'RE': 'Runtime Error', 'OL': 'Output Limit'};
+        conversor = {'AC': 'Accepted', 'ACF': 'Accepted', 'WA': 'Wrong Answer', 'TLE': 'Time Limit Exceed',
+                     'RE': 'Runtime Error', 'OL': 'Output Limit'};
 
         # Compute stats for each submission
         task_succeeded = {taskid: False for taskid in tasks}
@@ -215,12 +220,12 @@ class ContestManager():
                         status["tries"] += 1
                     else:  # other internal error
                         continue
-                    if allowed_users!=[]:
+                    if allowed_users != []:
                         if results[username]["name"] in allowed_users:
                             activity.append({"user": results[username]["name"],
-                                         "when": submission['submitted_on'],
-                                         "result": conversor.get(status["status"], 'Failed'),
-                                         "taskid": submission['taskid']})
+                                             "when": submission['submitted_on'],
+                                             "result": conversor.get(status["status"], 'Failed'),
+                                             "taskid": submission['taskid']})
                     else:
                         activity.append({"user": results[username]["name"],
                                          "when": submission['submitted_on'],
@@ -255,8 +260,8 @@ class ContestManager():
                 else:
                     results[user]["displayed_rank"] = ""
 
-        if allowed_users!=[]:
+        if allowed_users != []:
             results = {x: results[x] for x in results.keys() if x in allowed_users}
-        tasks = {x:self.task_factory.get_task_descriptor_content(courseid, x) for x in tasks}
+        tasks = {x: self.task_factory.get_task_descriptor_content(courseid, x) for x in tasks}
         tasks = OrderedDict(sorted(tasks.items(), key=lambda t: t[0]))
         return course, start, end, blackout, tasks, results, activity, contestid, contest_name

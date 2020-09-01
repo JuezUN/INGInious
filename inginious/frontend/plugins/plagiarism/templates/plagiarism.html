@@ -1,20 +1,15 @@
 $def with (course,problems,errors,saved, language)
 
-$#
-$# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
-$# more information about the licensing of this file.
-$#
+$var title: $:course.get_name(language) - $:_("Plagiarism")
 
-$var title: $:course.get_name(language) - Settings
-
-$var Column: $:template_helper.call('course_admin_menu',course=course,current='plagiarism')
+$var Column: $:template_helper.call('course_admin_menu', course=course, current='plagiarism')
 
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(language)</a></li>
         <li><a href="$get_homepath()/admin/$course.get_id()" title="Administration" data-toggle="tooltip" data-placement="bottom">
             <i class="fa fa-user-secret"></i></a></li>
-        <li class="active"><a href="#"><i class="fa fa-cog"></i> Course settings <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#"><i class="fa fa-cog"></i> Plagiarism <span class="sr-only">(current)</span></a></li>
     </ol>
 $var Navbar: $:NavbarF()
 
@@ -69,16 +64,16 @@ $elif saved:
         <div class="col-sm-10">
             <select class="form-control" id="lang" name="lang" placeholder="Select a language...">
                 <option value="python3" selected>python3</option>
-                <option value="java17">java17</option>
-                <option value="java15">java15</option>
-                <option value="java15dm">java15dm</option>
-                <option value="java12">java12</option>
+<!--                <option value="java17">java17</option>-->
+<!--                <option value="java15">java15</option>-->
+<!--                <option value="java15dm">java15dm</option>-->
+<!--                <option value="java12">java12</option>-->
                 <option value="java11">java11</option>
                 <option value="c/c++">c/c++</option>
-                <option value="c#-1.2">c#-1.2</option>
-                <option value="char">char</option>
+<!--                <option value="c#-1.2">c#-1.2</option>-->
+<!--                <option value="char">char</option>-->
                 <option value="text">text</option>
-                <option value="scheme">scheme</option>
+<!--                <option value="scheme">scheme</option>-->
             </select>
             <small class="form-text text-muted">Language used in the submissions.</small>
         </div>

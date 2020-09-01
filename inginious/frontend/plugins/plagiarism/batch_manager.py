@@ -80,7 +80,6 @@ class BatchManager(object):
             metadata = (container_name, metadata["description"], metadata["parameters"])
         return metadata
 
-
     def add_batch_job(self, course, inputdata, launcher_name=None, send_mail=None):
         """
             Add a job in the queue and returns a batch job id.
@@ -101,7 +100,7 @@ class BatchManager(object):
             "courseid": course.get_id(),
             'container_name': inputdata["real_title"],
             "submitted_on": datetime.now(),
-            "group_name": inputdata.get("group_name",''),
+            "group_name": inputdata.get("group_name", ''),
             "group_hash": inputdata.get("group_hash", '')
         }
 
@@ -109,12 +108,12 @@ class BatchManager(object):
 
         launcher_name = launcher_name or "plugin"
 
-        #EJECUTAR JPLAG AQUÍ
+        # EJECUTAR JPLAG AQUÍ
         data = web.input()
         plagiarism = os.path.join(os.path.dirname(os.path.realpath(__file__)), "resources", "plagiarism")
         script = os.path.join(plagiarism, "script.sh")
         with tempfile.TemporaryDirectory() as tmpdirname:
-            #tmpdirname = ""
+            # tmpdirname = ""
             inp = os.path.join(tmpdirname, "input")
             os.mkdir(inp)
             out = os.path.join(tmpdirname, "output")
@@ -129,7 +128,8 @@ class BatchManager(object):
                     file.write(line)
             with open(os.path.join(inp, "task.txt"), 'w') as file:
                 file.write(inputdata["task"])
-            retval = subprocess.call(shlex.split("/bin/bash " + script+" "+tmpdirname+" "+plagiarism + " " + data.get('language', 'python3')))
+            retval = subprocess.call(shlex.split(
+                "/bin/bash " + script + " " + tmpdirname + " " + plagiarism + " " + data.get('language', 'python3')))
             try:
                 stdout = open(os.path.join(out, "jplag_stdout.txt"), "r").read()
                 stderr = open(os.path.join(out, "jplag_stderr.txt"), "r").read()
@@ -145,10 +145,10 @@ class BatchManager(object):
                 file.seek(0)
                 self._batch_job_done_callback(batch_job_id, retval, stdout, stderr, file)
 
-        #self._client.new_batch_job("JPlag", inputdata,
-                                   #lambda retval, stdout, stderr, file:
-                                   #self._batch_job_done_callback(batch_job_id, retval, stdout, stderr, file, send_mail),
-                                   #launcher_name="Frontend - {}".format(launcher_name))
+        # self._client.new_batch_job("JPlag", inputdata,
+        # lambda retval, stdout, stderr, file:
+        # self._batch_job_done_callback(batch_job_id, retval, stdout, stderr, file, send_mail),
+        # launcher_name="Frontend - {}".format(launcher_name))
 
         return batch_job_id
 
@@ -230,7 +230,6 @@ administration.""")
         """
         return list(self._database.batch_jobs.find({"courseid": course_id, "group_name": {"$ne": ""}}))
 
-
     def get_all_grouped_batch_jobs_for_course_and_hash(self, course_id, group_hash):
         """ Returns all the batch jobs for the course course id. Batch jobs are dicts in the form
             {"courseid": "...", "container_name": "...", "submitted_on":"..."} if the job is still ongoing, and
@@ -255,8 +254,6 @@ administration.""")
         if "file" in job["result"]:
             self._gridfs.delete(job["result"]["file"])
 
-
     def drop_grouped_batch_job(self, group_hash_id):
         """ Delete a **finished** batch job from the database """
         self._database.batch_jobs.remove({"group_hash": group_hash_id})
-

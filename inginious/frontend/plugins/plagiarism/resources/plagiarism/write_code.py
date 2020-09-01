@@ -3,7 +3,7 @@ import yaml
 import sys
 import os
 
-with open(os.path.join(sys.argv[1] , "submission.test"), "r") as stream:
+with open(os.path.join(sys.argv[1], "submission.test"), "r") as stream:
     try:
         info = yaml.safe_load(stream)['input']
         problem_id = filter(lambda x: '/' not in x, info.keys())
