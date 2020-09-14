@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 #
-# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
+# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
 # more information about the licensing of this file.
 
-""" Manages batch containers """
+""" Manages plagiarism checks """
 import logging
 import os
 import tempfile
@@ -16,7 +16,7 @@ from bson.objectid import ObjectId
 import web
 
 
-class BatchManager(object):
+class PlagiarismManager(object):
     """
         Manages batch jobs. Store them in DB and communicates with the inginious.backend to start them.
     """
@@ -41,7 +41,9 @@ class BatchManager(object):
         return tmpfile
 
     def _get_submissions_data(self, course, tasks, folders, eval_only):
-        """ Returns a file-like object to a tgz archive containing all the submissions made by the students for the course """
+        """
+        Returns a file-like object to a tgz archive containing all the submissions made by the students for the course
+        """
         users = self._user_manager.get_course_registered_users(course)
 
         db_args = {"courseid": course.get_id(), "username": {"$in": users}}
@@ -80,7 +82,7 @@ class BatchManager(object):
             metadata = (container_name, metadata["description"], metadata["parameters"])
         return metadata
 
-    def add_batch_job(self, course, inputdata, launcher_name=None, send_mail=None):
+    def add_plagiarism_check(self, course, inputdata):
         """
             Add a job in the queue and returns a batch job id.
             inputdata is a dict containing all the keys of get_batch_container_metadata(container_name)["parameters"] BUT the keys "course" and
@@ -89,31 +91,25 @@ class BatchManager(object):
             The values associated are file-like objects for "file" types and  strings for "text" types.
         """
 
-        # Download the course content and submissions and add them to the input
         inputdata["course"] = self._get_course_data(course)
 
         tasks = [str(inputdata["task"])]
 
-        inputdata["submissions"] = self._get_submissions_data(course, tasks, 'taskid/username', "1")
-        print(str(inputdata["submissions"]))
+        inputdata["submissions"] = self._get_submissions_data(course, tasks, 'taskid/username', False)
+
         obj = {
             "courseid": course.get_id(),
             'container_name': inputdata["real_title"],
             "submitted_on": datetime.now(),
-            "group_name": inputdata.get("group_name", ''),
-            "group_hash": inputdata.get("group_hash", '')
         }
 
         batch_job_id = self._database.batch_jobs.insert(obj)
-
-        launcher_name = launcher_name or "plugin"
 
         # EJECUTAR JPLAG AQUÍ
         data = web.input()
         plagiarism = os.path.join(os.path.dirname(os.path.realpath(__file__)), "resources", "plagiarism")
         script = os.path.join(plagiarism, "script.sh")
         with tempfile.TemporaryDirectory() as tmpdirname:
-            # tmpdirname = ""
             inp = os.path.join(tmpdirname, "input")
             os.mkdir(inp)
             out = os.path.join(tmpdirname, "output")
@@ -145,14 +141,9 @@ class BatchManager(object):
                 file.seek(0)
                 self._batch_job_done_callback(batch_job_id, retval, stdout, stderr, file)
 
-        # self._client.new_batch_job("JPlag", inputdata,
-        # lambda retval, stdout, stderr, file:
-        # self._batch_job_done_callback(batch_job_id, retval, stdout, stderr, file, send_mail),
-        # launcher_name="Frontend - {}".format(launcher_name))
-
         return batch_job_id
 
-    def _batch_job_done_callback(self, batch_job_id, retval, stdout, stderr, file, send_mail=None):
+    def _batch_job_done_callback(self, batch_job_id, retval, stdout, stderr, file):
         """ Called when the batch job with id jobid has finished.
             :param retval: an integer, the return value of the command in the container
             :param stdout: stdout of the container
@@ -173,17 +164,6 @@ class BatchManager(object):
             {"_id": batch_job_id},
             {"$set": {"result": result}}
         )
-
-        # Send a mail to user
-        if send_mail is not None:
-            try:
-                web.sendmail(web.config.smtp_sendername, send_mail, "Batch job {} finished".format(batch_job_id),
-                             """This is an automated message.
-
-The batch job you launched on UNCode is done. You can see the results on the "batch operation" page of your course
-administration.""")
-            except Exception as e:
-                self._logger.error("Cannot send mail: " + str(e))
 
     def get_batch_job_status(self, batch_job_id):
         """ Returns the batch job with id batch_job_id Batch jobs are dicts in the form
@@ -215,36 +195,6 @@ administration.""")
         """
         return list(self._database.batch_jobs.find({"courseid": course_id, "group_name": ""}))
 
-    def get_all_grouped_batch_jobs_for_course(self, course_id):
-        """ Returns all the batch jobs for the course course id. Batch jobs are dicts in the form
-            {"courseid": "...", "container_name": "...", "submitted_on":"..."} if the job is still ongoing, and
-            {"courseid": "...", "container_name": "...", "submitted_on":"...", "results": {}} if the job is done.
-            the dict result can be either:
-
-            - {"retval":0, "stdout": "...", "stderr":"...", "file":"..."}
-                if everything went well. (file is an gridfs id to a tgz file)
-            - {"retval":"...", "stdout": "...", "stderr":"..."}
-                if the container crashed (retval is an int != 0) (can also contain file, but not mandatory)
-            - {"retval":-1, "stderr": "the error message"}
-                if the container failed to start
-        """
-        return list(self._database.batch_jobs.find({"courseid": course_id, "group_name": {"$ne": ""}}))
-
-    def get_all_grouped_batch_jobs_for_course_and_hash(self, course_id, group_hash):
-        """ Returns all the batch jobs for the course course id. Batch jobs are dicts in the form
-            {"courseid": "...", "container_name": "...", "submitted_on":"..."} if the job is still ongoing, and
-            {"courseid": "...", "container_name": "...", "submitted_on":"...", "results": {}} if the job is done.
-            the dict result can be either:
-
-            - {"retval":0, "stdout": "...", "stderr":"...", "file":"..."}
-                if everything went well. (file is an gridfs id to a tgz file)
-            - {"retval":"...", "stdout": "...", "stderr":"..."}
-                if the container crashed (retval is an int != 0) (can also contain file, but not mandatory)
-            - {"retval":-1, "stderr": "the error message"}
-                if the container failed to start
-        """
-        return list(self._database.batch_jobs.find({"courseid": course_id, "group_hash": group_hash}))
-
     def drop_batch_job(self, batch_job_id):
         """ Delete a **finished** batch job from the database """
         job = self._database.batch_jobs.find_one({"_id": ObjectId(batch_job_id)})
@@ -253,7 +203,3 @@ administration.""")
         self._database.batch_jobs.remove({"_id": ObjectId(batch_job_id)})
         if "file" in job["result"]:
             self._gridfs.delete(job["result"]["file"])
-
-    def drop_grouped_batch_job(self, group_hash_id):
-        """ Delete a **finished** batch job from the database """
-        self._database.batch_jobs.remove({"group_hash": group_hash_id})
