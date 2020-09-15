@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-09-15 00:22-0500\n"
+"POT-Creation-Date: 2020-09-15 00:39-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -3966,7 +3966,7 @@ msgstr "Autor"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:53
 msgid "LTI task URL"
-msgstr ""
+msgstr "URL LTI tarea"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:59
 msgid "Grade weight (in comparison to other tasks)"
