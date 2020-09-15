@@ -111,7 +111,7 @@ function runCustomTest(inputId) {
         })
     } else if (is_lti()){
         taskForm.set("courseid", getCourseId());
-        taskForm.set("taskid", getTaskIdFromUrl());
+        taskForm.set("taskid", getTaskId());
         apiCustomInputRequest(inputId, taskForm);
     }
     $.post('/api/analytics/', {
