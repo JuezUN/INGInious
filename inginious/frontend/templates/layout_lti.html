@@ -16,7 +16,7 @@ $#
     <link rel="icon" href="$get_homepath(True)/static/icons/favicon.ico">
     <link rel="mask-icon" href="$get_homepath(True)/static/icons/wb.svg" color="#5E932E">
 
-    <title>INGInious - $content.title</title>
+    <title>UNCode - $content.title</title>
 
     <!-- Bootstrap -->
     <link href="$get_homepath(True)/static/css/bootstrap.min.css" rel="stylesheet">
@@ -81,6 +81,7 @@ $#
 
 <body role="document">
 $:template_helper.call('additional_body_html')
+$:template_helper.call('body_header', template_helper=template_helper)
 <div id="wrapper">
     <div id="main_container" class="container-fluid" role="main">
         <div id="content" class="col-xs-12">
@@ -106,7 +107,7 @@ $:template_helper.call('additional_body_html')
                 </div>
             </div>
     </div>
-
+    $:template_helper.call('body_footer', template_helper=template_helper)
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">

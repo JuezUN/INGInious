@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-09-14 22:51-0500\n"
+"POT-Creation-Date: 2020-09-15 00:22-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -2290,7 +2290,7 @@ msgstr "Registrarse"
 msgid "UNCode is distributed under AGPL license"
 msgstr "UNCode sigue la especificación de la licencia AGPL"
 
-#: inginious/frontend/templates/layout_lti.html:89
+#: inginious/frontend/templates/layout_lti.html:90
 msgid ""
 "Powered by <a href=\"http://www.inginious.org\" "
 "target=\"_blank\">UNCode</a>, a free and open-source grading tool."
@@ -2343,11 +2343,17 @@ msgstr "Identificadores del servicio:"
 msgid "Bind my account"
 msgstr "Crea enlace con mi cuenta"
 
+#: inginious/frontend/templates/lti_login.html:8
+msgid "Login"
+msgstr "Conectarse"
+
 #: inginious/frontend/templates/lti_login.html:16
 msgid ""
 "<h2 class=\"text-justify\">Hello!<br/><small>Welcome on the UNCode "
 "platform.</small></h2>"
 msgstr ""
+"<h2 class=\"text-justify\">!Hola!<br/><small>Bienvenido a la plataforma "
+"UNCode.</small></h2>"
 
 #: inginious/frontend/templates/lti_login.html:25
 msgid ""
