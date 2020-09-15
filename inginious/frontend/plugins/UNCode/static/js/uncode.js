@@ -62,6 +62,22 @@ jQuery(document).ready(function () {
         taskAlert.before(legendModalButton);
     }
 
+    function updateUNCodeURL() {
+        const anchor = $('a[href="http://www.inginious.org"]');
+        if (anchor !== undefined) {
+            anchor[0].href = "https://uncode.unal.edu.co";
+        }
+    }
+
+    function addHomePathLTI() {
+        try {
+            const text = $("#lti_link");
+            text.val(location.origin + text.val());
+        } catch (e) {
+
+        }
+    }
+
     function updateCourseDocumentationLinks() {
         // This section is to update link of "How to create task?" button in course administration.
         // Now redirecting to our documentation.
@@ -155,6 +171,8 @@ jQuery(document).ready(function () {
     remove_unused_subproblem_types();
     remove_unused_grader_environments();
     rewrite_task_title();
+    updateUNCodeURL();
+    addHomePathLTI();
 });
 
 this.studio_display_task_submit_message = (content, type, dismissible) => {

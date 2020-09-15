@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-31 20:27-0500\n"
+"POT-Creation-Date: 2020-09-14 22:51-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -148,7 +148,7 @@ msgid "This email address is already in use !"
 msgstr "Cette adresse email est déjà utilisée !"
 
 #: inginious/frontend/pages/register.py:106
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:107
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:108
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr "Bienvenue sur UNCode"
@@ -1114,7 +1114,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:43
 #: inginious/frontend/plugins/auth/custom_auth_form.html:29
-#: inginious/frontend/plugins/register_students/static/email_template.html:13
+#: inginious/frontend/plugins/register_students/static/email_template.html:12
 #: inginious/frontend/templates/auth.html:23
 msgid "Username"
 msgstr "Nom d'utilisateur"
@@ -1157,7 +1157,7 @@ msgid "Calendar visits"
 msgstr ""
 
 #: inginious/frontend/plugins/auth/custom_auth_form.html:32
-#: inginious/frontend/plugins/register_students/static/email_template.html:14
+#: inginious/frontend/plugins/register_students/static/email_template.html:13
 #: inginious/frontend/templates/auth.html:26
 #: inginious/frontend/templates/mycourses.html:120
 #: inginious/frontend/templates/register_button.html:31
@@ -1711,69 +1711,69 @@ msgid ""
 "            Registered students on UNCode: {1!s} out of {2!s}."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:6
+#: inginious/frontend/plugins/register_students/static/email_template.html:5
 msgid ""
 "You have been registered for the course: <strong>{course_name}</strong> "
 "at Universidad Nacional de Colombia."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:8
+#: inginious/frontend/plugins/register_students/static/email_template.html:7
 msgid "To activate your account, please click on the following link:"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:11
+#: inginious/frontend/plugins/register_students/static/email_template.html:10
 msgid ""
 "After you active the account, you can login to UNCode using next "
 "credentials:"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:16
+#: inginious/frontend/plugins/register_students/static/email_template.html:15
 msgid "Remember to change your password in 'Preferences' option."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:18
+#: inginious/frontend/plugins/register_students/static/email_template.html:17
 msgid "How to change the password?"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:20
-#: inginious/frontend/plugins/register_students/static/email_template.html:27
+#: inginious/frontend/plugins/register_students/static/email_template.html:19
+#: inginious/frontend/plugins/register_students/static/email_template.html:26
 msgid "In top nav bar, click on the option displaying your name."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:21
+#: inginious/frontend/plugins/register_students/static/email_template.html:20
 msgid "Click on 'Preferences' option."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:22
+#: inginious/frontend/plugins/register_students/static/email_template.html:21
 msgid ""
 "Now you can change your password setting your current password and the "
 "new password."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:25
+#: inginious/frontend/plugins/register_students/static/email_template.html:24
 msgid "How to authenticate using Google Authentication method?"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:28
+#: inginious/frontend/plugins/register_students/static/email_template.html:27
 msgid ""
 "Click on 'Preferences' option, this will display a page with a menu in "
 "the right side. Click on the 'Authentication binding' option."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:29
+#: inginious/frontend/plugins/register_students/static/email_template.html:28
 msgid ""
 "To add the Google Authentication method, select 'Google' then click on "
 "'Add new binding' button."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:30
+#: inginious/frontend/plugins/register_students/static/email_template.html:29
 msgid ""
 "After adding Google Authentication you can log in to UNCode using either "
 "the normal Authentication (username and password) or Google "
 "Authentication."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:34
+#: inginious/frontend/plugins/register_students/static/email_template.html:31
 msgid "Code and learn!"
 msgstr ""
 
@@ -2147,7 +2147,7 @@ msgstr "S'enregistrer"
 msgid "UNCode is distributed under AGPL license"
 msgstr "UNCode est distribué sous licence AGPL"
 
-#: inginious/frontend/templates/layout_lti.html:88
+#: inginious/frontend/templates/layout_lti.html:89
 msgid ""
 "Powered by <a href=\"http://www.inginious.org\" "
 "target=\"_blank\">UNCode</a>, a free and open-source grading tool."
@@ -2496,7 +2496,7 @@ msgstr "Nombre d'essais"
 msgid "Submission limit"
 msgstr "Limite de soumission"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:102
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:109
 #: inginious/frontend/templates/task.html:70
 msgid "No limitation"
 msgstr "Pas de limite"
@@ -2562,12 +2562,12 @@ msgstr "Équipe"
 msgid "For evaluation"
 msgstr "Pour évaluation"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:141
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:148
 #: inginious/frontend/templates/task.html:155
 msgid "Last submission"
 msgstr "Dernière soumission"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:135
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:142
 #: inginious/frontend/templates/task.html:157
 msgid "Best submission"
 msgstr "Meilleure soumission"
@@ -3577,7 +3577,7 @@ msgstr "Statistiques des étiquettes"
 msgid "Tag"
 msgstr "Marqueur"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:82
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:89
 #: inginious/frontend/templates/course_admin/submissions.html:291
 msgid "All submissions"
 msgstr "Toutes les soumissions"
@@ -3805,73 +3805,77 @@ msgstr "Type de fichier"
 msgid "Author"
 msgstr "Auteur"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:52
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:53
+msgid "LTI task URL"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:59
 msgid "Grade weight (in comparison to other tasks)"
 msgstr "Poids de la note (par rapport aux autres exercices)"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:58
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:65
 msgid "Submission mode"
 msgstr "Mode de soumission"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:64
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:71
 msgid "Individually"
 msgstr "Indivuellement"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:70
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:77
 msgid "Per group/team"
 msgstr "En groupe/équipe"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:75
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:82
 msgid "Submission storage"
 msgstr "Stockage des soumissions"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:91
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:98
 msgid "Only the last {nbr_submissions} submissions"
 msgstr "Seulement les {nbr_submissions} dernières soumissions"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:98
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:105
 msgid "Submission limits"
 msgstr "Limite de soumission"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:111
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:118
 msgid "Hard limit: {nbr_submissions} submission(s)"
 msgstr "Limite dure: {nbr_submissions} soumission(s)"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:122
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:129
 msgid "Soft limit: {nbr_submissions} submission(s) every {nbr_hours} hour(s)"
 msgstr ""
 "Limite douce: {nbr_submissions} soumission(s) toutes les {nbr_hours} "
 "heure(s)"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:129
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:136
 msgid "Evaluation submission"
 msgstr "Soumission pour évaluation"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:147
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:154
 msgid "Student choice"
 msgstr "Choisie par l'étudiant"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:152
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:159
 msgid "Accessible"
 msgstr "Accessible"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:158
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:165
 msgid "Never"
 msgstr "Jamais"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:164
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:171
 msgid "Always"
 msgstr "Toujours"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:173
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:180
 msgid "Custom, from: {} to: {}"
 msgstr "Personnalisé, de: {} jusqu'à: {}"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:201
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:208
 msgid "Random inputs"
 msgstr "Paramètres aléatoires"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:212
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:219
 msgid "Regenerate input random"
 msgstr ""
 
