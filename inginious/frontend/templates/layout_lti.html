@@ -81,6 +81,7 @@ $#
 
 <body role="document">
 $:template_helper.call('additional_body_html')
+$:template_helper.call('body_header', template_helper=template_helper)
 <div id="wrapper">
     <div id="main_container" class="container-fluid" role="main">
         <div id="content" class="col-xs-12">
@@ -114,6 +115,7 @@ $:template_helper.call('additional_body_html')
         var height = Math.max($$('body').height(), Math.max($$('#lti-sidebar-inner').height(), $$('body').parent().height()));
         $$('#content').css("min-height", height);
     </script>
+    $:template_helper.call('javascript_footer')
 </div>
 </body>
 </html>
