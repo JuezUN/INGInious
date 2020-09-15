@@ -106,7 +106,7 @@ $:template_helper.call('additional_body_html')
                 </div>
             </div>
     </div>
-    $:template_helper.call('body_footer', template_helper=template_helper)
+
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
@@ -114,6 +114,7 @@ $:template_helper.call('additional_body_html')
         var height = Math.max($$('body').height(), Math.max($$('#lti-sidebar-inner').height(), $$('body').parent().height()));
         $$('#content').css("min-height", height);
     </script>
+    $:template_helper.call('javascript_footer')
 </div>
 </body>
 </html>
