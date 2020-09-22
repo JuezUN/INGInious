@@ -1,4 +1,5 @@
 import os
+from collections import OrderedDict
 
 from inginious.common.tasks_problems import FileProblem
 from inginious.frontend.task_problems import DisplayableFileProblem
@@ -42,6 +43,7 @@ class DisplayableCodeFileMultipleLanguagesProblem(CodeFileMultipleLanguagesProbl
 
     def show_input(self, template_helper, language, seed):
         allowed_languages = {language: get_all_available_languages()[language] for language in self._languages}
+        allowed_languages = OrderedDict([(lang, allowed_languages[lang]) for lang in sorted(allowed_languages.keys())])
         dropdown_id = self.get_id() + "/language"
         custom_input_id = self.get_id() + "/input"
 
@@ -59,7 +61,7 @@ class DisplayableCodeFileMultipleLanguagesProblem(CodeFileMultipleLanguagesProbl
         tools_render = ""
         if get_show_tools():
             tools_render = str(
-                renderer.tools(self.get_id(), "plain", custom_input_id, self.get_type(), "python_tutor_url",
-                               "python_tutor_url_py2", "linter_url", course_id=self.get_task().get_course_id()))
+                renderer.tools(self.get_id(), "plain", custom_input_id, self.get_type(), None, None,
+                               course_id=self.get_task().get_course_id()))
 
         return multiple_language_render + standard_code_problem_render + tools_render
