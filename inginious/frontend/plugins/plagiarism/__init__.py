@@ -8,47 +8,16 @@ import mimetypes
 import urllib.request, urllib.parse, urllib.error
 import tempfile
 import web
+import os
 
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
+from inginious.frontend.plugins.utils import create_static_resource_page
 from .plagiarism_manager import PlagiarismManager
 from .pages.plagiarism import PlagiarismPage
 from .pages.plagiarism_create import PlagiarismCreate
+from .pages.plagiarism_summary import CoursePlagiarismJobSummary
 
-
-class GroupedListPage(INGIniousAdminPage):
-    """ Batch operation management """
-
-    @property
-    def batch_manager(self) -> PlagiarismManager:
-        """ Returns the batch manager singleton """
-        return self.app.plagiarism_manager
-
-    def GET_AUTH(self, courseid, hash):  # pylint: disable=arguments-differ
-        """ GET request """
-
-        course, _ = self.get_course_and_check_rights(courseid)
-
-        web_input = web.input()
-        if "drop" in web_input:  # delete an old batch job
-            try:
-                self.batch_manager.drop_batch_job(web_input["drop"])
-            except:
-                pass
-
-        operations = []
-        for entry in list(self.batch_manager.get_all_grouped_batch_jobs_for_course_and_hash(courseid, hash)):
-            ne = {"container_name": entry["container_name"],
-                  "bid": str(entry["_id"]),
-                  "submitted_on": entry["submitted_on"]}
-            if "result" in entry:
-                ne["status"] = "ok" if entry["result"]["retval"] == 0 else "ko"
-            else:
-                ne["status"] = "waiting"
-            operations.append(ne)
-        operations = sorted(operations, key=(lambda o: o["submitted_on"]), reverse=True)
-
-        renderer = self.template_helper.get_custom_renderer('frontend/plugins/plagiarism')
-        return renderer.grouped_batch(course, operations)
+_STATIC_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "static")
 
 
 class CourseBatchJobDownload(INGIniousAdminPage):
@@ -63,7 +32,7 @@ class CourseBatchJobDownload(INGIniousAdminPage):
         """ GET request """
 
         self.get_course_and_check_rights(courseid)  # simply verify rights
-        batch_job = self.batch_manager.get_batch_job_status(bid)
+        batch_job = self.batch_manager.get_plagiarism_job_status(bid)
 
         if batch_job is None:
             raise web.notfound()
@@ -110,66 +79,6 @@ class CourseBatchJobDownload(INGIniousAdminPage):
                 return to_dl
 
 
-class CourseBatchJobSummary(INGIniousAdminPage):
-    """ Get the summary of a batch job """
-
-    @property
-    def batch_manager(self) -> PlagiarismManager:
-        """ Returns the plugin manager singleton """
-        return self.app.plagiarism_manager
-
-    def GET_AUTH(self, courseid, bid):  # pylint: disable=arguments-differ
-        """ GET request """
-
-        course, _ = self.get_course_and_check_rights(courseid)
-        batch_job = self.batch_manager.get_batch_job_status(bid)
-
-        if batch_job is None:
-            raise web.notfound()
-
-        done = False
-        submitted_on = batch_job["submitted_on"]
-        container_name = batch_job["container_name"]
-        container_title = container_name
-        container_description = ""
-
-        file_list = None
-        retval = 0
-        stdout = ""
-        stderr = ""
-
-        try:
-            container_metadata = self.batch_manager.get_batch_container_metadata(container_name)
-            if container_metadata == (None, None, None):
-                container_title = container_metadata[0]
-                container_description = container_metadata[1]
-        except:
-            pass
-
-        if "result" in batch_job:
-            done = True
-            retval = batch_job["result"]["retval"]
-            stdout = batch_job["result"].get("stdout", "")
-            stderr = batch_job["result"].get("stderr", "")
-
-            if "file" in batch_job["result"]:
-                f = self.gridfs.get(batch_job["result"]["file"])
-                try:
-                    tar = tarfile.open(fileobj=f, mode='r:gz')
-                    file_list = set(tar.getnames()) - set([''])
-                    tar.close()
-                except:
-                    pass
-                finally:
-                    f.close()
-        file_list = list(file_list)
-        file_list.sort()
-        renderer = self.template_helper.get_custom_renderer('frontend/plugins/plagiarism')
-        language = self.user_manager.session_language()
-        return renderer.batch_summary(course, bid, done, container_name, container_title,
-                                      container_description, submitted_on, retval, stdout, stderr, file_list, language)
-
-
 def add_admin_menu(course):  # pylint: disable=unused-argument
     """ Add a menu for the plagiarism checker in the administration """
     return "plagiarism", "<i class='fa fa-check-circle-o fa-fw'></i>&nbsp; Plagiarism"
@@ -184,7 +93,9 @@ def init(plugin_manager, _, client, conf):
             - plugin_module: "inginious.frontend.plugins.plagiarism"
             - storage_path: 'path/to/storage/results'
     """
-    # page_pattern_course =  r'/admin/([^/]+)/plagiarism'
+    plugin_manager.add_page(r'/plagiarism/static/(.*)', create_static_resource_page(_STATIC_FOLDER_PATH))
+
+    # TODO: Rather than adding to the app, create a singleton like code_preview?
     plugin_manager._app.plagiarism_manager = PlagiarismManager(client, plugin_manager.get_database(),
                                                                plugin_manager._app.gridfs,
                                                                plugin_manager.get_submission_manager(),
@@ -193,9 +104,11 @@ def init(plugin_manager, _, client, conf):
 
     plugin_manager.add_page(r'/admin/([^/]+)/plagiarism', PlagiarismPage)
     plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/create', PlagiarismCreate)
-    plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/summary/([^/]+)', CourseBatchJobSummary)
-    plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/grouped_summary/([^/]+)', GroupedListPage)
+    plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/summary/([^/]+)', CoursePlagiarismJobSummary)
+    # plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/grouped_summary/([^/]+)', GroupedListPage)
     plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/download/([^/]+)', CourseBatchJobDownload)
     plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/download/([^/]+)(/.*)', CourseBatchJobDownload)
+
+    plugin_manager.add_hook("css", lambda: "/plagiarism/static/css/plagiarism.css")
 
     plugin_manager.add_hook('course_admin_menu', add_admin_menu)

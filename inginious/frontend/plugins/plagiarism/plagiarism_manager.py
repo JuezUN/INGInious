@@ -8,12 +8,14 @@ import logging
 import os
 import tempfile
 import tarfile
-from datetime import datetime
 import subprocess
-import shlex
+import pymongo
+import shutil
 
+from datetime import datetime
 from bson.objectid import ObjectId
-import web
+
+from .constants import JPLAG_PATH, LANGUAGE_FILE_EXTENSION_MAP, LANGUAGE_PLAGIARISM_LANG_MAP, ALLOWED_ENVIRONMENTS
 
 
 class PlagiarismManager(object):
@@ -40,132 +42,172 @@ class PlagiarismManager(object):
         tmpfile.seek(0)
         return tmpfile
 
-    def _get_submissions_data(self, course, tasks, folders, eval_only):
+    def _get_submissions_data(self, course, task, plagiarism_language):
         """
-        Returns a file-like object to a tgz archive containing all the submissions made by the students for the course
+        Return dict of best submissions for each student. The keys are the usernames and value is the submission.
         """
         users = self._user_manager.get_course_registered_users(course)
+        task_name = task.get_name(self._user_manager.session_language())
 
-        db_args = {"courseid": course.get_id(), "username": {"$in": users}}
-        if tasks is not None:
-            db_args["taskid"] = {"$in": tasks}
-        if eval_only:
-            submissionsid = [user_task["submissionid"] for user_task in self._database.user_tasks.find(db_args)]
-            submissions = list(self._database.submissions.find({"_id": {"$in": submissionsid}}))
-        else:
-            submissions = list(self._database.submissions.find(db_args))
-        return self._submission_manager.get_submission_archive(submissions, list(reversed(folders.split('/'))), {})
+        db_args = {"courseid": course.get_id(), "status": 'done', 'taskid': task.get_id()}
 
-    def get_batch_container_metadata(self, container_name):
-        """
-            Returns the arguments needed by a particular batch container.
-            :returns: a tuple in the form
-                ("container title",
-                 "container description in restructuredtext",
-                 {"key":
-                    {
-                     "type:" "file", #or "text",
-                     "path": "path/to/file/inside/input/dir", #not mandatory in file, by default "key"
-                     "name": "name of the field", #not mandatory in file, default "key"
-                     "description": "a short description of what this field is used for", #not mandatory, default ""
-                     "custom_key1": "custom_value1",
-                     ...
-                    }
-                 }
-                )
-        """
-        if container_name not in self._client.get_batch_containers_metadata():
-            raise Exception("This batch container is not allowed to be started")
+        submissions = {}
+        for user in users:
+            db_args['username'] = user
+            user_submissions = list(self._database.submissions.find(
+                db_args,
+                projection=['_id', 'input', 'courseid', 'taskid', 'username'],
+                sort=[('grade', pymongo.ASCENDING), ('submitted_on', pymongo.ASCENDING)]))
+            for submission in user_submissions:
+                # As the submissions are ordered, look for the best submission that matches the plagiarism language.
+                try:
+                    submission = self._submission_manager.get_input_from_submission(submission)
+                except:
+                    raise Exception(
+                        _("An error occurred while retrieving submission from task {}.".format(task_name)))
+                problem_id = self._get_submission_problem_id(submission['input'])
+                type_task = submission['input'][problem_id + '/type']
+                submission_language = submission['input'][problem_id + '/language']
+                if type_task == 'notebook_file' and plagiarism_language == 'text':
+                    submissions[user] = submission
+                    break
+                elif LANGUAGE_PLAGIARISM_LANG_MAP[submission_language] == plagiarism_language:
+                    submissions[user] = submission
+                    break
 
-        metadata = self._client.get_batch_containers_metadata()[container_name]
-        if metadata != (None, None, None):
-            metadata = (container_name, metadata["description"], metadata["parameters"])
-        return metadata
+        if not submissions or len(submissions) < 2:
+            raise Exception(_(
+                "There are not enough submissions in task: {}, for the selected language. At least 2 students must have submitted to compare.".format(
+                    task_name)))
+        return submissions
 
-    def add_plagiarism_check(self, course, inputdata):
+    def _get_submission_problem_id(self, input_data):
+        problem_id = filter(lambda x: '/' not in x, input_data.keys())
+        problem_id = filter(lambda x: '@' not in x, problem_id)
+        problem_id = list(problem_id)[0]
+        return problem_id
+
+    def _generate_submission_code_file(self, input_data, path, plagiarism_language):
+        problem_id = self._get_submission_problem_id(input_data)
+        code = input_data[problem_id]
+
+        file_extension = LANGUAGE_FILE_EXTENSION_MAP[plagiarism_language]
+
+        with open(os.path.join(path, 'code.{}'.format(file_extension)), 'w') as file:
+            file.write(code)
+
+    def _generate_base_code_file(self, base_code, path, plagiarism_language):
+        file_extension = LANGUAGE_FILE_EXTENSION_MAP[plagiarism_language]
+
+        template_dir = os.path.join(path, 'template')
+        os.mkdir(template_dir)
+        file_path = os.path.join(template_dir, 'template.{}'.format(file_extension))
+        with open(file_path, 'w') as file:
+            file.write(base_code)
+
+    def _run_plagiarism(self, data):
+        plagiarism_language = LANGUAGE_PLAGIARISM_LANG_MAP[data['language']]
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            # tmp_dir = '/home/uncode/Desktop/plagiarism'
+            all_submissions_dir = os.path.join(tmp_dir, "all_submissions")
+            try:
+                os.mkdir(all_submissions_dir)
+            except:
+                shutil.rmtree(all_submissions_dir, ignore_errors=True)
+                os.mkdir(all_submissions_dir)
+
+            output_dir = os.path.join(tmp_dir, "output")
+            try:
+                os.mkdir(output_dir)
+            except:
+                shutil.rmtree(output_dir, ignore_errors=True)
+                os.mkdir(output_dir)
+
+            for user, submission in data["submissions"].items():
+                user_dir = os.path.join(all_submissions_dir, user)
+                os.mkdir(user_dir)
+
+                self._generate_submission_code_file(submission['input'], user_dir, plagiarism_language)
+
+            jplag_args = ["-s", '-l', plagiarism_language, "-r", output_dir, '-p',
+                          'cpp']
+
+            # Write base code template file
+            if data['base_code']:
+                self._generate_base_code_file(data['base_code'], all_submissions_dir, plagiarism_language)
+                jplag_args.append('-bc')
+                jplag_args.append('template')
+
+            jplag_args.append(all_submissions_dir)
+            command = ["java", '-jar', JPLAG_PATH] + jplag_args
+
+            completed_process = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            stdout = completed_process.stdout.decode()
+            stderr = completed_process.stderr.decode()
+            return_code = completed_process.returncode
+
+            with open(os.path.join(output_dir, 'jplag_stdout.txt'), 'w') as stdout_file:
+                stdout_file.write(stdout)
+            with open(os.path.join(output_dir, 'jplag_stderr.txt'), 'w') as stderr_file:
+                stderr_file.write(stderr)
+
+            if return_code != 0:
+                raise Exception(_("An error occurred while generating the plagiarism check."))
+
+            # Store results in database with gridfs
+            with tempfile.TemporaryFile() as file:
+                tar = tarfile.open(fileobj=file, mode='w:gz')
+                tar.add(output_dir, '/', True)
+                tar.close()
+                file.flush()
+                file.seek(0)
+                return return_code, stdout, stderr, self._gridfs.put(file)
+
+    def add_plagiarism_check(self, course, data):
         """
             Add a job in the queue and returns a batch job id.
-            inputdata is a dict containing all the keys of get_batch_container_metadata(container_name)["parameters"] BUT the keys "course" and
+            inputdata is a dict containing all the keys of get_plagiarism_container_metadata(container_name)["parameters"] BUT the keys "course" and
             "submission" IF their
             type is "file". (the content of the course and the submission will be automatically included by this function.)
             The values associated are file-like objects for "file" types and  strings for "text" types.
         """
+        task = data['task']
+        if task.get_environment() not in ALLOWED_ENVIRONMENTS:
+            return True, _(
+                "Task environment is not available for plagiarism check: {}. Check the task is correctly configured.".format(
+                    task.get_environment()))
 
-        inputdata["course"] = self._get_course_data(course)
+        try:
+            data["submissions"] = self._get_submissions_data(course, task,
+                                                             LANGUAGE_PLAGIARISM_LANG_MAP[data['language']])
+        except Exception as e:
+            return True, str(e)
 
-        tasks = [str(inputdata["task"])]
+        try:
+            return_code, stdout, stderr, results_file = self._run_plagiarism(data)
+            if stderr:
+                return_code = -1
+        except Exception as e:
+            return True, str(e)
 
-        inputdata["submissions"] = self._get_submissions_data(course, tasks, 'taskid/username', False)
-
-        obj = {
+        plagiarism_obj = {
+            "result": {
+                "stdout": stdout,
+                "stderr": stderr,
+                "retval": return_code,
+                'file': results_file,
+            },
             "courseid": course.get_id(),
-            'container_name': inputdata["real_title"],
+            'container_name': task.get_name(self._user_manager.session_language()),
             "submitted_on": datetime.now(),
+            "language": data['language']
         }
+        self._database.batch_jobs.insert(plagiarism_obj)
 
-        batch_job_id = self._database.batch_jobs.insert(obj)
+        return False, None
 
-        # EJECUTAR JPLAG AQUÍ
-        data = web.input()
-        plagiarism = os.path.join(os.path.dirname(os.path.realpath(__file__)), "resources", "plagiarism")
-        script = os.path.join(plagiarism, "script.sh")
-        with tempfile.TemporaryDirectory() as tmpdirname:
-            inp = os.path.join(tmpdirname, "input")
-            os.mkdir(inp)
-            out = os.path.join(tmpdirname, "output")
-            os.mkdir(out)
-            course_tgz = inputdata["course"].readlines()
-            submissions_tgz = inputdata["submissions"].readlines()
-            with open(os.path.join(inp, "course.tgz"), 'wb') as file:
-                for line in course_tgz:
-                    file.write(line)
-            with open(os.path.join(inp, "submissions.tgz"), 'wb') as file:
-                for line in submissions_tgz:
-                    file.write(line)
-            with open(os.path.join(inp, "task.txt"), 'w') as file:
-                file.write(inputdata["task"])
-            retval = subprocess.call(shlex.split(
-                "/bin/bash " + script + " " + tmpdirname + " " + plagiarism + " " + data.get('language', 'python3')))
-            try:
-                stdout = open(os.path.join(out, "jplag_stdout.txt"), "r").read()
-                stderr = open(os.path.join(out, "jplag_stderr.txt"), "r").read()
-            except:
-                stdout = "No output"
-                stderr = "No output"
-            with tempfile.TemporaryFile() as file:
-
-                tar = tarfile.open(fileobj=file, mode='w:gz')
-                tar.add(out, '/', True)
-                tar.close()
-                file.flush()
-                file.seek(0)
-                self._batch_job_done_callback(batch_job_id, retval, stdout, stderr, file)
-
-        return batch_job_id
-
-    def _batch_job_done_callback(self, batch_job_id, retval, stdout, stderr, file):
-        """ Called when the batch job with id jobid has finished.
-            :param retval: an integer, the return value of the command in the container
-            :param stdout: stdout of the container
-            :param stderr: stderr of the container
-            :param file: tgz as bytes. Can be None if retval < 0
-        """
-
-        result = {
-            "retval": retval,
-            "stdout": stdout,
-            "stderr": stderr,
-        }
-        if file is not None:
-            result["file"] = self._gridfs.put(file)
-
-        # Save submission to database
-        self._database.batch_jobs.update(
-            {"_id": batch_job_id},
-            {"$set": {"result": result}}
-        )
-
-    def get_batch_job_status(self, batch_job_id):
+    def get_plagiarism_job_status(self, batch_job_id):
         """ Returns the batch job with id batch_job_id Batch jobs are dicts in the form
             {"courseid": "...", "container_name": "..."} if the job is still ongoing, and
             {"courseid": "...", "container_name": "...", "results": {}} if the job is done.
@@ -180,7 +222,7 @@ class PlagiarismManager(object):
         """
         return self._database.batch_jobs.find_one({"_id": ObjectId(batch_job_id)})
 
-    def get_all_batch_jobs_for_course(self, course_id):
+    def get_all_plagiarism_jobs_for_course(self, course_id):
         """ Returns all the batch jobs for the course course id. Batch jobs are dicts in the form
             {"courseid": "...", "container_name": "...", "submitted_on":"..."} if the job is still ongoing, and
             {"courseid": "...", "container_name": "...", "submitted_on":"...", "results": {}} if the job is done.
@@ -193,13 +235,11 @@ class PlagiarismManager(object):
             - {"retval":-1, "stderr": "the error message"}
                 if the container failed to start
         """
-        return list(self._database.batch_jobs.find({"courseid": course_id, "group_name": ""}))
+        return list(self._database.batch_jobs.find({"courseid": course_id}))
 
-    def drop_batch_job(self, batch_job_id):
-        """ Delete a **finished** batch job from the database """
-        job = self._database.batch_jobs.find_one({"_id": ObjectId(batch_job_id)})
-        if "result" not in job:
-            raise Exception("Plagiarism check is still running, cannot delete it")
-        self._database.batch_jobs.remove({"_id": ObjectId(batch_job_id)})
-        if "file" in job["result"]:
-            self._gridfs.delete(job["result"]["file"])
+    def drop_plagiarism_check(self, check_id):
+        """ Delete a plagiarism check from database"""
+        check = self._database.batch_jobs.find_one({"_id": ObjectId(check_id)})
+        self._database.batch_jobs.remove({"_id": ObjectId(check_id)})
+        if "file" in check["result"]:
+            self._gridfs.delete(check["result"]["file"])

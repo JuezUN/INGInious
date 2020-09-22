@@ -1,20 +1,20 @@
-$def with (course, container_name, container_title, container_description, container_args, tasks, errors, language)
+$def with (course, plagiarism_languages, tasks, errors, language)
 
 $#
 $# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
 $# more information about the licensing of this file.
 $#
 
-$var title: $:course.get_name(language) - New plagiarism check
+$var title: $:course.get_name(language) - $:_("New plagiarism check")
 
 $var Column: $:template_helper.call('course_admin_menu',course=course,current='plagiarism')
 
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(language)</a></li>
-        <li><a href="$get_homepath()/admin/$course.get_id()" title="Administration" data-toggle="tooltip" data-placement="bottom">
+        <li><a href="$get_homepath()/admin/$course.get_id()" title="$:_('Administration')" data-toggle="tooltip" data-placement="bottom">
             <i class="fa fa-user-secret"></i></a></li>
-        <li><a href="$get_homepath()/admin/$course.get_id()/plagiarism" title="Plagiarism" data-toggle="tooltip" data-placement="bottom">
+        <li><a href="$get_homepath()/admin/$course.get_id()/plagiarism" title="$:_('Plagiarism')" data-toggle="tooltip" data-placement="bottom">
             <i class="fa fa-rocket"></i></a></li>
         <li class="active"><a href="#">$:_("New plagiarism check") <span class="sr-only">(current)</span></a></li>
     </ol>
@@ -26,31 +26,40 @@ $if errors is not None:
     $for e in errors:
         <div class="alert alert-danger" role="alert">$e</div>
 
+<div class="alert alert-warning" role="alert">
+    <strong>$:_("Note"):</strong> $:_("Jupyter notebook, Verilog and VHDL submissions are compared as text.")
+</div>
 <form method="post" enctype="multipart/form-data">
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="form-group">
-                <label for="args-task" class="control-label">
-                    $container_args["task"]["name"]:
+                <label for="plagiarism-task-id" class="control-label">
+                    $:_("Task to check"):
                 </label>
-                <select class="form-control" id="args-task" name="task" placeholder="Select a task...">
+                <select class="form-control" id="plagiarism-task-id" name="taskid">
                     $for task in tasks:
                         <option value="${task.get_id()}">${task.get_name(language)}</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="args-language" class="control-label">
-                    $container_args["language"]["name"]:
+                <label for="plagiarism-language" class="control-label">
+                    $:_("Language"):
                 </label>
-                <select class="form-control" id="args-language" name="language" placeholder="Select a language...">
-                    $for choice in container_args["language"]["choices"]:
-                        <option value="$choice"
-                        $if choice == 'python3':
+                <select class="form-control" id="plagiarism-language" name="language">
+                    $for key, language in plagiarism_languages.items():
+                        <option value="$key"
+                        $if key == 'python3':
                             selected
-                        >${choice}</option>
+                        >${language}</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="plagiarism-base-code" class="control-label">
+                    $:_("Basecode file"):
+                </label>
+                <input class="form-control" id="plagiarism-base-code" name="base_code" type="file">
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-rocket"></i> Launch!</button>
+        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-rocket"></i> $:_('Start!')</button>
     </div>
 </form>`
