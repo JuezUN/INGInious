@@ -4,7 +4,7 @@ from collections import OrderedDict
 JPLAG_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), "resources", "jplag.jar")
 
 LANGUAGE_FILE_EXTENSION_MAP = {
-    'c/c++': 'cpp',
+    'c/c++': 'c',
     'java17': 'java',
     'python3': 'py',
     'text': 'txt',

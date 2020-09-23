@@ -27,7 +27,7 @@ class PlagiarismCheckSummary(INGIniousAdminPage):
         created_on = plagiarism_check["submitted_on"]
         # TODO: 'container_name' is deprecated, when 'batch_jobs' collection is not longer used, update the code.
         task_name = plagiarism_check["container_name"] if 'container_name' in plagiarism_check else plagiarism_check[
-            "task_name"],
+            "task_name"]
         language = AVAILABLE_PLAGIARISM_LANGUAGES[
             plagiarism_check['language']] if 'language' in plagiarism_check else "Unknown"
         file_list = []

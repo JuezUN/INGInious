@@ -62,7 +62,7 @@ class PlagiarismManagerSingleton(object):
             user_submissions = list(self._database.submissions.find(
                 db_args,
                 projection=['_id', 'input', 'courseid', 'taskid', 'username'],
-                sort=[('grade', pymongo.ASCENDING), ('submitted_on', pymongo.ASCENDING)]))
+                sort=[('grade', pymongo.ASCENDING), ('submitted_on', pymongo.DESCENDING)]))
             for submission in user_submissions:
                 # As the submissions are ordered, look for the best submission that matches the plagiarism language.
                 try:
@@ -74,6 +74,10 @@ class PlagiarismManagerSingleton(object):
                 problem_id = self._get_submission_problem_id(submission['input'])
                 type_task = submission['input'][problem_id + '/type']
                 submission_language = submission['input'][problem_id + '/language']
+
+                # Only submissions with code_multiple_languages and notebooks are allowed.
+                if type_task not in {'notebook_file', 'code_multiple_languages'}:
+                    continue
                 if plagiarism_language == 'text' and (
                         type_task == 'notebook_file' or submission_language in {'verilog', 'vhdl'}):
                     submissions[user] = submission
@@ -106,7 +110,7 @@ class PlagiarismManagerSingleton(object):
         if plagiarism_language == 'text' and type(code) == dict:
             code = code['value'].decode('utf-8')
 
-        with open(os.path.join(directory, 'code.{}'.format(file_extension)), 'w') as file:
+        with open(os.path.join(directory, 'submission_code.{}'.format(file_extension)), 'w') as file:
             file.write(code)
 
     def _generate_base_code_file(self, base_code, directory, plagiarism_language):
@@ -248,12 +252,11 @@ class PlagiarismManagerSingleton(object):
         # TODO: Database collection 'batch_jobs' has been deprecated, new collection is 'plagiarism_checks'. As some
         #  checks might be still stored in this collection, this code is necessary remove this when this collection is
         #  not longer used.
+        plagiarism_checks = []
         if 'batch_jobs' in self._database.collection_names():
-            plagiarism_checks = list(self._database.batch_jobs.find({"courseid": course_id}))
-            if plagiarism_checks:
-                return plagiarism_checks
+            plagiarism_checks += list(self._database.batch_jobs.find({"courseid": course_id}))
 
-        return list(self._database.plagiarism_checks.find({"courseid": course_id}))
+        return plagiarism_checks + list(self._database.plagiarism_checks.find({"courseid": course_id}))
 
     def drop_plagiarism_check(self, check_id):
         """ Delete a plagiarism check from database"""
