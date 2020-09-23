@@ -6,8 +6,8 @@ from ..plagiarism_manager import PlagiarismManagerSingleton
 from ..constants import AVAILABLE_PLAGIARISM_LANGUAGES
 
 
-class CoursePlagiarismJobSummary(INGIniousAdminPage):
-    """ Get the summary of a plagiarism job """
+class PlagiarismCheckSummary(INGIniousAdminPage):
+    """ Get the summary of a plagiarism check """
 
     @property
     def plagiarism_manager(self) -> PlagiarismManagerSingleton:
@@ -24,8 +24,10 @@ class CoursePlagiarismJobSummary(INGIniousAdminPage):
             raise web.notfound()
 
         done = False
-        submitted_on = plagiarism_check["submitted_on"]
-        task_name = plagiarism_check["container_name"]
+        created_on = plagiarism_check["submitted_on"]
+        # TODO: 'container_name' is deprecated, when 'batch_jobs' collection is not longer used, update the code.
+        task_name = plagiarism_check["container_name"] if 'container_name' in plagiarism_check else plagiarism_check[
+            "task_name"],
         language = AVAILABLE_PLAGIARISM_LANGUAGES[
             plagiarism_check['language']] if 'language' in plagiarism_check else "Unknown"
         file_list = []
@@ -52,6 +54,5 @@ class CoursePlagiarismJobSummary(INGIniousAdminPage):
             file_list = list(file_list)
         file_list.sort()
         renderer = self.template_helper.get_custom_renderer('frontend/plugins/plagiarism/pages/templates')
-        # user_language = self.user_manager.session_language()
-        return renderer.plagiarism_summary(course, check_id, done, task_name, submitted_on, return_code, stdout, stderr,
-                                           file_list, language)
+        return renderer.plagiarism_check_summary(course, check_id, done, task_name, created_on, return_code, stdout,
+                                                 stderr, file_list, language)

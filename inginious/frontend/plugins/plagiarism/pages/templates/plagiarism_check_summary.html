@@ -1,4 +1,4 @@
-$def with (course, check_id, done, task_name, submitted_on, retval, stdout, stderr, file_list, language)
+$def with (course, check_id, done, task_name, created_on, retval, stdout, stderr, file_list, language)
 
 $var title: $:course.get_name(user_manager.session_language()) - $_("Summary of plagiarism check"): $task_name
 
@@ -29,8 +29,8 @@ $var Navbar: $:NavbarF()
             <td>$language</td>
         </tr>
         <tr>
-            <th>$:_("Submitted on")</th>
-            <td>$submitted_on.strftime("%d/%m/%Y %H:%M")</td>
+            <th>$:_("Created on")</th>
+            <td>$created_on.strftime("%d/%m/%Y %H:%M")</td>
         </tr>
         <tr>
             <th>$:_("Status")</th>

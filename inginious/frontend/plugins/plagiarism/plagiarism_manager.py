@@ -19,7 +19,7 @@ from .constants import JPLAG_PATH, LANGUAGE_FILE_EXTENSION_MAP, LANGUAGE_PLAGIAR
 
 class PlagiarismManagerSingleton(object):
     """
-        Manages batch jobs. Store them in DB and communicates with the inginious.backend to start them.
+        Manages plagiarism checks and stores them in DB.
     """
 
     __instance = None
@@ -44,7 +44,7 @@ class PlagiarismManagerSingleton(object):
 
     def _get_submissions_data(self, course, task, plagiarism_language):
         """
-        Return dict of best submissions for each student. The keys are the usernames and value is the submission.
+        Return dict of best submissions for each student. The keys are the usernames and value is the best submission.
         """
         users = self._user_manager.get_course_registered_users(course)
         task_name = task.get_name(self._user_manager.session_language())
@@ -65,29 +65,33 @@ class PlagiarismManagerSingleton(object):
                 except:
                     raise Exception(
                         _("An error occurred while retrieving submission from task {}.".format(task_name)))
+
                 problem_id = self._get_submission_problem_id(submission['input'])
                 type_task = submission['input'][problem_id + '/type']
                 submission_language = submission['input'][problem_id + '/language']
-                if type_task == 'notebook_file' and plagiarism_language == 'text':
+                if plagiarism_language == 'text' and (
+                        type_task == 'notebook_file' or submission_language in {'verilog', 'vhdl'}):
                     submissions[user] = submission
                     break
-                elif LANGUAGE_PLAGIARISM_LANG_MAP[submission_language] == plagiarism_language:
+                elif LANGUAGE_PLAGIARISM_LANG_MAP.get(submission_language, "") == plagiarism_language:
                     submissions[user] = submission
                     break
 
         if not submissions or len(submissions) < 2:
             raise Exception(_(
-                "There are not enough submissions in task: {}, for the selected language. At least 2 students must have submitted to compare.".format(
+                "There are not enough submissions for the selected language in the task: {}. At least 2 students must have submitted to compare.".format(
                     task_name)))
         return submissions
 
     def _get_submission_problem_id(self, input_data):
+        """From the submission input_data get the problem id"""
         problem_id = filter(lambda x: '/' not in x, input_data.keys())
         problem_id = filter(lambda x: '@' not in x, problem_id)
         problem_id = list(problem_id)[0]
         return problem_id
 
-    def _generate_submission_code_file(self, input_data, path, plagiarism_language):
+    def _generate_submission_code_file(self, input_data, directory, plagiarism_language):
+        """Creates a file with the corresponding submission code in the specified directory."""
         problem_id = self._get_submission_problem_id(input_data)
         code = input_data[problem_id]
 
@@ -97,23 +101,27 @@ class PlagiarismManagerSingleton(object):
         if plagiarism_language == 'text' and type(code) == dict:
             code = code['value'].decode('utf-8')
 
-        with open(os.path.join(path, 'code.{}'.format(file_extension)), 'w') as file:
+        with open(os.path.join(directory, 'code.{}'.format(file_extension)), 'w') as file:
             file.write(code)
 
-    def _generate_base_code_file(self, base_code, path, plagiarism_language):
+    def _generate_base_code_file(self, base_code, directory, plagiarism_language):
+        """Creates a base code file in the specified directory."""
         file_extension = LANGUAGE_FILE_EXTENSION_MAP[plagiarism_language]
 
-        template_dir = os.path.join(path, 'template')
+        template_dir = os.path.join(directory, 'template')
         os.mkdir(template_dir)
         file_path = os.path.join(template_dir, 'template.{}'.format(file_extension))
         with open(file_path, 'w') as file:
             file.write(base_code)
 
     def _run_plagiarism(self, data):
+        """
+        Makes all necessary processing to create the submission folders to run JPLAG and generate the corresponding
+        plagiarism check from all given submissions
+        """
         plagiarism_language = LANGUAGE_PLAGIARISM_LANG_MAP[data['language']]
 
         with tempfile.TemporaryDirectory() as tmp_dir:
-            tmp_dir = '/home/uncode/Desktop/plagiarism'
             all_submissions_dir = os.path.join(tmp_dir, "all_submissions")
             try:
                 os.mkdir(all_submissions_dir)
@@ -170,11 +178,8 @@ class PlagiarismManagerSingleton(object):
 
     def add_plagiarism_check(self, course, data):
         """
-            Add a job in the queue and returns a batch job id.
-            inputdata is a dict containing all the keys of get_plagiarism_container_metadata(container_name)["parameters"] BUT the keys "course" and
-            "submission" IF their
-            type is "file". (the content of the course and the submission will be automatically included by this function.)
-            The values associated are file-like objects for "file" types and  strings for "text" types.
+            Creates a new plagiarism check. In case it success, it is added to the database otherwise, return the error.
+            Data is a dict with the task id, language and course to do the plagiarism check
         """
         task = data['task']
         if task.get_environment() not in ALLOWED_ENVIRONMENTS:
@@ -203,47 +208,62 @@ class PlagiarismManagerSingleton(object):
                 'file': results_file,
             },
             "courseid": course.get_id(),
-            'container_name': task.get_name(self._user_manager.session_language()),
+            'task_name': task.get_name(self._user_manager.session_language()),
             "submitted_on": datetime.now(),
             "language": data['language']
         }
-        self._database.batch_jobs.insert(plagiarism_obj)
+        self._database.plagiarism_checks.insert(plagiarism_obj)
 
         return False, None
 
     def get_plagiarism_check(self, check_id):
-        """ Returns the batch job with id batch_job_id Batch jobs are dicts in the form
-            {"courseid": "...", "container_name": "..."} if the job is still ongoing, and
-            {"courseid": "...", "container_name": "...", "results": {}} if the job is done.
+        """ Returns the plagiarism check with id equal to `check_id`. Plagiarism checks are dicts in the form:
+            {"courseid": "...", "task_name": "...", "results": {}, 'submitted_on': "...", language: "..."}
             the dict result can be either:
 
-            - {"retval":0, "stdout": "...", "stderr":"...", "file":"..."}
-                if everything went well. (file is an gridfs id to a tgz file)
-            - {"retval":"...", "stdout": "...", "stderr":"..."}
-                if the container crashed (retval is an int != 0) (can also contain file, but not mandatory)
-            - {"retval":-1, "stderr": "the error message"}
-                if the container failed to start
+            - {"retval":0, "stdout": "...", "stderr":"...", "file":"..."} where file is an gridfs id to a tgz file)
         """
-        return self._database.batch_jobs.find_one({"_id": ObjectId(check_id)})
+        # TODO: Database collection 'batch_jobs' has been deprecated, new collection is 'plagiarism_checks'. As some
+        #  checks might be still stored in this collection, this code is necessary remove this when this collection is
+        #  not longer used.
+        if 'batch_jobs' in self._database.collection_names():
+            plagiarism_check = self._database.batch_jobs.find_one({"_id": ObjectId(check_id)})
+            if plagiarism_check:
+                return plagiarism_check
+
+        return self._database.plagiarism_checks.find_one({"_id": ObjectId(check_id)})
 
     def get_all_plagiarism_checks_for_course(self, course_id):
-        """ Returns all the batch jobs for the course course id. Batch jobs are dicts in the form
-            {"courseid": "...", "container_name": "...", "submitted_on":"..."} if the job is still ongoing, and
-            {"courseid": "...", "container_name": "...", "submitted_on":"...", "results": {}} if the job is done.
+        """ Returns all the plagiarism checks for the course is `course_id`. Plagiarism checks are dicts in the form:
+            {"courseid": "...", "task_name": "...", "results": {}, 'submitted_on': "...", language: "..."}
             the dict result can be either:
 
-            - {"retval":0, "stdout": "...", "stderr":"...", "file":"..."}
-                if everything went well. (file is an gridfs id to a tgz file)
-            - {"retval":"...", "stdout": "...", "stderr":"..."}
-                if the container crashed (retval is an int != 0) (can also contain file, but not mandatory)
-            - {"retval":-1, "stderr": "the error message"}
-                if the container failed to start
+            - {"retval":0, "stdout": "...", "stderr":"...", "file":"..."} where file is an gridfs id to a tgz file)
         """
-        return list(self._database.batch_jobs.find({"courseid": course_id}))
+        # TODO: Database collection 'batch_jobs' has been deprecated, new collection is 'plagiarism_checks'. As some
+        #  checks might be still stored in this collection, this code is necessary remove this when this collection is
+        #  not longer used.
+        if 'batch_jobs' in self._database.collection_names():
+            plagiarism_checks = list(self._database.batch_jobs.find({"courseid": course_id}))
+            if plagiarism_checks:
+                return plagiarism_checks
+
+        return list(self._database.plagiarism_checks.find({"courseid": course_id}))
 
     def drop_plagiarism_check(self, check_id):
         """ Delete a plagiarism check from database"""
-        check = self._database.batch_jobs.find_one({"_id": ObjectId(check_id)})
-        self._database.batch_jobs.remove({"_id": ObjectId(check_id)})
-        if "file" in check["result"]:
-            self._gridfs.delete(check["result"]["file"])
+        # TODO: Database collection 'batch_jobs' has been deprecated, new collection is 'plagiarism_checks'. As some
+        #  checks might be still stored in this collection, this code is necessary remove this when this collection is
+        #  not longer used.
+        if 'batch_jobs' in self._database.collection_names():
+            plagiarism_check = self._database.batch_jobs.find_one({"_id": ObjectId(check_id)})
+            if plagiarism_check:
+                self._database.batch_jobs.remove({"_id": ObjectId(check_id)})
+                if "file" in plagiarism_check["result"]:
+                    self._gridfs.delete(plagiarism_check["result"]["file"])
+                return
+
+        plagiarism_check = self._database.plagiarism_checks.find_one({"_id": ObjectId(check_id)})
+        self._database.plagiarism_checks.remove({"_id": ObjectId(check_id)})
+        if "file" in plagiarism_check["result"]:
+            self._gridfs.delete(plagiarism_check["result"]["file"])

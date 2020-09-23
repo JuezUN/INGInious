@@ -10,7 +10,7 @@ class PlagiarismCreate(INGIniousAdminPage):
 
     @property
     def plagiarism_manager(self) -> PlagiarismManagerSingleton:
-        """ Returns the batch manager singleton """
+        """ Returns the plagiarism manager singleton """
         return PlagiarismManagerSingleton.get_instance()
 
     def GET_AUTH(self, course_id):  # pylint: disable=arguments-differ

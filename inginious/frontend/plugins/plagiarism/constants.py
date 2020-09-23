@@ -35,14 +35,3 @@ AVAILABLE_PLAGIARISM_LANGUAGES = OrderedDict(sorted([
     ("vhdl", "VHDL"),
     ("notebook", "Jupyter notebook"),
 ], key=lambda x: x[0]))
-
-_use_minfied = True
-
-
-def set_use_minified(value):
-    global _use_minfied
-    _use_minfied = value
-
-
-def use_minified():
-    return _use_minfied

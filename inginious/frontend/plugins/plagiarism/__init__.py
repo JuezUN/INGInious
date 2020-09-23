@@ -9,8 +9,8 @@ from inginious.frontend.plugins.utils import create_static_resource_page
 from .plagiarism_manager import PlagiarismManagerSingleton
 from .pages.plagiarism import PlagiarismPage
 from .pages.plagiarism_create import PlagiarismCreate
-from .pages.plagiarism_summary import CoursePlagiarismJobSummary
-from .pages.plagiarism_download import PlagiarismDownload
+from .pages.plagiarism_check_summary import PlagiarismCheckSummary
+from .pages.plagiarism_check_download import PlagiarismCheckDownload
 
 _STATIC_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "static")
 
@@ -39,16 +39,16 @@ def init(plugin_manager, _, __, plugin_config):
 
     plugin_manager.add_page(r'/plagiarism/static/(.*)', create_static_resource_page(_STATIC_FOLDER_PATH))
 
-    if "batch_jobs" not in plugin_manager.get_database().collection_names():
-        plugin_manager.get_database().create_collection("batch_jobs")
+    if "plagiarism_checks" not in plugin_manager.get_database().collection_names():
+        plugin_manager.get_database().create_collection("plagiarism_checks")
 
     PlagiarismManagerSingleton(plugin_manager.get_database(), plugin_manager._app.gridfs,
                                plugin_manager.get_submission_manager(), plugin_manager.get_user_manager())
 
     plugin_manager.add_page(r'/admin/([^/]+)/plagiarism', PlagiarismPage)
     plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/create', PlagiarismCreate)
-    plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/summary/([^/]+)', CoursePlagiarismJobSummary)
-    plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/download/([^/]+)', PlagiarismDownload)
-    plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/download/([^/]+)(/.*)', PlagiarismDownload)
+    plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/summary/([^/]+)', PlagiarismCheckSummary)
+    plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/download/([^/]+)', PlagiarismCheckDownload)
+    plugin_manager.add_page(r'/admin/([^/]+)/plagiarism/download/([^/]+)(/.*)', PlagiarismCheckDownload)
 
     plugin_manager.add_hook('course_admin_menu', add_admin_menu)

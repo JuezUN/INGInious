@@ -8,11 +8,11 @@ from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from ..plagiarism_manager import PlagiarismManagerSingleton
 
 
-class PlagiarismDownload(INGIniousAdminPage):
-    """ Get the file of a batch job """
+class PlagiarismCheckDownload(INGIniousAdminPage):
+    """ Get the file of a plagiarism check """
 
     @property
-    def batch_manager(self) -> PlagiarismManagerSingleton:
+    def plagiarism_manager(self) -> PlagiarismManagerSingleton:
         """ Returns the plugin manager singleton """
         return PlagiarismManagerSingleton.get_instance()
 
@@ -20,7 +20,7 @@ class PlagiarismDownload(INGIniousAdminPage):
         """ GET request """
 
         self.get_course_and_check_rights(course_id)  # simply verify rights
-        plagiarism_check = self.batch_manager.get_plagiarism_check(check_id)
+        plagiarism_check = self.plagiarism_manager.get_plagiarism_check(check_id)
 
         if plagiarism_check is None:
             raise web.notfound()

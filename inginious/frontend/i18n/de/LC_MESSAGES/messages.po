@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-31 20:27-0500\n"
+"POT-Creation-Date: 2020-09-22 22:32-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -1646,6 +1646,137 @@ msgstr ""
 msgid "Test"
 msgstr ""
 
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:67
+msgid "An error occurred while retrieving submission from task {}."
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:82
+msgid ""
+"There are not enough submissions for the selected language in the task: "
+"{}. At least 2 students must have submitted to compare."
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:168
+msgid "An error occurred while generating the plagiarism check."
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:188
+msgid ""
+"Task environment is not available for plagiarism check: {}. Check the "
+"task is correctly configured."
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/plagiarism_create.py:30
+#: inginious/frontend/plugins/plagiarism/pages/plagiarism_create.py:33
+msgid "Please fill all the fields."
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/plagiarism_create.py:36
+msgid "Language is not valid"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/plagiarism_create.py:39
+msgid "Base code is not present."
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/plagiarism_create.py:45
+msgid "Task environment is not allowed to generate a plagiarism check."
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:3
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:12
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:16
+msgid "Plagiarism"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:20
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:8
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:19
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:23
+msgid "New plagiarism check"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:26
+msgid "Plagiarism checks by task"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:29
+msgid "Task name"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:30
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:28
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:46
+#: inginious/frontend/templates/course_admin/subproblems/code.html:16
+msgid "Language"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:31
+msgid "Date"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:32
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:36
+#: inginious/frontend/templates/course_admin/aggregation_info.html:32
+#: inginious/frontend/templates/course_admin/task_info.html:43
+#: inginious/frontend/templates/course_admin/task_info.html:108
+#: inginious/frontend/templates/task.html:30
+msgid "Status"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:14
+msgid "Summary of plagiarism check"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:24
+#: inginious/frontend/templates/course_admin/aggregation_info.html:31
+msgid "Task"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:32
+msgid "Created on"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:39
+msgid "Process finished with some errors while checking submissions"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:41
+msgid "Results available"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:47
+msgid "Standard output"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:54
+msgid "Standard error"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:65
+msgid "Generated files"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:30
+msgid "Note"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:30
+msgid "Jupyter notebook, Verilog and VHDL submissions are compared as text."
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:37
+msgid "Task to check"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:58
+msgid "Basecode file"
+msgstr ""
+
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:63
+msgid "Start!"
+msgstr ""
+
 #: inginious/frontend/plugins/problem_bank/index.html:3
 #: inginious/frontend/plugins/problem_bank/index.html:13
 #: inginious/frontend/plugins/problem_bank/index.html:18
@@ -2407,13 +2538,6 @@ msgstr ""
 msgid "Deadline"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/aggregation_info.html:32
-#: inginious/frontend/templates/course_admin/task_info.html:43
-#: inginious/frontend/templates/course_admin/task_info.html:108
-#: inginious/frontend/templates/task.html:30
-msgid "Status"
-msgstr ""
-
 #: inginious/frontend/templates/task.html:33
 msgid "Not yet attempted"
 msgstr ""
@@ -2713,10 +2837,6 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/aggregation_info.html:27
 msgid "Statistics for group {}"
-msgstr ""
-
-#: inginious/frontend/templates/course_admin/aggregation_info.html:31
-msgid "Task"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/aggregation_info.html:33
@@ -3959,10 +4079,6 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/submissions_tabs/users.html:57
 msgid "No team to display"
-msgstr ""
-
-#: inginious/frontend/templates/course_admin/subproblems/code.html:16
-msgid "Language"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/subproblems/code.html:26
