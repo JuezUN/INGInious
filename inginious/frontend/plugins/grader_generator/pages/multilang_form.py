@@ -153,9 +153,12 @@ class MultilangForm(GraderForm):
                 pass
 
         for file in files_diff_for:
-            src = '{dir}{file}'.format(dir=self.task_fs.prefix, file=file)
-            dest = 'public/{}'.format(file)
+            src = os.path.join(self.task_fs.prefix, file)
+            public_dir = 'public/'
             try:
+                if not self.task_fs.exists(public_dir):
+                    os.mkdir(os.path.join(self.task_fs.prefix, public_dir))
+                dest = os.path.join(public_dir, file)
                 self.task_fs.copy_to(src, dest)
             except:
                 pass
