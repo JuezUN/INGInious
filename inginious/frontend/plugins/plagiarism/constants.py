@@ -5,7 +5,7 @@ JPLAG_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), "resource
 
 LANGUAGE_FILE_EXTENSION_MAP = {
     'c/c++': 'cpp',
-    'java19': 'java',
+    'java17': 'java',
     'python3': 'py',
     'text': 'txt',
 }
@@ -15,8 +15,8 @@ LANGUAGE_PLAGIARISM_LANG_MAP = {
     'cpp': 'c/c++',
     'c11': 'c/c++',
     'c': 'c/c++',
-    'java7': 'java19',
-    'java8': 'java19',
+    'java7': 'java17',
+    'java8': 'java17',
     'python3': 'python3',
     'vhdl': 'text',
     'verilog': 'text',
@@ -35,3 +35,14 @@ AVAILABLE_PLAGIARISM_LANGUAGES = OrderedDict(sorted([
     ("vhdl", "VHDL"),
     ("notebook", "Jupyter notebook"),
 ], key=lambda x: x[0]))
+
+_use_minfied = True
+
+
+def set_use_minified(value):
+    global _use_minfied
+    _use_minfied = value
+
+
+def use_minified():
+    return _use_minfied

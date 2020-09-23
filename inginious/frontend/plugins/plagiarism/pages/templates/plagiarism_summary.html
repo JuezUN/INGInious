@@ -1,96 +1,75 @@
-$def with (course, bid, done, container_name, container_title, container_description, submitted_on, retval, stdout, stderr, file_list, language)
+$def with (course, check_id, done, task_name, submitted_on, retval, stdout, stderr, file_list, language)
 
-$#
-$# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
-$# more information about the licensing of this file.
-$#
-
-$var title: $:course.get_name(language) - Plagiarism operations - Summary of job $bid
+$var title: $:course.get_name(user_manager.session_language()) - $_("Summary of plagiarism check"): $task_name
 
 $var Column: $:template_helper.call('course_admin_menu',course=course,current='plagiarism')
 
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
-        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(language)</a></li>
-        <li><a href="$get_homepath()/admin/$course.get_id()" title="Administration" data-toggle="tooltip" data-placement="bottom">
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()" title="$:_('Administration')" data-toggle="tooltip" data-placement="bottom">
             <i class="fa fa-user-secret"></i></a></li>
-        <li><a href="$get_homepath()/admin/$course.get_id()/plagiarism" title="Plagiarism operations" data-toggle="tooltip" data-placement="bottom">
+        <li><a href="$get_homepath()/admin/$course.get_id()/plagiarism" title="$:_('Plagiarism')" data-toggle="tooltip" data-placement="bottom">
             <i class="fa fa-rocket"></i></a></li>
-        <li class="active"><a href="#">Summary of job $bid[:10] <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#">$:_("Summary of plagiarism check"): $task_name <span class="sr-only">(current)</span></a></li>
     </ol>
 $var Navbar: $:NavbarF()
 
-<h2>Summary of plagiarism check $bid[:10]</h2>
+<h2>$_("Summary of plagiarism check")</h2>
 
 <div class="panel panel-default">
-    <div class="panel-heading">Job information</div>
+    <div class="panel-heading">$_("Information")</div>
     <table class="table table-bordered table-condensed">
         <tr>
-            <th>Submitted on</th>
-            <td>$submitted_on.strftime("%d/%m/%Y %H:%M:%S")</td>
+            <th>$:_("Task")</th>
+            <td>$task_name</td>
         </tr>
         <tr>
-            <th>Status</th>
+            <th>$:_("Language")</th>
+            <td>$language</td>
+        </tr>
+        <tr>
+            <th>$:_("Submitted on")</th>
+            <td>$submitted_on.strftime("%d/%m/%Y %H:%M")</td>
+        </tr>
+        <tr>
+            <th>$:_("Status")</th>
             <td>
-                $if not done:
-                    Still in progress
-                $elif retval == 0:
-                    Results available
-                $elif retval < 0:
-                    An internal error occurred
+                $if stderr != "" or retval != 0:
+                    $:_("Process finished with some errors while checking submissions")
                 $else:
-                    Container returned an error
+                    $:_("Results available")
             </td>
         </tr>
         $if user_manager.has_admin_rights_on_course(course):
-            <tr>
-                <th>Return value</th>
-                <td>$retval</td>
-            </tr>
             $if stdout != "":
                 <tr>
-                    <th>Standard output</th>
-                    <td><pre>$stdout</pre></td>
+                    <th>$:_("Standard output")</th>
+                    <td>
+                        <pre class="in-out-area text_pre">$stdout</pre>
+                    </td>
                 </tr>
             $if stderr != "":
                 <tr>
-                    <th>Standard error</th>
+                    <th>$:_("Standard error")</th>
                     <td>
-                        <pre>$stderr</pre>
+                        <pre class="in-out-area text_pre">$stderr</pre>
                     </td>
                 </tr>
     </table>
 </div>
 
-$if file_list is not None:
+$if file_list:
     <div class="panel panel-default">
         <div class="panel-heading">
-            Files returned
-            <a href="$get_homepath()/admin/$course.get_id()/plagiarism/download/$bid" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom"
-               title="download results"><i class="fa fa-download"></i></a>
+            $:_("Generated files")
+            <a href="$get_homepath()/admin/$course.get_id()/plagiarism/download/$check_id"
+               class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom"
+               title="$:_('Download results')"><i class="fa fa-download"></i></a>
         </div>
         <div class="list-group">
-            $for p in file_list:
-                <a href="$get_homepath()/admin/$course.get_id()/plagiarism/download/$bid/$p" class="list-group-item">$p</a>
+            $for file in file_list:
+            <a href="$get_homepath()/admin/$course.get_id()/plagiarism/download/$check_id/$file"
+               class="list-group-item">$file</a>
         </div>
     </div>
-
-<div class="panel panel-default">
-    <div class="panel-heading">Container information</div>
-    <table class="table table-bordered table-condensed">
-        $if container_name != container_title:
-            <tr>
-                <th>Container title</th>
-                <td>$container_title</td>
-            </tr>
-        $if container_description != "":
-            <tr>
-                <th>Container description</th>
-                <td>$:container_description</td>
-            </tr>
-        <tr>
-            <th>Container image name</th>
-            <td>$container_name</td>
-        </tr>
-    </table>
-</div>

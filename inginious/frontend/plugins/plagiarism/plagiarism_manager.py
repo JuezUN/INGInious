@@ -4,7 +4,6 @@
 # more information about the licensing of this file.
 
 """ Manages plagiarism checks """
-import logging
 import os
 import tempfile
 import tarfile
@@ -18,29 +17,30 @@ from bson.objectid import ObjectId
 from .constants import JPLAG_PATH, LANGUAGE_FILE_EXTENSION_MAP, LANGUAGE_PLAGIARISM_LANG_MAP, ALLOWED_ENVIRONMENTS
 
 
-class PlagiarismManager(object):
+class PlagiarismManagerSingleton(object):
     """
         Manages batch jobs. Store them in DB and communicates with the inginious.backend to start them.
     """
 
-    def __init__(self, client, database, gridfs, submission_manager, user_manager, task_directory):
-        self._client = client
-        self._database = database
-        self._gridfs = gridfs
-        self._submission_manager = submission_manager
-        self._user_manager = user_manager
-        self._task_directory = task_directory
-        self._logger = logging.getLogger("inginious.batch")
+    __instance = None
 
-    def _get_course_data(self, course):
-        """ Returns a file-like object to a tgz archive of the course files """
-        dir_path = os.path.join(self._task_directory, course.get_id())
-        tmpfile = tempfile.TemporaryFile()
-        tar = tarfile.open(fileobj=tmpfile, mode='w:gz')
-        tar.add(dir_path, "/", True)
-        tar.close()
-        tmpfile.seek(0)
-        return tmpfile
+    @staticmethod
+    def get_instance(database=None, gridfs=None, submission_manager=None, user_manager=None):
+        """ Static access method. """
+        if not PlagiarismManagerSingleton.__instance:
+            PlagiarismManagerSingleton(database, gridfs, submission_manager, user_manager)
+        return PlagiarismManagerSingleton.__instance
+
+    def __init__(self, database, gridfs, submission_manager, user_manager):
+        """ Virtually private constructor. """
+        if PlagiarismManagerSingleton.__instance:
+            raise Exception("This class is a singleton!")
+        else:
+            self._database = database
+            self._gridfs = gridfs
+            self._submission_manager = submission_manager
+            self._user_manager = user_manager
+            PlagiarismManagerSingleton.__instance = self
 
     def _get_submissions_data(self, course, task, plagiarism_language):
         """
@@ -93,6 +93,10 @@ class PlagiarismManager(object):
 
         file_extension = LANGUAGE_FILE_EXTENSION_MAP[plagiarism_language]
 
+        # If submission was notebook, the code is in code['value']
+        if plagiarism_language == 'text' and type(code) == dict:
+            code = code['value'].decode('utf-8')
+
         with open(os.path.join(path, 'code.{}'.format(file_extension)), 'w') as file:
             file.write(code)
 
@@ -109,7 +113,7 @@ class PlagiarismManager(object):
         plagiarism_language = LANGUAGE_PLAGIARISM_LANG_MAP[data['language']]
 
         with tempfile.TemporaryDirectory() as tmp_dir:
-            # tmp_dir = '/home/uncode/Desktop/plagiarism'
+            tmp_dir = '/home/uncode/Desktop/plagiarism'
             all_submissions_dir = os.path.join(tmp_dir, "all_submissions")
             try:
                 os.mkdir(all_submissions_dir)
@@ -131,7 +135,7 @@ class PlagiarismManager(object):
                 self._generate_submission_code_file(submission['input'], user_dir, plagiarism_language)
 
             jplag_args = ["-s", '-l', plagiarism_language, "-r", output_dir, '-p',
-                          'cpp']
+                          LANGUAGE_FILE_EXTENSION_MAP[plagiarism_language]]
 
             # Write base code template file
             if data['base_code']:
@@ -186,8 +190,8 @@ class PlagiarismManager(object):
 
         try:
             return_code, stdout, stderr, results_file = self._run_plagiarism(data)
-            if stderr:
-                return_code = -1
+            if return_code == 0 and stderr:
+                return_code = 1
         except Exception as e:
             return True, str(e)
 
@@ -207,7 +211,7 @@ class PlagiarismManager(object):
 
         return False, None
 
-    def get_plagiarism_job_status(self, batch_job_id):
+    def get_plagiarism_check(self, check_id):
         """ Returns the batch job with id batch_job_id Batch jobs are dicts in the form
             {"courseid": "...", "container_name": "..."} if the job is still ongoing, and
             {"courseid": "...", "container_name": "...", "results": {}} if the job is done.
@@ -220,9 +224,9 @@ class PlagiarismManager(object):
             - {"retval":-1, "stderr": "the error message"}
                 if the container failed to start
         """
-        return self._database.batch_jobs.find_one({"_id": ObjectId(batch_job_id)})
+        return self._database.batch_jobs.find_one({"_id": ObjectId(check_id)})
 
-    def get_all_plagiarism_jobs_for_course(self, course_id):
+    def get_all_plagiarism_checks_for_course(self, course_id):
         """ Returns all the batch jobs for the course course id. Batch jobs are dicts in the form
             {"courseid": "...", "container_name": "...", "submitted_on":"..."} if the job is still ongoing, and
             {"courseid": "...", "container_name": "...", "submitted_on":"...", "results": {}} if the job is done.

@@ -1,7 +1,7 @@
 import web
 
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from ..plagiarism_manager import PlagiarismManager
+from ..plagiarism_manager import PlagiarismManagerSingleton
 from ..constants import AVAILABLE_PLAGIARISM_LANGUAGES
 
 
@@ -9,9 +9,9 @@ class PlagiarismPage(INGIniousAdminPage):
     """ Plagiarism page """
 
     @property
-    def plagiarism_manager(self) -> PlagiarismManager:
+    def plagiarism_manager(self) -> PlagiarismManagerSingleton:
         """ Returns the plagiarism manager singleton """
-        return self.app.plagiarism_manager
+        return PlagiarismManagerSingleton.get_instance()
 
     def GET_AUTH(self, course_id):  # pylint: disable=arguments-differ
         """ GET request """
@@ -26,7 +26,7 @@ class PlagiarismPage(INGIniousAdminPage):
                 pass
 
         plagiarism_checks = []
-        for entry in list(self.plagiarism_manager.get_all_plagiarism_jobs_for_course(course_id)):
+        for entry in list(self.plagiarism_manager.get_all_plagiarism_checks_for_course(course_id)):
             check = {
                 "task_name": entry["container_name"],
                 "id": str(entry["_id"]),
