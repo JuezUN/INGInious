@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-09-22 22:48-0500\n"
+"POT-Creation-Date: 2020-09-23 18:45-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -826,7 +826,7 @@ msgstr ""
 #: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:144
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:195
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:53
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:55
 #: inginious/frontend/templates/auth.html:16
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
 #: inginious/frontend/templates/lti_login.html:30
@@ -1629,17 +1629,17 @@ msgstr ""
 msgid "'Your input goes here'"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:26
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:28
 msgid "Your output goes here"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:34
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:61
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:36
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:63
 msgid "Test code!"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:40
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:49
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:42
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:51
 msgid "Visualize your code!"
 msgstr ""
 
@@ -1647,17 +1647,17 @@ msgstr ""
 msgid "An error occurred while retrieving submission from task {}."
 msgstr ""
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:87
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:91
 msgid ""
 "There are not enough submissions for the selected language in the task: "
 "{}. At least 2 students must have submitted to compare."
 msgstr ""
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:173
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:177
 msgid "An error occurred while generating the plagiarism check."
 msgstr ""
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:193
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:197
 msgid ""
 "Task environment is not available for plagiarism check: {}. Check the "
 "task is correctly configured."
@@ -1681,38 +1681,38 @@ msgid "Task environment is not allowed to generate a plagiarism check."
 msgstr ""
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:3
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:12
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:16
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:14
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:20
 msgid "Plagiarism"
 msgstr ""
 
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:20
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:24
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:8
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:19
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:23
 msgid "New plagiarism check"
 msgstr ""
 
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:26
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:30
 msgid "Plagiarism checks by task"
 msgstr ""
 
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:29
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:33
 msgid "Task name"
 msgstr ""
 
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:30
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:34
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:28
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:46
 #: inginious/frontend/templates/course_admin/subproblems/code.html:16
 msgid "Language"
 msgstr ""
 
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:31
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:35
 msgid "Date"
 msgstr ""
 
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:32
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:36
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:36
 #: inginious/frontend/templates/course_admin/aggregation_info.html:32
 #: inginious/frontend/templates/course_admin/task_info.html:43
@@ -1775,8 +1775,8 @@ msgid "Start!"
 msgstr ""
 
 #: inginious/frontend/plugins/problem_bank/index.html:3
-#: inginious/frontend/plugins/problem_bank/index.html:13
-#: inginious/frontend/plugins/problem_bank/index.html:18
+#: inginious/frontend/plugins/problem_bank/index.html:15
+#: inginious/frontend/plugins/problem_bank/index.html:20
 #: inginious/frontend/plugins/problem_bank/problem_bank_div.html:2
 msgid "Problem bank"
 msgstr ""
@@ -1936,49 +1936,49 @@ msgstr ""
 msgid "Statistics"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:13
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:18
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:15
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:22
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.py:27
 msgid "Course statistics"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:26
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:30
 msgid "Grade count"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:30
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:34
 msgid "Grade distribution"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:35
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:68
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:39
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:72
 msgid "Submissions Verdict (ALL)"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:40
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:82
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:44
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:86
 msgid "Submissions Verdict (BEST)"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:48
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:52
 msgid "Submissions by grade"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:51
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:62
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:71
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:85
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:55
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:66
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:75
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:89
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:30
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:40
 msgid "Download CSV"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:59
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:63
 msgid "Final grade distribution"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:77
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:91
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:81
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:95
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:37
 msgid "Toggle normalize"
 msgstr ""
