@@ -400,4 +400,8 @@ var problems_types = $:pdict
 $$(document).ready(function() {
     init_task_page("$task.get_evaluate()");
 });
+
+function is_lti() {
+    return "$is_lti()" === 'True';
+}
 </script>

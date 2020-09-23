@@ -10,7 +10,9 @@ function setDropDownWithTheRightLanguage(key, language) {
     dropDown.value = language;
 }
 
-function changeSubmissionLanguage(key) {
+function changeSubmissionLanguage(key, problem_type) {
+    if (problem_type === 'code_file_multiple_languages') return;
+    
     const language = getLanguageForProblemId(key);
     const mode = CodeMirror.findModeByName(language);
     const editor = codeEditors[key];

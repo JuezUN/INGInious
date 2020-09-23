@@ -26,16 +26,16 @@ function displayOverflowAlert(content) {
     displayTaskStudentAlertWithProblems(content, "danger");
 }
 
-function apiCustomInputRequest(inputId, taskform){
+function apiCustomInputRequest(inputId, taskform) {
     // POST REQUEST for running code with custom input
-    let customTestOutputArea = $('#customoutput-'+inputId);
+    let customTestOutputArea = $('#customoutput-' + inputId);
     let placeholderSpan = "<span class='placeholder-text'>Your output goes here</span>";
 
     let runCustomTestCallBack = function (data) {
         data = JSON.parse(data);
         customTestOutputArea.empty();
 
-        if ('status' in data && data['status'] == 'done') {
+        if ('status' in data && data['status'] === 'done') {
             if ('result' in data) {
                 let result = data['result'];
                 let stdoutSpan = $("<span/>").addClass("stdout-text").text(data.stdout);
@@ -43,19 +43,19 @@ function apiCustomInputRequest(inputId, taskform){
                 customTestOutputArea.append(stdoutSpan);
                 customTestOutputArea.append(stderrSpan);
 
-                if (result == 'failed') {
+                if (result === 'failed') {
                     displayCustomTestAlertError(data);
-                } else if (result == "timeout") {
+                } else if (result === "timeout") {
                     displayTimeOutAlert(data);
-                } else if (result == "overflow") {
+                } else if (result === "overflow") {
                     displayOverflowAlert(data);
-                } else if (result != "success") {
+                } else if (result !== "success") {
                     displayCustomTestAlertError(data);
                 }
             }
-        } else if ('status' in data && data['status'] == 'error') {
+        } else if ('status' in data && data['status'] === 'error') {
             customTestOutputArea.html(placeholderSpan);
-            if (data["result"] == "timeout") {
+            if (data["result"] === "timeout") {
                 data["text"] = "Your code did not finished. Your code TIMED OUT.";
                 displayTimeOutAlert(data);
             } else {
@@ -74,21 +74,21 @@ function apiCustomInputRequest(inputId, taskform){
     customTestOutputArea.html("Running...");
 
     $.ajax({
-            url: '/api/custom_input/',
-            method: "POST",
-            dataType: 'json',
-            data: taskform,
-            processData: false,
-            contentType: false,
-            success: runCustomTestCallBack,
-            error: function (error) {
-                unblurTaskForm();
-                customTestOutputArea.html(placeholderSpan);
-            }
+        url: '/api/custom_input/',
+        method: "POST",
+        dataType: 'json',
+        data: taskform,
+        processData: false,
+        contentType: false,
+        success: runCustomTestCallBack,
+        error: function (error) {
+            unblurTaskForm();
+            customTestOutputArea.html(placeholderSpan);
+        }
     });
 }
 
-function runCustomTest (inputId) {
+function runCustomTest(inputId) {
     /**
      * Identifies current page and search task identifier
      * and course identifier (GET Request to API) for running
@@ -97,18 +97,22 @@ function runCustomTest (inputId) {
     let taskForm = new FormData($('form#task')[0]);
     taskForm.set("submit_action", "customtest");
 
-    if('course' === getCurrentPageName()){    
+    if ('course' === getCurrentPageName()) {
         taskForm.set("courseid", getCourseIdFromUrl());
         taskForm.set("taskid", getTaskIdFromUrl());
         apiCustomInputRequest(inputId, taskForm);
-    } else if('submission' === getCurrentPageName()){
-        $.get('/api/custom_input/',{
+    } else if ('submission' === getCurrentPageName()) {
+        $.get('/api/custom_input/', {
             submission: getTaskIdFromUrl()
         }, (result) => {
             taskForm.set("courseid", result['courseid']);
             taskForm.set("taskid", result['taskid']);
             apiCustomInputRequest(inputId, taskForm);
-        }) 
+        })
+    } else if (is_lti()){
+        taskForm.set("courseid", getCourseId());
+        taskForm.set("taskid", getTaskId());
+        apiCustomInputRequest(inputId, taskForm);
     }
     $.post('/api/analytics/', {
         service: {
