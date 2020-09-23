@@ -10,7 +10,7 @@ $def NavbarF():
         <li><a href="$get_homepath()/admin/$course.get_id()" title="$:_('Administration')" data-toggle="tooltip" data-placement="bottom">
             <i class="fa fa-user-secret"></i></a></li>
         <li><a href="$get_homepath()/admin/$course.get_id()/plagiarism" title="$:_('Plagiarism')" data-toggle="tooltip" data-placement="bottom">
-            <i class="fa fa-rocket"></i></a></li>
+            <i class="fa fa-check-circle-o"></i></a></li>
         <li class="active"><a href="#">$:_("Summary of plagiarism check"): $task_name <span class="sr-only">(current)</span></a></li>
     </ol>
 $var Navbar: $:NavbarF()

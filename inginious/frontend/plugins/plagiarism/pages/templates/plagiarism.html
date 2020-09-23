@@ -9,7 +9,11 @@ $def NavbarF():
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(language)</a></li>
         <li><a href="$get_homepath()/admin/$course.get_id()" title="$:_('Administration')" data-toggle="tooltip" data-placement="bottom">
             <i class="fa fa-user-secret"></i></a></li>
-        <li class="active"><a href="#"><i class="fa fa-cog"></i> $:_("Plagiarism") <span class="sr-only">(current)</span></a></li>
+        <li class="active">
+            <a href="#">
+                <i class="fa fa-check-circle-o"></i> $:_("Plagiarism") <span class="sr-only">(current)</span>
+            </a>
+        </li>
     </ol>
 $var Navbar: $:NavbarF()
 
