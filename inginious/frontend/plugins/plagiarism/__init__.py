@@ -39,9 +39,6 @@ def init(plugin_manager, _, __, plugin_config):
 
     plugin_manager.add_page(r'/plagiarism/static/(.*)', create_static_resource_page(_STATIC_FOLDER_PATH))
 
-    if "plagiarism_checks" not in plugin_manager.get_database().collection_names():
-        plugin_manager.get_database().create_collection("plagiarism_checks")
-
     PlagiarismManagerSingleton(plugin_manager.get_database(), plugin_manager._app.gridfs,
                                plugin_manager.get_submission_manager(), plugin_manager.get_user_manager())
 

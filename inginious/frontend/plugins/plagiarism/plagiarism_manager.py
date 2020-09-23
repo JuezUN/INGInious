@@ -16,6 +16,8 @@ from bson.objectid import ObjectId
 
 from .constants import JPLAG_PATH, LANGUAGE_FILE_EXTENSION_MAP, LANGUAGE_PLAGIARISM_LANG_MAP, ALLOWED_ENVIRONMENTS
 
+_PLAGIARISM_CHECKS_COLLECTION = "plagiarism_checks"
+
 
 class PlagiarismManagerSingleton(object):
     """
@@ -40,6 +42,9 @@ class PlagiarismManagerSingleton(object):
             self._gridfs = gridfs
             self._submission_manager = submission_manager
             self._user_manager = user_manager
+            # Create the collection in case it does not exist
+            if _PLAGIARISM_CHECKS_COLLECTION not in self._database.collection_names():
+                self._database.create_collection(_PLAGIARISM_CHECKS_COLLECTION)
             PlagiarismManagerSingleton.__instance = self
 
     def _get_submissions_data(self, course, task, plagiarism_language):
