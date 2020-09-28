@@ -2,7 +2,7 @@ dist: trusty
 sudo: required
 language: python
 python:
-  - "3.5"
+  - "3.6"
 env:
   global:
     - "HOST_IP=$(/sbin/ifconfig venet0:0 | grep 'inet addr' | awk -F: '{print $2}' | awk '{print $1}')"
@@ -13,12 +13,11 @@ services: mongodb
 before_install:
   - echo exit 101 | sudo tee /usr/sbin/policy-rc.d
   - sudo chmod +x /usr/sbin/policy-rc.d
-#  - pip install --upgrade pip
+  - pip install --upgrade pip
 install:
   - sudo apt-get install slirp libtidy-* xvfb
   - sudo usermod -aG docker "$USER"
   - git clone git://github.com/cptactionhank/sekexe
-#  - pip install --process-dependency-links --upgrade .
   - sudo chmod -R 777 /var/lib/docker
   - sudo chmod -R 777 /etc/docker
   - sudo mkdir /agent_volume
