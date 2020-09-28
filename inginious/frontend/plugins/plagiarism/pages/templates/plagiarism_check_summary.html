@@ -1,0 +1,75 @@
+$def with (course, check_id, done, task_name, created_on, retval, stdout, stderr, file_list, language)
+
+$var title: $:course.get_name(user_manager.session_language()) - $_("Summary of plagiarism check"): $task_name
+
+$var Column: $:template_helper.call('course_admin_menu',course=course,current='plagiarism')
+
+$def NavbarF():
+    <ol class="nav navbar-nav nav-breadcrumb">
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()" title="$:_('Administration')" data-toggle="tooltip" data-placement="bottom">
+            <i class="fa fa-user-secret"></i></a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()/plagiarism" title="$:_('Plagiarism')" data-toggle="tooltip" data-placement="bottom">
+            <i class="fa fa-check-circle-o"></i></a></li>
+        <li class="active"><a href="#">$:_("Summary of plagiarism check"): $task_name <span class="sr-only">(current)</span></a></li>
+    </ol>
+$var Navbar: $:NavbarF()
+
+<h2>$_("Summary of plagiarism check")</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">$_("Information")</div>
+    <table class="table table-bordered table-condensed">
+        <tr>
+            <th>$:_("Task")</th>
+            <td>$task_name</td>
+        </tr>
+        <tr>
+            <th>$:_("Language")</th>
+            <td>$language</td>
+        </tr>
+        <tr>
+            <th>$:_("Created on")</th>
+            <td>$created_on.strftime("%d/%m/%Y %H:%M")</td>
+        </tr>
+        <tr>
+            <th>$:_("Status")</th>
+            <td>
+                $if stderr != "" or retval != 0:
+                    $:_("Process finished with some errors while checking submissions")
+                $else:
+                    $:_("Results available")
+            </td>
+        </tr>
+        $if user_manager.has_admin_rights_on_course(course):
+            $if stdout != "":
+                <tr>
+                    <th>$:_("Standard output")</th>
+                    <td>
+                        <pre class="in-out-area text_pre">$stdout</pre>
+                    </td>
+                </tr>
+            $if stderr != "":
+                <tr>
+                    <th>$:_("Standard error")</th>
+                    <td>
+                        <pre class="in-out-area text_pre">$stderr</pre>
+                    </td>
+                </tr>
+    </table>
+</div>
+
+$if file_list:
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            $:_("Generated files")
+            <a href="$get_homepath()/admin/$course.get_id()/plagiarism/download/$check_id"
+               class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom"
+               title="$:_('Download results')"><i class="fa fa-download"></i></a>
+        </div>
+        <div class="list-group">
+            $for file in file_list:
+            <a href="$get_homepath()/admin/$course.get_id()/plagiarism/download/$check_id/$file"
+               class="list-group-item">$file</a>
+        </div>
+    </div>
