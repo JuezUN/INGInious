@@ -1,7 +1,7 @@
 # the code for this .Travis.yml has been mostly taken from https://github.com/haiwen/seafile-docker/blob/master/.travis.yml
 language: python
 python:
-  - "2.7"
+  - "3.5"
 env:
   global:
     - "HOST_IP=$(/sbin/ifconfig venet0:0 | grep 'inet addr' | awk -F: '{print $2}' | awk '{print $1}')"
@@ -18,7 +18,7 @@ install:
   - sudo apt-get install slirp libtidy-* xvfb
   - sudo usermod -aG docker "$USER"
   - git clone git://github.com/cptactionhank/sekexe
-  - pip install --process-dependency-links --upgrade .
+#  - pip install --process-dependency-links --upgrade .
   - sudo mkdir /var/lib/docker
   - sudo mkdir /etc/docker
   - sudo chmod -R 777 /var/lib/docker
