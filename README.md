@@ -4,7 +4,6 @@
 [![CLA assistant](https://cla-assistant.io/readme/badge/JuezUN/INGInious)](https://cla-assistant.io/JuezUN/INGInious)
 [![Gitter](https://badges.gitter.im/uncode-unal/community.svg)](https://gitter.im/uncode-unal/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-
 INGInious is an intelligent grader that allows secured and automated testing of code made by students.
 
 It is written in Python and uses Docker_ to run student's code inside a secured environment.
@@ -19,13 +18,7 @@ INGInious can be used as an external grader for EDX. The course `Paradigms of Co
 
 ## Documentation
 
-The documentation is available on Read the Docs:
-
-- For the stable branch : http://inginious.readthedocs.org/
-- For the master (dev) branch (not always up to date) : http://inginious.readthedocs.org/en/latest/index.html
-
-On Linux, run ``make html`` in the directory ``/doc`` to create a html version of the documentation.
-
+The documentation is available on the repository wiki: [documentation](https://github.com/JuezUN/INGInious/wiki)
 
 ## Notes on security
 
