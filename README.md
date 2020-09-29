@@ -1,5 +1,6 @@
 # UNCode
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/73d2fa452a2a480aa36edeea79a725a9)](https://www.codacy.com/gh/JuezUN/INGInious/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JuezUN/INGInious&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/JuezUN/INGInious.svg?branch=master)](https://travis-ci.org/JuezUN/INGInious)
 [![CLA assistant](https://cla-assistant.io/readme/badge/JuezUN/INGInious)](https://cla-assistant.io/JuezUN/INGInious)
 [![Gitter](https://badges.gitter.im/uncode-unal/community.svg)](https://gitter.im/uncode-unal/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
