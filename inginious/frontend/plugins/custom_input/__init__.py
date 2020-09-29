@@ -55,10 +55,11 @@ def customInputManagerWithCurriedClient(client):
                     problem.get_id(): problem.input_type()()
                     for problem in task.get_problems() if problem.input_type() in [dict, list]
                 }
-                userinput = task.adapt_input_for_backend(web.input(**init_var))
-                for k in userinput:
-                    userinput[k] = userinput[k].replace("\r", "")
-                result, grade, problems, tests, custom, archive, stdout, stderr = self.add_unsaved_job(task, userinput)
+                user_input = task.adapt_input_for_backend(web.input(**init_var))
+                for key, value in user_input.items():
+                    if type(value) == 'str':
+                        user_input[key] = user_input[key].replace("\r", "")
+                result, grade, problems, tests, custom, archive, stdout, stderr = self.add_unsaved_job(task, user_input)
 
                 data = {
                     "status": ("done" if result[0] == "success" or result[0] == "failed" else "error"),

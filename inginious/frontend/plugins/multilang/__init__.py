@@ -4,8 +4,7 @@ from inginious.frontend.plugins.utils import create_static_resource_page
 from .problems.code_multiple_languages_problem import DisplayableCodeMultipleLanguagesProblem
 from .problems.code_multiple_file_languages_problem import DisplayableCodeFileMultipleLanguagesProblem
 from .problems.notebook_file_problem import DisplayableNotebookFileProblem
-from .problems.constants import set_linter_url, set_python_tutor_url, set_python_tutor_py2_url, set_show_tools, \
-    get_show_tools
+from .problems.constants import set_linter_url, set_python_tutor_url, set_show_tools, get_show_tools
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
@@ -50,12 +49,8 @@ def init(plugin_manager, course_factory, client, plugin_config):
     course_factory.get_task_factory().add_problem_type(DisplayableNotebookFileProblem)
 
     python_tutor_url = plugin_config.get("python_tutor_url", "")
-    python_tutor_url_py2 = plugin_config.get("python_tutor_url_py2", "")
     if python_tutor_url != "":
         set_python_tutor_url(python_tutor_url)
-
-    if python_tutor_url_py2:
-        set_python_tutor_py2_url(python_tutor_url_py2)
 
     linter_url = plugin_config.get("linter_url", "")
     if linter_url != "":

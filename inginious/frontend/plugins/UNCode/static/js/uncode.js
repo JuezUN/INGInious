@@ -21,12 +21,8 @@ jQuery(document).ready(function () {
     }
 
     function updatePageIcon(imagePath) {
+        $('link[rel="shortcut icon"]').attr('href', imagePath);
         $('link[rel="icon"]').attr('href', imagePath);
-    }
-
-    function updateTitle() {
-        let title = document.title.split("|");
-        document.title = title[0] + " |  UNCode";
     }
 
     function updateTemplate() {
@@ -35,7 +31,6 @@ jQuery(document).ready(function () {
         updateNavbarLogo(imagePath);
         updatePageIcon(imagePath);
         updateFooter();
-        updateTitle();
     }
 
     function addTaskContextTemplate() {
@@ -65,6 +60,13 @@ jQuery(document).ready(function () {
         const legendModalButton = `<a href='#' type='button' data-toggle='modal' data-target='#task_result_legend_modal'>
             <i class='fa fa-question-circle'>  ${legend_label}</a>`;
         taskAlert.before(legendModalButton);
+    }
+
+    function updateUNCodeURL() {
+        const anchor = $('a[href="http://www.inginious.org"]');
+        if (anchor !== undefined) {
+            anchor[0].href = "https://uncode.unal.edu.co";
+        }
     }
 
     function updateCourseDocumentationLinks() {
@@ -151,11 +153,12 @@ jQuery(document).ready(function () {
         }
     }
 
-    function modifyCourseCreateAlertMessage() {
-        const alertDiv = $('.alert-danger');
-        if (location.pathname === '/mycourses' && alertDiv.length) {
-            const newMsg = "Failed to create the course. It might either already exist or contain an invalid character (only alphanumeric in addition to \"_\" and \"-\" are accepted).";
-            $('.alert-danger')[0].childNodes[2].textContent = newMsg;
+    function addHomePathLTI() {
+        try {
+            const text = $("#lti_link");
+            text.val(location.origin + text.val());
+        } catch (e) {
+
         }
     }
 
@@ -168,7 +171,8 @@ jQuery(document).ready(function () {
     remove_unused_subproblem_types();
     remove_unused_grader_environments();
     rewrite_task_title();
-    modifyCourseCreateAlertMessage();
+    updateUNCodeURL();
+    addHomePathLTI();
 });
 
 this.studio_display_task_submit_message = (content, type, dismissible) => {

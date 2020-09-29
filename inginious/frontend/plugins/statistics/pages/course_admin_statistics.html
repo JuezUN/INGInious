@@ -2,15 +2,24 @@ $def with (course)
 
 $var title: $:course.get_name(user_manager.session_language()) - $:_("Statistics")
 
+$var Column: $:template_helper.call('course_admin_menu', course=course, current='statistics')
+
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
-      <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
-      <li class="active"><a href="#">$:_("Course statistics") <span class="sr-only">(current)</span></a></li>
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()" title=$:_('"Administration"') data-toggle="tooltip"
+               data-placement="bottom">
+            <i class="fa fa-user-secret"></i></a></li>
+        <li class="active">
+            <a href="#">
+                <i class="fa fa-bar-chart"></i>  $:_("Course statistics") <span class="sr-only">(current)</span>
+            </a>
+        </li>
     </ol>
 
 $var Navbar: $:NavbarF()
 
-<h3>$:_("Statistics for course"): $:course.get_name(user_manager.session_language())</h3>
+<h3>$:_("Course statistics")</h3>
 
 <div>
     <div id="plotErrorContainer"></div>
@@ -42,7 +51,7 @@ $var Navbar: $:NavbarF()
         <div role="tabpanel" class="tab-pane active" id="gradeCount">
             <h4>$:_("Submissions by grade")</h4>
             <br/>
-            <button type="button" class="btn btn-info" onclick="gradeCountStatistic.downloadCsvAsync()">
+            <button type="button" class="btn btn-info" onclick="tabToStatistic['gradeCount'].downloadCsvAsync()">
                 <i class="fa fa-table"></i> $:_("Download CSV")
             </button>
             <div id="statisticsGradeDiv" class="statistics-grade"></div>
@@ -53,7 +62,7 @@ $var Navbar: $:NavbarF()
         <div role="tabpanel" class="tab-pane" id="gradeDistribution">
             <h4>$:_("Final grade distribution")</h4>
             <br/>
-            <button type="button" class="btn btn-info" onclick="gradeDistributionStatistic.downloadCsvAsync()">
+            <button type="button" class="btn btn-info" onclick="tabToStatistic['gradeDistribution'].downloadCsvAsync()">
                 <i class="fa fa-table"></i> $:_("Download CSV")
             </button>
             <div id="statisticsGradeDistributionDiv" class="statistics-grade"></div>
@@ -62,7 +71,7 @@ $var Navbar: $:NavbarF()
         <div role="tabpanel" class="tab-pane" id="submissionsVerdict">
             <h4>$:_("Submissions Verdict (ALL)")</h4>
             <br/>
-            <button type="button" class="btn btn-info" onclick="submissionsVerdictStatistic.downloadCsvAsync()">
+            <button type="button" class="btn btn-info" onclick="tabToStatistic['submissionsVerdict'].downloadCsvAsync()">
                 <i class="fa fa-table"></i> $:_("Download CSV")
             </button>
             <div id="submissionsVerdictDiv" class="statistics-grade"></div>
@@ -76,7 +85,7 @@ $var Navbar: $:NavbarF()
         <div role="tabpanel" class="tab-pane" id="bestSubmissionsVerdict">
             <h4>$:_("Submissions Verdict (BEST)")</h4>
             <br/>
-            <button type="button" class="btn btn-info" onclick="bestSubmissionsVerdictStatistic.downloadCsvAsync()">
+            <button type="button" class="btn btn-info" onclick="tabToStatistic['bestSubmissionsVerdict'].downloadCsvAsync()">
                 <i class="fa fa-table"></i> $:_("Download CSV")
             </button>
             <div id="bestSubmissionsVerdictDiv" class="statistics-grade"></div>

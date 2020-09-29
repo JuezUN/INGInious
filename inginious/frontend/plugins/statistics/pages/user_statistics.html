@@ -1,6 +1,14 @@
-$def with(course_id)
+$def with(course)
 
 $var title: $:_("My statistics")
+
+$def NavbarF():
+    <ol class="nav navbar-nav nav-breadcrumb">
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+        <li class="active"><a href="#">$:_("My statistics") <span class="sr-only">(current)</span></a></li>
+    </ol>
+
+$var Navbar: $:NavbarF()
 
 <ul class="nav nav-tabs">
     <li class="active">
@@ -35,7 +43,7 @@ $var title: $:_("My statistics")
 
 <script>
     function getCourseId() {
-       return "$:course_id";
+       return "$:course.get_id()";
     }
     $$.post('/api/analytics/', {
         service: {

@@ -10,14 +10,14 @@ $#
     <div class="col-sm-8">
         <div class="checkbox"><label>
             <input type="checkbox" id="generate_grader" name="generate_grader"
-                $if task_data.get('generate_grader', False):
+                $if task_data.get('generate_grader', True):
                     checked="checked"
             />&nbsp;
         </label></div>
     </div>
 </div>
 
-<div class="form-group">
+<div class="form-group" hidden>
     <label for="grader_problem_id" class="col-sm-4 control-label">
         $:_("Problem ID")
         <i class="fa fa-question-circle"
@@ -25,9 +25,7 @@ $#
             data-toggle="tooltip"></i>
     </label>
     <div class="col-sm-8">
-        <select class="form-control" id="grader_problem_id" name="grader_problem_id">
-
-        </select>
+        <select class="form-control" id="grader_problem_id" name="grader_problem_id"></select>
     </div>
 </div>
 
@@ -110,13 +108,10 @@ $#
     <div class="col-4" style="height: 100%;">
         <div class="btn btn-success" onclick="toggle_selection_tests_cases()">
             <input id="toggle_select_test_cases" type="checkbox"
-                   onchange="toggle_selection_tests_cases()">
-            $:_("All diffs")</input>
+                   onchange="toggle_selection_tests_cases()">$:_("All diffs")</input>
         </div>
-        <button type="button" class="btn btn-danger" style=""
-                onclick="remove_all_test_cases()">
-            <i class="fa fa-trash" aria-hidden="true"></i>
-            $:_("Remove all tests")
+        <button type="button" class="btn btn-danger" onclick="remove_all_test_cases()">
+            <i class="fa fa-trash" aria-hidden="true"></i>$:_("Remove all tests")
         </button>
         <br>
     </div>
@@ -187,28 +182,15 @@ $#
 
 <div class="grader_form" id="notebook_grader_form">
     <div class="form-group">
-        <label for="notebook_setup_code_all_tests" class="col-sm-4 control-label">
-            $:_("Setup code for all tests")
-            <i class="fa fa-question-circle"
-               title=$:_("\"Python code executed before all tests. Useful to setup, for example, initial data and variables to be used in all tests. This code must be like Python interactive shell, where each line is a different command in the shell. Control structures that require more than one line like: 'if' 'for', 'try' 'functions' are not allowed.\"")
-               data-toggle="tooltip"></i>
-        </label>
-        <div class="col-sm-8">
-            <textarea data-x-language="python" data-x-lines="4" class="code-editor form-control"
-                      id="notebook_setup_code_all_tests" name="notebook_setup_code_all_tests"
-                      style="display: none;">${task_data.get('notebook_setup_code_all_tests', '')}</textarea>
-        </div>
-    </div>
-    <div class="form-group">
         <label for="notebook_data_set_url" class="col-sm-4 control-label">
             $:_("Dataset URL")
             <i class="fa fa-question-circle"
                title=$:_("\"Dataset URL to download file before running grading code. This is helpful when dataset is too long and cannot be uploaded in the files tab. Remember to allow internet access to the grading environment in 'Container setup' tab. Also, set a filename in the field below.\"")
-               data-toggle="tooltip"></i>
+            data-toggle="tooltip"></i>
         </label>
         <div class="col-sm-8">
             <input type="text" class="form-control" id="notebook_data_set_url" placeholder="http://"
-               name="notebook_data_set_url" value="${task_data.get('notebook_data_set_url', '')}">
+                   name="notebook_data_set_url" value="${task_data.get('notebook_data_set_url', '')}">
         </div>
     </div>
     <div class="form-group">
@@ -216,11 +198,11 @@ $#
             $:_("Dataset filename")
             <i class="fa fa-question-circle"
                title=$:_("\"Filename with extension for downloaded dataset (i.e. data.csv). This filename is the one used to load the dataset in the code.\"")
-               data-toggle="tooltip"></i>
+            data-toggle="tooltip"></i>
         </label>
         <div class="col-sm-8">
-        <input type="text" class="form-control" id="notebook_data_set_name"
-               name="notebook_data_set_name" value="${task_data.get('notebook_data_set_name', '')}">
+            <input type="text" class="form-control" id="notebook_data_set_name"
+                   name="notebook_data_set_name" value="${task_data.get('notebook_data_set_name', '')}">
         </div>
     </div>
     <div class="row">
@@ -229,44 +211,49 @@ $#
                 <label for="notebook_time_limit_test_case" class="control-label">
                     $:_("Time limit test cases (s)")
                     <i class="fa fa-question-circle" title=$:_("\"Time limit for each test case in seconds. (Max. 30 s)\"")
-                       data-toggle="tooltip"></i>
+                    data-toggle="tooltip"></i>
                 </label>
                 <input type="number" class="form-control" id="notebook_time_limit_test_case" min="0" step="1" max="30"
-                    name="notebook_time_limit_test_case" value="${task_data.get('notebook_time_limit_test_case', '5')}">
+                       name="notebook_time_limit_test_case"
+                       value="${task_data.get('notebook_time_limit_test_case', '5')}">
             </div>
             <div class="col-sm-6">
                 <label for="notebook_memory_limit_test_case" class="control-label">
                     $:_("Memory limit test cases (MB)")
                     <i class="fa fa-question-circle" title=$:_("\"Memory limit for each test case in MBs. (Max 600 MBs)\"")
-                       data-toggle="tooltip"></i>
+                    data-toggle="tooltip"></i>
                 </label>
-                <input type="number" class="form-control" id="notebook_memory_limit_test_case" min="0" step="1" max="600"
-                       name="notebook_memory_limit_test_case" value="${task_data.get('notebook_memory_limit_test_case', '100')}">
+                <input type="number" class="form-control" id="notebook_memory_limit_test_case" min="0" step="1"
+                       max="600"
+                       name="notebook_memory_limit_test_case"
+                       value="${task_data.get('notebook_memory_limit_test_case', '100')}">
             </div>
         </div>
     </div>
-    <div class="form-group">
-        <label class="col-sm-4 control-label">
-            $:_("Notebook example")
-        </label>
-        <div class="col-sm-8">
-            <a href="https://drive.google.com/file/d/14wcrdFicQoPqRVDamUClv0CgWXcXvpGy/view?usp=sharing" target="_blank">
-                $:_("Click here to open a notebook example")
-            </a>
-        </div>
-    </div>
     <hr/>
-    <h4 align="center">Tests</h4>
-    <div class="col-4" style="height: 100%;">
-        <button type="button" class="btn btn-success" data-toggle="modal"
-                data-target="#notebook_grader_test_form_modal"
-                onclick="">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-            $:_("Add a test")
-        </button>
-        <br>
-    </div>
-      <div class="jumbotron">
+    <div class="jumbotron">
+        <h4 align="center">Tests</h4>
+        <div class="form-group">
+            <label for="notebook_setup_code_all_tests" class="control-label">
+                $:_("Setup code for all tests")
+                <i class="fa fa-question-circle"
+                   title=$:_("\"Python code executed before all tests. Useful to setup, for example, initial data and variables to be used in all tests. This code must be like Python interactive shell, where each line is a different command in the shell.\"")
+                data-toggle="tooltip"></i>
+            </label>
+            <textarea data-x-language="python" data-x-lines="6" class="code-editor form-control"
+                      id="notebook_setup_code_all_tests" name="notebook_setup_code_all_tests"
+                      style="display: none;">${task_data.get('notebook_setup_code_all_tests', '')}</textarea>
+        </div>
+        <hr>
+        <div class="col-4" style="height: 100%;">
+            <button type="button" class="btn btn-success" data-toggle="modal"
+                    data-target="#notebook_grader_test_form_modal"
+                    onclick="">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                $:_("Add a test")
+            </button>
+            <br>
+        </div>
         <div class="row" id="notebook_grader_tests_header" style="display: none;">
             <div class="form-group col-xs-12" style="text-align: center;">
                 <div class="col-xs-5"><label>$:_("Name")</label></div>
@@ -276,7 +263,7 @@ $#
                         $:_("Show debug info")
                         <i class="fa fa-question-circle"
                            title=$:_("\"Check to show more info the student like output difference and runtime errors\"")}
-                           data-toggle="tooltip">
+                        data-toggle="tooltip">
                         </i>
                     </label>
                 </div>

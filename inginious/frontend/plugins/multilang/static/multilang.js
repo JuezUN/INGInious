@@ -10,7 +10,9 @@ function setDropDownWithTheRightLanguage(key, language) {
     dropDown.value = language;
 }
 
-function changeSubmissionLanguage(key) {
+function changeSubmissionLanguage(key, problem_type) {
+    if (problem_type === 'code_file_multiple_languages') return;
+    
     const language = getLanguageForProblemId(key);
     const mode = CodeMirror.findModeByName(language);
     const editor = codeEditors[key];
@@ -191,6 +193,38 @@ function notebook_start_renderer() {
     }
 }
 
+function sendSubmissionAnalytics() {
+    $('#task-submit').on('click', function () {
+        if (loadingSomething)
+            return;
+
+        if (!taskFormValid())
+            return;
+
+        const environments = new Set(['multiple_languages', 'Data Science', 'Notebook', 'HDL']);
+        if (!environments.has(getTaskEnvironment()))
+            return;
+
+        const services = {
+            'Notebook_notebook_file': [`${getTaskEnvironment()}_submission`, `${getTaskEnvironment()} submission`],
+            'multiple_languages_code_multiple_languages': [`multiple_languages_code_multiple_languages`, `Multiple languages - Code submission`],
+            'multiple_languages_code_file_multiple_languages': [`multiple_languages_code_file_multiple_languages`, `Multiple languages - File submission`],
+            'Data Science_code_multiple_languages': [`data_science_code_multiple_languages`, `Data Science - Code submission`],
+            'Data Science_code_file_multiple_languages': [`data_science_code_file_multiple_languages`, `Data Science - File submission`],
+            'HDL_code_multiple_languages': [`HDL_code_multiple_languages`, `HDL - Code submission`],
+            'HDL_code_file_multiple_languages': [`HDL_code_file_multiple_languages`, `HDL - File submission`],
+        };
+
+        $.post('/api/analytics/', {
+            service: {
+                key: services[`${getTaskEnvironment()}_${getProblemType()}`][0],
+                name: services[`${getTaskEnvironment()}_${getProblemType()}`][1]
+            }, course_id: getCourseId(),
+        });
+    });
+}
+
+
 function highlight_code() {
     Prism.highlightAll();
 }
@@ -198,4 +232,5 @@ function highlight_code() {
 jQuery(document).ready(function () {
     toggle_display_new_subproblem_option();
     notebook_start_renderer();
+    sendSubmissionAnalytics();
 });

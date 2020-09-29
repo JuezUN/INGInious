@@ -1,4 +1,4 @@
-$def with (inputId, dropdownId, languages, problemid, type, task_id)
+$def with (inputId, dropdownId, languages, problemid, type, task_id, course_id, environment)
 
 $#
 $# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
@@ -17,7 +17,7 @@ $#
 	<input type="hidden" name="$inputId/type" value="$type">
 	<select
 		class="col-sm-4 btn dropdown-toggle"
-		onchange="changeSubmissionLanguage('$problemid')"
+		onchange="changeSubmissionLanguage('$problemid', '$type')"
 		name="$dropdownId"
 		id="$dropdownId">
 	  	$for language in languages:
@@ -26,16 +26,31 @@ $#
 			</option>
 	</select>
 </div>
+<script>
+	function getTaskId() {
+		return '$task_id';
+	}
+
+	function getProblemId() {
+		return '$problemid';
+	}
+
+	function getCourseId() {
+		return "$course_id";
+	}
+
+	function getProblemType() {
+		return '$type';
+	}
+
+	function getTaskEnvironment() {
+		return "$environment";
+	}
+</script>
+
 $if type == "code_multiple_languages":
 	<script>
-		function getTaskId() {
-			return '$task_id';
-		}
-
-		function getProblemId(){
-			return '$problemid';
-		}
-		$$(document).ready(function() {
+		$$(document).ready(function () {
 			changeSubmissionLanguage('$problemid');
 		});
 	</script>

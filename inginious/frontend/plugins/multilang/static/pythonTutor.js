@@ -2,7 +2,6 @@ var PythonTutor = (function () {
     function PythonTutor(problemId, language) {
         this.defaultVisualServer = getDefaultVisualServerURL();
         this.javaVisualServer = "https://cscircles.cemc.uwaterloo.ca/";
-        this.python2VisualServer = getPython2VisualServerURL();
 
         this.problemId = problemId;
         this.code = codeEditors[problemId].getValue();
@@ -83,10 +82,8 @@ var PythonTutor = (function () {
     };
 
     PythonTutor.prototype.serverResource = function () {
-        if (this.language == "java")
+        if (this.language === "java")
             return this.javaVisualServer + "java_visualize/iframe-embed.html?faking_cpp=false#data=";
-        if (this.language == "python2")
-            return this.python2VisualServer + "iframe-embed.html#code="
         return this.defaultVisualServer + "iframe-embed.html#code=";
     };
 

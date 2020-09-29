@@ -40,7 +40,10 @@ class DisplayableNotebookFileProblem(NotebookFileProblem, DisplayableFileProblem
     def show_input(self, template_helper, language, seed):
         renderer = DisplayableNotebookFileProblem.get_renderer(template_helper)
 
-        multiple_language_render = str(renderer.notebook_file(self.get_id(), self.get_type()))
+        task = self.get_task()
+        course_id = task.get_course().get_id()
+        environment = task.get_environment()
+        multiple_language_render = str(renderer.notebook_file(self.get_id(), self.get_type(), course_id, environment))
         standard_code_problem_render = super(DisplayableNotebookFileProblem, self).show_input(template_helper, language,
                                                                                               seed)
 

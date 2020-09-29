@@ -27,8 +27,10 @@ class ServicesCollectionManagerSingleton:
             return self.db.services.insert({'service_name': service["name"], 'service_key': service["key"]})
 
     def get_all_services(self):
-        cursor = self.db.services.find({}, {"_id": 0, "service_name": 1, "service_key": 1})
-        return OrderedDict({val["service_key"]: val["service_name"] for val in cursor})
+        results = sorted(self.db.services.find({}, {"_id": 0, "service_name": 1, "service_key": 1}),
+                         key=lambda x: x['service_name'])
+
+        return [(val["service_key"], val["service_name"]) for val in results]
 
     def check_record(self, key):
         return self.db.services.find_one({'service_key': key})
