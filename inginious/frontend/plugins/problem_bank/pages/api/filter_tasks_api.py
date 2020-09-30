@@ -51,7 +51,7 @@ class FilterTasksApi(AdminApi):
                 }
             },
             {
-                "$sort": {"score": -1, "task_name": 1}
+                "$sort": {"score": -1}
             }
         ]))
 
