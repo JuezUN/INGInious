@@ -10,6 +10,7 @@ import tarfile
 import subprocess
 import pymongo
 import shutil
+import threading
 
 from datetime import datetime
 from bson.objectid import ObjectId
@@ -183,12 +184,14 @@ class PlagiarismManagerSingleton(object):
                 tar.close()
                 file.flush()
                 file.seek(0)
-                return return_code, stdout, stderr, self._gridfs.put(file)
+                self._update_plagiarism_check_callback(data['check_id'], stdout, stderr, return_code,
+                                                       self._gridfs.put(file))
 
     def add_plagiarism_check(self, course, data):
         """
-            Creates a new plagiarism check. In case it success, it is added to the database otherwise, return the error.
-            Data is a dict with the task id, language and course to do the plagiarism check
+            Creates a new plagiarism check. The check process is done via a thread, thus, all process are initially
+            waiting, until the plagiarism check finishes and updates the document in DB.
+            Data is a dict with the task id, language and course to do the plagiarism check.
         """
         task = data['task']
         if task.get_environment() not in ALLOWED_ENVIRONMENTS:
@@ -203,27 +206,50 @@ class PlagiarismManagerSingleton(object):
             return True, str(e)
 
         try:
-            return_code, stdout, stderr, results_file = self._run_plagiarism(data)
-            if return_code == 0 and stderr:
-                return_code = 1
+
+            plagiarism_obj = {
+                "courseid": course.get_id(),
+                'task_name': task.get_name(self._user_manager.session_language()),
+                "submitted_on": datetime.now(),
+                "language": data['language']
+            }
+            check_id = self._database.plagiarism_checks.insert(plagiarism_obj)
+            data['check_id'] = check_id
+
+            # This process may take long, thus, is done asynchronously and the check is updated when it finished.
+            plagiarism_thread = threading.Thread(target=self._run_plagiarism, args=[data])
+            plagiarism_thread.start()
+            # Do not use `.join()` as this process may finish before the thread process finishes.
         except Exception as e:
             return True, str(e)
 
-        plagiarism_obj = {
-            "result": {
-                "stdout": stdout,
-                "stderr": stderr,
-                "retval": return_code,
-                'file': results_file,
-            },
-            "courseid": course.get_id(),
-            'task_name': task.get_name(self._user_manager.session_language()),
-            "submitted_on": datetime.now(),
-            "language": data['language']
-        }
-        self._database.plagiarism_checks.insert(plagiarism_obj)
-
         return False, None
+
+    def _update_plagiarism_check_callback(self, check_id, stdout, stderr, return_code, results_file):
+        if return_code == 0 and stderr:
+            return_code = 1
+
+        result = {
+            "stdout": stdout,
+            "stderr": stderr,
+            "retval": return_code,
+            'file': results_file,
+        }
+        print(check_id)
+
+        try:
+            self._database.plagiarism_checks.update(
+                {
+                    "_id": check_id
+                },
+                {
+                    "$set": {
+                        "result": result
+                    }
+                }
+            )
+        except:
+            pass  # This when the check was deleted before it finished.
 
     def get_plagiarism_check(self, check_id):
         """ Returns the plagiarism check with id equal to `check_id`. Plagiarism checks are dicts in the form:
