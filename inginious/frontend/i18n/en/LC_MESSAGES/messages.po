@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-10-05 15:02-0500\n"
+"POT-Creation-Date: 2020-10-05 16:25-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -1619,21 +1619,21 @@ msgstr ""
 msgid "Visualize your code!"
 msgstr ""
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:72
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:73
 msgid "An error occurred while retrieving submission from task {}."
 msgstr ""
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:91
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:92
 msgid ""
 "There are not enough submissions for the selected language in the task: "
 "{}. At least 2 students must have submitted to compare."
 msgstr ""
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:177
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:178
 msgid "An error occurred while generating the plagiarism check."
 msgstr ""
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:197
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:200
 msgid ""
 "Task environment is not available for plagiarism check: {}. Check the "
 "task is correctly configured."
@@ -2311,8 +2311,8 @@ msgstr ""
 
 #: inginious/frontend/templates/mycourses.html:45
 msgid ""
-"LTI courses are only accesible via the the LMS platform such as Moodle or"
-" OpenEdx"
+"LTI courses are only accessible via the the LMS platform such as Moodle "
+"or OpenEdx"
 msgstr ""
 
 #: inginious/frontend/templates/mycourses.html:67
@@ -4199,4 +4199,10 @@ msgstr ""
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr ""
+
+#~ msgid ""
+#~ "LTI courses are only accesible via "
+#~ "the the LMS platform such as "
+#~ "Moodle or OpenEdx"
+#~ msgstr ""
 
