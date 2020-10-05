@@ -41,27 +41,37 @@ $if plagiarism_checks:
                     <td>$check['language']</td>
                     <td>$check['submitted_on'].strftime("%d/%m/%Y %H:%M:%S")</td>
 
-                    $if check['status'] == 'ok':
-                        <td class="plagiarism-status-icon text-success" title="$:_('Results available')" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-check"></i>
+                    $if check['status'] == 'waiting':
+                        <td class="plagiarism-status-icon text-warning" title="$:_('Waiting results')" data-toggle="tooltip" data-placement="bottom">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </td>
+                        <td>
+                            <a href="$get_homepath()/admin/$course.get_id()/plagiarism?drop=$check['id']" class="btn btn-danger btn-xs" title="$:_('Delete')"
+                                   data-toggle="tooltip" data-placement="bottom"
+                                   onclick="return confirm('Are you sure you want to delete this check?');"><i class="fa fa-remove fa-fw"></i></a>
                         </td>
                     $else:
-                        <td class="plagiarism-status-icon text-warning" title="$:_('Plagiarism finished with some errors')" data-toggle="tooltip" data-placement="bottom">
-                            <i class="fa fa-warning"></i>
+                        $if check['status'] == 'ok':
+                            <td class="plagiarism-status-icon text-success" title="$:_('Results available')" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-check"></i>
+                            </td>
+                        $else:
+                            <td class="plagiarism-status-icon text-warning" title="$:_('Plagiarism finished with some errors')" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-warning"></i>
+                            </td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="$get_homepath()/admin/$course.get_id()/plagiarism/download/$check['id']/index.html" target="_blank" class="btn btn-success btn-xs" title="$:_('View results')"
+                                   data-toggle="tooltip" data-placement="bottom"><i class="fa fa-search fa-fw"></i></a>
+                                <a href="$get_homepath()/admin/$course.get_id()/plagiarism/summary/$check['id']" class="btn btn-primary btn-xs" title="$:_('See result files')"
+                                   data-toggle="tooltip" data-placement="bottom"><i class="fa fa-file fa-fw"></i></a>
+                                <a href="$get_homepath()/admin/$course.get_id()/plagiarism/download/$check['id']" class="btn btn-info btn-xs" title="$:_('Download results')"
+                                   data-toggle="tooltip" data-placement="bottom"><i class="fa fa-download fa-fw"></i></a>
+                                <a href="$get_homepath()/admin/$course.get_id()/plagiarism?drop=$check['id']" class="btn btn-danger btn-xs" title="$:_('Delete')"
+                                   data-toggle="tooltip" data-placement="bottom"
+                                   onclick="return confirm('Are you sure you want to delete this check?');"><i class="fa fa-remove fa-fw"></i></a>
+                            </div>
                         </td>
-                    <td>
-                        <div class="btn-group">
-                            <a href="$get_homepath()/admin/$course.get_id()/plagiarism/download/$check['id']/index.html" target="_blank" class="btn btn-success btn-xs" title="$:_('View results')"
-                               data-toggle="tooltip" data-placement="bottom"><i class="fa fa-search fa-fw"></i></a>
-                            <a href="$get_homepath()/admin/$course.get_id()/plagiarism/summary/$check['id']" class="btn btn-primary btn-xs" title="$:_('See result files')"
-                               data-toggle="tooltip" data-placement="bottom"><i class="fa fa-file fa-fw"></i></a>
-                            <a href="$get_homepath()/admin/$course.get_id()/plagiarism/download/$check['id']" class="btn btn-info btn-xs" title="$:_('Download results')"
-                               data-toggle="tooltip" data-placement="bottom"><i class="fa fa-download fa-fw"></i></a>
-                            <a href="$get_homepath()/admin/$course.get_id()/plagiarism?drop=$check['id']" class="btn btn-danger btn-xs" title="$:_('Delete')"
-                               data-toggle="tooltip" data-placement="bottom"
-                               onclick="return confirm('Are you sure you want to delete this check?');"><i class="fa fa-remove fa-fw"></i></a>
-                        </div>
-                    </td>
                 </tr>
         </table>
     </div>
