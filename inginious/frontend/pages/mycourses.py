@@ -33,7 +33,8 @@ class MyCoursesPage(INGIniousAuthPage):
                 if not course.is_registration_possible(user_info):
                     success = False
                 else:
-                    success = self.user_manager.course_register_user(course, username, user_input.get("register_password", None))
+                    success = self.user_manager.course_register_user(course, username,
+                                                                     user_input.get("register_password", None))
             except:
                 success = False
         elif "new_courseid" in user_input and self.user_manager.user_is_superadmin():
@@ -55,11 +56,13 @@ class MyCoursesPage(INGIniousAuthPage):
 
         # Display
         open_courses = {courseid: course for courseid, course in all_courses.items()
-                        if self.user_manager.course_is_open_to_user(course, username, False) and
+                        if self.user_manager.course_is_open_to_user(course, username, None) and
                         self.user_manager.course_is_user_registered(course, username)}
-        open_courses = OrderedDict(sorted(iter(open_courses.items()), key=lambda x: x[1].get_name(self.user_manager.session_language())))
+        open_courses = OrderedDict(
+            sorted(iter(open_courses.items()), key=lambda x: x[1].get_name(self.user_manager.session_language())))
 
-        last_submissions = self.submission_manager.get_user_last_submissions(5, {"courseid": {"$in": list(open_courses.keys())}})
+        last_submissions = self.submission_manager.get_user_last_submissions(5, {
+            "courseid": {"$in": list(open_courses.keys())}})
         except_free_last_submissions = []
         for submission in last_submissions:
             try:
@@ -72,6 +75,8 @@ class MyCoursesPage(INGIniousAuthPage):
                                 not self.user_manager.course_is_user_registered(course, username) and
                                 course.is_registration_possible(user_info)}
 
-        registerable_courses = OrderedDict(sorted(iter(registerable_courses.items()), key=lambda x: x[1].get_name(self.user_manager.session_language())))
+        registerable_courses = OrderedDict(sorted(iter(registerable_courses.items()),
+                                                  key=lambda x: x[1].get_name(self.user_manager.session_language())))
 
-        return self.template_helper.get_renderer().mycourses(open_courses, registerable_courses, except_free_last_submissions, success)
+        return self.template_helper.get_renderer().mycourses(open_courses, registerable_courses,
+                                                             except_free_last_submissions, success)
