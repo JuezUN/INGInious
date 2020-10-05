@@ -27,6 +27,13 @@ class PlagiarismPage(INGIniousAdminPage):
 
         plagiarism_checks = []
         for plagiarism_check in list(self.plagiarism_manager.get_all_plagiarism_checks_for_course(course_id)):
+            if 'result' not in plagiarism_check:
+                status = 'waiting'
+            elif plagiarism_check["result"]["retval"] == 0:
+                status = "ok"
+            else:
+                status = 'ko'
+
             # TODO: 'container_name' is deprecated, when 'batch_jobs' collection is not longer used, update the code.
             check = {
                 "task_name": plagiarism_check["container_name"] if 'container_name' in plagiarism_check else
@@ -35,7 +42,7 @@ class PlagiarismPage(INGIniousAdminPage):
                 "submitted_on": plagiarism_check["submitted_on"],
                 "language": AVAILABLE_PLAGIARISM_LANGUAGES[
                     plagiarism_check['language']] if 'language' in plagiarism_check else "Unknown",
-                "status": "ok" if plagiarism_check["result"]["retval"] == 0 else "ko"
+                "status": status
             }
 
             plagiarism_checks.append(check)

@@ -19,19 +19,33 @@ class AvailableTasksApi(AdminApi):
             if self.user_manager.has_admin_rights_on_course(course):
                 course_ids.add(course_id)
 
-        tasks = []
         course_ids = list(course_ids)
 
-        search_tasks = self.database.tasks_cache.find({"course_id": {"$in": course_ids}})
-        for task in search_tasks:
-            dict_task = {"course_id": task["course_id"], "task_id": task["task_id"], "task_name": task["task_name"],
-                         "task_author": task["task_author"], "task_context": task["task_context"],
-                         "tags": task["tags"], "course_name": task["course_name"]
-                         }
-            tasks.append(dict_task)
+        tasks = list(self.database.tasks_cache.aggregate([
+            {
+                "$match": {
+                    "course_id": {"$in": course_ids}
+                }
+            },
+            {
+                "$project": {
+                    "course_id": 1,
+                    "task_id": 1,
+                    "task_name": 1,
+                    "task_author": 1,
+                    "task_context": 1,
+                    "tags": 1,
+                    "course_name": 1,
+                    "_id": 0,
+                }
+            },
+            {
+                "$sort": {"task_name": 1}
+            }
+        ]))
+
         left = limit * (page - 1)
         right = left + limit
-        tasks = list(sorted(tasks, key=lambda k: (k['course_name'], k['task_name'])))
         total_pages = len(tasks) // limit
         if len(tasks) % limit != 0 or total_pages == 0:
             total_pages += 1

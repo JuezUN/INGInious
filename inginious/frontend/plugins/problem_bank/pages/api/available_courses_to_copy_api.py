@@ -10,4 +10,6 @@ class AvailableCoursesToCopyApi(AdminApi):
             'name': course.get_name(self.user_manager.session_language())
         } for course_id, course in all_courses.items() if self.user_manager.has_admin_rights_on_course(course)]
 
+        available_courses = list(sorted(available_courses, key=lambda x: x['name']))
+
         return 200, available_courses

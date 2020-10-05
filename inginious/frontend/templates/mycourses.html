@@ -39,6 +39,13 @@ $def ColumnF():
             <a class="list-group-item disabled submission-empty">$:_("No submissions")</a>
     </div>
     $:template_helper.call('main_menu', template_helper=template_helper)
+    <div class="list-group">
+        <div class="list-group-item list-group-item-warning">
+            <i class="fa fa-info-circle"></i>
+            $:_("LTI courses are only accessible via the the LMS platform such as Moodle or OpenEdx")
+        </div>
+
+    </div>
 $var Column: $:ColumnF()
 
 $# Start content
@@ -47,14 +54,16 @@ $# Start content
 	$if len(open_courses) != 0:
         $ username = user_manager.session_username()
         $for courseid, course in open_courses.items():
-            <a href="$get_homepath()/course/$courseid" class="list-group-item row $(('list-group-item-warning' if not course.is_lti() else 'list-group-item-info') if not course.is_open_to_non_staff() else '')">
+            <a href="$('{}/course/{}'.format(get_homepath(),courseid) if not course.is_lti() or username in course.get_admins() or user_manager.user_is_superadmin() else '#')"
+               class="list-group-item row $(('list-group-item-warning' if not course.is_lti() else 'list-group-item-info') if not course.is_open_to_non_staff() or course.is_lti() else '')">
                 <div class="col-xs-12 col-md-8">
                     $course.get_name(user_manager.session_language())
                 </div>
                 <div class="col-xs-12 col-md-4">
                     <i class="pull-right">
-                        $if not course.is_open_to_non_staff():
+                        $if not course.is_open_to_non_staff() or course.is_lti():
                             $if course.is_lti():
+                                <i data-toggle="tooltip" title="" data-placement="top" class="pull-right fa fa-fw fa-external-link" data-original-title="External platform"></i>
                                 $:_("LTI course") -
                             $else:
                                 $:_("Hidden course") -

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-09-23 18:45-0500\n"
+"POT-Creation-Date: 2020-10-05 16:25-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1194,8 +1194,8 @@ msgid "Username"
 msgstr "Nombre de usuario"
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:50
-#: inginious/frontend/templates/mycourses.html:88
-#: inginious/frontend/templates/mycourses.html:109
+#: inginious/frontend/templates/mycourses.html:97
+#: inginious/frontend/templates/mycourses.html:118
 msgid "Course"
 msgstr "Curso"
 
@@ -1233,7 +1233,7 @@ msgstr "Calendario de visitas"
 #: inginious/frontend/plugins/auth/custom_auth_form.html:32
 #: inginious/frontend/plugins/register_students/static/email_template.html:13
 #: inginious/frontend/templates/auth.html:26
-#: inginious/frontend/templates/mycourses.html:120
+#: inginious/frontend/templates/mycourses.html:129
 #: inginious/frontend/templates/register_button.html:31
 msgid "Password"
 msgstr "Contraseña"
@@ -1777,11 +1777,11 @@ msgstr "¡Probar código!"
 msgid "Visualize your code!"
 msgstr "¡Visualizar código!"
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:72
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:73
 msgid "An error occurred while retrieving submission from task {}."
 msgstr "Un error ocurrió mientras se cargaban los submissions de la tarea {}."
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:91
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:92
 msgid ""
 "There are not enough submissions for the selected language in the task: "
 "{}. At least 2 students must have submitted to compare."
@@ -1789,11 +1789,11 @@ msgstr ""
 "No hay suficientes submissions para el lenguaje seleccionado en la tarea:"
 " {}. Al menos dos estudiantes deben haber enviado código a evaluar."
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:177
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:178
 msgid "An error occurred while generating the plagiarism check."
 msgstr "Un error ocurrió mientras se generaba el chequeo de plagio."
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:197
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:200
 msgid ""
 "Task environment is not available for plagiarism check: {}. Check the "
 "task is correctly configured."
@@ -2393,7 +2393,7 @@ msgstr "La contraseña es necesaria"
 #: inginious/frontend/templates/layout.html:109
 #: inginious/frontend/templates/mycourses.html:8
 #: inginious/frontend/templates/mycourses.html:12
-#: inginious/frontend/templates/mycourses.html:45
+#: inginious/frontend/templates/mycourses.html:52
 msgid "My courses"
 msgstr "Mis cursos"
 
@@ -2414,7 +2414,7 @@ msgid "English"
 msgstr "Español"
 
 #: inginious/frontend/templates/layout.html:134
-#: inginious/frontend/templates/mycourses.html:123
+#: inginious/frontend/templates/mycourses.html:132
 #: inginious/frontend/templates/register.html:8
 msgid "Register"
 msgstr "Registrarse"
@@ -2519,36 +2519,44 @@ msgid ""
 "back in a few minutes!"
 msgstr "<b>UNCode esta actualmente en mantenimiento.</b> ¡Regrese más tarde!"
 
-#: inginious/frontend/templates/mycourses.html:58
+#: inginious/frontend/templates/mycourses.html:45
+msgid ""
+"LTI courses are only accessible via the the LMS platform such as Moodle "
+"or OpenEdx"
+msgstr ""
+"Cursos LTI se pueden acceder únicamente a través de una plataforma LMS "
+"tales como Moodle o OpenEdx."
+
+#: inginious/frontend/templates/mycourses.html:67
 msgid "LTI course"
 msgstr "Curso LTI"
 
-#: inginious/frontend/templates/mycourses.html:60
+#: inginious/frontend/templates/mycourses.html:69
 msgid "Hidden course"
 msgstr "Curso oculto"
 
-#: inginious/frontend/templates/mycourses.html:63
+#: inginious/frontend/templates/mycourses.html:72
 msgid "Administrator"
 msgstr "Administrador"
 
-#: inginious/frontend/templates/mycourses.html:65
+#: inginious/frontend/templates/mycourses.html:74
 msgid "Tutor"
 msgstr "Tutor"
 
 #: inginious/frontend/templates/course_admin/task_info.html:42
-#: inginious/frontend/templates/mycourses.html:67
+#: inginious/frontend/templates/mycourses.html:76
 msgid "Student"
 msgstr "Estudiante"
 
-#: inginious/frontend/templates/mycourses.html:72
+#: inginious/frontend/templates/mycourses.html:81
 msgid "You are not registered to any course"
 msgstr "No estás registrado a ningún curso"
 
-#: inginious/frontend/templates/mycourses.html:79
+#: inginious/frontend/templates/mycourses.html:88
 msgid "Course created."
 msgstr "El curso ha sido creado."
 
-#: inginious/frontend/templates/mycourses.html:84
+#: inginious/frontend/templates/mycourses.html:93
 msgid ""
 "Failed to create the course. It might either already exist or contain an "
 "invalid character (only alphanumeric in addition to '_' and '-' are "
@@ -2558,23 +2566,23 @@ msgstr ""
 "especificado contiene un carácter inválido (solamente alfanumérico y  '_'"
 " y '-' son aceptados)."
 
-#: inginious/frontend/templates/mycourses.html:92
+#: inginious/frontend/templates/mycourses.html:101
 msgid "Create new course"
 msgstr "Crear un curso"
 
-#: inginious/frontend/templates/mycourses.html:96
+#: inginious/frontend/templates/mycourses.html:105
 msgid "Register for a course"
 msgstr "Registrarse a un curso"
 
-#: inginious/frontend/templates/mycourses.html:100
+#: inginious/frontend/templates/mycourses.html:109
 msgid "Registration complete."
 msgstr "Registro completo."
 
-#: inginious/frontend/templates/mycourses.html:105
+#: inginious/frontend/templates/mycourses.html:114
 msgid "Registration failed. Please check that you properly typed the password."
 msgstr "El nuevo registro ha fallado. Verifique su contraseña."
 
-#: inginious/frontend/templates/mycourses.html:111
+#: inginious/frontend/templates/mycourses.html:120
 msgid "Select a course"
 msgstr "Seleccione un curso"
 
