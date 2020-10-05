@@ -27,13 +27,14 @@ class PlagiarismPage(INGIniousAdminPage):
 
         plagiarism_checks = []
         for plagiarism_check in list(self.plagiarism_manager.get_all_plagiarism_checks_for_course(course_id)):
-            # TODO: 'container_name' is deprecated, when 'batch_jobs' collection is not longer used, update the code.
             if 'result' not in plagiarism_check:
                 status = 'waiting'
             elif plagiarism_check["result"]["retval"] == 0:
                 status = "ok"
             else:
                 status = 'ko'
+
+            # TODO: 'container_name' is deprecated, when 'batch_jobs' collection is not longer used, update the code.
             check = {
                 "task_name": plagiarism_check["container_name"] if 'container_name' in plagiarism_check else
                 plagiarism_check["task_name"],
