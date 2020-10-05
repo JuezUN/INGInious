@@ -75,6 +75,12 @@ class TaskList extends React.Component {
                              titleAlert={this.props.dataAlert.titleAlert}
                              callbackSetAlertInvisible={this.props.callbackSetAlertInvisible}
                 />
+                <CustomAlert
+                    message='To match on a phrase, enclose the phrase in double quotes (i.e. "Search this")'
+                    isVisible={true}
+                    styleAlert="info"
+                    titleAlert='Information'
+                />
 
                 <form className="custom-search-input">
                     <h5>Search tasks:</h5>

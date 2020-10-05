@@ -15,8 +15,11 @@ class ManageBanksCoursesApi(AdminApi):
         bank_courses = [{
             "id": bank["courseid"],
             "name": bank["course_name"],
-            "is_removable": self.user_manager.has_admin_rights_on_course(self.course_factory.get_course(bank["courseid"]))
+            "is_removable": self.user_manager.has_admin_rights_on_course(
+                self.course_factory.get_course(bank["courseid"]))
         } for bank in self.database.problem_banks.find()]
+
+        bank_courses = list(sorted(bank_courses, key=lambda x: x['name']))
 
         return 200, bank_courses
 
