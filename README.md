@@ -30,11 +30,11 @@ UNCode can be used as an external grader for Learning Managment Systems (LMS) su
 
 ## Built with
 
--[Python (with pip) 3.5+][python_url]
--[Docker 1.12+][docker_url]
--[MongoDB][mongo_url]
--Libtidy
--[LibZMQ][libzmq_url]
+- [Python (with pip) 3.5+][python_url]
+- [Docker 1.12+][docker_url]
+- [MongoDB][mongo_url]
+- Libtidy
+- [LibZMQ][libzmq_url]
 
 ## Getting started
 
@@ -80,7 +80,7 @@ Project page: <https://juezun.github.io/UNCode_page/>
 
 ## Publications
 
--F. Restrepo-Calle, J.J. Ramírez-Echeverry, F.A. Gonzalez. "[UNCode: Interactive system for learning and automatic 
+- F. Restrepo-Calle, J.J. Ramírez-Echeverry, F.A. Gonzalez. "[UNCode: Interactive system for learning and automatic 
 evaluation of computer programming skills.][uncode_publication_url]". In Proceedings of the 10th annual International 
 Conference on Education  and New Learning Technologies EDULEARN 2018. Palma de Mallorca, Spain, 2nd-4th July 2018, 
 pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
