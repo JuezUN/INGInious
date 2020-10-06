@@ -54,7 +54,7 @@ clear and has sufficient instructions to be able to reproduce the issue.
 
 ## License
 In short, when you submit code changes, your submissions are understood to be under the 
-same [GNU AGPL v3][licence_url] that covers the project. 
+same [GNU AGPL v3][license_url] that covers the project. 
 Feel free to contact the maintainers if that's a concern.
 
 ## Community

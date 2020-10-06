@@ -5,12 +5,12 @@
 [![GitHub issues](https://img.shields.io/github/issues/JuezUN/INGInious?style=plastic)][issues_url]
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/73d2fa452a2a480aa36edeea79a725a9)][codacy_badge_url]
 [![Build Status](https://travis-ci.org/JuezUN/INGInious.svg?branch=master)][travis_status_url]
-[![CLA assistant](https://cla-assistant.io/readme/badge/JuezUN/INGInious)][CLA_url]
+[![CLA assistant](https://cla-assistant.io/readme/badge/JuezUN/INGInious)][cla_url]
 [![Gitter](https://badges.gitter.im/uncode-unal/community.svg)][gitter_url]
 
 This is the main repository of UNCode.
 
-UNCode is an online platform built on top of [INGInious][INGInious_repo] (**v0.5**) for frequent practice 
+UNCode is an online platform built on top of [INGInious][inginious_url] (**v0.5**) for frequent practice 
 and automatic evaluation of computer programming, Jupyter Notebooks and hardware description language (VHDL/Verilog) 
 assignments. Also provides a pluggable interface with your existing LMS. 
 
@@ -30,11 +30,11 @@ UNCode can be used as an external grader for Learning Managment Systems (LMS) su
 
 ## Built with
 
-- [Python (with pip) 3.5+][python_url]
-- [Docker 1.12+][docker_page]
-- [MongoDB][mongo_url]
-- Libtidy
-- [LibZMQ][libzmq_url]
+    - [Python (with pip) 3.5+][python_url]
+    - [Docker 1.12+][docker_url]
+    - [MongoDB][mongo_url]
+    - Libtidy
+    - [LibZMQ][libzmq_url]
 
 ## Getting started
 
@@ -49,7 +49,7 @@ To deploy UNCode in a server and start using it in your courses, please refer to
 
 ## Documentation
 
-For additional documentation, please refer to the [Wiki][UNCode_wiki_url].
+For additional documentation, please refer to the [Wiki][uncode_wiki_url].
 
 ## Notes on security
 
@@ -72,7 +72,7 @@ Distributed under the AGPL-3.0 License. See [LICENSE][license_url] for more info
 
 In case of technical questions, please use the [gitter communication channel][gitter_url].
 
-In case you want to host your course on our deployment, email us on: <uncode_fibog@unal.edu.co>
+In case you want to host your course on our deployment, email us on: **uncode_fibog@unal.edu.co**
 
 UNCode: <https://uncode.unal.edu.co>
 
@@ -80,26 +80,25 @@ Project page: <https://juezun.github.io/UNCode_page/>
 
 ## Publications
 
-- F. Restrepo-Calle, J.J. Ramírez-Echeverry, F.A. Gonzalez. "[UNCode: Interactive system for learning and automatic 
-evaluation of computer programming skills.][uncode_publication_url]". In Proceedings of the 10th annual International 
-Conference on Education  and New Learning Technologies EDULEARN 2018. Palma de Mallorca, Spain, 2nd-4th July 2018, 
-pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
-
-```
-    @article{Restrepo-Calle2018,
-        title = {{Uncode: Interactive System for Learning and Automatic Evaluation of Computer Programming Skills}},
-        year = {2018},
-        journal = {EDULEARN18 Proceedings},
-        author = {Restrepo-Calle, Felipe and Ram{\'{i}}rez-Echeverry, Jhon Jairo and Gonzalez, Fabio A.},
-        number = {July},
-        pages = {6888--6898},
-        volume = {1},
-        isbn = {9788409027095},
-        doi = {10.21125/edulearn.2018.1632},
-        keywords = {automatic grading tool, computer programming, educational environment}
-    }
-```
-
+    - F. Restrepo-Calle, J.J. Ramírez-Echeverry, F.A. Gonzalez. "[UNCode: Interactive system for learning and automatic 
+    evaluation of computer programming skills.][uncode_publication_url]". In Proceedings of the 10th annual International 
+    Conference on Education  and New Learning Technologies EDULEARN 2018. Palma de Mallorca, Spain, 2nd-4th July 2018, 
+    pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
+    
+    ```
+        @article{Restrepo-Calle2018,
+            title = {{Uncode: Interactive System for Learning and Automatic Evaluation of Computer Programming Skills}},
+            year = {2018},
+            journal = {EDULEARN18 Proceedings},
+            author = {Restrepo-Calle, Felipe and Ram{\'{i}}rez-Echeverry, Jhon Jairo and Gonzalez, Fabio A.},
+            number = {July},
+            pages = {6888--6898},
+            volume = {1},
+            isbn = {9788409027095},
+            doi = {10.21125/edulearn.2018.1632},
+            keywords = {automatic grading tool, computer programming, educational environment}
+        }
+    ```
 
 [uncode_url]: https://uncode.unal.edu.co/courselist
 [license_url]: https://github.com/JuezUN/INGInious/blob/master/LICENSE
@@ -107,13 +106,13 @@ pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
 [issues_url]: https://github.com/JuezUN/INGInious/issues
 [codacy_badge_url]: https://www.codacy.com/gh/JuezUN/INGInious/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JuezUN/INGInious&amp;utm_campaign=Badge_Grade
 [travis_status_url]: https://travis-ci.org/JuezUN/INGInious
-[CLA_url]: https://cla-assistant.io/JuezUN/INGInious
+[cla_url]: https://cla-assistant.io/JuezUN/INGInious
 [gitter_url]:https://gitter.im/uncode-unal/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
-[INGInious_repo]: https://github.com/UCL-INGI/INGInious
-[docker_page]: https://www.docker.com/
+[inginious_url]: https://github.com/UCL-INGI/INGInious
+[docker_url]: https://www.docker.com/
 [python_url]: https://www.python.org/
 [mongo_url]: https://www.mongodb.com/
-[UNCode_wiki_url]: https://github.com/JuezUN/INGInious/wiki
+[uncode_wiki_url]: https://github.com/JuezUN/INGInious/wiki
 [libzmq_url]: https://zeromq.org/
 [deployment_url]: https://github.com/JuezUN/Deployment
 [install_locally_url]: https://inginious.readthedocs.io/en/v0.5/install_doc/installation.html
