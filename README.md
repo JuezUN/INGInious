@@ -75,6 +75,7 @@ In case of technical questions, please use the [gitter communication channel][gi
 In case you want to host your course on our deployment, email us on: <uncode_fibog@unal.edu.co>
 
 UNCode: <https://uncode.unal.edu.co>
+
 Project page: <https://juezun.github.io/UNCode_page/>
 
 ## Publications

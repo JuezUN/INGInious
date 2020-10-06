@@ -7,6 +7,10 @@ transparent as possible, whether it's:
     - Submitting a fix.
     - Proposing new features
 
+## Setup development environment
+
+Follow this [tutorial/steps][development_url] on how to setup the development environment and be able to contribute.
+
 ## Our Development Process
 
 We use github to host code, to track issues and feature requests, as well 
@@ -18,12 +22,12 @@ Unsure where to begin contributing to UNCode? You can start by looking through t
 **Good first issue** - issues which should only require a few lines of code and a not big understanding of UNCode.
 
 Working on your first Pull Request? You can learn how from this *free* series, 
-[How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
+[How to Contribute to an Open Source Project on GitHub][contribute_github_url].
 
 ## Pull Requests
 
 Pull requests are the best way to propose changes to the codebase 
-(we use [Github Flow](https://guides.github.com/introduction/flow/index.html)). 
+(we use [Github Flow][github_flow_url]. 
 
 We actively welcome your pull requests.
 
@@ -41,10 +45,8 @@ UNCode team will check your pull request and one of us will be assigned to revie
 leave feedback. Make to reply the given feedback ASAP.
 
 ## Contributor License Agreement ("CLA")
-In order to accept your pull request, we need you to submit a CLA. You only need
-to do this once to work on any of Facebook's open source projects.
-
-Complete your CLA here: <https://code.facebook.com/cla>
+In order to accept your pull request, you will need to sign the Contributor License Agreement.
+Once the PR is created, you will be told whether or not you need to sign it and how to do it.
 
 ## Issues
 We use GitHub issues to track public bugs or Feature Requests. Please ensure your description is
@@ -52,10 +54,16 @@ clear and has sufficient instructions to be able to reproduce the issue.
 
 ## License
 In short, when you submit code changes, your submissions are understood to be under the 
-same [GNU AGPL v3](https://github.com/JuezUN/INGInious/blob/master/LICENSE) that covers the project. 
+same [GNU AGPL v3][licence_url] that covers the project. 
 Feel free to contact the maintainers if that's a concern.
 
 ## Community
 
-Chat with us on [Gitter](https://gitter.im/uncode-unal/community). 
+Chat with us on [Gitter][gitter_url]. 
 We will reply for sure on weekdays at GMT-5 time.
+
+[development_url]: https://github.com/JuezUN/INGInious/wiki/Setup-development-environment
+[contribute_github_url]: https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github
+[github_flow_url]: https://guides.github.com/introduction/flow/index.html
+[license_url]: https://github.com/JuezUN/INGInious/blob/master/LICENSE
+[gitter_url]: https://gitter.im/uncode-unal/community
