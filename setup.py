@@ -79,6 +79,6 @@ setup(
     author="INGInious contributors",
     author_email="inginious@info.ucl.ac.be",
     license="AGPL 3",
-    url="https://github.com/UCL-INGI/INGInious",
-    long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst'), encoding='utf8').read()
+    url="https://github.com/JuezUN/INGInious",
+    long_description=open(os.path.join(os.path.dirname(__file__), 'README.md'), encoding='utf8').read()
 )
