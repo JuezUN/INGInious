@@ -30,11 +30,11 @@ UNCode can be used as an external grader for Learning Managment Systems (LMS) su
 
 ## Built with
 
-    - [Python (with pip) 3.5+][python_url]
-    - [Docker 1.12+][docker_url]
-    - [MongoDB][mongo_url]
-    - Libtidy
-    - [LibZMQ][libzmq_url]
+-[Python (with pip) 3.5+][python_url]
+-[Docker 1.12+][docker_url]
+-[MongoDB][mongo_url]
+-Libtidy
+-[LibZMQ][libzmq_url]
 
 ## Getting started
 
@@ -80,25 +80,25 @@ Project page: <https://juezun.github.io/UNCode_page/>
 
 ## Publications
 
-    - F. Restrepo-Calle, J.J. Ramírez-Echeverry, F.A. Gonzalez. "[UNCode: Interactive system for learning and automatic 
-    evaluation of computer programming skills.][uncode_publication_url]". In Proceedings of the 10th annual International 
-    Conference on Education  and New Learning Technologies EDULEARN 2018. Palma de Mallorca, Spain, 2nd-4th July 2018, 
-    pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
-    
-    ```
-        @article{Restrepo-Calle2018,
-            title = {{Uncode: Interactive System for Learning and Automatic Evaluation of Computer Programming Skills}},
-            year = {2018},
-            journal = {EDULEARN18 Proceedings},
-            author = {Restrepo-Calle, Felipe and Ram{\'{i}}rez-Echeverry, Jhon Jairo and Gonzalez, Fabio A.},
-            number = {July},
-            pages = {6888--6898},
-            volume = {1},
-            isbn = {9788409027095},
-            doi = {10.21125/edulearn.2018.1632},
-            keywords = {automatic grading tool, computer programming, educational environment}
-        }
-    ```
+-F. Restrepo-Calle, J.J. Ramírez-Echeverry, F.A. Gonzalez. "[UNCode: Interactive system for learning and automatic 
+evaluation of computer programming skills.][uncode_publication_url]". In Proceedings of the 10th annual International 
+Conference on Education  and New Learning Technologies EDULEARN 2018. Palma de Mallorca, Spain, 2nd-4th July 2018, 
+pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
+
+```
+    @article{Restrepo-Calle2018,
+        title = {{Uncode: Interactive System for Learning and Automatic Evaluation of Computer Programming Skills}},
+        year = {2018},
+        journal = {EDULEARN18 Proceedings},
+        author = {Restrepo-Calle, Felipe and Ram{\'{i}}rez-Echeverry, Jhon Jairo and Gonzalez, Fabio A.},
+        number = {July},
+        pages = {6888--6898},
+        volume = {1},
+        isbn = {9788409027095},
+        doi = {10.21125/edulearn.2018.1632},
+        keywords = {automatic grading tool, computer programming, educational environment}
+    }
+```
 
 [uncode_url]: https://uncode.unal.edu.co/courselist
 [license_url]: https://github.com/JuezUN/INGInious/blob/master/LICENSE
