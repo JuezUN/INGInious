@@ -72,7 +72,7 @@ Distributed under the AGPL-3.0 License. See [LICENSE][license_url] for more info
 
 In case of technical questions, please use the [gitter communication channel][gitter_url].
 
-In case you want to host your course on our deployment, email us on: **uncode_fibog@unal.edu.co**
+In case you want to host your course on our deployment, email us on: <uncode_fibog@unal.edu.co>
 
 UNCode: <https://uncode.unal.edu.co>
 
