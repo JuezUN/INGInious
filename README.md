@@ -86,17 +86,20 @@ Conference on Education  and New Learning Technologies EDULEARN 2018. Palma de M
 pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
 
 ```
-    @article{Restrepo-Calle2018,
-        title = {{Uncode: Interactive System for Learning and Automatic Evaluation of Computer Programming Skills}},
-        year = {2018},
-        journal = {EDULEARN18 Proceedings},
-        author = {Restrepo-Calle, Felipe and Ram{\'{i}}rez-Echeverry, Jhon Jairo and Gonzalez, Fabio A.},
-        number = {July},
-        pages = {6888--6898},
-        volume = {1},
-        isbn = {9788409027095},
+    @InProceedings{Restrepo-Calle2018,
+        author = {Restrepo-Calle, F. and Ram{\'{i}}rez-Echeverry, J.J. and Gonzalez, F.A.},
+        title = {{UNCode: Interactive System for Learning and Automatic Evaluation of Computer Programming Skills}},
+        series = {10th International Conference on Education and New Learning Technologies},
+        booktitle = {EDULEARN18 Proceedings},
+        isbn = {978-84-09-02709-5},
+        issn = {2340-1117},
         doi = {10.21125/edulearn.2018.1632},
-        keywords = {automatic grading tool, computer programming, educational environment}
+        url = {http://dx.doi.org/10.21125/edulearn.2018.1632},
+        publisher = {IATED},
+        location = {Palma, Spain},
+        month = {2-4 July, 2018},
+        year = {2018},
+        pages = {6888-6898}
     }
 ```
 
