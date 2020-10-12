@@ -13,8 +13,7 @@ Follow this [tutorial/steps][development_url] on how to setup the development en
 
 ## Our Development Process
 
-We use github to host code, to track issues and feature requests, as well 
-as accept pull requests.
+We use github to host code, to track issues and feature requests, as well as accept pull requests.
 
 ## Your First Contribution
 
@@ -42,7 +41,9 @@ We actively welcome your pull requests.
 ### Code review
 
 UNCode team will check your pull request and one of us will be assigned to review it and
-leave feedback. Make to reply the given feedback ASAP.
+leave feedback. Make sure to reply the given feedback ASAP.
+
+Additionally, some mandatory checks are automatically done, make sure to pass them.
 
 ## Contributor License Agreement ("CLA")
 In order to accept your pull request, you will need to sign the Contributor License Agreement.
