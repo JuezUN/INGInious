@@ -31,7 +31,6 @@ npm run minify
 ## Plugins
 
 The plugins being minified are:
-
 - UNCode.
 - UN template.
 - Statistics.
