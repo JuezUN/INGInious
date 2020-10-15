@@ -57,7 +57,7 @@ def customInputManagerWithCurriedClient(client):
                 }
                 user_input = task.adapt_input_for_backend(web.input(**init_var))
                 for key, value in user_input.items():
-                    if type(value) == 'str':
+                    if type(value) is str:
                         user_input[key] = user_input[key].replace("\r", "")
                 result, grade, problems, tests, custom, archive, stdout, stderr = self.add_unsaved_job(task, user_input)
 
