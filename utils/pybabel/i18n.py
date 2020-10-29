@@ -35,9 +35,9 @@ def compile_messages():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process automatically i18n folders.')
     parser.add_argument('--repo-path', type=str, help='UNCode repository path')
-    parser.add_argument('--actions', choices=['extract', 'update', 'compile', 'all'], nargs='+',
+    parser.add_argument('--actions', choices=['extract', 'compile', 'all'], nargs='+',
                         help="Actions to apply on messages and i18n. The available actions are: 'extract', "
-                             "'update', 'compile' and 'all'. You can chose more than one action")
+                             "'compile' and 'all'. You can chose more than one action")
 
     args = parser.parse_args()
 
@@ -49,7 +49,6 @@ if __name__ == "__main__":
     languages = get_languages()
     if 'extract' in actions:
         extract_messages()
-    if 'update' in actions:
         update_messages()
     if 'compile' in actions:
         compile_messages()
