@@ -81,7 +81,7 @@ class CoursePage(INGIniousPage):
             filtered_tasks = tasks
         else:
             filtered_tasks = {task_id: task for task_id, task in tasks.items() if
-                              current_tag in (map(lambda x: x.get_name(), task.get_tags()[2] + task.get_tags()[0]))}
+                              current_tag in map(lambda x: x.get_name(), task.get_tags()[2] + task.get_tags()[0])}
 
         # Manage tasks pagination
         page_limit = 15
@@ -90,8 +90,8 @@ class CoursePage(INGIniousPage):
         if (total_tasks % page_limit) != 0:
             pages += 1
         if (page_limit * current_page + page_limit) < total_tasks:
-            page_tasks_ids = list(filtered_tasks.keys())[
-                             page_limit * current_page: page_limit * current_page + page_limit]
+            page_tasks_ids = list(filtered_tasks.keys())[page_limit * current_page:
+                                                         page_limit * current_page + page_limit]
         else:
             page_tasks_ids = list(filtered_tasks.keys())[page_limit * current_page:]
 
