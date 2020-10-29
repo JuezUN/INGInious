@@ -35,9 +35,12 @@ class CoursePage(INGIniousPage):
     def GET(self, courseid):  # pylint: disable=arguments-differ
         """ GET request """
         course = self.get_course(courseid)
-        return self.show_page(course)
+        user_input = web.input()
+        page = int(user_input.get("page", 1)) - 1
+        tag = user_input.get("tag", "")
+        return self.show_page(course, page, tag)
 
-    def show_page(self, course):
+    def show_page(self, course, current_page=0, current_tag=""):
         """ Prepares and shows the course page """
         username = self.user_manager.session_username()
         if not self.user_manager.course_is_open_to_user(course, lti=False):
@@ -71,4 +74,25 @@ class CoursePage(INGIniousPage):
             tag_list = course.get_all_tags_names_as_list(is_admin, self.user_manager.session_language())
             user_info = self.database.users.find_one({"username": username})
 
-            return self.template_helper.get_renderer().course(user_info, course, last_submissions, tasks, tasks_data, course_grade, tag_list)
+            if not current_tag:
+                filtered_tasks = tasks
+            else:
+                filtered_tasks = {task_id: task for task_id, task in tasks.items() if
+                                  current_tag in (map(lambda x: x.get_name(), task.get_tags()[2] + task.get_tags()[0]))}
+            page_limit = 12
+            total_tasks = len(filtered_tasks)
+            pages = total_tasks // page_limit
+            if (total_tasks % page_limit) != 0:
+                pages += 1
+            if (page_limit * current_page + page_limit) < total_tasks:
+                page_tasks_ids = list(filtered_tasks.keys())[
+                                 page_limit * current_page: page_limit * current_page + page_limit]
+            else:
+                page_tasks_ids = list(filtered_tasks.keys())[page_limit * current_page:]
+
+            filtered_tasks = {task_id: tasks_data[task_id] for task_id, __ in filtered_tasks.items() if
+                              task_id in page_tasks_ids}
+
+            return self.template_helper.get_renderer().course(user_info, course, last_submissions, tasks,
+                                                              filtered_tasks, course_grade, tag_list, pages,
+                                                              current_page + 1, current_tag)
