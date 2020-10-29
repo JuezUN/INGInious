@@ -4,21 +4,19 @@
 # more information about the licensing of this file.
 
 """ Pages that allow editing of tasks """
-import copy
 import json
 import logging
 import re
 import tempfile
 from collections import OrderedDict
 from zipfile import ZipFile
-from natsort import natsorted
+import uuid
 
 import bson
 import web
 from inginious.frontend.accessible_time import AccessibleTime
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 
-import inginious.common.custom_yaml
 from inginious.common.base import id_checker
 from inginious.frontend.pages.course_admin.task_edit_file import CourseTaskFiles
 from inginious.frontend.tasks import WebAppTask
@@ -169,8 +167,8 @@ class CourseEditTask(INGIniousAdminPage):
             for k in tags:
                 tags[k]["visible"] = ("visible" in tags[k])  # Since unckecked checkboxes are not present here, we manually add them to avoid later errors
                 tags[k]["type"] = int(tags[k]["type"])
-                if not "id" in tags[k]:
-                    tags[k]["id"] = "" # Since textinput is disabled when the tag is organisational, the id field is missing. We add it to avoid Keys Errors
+                if not "id" in tags[k] or tags[k]["id"] == "":
+                    tags[k]["id"] = uuid.uuid4() # Since textinput is disabled when the tag is organisational, the id field is missing. Are random uuid is generated
                 if tags[k]["type"] == 2:
                     tags[k]["id"] = "" # Force no id if organisational tag
 
