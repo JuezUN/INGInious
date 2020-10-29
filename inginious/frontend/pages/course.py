@@ -74,12 +74,15 @@ class CoursePage(INGIniousPage):
             tag_list = course.get_all_tags_names_as_list(is_admin, self.user_manager.session_language())
             user_info = self.database.users.find_one({"username": username})
 
+            # Filter tasks with the tag in case the tasks are filtered
             if not current_tag:
                 filtered_tasks = tasks
             else:
                 filtered_tasks = {task_id: task for task_id, task in tasks.items() if
                                   current_tag in (map(lambda x: x.get_name(), task.get_tags()[2] + task.get_tags()[0]))}
-            page_limit = 12
+
+            # Manage tasks pagination
+            page_limit = 15
             total_tasks = len(filtered_tasks)
             pages = total_tasks // page_limit
             if (total_tasks % page_limit) != 0:
