@@ -167,8 +167,8 @@ class CourseEditTask(INGIniousAdminPage):
             for k in tags:
                 tags[k]["visible"] = ("visible" in tags[k])  # Since unckecked checkboxes are not present here, we manually add them to avoid later errors
                 tags[k]["type"] = int(tags[k]["type"])
-                if not "id" in tags[k] or tags[k]["id"] == "":
-                    tags[k]["id"] = uuid.uuid4() # Since textinput is disabled when the tag is organisational, the id field is missing. Are random uuid is generated
+                if "id" not in tags[k] or tags[k]["id"] == "":
+                    tags[k]["id"] = uuid.uuid4() # Whether the id is not present or empty, set a random uuid.
                 if tags[k]["type"] == 2:
                     tags[k]["id"] = "" # Force no id if organisational tag
 
