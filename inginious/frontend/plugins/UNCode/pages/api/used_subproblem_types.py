@@ -1,5 +1,5 @@
 import inginious.frontend.pages.api._api_page as api
-from ..constants import get_used_subproblem_types
+from inginious.frontend.plugins.UNCode.constants import get_used_subproblem_types
 
 
 class UsedSubproblemTypes(api.APIPage):

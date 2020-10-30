@@ -1,8 +1,9 @@
 import os
 from inginious.frontend.plugins.utils import create_static_resource_page, read_file
+from inginious.frontend.plugins.UNCode.pages.data_policy import DataPolicyPage
 from .constants import set_used_grading_environments, set_used_subproblem_types
-from .api.used_grading_environments import UsedGradingEnvironments
-from .api.used_subproblem_types import UsedSubproblemTypes
+from inginious.frontend.plugins.UNCode.pages.api.used_grading_environments import UsedGradingEnvironments
+from inginious.frontend.plugins.UNCode.pages.api.used_subproblem_types import UsedSubproblemTypes
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
@@ -29,6 +30,7 @@ def init(plugin_manager, course_factory, client, config):
 
     plugin_manager.add_page("/api/getUsedGradingEnvironments/", UsedGradingEnvironments)
     plugin_manager.add_page("/api/getUsedSubproblemTypes/", UsedSubproblemTypes)
+    plugin_manager.add_page("/data_policy", DataPolicyPage)
 
     renderer = plugin_manager._app.template_helper.get_custom_renderer('frontend/plugins/UNCode/static', False)
 

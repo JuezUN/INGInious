@@ -1,4 +1,4 @@
-from ..constants import get_used_grading_environments
+from inginious.frontend.plugins.UNCode.constants import get_used_grading_environments
 import inginious.frontend.pages.api._api_page as api
 
 
