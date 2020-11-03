@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-10-05 16:25-0500\n"
+"POT-Creation-Date: 2020-10-29 02:01-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -495,57 +495,57 @@ msgstr ""
 "O resultado contém mais de {0} submissões. As submissões exibidas estão "
 "truncadas.\n"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:188
+#: inginious/frontend/pages/course_admin/task_edit.py:186
 msgid "You can not use spaces in the tag id field."
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit.py:190
+#: inginious/frontend/pages/course_admin/task_edit.py:188
 msgid "Invalid tag id: {}"
 msgstr "ID de tag inválido: {}"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:195
+#: inginious/frontend/pages/course_admin/task_edit.py:193
 msgid "Some tags have the same id! The id of a tag must be unique."
 msgstr "Algumas tags têm o mesmo ID! O ID de uma tag deve ser exclusivo."
 
-#: inginious/frontend/pages/course_admin/task_edit.py:206
+#: inginious/frontend/pages/course_admin/task_edit.py:204
 msgid "Invalid file type: {}"
 msgstr "Tipo de arquivo inválido: {}"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:212
+#: inginious/frontend/pages/course_admin/task_edit.py:210
 msgid "You cannot create a task without subproblems"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit.py:227
+#: inginious/frontend/pages/course_admin/task_edit.py:225
 msgid "Grade weight must be a floating-point number"
 msgstr "O peso da nota deve ser um número de ponto flutuante"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:240
-#: inginious/frontend/pages/course_admin/task_edit.py:243
+#: inginious/frontend/pages/course_admin/task_edit.py:238
+#: inginious/frontend/pages/course_admin/task_edit.py:241
 msgid "The number of stored submission must be positive!"
 msgstr "O número de submissões armazenadas deve ser positivo!"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:254
-#: inginious/frontend/pages/course_admin/task_edit.py:260
+#: inginious/frontend/pages/course_admin/task_edit.py:252
+#: inginious/frontend/pages/course_admin/task_edit.py:258
 msgid "Invalid submission limit!"
 msgstr "limite de submissão inválido!"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:284
+#: inginious/frontend/pages/course_admin/task_edit.py:282
 msgid "Your browser returned an invalid form ({})"
 msgstr "Seu navegador retornou um formulário inválido ({})"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:290
+#: inginious/frontend/pages/course_admin/task_edit.py:288
 msgid "Error while reading course's informations"
 msgstr "Erro ao ler as informações do curso"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:314
+#: inginious/frontend/pages/course_admin/task_edit.py:312
 msgid "Invalid data: {}"
 msgstr "Dados inválidos: {}"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:320
+#: inginious/frontend/pages/course_admin/task_edit.py:318
 msgid "Cannot read zip file. Files were not modified"
 msgstr "Não é possível ler o arquivo zip. Arquivos não foram modificados"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:327
+#: inginious/frontend/pages/course_admin/task_edit.py:325
 msgid ""
 "There was a problem while extracting the zip archive. Some files may have"
 " been modified"
@@ -1367,7 +1367,7 @@ msgid "Add a test"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:259
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:23
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
 #: inginious/frontend/templates/course_admin/settings.html:29
 #: inginious/frontend/templates/course_admin/task_edit.html:143
@@ -4074,45 +4074,44 @@ msgstr ""
 msgid "Import tags"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:22
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:88
-msgid "Id"
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:17
+msgid "Tags without a name will be automatically removed."
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:25
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:90
 msgid "Description"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:25
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:26
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:91
 msgid "Show to students"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:26
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:27
 msgid "Type "
-msgstr ""
-
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:39
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:61
-msgid "Skill"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:40
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:62
-msgid "Misconception"
+msgid "Skill"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:41
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:63
+msgid "Misconception"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:42
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:64
 msgid "Category"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:73
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:74
 msgid " New tag"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:87
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:88
 msgid "Import"
 msgstr ""
 
@@ -4289,5 +4288,8 @@ msgstr ""
 #~ "LTI courses are only accesible via "
 #~ "the the LMS platform such as "
 #~ "Moodle or OpenEdx"
+#~ msgstr ""
+
+#~ msgid "Id"
 #~ msgstr ""
 
