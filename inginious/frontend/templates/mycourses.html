@@ -98,7 +98,7 @@ $else:
             <label class="sr-only" for="register_password">$:_("Password")</label>
             <input class="form-control" type="password" id="register_password" name="register_password" disabled="disabled" placeholder="$:_('Password')">
         </div>
-        <div class="col-sm-12"><button type="submit" class="btn btn-block btn-default">$:_("Register")</button></div>
+        <div class="col-sm-12"><button type="submit" class="btn btn-block btn-primary">$:_("Register")</button></div>
     </form>
 
 <hr/>
@@ -107,7 +107,7 @@ $else:
         <input type="text" class="form-control" id="course_query" placeholder="$:_('Search course')" value="$current_query">
     </div>
     <div class="form-group col-sm-2">
-        <button type="button" class="btn btn-block btn-success" onclick="onSearch()">$:_("Search")</button>
+        <button type="submit" class="btn btn-block btn-success" onclick="onSearch()">$:_("Search")</button>
     </div>
 </div>
 <div class="list-group list-group-progress" style="margin-left: 16px; margin-right: 16px;">
@@ -140,29 +140,29 @@ $else:
     $else:
         <a href="#register" class="list-group-item row disabled">$:_("You are not registered to any course")</a>
 </div>
-
-<div class="align-center">
-    <nav aria-label="My courses pagination">
-        <ul class="pagination">
-            <li class="$('disabled' if current_page == 1 else '')">
-                <a href="#" aria-label="Previous"
-                   onclick="change_page($(current_page - 1 if (current_page - 1) > 0 else 1))">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            $for page in range(1, total_pages + 1):
-                <li class="$('active' if page == current_page else '')">
-                    <a href="#" onclick="change_page($page)">$page</a>
+$if len(open_courses) > 0:
+    <div class="align-center">
+        <nav aria-label="My courses pagination">
+            <ul class="pagination">
+                <li class="$('disabled' if current_page == 1 else '')">
+                    <a href="#" aria-label="Previous"
+                       onclick="change_page($(current_page - 1 if (current_page - 1) > 0 else 1))">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
                 </li>
-            <li class="$('disabled' if (current_page + 1) >= total_pages else '')">
-                <a href="#" aria-label="Next"
-                   onclick="change_page($(current_page + 1 if (current_page + 1) < total_pages else total_pages))">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</div>
+                $for page in range(1, total_pages + 1):
+                    <li class="$('active' if page == current_page else '')">
+                        <a href="#" onclick="change_page($page)">$page</a>
+                    </li>
+                <li class="$('disabled' if (current_page + 1) >= total_pages else '')">
+                    <a href="#" aria-label="Next"
+                       onclick="change_page($(current_page + 1 if (current_page + 1) < total_pages else total_pages))">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 <script>
     function change_page(page, query="") {
         let new_path = '$get_homepath()/mycourses?page=' + page;
