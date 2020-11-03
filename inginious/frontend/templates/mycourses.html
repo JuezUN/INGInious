@@ -1,4 +1,4 @@
-$def with (open_courses,registrable_courses,submissions,success)
+$def with (open_courses,registrable_courses,submissions,success, total_pages, current_page, current_query)
 
 $#
 $# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
@@ -9,7 +9,7 @@ $var title: $:_("My courses")
 
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
-        <li class="active"><a href="#"><i class="fa fa-th-list"></i> $:_("My courses")
+        <li class="active"><a href="/mycourses"><i class="fa fa-th-list"></i> $:_("My courses")
             <span class="sr-only">$:_("(current)")</span></a>
         </li>
     </ol>
@@ -50,37 +50,6 @@ $var Column: $:ColumnF()
 
 $# Start content
 <h2>$:_("My courses")</h2>
-<div class="list-group list-group-progress" style="margin-left: 16px; margin-right: 16px;">
-	$if len(open_courses) != 0:
-        $ username = user_manager.session_username()
-        $for courseid, course in open_courses.items():
-            <a href="$('{}/course/{}'.format(get_homepath(),courseid) if not course.is_lti() or username in course.get_admins() or user_manager.user_is_superadmin() else '#')"
-               class="list-group-item row $(('list-group-item-warning' if not course.is_lti() else 'list-group-item-info') if not course.is_open_to_non_staff() or course.is_lti() else '')">
-                <div class="col-xs-12 col-md-8">
-                    $course.get_name(user_manager.session_language())
-                </div>
-                <div class="col-xs-12 col-md-4">
-                    <i class="pull-right">
-                        $if not course.is_open_to_non_staff() or course.is_lti():
-                            $if course.is_lti():
-                                <i data-toggle="tooltip" title="" data-placement="top" class="pull-right fa fa-fw fa-external-link" data-original-title="External platform"></i>
-                                $:_("LTI course") -
-                            $else:
-                                $:_("Hidden course") -
-
-                        $if username in course.get_admins() or user_manager.user_is_superadmin():
-                            $:_("Administrator")
-                        $elif username in course.get_tutors():
-                            $:_("Tutor")
-                        $elif user_manager.course_is_user_registered(course):
-                            $:_("Student")
-                    </i>
-                </div>
-            </a>
-    $else:
-        <a href="#register" class="list-group-item row disabled">$:_("You are not registered to any course")</a>
-</div>
-<hr/>
 $if user_manager.user_is_superadmin():
     $if success == True:
         <div class="alert alert-success alert-dismissable" role="alert">
@@ -131,3 +100,80 @@ $else:
         </div>
         <div class="col-sm-12"><button type="submit" class="btn btn-block btn-default">$:_("Register")</button></div>
     </form>
+
+<hr/>
+<div class="row">
+    <div class="form-group col-sm-10">
+        <input type="text" class="form-control" id="course_query" placeholder="$:_('Search course')" value="$current_query">
+    </div>
+    <div class="form-group col-sm-2">
+        <button type="button" class="btn btn-block btn-success" onclick="onSearch()">$:_("Search")</button>
+    </div>
+</div>
+<div class="list-group list-group-progress" style="margin-left: 16px; margin-right: 16px;">
+	$if len(open_courses) != 0:
+        $ username = user_manager.session_username()
+        $for courseid, course in open_courses.items():
+            <a href="$('{}/course/{}'.format(get_homepath(),courseid) if not course.is_lti() or username in course.get_admins() or user_manager.user_is_superadmin() else '#')"
+               class="list-group-item row $(('list-group-item-warning' if not course.is_lti() else 'list-group-item-info') if not course.is_open_to_non_staff() or course.is_lti() else '')">
+                <div class="col-xs-12 col-md-8">
+                    $course.get_name(user_manager.session_language())
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <i class="pull-right">
+                        $if not course.is_open_to_non_staff() or course.is_lti():
+                            $if course.is_lti():
+                                <i data-toggle="tooltip" title="" data-placement="top" class="pull-right fa fa-fw fa-external-link" data-original-title="External platform"></i>
+                                $:_("LTI course") -
+                            $else:
+                                $:_("Hidden course") -
+
+                        $if username in course.get_admins() or user_manager.user_is_superadmin():
+                            $:_("Administrator")
+                        $elif username in course.get_tutors():
+                            $:_("Tutor")
+                        $elif user_manager.course_is_user_registered(course):
+                            $:_("Student")
+                    </i>
+                </div>
+            </a>
+    $else:
+        <a href="#register" class="list-group-item row disabled">$:_("You are not registered to any course")</a>
+</div>
+
+<div class="align-center">
+    <nav aria-label="My courses pagination">
+        <ul class="pagination">
+            <li class="$('disabled' if current_page == 1 else '')">
+                <a href="#" aria-label="Previous"
+                   onclick="change_page($(current_page - 1 if (current_page - 1) > 0 else 1))">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            $for page in range(1, total_pages + 1):
+                <li class="$('active' if page == current_page else '')">
+                    <a href="#" onclick="change_page($page)">$page</a>
+                </li>
+            <li class="$('disabled' if (current_page + 1) >= total_pages else '')">
+                <a href="#" aria-label="Next"
+                   onclick="change_page($(current_page + 1 if (current_page + 1) < total_pages else total_pages))">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<script>
+    function change_page(page, query="") {
+        let new_path = '$get_homepath()/mycourses?page=' + page;
+        if (query !== "") {
+            new_path += '&query=' + query;
+        }
+        location.href = new_path;
+    }
+    function onSearch(){
+        const searchQuery = $$("#course_query").val();
+        change_page(1, searchQuery);
+    }
+</script>
+
