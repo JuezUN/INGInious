@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-10-29 02:01-0500\n"
+"POT-Creation-Date: 2020-11-02 23:35-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -2336,11 +2336,11 @@ msgstr "Tareas filtradas por etiquetas"
 msgid "No filter"
 msgstr "No filtrar"
 
-#: inginious/frontend/templates/course.html:131
+#: inginious/frontend/templates/course.html:122
 msgid "task hidden to students"
 msgstr "Tarea oculta para estudiantes"
 
-#: inginious/frontend/templates/course.html:133
+#: inginious/frontend/templates/course.html:124
 msgid "deadline reached"
 msgstr "La fecha de entrega ha sido alcanzada"
 
