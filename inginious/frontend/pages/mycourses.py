@@ -4,9 +4,9 @@
 # more information about the licensing of this file.
 
 """ Index page """
-import web
-import re
 from collections import OrderedDict
+import re
+import web
 
 from inginious.frontend.pages.utils import INGIniousAuthPage
 
