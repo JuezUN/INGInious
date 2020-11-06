@@ -1,9 +1,10 @@
 import os
 from inginious.frontend.plugins.utils import create_static_resource_page, read_file
 from inginious.frontend.plugins.UNCode.pages.data_policy import DataPolicyPage
-from .constants import set_used_grading_environments, set_used_subproblem_types
 from inginious.frontend.plugins.UNCode.pages.api.used_grading_environments import UsedGradingEnvironments
 from inginious.frontend.plugins.UNCode.pages.api.used_subproblem_types import UsedSubproblemTypes
+from .constants import set_used_grading_environments, set_used_subproblem_types
+
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
