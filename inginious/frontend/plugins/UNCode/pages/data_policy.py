@@ -11,4 +11,5 @@ class DataPolicyPage(INGIniousPage):
     """ Data policy page """
 
     def GET(self):
+        """ Get request """
         return self.template_helper.get_custom_renderer("frontend/plugins/UNCode/pages/templates").data_policy()
