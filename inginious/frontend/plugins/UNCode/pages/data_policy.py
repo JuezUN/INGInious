@@ -2,6 +2,7 @@
 #
 # This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
 # more information about the licensing of this file.
+""" Data policy page on UNCode plugin """
 
 
 from inginious.frontend.pages.utils import INGIniousPage
