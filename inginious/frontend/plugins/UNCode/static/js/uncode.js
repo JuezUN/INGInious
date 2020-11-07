@@ -18,7 +18,8 @@ jQuery(document).ready(function () {
                 'UNCode is distributed under AGPL license' +
                 '</a>' + ' - <a target="_blank" href="http://www.inginious.org" class="navbar-link">\n' +
                 'Powered by INGInious.\n</a>');
-        $('<br/><a class="navbar-link" href="data_policy">Política de tratamiento de datos personales</a>').insertAfter('footer > div > p:last-child a:last');
+        footer.find('> div > div > div > div ').prepend('<p class="navbar-text">' +
+            '<a class="navbar-link" href="data_policy">Política de tratamiento de datos personales</a> </p>');
     }
 
     function updatePageIcon(imagePath) {
