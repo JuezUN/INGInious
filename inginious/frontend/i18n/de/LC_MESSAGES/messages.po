@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-03 17:09-0500\n"
+"POT-Creation-Date: 2020-11-07 19:18-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -687,6 +687,11 @@ msgstr ""
 
 #: inginious/frontend/pages/preferences/utils.py:19
 msgid "Delete my account"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:7
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:12
+msgid "Data Policy"
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:8

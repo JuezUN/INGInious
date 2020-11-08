@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-03 17:09-0500\n"
+"POT-Creation-Date: 2020-11-07 19:18-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -706,6 +706,11 @@ msgstr "Enlaces de autenticación"
 #: inginious/frontend/pages/preferences/utils.py:19
 msgid "Delete my account"
 msgstr "Eliminar mi cuenta"
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:7
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:12
+msgid "Data Policy"
+msgstr "Política de Tratamiento de Datos"
 
 #: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:8
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:2
@@ -4487,3 +4492,4 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
+
