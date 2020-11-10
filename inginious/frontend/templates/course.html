@@ -1,4 +1,4 @@
-$def with (user_info, course, submissions, tasks, tasks_data, grade, tag_filter_list)
+$def with (user_info, course, submissions, tasks, tasks_data, grade, tag_filter_list, total_pages, current_page, current_tag)
 
 $#
 $# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
@@ -88,35 +88,26 @@ $if tag_filter_list:
     <div class="form-group">
         <label for="sel1">$:_("Filter tasks by tags")</label>
         <select class="form-control" id="tag_filter" onchange="filter_tag(this)">
-            <option value="">$:_("No filter")</option>
+            <option value="" $("selected" if not current_tag else '')>$:_("No filter")</option>
         $for tag_name in tag_filter_list:
-            <option value="$tag_name">$tag_name</option>
+            <option value="$tag_name" $("selected" if current_tag == tag_name else '')>$tag_name</option>
         </select>
     </div>
 <script>
-function filter_tag(tag) {
-    tag = tag.value;
-    $$("a", "#tasks-list").each(function(idx, elem) {
-        var task = $$(elem);
-        var found=false;
-        $$("div[id='tag']", task).each(function() {
-            if ($$(this).attr("data-tag-name") == tag){
-                found=true;
-            }
-        });
-        if(found || tag == ""){
-            task.show();
-        }else{
-            task.hide();
+    function filter_tag(tag) {
+        tag = tag.value;
+        let new_path = '$get_homepath()/course/$course.get_id()?page=1';
+        if (tag !== "") {
+            new_path += "&tag=" + tag;
         }
-    });
-}
+        location.href = new_path;
+    }
 </script>
 <!-- End tag filter -->
 
 <div id="tasks-list" class="list-group list-group-progress" style="margin-left: 16px; margin-right: 16px;">
     $for taskid, task in tasks.items()
-        $if tasks_data[taskid]["visible"]:
+        $if taskid in tasks_data and tasks_data[taskid]["visible"]:
             $ succeeded=tasks_data[taskid]["succeeded"]
             $ completion=tasks_data[taskid]["grade"]
             <a href="$get_homepath()/course/$course.get_id()/$taskid" class="row list-group-item
@@ -147,3 +138,37 @@ function filter_tag(tag) {
                 </div>
             </a>
 </div>
+
+<div class="align-center">
+    <nav aria-label="Tasks pagination">
+        <ul class="pagination">
+            <li class="$('disabled' if current_page == 1 else '')">
+                <a href="#" aria-label="Previous"
+                   onclick="change_page($(current_page - 1 if (current_page - 1) > 0 else 1))">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            $for page in range(1, total_pages + 1):
+                <li class="$('active' if page == current_page else '')">
+                    <a href="#" onclick="change_page($page)">$page</a>
+                </li>
+            <li class="$('disabled' if (current_page + 1) >= total_pages else '')">
+                <a href="#" aria-label="Next"
+                   onclick="change_page($(current_page + 1 if (current_page + 1) < total_pages else total_pages))">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<script>
+    function change_page(page) {
+        const tag_filter_value = $$("#tag_filter").val();
+        let new_path = '$get_homepath()/course/$course.get_id()?page=' + page;
+        if (tag_filter_value !== "") {
+            new_path += '&tag=' + tag_filter_value;
+        }
+        location.href = new_path;
+    }
+</script>

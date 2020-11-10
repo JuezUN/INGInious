@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-06 08:54-0500\n"
+"POT-Creation-Date: 2020-11-07 19:18-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -1118,8 +1118,8 @@ msgid "Username"
 msgstr "Nome de usuário"
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:50
-#: inginious/frontend/templates/mycourses.html:97
-#: inginious/frontend/templates/mycourses.html:118
+#: inginious/frontend/templates/mycourses.html:66
+#: inginious/frontend/templates/mycourses.html:87
 msgid "Course"
 msgstr "Curso"
 
@@ -1157,7 +1157,7 @@ msgstr ""
 #: inginious/frontend/plugins/auth/custom_auth_form.html:32
 #: inginious/frontend/plugins/register_students/static/email_template.html:13
 #: inginious/frontend/templates/auth.html:26
-#: inginious/frontend/templates/mycourses.html:129
+#: inginious/frontend/templates/mycourses.html:98
 #: inginious/frontend/templates/register_button.html:31
 msgid "Password"
 msgstr "Senha"
@@ -2186,11 +2186,11 @@ msgstr "Filtrar tarefas por tags"
 msgid "No filter"
 msgstr ""
 
-#: inginious/frontend/templates/course.html:131
+#: inginious/frontend/templates/course.html:122
 msgid "task hidden to students"
 msgstr "tarefa oculta para os alunos"
 
-#: inginious/frontend/templates/course.html:133
+#: inginious/frontend/templates/course.html:124
 msgid "deadline reached"
 msgstr "prazo atingido"
 
@@ -2264,7 +2264,7 @@ msgid "English"
 msgstr "Inglês"
 
 #: inginious/frontend/templates/layout.html:134
-#: inginious/frontend/templates/mycourses.html:132
+#: inginious/frontend/templates/mycourses.html:101
 #: inginious/frontend/templates/register.html:8
 msgid "Register"
 msgstr "Registro"
@@ -2374,63 +2374,71 @@ msgid ""
 "or OpenEdx"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:67
-msgid "LTI course"
-msgstr "Curso LTI"
-
-#: inginious/frontend/templates/mycourses.html:69
-msgid "Hidden course"
-msgstr "Curso oculto"
-
-#: inginious/frontend/templates/mycourses.html:72
-msgid "Administrator"
-msgstr "Administrador"
-
-#: inginious/frontend/templates/mycourses.html:74
-msgid "Tutor"
-msgstr "Tutor"
-
-#: inginious/frontend/templates/course_admin/task_info.html:42
-#: inginious/frontend/templates/mycourses.html:76
-msgid "Student"
-msgstr "Aluno"
-
-#: inginious/frontend/templates/mycourses.html:81
-msgid "You are not registered to any course"
-msgstr "Você não está registrado em nenhum curso"
-
-#: inginious/frontend/templates/mycourses.html:88
+#: inginious/frontend/templates/mycourses.html:57
 msgid "Course created."
 msgstr "Curso criado."
 
-#: inginious/frontend/templates/mycourses.html:93
+#: inginious/frontend/templates/mycourses.html:62
 msgid ""
 "Failed to create the course. It might either already exist or contain an "
 "invalid character (only alphanumeric in addition to '_' and '-' are "
 "accepted)."
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:101
+#: inginious/frontend/templates/mycourses.html:70
 msgid "Create new course"
 msgstr "Criar novo curso"
 
-#: inginious/frontend/templates/mycourses.html:105
+#: inginious/frontend/templates/mycourses.html:74
 msgid "Register for a course"
 msgstr "Inscreva-se em um curso"
 
-#: inginious/frontend/templates/mycourses.html:109
+#: inginious/frontend/templates/mycourses.html:78
 msgid "Registration complete."
 msgstr "Registro completo."
 
-#: inginious/frontend/templates/mycourses.html:114
+#: inginious/frontend/templates/mycourses.html:83
 msgid "Registration failed. Please check that you properly typed the password."
 msgstr ""
 "O registro falhou. Por favor, verifique se você digitou a senha "
 "corretamente."
 
-#: inginious/frontend/templates/mycourses.html:120
+#: inginious/frontend/templates/mycourses.html:89
 msgid "Select a course"
 msgstr "Selecione um curso"
+
+#: inginious/frontend/templates/mycourses.html:107
+msgid "'Search course'"
+msgstr ""
+
+#: inginious/frontend/templates/mycourses.html:110
+msgid "Search"
+msgstr ""
+
+#: inginious/frontend/templates/mycourses.html:127
+msgid "LTI course"
+msgstr "Curso LTI"
+
+#: inginious/frontend/templates/mycourses.html:129
+msgid "Hidden course"
+msgstr "Curso oculto"
+
+#: inginious/frontend/templates/mycourses.html:132
+msgid "Administrator"
+msgstr "Administrador"
+
+#: inginious/frontend/templates/mycourses.html:134
+msgid "Tutor"
+msgstr "Tutor"
+
+#: inginious/frontend/templates/course_admin/task_info.html:42
+#: inginious/frontend/templates/mycourses.html:136
+msgid "Student"
+msgstr "Aluno"
+
+#: inginious/frontend/templates/mycourses.html:141
+msgid "You are not registered to any course"
+msgstr "Você não está registrado em nenhum curso"
 
 #: inginious/frontend/templates/notfound.html:8
 #: inginious/frontend/templates/notfound.html:13
@@ -4296,5 +4304,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Id"
+#~ msgstr ""
+
+#~ msgid "\"Search course\""
 #~ msgstr ""
 
