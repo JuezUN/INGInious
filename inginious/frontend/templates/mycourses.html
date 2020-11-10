@@ -164,16 +164,16 @@ $if len(open_courses) > 0:
         </nav>
     </div>
 <script>
-    function change_page(page, query="") {
+    function change_page(page) {
         let new_path = '$get_homepath()/mycourses?page=' + page;
-        if (query !== "") {
-            new_path += '&query=' + query;
+        const searchQuery = $$("#course_query").val();
+        if (searchQuery !== "") {
+            new_path += '&query=' + searchQuery;
         }
         location.href = new_path;
     }
     function onSearch(){
-        const searchQuery = $$("#course_query").val();
-        change_page(1, searchQuery);
+        change_page(1);
     }
 </script>
 
