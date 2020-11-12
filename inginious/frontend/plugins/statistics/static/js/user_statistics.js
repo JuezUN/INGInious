@@ -1,5 +1,5 @@
 //Global namespace
-var UserStatistics = {
+const UserStatistics = {
     "colors":
         {
             "COMPILATION_ERROR": 'rgb(236,199,6)',
@@ -7,12 +7,13 @@ var UserStatistics = {
             "MEMORY_LIMIT_EXCEEDED": 'rgb(119,92,133)',
             "RUNTIME_ERROR": 'rgb(2,164,174)',
             "WRONG_ANSWER": 'rgb(227,79,54)',
-            "INTERNAL_ERROR": 'rgb(137,139,37)',
+            "OUTPUT_LIMIT_EXCEEDED": 'rgb(137,139,37)',
+            "GRADING_RUNTIME_ERROR": 'rgb(139,62,0)',
             "ACCEPTED": 'rgb(35,181,100)'
         }
 };
 
-var UserTrialsAndBestGradeStatistic = (function () {
+const UserTrialsAndBestGradeStatistic = (function () {
     function UserTrialsAndBestGradeStatistic(course_id) {
         this.course_id = course_id;
         this.div_id = "tries_per_task";
@@ -26,11 +27,11 @@ var UserTrialsAndBestGradeStatistic = (function () {
     };
 
     UserTrialsAndBestGradeStatistic.prototype._plotData = function (tries_per_tasks) {
-        var SUBMISSIONS_COUNT_TO_PIXELS = this._getRatio(tries_per_tasks);
-        var plotData = {};
-        var results = Object.keys(UserStatistics.colors);
+        const SUBMISSIONS_COUNT_TO_PIXELS = this._getRatio(tries_per_tasks);
+        const plotData = {};
+        const results = Object.keys(UserStatistics.colors);
 
-        for (var index = 0; index < results.length; index++) {
+        for (let index = 0; index < results.length; index++) {
             plotData[results[index]] =
                 {
                     "mode": "markers",
@@ -48,46 +49,48 @@ var UserTrialsAndBestGradeStatistic = (function () {
                 }
         }
 
-
-        for (var index = 0; index < tries_per_tasks.length; index++) {
-            var result = tries_per_tasks[index].result;
-
-            plotData[result]["x"].push(tries_per_tasks[index].taskid);
+        for (let index = 0; index < tries_per_tasks.length; index++) {
+            const result = tries_per_tasks[index].result;
+            plotData[result]["x"].push(tries_per_tasks[index].task_name);
             plotData[result]["y"].push(tries_per_tasks[index].grade);
             plotData[result]["text"].push(tries_per_tasks[index].tried + " submissions");
             plotData[result]["marker"]["size"].push(tries_per_tasks[index].tried);
         }
 
-        var data = [];
-        for (var index = 0; index < results.length; index++) {
+        const data = [];
+        for (let index = 0; index < results.length; index++) {
             data.push(plotData[results[index]]);
         }
 
-        var layout = {
+        const layout = {
             xaxis: {title: 'Task'},
             yaxis: {title: 'Grade', range: [-10, 110]},
             margin: {t: 20},
-            hovermode: 'closest'
+            hovermode: 'closest',
+            legend: {
+                font: {
+                    size: 10,
+                },
+                itemsizing: 'constant'
+            },
         };
         Plotly.purge(this.div_id);
         Plotly.plot(this.div_id, data, layout, {showLink: false});
     };
 
     UserTrialsAndBestGradeStatistic.prototype._getRatio = function (tries_per_tasks) {
-        var sum = 0.0;
-
-        for (var i = 0; i < tries_per_tasks.length; i++) {
+        let sum = 0.0;
+        for (let i = 0; i < tries_per_tasks.length; i++) {
             sum += tries_per_tasks[i].tried;
         }
-
-        var avg = sum / tries_per_tasks.length;
+        const avg = sum / tries_per_tasks.length;
         return avg / 1000;
     };
 
     return UserTrialsAndBestGradeStatistic;
 })();
 
-var BarSubmissionsPerTasks = (function () {
+const BarSubmissionsPerTasks = (function () {
     function BarSubmissionsPerTasks(course_id, id_div) {
         this.course_id = course_id;
         this.id_div = id_div || "submissions_per_task";
@@ -107,31 +110,38 @@ var BarSubmissionsPerTasks = (function () {
     };
 
     BarSubmissionsPerTasks.prototype._plotData = function (data) {
-        var data_count_obj = {};
-        var tasks_id = [];
+        const data_count_obj = {};
+        const tasks_id = [];
 
-        for (var i = 0; i < data.length; ++i) {
-            if (data_count_obj[data[i].task_id] == null) {
-                data_count_obj[data[i].task_id] = 0;
-                tasks_id.push(data[i].task_id);
+        for (let i = 0; i < data.length; ++i) {
+            if (data_count_obj[data[i].task_name] == null) {
+                data_count_obj[data[i].task_name] = 0;
+                tasks_id.push(data[i].task_name);
             }
-
-            data_count_obj[data[i].task_id] += data[i].count;
+            data_count_obj[data[i].task_name] += data[i].count;
         }
 
-        var colors = UserStatistics.colors;
+        const colors = UserStatistics.colors;
+        const compilation_error_data = this.createObjectToPlotData(data, data_count_obj, "COMPILATION_ERROR",
+            colors["COMPILATION_ERROR"]);
+        const time_limit_data = this.createObjectToPlotData(data, data_count_obj, "TIME_LIMIT_EXCEEDED",
+            colors["TIME_LIMIT_EXCEEDED"]);
+        const memory_limit_data = this.createObjectToPlotData(data, data_count_obj, "MEMORY_LIMIT_EXCEEDED",
+            colors["MEMORY_LIMIT_EXCEEDED"]);
+        const runtime_error_data = this.createObjectToPlotData(data, data_count_obj, "RUNTIME_ERROR",
+            colors["RUNTIME_ERROR"]);
+        const wrong_answer_data = this.createObjectToPlotData(data, data_count_obj, "WRONG_ANSWER",
+            colors["WRONG_ANSWER"]);
+        const output_limit_error_data = this.createObjectToPlotData(data, data_count_obj, "OUTPUT_LIMIT_EXCEEDED",
+            colors["OUTPUT_LIMIT_EXCEEDED"]);
+        const grading_error_data = this.createObjectToPlotData(data, data_count_obj, "GRADING_RUNTIME_ERROR",
+            colors["GRADING_RUNTIME_ERROR"]);
+        const accepted_data = this.createObjectToPlotData(data, data_count_obj, "ACCEPTED", colors["ACCEPTED"]);
 
-        var compilation_error_data = this.createObjectToPlotData(data, data_count_obj, "COMPILATION_ERROR", colors["COMPILATION_ERROR"]);
-        var time_limit_data = this.createObjectToPlotData(data, data_count_obj, "TIME_LIMIT_EXCEEDED", colors["TIME_LIMIT_EXCEEDED"]);
-        var memory_limit_data = this.createObjectToPlotData(data, data_count_obj, "MEMORY_LIMIT_EXCEEDED", colors["MEMORY_LIMIT_EXCEEDED"]);
-        var runtime_error_data = this.createObjectToPlotData(data, data_count_obj, "RUNTIME_ERROR", colors["RUNTIME_ERROR"]);
-        var wrong_answer_data = this.createObjectToPlotData(data, data_count_obj, "WRONG_ANSWER", colors["WRONG_ANSWER"]);
-        var internal_error_data = this.createObjectToPlotData(data, data_count_obj, "INTERNAL_ERROR", colors["INTERNAL_ERROR"]);
-        var accepted_data = this.createObjectToPlotData(data, data_count_obj, "ACCEPTED", colors["ACCEPTED"]);
+        const plotData = [compilation_error_data, time_limit_data, memory_limit_data, runtime_error_data,
+            wrong_answer_data, output_limit_error_data, accepted_data, grading_error_data];
 
-        var plotData = [compilation_error_data, time_limit_data, memory_limit_data, runtime_error_data, wrong_answer_data, internal_error_data, accepted_data];
-
-        var layout = {
+        const layout = {
             barmode: 'stack',
             title: 'Submissions vs Task',
             xaxis: {
@@ -158,7 +168,7 @@ var BarSubmissionsPerTasks = (function () {
 
 
     BarSubmissionsPerTasks.prototype.createObjectToPlotData = function (data, data_count_obj, verdict, color_category) {
-        var plotData = {
+        const plotData = {
             x: [],
             y: [],
             marker: {color: color_category},
@@ -166,17 +176,16 @@ var BarSubmissionsPerTasks = (function () {
             type: 'bar'
         };
 
-        for (var i = 0; i < data.length; ++i) {
+        for (let i = 0; i < data.length; ++i) {
             if (data[i].summary_result === verdict) {
-                plotData.x.push(data[i].task_id);
+                plotData.x.push(data[i].task_name);
                 if (this.normalize) {
-                    plotData.y.push((data[i].count / data_count_obj[data[i].task_id]) * 100);
+                    plotData.y.push((data[i].count / data_count_obj[data[i].task_name]) * 100);
                 } else {
                     plotData.y.push(data[i].count);
                 }
             }
         }
-
         return plotData;
     };
 
@@ -189,13 +198,13 @@ $(function () {
     UserStatistics.trialsAndBestGradeStatistic = new UserTrialsAndBestGradeStatistic(UserStatistics.course_id);
     UserStatistics.barSubmissionsPerTasks = new BarSubmissionsPerTasks(UserStatistics.course_id);
 
-    var tabToStatistic = {
+    const tabToStatistic = {
         "trials-circle-tab": UserStatistics.trialsAndBestGradeStatistic,
         "bar-submissions-per-tasks-tab": UserStatistics.barSubmissionsPerTasks
     };
 
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-        var statistic = tabToStatistic[e.target.id];
+        const statistic = tabToStatistic[e.target.id];
 
         if (statistic) {
             statistic.plotAsync();

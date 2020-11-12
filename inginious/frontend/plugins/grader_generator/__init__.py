@@ -7,11 +7,16 @@ from .pages.grader import on_task_editor_submit
 from .pages.grader import grader_footer
 from .pages.grader import grader_generator_tab
 
+from .pages.constants import set_use_minified
+
 _BASE_STATIC_FOLDER = os.path.join(os.path.dirname(__file__), 'static')
 
 
 def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_page(r'/grader_generator/static/(.*)', create_static_resource_page(_BASE_STATIC_FOLDER))
+
+    use_minified = config.get("use_minified", True)
+    set_use_minified(use_minified)
 
     plugin_manager.add_page('/api/grader_generator/test_file_api', TaskTestCasesFilesApi)
 

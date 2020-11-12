@@ -1,0 +1,10 @@
+#!/bin/python3
+
+from grading import graders
+
+problem_id = {problem_id}
+testbench = {testbench}
+output = {output}
+options = {options}
+
+graders.handle_problem_action(problem_id, testbench, output, options=options)

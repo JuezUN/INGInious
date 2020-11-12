@@ -1,15 +1,20 @@
 import web
+import os
 from .admin_api import AdminApi
+
 
 class BestSubmissionsByVerdictApi(AdminApi):
 
     def get_best_statistics_by_verdict(self, course):
         course_id = course.get_id()
+        admins = list(set(course.get_staff() + self.user_manager._superadmins))
+
         best_statistics_by_verdict = self.database.user_tasks.aggregate([
             {
                 "$match":
                     {
-                        "courseid": course_id
+                        "courseid": course_id,
+                        "username": {"$nin": admins}
                     }
             },
             {
@@ -29,7 +34,7 @@ class BestSubmissionsByVerdictApi(AdminApi):
             },
             {
                 "$group": {
-                    "_id": {"summary_result": "$submission.custom.summary_result",
+                    "_id": {"summary_result": "$submission.custom.custom_summary_result",
                             "taskid": "$taskid"},
                     "count": {"$sum": 1}
                 }
@@ -60,7 +65,8 @@ class BestSubmissionsByVerdictApi(AdminApi):
 
         best_statistics_by_verdict = self.get_best_statistics_by_verdict(course)
         course_tasks = course.get_tasks()
-        sorted_tasks = sorted(course_tasks.values(), key=lambda task: task.get_order())
+        sorted_tasks = sorted(course_tasks.values(),
+                              key=lambda task: os.path.getctime(task.get_fs().prefix + 'task.yaml'))
 
         task_id_to_statistics = {}
         for element in best_statistics_by_verdict:
@@ -82,6 +88,7 @@ class BestSubmissionsByVerdictApi(AdminApi):
             for verdict in verdicts:
                 best_statistics_by_verdict.append({
                     "task_id": _id,
+                    "task_name": task.get_name(self.user_manager.session_language()),
                     "summary_result": verdict["summary_result"],
                     "count": verdict["count"]
                 })

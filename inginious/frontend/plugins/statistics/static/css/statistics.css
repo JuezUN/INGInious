@@ -16,10 +16,10 @@
 }
 
 .statistics-grade {
-  max-width: 100%;
+    max-width: 100%;
 }
 
-.button-normalize{
+.button-normalize {
     background-color: white;
     padding: 8px 15px;
     text-align: center;

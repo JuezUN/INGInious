@@ -7,10 +7,11 @@ _logger = logging.getLogger("inginious.frontend.webapp.plugins.hooks_example")
 def init(plugin_manager, course_factory, client, config):
 
     def on_task_updated(courseid, taskid, new_content):
+        user_language = plugin_manager.get_user_manager().session_language()
         task_name = new_content["name"]
         descriptor = course_factory.get_course(courseid)._task_factory.get_task_descriptor_content(courseid, taskid)
         task_author = descriptor["author"]
-        task_context = descriptor["context"]
+        task_context = str(course_factory.get_course(courseid).get_task(taskid).get_context(user_language))
         tags = new_content.get("tags", [])
         course = course_factory.get_course(courseid)
         task_data = {
@@ -19,7 +20,7 @@ def init(plugin_manager, course_factory, client, config):
             "task_author": task_author,
             "task_context": task_context,
             "course_id": courseid,
-            "course_name": course.get_name(plugin_manager.get_user_manager().session_language()),
+            "course_name": course.get_name(user_language),
             "tags": [tag["name"] for _, tag in tags.items()]
         }
 
@@ -56,6 +57,12 @@ def init(plugin_manager, course_factory, client, config):
 
     if "tasks_cache" not in plugin_manager.get_database().collection_names():
         plugin_manager.get_database().create_collection("tasks_cache")
+
+    if "TextSearchIndex" not in plugin_manager.get_database().tasks_cache.index_information():
+        plugin_manager.get_database().tasks_cache.create_index(
+            [("course_id", "text"), ("course_name", "text"), ("task_name", "text"), ("tags", "text"),
+             ("task_id", "text")], name="TextSearchIndex")
+
     plugin_manager.get_database().tasks_cache.create_index([("course_id", 1), ("task_id", 1)], unique=True)
 
     plugin_manager.add_hook('task_updated', on_task_updated)

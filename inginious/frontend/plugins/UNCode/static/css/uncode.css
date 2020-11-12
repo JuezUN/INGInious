@@ -13,3 +13,8 @@
 em {
     font-style: italic;
 }
+
+#task_result_legend_modal .label-danger {
+    background-color: #f2dede;
+    color: #f04124;
+}

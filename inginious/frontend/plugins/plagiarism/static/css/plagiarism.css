@@ -1,0 +1,12 @@
+#plagiarism_table tr td {
+    vertical-align: middle;
+}
+
+#plagiarism_table .plagiarism-status-icon {
+    text-align: center;
+}
+
+.text_pre {
+    word-break: break-word;
+    white-space: pre-wrap;
+}

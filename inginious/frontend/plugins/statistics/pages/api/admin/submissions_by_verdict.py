@@ -1,17 +1,28 @@
 import web
+import os
 from .admin_api import AdminApi
+
 
 class SubmissionsByVerdictApi(AdminApi):
 
     def get_statistics_by_verdict(self, course):
         course_id = course.get_id()
+        admins = list(set(course.get_staff() + self.user_manager._superadmins))
+
         statistics_by_verdict = self.database.submissions.aggregate([
-            {"$match": {"courseid": course_id, "custom.summary_result": {"$ne": None}}},
+            {
+                "$match": {
+                    "courseid": course_id,
+                    "custom.custom_summary_result": {"$ne": None},
+                    "username": {"$nin": admins},
+                }
+            },
             {
                 "$group": {
-                    "_id": {"summary_result": "$custom.summary_result",
-                            "task_id": "$taskid"
-                           },
+                    "_id": {
+                        "summary_result": "$custom.custom_summary_result",
+                        "task_id": "$taskid"
+                    },
                     "count": {"$sum": 1}
                 }
             },
@@ -35,8 +46,8 @@ class SubmissionsByVerdictApi(AdminApi):
 
         statistics_by_verdict = self.get_statistics_by_verdict(course)
         course_tasks = course.get_tasks()
-        sorted_tasks = sorted(course_tasks.values(), key=lambda task: task.get_order())
-
+        sorted_tasks = sorted(course_tasks.values(),
+                              key=lambda task: os.path.getctime(task.get_fs().prefix + 'task.yaml'))
         task_id_to_statistics = {}
         for element in statistics_by_verdict:
             task_id = element["task_id"]
@@ -49,7 +60,6 @@ class SubmissionsByVerdictApi(AdminApi):
                 "summary_result": element["summary_result"]
             })
 
-
         statistics_by_verdict = []
 
         for task in sorted_tasks:
@@ -58,6 +68,7 @@ class SubmissionsByVerdictApi(AdminApi):
             for verdict in verdicts:
                 statistics_by_verdict.append({
                     "task_id": _id,
+                    "task_name": task.get_name(self.user_manager.session_language()),
                     "summary_result": verdict["summary_result"],
                     "count": verdict["count"]
                 })

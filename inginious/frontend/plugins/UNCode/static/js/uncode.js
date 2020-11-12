@@ -18,24 +18,21 @@ jQuery(document).ready(function () {
                 'UNCode is distributed under AGPL license' +
                 '</a>' + ' - <a target="_blank" href="http://www.inginious.org" class="navbar-link">\n' +
                 'Powered by INGInious.\n</a>');
+        footer.find('> div > div > div > div ').prepend('<p class="navbar-text">' +
+            '<a class="navbar-link" href="data_policy">Data policy</a> </p>');
     }
 
     function updatePageIcon(imagePath) {
+        $('link[rel="shortcut icon"]').attr('href', imagePath);
         $('link[rel="icon"]').attr('href', imagePath);
-    }
-
-    function updateTitle() {
-        let title = document.title.split("|");
-        document.title = title[0] + " |  UNCode";
     }
 
     function updateTemplate() {
         // This updates all necessary changes in INGInious.
-        const imagePath = window.location.origin + "/UN_template/static/images/LogotipoUNAL.png";
+        const imagePath = window.location.origin + "/UNCode/static/images/LogotipoUNAL.png";
         updateNavbarLogo(imagePath);
         updatePageIcon(imagePath);
         updateFooter();
-        updateTitle();
     }
 
     function addTaskContextTemplate() {
@@ -60,6 +57,20 @@ jQuery(document).ready(function () {
         }
     }
 
+    function addTaskResultLegendButton() {
+        let taskAlert = $("#task_alert");
+        const legendModalButton = `<a href='#' type='button' data-toggle='modal' data-target='#task_result_legend_modal'>
+            <i class='fa fa-question-circle'>  ${legend_label}</a>`;
+        taskAlert.before(legendModalButton);
+    }
+
+    function updateUNCodeURL() {
+        const anchor = $('a[href="http://www.inginious.org"]');
+        if (anchor !== undefined) {
+            anchor[0].href = "https://uncode.unal.edu.co";
+        }
+    }
+
     function updateCourseDocumentationLinks() {
         // This section is to update link of "How to create task?" button in course administration.
         // Now redirecting to our documentation.
@@ -74,8 +85,107 @@ jQuery(document).ready(function () {
         documentationElement.attr("target", "_blank");
     }
 
+    function stopSideBar() {
+        $("#sidebar_affix").css('position', 'static');
+    }
+
+    /**
+     * Hide unused grading environments when creating/editing a task. The allowed environments
+     * are given in the configuration.yaml
+     */
+    function remove_unused_grader_environments() {
+        $.ajax({
+            url: '/api/getUsedGradingEnvironments/',
+            type: 'get',
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function (data) {
+                if (data.length !== 0) {
+                    let used_grading_environments = data;
+                    $('form #environment > option').each(function (_, option) {
+                        let option_value = option.attributes[0].value;
+                        if (used_grading_environments.indexOf(option_value) === -1) option.remove();
+                    });
+                }
+            }
+        });
+    }
+
+    /**
+     * Remove unused subproblem types  when creating/editing a task. The allowed subproblems
+     * are given in the configuration.yaml
+     */
+    function remove_unused_subproblem_types() {
+        $.ajax({
+            url: '/api/getUsedSubproblemTypes/',
+            type: 'get',
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function (data) {
+                if (data.length !== 0) {
+                    let used_subproblem_types = data;
+                    // Add 'subproblem_' prefix for every subproblem.
+                    used_subproblem_types = used_subproblem_types.map((subproblem) => {
+                        return "subproblem_" + subproblem;
+                    });
+
+                    $('#new_subproblem_type > option').each(function (_, option) {
+                        let option_value = option.attributes[0].value;
+                        if (used_subproblem_types.indexOf(option_value) === -1) option.remove();
+                    });
+                }
+            }
+        });
+    }
+
+    function rewrite_task_title() {
+        /**
+         * This function writes the name of the task instead of the id
+         * on the 'edit task' section.
+         */
+        if (location.href.indexOf("/edit/task") > -1) {
+            let title = $('#main_container #content h2')[0].innerHTML
+            let firstletter = title.search("\"") + 1;
+            let lastletter = title.substring(firstletter).search("\"");
+
+            let new_title = $("#edit_task_tabs_content #name").val();
+            if (new_title !== "") {
+                $('#main_container #content h2')[0].innerHTML = title.substring(0, firstletter) + new_title + title.substring(firstletter + lastletter);
+            }
+        }
+    }
+
+    function addHomePathLTI() {
+        try {
+            const text = $("#lti_link");
+            text.val(location.origin + text.val());
+        } catch (e) {
+
+        }
+    }
+
     updateTemplate();
     addTaskContextTemplate();
     addTaskContextHelp();
     updateCourseDocumentationLinks();
+    addTaskResultLegendButton();
+    stopSideBar();
+    remove_unused_subproblem_types();
+    remove_unused_grader_environments();
+    rewrite_task_title();
+    updateUNCodeURL();
+    addHomePathLTI();
 });
+
+this.studio_display_task_submit_message = (content, type, dismissible) => {
+    const code = getAlertCode(content, type, dismissible);
+    $('#task_edit_submit_status').html(code);
+
+    if (dismissible) {
+        window.setTimeout(function () {
+            $("#task_edit_submit_status").children().fadeTo(1000, 0).slideUp(1000, function () {
+                $(this).remove();
+            });
+        }, 10000);
+    }
+};

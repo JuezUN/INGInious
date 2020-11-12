@@ -5,16 +5,18 @@ def project_detail_user_tasks(user_tasks):
         "submission": project_submission(s.get("submission", None))
     } for s in user_tasks]
 
+
 def task_submissions_detail(submissions):
     return [{
-        "grade": s["grade"],
-        "username": s["username"],
-        "id": str(s["_id"]),
-        "status": s["status"],
-        "submitted_on": str(s["submitted_on"]),
-        "summary_result": s["custom"]["summary_result"]
+        "grade": submission["grade"],
+        "username": submission["username"],
+        "id": str(submission["_id"]),
+        "status": submission["status"],
+        "submitted_on": str(submission["submitted_on"]),
+        "summary_result": submission["custom"]["custom_summary_result"]
 
-    } for s in submissions]
+    } for submission in submissions]
+
 
 def project_submission(submission):
     if submission is None:
@@ -27,5 +29,5 @@ def project_submission(submission):
         "status": submission["status"],
         "result": submission["result"],
         "grade": submission["grade"],
-        "summary_result": submission.get("custom", {}).get("summary_result", None)
+        "summary_result": submission.get("custom", {}).get("custom_summary_result", None)
     }

@@ -18,7 +18,7 @@ install_requires = [
     "docutils>=0.14",
     "pymongo>=3.2.2",
     "PyYAML>=3.11",
-    "web.py>=0.40.dev0",
+    "web.py==0.40",
     "lti>=0.9.0",
     "oauth2>=1.9.0.post1",
     "httplib2>=0.9",
@@ -27,7 +27,8 @@ install_requires = [
     "pyzmq >= 15.3.0",
     "natsort >= 5.0.1",
     "psutil >= 4.4.2",
-    "zipstream >= 1.1.4"
+    "zipstream >= 1.1.4",
+    "textdistance >= 4.2.0",
 ]
 
 test_requires = [
@@ -79,6 +80,6 @@ setup(
     author="INGInious contributors",
     author_email="inginious@info.ucl.ac.be",
     license="AGPL 3",
-    url="https://github.com/UCL-INGI/INGInious",
-    long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst'), encoding='utf8').read()
+    url="https://github.com/JuezUN/INGInious",
+    long_description=open(os.path.join(os.path.dirname(__file__), 'README.md'), encoding='utf8').read()
 )

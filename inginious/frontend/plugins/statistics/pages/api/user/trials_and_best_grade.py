@@ -1,6 +1,10 @@
 import web
 
 from .user_api import UserApi
+import inginious.frontend.pages.api._api_page as api
+from inginious.common.course_factory import CourseNotFoundException, CourseUnreadableException, InvalidNameException
+from inginious.common.exceptions import TaskNotFoundException
+
 
 class TrialsAndBestGradeApi(UserApi):
     def statistics(self):
@@ -41,7 +45,7 @@ class TrialsAndBestGradeApi(UserApi):
                 "$project":
                     {
                         "_id": 0,
-                        "result": "$submission.custom.summary_result",
+                        "result": "$submission.custom.custom_summary_result",
                         "taskid": 1,
                         "tried": 1,
                         "grade": 1
@@ -55,4 +59,20 @@ class TrialsAndBestGradeApi(UserApi):
             }
         ])
 
-        return 200, list(best_submissions)
+        # Add the tasks names
+        best_submissions_with_name = []
+        for sub in list(best_submissions):
+            try:
+                course = self.course_factory.get_course(course_id)
+            except (CourseNotFoundException, InvalidNameException, CourseUnreadableException):
+                raise api.APIError(400, {"error": "The course does not exist or the user does not have permissions"})
+
+            try:
+                task = course.get_task(sub['taskid'])
+            except TaskNotFoundException:
+                continue
+
+            sub['task_name'] = task.get_name(self.user_manager.session_language())
+            best_submissions_with_name.append(sub)
+
+        return 200, list(best_submissions_with_name)

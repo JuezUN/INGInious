@@ -6,8 +6,10 @@ from inginious.frontend.plugins.utils import create_static_resource_page, get_ma
 from inginious.client.client_sync import ClientSync
 from inginious.frontend.pages.api._api_page import APIAuthenticatedPage
 from inginious.frontend.parsable_text import ParsableText
+from bson.objectid import ObjectId
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
+
 
 def customInputManagerWithCurriedClient(client):
     class CustomInputManager(APIAuthenticatedPage):
@@ -18,8 +20,31 @@ def customInputManagerWithCurriedClient(client):
             temp_client = ClientSync(self._client)
             return temp_client.new_job(task, inputdata)
 
+        def API_GET(self):
+            request_params = web.input()
+            submission_id = get_mandatory_parameter(request_params, "submission")
+
+            # A mongo request for the submission and his input
+            # How do i do this?
+            things = self.database.submissions.aggregate([
+                {
+                    '$match': {
+                        "_id": ObjectId(submission_id)
+                    }
+                },
+                {
+                    "$project": {
+                        "_id": 0,
+                        "taskid": 1,
+                        "courseid": 1
+                    }
+                }
+            ])
+            return 200, list(things)[0]
+
         def API_POST(self):
             request_params = web.input()
+
             courseid = get_mandatory_parameter(request_params, "courseid")
             course = self.course_factory.get_course(courseid)
             taskid = get_mandatory_parameter(request_params, "taskid")
@@ -30,9 +55,11 @@ def customInputManagerWithCurriedClient(client):
                     problem.get_id(): problem.input_type()()
                     for problem in task.get_problems() if problem.input_type() in [dict, list]
                 }
-                
-                userinput = task.adapt_input_for_backend(web.input(**init_var))
-                result, grade, problems, tests, custom, archive, stdout, stderr = self.add_unsaved_job(task, userinput)
+                user_input = task.adapt_input_for_backend(web.input(**init_var))
+                for key, value in user_input.items():
+                    if type(value) is str:
+                        user_input[key] = user_input[key].replace("\r", "")
+                result, grade, problems, tests, custom, archive, stdout, stderr = self.add_unsaved_job(task, user_input)
 
                 data = {
                     "status": ("done" if result[0] == "success" or result[0] == "failed" else "error"),
@@ -41,7 +68,6 @@ def customInputManagerWithCurriedClient(client):
                     "stdout": custom.get("custom_stdout", ""),
                     "stderr": custom.get("custom_stderr", "")
                 }
-
                 web.header('Content-Type', 'application/json')
                 return 200, json.dumps(data)
 
@@ -51,7 +77,13 @@ def customInputManagerWithCurriedClient(client):
 
     return CustomInputManager
 
+
 def init(plugin_manager, course_factory, client, plugin_config):
     plugin_manager.add_page(r'/custom_input/static/(.*)', create_static_resource_page(_static_folder_path))
     plugin_manager.add_page("/api/custom_input/", customInputManagerWithCurriedClient(client))
-    plugin_manager.add_hook("javascript_header", lambda: "/custom_input/static/custom_input.js")
+
+    use_minified = plugin_config.get("use_minified", True)
+    if use_minified:
+        plugin_manager.add_hook("javascript_footer", lambda: "/custom_input/static/custom_input.min.js")
+    else:
+        plugin_manager.add_hook("javascript_footer", lambda: "/custom_input/static/custom_input.js")

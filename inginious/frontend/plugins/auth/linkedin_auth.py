@@ -48,18 +48,18 @@ class LinkedInAuthMethod(AuthMethod):
             r = linkedin.request("POST",
                                  "https://api.linkedin.com/v1/people/~/shares?format=json",
                                  json={
-                                     "comment": _("Check out INGInious course {course} and beat my score of {score}% on task {task} !").format(
+                                     "comment": _("Check out UNCode course {course} and beat my score of {score}% on task {task} !").format(
                                          course=course.get_name(language),
                                          task=task.get_name(language),
                                          score=submission["grade"]
                                      ),
                                      "content": {
                                          "title":
-                                             _("INGInious | {course} - {task}").format(
+                                             _("UNCode | {course} - {task}").format(
                                                  course=course.get_name(language),
                                                  task=task.get_name(language)
                                              ),
-                                         "description": _("Check out INGInious course {course} and beat my score of {score}% on task {task} !").format(
+                                         "description": _("Check out UNCode course {course} and beat my score of {score}% on task {task} !").format(
                                              course=course.get_name(language),
                                              task=task.get_name(language),
                                              score=submission["grade"]

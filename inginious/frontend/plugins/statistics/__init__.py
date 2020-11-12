@@ -22,11 +22,16 @@ from .pages.user_statistics import UserStatisticsPage
 from .pages.api.user.trials_and_best_grade import TrialsAndBestGradeApi
 from .pages.api.user.bar_submissions_per_tasks import BarSubmissionsPerTasksApi
 
+from .pages.constants import set_use_minified
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
+
 def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_page(r'/statistics/static/(.*)', create_static_resource_page(_static_folder_path))
+
+    use_minified = config.get("use_minified", True)
+    set_use_minified(use_minified)
 
     plugin_manager.add_page(r'/user_statistics/([a-z0-9A-Z\-_]+)', UserStatisticsPage)
     plugin_manager.add_hook('course_menu', statistics_course_menu_hook)
@@ -44,7 +49,8 @@ def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_page('/api/stats/admin/grade_distribution_details', GradeDistributionDetailsApi)
 
     plugin_manager.add_page('/api/stats/admin/best_submissions_verdict', BestSubmissionsByVerdictApi)
-    plugin_manager.add_page('/api/stats/admin/best_submissions_verdict_details', BestSubmissionsByVerdictStatisticsDetailApi)
+    plugin_manager.add_page('/api/stats/admin/best_submissions_verdict_details',
+                            BestSubmissionsByVerdictStatisticsDetailApi)
 
     plugin_manager.add_page('/api/stats/admin/submissions_verdict', SubmissionsByVerdictApi)
     plugin_manager.add_page('/api/stats/admin/submissions_verdict_details', SubmissionsByVerdictDetailsApi)

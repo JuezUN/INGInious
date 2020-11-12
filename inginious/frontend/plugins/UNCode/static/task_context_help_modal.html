@@ -5,65 +5,67 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h3 class="modal-title"><i class="fa fa-question-circle"> Help related to the task context.</i></h3>
+                <h3 class="modal-title">
+                    <i class="fa fa-question-circle"> $:_("Help related to the task context.")</i>
+                </h3>
             </div>
             <div class="modal-body text-justify">
                 <h5>
-                    Here you will find some information related to the language <strong>RST</strong> and how you can
-                    use it to make a good description.
+                    $:_("Here you will find some information related to the language") <strong>RST</strong>
+                    $:_(" and how you can use it to make a good description.")
                 </h5>
                 <hr>
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <h4 class="list-group-item-heading"><strong>Bold text:</strong></h4>
+                        <h4 class="list-group-item-heading"><strong>$:_("Bold text"):</strong></h4>
                         <div class="list-group-item-text row">
                             <div class="col-md-6">
-                                <code>**Text between will be stronger**.</code>
+                                <code>$:_("**Text between will be stronger**.")</code>
                             </div>
                             <div class="col-md-6">
-                                <strong>Text between will be stronger.</strong>
+                                <strong>$:_("Text between will be stronger.")</strong>
                             </div>
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <h4 class="list-group-item-heading"><strong>Italic text:</strong></h4>
+                        <h4 class="list-group-item-heading"><strong>$:_("Italic text"):</strong></h4>
                         <div class="list-group-item-text row">
                             <div class="col-md-6">
-                                <code>*Text between will be rendered as italic*.</code>
+                                <code>$:_("*Text between will be rendered as italic*.")</code>
                             </div>
                             <div class="col-md-6">
-                                <em>Text between will be rendered as italic</em>
+                                <em>$:_("Text between will be rendered as italic")</em>
                             </div>
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <h4 class="list-group-item-heading"><strong>Math text:</strong></h4>
+                        <h4 class="list-group-item-heading"><strong>$:_("Math text"):</strong></h4>
                         <div class="list-group-item-text row">
                             <div class="col-md-6">
-                                <code>The area of a square is :math:`A_\text{s} = l^2`</code>
+                                <code>$:_("The area of a square is") :math:`A_\text{s} = l^2`</code>
                             </div>
                             <div class="col-md-6">
-                                The math role marks its content as mathematical notation (inline formula).
-                                The input format is <strong>LaTeX</strong>, math syntax without the
-                                “math delimiters“ ($ $). The example is rendered as:
+                                $:_("The math role marks its content as mathematical notation (inline formula).")
+                                <br/>
+                                $:_("The input format is <strong>LaTeX</strong>, math syntax without the \"math delimiters\". The example is rendered as:")
                                 <br>
                                 <strong>A<sub>s</sub> = l<sup>2</sup></strong>
                             </div>
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <h4 class="list-group-item-heading"><strong>Monospaced text:</strong></h4>
+                        <h4 class="list-group-item-heading"><strong>$:_("Monospaced text"):</strong></h4>
                         <div class="list-group-item-text row">
                             <div class="col-md-6">
-                                <code>``Text between will be rendered as monospaced text``.</code>
+                                <code>``$:_("Text between will be rendered as monospaced text.")``</code>
                             </div>
                             <div class="col-md-6">
-                                <code>Text between will be rendered as monospaced text</code>
+                                <code>$:_("Text between will be rendered as monospaced text.")</code>
                             </div>
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <h4 class="list-group-item-heading"><strong>Bullet list:</strong></h4>
+                        <h4 class="list-group-item-heading"><strong>$:_("Bullet list"):</strong></h4>
                         <div class="list-group-item-text row">
                             <div class="col-md-6">
                                 <code>
@@ -89,7 +91,7 @@
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <h4 class="list-group-item-heading"><strong>Add image:</strong></h4>
+                        <h4 class="list-group-item-heading"><strong>$:_("Add image"):</strong></h4>
                         <div class="list-group-item-text row">
                             <div class="col-md-6">
                                 <code>
@@ -99,10 +101,9 @@
                                 </code>
                             </div>
                             <div class="col-md-6">
-                                The desired image will be rendered.
+                                $:_("The desired image will be rendered.")
                                 <strong>
-                                    Remember that you have to put the task id and the image name. You have to
-                                    upload the image in the section <em>Task files</em>.
+                                    $:_("Remember that you have to put the task id and the image name. You have to upload the image in the tab <em>Task files</em>. This file must be in the <em>public/</em> folder.")
                                 </strong>
                                 <br>
                                 <i class="fa fa-image fa-3x"></i>
@@ -110,7 +111,7 @@
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <h4 class="list-group-item-heading"><strong>Add literal HTML:</strong></h4>
+                        <h4 class="list-group-item-heading"><strong>$:_("Add literal HTML"):</strong></h4>
                         <div class="list-group-item-text row">
                             <div class="col-md-6">
                                 <code>
@@ -121,8 +122,9 @@
                                 </code>
                             </div>
                             <div class="col-md-6">
-                                After the '.. raw:: html' and you can add your HTML code. The previous HTML code is
-                                rendered as follows:
+                                $:_("After the '.. raw:: html' you can add your HTML code.")
+                                <br/>
+                                $:_("The previous HTML code is rendered as follows"):
                                 <br>
                                 <i class="fa fa-sitemap fa-3x"></i>
                             </div>
@@ -130,17 +132,16 @@
                     </li>
                     <li class="list-group-item">
                         <h4 class="list-group-item-heading">
-                            <strong><i class="fa fa-globe"></i> More information:</strong>
+                            <strong><i class="fa fa-globe"></i> $:_("More information"):</strong>
                         </h4>
                         <div class="list-group-item-text">
-                            For more information please visit <strong>RST</strong> language
-                            <a href="http://docutils.sourceforge.net/rst.html" target="_blank">documentation</a>.
+                            $:_("For more information please visit <strong>RST</strong> language <a href=\"http://docutils.sourceforge.net/rst.html\" target=\"_blank\"> documentation</a>.")
                         </div>
                     </li>
                 </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">$:_("Close")</button>
             </div>
         </div>
     </div>

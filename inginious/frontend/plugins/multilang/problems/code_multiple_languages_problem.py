@@ -2,9 +2,12 @@ import os
 
 from inginious.common.tasks_problems import CodeProblem
 from inginious.frontend.task_problems import DisplayableCodeProblem
-from .constants import get_linter_url, get_python_tutor_url
+from .constants import get_linter_url, get_python_tutor_url, get_show_tools
+from .languages import get_all_available_languages
+from collections import OrderedDict
 
 path_to_plugin = os.path.abspath(os.path.dirname(__file__))
+
 
 class CodeMultipleLanguagesProblem(CodeProblem):
     def __init__(self, task, problemid, content, translations=None):
@@ -20,16 +23,6 @@ class DisplayableCodeMultipleLanguagesProblem(CodeMultipleLanguagesProblem, Disp
     def __init__(self, task, problemid, content, translations=None):
         CodeMultipleLanguagesProblem.__init__(self, task, problemid, content, translations)
 
-    _available_languages = {
-        "java7": "Java 7",
-        "java8": "Java 8",
-        "python2": "Python 2.7",
-        "python3": "Python 3.5",
-        "cpp": "C++",
-        "cpp11": "C++11",
-        "c": "C",
-        "c11": "C11"}
-
     @classmethod
     def get_renderer(cls, template_helper):
         """ Get the renderer for this class problem """
@@ -42,17 +35,28 @@ class DisplayableCodeMultipleLanguagesProblem(CodeMultipleLanguagesProblem, Disp
     @classmethod
     def show_editbox(cls, template_helper, key):
         renderer = DisplayableCodeMultipleLanguagesProblem.get_renderer(template_helper)
-        return renderer.multilang_edit(key, cls._available_languages)
+        return renderer.multilang_edit(key, get_all_available_languages())
 
     def show_input(self, template_helper, language, seed):
-        allowed_languages = {language: self._available_languages[language] for language in self._languages}
+        allowed_languages = {language: get_all_available_languages()[language] for language in self._languages}
         dropdown_id = self.get_id() + "/language"
         custom_input_id = self.get_id() + "/input"
 
-        renderer = DisplayableCodeMultipleLanguagesProblem.get_renderer(template_helper)
+        task = self.get_task()
+        course_id = task.get_course().get_id()
+        environment = task.get_environment()
 
-        multiple_language_render = str(renderer.multilang(self.get_id(), dropdown_id, allowed_languages, self.get_id(), self.get_type()))
-        standard_code_problem_render = super(DisplayableCodeMultipleLanguagesProblem, self).show_input(template_helper, language, seed)
-        tools_render = str(renderer.tools(self.get_id(), "plain", custom_input_id, self.get_type(), get_python_tutor_url(), get_linter_url()))
+        renderer = DisplayableCodeMultipleLanguagesProblem.get_renderer(template_helper)
+        allowed_languages = OrderedDict([(lang, allowed_languages[lang]) for lang in sorted(allowed_languages.keys())])
+        multiple_language_render = str(
+            renderer.multilang(self.get_id(), dropdown_id, allowed_languages, self.get_id(), self.get_type(),
+                               task_id=self.get_task().get_id(), course_id=course_id, environment=environment))
+        standard_code_problem_render = super(DisplayableCodeMultipleLanguagesProblem, self).show_input(template_helper,
+                                                                                                       language, seed)
+        tools_render = ""
+        if get_show_tools():
+            tools_render = str(
+                renderer.tools(self.get_id(), "plain", custom_input_id, self.get_type(), get_python_tutor_url(),
+                               get_linter_url(), course_id=self.get_task().get_course_id()))
 
         return multiple_language_render + standard_code_problem_render + tools_render

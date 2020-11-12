@@ -26,9 +26,6 @@ class DeletePage(INGIniousAuthPage):
             error = True
             msg = _("The specified email is incorrect.")
         else:
-            self.database.submissions.remove({"username": username})
-            self.database.user_tasks.remove({"username": username})
-
             all_courses = self.course_factory.get_all_courses()
 
             for courseid, course in all_courses.items():

@@ -174,7 +174,7 @@ class LTILaunchPage(INGIniousPage):
             if course.lti_send_back_grade():
                 if lis_outcome_service_url is None or outcome_result_id is None:
                     self.logger.info('Error: lis_outcome_service_url is None but lti_send_back_grade is True')
-                    raise web.forbidden(_("In order to send grade back to the TC, INGInious needs the parameters lis_outcome_service_url and "
+                    raise web.forbidden(_("In order to send grade back to the TC, UNCode needs the parameters lis_outcome_service_url and "
                                         "lis_outcome_result_id in the LTI basic-launch-request. Please contact your administrator."))
             else:
                 lis_outcome_service_url = None

@@ -13,14 +13,14 @@ class BarSubmissionsPerTasksApi(UserApi):
                     {
                         "username": [username],
                         "courseid": course_id,
-                        "custom.summary_result": {"$ne": None}
+                        "custom.custom_summary_result": {"$ne": None}
                     }
             },
             {
                 "$group": {
                     "_id":
                         {
-                            "summary_result": "$custom.summary_result",
+                            "summary_result": "$custom.custom_summary_result",
                             "task_id": "$taskid"
                         },
                     "count": {"$sum": 1}
@@ -64,6 +64,7 @@ class BarSubmissionsPerTasksApi(UserApi):
             for verdict in verdicts:
                 submissions_per_task.append({
                     "task_id": _id,
+                    "task_name": task.get_name(self.user_manager.session_language()),
                     "summary_result": verdict["summary_result"],
                     "count": verdict["count"]
                 })

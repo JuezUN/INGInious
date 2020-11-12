@@ -9,6 +9,27 @@ jQuery(document).ready(function () {
         alert_element.prop("hidden", false);
     }
 
+    function displayLoadingAlert(){
+        let alert_element = $("#register_students_alert");
+        alert_element.prop("class", "alert alert-info");
+        alert_element.text("Registering students...");
+        alert_element.prop("hidden", false);
+    }
+
+    function preventModalToBeClosed(){
+        $('#register_students_modal').modal({backdrop: 'static', keyboard: false});
+        $('#register_students_modal button[data-dismiss=modal]').each(function(){
+            $(this).prop("disabled", true);
+        });
+    }
+
+    function makeModalClosable(){
+        $('#register_students_modal').modal({backdrop: '', keyboard: true});
+        $('#register_students_modal button[data-dismiss=modal]').each(function(){
+            $(this).prop("disabled", false);
+        });
+    }
+
     function runRegisterStudents(data) {
         // Function executed when the Ajax request success.
         if ("status" in data && data["status"] === "error") {
@@ -36,6 +57,7 @@ jQuery(document).ready(function () {
         $("form#upload_students_file").submit(function (e) {
             e.preventDefault();
             let file = $("#students_file").prop('files')[0];
+            let language = $("#email_language").val();
             const file_extensions = /(\.csv)$/i;
             if (file === undefined) {
                 displayRegisterStudentsAlertError("Please select a file before submitting it.");
@@ -45,20 +67,29 @@ jQuery(document).ready(function () {
                 let formData = new FormData();
                 formData.append("file", file);
                 formData.append("course", getCourseId());
+                formData.append("language", language);
                 $.ajax({
                     url: '/api/addStudents/',
                     method: "POST",
                     dataType: 'json',
                     data: formData,
                     mimeType: "multipart/form-data",
-                    async: false,
                     processData: false,
                     contentType: false,
+                    beforeSend: function() {
+                        $("#submit_register_students").prop("disabled", true);
+                        preventModalToBeClosed();
+                        displayLoadingAlert();
+                    },
                     success: function (data) {
                         runRegisterStudents(data);
+                        makeModalClosable();
+                        $("#submit_register_students").prop("disabled", false);
                     },
                     error: function (data) {
                         displayRegisterStudentsAlertError(data);
+                        makeModalClosable();
+                        $("#submit_register_students").prop("disabled", false);
                     }
                 });
             }

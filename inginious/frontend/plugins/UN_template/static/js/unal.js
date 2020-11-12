@@ -12,11 +12,11 @@
 })();
 
 function checkBck() {
-  if (jQuery('.gsc-search-button input').attr('src')) {
-    jQuery('.gsc-search-button input').attr('src', 'http://unal.edu.co/fileadmin/templates/images/search.png');
-    jQuery('.gsc-input input').attr('placeholder', 'Buscar en la Universidad');
-  } else {
-    window.setTimeout(function() { checkBck(); }, 100);
+  jQuery(".gsc-input input").attr("placeholder", "Buscar en la Universidad");
+  if (!jQuery(".gsc-search-button input").attr("src")) {
+    window.setTimeout(function () {
+      checkBck()
+    }, 100)
   }
 }
 checkBck();

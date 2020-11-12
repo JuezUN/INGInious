@@ -1,10 +1,10 @@
 import React from "react";
-import { FormControl } from 'react-bootstrap';
+import {FormControl} from 'react-bootstrap';
 import Task from './task';
 import CustomAlert from './custom_alert';
-import UltimatePagination from  './ultimate_pagination';
+import UltimatePagination from './ultimate_pagination';
 
-class TaskList extends React.Component{
+class TaskList extends React.Component {
     constructor(props) {
         super(props);
 
@@ -17,38 +17,48 @@ class TaskList extends React.Component{
     }
 
     handleChange(e) {
-        let newStateQuery = e.target.value;
-        let updateFilteredTasks = this.props.callbackUpdateFilteredTasks;
+        const newStateQuery = e.target.value;
+        const updateFilteredTasks = this.props.callbackUpdateFilteredTasks;
 
         clearTimeout(this.state.timer);
-        if( newStateQuery === "" ){
-            let updateTasks = this.props.callbackUpdateTasks;
-            updateTasks();
+        if (newStateQuery === "") {
+            this.props.callbackUpdateTasks();
+            this.setState({
+                query: newStateQuery,
+                timer: 0
+            });
         } else {
             this.setState({
-               query: newStateQuery,
-               timer: setTimeout(() => updateFilteredTasks(newStateQuery), 250)
+                query: newStateQuery,
+                timer: setTimeout(() => updateFilteredTasks(newStateQuery), 500)
             });
         }
     };
 
+    onChangePage = (page) => {
+        console.log(this.state.query);
+        if (this.state.query === "") {
+            this.props.callbackUpdateTasks(page);
+        } else {
+            this.props.callbackUpdateFilteredTasks(this.state.query, page);
+        }
+    };
+
+    addTaskToCourse = (courseId, taskId, bankId) => {
+        this.props.callBackAddTaskToCourse(courseId, taskId, bankId, this.state.query);
+    };
+
     getListOfTasks = () => {
         let tasks = this.props.tasks.map((task, i) => {
-            let page = this.props.page;
-            let limit = this.props.limit;
-            let taskIsInBoundsOfPage = i >= ((page - 1) * limit) && i < (page * limit);
-
-            if(taskIsInBoundsOfPage){
-                return (<Task
-                    task_info={task}
-                    key={i}
-                    courses={this.props.courses}
-                    callBackAddTaskToCourse={this.props.callBackAddTaskToCourse}
-                />)
-            }
+            return (<Task
+                task_info={task}
+                key={i}
+                courses={this.props.courses}
+                callBackAddTaskToCourse={this.addTaskToCourse}
+            />)
         });
 
-        if(!tasks.length){
+        if (!tasks.length) {
             tasks = "There are no tasks available.";
         }
         return tasks
@@ -65,6 +75,12 @@ class TaskList extends React.Component{
                              titleAlert={this.props.dataAlert.titleAlert}
                              callbackSetAlertInvisible={this.props.callbackSetAlertInvisible}
                 />
+                <CustomAlert
+                    message='To match on a phrase, enclose the phrase in double quotes (i.e. "Search this")'
+                    isVisible={true}
+                    styleAlert="info"
+                    titleAlert='Information'
+                />
 
                 <form className="custom-search-input">
                     <h5>Search tasks:</h5>
@@ -76,14 +92,14 @@ class TaskList extends React.Component{
                     />
                 </form>
 
-                <div>The following tasks are available for copying: </div>
+                <div>The following tasks are available for copying:</div>
 
                 <div className="list-group">{this.getListOfTasks()}</div>
 
                 <UltimatePagination
-                     currentPage={this.props.page}
-                     totalPages={this.props.totalPages}
-                     onChange={this.props.callbackOnPageChange}
+                    currentPage={this.props.page}
+                    totalPages={this.props.totalPages}
+                    onChange={this.onChangePage}
                 />
 
             </div>

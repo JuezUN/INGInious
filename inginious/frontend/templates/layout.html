@@ -16,7 +16,7 @@ $#
 <link rel="icon" href="$get_homepath(True)/static/icons/favicon.ico">
 <link rel="mask-icon" href="$get_homepath(True)/static/icons/wb.svg" color="#5E932E">
 
-<title>$content.title | INGInious</title>
+<title>$content.title | UNCode</title>
 
 <!-- Bootstrap -->
 <link href="$get_homepath(True)/static/css/bootstrap.min.css" rel="stylesheet">
@@ -110,6 +110,7 @@ $:template_helper.call('header_hook')
                                     <li><a href="$get_homepath()/preferences" class="navbar-link"><i class="fa fa-gears fa-fw"></i> $:_("Preferences")</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="$get_homepath()/queue" class="navbar-link"><i class="fa fa-dashboard fa-fw"></i> $:_("Service status")</a></li>
+                                    $:template_helper.call('superadmin_options')
                                     <li role="separator" class="divider"></li>
                                     <li><a href="$get_homepath()/logout" id="logoff_button" class="navbar-link"><i class="fa fa-sign-out"></i> $:_("Log out")</a></li>
                                 </ul>
@@ -167,7 +168,7 @@ $:template_helper.call('header_hook')
                     <div class="navbar-right">
                         <p class="navbar-text">
                             <a target="_blank" href="http://www.inginious.org" class="navbar-link">
-                                $:_("INGInious is distributed under AGPL license")
+                                $:_("UNCode is distributed under AGPL license")
                             </a>
                         </p>
                     </div>

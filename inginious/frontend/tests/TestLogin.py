@@ -9,7 +9,7 @@ class TestLogin(SeleniumTest):
         driver = self.driver
         driver.get(self.base_url + "/index?logoff")
 
-        self.assertEqual("Hello! Welcome on the INGInious platform.", driver.find_element_by_css_selector("h2").text)
+        self.assertEqual("Hello! Welcome on the UNCode platform.", driver.find_element_by_css_selector("h2").text)
 
         driver.find_element_by_name("login").clear()
         driver.find_element_by_name("login").send_keys("test")
