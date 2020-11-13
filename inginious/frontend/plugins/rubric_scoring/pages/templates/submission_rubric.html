@@ -3,12 +3,11 @@ $def with (course, task_id, submission_code, problem_id, rubrica, data, language
 $var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
 
 $def NavbarF():
-<ol class="nav navbar-nav nav-breadcrumb">
-    <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+    <ol class="nav navbar-nav nav-breadcrumb">
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
     <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task_id.get_id()">$task_id.get_id()</a></li>
-    <li class="active"><a href="#">Rubric Scoring <span class="sr-only">(current)</span></a></li>
-</ol>
-
+        <li class="active"><a href="#"><i class="fa fa-tasks"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
+    </ol>
 $var Navbar: $:NavbarF()
 
 
@@ -257,7 +256,7 @@ $var Navbar: $:NavbarF()
         })
 
 
-    };
+    }
 
     function studio_display_task_submit_message_rubric(content, type, dismissible) {
         let code = getAlertCode(content, type, dismissible);
@@ -278,7 +277,7 @@ $var Navbar: $:NavbarF()
             }, 50);
 
         }
-    };
+    }
 
     function comment_submit() {
 

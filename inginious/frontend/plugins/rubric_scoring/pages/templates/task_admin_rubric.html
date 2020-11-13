@@ -3,10 +3,10 @@ $def with (course, data, task, url)
 $var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
 
 $def NavbarF():
-<ol class="nav navbar-nav nav-breadcrumb">
-    <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
-    <li class="active"><a href="#">Rubric Scoring <span class="sr-only">(current)</span></a></li>
-</ol>
+    <ol class="nav navbar-nav nav-breadcrumb">
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+        <li class="active"><a href="#">$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
+    </ol>
 
 $var Navbar: $:NavbarF()
 
@@ -16,13 +16,13 @@ $var Navbar: $:NavbarF()
     <table class="table sorted_table">
         <thead>
         <tr>
-            <th># $:_("submission id")</th>
-            <th># $:_("verdict")</th>
-            <th># $:_("task")</th>
-            <th># $:_("username")</th>
-            <th># $:_("date")</th>
-            <th># $:_("rubric scoring")</th>
-            <th># $:_("custom")</th>
+            <th># $:_("Submission id")</th>
+            <th># $:_("Verdict")</th>
+            <th># $:_("Task")</th>
+            <th># $:_("Username")</th>
+            <th># $:_("Date")</th>
+            <th># $:_("Rubric Scoring")</th>
+            <th># $:_("Custom")</th>
         </tr>
         </thead>
         <tbody>
