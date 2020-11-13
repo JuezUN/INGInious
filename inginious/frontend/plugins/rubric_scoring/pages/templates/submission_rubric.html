@@ -216,7 +216,7 @@ $var Navbar: $:NavbarF()
 
 
 <script type="text/javascript">
-    var language = convertInginiousLanguageToCodemirror("$language");
+    let language = convertInginiousLanguageToCodemirror("$language");
     //alert("$score");
     registerCodeEditor(document.getElementById("codeTextArea1"), language);
 
@@ -227,12 +227,12 @@ $var Navbar: $:NavbarF()
 <script type="text/javascript">
 
     function grade_submit() {
-        var value_radio;
-        var radios = document.getElementsByName("grade");
-        var content_info = "Submission graded and stored";
-        var content_danger = "Error at grading, please select a grade"
+        let value_radio;
+        let radios = document.getElementsByName("grade");
+        let content_info = "Submission graded and stored";
+        let content_danger = "Error at grading, please select a grade"
 
-        for (var i = 0, length = radios.length; i < length; i++) {
+        for (let i = 0, length = radios.length; i < length; i++) {
             if (radios[i].checked) {
 
                 value_radio = radios[i].value;
@@ -260,13 +260,13 @@ $var Navbar: $:NavbarF()
     };
 
     function studio_display_task_submit_message_rubric(content, type, dismissible) {
-        var code = getAlertCode(content, type, dismissible);
-        var element = document.getElementById('grade_edit_submit_status');
+        let code = getAlertCode(content, type, dismissible);
+        let element = document.getElementById('grade_edit_submit_status');
         document.getElementById('grade_edit_submit_status').innerHTML = code;
         element.style.display = 'block';
         if (dismissible) {
-            var op = 1;  // initial opacity
-            var timer = setInterval(function () {
+            let op = 1;  // initial opacity
+            let timer = setInterval(function () {
                 if (op <= 0.1) {
                     clearInterval(timer);
                     element.style.display = 'none';
@@ -282,11 +282,11 @@ $var Navbar: $:NavbarF()
 
     function comment_submit() {
 
-        var txt_comment = document.getElementById("text_comment");
-        var content_info = "Comment has stored";
-        var content_danger = "Error at saving Comment, please try again."
-        var content_warning = "Error at saving Comment, comment to long, max length of comment is 1000."
-        var maxTam = 1000;
+        let txt_comment = document.getElementById("text_comment");
+        let content_info = "Comment has stored";
+        let content_danger = "Error at saving Comment, please try again."
+        let content_warning = "Error at saving Comment, comment to long, max length of comment is 1000."
+        let maxTam = 1000;
 
         if (txt_comment.value.length > maxTam) {
             studio_display_task_submit_message_rubric(content_warning, "warning", true);
