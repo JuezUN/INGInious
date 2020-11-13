@@ -1,36 +1,28 @@
 import web
-import posixpath
-import urllib
 import os
-import collections
-import inginious.frontend.pages.api._api_page as api
-from .rubric_wdo import RubricWdo
+from inginious.frontend.plugins.rubric_scoring.pages.api.rubric_wdo import RubricWdo
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 import gridfs
-import bson
 
-from inginious.frontend.pages.api._api_page import APIAuthenticatedPage
-from inginious.frontend.pages.utils import INGIniousAuthPage, INGIniousPage
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.common.filesystems.local import LocalFSProvider
-from inginious.common.course_factory import CourseNotFoundException, CourseUnreadableException, InvalidNameException
 from collections import OrderedDict
 
+_BASE_RENDERER_PATH = 'frontend/plugins/rubric_scoring/pages/templates'
+_BASE_RENDERER_PATH_TEMP = 'frontend/plugins/rubric_scoring_temp/pages/templates'
 
-_BASE_RENDERER_PATH = 'frontend/plugins/rubric_scoring'
-_BASE_RENDERER_PATH_TEMP = 'frontend/plugins/rubric_scoring_temp'
+_BASE_STATIC_FOLDER = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../../static')
 
-_BASE_STATIC_FOLDER = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'static')
 
 def rubric_course_admin_menu_hook_temp(course):
     return "rubric_scoring_temp", '<i class="fa fa-bar-chart" aria-hidden="true"></i> Rubric Scoring Temp'
+
 
 def rubric_course_admin_menu_hook(course):
     return "rubric_scoring", '<i class="fa fa-bar-chart" aria-hidden="true"></i> Rubric Scoring'
 
 
-#listado de task
+# listado de task
 class CourseTaskListPage(INGIniousAdminPage):
     """ List informations about all tasks """
 
@@ -98,7 +90,8 @@ class CourseTaskListPage(INGIniousAdminPage):
         # Now load additional informations
         result = OrderedDict()
         for taskid in tasks:
-            result[taskid] = {"name": tasks[taskid].get_name(self.user_manager.session_language()), "viewed": 0, "attempted": 0, "attempts": 0, "succeeded": 0,
+            result[taskid] = {"name": tasks[taskid].get_name(self.user_manager.session_language()), "viewed": 0,
+                              "attempted": 0, "attempts": 0, "succeeded": 0,
                               "url": self.submission_url_generator(taskid)}
 
         for entry in data:
@@ -111,12 +104,11 @@ class CourseTaskListPage(INGIniousAdminPage):
         return self.template_helper.get_custom_renderer(_BASE_RENDERER_PATH).task_list(course, result, errors, url)
 
 
-#Listado de submissions
+# Listado de submissions
 class TaskListSubmissionPage(INGIniousAdminPage):
     def GET_AUTH(self, course_id, task_id):
 
         course, task = self.get_course_and_check_rights(course_id, task_id)
-
 
         self.template_helper.add_javascript("https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.6/papaparse.min.js")
         self.template_helper.add_javascript("https://cdn.plot.ly/plotly-1.30.0.min.js")
@@ -124,8 +116,7 @@ class TaskListSubmissionPage(INGIniousAdminPage):
 
         return self.page(course, task_id, task)
 
-
-    def page(self, course, task_id, task ):
+    def page(self, course, task_id, task):
         """ Get all data and display the page """
 
         url = 'rubric_scoring'
@@ -159,8 +150,8 @@ class TaskListSubmissionPage(INGIniousAdminPage):
         data = OrderedDict()
 
         for entry in result:
-            data[entry["_id"]] = {"taskid": entry["taskid"], "result": entry["result"], "_id":entry["_id"],
-                                  "username":entry["username"], "date": entry["submitted_on"]}
+            data[entry["_id"]] = {"taskid": entry["taskid"], "result": entry["result"], "_id": entry["_id"],
+                                  "username": entry["username"], "date": entry["submitted_on"]}
 
             if "rubric_score" not in entry["custom"]:
                 data[entry["_id"]]["rubric_score"] = "not grade"
@@ -168,12 +159,10 @@ class TaskListSubmissionPage(INGIniousAdminPage):
             else:
                 data[entry["_id"]]["rubric_score"] = entry["custom"]["rubric_score"]
 
-
         return (
             self.template_helper.get_custom_renderer(_BASE_RENDERER_PATH).task_admin_rubric(
                 course, data, task, url)
         )
-
 
 
 class SubmissionRubricPage(INGIniousAdminPage):
@@ -196,8 +185,6 @@ class SubmissionRubricPage(INGIniousAdminPage):
 
         return self.page(course, task, submission_id)
 
-
-
     def GET_AUTH(self, course_id, task_id, submission_id):
         course, task = self.get_course_and_check_rights(course_id, task_id)
 
@@ -213,9 +200,7 @@ class SubmissionRubricPage(INGIniousAdminPage):
         # TODO: verificar que exista exactamente un elemento. TOMAR MEDIDAS PREVENTIVAS EN CASO CONTRARIO
         problem_id = task.get_problems()[0].get_id()
 
-
-
-        submission = self.submission_manager.get_submission( submission_id, user_check=False)
+        submission = self.submission_manager.get_submission(submission_id, user_check=False)
         submission_input = self.submission_manager.get_input_from_submission(submission)
 
         comment = ""
@@ -226,7 +211,7 @@ class SubmissionRubricPage(INGIniousAdminPage):
         if ('custom' in submission and 'rubric_score' in submission['custom']):
             score = submission['custom']['rubric_score']
 
-        language =  submission_input['input'][problem_id + '/language']
+        language = submission_input['input'][problem_id + '/language']
         data = {
             "url": 'rubric_scoring',
 
@@ -236,20 +221,21 @@ class SubmissionRubricPage(INGIniousAdminPage):
 
         }
 
-        import os 
+        import os
         dir_path = os.path.dirname(os.path.realpath(__file__))
 
-        #raise Exception("PATH" + dir_path)
-        rubric_wdo = RubricWdo('inginious/frontend/plugins/rubric_scoring/rubric.json')
-        
-        
+        # raise Exception("PATH" + dir_path)
+        rubric_wdo = RubricWdo('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json')
+
         return (
             self.template_helper.get_custom_renderer(_BASE_RENDERER_PATH).submission_rubric(
-                course, task, submission_input, problem_id, rubric_wdo.read_data('inginious/frontend/plugins/rubric_scoring/rubric.json'), data, language, comment, score)
+                course, task, submission_input, problem_id,
+                rubric_wdo.read_data('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json'), data, language, comment,
+                score)
         )
 
 
-#listado de task
+# listado de task
 class CourseTaskListPageTemp(INGIniousAdminPage):
     """ List informations about all tasks """
 
@@ -318,7 +304,8 @@ class CourseTaskListPageTemp(INGIniousAdminPage):
         # Now load additional informations
         result = OrderedDict()
         for taskid in tasks:
-            result[taskid] = {"name": tasks[taskid].get_name(), "viewed": 0, "attempted": 0, "attempts": 0, "succeeded": 0,
+            result[taskid] = {"name": tasks[taskid].get_name(), "viewed": 0, "attempted": 0, "attempts": 0,
+                              "succeeded": 0,
                               "url": self.submission_url_generator(taskid)}
 
         for entry in data:
@@ -336,18 +323,16 @@ class TaskListSubmissionPageTemp(INGIniousAdminPage):
 
         course, task = self.get_course_and_check_rights(course_id, task_id)
 
-
         self.template_helper.add_javascript("https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.6/papaparse.min.js")
         self.template_helper.add_javascript("https://cdn.plot.ly/plotly-1.30.0.min.js")
         self.template_helper.add_javascript("https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js")
 
         return self.page(course, task_id, task)
 
-
-    def page(self, course, task_id, task ):
+    def page(self, course, task_id, task):
         """ Get all data and display the page """
-        #print(self.database.collection_names())
-        print ("here", course.get_id(), task_id)
+        # print(self.database.collection_names())
+        print("here", course.get_id(), task_id)
         url = 'rubric_scoring_temp'
 
         result = list(self.database.submissions_rubric.aggregate(
@@ -380,8 +365,9 @@ class TaskListSubmissionPageTemp(INGIniousAdminPage):
         data = OrderedDict()
 
         for entry in result:
-            data[entry["_id"]] = {"taskid": entry["taskid"], "result": entry["veredict"], "_id":entry["_id"],
-                                  "username":entry["username"], "date": entry["submitted_on"], "codeforces_id": entry["custom"]["codeforces_id"]}
+            data[entry["_id"]] = {"taskid": entry["taskid"], "result": entry["veredict"], "_id": entry["_id"],
+                                  "username": entry["username"], "date": entry["submitted_on"],
+                                  "codeforces_id": entry["custom"]["codeforces_id"]}
 
             if "rubric_score" not in entry["custom"]:
                 data[entry["_id"]]["rubric_score"] = "not grade"
@@ -389,17 +375,14 @@ class TaskListSubmissionPageTemp(INGIniousAdminPage):
             else:
                 data[entry["_id"]]["rubric_score"] = entry["custom"]["rubric_score"]
 
-
-        #print ("data -> ",data)
+        # print ("data -> ",data)
         return (
             self.template_helper.get_custom_renderer(_BASE_RENDERER_PATH).task_admin_rubric(
-                course,data, task, url)
+                course, data, task, url)
         )
 
 
-
 class SubmissionRubricPageTemp(INGIniousAdminPage):
-
     client = MongoClient()
     database = client['INGInious']
     fs = gridfs.GridFS(database)
@@ -408,7 +391,7 @@ class SubmissionRubricPageTemp(INGIniousAdminPage):
         """ POST request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
         data = web.input()
-        print ("data->",data)
+        print("data->", data)
         self.database.submissions_rubric.update(
             {"_id": ObjectId(submission_id)},
             {"$set": {"custom.rubric_score": data["grade"]}
@@ -432,19 +415,15 @@ class SubmissionRubricPageTemp(INGIniousAdminPage):
 
         return sub
 
-
-
     def page(self, course, task, submission_id):
-
 
         # TODO: verificar que exista exactamente un elemento. TOMAR MEDIDAS PREVENTIVAS EN CASO CONTRARIO
         problem_id = task.get_problems()[0].get_id()
 
-
-        submission = self.get_submission( submission_id)
+        submission = self.get_submission(submission_id)
 
         comment = ""
-        if('custom' in submission and 'comment' in submission['custom']):
+        if ('custom' in submission and 'comment' in submission['custom']):
             comment = submission['custom']['comment']
 
         score = "No grade"
@@ -452,25 +431,23 @@ class SubmissionRubricPageTemp(INGIniousAdminPage):
             score = submission['custom']['rubric_score']
 
         submission_input = self.submission_manager.get_input_from_submission(submission)
-        print ("submission_code", submission_input)
-        print ("------------")
+        print("submission_code", submission_input)
+        print("------------")
 
         language = submission_input['language']
 
-
         data = {
-            "url" : 'rubric_scoring_temp',
+            "url": 'rubric_scoring_temp',
 
             "memory": submission_input['memory'],
             "test_passed": submission_input['test_passed'],
-            "verdict" : submission_input['veredict']
+            "verdict": submission_input['veredict']
 
         }
 
-        rubric_wdo =  RubricWdo('inginious/frontend/plugins/rubric_scoring/rubric.json')
+        rubric_wdo = RubricWdo('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json')
 
         return (
             self.template_helper.get_custom_renderer(_BASE_RENDERER_PATH).submission_rubric(
-                course, task, submission_input, problem_id,  rubric_wdo, data, language, comment.strip(), score)
+                course, task, submission_input, problem_id, rubric_wdo, data, language, comment.strip(), score)
         )
-

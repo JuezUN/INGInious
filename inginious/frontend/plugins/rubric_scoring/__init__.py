@@ -4,7 +4,7 @@
 # more information about the licensing of this file.
 
 """ A demo plugin that adds a page """
-from . import pages
+from inginious.frontend.plugins.rubric_scoring.pages.api import pages
 
 
 def init(plugin_manager, _, _2, _3):

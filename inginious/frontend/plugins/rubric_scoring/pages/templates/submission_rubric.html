@@ -3,11 +3,11 @@ $def with (course, task_id, submission_code, problem_id, rubrica, data, language
 $var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
 
 $def NavbarF():
-    <ol class="nav navbar-nav nav-breadcrumb">
-        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
-        <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task_id.get_id()">$task_id.get_id()</a></li>
-        <li class="active"><a href="#">Rubric Scoring <span class="sr-only">(current)</span></a></li>
-    </ol>
+<ol class="nav navbar-nav nav-breadcrumb">
+    <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+    <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task_id.get_id()">$task_id.get_id()</a></li>
+    <li class="active"><a href="#">Rubric Scoring <span class="sr-only">(current)</span></a></li>
+</ol>
 
 $var Navbar: $:NavbarF()
 
@@ -60,7 +60,7 @@ $var Navbar: $:NavbarF()
 
                 <div class="col-xs-8 col-sm-4 col-lg-3">
                     <!--general information div-->
-                    <div >
+                    <div>
 
                         <h3>General Information</h3>
                         <table class="table table-condensed">
@@ -87,20 +87,20 @@ $var Navbar: $:NavbarF()
                         </table>
                     </div>
 
-                    <div >
+                    <div>
                         <h3>Comments</h3>
 
                         <textarea rows="4" cols="35" class="my-text-area" id="text_comment">$comment</textarea>
                         <!--<a href="#grade_edit_submit_status"-->
-                           <!--class="btn btn-primary btn-block"-->
-                           <!--type="button" onclick="comment_submit()">-->
-                            <!--<i class="fa fa-save"></i> Comment-->
+                        <!--class="btn btn-primary btn-block"-->
+                        <!--type="button" onclick="comment_submit()">-->
+                        <!--<i class="fa fa-save"></i> Comment-->
                         <!--</a>-->
                     </div>
                 </div>
                 <!--information div-->
                 <div class="col-xs-8 col-sm-4 col-lg-3">
-                    <div >
+                    <div>
 
                         <h3>Information</h3>
                         <table class="table table-condensed">
@@ -131,43 +131,43 @@ $var Navbar: $:NavbarF()
                     <h3>Scoring</h3>
 
 
-                        <label class="radio-btn-pad">
-                            <input value="grade1"  name="grade"  type="radio" id="grade1">
-                            Grade 1
+                    <label class="radio-btn-pad">
+                        <input value="grade1" name="grade" type="radio" id="grade1">
+                        Grade 1
 
-                        </label>
-                        <br>
+                    </label>
+                    <br>
 
-                         <label class="radio-btn-pad">
-                            <input value="grade2" name="grade" type="radio" id="grade2">
-                            Grade 2
+                    <label class="radio-btn-pad">
+                        <input value="grade2" name="grade" type="radio" id="grade2">
+                        Grade 2
 
-                        </label>
-                        <br>
-                         <label class="radio-btn-pad">
-                            <input value="grade3" name="grade" type="radio"  id="grade3">
-                            Grade 3
+                    </label>
+                    <br>
+                    <label class="radio-btn-pad">
+                        <input value="grade3" name="grade" type="radio" id="grade3">
+                        Grade 3
 
-                        </label >
-                        <br>
-                         <label class="radio-btn-pad">
-                            <input value="grade4" name="grade" type="radio" id="grade4">
-                            Grade 4
+                    </label>
+                    <br>
+                    <label class="radio-btn-pad">
+                        <input value="grade4" name="grade" type="radio" id="grade4">
+                        Grade 4
 
-                        </label>
+                    </label>
 
-                        <br>
-                         <label class="radio-btn-pad">
-                            <input value="grade5" name="grade" type="radio" id="grade5">
-                            Grade 5
+                    <br>
+                    <label class="radio-btn-pad">
+                        <input value="grade5" name="grade" type="radio" id="grade5">
+                        Grade 5
 
-                        </label>
+                    </label>
 
-                            <a href="#grade_edit_submit_status"
-                               class="btn btn-primary btn-block"
-                               type="button" onclick="grade_submit()">
-                                <i class="fa fa-save"></i> Grade
-                            </a>
+                    <a href="#grade_edit_submit_status"
+                       class="btn btn-primary btn-block"
+                       type="button" onclick="grade_submit()">
+                        <i class="fa fa-save"></i> Grade
+                    </a>
 
                 </div>
             </div>
@@ -180,35 +180,35 @@ $var Navbar: $:NavbarF()
         <div id="rubricContextDiv">
             <table class="table sorted_table">
                 <thead>
-                    <tr>
-                        <th></th>
-                        $for header in rubrica.keys():
-                        <th>$header</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        $ first_level = rubrica[list(rubrica.keys())[0]]
+                <tr>
+                    <th></th>
+                    $for header in rubrica.keys():
+                    <th>$header</th>
+                </tr>
+                </thead>
+                <tbody>
+                $ first_level = rubrica[list(rubrica.keys())[0]]
 
-                        $for category_index in range(len(first_level)):
-                            $ category_name = list(first_level[category_index])[0]
-                            <tr>
-                                <th>$category_name</th>
+                $for category_index in range(len(first_level)):
+                $ category_name = list(first_level[category_index])[0]
+                <tr>
+                    <th>$category_name</th>
 
-                                $for level_key in rubrica:
-                                    $ category_content = rubrica[level_key][category_index][category_name]
-                                    $ category_content = "" if category_content is None else category_content
+                    $for level_key in rubrica:
+                    $ category_content = rubrica[level_key][category_index][category_name]
+                    $ category_content = "" if category_content is None else category_content
 
-                                    $ category_content_lines = category_content.split("\n")
+                    $ category_content_lines = category_content.split("\n")
 
-                                    <td>
-                                    <ul>
-                                    $for line in category_content_lines:
-                                        <li>$line</li>
-                                    </ul>
-                                    </td>
-                            </tr>
+                    <td>
+                        <ul>
+                            $for line in category_content_lines:
+                            <li>$line</li>
+                        </ul>
+                    </td>
+                </tr>
 
-                    </tbody>
+                </tbody>
             </table>
         </div>
     </div>
@@ -226,32 +226,32 @@ $var Navbar: $:NavbarF()
 
 <script type="text/javascript">
 
-    function grade_submit(){
+    function grade_submit() {
         var value_radio;
         var radios = document.getElementsByName("grade");
         var content_info = "Submission graded and stored";
         var content_danger = "Error at grading, please select a grade"
 
         for (var i = 0, length = radios.length; i < length; i++) {
-             if (radios[i].checked) {
+            if (radios[i].checked) {
 
-                  value_radio = radios[i].value;
+                value_radio = radios[i].value;
 
-                  break;
-             }
+                break;
+            }
         }
 
 
         jQuery.ajax({
-            success:  function(data) {
+            success: function (data) {
                 studio_display_task_submit_message_rubric(content_info, "info", true);
                 comment_submit();
             },
-            method:   "POST",
+            method: "POST",
 
-            data:     {"grade": value_radio},
+            data: {"grade": value_radio},
 
-            error: function(request, status, error){
+            error: function (request, status, error) {
                 studio_display_task_submit_message_rubric(content_danger, "danger", true);
             }
         })
@@ -259,16 +259,15 @@ $var Navbar: $:NavbarF()
 
     };
 
-    function studio_display_task_submit_message_rubric(content, type, dismissible)
-    {
+    function studio_display_task_submit_message_rubric(content, type, dismissible) {
         var code = getAlertCode(content, type, dismissible);
         var element = document.getElementById('grade_edit_submit_status');
-        document.getElementById('grade_edit_submit_status').innerHTML  = code;
+        document.getElementById('grade_edit_submit_status').innerHTML = code;
         element.style.display = 'block';
-        if(dismissible) {
-                var op = 1;  // initial opacity
-                var timer = setInterval(function () {
-                if (op <= 0.1){
+        if (dismissible) {
+            var op = 1;  // initial opacity
+            var timer = setInterval(function () {
+                if (op <= 0.1) {
                     clearInterval(timer);
                     element.style.display = 'none';
 
@@ -284,7 +283,7 @@ $var Navbar: $:NavbarF()
     function comment_submit() {
 
         var txt_comment = document.getElementById("text_comment");
-        var content_info = "Comment as stored";
+        var content_info = "Comment has stored";
         var content_danger = "Error at saving Comment, please try again."
         var content_warning = "Error at saving Comment, comment to long, max length of comment is 1000."
         var maxTam = 1000;
@@ -296,14 +295,14 @@ $var Navbar: $:NavbarF()
         // alert(txt_comment.value);
 
         jQuery.ajax({
-            success:  function(data) {
+            success: function (data) {
                 studio_display_task_submit_message_rubric(content_info, "info", true);
             },
-            method:   "POST",
+            method: "POST",
 
-            data:     {"comment": txt_comment.value},
+            data: {"comment": txt_comment.value},
 
-            error: function(request, status, error){
+            error: function (request, status, error) {
                 studio_display_task_submit_message_rubric(content_danger, "danger", true);
             }
         })
@@ -311,15 +310,15 @@ $var Navbar: $:NavbarF()
 </script>
 
 <style>
-.radio-btn-pad{
-    margin-bottom: 5px;
-}
+    .radio-btn-pad {
+        margin-bottom: 5px;
+    }
 
-.my-text-area {
-    overflow: auto;
-    resize: none;
-    margin-bottom: 4px;
-}
+    .my-text-area {
+        overflow: auto;
+        resize: none;
+        margin-bottom: 4px;
+    }
 
 
 </style>
