@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-07 19:18-0500\n"
+"POT-Creation-Date: 2020-11-13 10:47-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.4.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -1194,6 +1194,7 @@ msgstr "Todos los servicios"
 #: inginious/frontend/plugins/analytics/pages/analytics.html:43
 #: inginious/frontend/plugins/auth/custom_auth_form.html:29
 #: inginious/frontend/plugins/register_students/static/email_template.html:12
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:22
 #: inginious/frontend/templates/auth.html:23
 msgid "Username"
 msgstr "Nombre de usuario"
@@ -1852,6 +1853,7 @@ msgid "Language"
 msgstr "Lenguaje"
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:35
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:23
 msgid "Date"
 msgstr "Fecha"
 
@@ -1869,6 +1871,8 @@ msgid "Summary of plagiarism check"
 msgstr "Resumen del chequeo de plagio"
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:24
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:21
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:18
 #: inginious/frontend/templates/course_admin/aggregation_info.html:31
 msgid "Task"
 msgstr "Tarea"
@@ -2099,6 +2103,83 @@ msgstr ""
 "estudiante no existe, este será registrado usando una contraseña "
 "provisional y recibirá un correo pidiendo confirmación y activación de la"
 " cuenta.Después de esto, el estudiante podrá cambiar su contraseña."
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/submission_rubric.html:9
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:8
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:24
+msgid "Rubric Scoring"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/submission_rubric.html:14
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:13
+msgid "Rubric scoring for Task:"
+msgstr "Puntuación de Rubrica para la tarea:"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/submission_rubric.html:19
+msgid "Source Code"
+msgstr "Código fuente"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/submission_rubric.html:22
+msgid "Rubric context"
+msgstr "Contexto de la rubrica"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:19
+msgid "Submission id"
+msgstr "ID de envío"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:20
+msgid "Verdict"
+msgstr "Veredicto"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:25
+msgid "Custom"
+msgstr "Personalización"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:26
+#: inginious/frontend/templates/course_admin/task_list.html:26
+msgid "Change task order"
+msgstr "Cambiar orden de las tareas"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:27
+#: inginious/frontend/templates/course_admin/task_list.html:27
+msgid "Update task order"
+msgstr "Actualizar orden"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:35
+msgid "Task Name"
+msgstr "Nombre de la Tarea"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:36
+msgid "Student Viewed"
+msgstr "Visitas de Estudiantes"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:37
+msgid "Student Attempted"
+msgstr "Intentos de Estudiantes"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:38
+msgid "Student Succeeded"
+msgstr "Estudiantes Aprobados"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:39
+#: inginious/frontend/templates/task.html:60
+msgid "Attempts"
+msgstr "Número de intentos"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:70
+#: inginious/frontend/templates/course_admin/task_list.html:87
+msgid "Errors while loading tasks"
+msgstr "Errores al cargar las tareas"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:73
+#: inginious/frontend/templates/course_admin/task_list.html:90
+msgid "task id"
+msgstr "id de la Tarea"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:74
+#: inginious/frontend/templates/course_admin/task_list.html:91
+msgid "error"
+msgstr "Error"
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:3
 #: inginious/frontend/plugins/statistics/pages/user_statistics.py:27
@@ -2782,10 +2863,6 @@ msgstr "La tarea ha fallado"
 #: inginious/frontend/templates/task.html:56
 msgid "Grading weight"
 msgstr "Promedio ponderado"
-
-#: inginious/frontend/templates/task.html:60
-msgid "Attempts"
-msgstr "Número de intentos"
 
 #: inginious/frontend/templates/task.html:66
 msgid "Submission limit"
@@ -4022,14 +4099,6 @@ msgstr "Resultados del equipo"
 msgid "\"Download  submissions\""
 msgstr "\"Descargar submission\""
 
-#: inginious/frontend/templates/course_admin/task_list.html:26
-msgid "Change task order"
-msgstr "Cambiar orden de las tareas"
-
-#: inginious/frontend/templates/course_admin/task_list.html:27
-msgid "Update task order"
-msgstr "Actualizar orden"
-
 #: inginious/frontend/templates/course_admin/task_list.html:36
 msgid "# student viewed"
 msgstr "# estudiantes vieron"
@@ -4061,18 +4130,6 @@ msgstr "\"Nuevo id para la tarea\""
 #: inginious/frontend/templates/course_admin/task_list.html:83
 msgid "Create new task"
 msgstr "Crear nueva tarea"
-
-#: inginious/frontend/templates/course_admin/task_list.html:87
-msgid "Errors while loading tasks"
-msgstr "Errores al cargar las tareas"
-
-#: inginious/frontend/templates/course_admin/task_list.html:90
-msgid "task id"
-msgstr "id de la Tarea"
-
-#: inginious/frontend/templates/course_admin/task_list.html:91
-msgid "error"
-msgstr ""
 
 #: inginious/frontend/templates/course_admin/teams_edit.html:73
 msgid "Non teamed students"

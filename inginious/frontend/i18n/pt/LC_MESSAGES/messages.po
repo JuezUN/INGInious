@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-07 19:18-0500\n"
+"POT-Creation-Date: 2020-11-13 10:47-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.4.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -1113,6 +1113,7 @@ msgstr ""
 #: inginious/frontend/plugins/analytics/pages/analytics.html:43
 #: inginious/frontend/plugins/auth/custom_auth_form.html:29
 #: inginious/frontend/plugins/register_students/static/email_template.html:12
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:22
 #: inginious/frontend/templates/auth.html:23
 msgid "Username"
 msgstr "Nome de usuário"
@@ -1723,6 +1724,7 @@ msgid "Language"
 msgstr ""
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:35
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:23
 msgid "Date"
 msgstr ""
 
@@ -1740,6 +1742,8 @@ msgid "Summary of plagiarism check"
 msgstr ""
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:24
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:21
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:18
 #: inginious/frontend/templates/course_admin/aggregation_info.html:31
 msgid "Task"
 msgstr "Tarefa"
@@ -1942,6 +1946,83 @@ msgid ""
 "the students does not exists it will be registered using a provisional "
 "password and will receive an email asking them to confirm the account and"
 " after that, the student can change the password."
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/submission_rubric.html:9
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:8
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:24
+msgid "Rubric Scoring"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/submission_rubric.html:14
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:13
+msgid "Rubric scoring for Task:"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/submission_rubric.html:19
+msgid "Source Code"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/submission_rubric.html:22
+msgid "Rubric context"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:19
+msgid "Submission id"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:20
+msgid "Verdict"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_admin_rubric.html:25
+msgid "Custom"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:26
+#: inginious/frontend/templates/course_admin/task_list.html:26
+msgid "Change task order"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:27
+#: inginious/frontend/templates/course_admin/task_list.html:27
+msgid "Update task order"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:35
+msgid "Task Name"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:36
+msgid "Student Viewed"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:37
+msgid "Student Attempted"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:38
+msgid "Student Succeeded"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:39
+#: inginious/frontend/templates/task.html:60
+msgid "Attempts"
+msgstr "Tentativas"
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:70
+#: inginious/frontend/templates/course_admin/task_list.html:87
+msgid "Errors while loading tasks"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:73
+#: inginious/frontend/templates/course_admin/task_list.html:90
+msgid "task id"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:74
+#: inginious/frontend/templates/course_admin/task_list.html:91
+msgid "error"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:3
@@ -2621,10 +2702,6 @@ msgstr "Falhou"
 #: inginious/frontend/templates/task.html:56
 msgid "Grading weight"
 msgstr "Peso da nota"
-
-#: inginious/frontend/templates/task.html:60
-msgid "Attempts"
-msgstr "Tentativas"
 
 #: inginious/frontend/templates/task.html:66
 msgid "Submission limit"
@@ -3830,14 +3907,6 @@ msgstr ""
 msgid "\"Download  submissions\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/task_list.html:26
-msgid "Change task order"
-msgstr ""
-
-#: inginious/frontend/templates/course_admin/task_list.html:27
-msgid "Update task order"
-msgstr ""
-
 #: inginious/frontend/templates/course_admin/task_list.html:36
 msgid "# student viewed"
 msgstr ""
@@ -3868,18 +3937,6 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/task_list.html:83
 msgid "Create new task"
-msgstr ""
-
-#: inginious/frontend/templates/course_admin/task_list.html:87
-msgid "Errors while loading tasks"
-msgstr ""
-
-#: inginious/frontend/templates/course_admin/task_list.html:90
-msgid "task id"
-msgstr ""
-
-#: inginious/frontend/templates/course_admin/task_list.html:91
-msgid "error"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/teams_edit.html:73
