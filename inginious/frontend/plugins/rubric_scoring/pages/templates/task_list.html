@@ -23,8 +23,8 @@ $var Navbar: $:NavbarF()
 <h2>Tasks
     <div class="pull-right">
         <div class="btn-group">
-            <button type="button" id="switch" class="btn-sm btn btn-default"><i class="fa fa-list-ol"></i> Change task order</button>
-            <button type="submit" id="switch" class="btn-sm btn btn-success"><i class="fa fa-check"></i> Update task order</button>
+            <button type="button" aria-controls="switch" class="btn-sm btn btn-default"><i class="fa fa-list-ol"></i>$:_("Change task order")</button>
+            <button type="submit" aria-controls="switch" class="btn-sm btn btn-success"><i class="fa fa-check"></i>$:_("Update task order")</button>
         </div>
     </div>
 </h2>
@@ -32,11 +32,11 @@ $var Navbar: $:NavbarF()
 <table class="table sorted_table">
     <thead>
         <tr>
-            <th>task name</th>
-            <th># student viewed</th>
-            <th># student attempted</th>
-            <th># student succeeded</th>
-            <th># attempts</th>
+            <th>$:_("task name") </th>
+            <th># $:_("student viewed")  </th>
+            <th># $:_("student attempted")  </th>
+            <th># $:_("student succeeded")  </th>
+            <th># $:_("attempts") </th>
 
             <th>
                 <div class="btn-group" role="group">
@@ -92,7 +92,7 @@ $$('.sorted_table').sortable({
 
 $$('.sorted_table').sortable("disable");
 
-$$("#switch").click(function  (e) {
+$$("button[aria-controls=switch]").click(function  (e) {
     if($$(this).hasClass("active")) {
         $$(this).removeClass("active");
         $$(".sorted_table tr").removeAttr("style");

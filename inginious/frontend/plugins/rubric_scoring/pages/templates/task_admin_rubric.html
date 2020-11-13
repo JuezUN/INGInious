@@ -3,45 +3,45 @@ $def with (course, data, task, url)
 $var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
 
 $def NavbarF():
-    <ol class="nav navbar-nav nav-breadcrumb">
-      <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
-      <li class="active"><a href="#">Rubric Scoring <span class="sr-only">(current)</span></a></li>
-    </ol>
+<ol class="nav navbar-nav nav-breadcrumb">
+    <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+    <li class="active"><a href="#">Rubric Scoring <span class="sr-only">(current)</span></a></li>
+</ol>
 
 $var Navbar: $:NavbarF()
 
-<h3>Rubric scoring for Task: $task.get_id()</h3>
+<h3>$:_("Rubric scoring for Task:") $task.get_id()</h3>
 <form method="post">
 
-<table class="table sorted_table">
-    <thead>
+    <table class="table sorted_table">
+        <thead>
         <tr>
-            <th># submission id</th>
-            <th># verdict</th>
-            <th># task</th>
-            <th># username</th>
-            <th># date</th>
-            <th># rubric scoring</th>
-            <th># custom</th>
+            <th># $:_("submission id")</th>
+            <th># $:_("verdict")</th>
+            <th># $:_("task")</th>
+            <th># $:_("username")</th>
+            <th># $:_("date")</th>
+            <th># $:_("rubric scoring")</th>
+            <th># $:_("custom")</th>
         </tr>
-    </thead>
-    <tbody>
-    $for taskid in data:
-    	<tr>
-    		<td>
-    			<a href="$get_homepath()/admin/${course.get_id()}/$url/task/${data[taskid]['taskid']}/submission/$taskid">$data[taskid]["_id"]</a>
+        </thead>
+        <tbody>
+        $for taskid in data:
+        <tr>
+            <td>
+                <a href="$get_homepath()/admin/${course.get_id()}/$url/task/${data[taskid]['taskid']}/submission/$taskid">$data[taskid]["_id"]</a>
                 <input type="hidden" name="task" value="$taskid">
-    		</td>
+            </td>
             <td>$data[taskid]["result"]</td>
-    		<td>$data[taskid]["taskid"]</td>
+            <td>$data[taskid]["taskid"]</td>
             <td>$data[taskid]["username"][0]</td>
             <td>$data[taskid]["date"]</td>
             <td>$data[taskid]["rubric_score"]</td>
 
 
-    	</tr>
-    </tbody>
-</table>
+        </tr>
+        </tbody>
+    </table>
 </form>
 
 

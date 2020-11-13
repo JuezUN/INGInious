@@ -12,15 +12,15 @@ $def NavbarF():
 $var Navbar: $:NavbarF()
 
 
-<h3>Rubric scoring for Task: $task_id.get_id() </h3>
+<h3>$:_("Rubric scoring for Task:") $task_id.get_id() </h3>
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
-        <a href="#sourceCode" aria-controls="sourceCode" role="tab" data-toggle="tab">Source Code</a>
+        <a href="#sourceCode" aria-controls="sourceCode" role="tab" data-toggle="tab">$:_("Source Code")</a>
     </li>
     <li role="presentation">
-        <a href="#rubricContext" aria-controls="rubricContext" role="tab" data-toggle="tab">Rubric context</a>
+        <a href="#rubricContext" aria-controls="rubricContext" role="tab" data-toggle="tab">$:_("Rubric context")</a>
     </li>
 
 </ul>
