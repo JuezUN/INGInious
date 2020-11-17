@@ -1,5 +1,5 @@
 
-cd ../../utils/minify_plugins/
+# cd ../../utils/minify_plugins/
 
 npm install
 
