@@ -7,6 +7,8 @@ jobs:
   check-minified-files:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - uses: actions/setup-node@v2.1.2
-      - run: ./utils/minify_plugins/check-minified-files.sh
+      - uses: actions/checkout@v2
+#      - uses: ./
+      - run: sh ./utils/minify_plugins/check-minified-files.sh
+      - run: ls -e
