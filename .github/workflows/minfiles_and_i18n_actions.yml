@@ -26,7 +26,7 @@ jobs:
           python-version: '3.5'
           architecture: 'x64'
       - name: Install python babel
-        run: apt-get install python-babel
+        run: sudo apt-get install python-babe
       - uses: actions/checkout@v2
       - name: Minify static files from plugins
         run: |
