@@ -32,7 +32,12 @@ jobs:
         run: |
           python3 utils/pybabel/i18n.py --actions all --repo-path ./
           echo "$(git diff)"
-          if ! [[ "$(git diff --numstat inginious/frontend/i18n/es/LC_MESSAGES/messages.po | cut -f1)" == "2" ]]; then
+          file="inginious/frontend/i18n/es/LC_MESSAGES/messages.po"
+          inserted="$(git diff --numstat $file | cut -f1)"
+          inserted=$((inserted + 0))
+          deleted="$(git diff --numstat $file | cut -f2)"
+          deleted=$((deleted + 0))
+          if [ $inserted -gt 2 ] || [ $deleted -gt 2 ]; then
               echo "The translation files are not updated. Please update the translations files in inginious/frontend/i18n to merge this PR.";
               exit 1;
           fi
