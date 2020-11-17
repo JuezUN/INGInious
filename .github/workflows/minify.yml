@@ -12,8 +12,8 @@ jobs:
       - run: |
           npm install
           npm run minify
-          if ! git diff-index --quiet HEAD --; then
-              echo "The minifiy files are not updated";
+          if [[ -n "$(git status -s)" ]]; then
+              echo "The minfiles in the plugins are not updated. Please update them before merging this.";
               exit 1;
           fi
         working-directory: utils/minify_plugins/
