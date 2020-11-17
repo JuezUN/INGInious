@@ -1,0 +1,42 @@
+name: Check minfiles and i18n
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  check-minified-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2.1.2
+      - uses: actions/checkout@v2
+      - name: Minify and check plugins' minfiles
+        run: |
+          npm install
+          npm run minify
+          if [[ -n "$(git status -s)" ]]; then
+              echo "The minfiles in the plugins are not updated. Please update them before merging this.";
+              exit 1;
+          fi
+        working-directory: utils/minify_plugins/
+  check-i18n-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.5'
+          architecture: 'x64'
+      - name: Install python babel
+        run: sudo apt-get install python-babel
+      - uses: actions/checkout@v2
+      - name: Check i18n files
+        run: |
+          python3 utils/pybabel/i18n.py --actions all --repo-path ./
+          file="inginious/frontend/i18n/es/LC_MESSAGES/messages.po"
+          inserted="$(git diff --numstat $file | cut -f1)"
+          inserted=$((inserted + 0))
+          deleted="$(git diff --numstat $file | cut -f2)"
+          deleted=$((deleted + 0))
+          if [ $inserted -gt 2 ] || [ $deleted -gt 2 ]; then
+              echo "The translation files are not updated. Please update the translations files in inginious/frontend/i18n to merge this PR.";
+              exit 1;
+          fi
