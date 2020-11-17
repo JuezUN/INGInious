@@ -10,5 +10,17 @@ jobs:
       - uses: actions/setup-node@v2.1.2
       - uses: actions/checkout@v2
 #      - uses: ./
-      - run: ls -e
+      - run: |
+          echo $(pwd)
+          ls -la
+      - run: |
+          npm install
+
+          npm run minify
+
+          if ! git diff-index --quiet HEAD --; then
+              echo "The minifiy files are not updated";
+              exit 1;
+          fi
+        working-directory: utils/minify_plugins/
       - run: sh ./utils/minify_plugins/check-minified-files.sh
