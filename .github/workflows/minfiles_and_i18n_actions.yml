@@ -31,7 +31,6 @@ jobs:
       - name: Check i18n files
         run: |
           python3 utils/pybabel/i18n.py --actions all --repo-path ./
-          echo "$(git diff)"
           file="inginious/frontend/i18n/es/LC_MESSAGES/messages.po"
           inserted="$(git diff --numstat $file | cut -f1)"
           inserted=$((inserted + 0))
