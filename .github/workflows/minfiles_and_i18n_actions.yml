@@ -31,7 +31,7 @@ jobs:
       - name: Minify static files from plugins
         run: |
           python3 utils/pybabel/i18n.py --actions all --repo-path ./
-          if [[ "$(git diff --numstat inginious/frontend/i18n/es/LC_MESSAGES/messages.po | cut -f1)" > "1" ]]; then
+          if ! [[ "$(git diff --numstat inginious/frontend/i18n/es/LC_MESSAGES/messages.po | cut -f1)" == "1" ]]; then
               echo "The translation files are not updated. Please update the translations files in inginious/frontend/i18n to merge this PR.";
               exit 1;
           fi
