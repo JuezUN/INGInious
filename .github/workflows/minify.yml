@@ -10,5 +10,5 @@ jobs:
       - uses: actions/setup-node@v2.1.2
       - uses: actions/checkout@v2
 #      - uses: ./
-      - run: sh ./utils/minify_plugins/check-minified-files.sh
       - run: ls -e
+      - run: sh ./utils/minify_plugins/check-minified-files.sh
