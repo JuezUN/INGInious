@@ -276,10 +276,10 @@ function remove_all_test_cases() {
     });
 }
 
-function expand_custom_feedback(elem, rows = 6) {
+function expand_text_area(elem, rows = 6) {
     elem.rows = rows;
 }
 
-function compress_custom_feedback(elem, rows = 2) {
+function compress_text_area(elem, rows = 2) {
     elem.rows = rows;
 }
