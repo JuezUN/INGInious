@@ -118,11 +118,12 @@ $#
     <div class="jumbotron">
         <div class="row" id="grader_test_cases_header" style="display: none;">
             <div class="form-group col-xs-12" style="text-align: center;">
-                <div class="col-xs-3"><label>$:_("Input file")</label></div>
-                <div class="col-xs-3"><label>$:_("Output file")</label></div>
+                <div class="col-xs-2"><label>$:_("Input file")</label></div>
+                <div class="col-xs-2"><label>$:_("Output file")</label></div>
                 <div class="col-xs-2"><label>$:_("Weight")</label></div>
-                <div class="col-xs-2"><label>$:_("Show differences")</label></div>
-                <div class="col-xs-2"><label>$:_("Options")</label></div>
+                <div class="col-xs-1"><label>$:_("Show differences")</label></div>
+                <div class="col-xs-4"><label>$:_("Custom feedback")</label></div>
+                <div class="col-xs-1"><label>$:_("Options")</label></div>
             </div>
         </div>
 
@@ -283,6 +284,7 @@ $#
         let problem_id = "${task_data.get('grader_problem_id', '')}";
         studio_set_initial_problem(problem_id);
         studio_load_grader_test_cases(grader_test_cases);
+        console.log(grader_test_cases);
 
         $$('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
             if (e.target.hash === '#tab_grader') {

@@ -58,6 +58,7 @@ class NotebookForm(GraderForm):
                 raise InvalidGraderError("The setup code for grader tests must be a string")
 
             test["show_debug_info"] = "show_debug_info" in test
+            test["custom_feedback"] = test.get("custom_feedback", "")
 
             # Strip test cases
             for case_index, case in test["cases"].items():
@@ -227,6 +228,8 @@ class NotebookForm(GraderForm):
             "filename": "{}".format(self.task_data["notebook_filename"]),
             "show_debug_info_for": [index for index, test_case in enumerate(self.task_data["grader_test_cases"])
                                     if test_case["show_debug_info"]],
+            "custom_feedback": {index: test_case["custom_feedback"] for index, test_case in
+                                enumerate(self.task_data["grader_test_cases"]) if test_case["custom_feedback"]},
             "time_limit": time,
             "hard_time_limit": time * 2 + 5,
             "memory_limit": self.task_data["notebook_memory_limit_test_case"],
