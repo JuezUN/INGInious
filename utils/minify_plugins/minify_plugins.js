@@ -13,6 +13,7 @@ const _CUSTOM_INPUT_PLUGIN_PATH = `${_BASE_PATH}/custom_input/static`;
 const _CODE_PREVIEW_PLUGIN_PATH = `${_BASE_PATH}/code_preview/static`;
 const _ANALYTICS_PLUGIN_PATH = `${_BASE_PATH}/analytics/static`;
 const _PLAGIARISM_PLUGIN_PATH = `${_BASE_PATH}/plagiarism/static`;
+const _RUBRIC_SCORING_PATH = `${_BASE_PATH}/rubric_scoring/static`
 
 /**
  * Read file synchronously.
@@ -259,6 +260,20 @@ function minifyPlagiarismPlugin() {
     minifyCssFiles(cssFiles, cssFilesPath, "plagiarism");
 }
 
+function minifyRubricScoringPlugin() {
+    const cssFilesPath = _RUBRIC_SCORING_PATH + "/css/";
+
+    const cssFiles = ["rubric_scoring"].map((name) => {
+        return getCssFilePath(cssFilesPath, name);
+    });
+
+    console.log("Minify 'rubric scoring' static files.");
+
+    minifyCssFiles(cssFiles, cssFilesPath, "rubric_scoring");
+
+
+}
+
 minifyUNCodePlugin();
 minifyUNTemplatePlugin();
 minifyStatisticsPlugin();
@@ -269,3 +284,4 @@ minifyCustomInputPlugin();
 minifyCodePreviewPlugin();
 minifyAnalyticsPlugin();
 minifyPlagiarismPlugin();
+minifyRubricScoringPlugin();

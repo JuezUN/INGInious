@@ -7,7 +7,7 @@ $#
 
 $var title: $:course.get_name(user_manager.session_language())
 
-$var Column: $:template_helper.call('course_admin_menu',course=course,current='tasks')
+$var Column: $:template_helper.call('course_admin_menu',course=course,current='rubric_scoring')
 $ is_admin = user_manager.has_admin_rights_on_course(course)
 
 $def NavbarF():
@@ -15,54 +15,34 @@ $def NavbarF():
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
         <li><a href="$get_homepath()/admin/$course.get_id()" title="Administration" data-toggle="tooltip" data-placement="bottom">
             <i class="fa fa-user-secret"></i></a></li>
-        <li class="active"><a href="#"><i class="fa fa-tasks"></i>$:_("Task")<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#"><i class="fa fa-bar-chart mr-1"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
     </ol>
 $var Navbar: $:NavbarF()
 
 <form method="post">
-<h2>Tasks
-    <div class="pull-right">
-        <div class="btn-group">
-            <button type="button" aria-controls="switch" class="btn-sm btn btn-default"><i class="fa fa-list-ol"></i>$:_("Change task order")</button>
-            <button type="submit" aria-controls="switch" class="btn-sm btn btn-success"><i class="fa fa-check"></i>$:_("Update task order")</button>
-        </div>
-    </div>
-</h2>
-
-<table class="table sorted_table">
+<h2>$:_("Rubric Scoring"): $:_("Tasks List")</h2>
+<div class="row justify-conte py-2">
+    <div class="col-md-8 col-md-offset-2">
+<table class="table sorted_table table-striped">
     <thead>
         <tr>
-            <th>$:_("Task Name")</th>
-            <th># $:_("Student Viewed")  </th>
-            <th># $:_("Student Attempted")  </th>
-            <th># $:_("Student Succeeded")  </th>
-            <th># $:_("Attempts") </th>
-
-            <th>
-                <div class="btn-group" role="group">
-                    <a href="$get_homepath()/admin/${course.get_id()}/download?format=taskid%2Fusername" class="btn btn-danger btn-xs" title="$:_('Download all submissions')" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-download"></i></a>
-                    <a href="$get_homepath()/admin/${course.get_id()}/tasks?csv" class="btn btn-info btn-xs" title="$:_('Download CSV file')" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-table"></i></a>
-                </div>
-            </th>
+            <th><h3>$:_("Task Name")</h3></th>
+            <th><h3># $:_("Student Succeeded")</h3>  </th>
         </tr>
     </thead>
     <tbody>
     $for taskid in data:
     	<tr>
     		<td>
-    			<a href="$get_homepath()/admin/${course.get_id()}/$url/task/$taskid">$data[taskid]["name"]</a>
+    			<a href="$get_homepath()/admin/${course.get_id()}/$url/task/$taskid" class="font_size">$data[taskid]["name"]</a>
                 <input type="hidden" name="task" value="$taskid">
     		</td>
-    		<td>$data[taskid]["viewed"]</td>
-    		<td>$data[taskid]["attempted"]</td>
-            <td>$data[taskid]["succeeded"]</td>
-            <td>$data[taskid]["attempts"]</td>
-    		<td style="min-width:120px">
-
-    		</td>
+            <td class="text-center font_size">$data[taskid]["succeeded"]</td>
     	</tr>
     </tbody>
 </table>
+    </div>
+    </div>
 </form>
 
 
@@ -80,24 +60,3 @@ $if len(errors) != 0:
             </tr>
     </table>
 
-<script type="text/javascript">
-$$('.sorted_table').sortable({
-    containerSelector: 'table',
-    itemPath: '> tbody',
-    itemSelector: 'tr',
-    placeholder: '<tr class="placeholder"/>'
-});
-
-$$('.sorted_table').sortable("disable");
-
-$$("button[aria-controls=switch]").click(function  (e) {
-    if($$(this).hasClass("active")) {
-        $$(this).removeClass("active");
-        $$(".sorted_table tr").removeAttr("style");
-    } else {
-        $$(this).addClass("active");
-        $$(".sorted_table tr").attr("style", "cursor: pointer;");
-    }
-    $$('.sorted_table').sortable($$(this).hasClass("active") ? "enable" : "disable");
-});
-</script>
