@@ -9,7 +9,7 @@ import os
 from inginious.frontend.plugins.utils import create_static_resource_page
 
 from inginious.frontend.plugins.rubric_scoring.pages.api import pages
-
+from inginious.frontend.plugins.rubric_scoring.pages.api import rubric_score_user_submissions
 _STATIC_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "static")
 
 
@@ -30,6 +30,8 @@ def init(plugin_manager, _, __, plugin_config):
 
     plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring', pages.CourseTaskListPage)
     plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring/task/([a-z0-9A-Z\-_]+)', pages.TaskListSubmissionPage)
+    plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring/task/([a-z0-9A-Z\-_]+)/user/([a-z0-9A-Z\-_]+)',
+                            rubric_score_user_submissions.UserSubmissionsPage)
     plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring/task/([a-z0-9A-Z\-_]+)/submission/([a-z0-9A-Z\-_]+)',
                             pages.SubmissionRubricPage)
 

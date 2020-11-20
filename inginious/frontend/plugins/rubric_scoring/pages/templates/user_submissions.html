@@ -1,0 +1,75 @@
+$def with (course, data, task, task_name, username, url)
+
+$var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
+
+$var Column: $:template_helper.call('course_admin_menu',course=course,current='rubric_scoring')
+$ is_admin = user_manager.has_admin_rights_on_course(course)
+
+
+$def NavbarF():
+    <ol class="nav navbar-nav nav-breadcrumb">
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()/rubric_scoring"><i class="fa fa-bar-chart mr-1"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
+        <li><a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()">$:_("Task")<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#">$:_("Student")<span class="sr-only">(current)</span></a></li>
+
+    </ol>
+
+$var Navbar: $:NavbarF()
+
+<h2>$:_("Rubric scoring for Task:") "$task_name"</h2>
+<h3 class="py-2">$:_("User"): $username</h3>
+
+<form method="post">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>$:_("Date")</th>
+            <th>$:_("Verdict")</th>
+            <th>$:_("Result Summary")</th>
+            <th>$:_("Rubric Scoring")</th>
+        </tr>
+        </thead>
+        <tbody>
+        $for submission in data:
+        <tr>
+            <td><a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/submission/$submission">
+                    $data[submission]["date"]</a></td>
+            <td>$data[submission]["result"]</td>
+            <td>$data[submission]["summary_result"]</td>
+            <td>$data[submission]["rubric_score"]</td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<!--
+<h3>$:_("Rubric scoring for Task:") "$task_name"</h3>
+<form method="post">
+
+    <table class="table sorted_table">
+        <thead>
+        <tr>
+            <th>$:_("Submission id")</th>
+            <th>$:_("Verdict")</th>
+            <th>$:_("Username")</th>
+            <th>$:_("Date")</th>
+            <th>$:_("Rubric Scoring")</th>
+        </tr>
+        </thead>
+        <tbody>
+        $for taskid in data:
+        <tr>
+            <td>
+                <a href="$get_homepath()/admin/${course.get_id()}/$url/task/${data[taskid]['taskid']}/submission/$taskid">
+                    $data[taskid]["_id"]</a>
+                <input type="hidden" name="task" value="$taskid">
+            </td>
+            <td>$data[taskid]["result"]</td>
+            <td>$data[taskid]["username"][0]</td>
+            <td>$data[taskid]["date"]</td>
+            <td>$data[taskid]["rubric_score"]</td>
+
+        </tr>
+        </tbody>
+    </table>
+</form>-->

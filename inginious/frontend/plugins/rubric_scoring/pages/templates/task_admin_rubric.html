@@ -15,17 +15,15 @@ $def NavbarF():
 
 $var Navbar: $:NavbarF()
 
-<h3>$:_("Rubric scoring for Task:") "$task_name"</h3>
+<h2>$:_("Rubric scoring for Task:") "$task_name"</h2>
 <form method="post">
-
-    <table class="table sorted_table">
+    <div class="row justify-conte py-2">
+        <div class="col-md-8 col-md-offset-2">
+    <table class="table">
         <thead>
         <tr>
-            <th>$:_("Submission id")</th>
-            <th>$:_("Verdict")</th>
-            <th>$:_("Username")</th>
-            <th>$:_("Date")</th>
-            <th>$:_("Rubric Scoring")</th>
+            <th><h3>$:_("Username")</h3></th>
+            <th><h3>$:_("Name")</h3></th>
            <!-- <th># $:_("Result summary")</th> -->
         </tr>
         </thead>
@@ -33,17 +31,15 @@ $var Navbar: $:NavbarF()
         $for taskid in data:
         <tr>
             <td>
-                <a href="$get_homepath()/admin/${course.get_id()}/$url/task/${data[taskid]['taskid']}/submission/$taskid">$data[taskid]["_id"]</a>
+                <a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/user/$taskid" class="font_size">
+                    $data[taskid]["username"]</a>
                 <input type="hidden" name="task" value="$taskid">
             </td>
-            <td>$data[taskid]["result"]</td>
-            <td>$data[taskid]["username"][0]</td>
-            <td>$data[taskid]["date"]</td>
-            <td>$data[taskid]["rubric_score"]</td>
-
+            <td class="font_size">$data[taskid]["realname"]</td>
         </tr>
         </tbody>
     </table>
+            </div>
+    </div>
+
 </form>
-
-
