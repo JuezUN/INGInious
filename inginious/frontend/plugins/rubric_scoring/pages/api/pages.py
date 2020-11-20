@@ -133,6 +133,7 @@ class TaskListSubmissionPage(INGIniousAdminPage):
 
                         }
                 },
+
                 {
                     "$project": {
 
@@ -140,28 +141,32 @@ class TaskListSubmissionPage(INGIniousAdminPage):
                         "result": 1,
                         "submitted_on": 1,
                         "username": 1,
-                        "custom": 1
-
+                        "custom": 1,
+                        "grade": 1
                     }
-                }
+                },
 
             ]))
+
+        # get task name
+        task_name = course.get_task(result[0]["taskid"]).get_name(self.user_manager.session_language())
 
         data = OrderedDict()
 
         for entry in result:
             data[entry["_id"]] = {"taskid": entry["taskid"], "result": entry["result"], "_id": entry["_id"],
-                                  "username": entry["username"], "date": entry["submitted_on"]}
+                                  "username": entry["username"], "date": entry["submitted_on"], "grade": entry["grade"],
+                                  "summary_result": entry["custom"]["custom_summary_result"]
+                                  }
 
             if "rubric_score" not in entry["custom"]:
                 data[entry["_id"]]["rubric_score"] = "not grade"
-
             else:
                 data[entry["_id"]]["rubric_score"] = entry["custom"]["rubric_score"]
 
         return (
             self.template_helper.get_custom_renderer(_BASE_RENDERER_PATH).task_admin_rubric(
-                course, data, task, url)
+                course, data, task, task_name, url)
         )
 
 

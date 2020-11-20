@@ -1,28 +1,32 @@
-$def with (course, data, task, url)
+$def with (course, data, task, task_name, url)
 
 $var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
+
+$var Column: $:template_helper.call('course_admin_menu',course=course,current='rubric_scoring')
+$ is_admin = user_manager.has_admin_rights_on_course(course)
+
 
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
-        <li class="active"><a href="#">$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()/rubric_scoring"><i class="fa fa-bar-chart mr-1"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#">$:_("Task")<span class="sr-only">(current)</span></a></li>
     </ol>
 
 $var Navbar: $:NavbarF()
 
-<h3>$:_("Rubric scoring for Task:") $task.get_id()</h3>
+<h3>$:_("Rubric scoring for Task:") "$task_name"</h3>
 <form method="post">
 
     <table class="table sorted_table">
         <thead>
         <tr>
-            <th># $:_("Submission id")</th>
-            <th># $:_("Verdict")</th>
-            <th># $:_("Task")</th>
-            <th># $:_("Username")</th>
-            <th># $:_("Date")</th>
-            <th># $:_("Rubric Scoring")</th>
-            <th># $:_("Custom")</th>
+            <th>$:_("Submission id")</th>
+            <th>$:_("Verdict")</th>
+            <th>$:_("Username")</th>
+            <th>$:_("Date")</th>
+            <th>$:_("Rubric Scoring")</th>
+           <!-- <th># $:_("Result summary")</th> -->
         </tr>
         </thead>
         <tbody>
@@ -33,11 +37,9 @@ $var Navbar: $:NavbarF()
                 <input type="hidden" name="task" value="$taskid">
             </td>
             <td>$data[taskid]["result"]</td>
-            <td>$data[taskid]["taskid"]</td>
             <td>$data[taskid]["username"][0]</td>
             <td>$data[taskid]["date"]</td>
             <td>$data[taskid]["rubric_score"]</td>
-
 
         </tr>
         </tbody>
