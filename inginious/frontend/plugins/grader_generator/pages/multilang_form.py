@@ -118,7 +118,8 @@ class MultilangForm(GraderForm):
             "output_diff_for": [test_case["input_file"] for test_case in self.task_data["grader_test_cases"]
                                 if test_case["diff_shown"]],
             "custom_feedback": {test_case["input_file"]: test_case["custom_feedback"] for test_case in
-                                self.task_data["grader_test_cases"] if test_case["custom_feedback"]},
+                                self.task_data["grader_test_cases"] if
+                                test_case["custom_feedback"] and test_case["diff_shown"]},
             "time_limit": time,
             "hard_time_limit": time,
             "output_limit": output_limit,

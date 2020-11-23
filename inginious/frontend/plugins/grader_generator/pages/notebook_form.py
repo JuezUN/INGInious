@@ -229,7 +229,8 @@ class NotebookForm(GraderForm):
             "show_debug_info_for": [index for index, test_case in enumerate(self.task_data["grader_test_cases"])
                                     if test_case["show_debug_info"]],
             "custom_feedback": {index: test_case["custom_feedback"] for index, test_case in
-                                enumerate(self.task_data["grader_test_cases"]) if test_case["custom_feedback"]},
+                                enumerate(self.task_data["grader_test_cases"]) if
+                                test_case["custom_feedback"] and test_case["show_debug_info"]},
             "time_limit": time,
             "hard_time_limit": time * 2 + 5,
             "memory_limit": self.task_data["notebook_memory_limit_test_case"],
