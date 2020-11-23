@@ -43,6 +43,7 @@ jobs:
 
           git checkout -- .
           python3 utils/pybabel/i18n.py --actions compile --repo-path ./
+          echo "$(git status -s)"
           if [[ -n "$(git status -s)" ]]; then
               echo "The i18n files are update to date but the .mo files are not compiled. Compile them before this is merged.";
               exit 1;
