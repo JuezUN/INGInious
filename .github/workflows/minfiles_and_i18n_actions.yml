@@ -40,11 +40,3 @@ jobs:
               echo "The translation files are not updated. Please update the translations files in inginious/frontend/i18n to merge this PR.";
               exit 1;
           fi
-
-          git checkout -- .
-          python3 utils/pybabel/i18n.py --actions compile --repo-path ./
-          echo "$(git status -s)"
-          if [[ -n "$(git status -s)" ]]; then
-              echo "The i18n files are update to date but the .mo files are not compiled. Compile them before this is merged.";
-              exit 1;
-          fi
