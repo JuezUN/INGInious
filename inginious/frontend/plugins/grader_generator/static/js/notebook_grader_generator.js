@@ -110,11 +110,13 @@ function _notebook_grader_get_test_case_element(test_id, case_id, case_code, exp
 function _notebook_grader_get_test_element(test_id, test_data, test_cases) {
     const template = $("#notebook_grader_test_template").html().replace(/TID/g, test_id);
     const test_name = test_data["name"], test_weight = test_data["weight"],
-        setup_code = test_data["setup_code"], show_debug_info = test_data["show_debug_info"];
+        setup_code = test_data["setup_code"], show_debug_info = test_data["show_debug_info"],
+        custom_feedback = test_data["custom_feedback"];
 
     const template_element = $(template);
     template_element.find(`#notebook_grader_test_${test_id}_name`).val(test_name);
     template_element.find(`#notebook_grader_test_${test_id}_weight`).val(test_weight);
+    template_element.find(`#notebook_grader_test_${test_id}_custom_feedback`).text(custom_feedback);
     template_element.find(`#notebook_grader_test_${test_id}_setup_code`).text(setup_code);
     template_element.find(`#notebook_grader_test_${test_id}_show_debug_info`).prop('checked', show_debug_info);
 
@@ -136,11 +138,12 @@ function _notebook_grader_get_test_cases_from_container(test_id, container_id) {
 }
 
 function notebook_grader_add_test_from_form() {
-    const test_id = notebook_grader_tests_sequence;
-    const test_cases = _notebook_grader_get_test_cases_from_container(test_id, "notebook_grader_test_cases_container");
+    const test_cases = _notebook_grader_get_test_cases_from_container(notebook_grader_tests_sequence,
+        "notebook_grader_test_cases_container");
     const new_test = notebook_grader_create_test({
         "name": $("#notebook_grader_test_name").val(),
         "weight": $("#notebook_grader_test_weight").val(),
+        "custom_feedback": $("#notebook_grader_test_custom_feedback").val(),
         "setup_code": $("#notebook_grader_test_setup_code").val()
     }, test_cases);
 
@@ -161,6 +164,7 @@ function notebook_grader_create_test(test_data, test_cases) {
         "weight": 1.0,
         "show_debug_info": false,
         "setup_code": "",
+        "custom_feedback": "",
     }, test_data);
 
     if (!test_data["name"] || !test_data["weight"]) {
@@ -230,6 +234,7 @@ function _notebook_grader_update_tests_ids(test_id_to_remove) {
         const test = {
             "name": $(`#notebook_grader_test_${test_index}_name`).val(),
             "weight": $(`#notebook_grader_test_${test_index}_weight`).val(),
+            "custom_feedback": $(`#notebook_grader_test_${test_index}_custom_feedback`).val(),
             "setup_code": $(`#notebook_grader_test_${test_index}_setup_code`).val(),
             "show_debug_info": $(`#notebook_grader_test_${test_index}_show_debug_info`).prop("checked"),
         };
@@ -255,11 +260,13 @@ function notebook_grader_on_edit_test(test_id) {
     const test_data = {
         "name": $(`#notebook_grader_test_${test_id}_name`).val(),
         "weight": $(`#notebook_grader_test_${test_id}_weight`).val(),
+        "custom_feedback": $(`#notebook_grader_test_${test_id}_custom_feedback`).val(),
         "setup_code": $(`#notebook_grader_test_${test_id}_setup_code`).val(),
     };
 
     $("#notebook_grader_test_name").val(test_data["name"]);
     $("#notebook_grader_test_weight").val(test_data["weight"]);
+    $("#notebook_grader_test_custom_feedback").val(test_data["custom_feedback"]);
     codeEditors["notebook_grader_test_setup_code"].getDoc().setValue(test_data["setup_code"]);
     const test_cases = _notebook_grader_get_test_cases_from_container(test_id, `notebook_grader_test_${test_id}`);
     $.each(test_cases, (case_index, test_case) => {
@@ -272,6 +279,7 @@ function notebook_grader_update_test() {
     const test_data = {
         "name": $("#notebook_grader_test_name").val(),
         "weight": $("#notebook_grader_test_weight").val(),
+        "custom_feedback": $("#notebook_grader_test_custom_feedback").val(),
         "setup_code": $("#notebook_grader_test_setup_code").val()
     };
 
@@ -285,7 +293,8 @@ function notebook_grader_update_test() {
     }
 
     const test_id = editing_test_id, test_name = test_data["name"],
-        test_weight = test_data["weight"], setup_code = test_data["setup_code"];
+        test_weight = test_data["weight"], setup_code = test_data["setup_code"],
+        custom_feedback = test_data["custom_feedback"];
     const test_cases = _notebook_grader_get_test_cases_from_container(test_id, "notebook_grader_test_cases_container");
 
     if (!test_name || !test_weight || !test_cases.length) return;
@@ -293,6 +302,7 @@ function notebook_grader_update_test() {
     const test_to_update = $(`#notebook_grader_test_${test_id}`);
     test_to_update.find(`#notebook_grader_test_${test_id}_name`).val(test_name);
     test_to_update.find(`#notebook_grader_test_${test_id}_weight`).val(test_weight);
+    test_to_update.find(`#notebook_grader_test_${test_id}_custom_feedback`).text(custom_feedback);
     test_to_update.find(`#notebook_grader_test_${test_id}_setup_code`).text(setup_code);
 
     test_to_update.find(`#notebook_grader_test_${test_id}_cases_container`).html("");
