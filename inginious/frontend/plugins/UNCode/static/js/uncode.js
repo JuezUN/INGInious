@@ -10,10 +10,10 @@ jQuery(document).ready(function () {
 
     function updateFooter() {
         // Update footer with new information.
-        const footer = $('#footer');
+        const footer = $("#footer");
         footer.find("> div > div > div > p")
             .html(` &copy; 2017-${(new Date()).getFullYear()} Universidad Nacional de Colombia.` +
-                ` - <a class="navbar-link" href="/data_policy">Data policy</a>`);
+                " - <a class="navbar-link" href="/data_policy">Data policy</a>");
         footer.find("> div > div > div > div > p")
             .html(
                 "<a target=\"_blank\" href=\"https://github.com/JuezUN/INGInious\" class=\"navbar-link\">\n" +
