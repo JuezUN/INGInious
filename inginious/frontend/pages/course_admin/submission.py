@@ -68,12 +68,4 @@ class SubmissionPage(INGIniousAdminPage):
             } for problem in task.get_problems()
         }
 
-        to_display.update({
-            pid: {
-                "id": pid,
-                "name": pid,
-                "defined": False
-            } for pid in (set(submission["input"]) - set(to_display))
-        })
-
         return self.template_helper.get_renderer().course_admin.submission(course, task, submission, to_display.values())
