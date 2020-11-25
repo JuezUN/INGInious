@@ -10,16 +10,16 @@ jQuery(document).ready(function () {
 
     function updateFooter() {
         // Update footer with new information.
-        let footer = $('#footer');
-        footer.find('> div > div > div > p')
-            .html(' &copy; 2017-' + (new Date()).getFullYear() + ' Universidad Nacional de Colombia.');
-        footer.find('> div > div > div > div > p')
-            .html('<a target="_blank" href="https://github.com/JuezUN/INGInious" class="navbar-link">\n' +
-                'UNCode is distributed under AGPL license' +
-                '</a>' + ' - <a target="_blank" href="http://www.inginious.org" class="navbar-link">\n' +
-                'Powered by INGInious.\n</a>');
-        footer.find('> div > div > div > div ').prepend('<p class="navbar-text">' +
-            '<a class="navbar-link" href="data_policy">Data policy</a> </p>');
+        const footer = $("#footer");
+        footer.find("> div > div > div > p")
+            .html(` &copy; 2017-${(new Date()).getFullYear()} Universidad Nacional de Colombia.` +
+                " - <a class=\"navbar-link\" href=\"/data_policy\">Data policy</a>");
+        footer.find("> div > div > div > div > p")
+            .html(
+                "<a target=\"_blank\" href=\"https://github.com/JuezUN/INGInious\" class=\"navbar-link\">\n" +
+                "UNCode is distributed under AGPL license" +
+                "</a> - <a target=\"_blank\" href=\"https://www.inginious.org\" class=\"navbar-link\">\n" +
+                "Powered by INGInious.\n</a>");
     }
 
     function updatePageIcon(imagePath) {
@@ -66,7 +66,7 @@ jQuery(document).ready(function () {
 
     function updateUNCodeURL() {
         const anchor = $('a[href="http://www.inginious.org"]');
-        if (anchor !== undefined) {
+        if (anchor.length > 1) {
             anchor[0].href = "https://uncode.unal.edu.co";
         }
     }
