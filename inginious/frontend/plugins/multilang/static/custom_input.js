@@ -74,7 +74,7 @@ function apiCustomInputRequest(inputId, taskform) {
     customTestOutputArea.html("Running...");
 
     $.ajax({
-        url: '/api/multilang/',
+        url: '/api/custom_input/',
         method: "POST",
         dataType: 'json',
         data: taskform,
@@ -102,7 +102,7 @@ function runCustomTest(inputId) {
         taskForm.set("taskid", getTaskIdFromUrl());
         apiCustomInputRequest(inputId, taskForm);
     } else if ('submission' === getCurrentPageName()) {
-        $.get('/api/multilang/', {
+        $.get('/api/custom_input/', {
             submission: getTaskIdFromUrl()
         }, (result) => {
             taskForm.set("courseid", result['courseid']);
