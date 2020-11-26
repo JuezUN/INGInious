@@ -9,14 +9,18 @@ import os
 from inginious.frontend.plugins.utils import create_static_resource_page
 
 from inginious.frontend.plugins.rubric_scoring.pages.api import pages
-from inginious.frontend.plugins.rubric_scoring.pages.api import rubric_score_user_submissions
+from inginious.frontend.plugins.rubric_scoring.pages.api import user_submissions
+from inginious.frontend.plugins.rubric_scoring.pages.api import course_task_list
+from inginious.frontend.plugins.rubric_scoring.pages.api import users_list
+from inginious.frontend.plugins.rubric_scoring.pages.api import rubric_scoring
+
+
 _STATIC_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "static")
 
 
 def init(plugin_manager, _, __, plugin_config):
     """ Init the plugin """
     plugin_manager.add_page(r'/rubric_scoring/static/(.*)', create_static_resource_page(_STATIC_FOLDER_PATH))
-
 
     use_minified = plugin_config.get("use_minified", True)
 
@@ -25,36 +29,22 @@ def init(plugin_manager, _, __, plugin_config):
     else:
         plugin_manager.add_hook("css", lambda: "/rubric_scoring/static/css/rubric_scoring.css")
 
-
-
-
-    plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring', pages.CourseTaskListPage)
-    plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring/task/([a-z0-9A-Z\-_]+)', pages.TaskListSubmissionPage)
+    # First page of rubric scoring. It's a task list
+    plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring',
+                            course_task_list.CourseTaskListPage)
+    # Second page of rubric scoring. It's a list of users who have done a submission
+    plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring/task/([a-z0-9A-Z\-_]+)',
+                            users_list.UserListPage)
+    # Third page of rubric scoring. It's a list of submissions have done it by a student
     plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring/task/([a-z0-9A-Z\-_]+)/user/([a-z0-9A-Z\-_]+)',
-                            rubric_score_user_submissions.UserSubmissionsPage)
-    plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring/task/([a-z0-9A-Z\-_]+)/submission/([a-z0-9A-Z\-_]+)',
-                            pages.SubmissionRubricPage)
-
-
-
-    plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring_temp', pages.CourseTaskListPageTemp)
-    plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring_temp/task/([a-z0-9A-Z\-_]+)',
-                            pages.TaskListSubmissionPageTemp)
+                            user_submissions.UserSubmissionsPage)
+    # Fourth page. The rubric scoring page
     plugin_manager.add_page(
-        r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring_temp/task/([a-z0-9A-Z\-_]+)/submission/([a-z0-9A-Z\-_]+)',
-        pages.SubmissionRubricPageTemp)
-
-
+        r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring/task/([a-z0-9A-Z\-_]+)/submission/([a-z0-9A-Z\-_]+)',
+        rubric_scoring.RubricScoringPage)
 
     plugin_manager.add_hook('course_admin_menu', pages.rubric_course_admin_menu_hook)
 
     renderer = plugin_manager._app.template_helper.get_custom_renderer('frontend/plugins/rubric_scoring/static', False)
     languages = plugin_manager._app.available_languages
     plugin_manager.add_hook("additional_body_html", lambda: str(renderer.register_students_modal(languages)))
-
-
-
-
-
-
-
