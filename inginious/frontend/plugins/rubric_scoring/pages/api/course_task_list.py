@@ -42,13 +42,14 @@ class CourseTaskListPage(INGIniousAdminPage):
     def page(self, course):
         """ Get all data and display the page """
         url = 'rubric_scoring'
+        student_list = self.user_manager.get_course_registered_users(course, False)
         data = list(self.database.user_tasks.aggregate(
             [
                 {
                     "$match":
                         {
                             "courseid": course.get_id(),
-                            "username": {"$in": self.user_manager.get_course_registered_users(course, False)}
+                            "username": {"$in": student_list}
                         }
                 },
                 {
@@ -59,10 +60,12 @@ class CourseTaskListPage(INGIniousAdminPage):
                             "attempted": {"$sum": {"$cond": [{"$ne": ["$tried", 0]}, 1, 0]}},
                             "attempts": {"$sum": "$tried"},
                             "succeeded": {"$sum": {"$cond": ["$succeeded", 1, 0]}}
+
                         }
                 }
             ]))
-
+        # count students
+        num_students = len(student_list)
         # Load tasks and verify exceptions
         files = self.task_factory.get_readable_tasks(course)
         output = {}
@@ -88,4 +91,5 @@ class CourseTaskListPage(INGIniousAdminPage):
                 result[entry["_id"]]["attempts"] = entry["attempts"]
                 result[entry["_id"]]["succeeded"] = entry["succeeded"]
 
-        return self.template_helper.get_custom_renderer(base_renderer_path).task_list(course, result, errors, url)
+        return self.template_helper.get_custom_renderer(base_renderer_path)\
+            .task_list(course, result, errors, url, num_students)
