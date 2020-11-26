@@ -21,55 +21,29 @@ $var Navbar: $:NavbarF()
 <h3 class="py-2">$:_("User"): $username</h3>
 
 <form method="post">
-    <table class="table">
-        <thead>
+<div class="row justify-conte py-2">
+   <div class="col-md-11">
+<table class="table table-striped">
+    <thead>
         <tr>
-            <th>$:_("Date")</th>
-            <th>$:_("Verdict")</th>
-            <th>$:_("Result Summary")</th>
-            <th>$:_("Rubric Scoring")</th>
+            <th><h4>$:_("Date")</h4></th>
+            <th><h4>$:_("Result Summary")</h4></th>
+            <th><h4>$:_("Score")</h4></th>
+            <th><h4>$:_("Rubric Scoring")</h4></th>
         </tr>
-        </thead>
-        <tbody>
-        $for submission in data:
+    </thead>
+    <tbody>
+    $for submission in data:
         <tr>
-            <td><a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/submission/$submission">
+            <td><a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/submission/$submission"
+                   class="font_size-m">
                     $data[submission]["date"]</a></td>
-            <td>$data[submission]["result"]</td>
-            <td>$data[submission]["summary_result"]</td>
-            <td>$data[submission]["rubric_score"]</td>
+            <td class="font_size-m">$data[submission]["summary_result"]</td>
+            <td class="font_size-m">$data[submission]["grade"]</td>
+            <td class="font_size-m">$data[submission]["rubric_score"]</td>
         </tr>
-        </tbody>
-    </table>
+    </tbody>
+</table>
+    </div>
+    </div>
 </form>
-<!--
-<h3>$:_("Rubric scoring for Task:") "$task_name"</h3>
-<form method="post">
-
-    <table class="table sorted_table">
-        <thead>
-        <tr>
-            <th>$:_("Submission id")</th>
-            <th>$:_("Verdict")</th>
-            <th>$:_("Username")</th>
-            <th>$:_("Date")</th>
-            <th>$:_("Rubric Scoring")</th>
-        </tr>
-        </thead>
-        <tbody>
-        $for taskid in data:
-        <tr>
-            <td>
-                <a href="$get_homepath()/admin/${course.get_id()}/$url/task/${data[taskid]['taskid']}/submission/$taskid">
-                    $data[taskid]["_id"]</a>
-                <input type="hidden" name="task" value="$taskid">
-            </td>
-            <td>$data[taskid]["result"]</td>
-            <td>$data[taskid]["username"][0]</td>
-            <td>$data[taskid]["date"]</td>
-            <td>$data[taskid]["rubric_score"]</td>
-
-        </tr>
-        </tbody>
-    </table>
-</form>-->
