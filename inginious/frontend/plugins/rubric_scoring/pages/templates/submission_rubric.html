@@ -33,7 +33,7 @@ $var Navbar: $:NavbarF()
     <!-- Error -->
     <div role="tabpanel" class="tab-pane active" id="sourceCode">
         <h4>Source code of the submission</h4>
-        <div id="grade_edit_submit_status"></div>
+        <div id="grade_edit_submit_status">
         <form method="post">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -42,14 +42,10 @@ $var Navbar: $:NavbarF()
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <div class="student_view">
-                        <!--<p>print hi baker</p>-->
-
-                    </div>
-
                     <textarea class="code-editor form-control"
                               data-x-lines="1"
-                              id="codeTextArea1" name="$problem_id">$submission_code['input'][problem_id]</textarea>
+                              id="codeTextArea1" name="$problem_id">$submission_code['input'][problem_id]
+                    </textarea>
                 </div>
             </div>
 
@@ -92,13 +88,7 @@ $var Navbar: $:NavbarF()
 
                     <div>
                         <h3>Comments</h3>
-
                         <textarea rows="4" cols="35" class="my-text-area" id="text_comment">$comment</textarea>
-                        <!--<a href="#grade_edit_submit_status"-->
-                        <!--class="btn btn-primary btn-block"-->
-                        <!--type="button" onclick="comment_submit()">-->
-                        <!--<i class="fa fa-save"></i> Comment-->
-                        <!--</a>-->
                     </div>
                 </div>
                 <!--information div-->
@@ -175,7 +165,7 @@ $var Navbar: $:NavbarF()
                 </div>
             </div>
         </form>
-
+            </div>
 
     </div>
 
