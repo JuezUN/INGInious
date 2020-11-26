@@ -52,7 +52,8 @@ class UserListPage(INGIniousAdminPage):
                     "$project": {
                         "taskid": 1,
                         "username": 1,
-                        "realname": 1
+                        "realname": 1,
+                        "grade": {"$max": "$grade"}
                     }
                 },
 
@@ -63,9 +64,10 @@ class UserListPage(INGIniousAdminPage):
 
         data = OrderedDict()
         for entry in result:
-            data[entry["username"][0]] = {"username": entry["username"][0], "realname": entry["realname"]}
+            data[entry["username"][0]] = {"username": entry["username"][0],
+                                          "realname": entry["realname"], "grade": entry["grade"]}
 
         return (
-            self.template_helper.get_custom_renderer(base_renderer_path).user_list(
-                course, data, task, task_name, url)
+            self.template_helper.get_custom_renderer(base_renderer_path)
+                .user_list(course, data, task, task_name, url)
         )
