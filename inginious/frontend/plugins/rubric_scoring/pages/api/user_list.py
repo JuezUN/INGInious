@@ -66,6 +66,6 @@ class UserListPage(INGIniousAdminPage):
             data[entry["username"][0]] = {"username": entry["username"][0], "realname": entry["realname"]}
 
         return (
-            self.template_helper.get_custom_renderer(base_renderer_path).task_admin_rubric(
+            self.template_helper.get_custom_renderer(base_renderer_path).user_list(
                 course, data, task, task_name, url)
         )

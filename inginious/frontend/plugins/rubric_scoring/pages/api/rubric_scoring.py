@@ -71,7 +71,7 @@ class RubricScoringPage(INGIniousAdminPage):
         rubric_wdo = RubricWdo('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json')
 
         return (
-            self.template_helper.get_custom_renderer(base_renderer_path).submission_rubric(
+            self.template_helper.get_custom_renderer(base_renderer_path).rubric_scoring(
                 course, task, submission_input, problem_id,
                 rubric_wdo.read_data('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json'), data,
                 language, comment,
