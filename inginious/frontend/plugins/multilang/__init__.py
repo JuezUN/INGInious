@@ -88,7 +88,7 @@ def init(plugin_manager, course_factory, client, plugin_config):
 
     plugin_manager.add_page(r'/multilang/static/(.*)', create_static_resource_page(_static_folder_path))
 
-    plugin_manager.add_page("/api/custom_input/", customInputManagerWithCurriedClient(client))
+    plugin_manager.add_page("/api/multilang/", customInputManagerWithCurriedClient(client))
 
     use_minified = plugin_config.get("use_minified", True)
 
@@ -101,7 +101,6 @@ def init(plugin_manager, course_factory, client, plugin_config):
     if use_minified:
         plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/notebook_renderer.min.js")
         plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/multilang.min.js")
-        plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/custom_input.min.js")
         plugin_manager.add_hook("css", lambda: "/multilang/static/multilang.min.css")
     else:
         plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/notebook_renderer.js")
