@@ -9,7 +9,6 @@ const _STATISTICS_PLUGIN_PATH = `${_BASE_PATH}/statistics/static`;
 const _REGISTER_STUDENTS_PLUGIN_PATH = `${_BASE_PATH}/register_students/static`;
 const _MULTILANG_PLUGIN_PATH = `${_BASE_PATH}/multilang/static`;
 const _GRADER_GENERATOR_PLUGIN_PATH = `${_BASE_PATH}/grader_generator/static`;
-const _CUSTOM_INPUT_PLUGIN_PATH = `${_BASE_PATH}/custom_input/static`;
 const _CODE_PREVIEW_PLUGIN_PATH = `${_BASE_PATH}/code_preview/static`;
 const _ANALYTICS_PLUGIN_PATH = `${_BASE_PATH}/analytics/static`;
 const _PLAGIARISM_PLUGIN_PATH = `${_BASE_PATH}/plagiarism/static`;
@@ -171,7 +170,7 @@ function minifyMultilangPlugin() {
 
     console.log("Minify 'multilang' static files.");
 
-    let jsFiles = ["pythonTutor", "codemirror_linter", "lint"].map((name) => {
+    let jsFiles = ["pythonTutor", "codemirror_linter", "lint", "custom_input"].map((name) => {
         return getJSFilePath(jsFilesPath, name);
     });
     minifyJSFiles(jsFiles, jsFilesPath, "tools");
@@ -206,17 +205,6 @@ function minifyGraderGeneratorPlugin() {
     console.log("Minify 'grader_generator' static files.");
 
     minifyJSFiles(jsFiles, jsFilesPath, "grader_generator");
-}
-
-function minifyCustomInputPlugin() {
-    const jsFilesPath = _CUSTOM_INPUT_PLUGIN_PATH + "/";
-    const jsFiles = ["custom_input"].map((name) => {
-        return getJSFilePath(jsFilesPath, name);
-    });
-
-    console.log("Minify 'custom_input' static files.");
-
-    minifyJSFiles(jsFiles, jsFilesPath, "custom_input");
 }
 
 function minifyCodePreviewPlugin() {
@@ -265,7 +253,6 @@ minifyStatisticsPlugin();
 minifyRegisterStudentsPlugin();
 minifyMultilangPlugin();
 minifyGraderGeneratorPlugin();
-minifyCustomInputPlugin();
 minifyCodePreviewPlugin();
 minifyAnalyticsPlugin();
 minifyPlagiarismPlugin();

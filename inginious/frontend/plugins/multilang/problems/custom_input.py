@@ -11,7 +11,7 @@ from bson.objectid import ObjectId
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
 
-def customInputManagerWithCurriedClient(client):
+def custom_input_manager_with_curried_client(client):
     class CustomInputManager(APIAuthenticatedPage):
         def __init__(self):
             self._client = client
@@ -76,14 +76,3 @@ def customInputManagerWithCurriedClient(client):
                 return 200, json.dumps({"status": "error", "text": str(ex)})
 
     return CustomInputManager
-
-
-def init(plugin_manager, course_factory, client, plugin_config):
-    plugin_manager.add_page(r'/custom_input/static/(.*)', create_static_resource_page(_static_folder_path))
-    plugin_manager.add_page("/api/custom_input/", customInputManagerWithCurriedClient(client))
-
-    use_minified = plugin_config.get("use_minified", True)
-    if use_minified:
-        plugin_manager.add_hook("javascript_footer", lambda: "/custom_input/static/custom_input.min.js")
-    else:
-        plugin_manager.add_hook("javascript_footer", lambda: "/custom_input/static/custom_input.js")
