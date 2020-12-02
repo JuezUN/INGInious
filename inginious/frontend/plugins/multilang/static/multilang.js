@@ -114,7 +114,7 @@ let selected_all_languages = false;
 
 function toggle_languages_checkboxes() {
     const environmentSelectElement = $("#environment");
-    const problem_id = getProblemId();
+    const problemId = getProblemId();
 
     selected_all_languages = !selected_all_languages;
     $(".checkbox_language").prop("checked", selected_all_languages);
@@ -126,11 +126,11 @@ function toggle_languages_checkboxes() {
 
     if (environmentSelectElement.val() === "HDL") {
         $(".checkbox_language").prop("checked", false);
-        $(`#vhdl-${problem_id}`).prop('checked', selected_all_languages);
-        $(`#verilog-${problem_id}`).prop('checked', selected_all_languages);
+        $(`#vhdl-${problemId}`).prop('checked', selected_all_languages);
+        $(`#verilog-${problemId}`).prop('checked', selected_all_languages);
     } else {
-        $(`#vhdl-${problem_id}`).prop('checked', false);
-        $(`#verilog-${problem_id}`).prop('checked', false);
+        $(`#vhdl-${problemId}`).prop('checked', false);
+        $(`#verilog-${problemId}`).prop('checked', false);
     }
 }
 
@@ -247,35 +247,35 @@ function highlight_code() {
 // These functions are intended to show the correct languages for multilang when the environment is HDL
 // or multilang.
 function getProblemId() {
-    const problem_id = $("#problem_id")[0];
-    if (!problem_id) return;
-    return problem_id.value;
+    const problemId = $("#problem_id")[0];
+    if (!problemId) return;
+    return problemId.value;
 }
 
 function hideLanguages() {
-    let problem_id = getProblemId();
-    $(`.checkbox_language_${problem_id}`).prop("hidden", true);
+    let problemId = getProblemId();
+    $(`.checkbox_language_${problemId}`).prop("hidden", true);
 }
 
 function showLanguages() {
-    const problem_id = getProblemId();
-    $(`.checkbox_language_${problem_id}`).prop("hidden", false);
+    const problemId = getProblemId();
+    $(`.checkbox_language_${problemId}`).prop("hidden", false);
 }
 
 function showCorrectLanguagesEnvironment() {
-    const problem_id = getProblemId();
+    const problemId = getProblemId();
 
     const environmentSelectElement = $("#environment");
     if (!environmentSelectElement.length) return;
 
     if (environmentSelectElement.val() === "HDL") {
         hideLanguages();
-        $(`.checkbox_${problem_id}_vhdl`).prop('hidden', false);
-        $(`.checkbox_${problem_id}_verilog`).prop('hidden', false);
+        $(`.checkbox_${problemId}_vhdl`).prop('hidden', false);
+        $(`.checkbox_${problemId}_verilog`).prop('hidden', false);
     } else {
         showLanguages();
-        $(`.checkbox_${problem_id}_vhdl`).prop('hidden', true);
-        $(`.checkbox_${problem_id}_verilog`).prop('hidden', true);
+        $(`.checkbox_${problemId}_vhdl`).prop('hidden', true);
+        $(`.checkbox_${problemId}_verilog`).prop('hidden', true);
     }
 }
 
