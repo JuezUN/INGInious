@@ -65,9 +65,9 @@ jQuery(document).ready(function () {
     }
 
     function updateUNCodeURL() {
-        const anchor = $('a[href="http://www.inginious.org"]');
-        if (anchor.length > 1) {
-            anchor[0].href = "https://uncode.unal.edu.co";
+        const anchors = $('a[href="http://www.inginious.org"]');
+        if (anchors.length) {
+            anchors.each((anchor) => anchor.href = "https://uncode.unal.edu.co");
         }
     }
 
