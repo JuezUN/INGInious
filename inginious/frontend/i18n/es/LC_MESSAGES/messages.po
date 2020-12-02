@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-23 15:49-0500\n"
+"POT-Creation-Date: 2020-12-01 21:58-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1524,7 +1524,7 @@ msgid "code file multiple languages"
 msgstr "Múltiples lenguajes - Archivo de código"
 
 #: inginious/frontend/plugins/multilang/problems/code_multiple_languages_problem.py:33
-#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:29
+#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:30
 msgid "Code multiple languages"
 msgstr "Múltiples lenguajes - Código"
 
@@ -1561,8 +1561,8 @@ msgstr "Tamaño máximo del archivo (en Bytes)"
 msgid "Select all"
 msgstr "Seleccionar todo"
 
-#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:44
-#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:26
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:45
+#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:27
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:21
 #: inginious/frontend/templates/course_admin/download.html:47
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:92
@@ -1573,7 +1573,7 @@ msgstr "Seleccionar todo"
 msgid "Type"
 msgstr "Tipo"
 
-#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:47
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:48
 msgid "Code file multiple languages"
 msgstr "Multiples lenguajes - Archivo de código"
 

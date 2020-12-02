@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-23 15:49-0500\n"
+"POT-Creation-Date: 2020-12-01 21:58-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -1405,7 +1405,7 @@ msgid "code file multiple languages"
 msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/code_multiple_languages_problem.py:33
-#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:29
+#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:30
 msgid "Code multiple languages"
 msgstr ""
 
@@ -1442,8 +1442,8 @@ msgstr ""
 msgid "Select all"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:44
-#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:26
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:45
+#: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:27
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:21
 #: inginious/frontend/templates/course_admin/download.html:47
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:92
@@ -1454,7 +1454,7 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:47
+#: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:48
 msgid "Code file multiple languages"
 msgstr ""
 
