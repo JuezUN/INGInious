@@ -73,8 +73,11 @@ $var Navbar: $:NavbarF()
 
                 </tbody>
     </table>
+    <div>
+        <strong><p id="output">Current Score:</p></strong>
+    </div>
 </section>
-<section>
+<section class="py-2">
     <form method="post">
         <h4 >$:_("Comments")</h4>
         <div class="py-1">
@@ -82,16 +85,14 @@ $var Navbar: $:NavbarF()
         <textarea class="form-control" id="text_comment" rows="8">$data['comment']</textarea>
             </div>
         <div>
-            <a class="btn btn-primary" id="save_button" disabled="true" onclick="save()">$:_("Save")</a>
-            <a class="btn btn-default" onclick="getScore()">$:_("Generate value")</a>
-            <p id="output"></p>
+            <a class="btn btn-primary" id="save_button" onclick="save()">$:_("Save")</a>
         </div>
     </form>
 </section>
 
 <script>
     let myTextArea = document.getElementById('myText');
-    let score = 0;
+    let score = 0.0;
     let myCodeMirror = CodeMirror.fromTextArea(myTextArea,{
         lineNumbers: true,
         readOnly: true
@@ -100,17 +101,24 @@ $var Navbar: $:NavbarF()
 
 
     let matrix = [];
+    //Add listeners to squares
     for(let i = 0;i<5;i++){
         matrix[i]=[];
         for(let j = 0;j<5;j++){
             matrix[i][j] = document.getElementById(i+"-"+j);
+            //Add function
             matrix[i][j].addEventListener('click', function (){
-                check(i);
+                removeSelectionOnRow(i);
                 addClass(i+"-"+j);
+                score += (j+1)*0.2;
+                updateScore();
             });
             matrix[i][j].addEventListener('dblclick',function (){
                 removeClass(i+"-"+j);
+                score -= (j+1)*0.2;
+                updateScore();
             });
+            //Static, just change the cursor
              matrix[i][j].addEventListener('mouseover',function (){
                 document.body.style.cursor = "pointer";
             });
@@ -125,24 +133,20 @@ $var Navbar: $:NavbarF()
     function addClass(id){
         document.getElementById(id).classList.add("box1");
     }
-    function check(row){
+    //
+    function removeSelectionOnRow(row){
         for (let i = 0; i<5;i++){
             if (matrix[row][i].classList.contains("box1")){
                 removeClass(`$${row}-$${i}`);
+                score -= (i+1)*0.2;
+                break;
             }
         }
     }
-    function getScore(){
-        for (let i = 0; i < 5; i ++){
-            for(let j = 0; j < 5; j++){
-                if (matrix[i][j].classList.contains("box1")) {
-                    score += (j+1)*0.2;
-                }
-            }
-        }
-        document.getElementById("output").innerHTML = "Result: "+ score.toFixed(1);;
-        document.getElementById("save_button").removeAttribute("disabled")
+    function updateScore(){
+        document.getElementById("output").innerHTML = "Current Score: "+ score.toFixed(1);
     }
+
     function save(){
 
     }
