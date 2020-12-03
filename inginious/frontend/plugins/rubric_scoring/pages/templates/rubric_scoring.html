@@ -14,15 +14,16 @@ $def NavbarF():
     </ol>
 $var Navbar: $:NavbarF()
 
-
+<!-- CodeMirror -->
 <h2 class="py-1">$:_("Rubric scoring for:") $submission_code['username'][0] </h2>
 <section class="py-2">
     <h4 class="py-1">$:_("Task"): $data['task_name']</h4>
     <div class="box">
-    <label for="myText"></label>
-    <textarea id="myText" rows="4" cols="10">$submission_code['input'][problem_id]</textarea>
+    <label for="myTextCode"></label>
+    <textarea class="single" id="myTextCode" rows="4" cols="10">$submission_code['input'][problem_id]</textarea>
         </div>
 </section>
+
 <section>
     <h4 class="py-1">$:_("Information")</h4>
     <table class="table table-bordered">
@@ -91,13 +92,27 @@ $var Navbar: $:NavbarF()
 </section>
 
 <script>
+
+    const languages = {
+        "java7": "java",
+        "java8": "java",
+        "cpp": "cpp",
+        "cpp11": "cpp",
+        "c": "c",
+        "c11": "c",
+        "python3": "python",
+        "vhdl": "vhdl",
+        "verilog": "verilog"
+    };
+
+
+
     let myTextArea = document.getElementById('myText');
     let score = 0.0;
-    let myCodeMirror = CodeMirror.fromTextArea(myTextArea,{
-        lineNumbers: true,
-        readOnly: true
-    });
+    let language = languages["$data['language']"];
+    let myCodeMirror = registerCodeEditor(document.getElementById("myTextCode"),language, 20);
     myCodeMirror.setSize(null, 300);
+    myCodeMirror.setOption("readOnly","nocursor");
 
 
     let matrix = [];

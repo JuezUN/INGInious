@@ -43,7 +43,6 @@ def init(plugin_manager, _, __, plugin_config):
         rubric_scoring.RubricScoringPage)
 
     plugin_manager.add_hook('course_admin_menu', pages.rubric_course_admin_menu_hook)
-    plugin_manager.add_hook('javascript_footer', lambda: '/frontend/static/js/codemirror/codemirror.js')
     # plugin_manager.add_hook('javascript_footer', lambda: '/frontend/static/js/codemirror/mode/javascript/javascript.js')
 
     renderer = plugin_manager._app.template_helper.get_custom_renderer('frontend/plugins/rubric_scoring/static', False)
