@@ -1,4 +1,4 @@
-$def with (course, task_id, submission_code, problem_id, rubrica, data, language, comment, score)
+$def with (course, task_id, submission_code, problem_id, rubrica, data)
 
 $var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
 
@@ -15,4 +15,137 @@ $def NavbarF():
 $var Navbar: $:NavbarF()
 
 
-<h3>$:_("Rubric scoring for:") $submission_code['username'][0] </h3>
+<h2 class="py-1">$:_("Rubric scoring for:") $submission_code['username'][0] </h2>
+<section class="py-2">
+    <h4 class="py-1">$:_("Task"): $data['task_name']</h4>
+    <div class="box">
+    <label for="myText"></label>
+    <textarea id="myText" rows="4" cols="10">$submission_code['input'][problem_id]</textarea>
+        </div>
+</section>
+<section>
+    <h4 class="py-1">$:_("Information")</h4>
+    <table class="table table-bordered">
+        <tr>
+            <td><b>$:_("Language")</b></td>
+            <td>$data['language']</td>
+            <td><b>$:_("Summary")</b></td>
+            <td>$data['summary']</td>
+        </tr>
+        <tr>
+            <td><b>$_("Score")</b></td>
+            <td>$data['score']</td>
+            <td><b>$_("Grade")</b></td>
+            <td>$data['grade']</td>
+        </tr>
+    </table>
+</section>
+<section>
+    <table class="table sorted_table table-bordered">
+                <thead>
+                <tr>
+                    <th></th>
+                    $for header in rubrica.keys():
+                    <th>$header</th>
+                </tr>
+                </thead>
+                <tbody>
+                $ first_level = rubrica[list(rubrica.keys())[0]]
+
+                $for category_index in range(len(first_level)):
+                $ category_name = list(first_level[category_index])[0]
+                <tr>
+                    <th>$category_name</th>
+                    $ col = 0
+                    $for level_key in rubrica:
+                    $ category_content = rubrica[level_key][category_index][category_name]
+                    $ category_content = "" if category_content is None else category_content
+
+                    $ category_content_lines = category_content.split("\n")
+                    <td id="$category_index-$col">
+                        $ col = col + 1
+                        <ul>
+                            $for line in category_content_lines:
+                            <li>$line</li>
+                        </ul>
+                    </td>
+                </tr>
+
+                </tbody>
+    </table>
+</section>
+<section>
+    <form method="post">
+        <h4 >$:_("Comments")</h4>
+        <div class="py-1">
+        <label for="text_comment"></label>
+        <textarea class="form-control" id="text_comment" rows="8">$data['comment']</textarea>
+            </div>
+        <div>
+            <a class="btn btn-primary" id="save_button" disabled="true" onclick="save()">$:_("Save")</a>
+            <a class="btn btn-default" onclick="getScore()">$:_("Generate value")</a>
+            <p id="output"></p>
+        </div>
+    </form>
+</section>
+
+<script>
+    let myTextArea = document.getElementById('myText');
+    let score = 0;
+    let myCodeMirror = CodeMirror.fromTextArea(myTextArea,{
+        lineNumbers: true,
+        readOnly: true
+    });
+    myCodeMirror.setSize(null, 300);
+
+
+    let matrix = [];
+    for(let i = 0;i<5;i++){
+        matrix[i]=[];
+        for(let j = 0;j<5;j++){
+            matrix[i][j] = document.getElementById(i+"-"+j);
+            matrix[i][j].addEventListener('click', function (){
+                check(i);
+                addClass(i+"-"+j);
+            });
+            matrix[i][j].addEventListener('dblclick',function (){
+                removeClass(i+"-"+j);
+            });
+             matrix[i][j].addEventListener('mouseover',function (){
+                document.body.style.cursor = "pointer";
+            });
+            matrix[i][j].addEventListener('mouseout',function (){
+                document.body.style.cursor = "default";
+            });
+        }
+    }
+    function removeClass(id){
+        document.getElementById(id).classList.remove("box1");
+    }
+    function addClass(id){
+        document.getElementById(id).classList.add("box1");
+    }
+    function check(row){
+        for (let i = 0; i<5;i++){
+            if (matrix[row][i].classList.contains("box1")){
+                removeClass(`$${row}-$${i}`);
+            }
+        }
+    }
+    function getScore(){
+        for (let i = 0; i < 5; i ++){
+            for(let j = 0; j < 5; j++){
+                if (matrix[i][j].classList.contains("box1")) {
+                    score += (j+1)*0.2;
+                }
+            }
+        }
+        document.getElementById("output").innerHTML = "Result: "+ score.toFixed(1);;
+        document.getElementById("save_button").removeAttribute("disabled")
+    }
+    function save(){
+
+    }
+
+
+</script>

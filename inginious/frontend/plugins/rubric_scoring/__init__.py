@@ -14,7 +14,6 @@ from inginious.frontend.plugins.rubric_scoring.pages.api import course_task_list
 from inginious.frontend.plugins.rubric_scoring.pages.api import user_list
 from inginious.frontend.plugins.rubric_scoring.pages.api import rubric_scoring
 
-
 _STATIC_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "static")
 
 
@@ -44,6 +43,8 @@ def init(plugin_manager, _, __, plugin_config):
         rubric_scoring.RubricScoringPage)
 
     plugin_manager.add_hook('course_admin_menu', pages.rubric_course_admin_menu_hook)
+    plugin_manager.add_hook('javascript_footer', lambda: '/frontend/static/js/codemirror/codemirror.js')
+    # plugin_manager.add_hook('javascript_footer', lambda: '/frontend/static/js/codemirror/mode/javascript/javascript.js')
 
     renderer = plugin_manager._app.template_helper.get_custom_renderer('frontend/plugins/rubric_scoring/static', False)
     languages = plugin_manager._app.available_languages

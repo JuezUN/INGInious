@@ -38,7 +38,6 @@ class RubricScoringPage(INGIniousAdminPage):
         self.template_helper.add_javascript("https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.6/papaparse.min.js")
         self.template_helper.add_javascript("https://cdn.plot.ly/plotly-1.30.0.min.js")
         self.template_helper.add_javascript("https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js")
-        self.template_helper.add_css("static/css/rubric_scoring.css")
 
         return self.page(course, task, submission_id)
 
@@ -50,6 +49,7 @@ class RubricScoringPage(INGIniousAdminPage):
         submission = self.submission_manager.get_submission(submission_id, user_check=False)
         submission_input = self.submission_manager.get_input_from_submission(submission)
 
+
         comment = ""
         if ('custom' in submission and 'comment' in submission['custom']):
             comment = submission['custom']['comment']
@@ -59,13 +59,17 @@ class RubricScoringPage(INGIniousAdminPage):
             score = submission['custom']['rubric_score']
 
         language = submission_input['input'][problem_id + '/language']
+
+        task_name = course.get_task(submission_input['taskid']).get_name(self.user_manager.session_language())
+
         data = {
             "url": 'rubric_scoring',
-
-            "memory": "not memory",
-            "test_passed": "no test casses",
-            "verdict": "verdict"
-
+            "summary": submission_input['custom']['custom_summary_result'],
+            "grade": score,
+            "language": language,
+            "comment": comment,
+            "score": submission_input['grade'],
+            "task_name": task_name
         }
 
         rubric_wdo = RubricWdo('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json')
@@ -73,7 +77,5 @@ class RubricScoringPage(INGIniousAdminPage):
         return (
             self.template_helper.get_custom_renderer(base_renderer_path).rubric_scoring(
                 course, task, submission_input, problem_id,
-                rubric_wdo.read_data('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json'), data,
-                language, comment,
-                score)
+                rubric_wdo.read_data('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json'), data)
         )
