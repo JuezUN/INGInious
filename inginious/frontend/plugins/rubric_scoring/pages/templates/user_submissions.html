@@ -9,7 +9,7 @@ $ is_admin = user_manager.has_admin_rights_on_course(course)
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
-        <li><a href="$get_homepath()/admin/$course.get_id()/rubric_scoring"><i class="fa fa-bar-chart mr-1"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()/rubric_scoring"><i class="fa fa-table mr-1"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
         <li><a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()">$:_("Task")<span class="sr-only">(current)</span></a></li>
         <li class="active"><a href="#">$:_("Student")<span class="sr-only">(current)</span></a></li>
 
