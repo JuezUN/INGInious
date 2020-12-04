@@ -1,4 +1,4 @@
-$def with (course, task_id, problem_id, rubrica, data)
+$def with (course, task_id, rubrica, data)
 
 $var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
 
@@ -25,6 +25,7 @@ $var Navbar: $:NavbarF()
     <div id="task_alert" class="py-2"></div>
 </section>
 
+<!-- Information -->
 <section>
     <h4 class="py-1">$:_("Information")</h4>
     <table class="table table-bordered">
@@ -42,7 +43,14 @@ $var Navbar: $:NavbarF()
         </tr>
     </table>
 </section>
+<!-- Rubric  -->
 <section>
+    <div class="py-1">
+        <h4>$:_("Rubric Scoring")</h4>
+        <p>$:_("Select the best description to grade the student's code")</p>
+        <p>$:_("Click to select and double click to deselect")</p>
+    </div>
+    <div>
     <table class="table sorted_table table-bordered">
                 <thead>
                 <tr>
@@ -75,11 +83,13 @@ $var Navbar: $:NavbarF()
 
                 </tbody>
     </table>
+        </div>
     <div>
         <strong><p id="output">Current Score: 0.0</p></strong>
     </div>
     <div id="grade_edit_submit_status"></div>
 </section>
+<!-- Comments -->
 <section class="py-2">
     <form method="post">
         <h4 >$:_("Comments")</h4>
@@ -93,17 +103,8 @@ $var Navbar: $:NavbarF()
     </form>
 </section>
 
+<!-- JS -->
 <script type="text/javascript">
-
-
-
-    //================================0
-    //Reset all alerts
-    function resetAlerts() {
-    $$('#task_alert').html('');
-    $$('.task_alert_problem').html('');
-    }
-    //Displays a loading alert in task form
 
     function getAlertCode(content, type, dismissible) {
     let a = '<div class="alert fade in ';
@@ -117,24 +118,19 @@ $var Navbar: $:NavbarF()
     return a;
     }
 
-
-
-</script>
-
-<script>
-
     function load_feedback_code() {
+
         let result = "$data['result']";
         let content = "$data['text']";
         let parser = new DOMParser();
         let doc = parser.parseFromString(content,'text/html');
-    let alert_type = "danger";
-    if(result === "timeout" || result === "overflow")
-        alert_type = "warning";
-    if(result === "success")
-        alert_type = "success";
-    document.getElementById('task_alert').innerHTML = getAlertCode(doc.body.innerText,alert_type,false);
+        let alert_type = "danger";
+        if(result === "timeout" || result === "overflow")
+            alert_type = "warning";
+        if(result === "success")
+            alert_type = "success";
+        document.getElementById('task_alert').innerHTML = getAlertCode(doc.body.innerText,alert_type,false);
     }
     load_feedback_code();
-
 </script>
+

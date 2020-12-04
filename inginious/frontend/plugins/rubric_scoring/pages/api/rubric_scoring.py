@@ -48,6 +48,7 @@ class RubricScoringPage(INGIniousAdminPage):
 
         submission = self.submission_manager.get_submission(submission_id, user_check=False)
         submission_input = self.submission_manager.get_input_from_submission(submission)
+        name = self.user_manager.get_user_realname(submission_input['username'][0])
 
 
         comment = ""
@@ -75,7 +76,7 @@ class RubricScoringPage(INGIniousAdminPage):
             "result": submission_input['result'],
             "text": aux_info_2,
             "problem_id": submission_input['input'][problem_id],
-            "username": submission_input['username'][0]
+            "username": name
 
         }
 
@@ -83,6 +84,6 @@ class RubricScoringPage(INGIniousAdminPage):
 
         return (
             self.template_helper.get_custom_renderer(base_renderer_path).rubric_scoring(
-                course, task, problem_id,
+                course, task,
                 rubric_wdo.read_data('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json'), data)
         )
