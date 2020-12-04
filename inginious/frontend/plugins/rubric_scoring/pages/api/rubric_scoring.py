@@ -76,8 +76,8 @@ class RubricScoringPage(INGIniousAdminPage):
             "result": submission_input['result'],
             "text": aux_info_2,
             "problem_id": submission_input['input'][problem_id],
-            "username": name
-
+            "username": submission_input['username'][0],
+            "name": name
         }
 
         rubric_wdo = RubricWdo('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json')

@@ -10,12 +10,13 @@ $def NavbarF():
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
         <li><a href="$get_homepath()/admin/$course.get_id()/rubric_scoring"><i class="fa fa-table mr-1"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
     <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task_id.get_id()">$:_("Task")</a></li>
-    <li class="active"><a href="#">$:_("Student")<span class="sr-only">(current)</span></a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task_id.get_id()/user/$data['username']">$:_("Student")</a></li>
+    <li class="active"><a href="#">$:_("Manual Scoring")<span class="sr-only">(current)</span></a></li>
     </ol>
 $var Navbar: $:NavbarF()
 
 <!-- CodeMirror -->
-<h2 class="py-1">$:_("Rubric scoring for:") $data['username'] </h2>
+<h2 class="py-1">$:_("Rubric scoring for:") $data['name'] </h2>
 <section class="py-2">
     <h4 class="py-1">$:_("Task"): $data['task_name']</h4>
     <div class="box">
@@ -43,6 +44,7 @@ $var Navbar: $:NavbarF()
         </tr>
     </table>
 </section>
+
 <!-- Rubric  -->
 <section>
     <div class="py-1">
