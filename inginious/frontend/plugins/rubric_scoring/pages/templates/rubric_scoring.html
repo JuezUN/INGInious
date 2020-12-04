@@ -1,4 +1,4 @@
-$def with (course, task_id, submission_code, problem_id, rubrica, data)
+$def with (course, task_id, problem_id, rubrica, data)
 
 $var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
 
@@ -15,13 +15,14 @@ $def NavbarF():
 $var Navbar: $:NavbarF()
 
 <!-- CodeMirror -->
-<h2 class="py-1">$:_("Rubric scoring for:") $submission_code['username'][0] </h2>
+<h2 class="py-1">$:_("Rubric scoring for:") data['username'][0] </h2>
 <section class="py-2">
     <h4 class="py-1">$:_("Task"): $data['task_name']</h4>
     <div class="box">
     <label for="myTextCode"></label>
-    <textarea class="single" id="myTextCode" rows="4" cols="10">$submission_code['input'][problem_id]</textarea>
-        </div>
+    <textarea class="single" id="myTextCode" rows="4" cols="10">$data['problem_id']</textarea>
+    </div>
+    <div id="task_alert"></div>
 </section>
 
 <section>
@@ -75,7 +76,7 @@ $var Navbar: $:NavbarF()
                 </tbody>
     </table>
     <div>
-        <strong><p id="output">Current Score:</p></strong>
+        <strong><p id="output">Current Score: 0.0</p></strong>
     </div>
 </section>
 <section class="py-2">
@@ -113,7 +114,6 @@ $var Navbar: $:NavbarF()
     let myCodeMirror = registerCodeEditor(document.getElementById("myTextCode"),language, 20);
     myCodeMirror.setSize(null, 300);
     myCodeMirror.setOption("readOnly","nocursor");
-
 
     let matrix = [];
     //Add listeners to squares
@@ -166,5 +166,48 @@ $var Navbar: $:NavbarF()
 
     }
 
+
+    //================================0
+    //Reset all alerts
+    function resetAlerts() {
+    $$('#task_alert').html('');
+    $$('.task_alert_problem').html('');
+    }
+    //Displays a loading alert in task form
+
+    function getAlertCode(content, type, dismissible) {
+    let a = '<div class="alert fade in ';
+    if(dismissible)
+        a += 'alert-dismissible ';
+    a += 'alert-' + type + '" role="alert">';
+    if(dismissible)
+        a += '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
+    a += content;
+    a += '</div>';
+    return a;
+    }
+
+
+</script>
+<script>
+
+    function load_feedback_code() {
+        let result = "$data['result']";
+        let content = "$data['text']";
+        let parser = new DOMParser();
+        let doc = parser.parseFromString(content,'text/html');
+
+
+        console.log("=================================")
+        console.log(result)
+        console.log(content)
+    let alert_type = "danger";
+    if(result === "timeout" || result === "overflow")
+        alert_type = "warning";
+    if(result === "success")
+        alert_type = "success";
+    document.getElementById('task_alert').innerHTML = getAlertCode(doc.body.innerText,alert_type,false);
+    }
+    load_feedback_code();
 
 </script>

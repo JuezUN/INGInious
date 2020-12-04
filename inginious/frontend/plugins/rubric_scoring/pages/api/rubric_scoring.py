@@ -61,7 +61,9 @@ class RubricScoringPage(INGIniousAdminPage):
         language = submission_input['input'][problem_id + '/language']
 
         task_name = course.get_task(submission_input['taskid']).get_name(self.user_manager.session_language())
-
+        info = submission_input['text']
+        aux_info = info.replace('\n\n.. raw:: html\n\n\t', '')
+        aux_info_2 = aux_info.replace('\n', '')
         data = {
             "url": 'rubric_scoring',
             "summary": submission_input['custom']['custom_summary_result'],
@@ -69,13 +71,17 @@ class RubricScoringPage(INGIniousAdminPage):
             "language": language,
             "comment": comment,
             "score": submission_input['grade'],
-            "task_name": task_name
+            "task_name": task_name,
+            "result": submission_input['result'],
+            "text": aux_info_2,
+            "problem_id": submission_input['input'][problem_id]
+
         }
 
         rubric_wdo = RubricWdo('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json')
 
         return (
             self.template_helper.get_custom_renderer(base_renderer_path).rubric_scoring(
-                course, task, submission_input, problem_id,
+                course, task, problem_id,
                 rubric_wdo.read_data('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json'), data)
         )
