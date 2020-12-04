@@ -25,8 +25,11 @@ def init(plugin_manager, _, __, plugin_config):
 
     if use_minified:
         plugin_manager.add_hook("css", lambda: "/rubric_scoring/static/css/rubric_scoring.min.css")
+        plugin_manager.add_hook("javascript_footer", lambda: "/rubric_scoring/static/js/rubric_scoring.min.js")
     else:
         plugin_manager.add_hook("css", lambda: "/rubric_scoring/static/css/rubric_scoring.css")
+        plugin_manager.add_hook("javascript_footer", lambda: "/rubric_scoring/static/js/rubric_scoring_init.js")
+
 
     # First page of rubric scoring. It's a task list
     plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring',
@@ -43,7 +46,6 @@ def init(plugin_manager, _, __, plugin_config):
         rubric_scoring.RubricScoringPage)
 
     plugin_manager.add_hook('course_admin_menu', pages.rubric_course_admin_menu_hook)
-    # plugin_manager.add_hook('javascript_footer', lambda: '/frontend/static/js/codemirror/mode/javascript/javascript.js')
 
     renderer = plugin_manager._app.template_helper.get_custom_renderer('frontend/plugins/rubric_scoring/static', False)
     languages = plugin_manager._app.available_languages

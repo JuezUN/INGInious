@@ -262,16 +262,18 @@ function minifyPlagiarismPlugin() {
 
 function minifyRubricScoringPlugin() {
     const cssFilesPath = _RUBRIC_SCORING_PATH + "/css/";
-
+    const jsFilesPath = _RUBRIC_SCORING_PATH + "/js/";
+    const jsFiles = ["rubric_scoring_init"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
     const cssFiles = ["rubric_scoring"].map((name) => {
         return getCssFilePath(cssFilesPath, name);
     });
 
     console.log("Minify 'rubric scoring' static files.");
 
+    minifyJSFiles(jsFiles, jsFilesPath, "rubric_scoring");
     minifyCssFiles(cssFiles, cssFilesPath, "rubric_scoring");
-
-
 }
 
 minifyUNCodePlugin();
