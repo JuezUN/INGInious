@@ -74,7 +74,8 @@ class RubricScoringPage(INGIniousAdminPage):
             "task_name": task_name,
             "result": submission_input['result'],
             "text": aux_info_2,
-            "problem_id": submission_input['input'][problem_id]
+            "problem_id": submission_input['input'][problem_id],
+            "username": submission_input['username'][0]
 
         }
 

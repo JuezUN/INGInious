@@ -15,7 +15,7 @@ $def NavbarF():
 $var Navbar: $:NavbarF()
 
 <!-- CodeMirror -->
-<h2 class="py-1">$:_("Rubric scoring for:") data['username'][0] </h2>
+<h2 class="py-1">$:_("Rubric scoring for:") $data['username'] </h2>
 <section class="py-2">
     <h4 class="py-1">$:_("Task"): $data['task_name']</h4>
     <div class="box">
