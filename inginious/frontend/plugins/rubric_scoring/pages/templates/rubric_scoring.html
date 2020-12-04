@@ -78,6 +78,7 @@ $var Navbar: $:NavbarF()
     <div>
         <strong><p id="output">Current Score: 0.0</p></strong>
     </div>
+    <div id="grade_edit_submit_status"></div>
 </section>
 <section class="py-2">
     <form method="post">
@@ -87,12 +88,12 @@ $var Navbar: $:NavbarF()
         <textarea class="form-control" id="text_comment" rows="8">$data['comment']</textarea>
             </div>
         <div>
-            <a class="btn btn-primary" id="save_button" onclick="save()">$:_("Save")</a>
+            <a class="btn btn-primary" id="save_button" onclick="save()"><i class="fa fa-save mr-1"></i>$:_("Save")</a>
         </div>
     </form>
 </section>
 
-<script>
+<script type="text/javascript">
 
     const languages = {
         "java7": "java",
@@ -162,10 +163,6 @@ $var Navbar: $:NavbarF()
         document.getElementById("output").innerHTML = "Current Score: "+ score.toFixed(1);
     }
 
-    function save(){
-
-    }
-
 
     //================================0
     //Reset all alerts
@@ -187,8 +184,73 @@ $var Navbar: $:NavbarF()
     return a;
     }
 
+    function save(){
+      let content_info = "Submission graded and stored";
+      let content_danger = "Something went wrong";
+      jQuery.ajax({
+            success: function (data) {
+                comment_submit();
+                studio_display_task_submit_message_rubric(content_info, "info", true);
+            },
+            method: "POST",
+
+            data: {"grade": score},
+
+            error: function (request, status, error) {
+                studio_display_task_submit_message_rubric(content_danger, "danger", true);
+            }
+        });
+    }
+    function comment_submit(){
+        let txt_comment = document.getElementById("text_comment");
+        let content_info = "Comment has stored";
+        let content_danger = "Error at saving Comment, please try again."
+        let content_warning = "Error at saving Comment, comment to long, max length of comment is 1000."
+        let maxTam = 1000;
+
+        if (txt_comment.value.length > maxTam) {
+            studio_display_task_submit_message_rubric(content_warning, "warning", true);
+            return;
+        }
+        // alert(txt_comment.value);
+
+        jQuery.ajax({
+            success: function (data) {
+                studio_display_task_submit_message_rubric(content_info, "info", true);
+            },
+            method: "POST",
+
+            data: {"comment": txt_comment.value},
+
+            error: function (request, status, error) {
+                studio_display_task_submit_message_rubric(content_danger, "danger", true);
+            }
+        });
+    }
+    function studio_display_task_submit_message_rubric(content, type, dismissible) {
+        let code = getAlertCode(content, type, dismissible);
+        let element = document.getElementById('grade_edit_submit_status');
+        document.getElementById('grade_edit_submit_status').innerHTML = code;
+        element.style.display = 'block';
+        if (dismissible) {
+            let op = 1;  // initial opacity
+            let timer = setInterval(function () {
+                if (op <= 0.1) {
+                    clearInterval(timer);
+                    element.style.display = 'none';
+
+                }
+                element.style.opacity = op;
+                element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                op -= op * 0.05;
+            }, 50);
+
+        }
+    }
+
 
 </script>
+
 <script>
 
     function load_feedback_code() {
@@ -196,11 +258,6 @@ $var Navbar: $:NavbarF()
         let content = "$data['text']";
         let parser = new DOMParser();
         let doc = parser.parseFromString(content,'text/html');
-
-
-        console.log("=================================")
-        console.log(result)
-        console.log(content)
     let alert_type = "danger";
     if(result === "timeout" || result === "overflow")
         alert_type = "warning";
