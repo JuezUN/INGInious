@@ -1407,15 +1407,15 @@ msgstr "Agregar"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:162
 msgid "Entity (only on VHDL)"
-msgstr ""
+msgstr "Entidad (solo en VHDL)"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:173
 msgid "Testbench"
-msgstr ""
+msgstr "Banco de pruebas"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:178
 msgid "Golden Model"
-msgstr ""
+msgstr "Modelo Golden"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:190
 msgid "Dataset URL"
@@ -1428,6 +1428,11 @@ msgid ""
 " Remember to allow internet access to the grading environment in "
 "'Container setup' tab. Also, set a filename in the field below.\""
 msgstr ""
+"\"URL del dataset para descargar el archivo antes de ejecutar el "
+"código de evaluación. Esto es de ayuda cuando el dataset es demasiado grande y no "
+"puede ser subido en la pestaña de archivos. Recuerde permitir el acceso a internet "
+"al entorno de evaluación en la pestaña 'Container setup'. Además, establezca el "
+"nombre del archivo en el campo de abajo.\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:202
 msgid "Dataset filename"
@@ -1438,14 +1443,16 @@ msgid ""
 "\"Filename with extension for downloaded dataset (i.e. data.csv). This "
 "filename is the one used to load the dataset in the code.\""
 msgstr ""
+"\"Nombre de archivo con extensión para el dataset descargado (es decir data.csv)."
+"Este nombre de archivo es el utilizado para cargar el dataset en el código.\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:217
 msgid "\"Time limit for each test case in seconds. (Max. 30 s)\""
-msgstr ""
+msgstr "\"Límite de tiempo para cada caso de prueba en segundos. (Max. 30 s)\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:227
 msgid "\"Memory limit for each test case in MBs. (Max 600 MBs)\""
-msgstr ""
+msgstr "\"Límite de memoria para cada caso de prueba en MBs. (Max. 600 MBs) \""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:242
 msgid "Setup code for all tests"
@@ -1458,6 +1465,10 @@ msgid ""
 "like Python interactive shell, where each line is a different command in "
 "the shell.\""
 msgstr ""
+"\"Código en Python ejecutado antes de todas las pruebas. Útil para establecer, "
+"por ejemplo, los datos iniciales y variables a usar en todas las pruebas. El código "
+"debe ser como el intérprete interactivo de Python, donde cada línea es un comando diferente en
+"el intérprete"\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:257
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:8
@@ -1497,7 +1508,7 @@ msgstr "Nombre del test"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:46
 msgid "Setup code"
-msgstr "Setup code"
+msgstr "Código de configuración"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:60
 msgid "Case code"
@@ -1509,7 +1520,7 @@ msgstr "Salida esperada caso"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:94
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:95
 msgid "Code"
