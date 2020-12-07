@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-01 22:08-0500\n"
+"POT-Creation-Date: 2020-12-07 17:54-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -728,7 +728,7 @@ msgstr ""
 #: inginious/frontend/templates/course_admin/danger_zone.html:160
 #: inginious/frontend/templates/course_admin/student_list_table.html:82
 #: inginious/frontend/templates/course_admin/submissions.html:255
-#: inginious/frontend/templates/course_admin/task_edit.html:107
+#: inginious/frontend/templates/course_admin/task_edit.html:109
 #: inginious/frontend/templates/course_admin/teams_edit.html:60
 #: inginious/frontend/templates/lti_bind.html:36
 #: inginious/frontend/templates/unregister_button.html:21
@@ -1391,7 +1391,7 @@ msgstr ""
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
 #: inginious/frontend/templates/course_admin/settings.html:29
-#: inginious/frontend/templates/course_admin/task_edit.html:143
+#: inginious/frontend/templates/course_admin/task_edit.html:145
 #: inginious/frontend/templates/queue.html:29
 #: inginious/frontend/templates/queue.html:59
 msgid "Name"
@@ -2663,7 +2663,7 @@ msgid "{nb_submissions} submissions"
 msgstr "{nb_submissions} soumissions"
 
 #: inginious/frontend/templates/course_admin/submission.html:81
-#: inginious/frontend/templates/course_admin/task_edit.html:48
+#: inginious/frontend/templates/course_admin/task_edit.html:50
 #: inginious/frontend/templates/task.html:97
 msgid "Tags"
 msgstr "Etiquettes"
@@ -3122,7 +3122,7 @@ msgid "Student username (will be registered) :"
 msgstr "Nom d'utilisateur de l'étudiant (sera incrit) :"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:100
-#: inginious/frontend/templates/course_admin/task_edit.html:42
+#: inginious/frontend/templates/course_admin/task_edit.html:44
 msgid "Basic settings"
 msgstr "Paramètres de base"
 
@@ -3491,8 +3491,8 @@ msgid ""
 msgstr "Activez cette option pour envoyer les notes à la plateforme LMS hôte."
 
 #: inginious/frontend/templates/course_admin/settings.html:283
-#: inginious/frontend/templates/course_admin/task_edit.html:30
-#: inginious/frontend/templates/course_admin/task_edit.html:88
+#: inginious/frontend/templates/course_admin/task_edit.html:31
+#: inginious/frontend/templates/course_admin/task_edit.html:90
 msgid "Save changes"
 msgstr "Appliquer les changements"
 
@@ -3806,45 +3806,45 @@ msgid "\"Tasks\""
 msgstr "\"Exercices\""
 
 #: inginious/frontend/templates/course_admin/task_edit.html:22
-#: inginious/frontend/templates/course_admin/task_edit.html:27
+#: inginious/frontend/templates/course_admin/task_edit.html:28
 msgid "Edit task \"{}\""
 msgstr "Éditer l'exercice \"{}\""
 
-#: inginious/frontend/templates/course_admin/task_edit.html:31
+#: inginious/frontend/templates/course_admin/task_edit.html:32
 msgid "View task"
 msgstr "Voir l'exercice"
 
-#: inginious/frontend/templates/course_admin/task_edit.html:44
+#: inginious/frontend/templates/course_admin/task_edit.html:46
 msgid "Container setup"
 msgstr "Conteneur"
 
-#: inginious/frontend/templates/course_admin/task_edit.html:46
+#: inginious/frontend/templates/course_admin/task_edit.html:48
 msgid "Subproblems"
 msgstr "Sous-problèmes"
 
-#: inginious/frontend/templates/course_admin/task_edit.html:50
+#: inginious/frontend/templates/course_admin/task_edit.html:52
 msgid "Task files"
 msgstr "Fichiers de l'exercice"
 
-#: inginious/frontend/templates/course_admin/task_edit.html:75
+#: inginious/frontend/templates/course_admin/task_edit.html:77
 msgid "File list"
 msgstr "Liste des fichiers"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:15
-#: inginious/frontend/templates/course_admin/task_edit.html:96
-#: inginious/frontend/templates/course_admin/task_edit.html:108
+#: inginious/frontend/templates/course_admin/task_edit.html:98
+#: inginious/frontend/templates/course_admin/task_edit.html:110
 msgid "Delete task"
 msgstr "Supprimer l'exercice"
 
-#: inginious/frontend/templates/course_admin/task_edit.html:99
+#: inginious/frontend/templates/course_admin/task_edit.html:101
 msgid "This will <b>permanently</b> remove the task and its files from UNCode."
 msgstr "Ceci supprimera <b>définitivement</b> l'exercice et ses fichier d'UNCode."
 
-#: inginious/frontend/templates/course_admin/task_edit.html:102
+#: inginious/frontend/templates/course_admin/task_edit.html:104
 msgid "Wipe all submissions"
 msgstr "Effacer toutes les soumissions."
 
-#: inginious/frontend/templates/course_admin/task_edit.html:128
+#: inginious/frontend/templates/course_admin/task_edit.html:130
 msgid "Problem id:"
 msgstr "Identifiant du problème:"
 

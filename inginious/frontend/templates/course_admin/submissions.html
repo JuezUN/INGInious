@@ -45,10 +45,10 @@ $if len(old_input.task) == 1:
 <form id="select_form" method="post" action="submissions">
 
 <!-- Query submissions -->
-<div class="panel panel-default">
-    <div class="panel-heading">
+<div class="panel panel-primary">
+    <div class="panel-heading btn btn-block" data-toggle="collapse" data-target="#collapseMAIN">
         <h4 class="panel-title">
-            <a data-toggle="collapse" data-target="#collapseMAIN">$:_("Query submissions")</a>
+            <a>$:_("Query submissions")</a>
         </h4>
     </div>
     <div id="collapseMAIN" class="panel-collapse collapse $('in' if show_collapse else '')">
@@ -95,10 +95,10 @@ $if len(old_input.task) == 1:
             
             <div class="col-xs-12 form-group">
                 <div class="panel-group">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="panel panel-info">
+                        <div class="panel-heading btn btn-block" data-toggle="collapse" data-target="#collapseAdvanced">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-target="#collapseAdvanced">$:_("Advanced query")</a>
+                                <a>$:_("Advanced query")</a>
                             </h4>
                         </div>
                         <div id="collapseAdvanced" class="panel-collapse collapse">
@@ -224,8 +224,8 @@ $if len(old_input.task) == 1:
                 </div>
             </div>
         </div>
-        <button type="submit" onclick="reset_option_download()" class="btn btn-default pull-right">$:_("Filter")</button>
-        <button type="button" onclick="window.location.href='$get_homepath()/admin/${course.get_id()}/submissions'" class="btn btn-default pull-right">$:_("Reset")</button>
+        <button type="submit" onclick="reset_option_download()" class="btn btn-success pull-right">$:_("Filter")</button>
+        <button type="button" onclick="window.location.href='$get_homepath()/admin/${course.get_id()}/submissions'" class="btn btn-danger pull-right">$:_("Reset")</button>
     </div>
 </div>
 </div>

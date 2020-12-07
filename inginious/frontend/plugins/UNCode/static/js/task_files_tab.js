@@ -169,13 +169,13 @@ jQuery(document).ready(function () {
     }
 
     function matchFilesMessage() {
-        let tabFileList = $('#edit_file_tabs');
-        tabFileList.prepend(`<div class="alert  alert-info">
+        const tabFileList = $('#edit_file_tabs');
+        tabFileList.prepend(`<div class="alert  alert-warning" role="alert">
         <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>
-            <b>
-            If the files uploaded follow the format 'x.in' and 'x.out', those files will be automatically
-            matched as test cases (See the grader tab). 
-            </b>
+            If the uploaded files follow the format <b>'x.in'</b> and <b>'x.out'</b>, those files will be automatically
+            matched as test cases (See the grader tab).
+            <br>
+            Additionally, files with size greater than 10MB cannot be uploaded. 
         </div>`);
     }
 
