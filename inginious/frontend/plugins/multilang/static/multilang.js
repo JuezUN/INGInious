@@ -128,6 +128,9 @@ function toggle_languages_checkboxes() {
         $(".checkbox_language").prop("checked", false);
         $(`#vhdl-${problemId}`).prop('checked', selected_all_languages);
         $(`#verilog-${problemId}`).prop('checked', selected_all_languages);
+    } else if (environmentSelectElement.val() === "Data Science") {
+        $(".checkbox_language").prop("checked", false);
+        $(`#python3-${problemId}`).prop('checked', selected_all_languages);
     } else {
         $(`#vhdl-${problemId}`).prop('checked', false);
         $(`#verilog-${problemId}`).prop('checked', false);
@@ -262,16 +265,20 @@ function showLanguages() {
     $(`.checkbox_language_${problemId}`).prop("hidden", false);
 }
 
-function showCorrectLanguagesEnvironment() {
+function showCorrectLanguagesEnvironment(uncheckBoxes = true) {
     const problemId = getProblemId();
 
     const environmentSelectElement = $("#environment");
     if (!environmentSelectElement.length) return;
 
+    if (uncheckBoxes) $(".checkbox_language").prop("checked", false);
     if (environmentSelectElement.val() === "HDL") {
         hideLanguages();
         $(`.checkbox_${problemId}_vhdl`).prop('hidden', false);
         $(`.checkbox_${problemId}_verilog`).prop('hidden', false);
+    } else if (environmentSelectElement.val() === "Data Science") {
+        hideLanguages();
+        $(`.checkbox_${problemId}_python3`).prop('hidden', false);
     } else {
         showLanguages();
         $(`.checkbox_${problemId}_vhdl`).prop('hidden', true);
@@ -284,7 +291,7 @@ jQuery(document).ready(function () {
     if (environmentSelectElement.length) {
         environmentSelectElement.on('change', showCorrectLanguagesEnvironment);
     }
-    showCorrectLanguagesEnvironment();
+    showCorrectLanguagesEnvironment(false);
     toggle_display_new_subproblem_option();
     notebook_start_renderer();
     sendSubmissionAnalytics();
