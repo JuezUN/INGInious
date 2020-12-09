@@ -54,7 +54,7 @@ class DisplayableCodeMultipleLanguagesProblem(CodeMultipleLanguagesProblem, Disp
         standard_code_problem_render = super(DisplayableCodeMultipleLanguagesProblem, self).show_input(template_helper,
                                                                                                        language, seed)
         tools_render = ""
-        if get_show_tools():
+        if get_show_tools() and environment != "HDL":
             tools_render = str(
                 renderer.tools(self.get_id(), "plain", custom_input_id, self.get_type(), get_python_tutor_url(),
                                get_linter_url(), course_id=self.get_task().get_course_id()))
