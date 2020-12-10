@@ -28,7 +28,7 @@ $def with (key, available_languages)
             </button>
         </div>
         $for language in available_languages:
-            <div class="checkbox">
+            <div class="checkbox checkbox_language_PID checkbox_PID_$language">
                 <label>
                     <input id="$language-PID" class="checkbox_language" type="checkbox" value="$language"
                            name="problem[PID][languages][$language]"/>$available_languages[language]
@@ -36,6 +36,7 @@ $def with (key, available_languages)
             </div>
     </div>
 </div>
+<input type="hidden" id="problem_id" value="PID">
 <div class="form-group">
     <input type="hidden" name="problem[PID][type]" value="code_file_multiple_languages"/>
 </div>
