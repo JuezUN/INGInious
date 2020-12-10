@@ -7,15 +7,15 @@ from inginious.frontend.pages.api._api_page import APIAuthenticatedPage
 from inginious.frontend.parsable_text import ParsableText
 
 
-def custom_test_notebook(client):
+def custom_input_notebook(client):
     """
-    This function returns a TestNotebookManager in charge of running the selected tests by the student to run.
+    This function returns a CustomInputNotebookManager in charge of running the selected tests by the student to run.
     This is instead of doing a new submission whenever the student wants to check the result of some few tests.
     :param client:
-    :return: TestNotebookManager
+    :return: CustomInputNotebookManager
     """
 
-    class TestNotebookManager(APIAuthenticatedPage):
+    class CustomInputNotebookManager(APIAuthenticatedPage):
         def __init__(self):
             self._client = client
 
@@ -84,4 +84,4 @@ def custom_test_notebook(client):
                 web.header('Content-Type', 'application/json')
                 return 200, json.dumps({"status": "error", "text": str(ex)})
 
-    return TestNotebookManager
+    return CustomInputNotebookManager
