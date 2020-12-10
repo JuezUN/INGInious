@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-09 20:18-0500\n"
+"POT-Creation-Date: 2020-12-09 22:37-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -1449,13 +1449,13 @@ msgstr ""
 msgid "Code multiple languages"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/custom_test_notebook.py:56
-msgid "An error occurred. The request is not correctly formed."
-msgstr ""
-
 #: inginious/frontend/plugins/multilang/problems/notebook_file_problem.py:36
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:24
 msgid "Notebook"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/test_notebook.py:70
+msgid "An error occurred. The request is not correctly formed."
 msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:4
