@@ -7,7 +7,7 @@ from inginious.frontend.pages.api._api_page import APIAuthenticatedPage
 from inginious.frontend.parsable_text import ParsableText
 
 
-def test_notebook(client):
+def custom_test_notebook(client):
     """
     This function returns a TestNotebookManager in charge of running the selected tests by the student to run.
     This is instead of doing a new submission whenever the student wants to check the result of some few tests.

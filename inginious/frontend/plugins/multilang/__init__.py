@@ -6,7 +6,7 @@ from .problems.code_multiple_file_languages_problem import DisplayableCodeFileMu
 from .problems.notebook_file_problem import DisplayableNotebookFileProblem
 from .problems.constants import set_linter_url, set_python_tutor_url, set_show_tools, get_show_tools
 from .problems.custom_input import custom_input_manager_multilang
-from .problems.test_notebook import test_notebook
+from .problems.custom_test_notebook import custom_test_notebook
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
@@ -20,7 +20,7 @@ def init(plugin_manager, course_factory, client, plugin_config):
     plugin_manager.add_page(r'/multilang/static/(.*)', create_static_resource_page(_static_folder_path))
 
     plugin_manager.add_page("/api/custom_input/", custom_input_manager_multilang(client))
-    plugin_manager.add_page("/api/test_notebook/", test_notebook(client))
+    plugin_manager.add_page("/api/custom_test_notebook/", custom_test_notebook(client))
 
     use_minified = plugin_config.get("use_minified", True)
 

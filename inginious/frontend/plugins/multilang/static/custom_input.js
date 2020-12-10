@@ -82,7 +82,7 @@ function apiTestNotebookRequest(inputId, taskForm) {
     blurTaskForm();
     sendTestNotebookAnalytics();
     $.ajax({
-        url: "/api/test_notebook/",
+        url: "/api/custom_test_notebook/",
         method: "POST",
         dataType: "json",
         data: taskForm,
@@ -161,7 +161,7 @@ function sendCustomInputAnalytics() {
 function sendTestNotebookAnalytics() {
     $.post("/api/analytics/", {
         service: {
-            key: "test_notebook",
+            key: "custom_test_notebook",
             name: "Test notebook"
         },
         course_id: getCourseId(),
