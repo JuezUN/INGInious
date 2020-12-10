@@ -4,10 +4,10 @@ $def with (inputId, language, customInputId, type, pythonTutorURL, linterURL, co
 <br>
 <div>
     $if type == "notebook_file":
-        <button type="button" class="btn btn-primary" onclick="toggleElement('custom-test-$inputId')">
+        <button type="button" class="btn btn-primary" onclick="toggleElement('test-notebook-$inputId')">
             $:_("Test notebook")
         </button>
-        <div id="custom-test-$inputId" style="display: none">
+        <div id="test-notebook-$inputId" style="display: none">
         <div class="row panel-body">
             <div class="panel panel-default">
                 <div class="panel-body form-group">

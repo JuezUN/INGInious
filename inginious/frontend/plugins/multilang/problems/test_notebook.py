@@ -7,8 +7,15 @@ from inginious.frontend.pages.api._api_page import APIAuthenticatedPage
 from inginious.frontend.parsable_text import ParsableText
 
 
-def custom_test_notebook(client):
-    class CustomTestManager(APIAuthenticatedPage):
+def test_notebook(client):
+    """
+    This function returns a TestNotebookManager in charge of running the selected tests by the student to run.
+    This is instead of doing a new submission whenever the student wants to check the result of some few tests.
+    :param client:
+    :return: TestNotebookManager
+    """
+
+    class TestNotebookManager(APIAuthenticatedPage):
         def __init__(self):
             self._client = client
 
@@ -20,13 +27,20 @@ def custom_test_notebook(client):
         def is_valid_input(self, problem_id, user_input):
             if (problem_id + "/input") not in user_input:
                 return False
-            print(len(user_input[problem_id + "/input"].split(',')))
-            if len(user_input[problem_id + "/input"].split(',')) <= 0 or len(
-                    user_input[problem_id + "/input"].split(',')) > 1:
+
+            # The selected tests are given as a string separated by comma
+            tests = user_input[problem_id + "/input"].split(',')
+            if len(tests) <= 0 or len(tests) > 3:
                 return False
             return True
 
         def parse_selected_tests(self, user_input, problem_id, task_tests):
+            """
+            Returns a list of tuples that contains information about each test that the student selected, this is
+            the way tests are given to the container when a normal submission is done
+            Here is how this is parsed:
+                [((test_name, test_id, number_of_cases), test_weight), ...]
+            """
             parsed_selected_tests = []
             selected_tests = map(int, user_input[problem_id + "/input"].split(','))
             for test_idx in selected_tests:
@@ -49,13 +63,13 @@ def custom_test_notebook(client):
                     for problem in task.get_problems() if problem.input_type() in [dict, list]
                 }
                 user_input = task.adapt_input_for_backend(web.input(**init_var))
-                test_cases = task._data.get("grader_test_cases", [])
-                for problem_id, __ in init_var.items():
+                task_tests = task._data.get("grader_test_cases", [])
+                for problem_id in init_var.keys():
                     if not self.is_valid_input(problem_id, user_input):
                         return 200, json.dumps(
                             {"status": "error", "text": _("An error occurred. The request is not correctly formed.")})
-                    user_input[problem_id + "/input"] = self.parse_selected_tests(user_input, problem_id, test_cases)
-                result, grade, problems, tests, custom, archive, stdout, stderr = self.add_unsaved_job(task, user_input)
+                    user_input[problem_id + "/input"] = self.parse_selected_tests(user_input, problem_id, task_tests)
+                result, _1, problems, tests, custom, archive, stdout, stderr = self.add_unsaved_job(task, user_input)
 
                 data = {
                     "status": ("done" if result[0] == "success" or result[0] == "failed" else "error"),
@@ -70,4 +84,4 @@ def custom_test_notebook(client):
                 web.header('Content-Type', 'application/json')
                 return 200, json.dumps({"status": "error", "text": str(ex)})
 
-    return CustomTestManager
+    return TestNotebookManager

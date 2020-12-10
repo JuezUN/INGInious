@@ -8,6 +8,13 @@ from inginious.frontend.parsable_text import ParsableText
 
 
 def custom_input_manager_multilang(client):
+    """
+    This function returns a CustomInputManager in charge of running the student's code against a custom input
+    given by the student. This is only for multilang tasks.
+    :param client:
+    :return: CustomInputManager
+    """
+
     class CustomInputManager(APIAuthenticatedPage):
         def __init__(self):
             self._client = client

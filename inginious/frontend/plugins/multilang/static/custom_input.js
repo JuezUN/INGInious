@@ -25,9 +25,9 @@ function displaySuccessAlert(content) {
 }
 
 function displayCustomInputResults(data, customTestOutputArea = null, placeholderSpan = null) {
-    if ('status' in data && data['status'] === 'done') {
-        if ('result' in data) {
-            const result = data['result'];
+    if ("status" in data && data["status"] === "done") {
+        if ("result" in data) {
+            const result = data["result"];
             if (customTestOutputArea) {
                 const stdoutSpan = $("<span/>").addClass("stdout-text").text(data.stdout);
                 const stderrSpan = $("<span/>").addClass("stderr-text").text(data.stderr);
@@ -35,7 +35,7 @@ function displayCustomInputResults(data, customTestOutputArea = null, placeholde
                 customTestOutputArea.append(stderrSpan);
             }
 
-            if (result === 'failed') {
+            if (result === "failed") {
                 displayCustomTestAlertError(data);
             } else if (result === "timeout") {
                 displayTimeOutAlert(data);
@@ -47,8 +47,10 @@ function displayCustomInputResults(data, customTestOutputArea = null, placeholde
                 displayCustomTestAlertError(data);
             }
         }
-    } else if ('status' in data && data['status'] === 'error') {
-        if (customTestOutputArea) customTestOutputArea.html(placeholderSpan);
+    } else if ("status" in data && data["status"] === "error") {
+        if (customTestOutputArea) {
+            customTestOutputArea.html(placeholderSpan);
+        }
         if (data["result"] === "timeout") {
             data["text"] = "Your submission timed out.";
             displayTimeOutAlert(data);
@@ -56,35 +58,37 @@ function displayCustomInputResults(data, customTestOutputArea = null, placeholde
             displayCustomTestAlertError(data);
         }
     } else {
-        if (customTestOutputArea) customTestOutputArea.html(placeholderSpan);
+        if (customTestOutputArea) {
+            customTestOutputArea.html(placeholderSpan);
+        }
         displayCustomTestAlertError({});
     }
 }
 
-function apiCustomTestNotebookRequest(inputId, taskForm) {
+function apiTestNotebookRequest(inputId, taskForm) {
     // POST REQUEST to run some specified tests from notebook.
     if (!taskFormValid()) return;
 
-    const runCustomTestCallBack = function (data) {
+    const runTestNotebookCallback = function (data) {
         data = JSON.parse(data);
         displayCustomInputResults(data);
         unblurTaskForm();
     };
 
     displayTaskLoadingAlert({"text": "Running custom tests"}, null);
-    $('html, body').animate({
-        scrollTop: $('#task_alert').offset().top - 100
+    $("html, body").animate({
+        scrollTop: $("#task_alert").offset().top - 100
     }, 200);
     blurTaskForm();
-    sendCustomInputAnalytics();
+    sendTestNotebookAnalytics();
     $.ajax({
-        url: '/api/custom_test_notebook/',
+        url: "/api/test_notebook/",
         method: "POST",
-        dataType: 'json',
+        dataType: "json",
         data: taskForm,
         processData: false,
         contentType: false,
-        success: runCustomTestCallBack,
+        success: runTestNotebookCallback,
         error: function (error) {
             unblurTaskForm();
         }
@@ -93,11 +97,11 @@ function apiCustomTestNotebookRequest(inputId, taskForm) {
 
 function apiCustomInputRequest(inputId, taskform) {
     // POST REQUEST for running code with custom input
-    const customTestOutputArea = $('#customoutput-' + inputId);
+    const customTestOutputArea = $("#customoutput-" + inputId);
     const placeholderSpan = "<span class='placeholder-text'>Your output goes here</span>";
     if (!taskFormValid()) return;
 
-    const runCustomTestCallBack = function (data) {
+    const runCustomInputCallback = function (data) {
         data = JSON.parse(data);
         customTestOutputArea.empty();
         displayCustomInputResults(data, customTestOutputArea, placeholderSpan);
@@ -111,13 +115,13 @@ function apiCustomInputRequest(inputId, taskform) {
     sendCustomInputAnalytics();
 
     $.ajax({
-        url: '/api/custom_input/',
+        url: "/api/custom_input/",
         method: "POST",
-        dataType: 'json',
+        dataType: "json",
         data: taskform,
         processData: false,
         contentType: false,
-        success: runCustomTestCallBack,
+        success: runCustomInputCallback,
         error: function (error) {
             unblurTaskForm();
             customTestOutputArea.html(placeholderSpan);
@@ -131,7 +135,7 @@ function runCustomTest(inputId, environment = "multilang") {
      * and course identifier (GET Request to API) for running
      * the student code with custom input.
      */
-    const taskForm = new FormData($('form#task')[0]);
+    const taskForm = new FormData($("form#task")[0]);
     taskForm.set("submit_action", "customtest");
     taskForm.set("courseid", getCourseId());
     taskForm.set("taskid", getTaskId());
@@ -140,12 +144,12 @@ function runCustomTest(inputId, environment = "multilang") {
         apiCustomInputRequest(inputId, taskForm);
     } else if (environment === "Notebook") {
         taskForm.set(`${inputId}/input`, taskForm.getAll(`${inputId}/custom_tests`));
-        apiCustomTestNotebookRequest(inputId, taskForm);
+        apiTestNotebookRequest(inputId, taskForm);
     }
 }
 
 function sendCustomInputAnalytics() {
-    $.post('/api/analytics/', {
+    $.post("/api/analytics/", {
         service: {
             key: "custom_input",
             name: "Custom input"
@@ -154,14 +158,24 @@ function sendCustomInputAnalytics() {
     });
 }
 
+function sendTestNotebookAnalytics() {
+    $.post("/api/analytics/", {
+        service: {
+            key: "test_notebook",
+            name: "Test notebook"
+        },
+        course_id: getCourseId(),
+    });
+}
+
 
 $(document).ready(function () {
-    let last_valid_selection = null;
-    $('#select_test').change(function (event) {
+    let lastValidSelection = null;
+    $("#select_test").change(function (event) {
         if ($(this).val().length > 3) {
-            $(this).val(last_valid_selection);
+            $(this).val(lastValidSelection);
         } else {
-            last_valid_selection = $(this).val();
+            lastValidSelection = $(this).val();
         }
     });
 });
