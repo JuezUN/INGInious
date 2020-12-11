@@ -40,10 +40,12 @@ jQuery(document).ready(function () {
 
         }
 
+        //
+        $('#info').click(function(){
+            $("#text-context").collapse("toggle");
+        });
 
         let score = 0.0;
-
-
         let matrix = [];
 //Add listeners to squares
         for (let i = 0; i < 5; i++) {

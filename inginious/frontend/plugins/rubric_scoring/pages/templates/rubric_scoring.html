@@ -1,4 +1,4 @@
-$def with (course, task_id, rubrica, data)
+$def with (course, task, rubrica, data)
 
 $var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
 
@@ -9,16 +9,23 @@ $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
         <li><a href="$get_homepath()/admin/$course.get_id()/rubric_scoring"><i class="fa fa-table mr-1"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
-    <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task_id.get_id()">$:_("Task")</a></li>
-        <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task_id.get_id()/user/$data['username']">$:_("Student")</a></li>
+    <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task.get_id()">$:_("Task")</a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task.get_id()/user/$data['username']">$:_("Student")</a></li>
     <li class="active"><a href="#">$:_("Manual Scoring")<span class="sr-only">(current)</span></a></li>
     </ol>
 $var Navbar: $:NavbarF()
 
-<!-- CodeMirror -->
+
+
+<!-- Code view -->
 <h2 class="py-1">$:_("Rubric scoring for:") $data['name'] </h2>
 <section class="py-2">
-    <h4 class="py-1">$:_("Task"): $data['task_name']</h4>
+    <div class="py-1">
+    <h3 id="info" class="py-1" style="cursor: pointer">$:_("Task"): $data['task_name']</h3>
+        <div id="text-context" hidden>
+            $:task.get_context(user_manager.session_language())
+        </div>
+    </div>
     <div class="box">
     <div class="DivToScroll DivWithScroll" id="notebook-holder" hidden></div>
     <label for="myTextCode"></label>
@@ -140,7 +147,7 @@ $var Navbar: $:NavbarF()
     }
 
     const url_request = function (){
-        return "$get_homepath()/course/$course.get_id()/$task_id.get_id()" + "?submissionid=" + "$data['submission_id']"+"&questionid="+"$data['question_id']";
+        return "$get_homepath()/course/$course.get_id()/$task.get_id()" + "?submissionid=" + "$data['submission_id']"+"&questionid="+"$data['question_id']";
     }
 
 
