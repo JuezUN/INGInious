@@ -20,8 +20,9 @@ $var Navbar: $:NavbarF()
 <section class="py-2">
     <h4 class="py-1">$:_("Task"): $data['task_name']</h4>
     <div class="box">
+    <div class="DivToScroll DivWithScroll" id="notebook-holder" hidden></div>
     <label for="myTextCode"></label>
-    <textarea class="single" id="myTextCode" rows="4" cols="10" data-language="$data['language']">$data['problem_id']</textarea>
+    <textarea class="single" id="myTextCode" rows="4" cols="10" data-language="$data['language']" hidden>$data['problem']</textarea>
     </div>
     <div id="task_alert" class="py-2"></div>
 </section>
@@ -133,6 +134,15 @@ $var Navbar: $:NavbarF()
             alert_type = "success";
         document.getElementById('task_alert').innerHTML = getAlertCode(doc.body.innerText,alert_type,false);
     }
-    load_feedback_code();
+
+    const environment = function (){
+        return "$data['env']"
+    }
+
+    const url_request = function (){
+        return "$get_homepath()/course/$course.get_id()/$task_id.get_id()" + "?submissionid=" + "$data['submission_id']"+"&questionid="+"$data['question_id']";
+    }
+
+
 </script>
 

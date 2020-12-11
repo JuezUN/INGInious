@@ -30,7 +30,6 @@ def init(plugin_manager, _, __, plugin_config):
         plugin_manager.add_hook("css", lambda: "/rubric_scoring/static/css/rubric_scoring.css")
         plugin_manager.add_hook("javascript_footer", lambda: "/rubric_scoring/static/js/rubric_scoring_init.js")
 
-
     # First page of rubric scoring. It's a task list
     plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring',
                             course_task_list.CourseTaskListPage)
@@ -46,4 +45,3 @@ def init(plugin_manager, _, __, plugin_config):
         rubric_scoring.RubricScoringPage)
 
     plugin_manager.add_hook('course_admin_menu', pages.rubric_course_admin_menu_hook)
-

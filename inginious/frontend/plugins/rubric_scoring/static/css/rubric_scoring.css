@@ -51,5 +51,22 @@ td.box1 {
     border: solid #c0c0c0 1px;
 }
 
+.DivToScroll {
+    background-color: #fcfcfc;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #3B3C3E;
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 10px 7px 5px;
+}
+
+.DivWithScroll {
+    height: 300px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
 
 

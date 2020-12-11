@@ -65,6 +65,7 @@ class RubricScoringPage(INGIniousAdminPage):
         info = submission_input['text']
         aux_info = info.replace('\n\n.. raw:: html\n\n\t', '')
         aux_info_2 = aux_info.replace('\n', '')
+        env = task.get_environment()
         data = {
             "url": 'rubric_scoring',
             "summary": submission_input['custom']['custom_summary_result'],
@@ -75,9 +76,12 @@ class RubricScoringPage(INGIniousAdminPage):
             "task_name": task_name,
             "result": submission_input['result'],
             "text": aux_info_2,
-            "problem_id": submission_input['input'][problem_id],
+            "problem": submission_input['input'][problem_id],
             "username": submission_input['username'][0],
-            "name": name
+            "name": name,
+            "env": env,
+            "question_id": problem_id,
+            "submission_id": submission_id
         }
 
         rubric_wdo = RubricWdo('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json')

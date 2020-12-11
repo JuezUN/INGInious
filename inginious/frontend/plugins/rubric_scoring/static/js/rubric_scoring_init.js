@@ -1,5 +1,5 @@
 jQuery(document).ready(function () {
-    if(document.location.href.match(/submission/)){
+    if (document.location.href.match(/submission/)) {
         const languages = {
             "java7": "java",
             "java8": "java",
@@ -13,11 +13,36 @@ jQuery(document).ready(function () {
         };
 
 
-        let textArea = document.getElementById("myTextCode")
+        if (environment() === "multiple_languages") {
+            const textArea = $('#myTextCode')[0];
+            $('#myTextCode').show();
+            const language = languages[textArea.getAttribute('data-language')];
+            const myCodeMirror = registerCodeEditor(textArea, language, 20);
+            myCodeMirror.setOption("readOnly", "nocursor");
+        } else {
+            console.log(url_request());
+            $.ajax({
+                url: url_request(),
+                method: "GET",
+                dataType: 'json',
+                success: function (data) {
+                    console.log("2", data)
+                    render(data)
+                }
+            });
+        }
+
+        function render(ipynb) {
+            const notebookArea = $('#notebook-holder')[0];
+            const notebook = nb.parse(ipynb);
+            notebookArea.appendChild(notebook.render());
+            $('#notebook-holder').show();
+
+        }
+
+
         let score = 0.0;
-        let language = languages[textArea.getAttribute('data-language')];
-        let myCodeMirror = registerCodeEditor(textArea, language, 20);
-        myCodeMirror.setOption("readOnly", "nocursor");
+
 
         let matrix = [];
 //Add listeners to squares
@@ -138,6 +163,8 @@ jQuery(document).ready(function () {
 
         window.save = save;
     }
+    load_feedback_code();
+
 });
 
 
