@@ -762,7 +762,7 @@ msgid "Liabilities"
 msgstr "Obligaciones"
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:35
-msgid "This is a mandatory and strictly enforced policy for UNCode. "
+msgid "This is a mandatory and strictly enforced policy for UNCode."
 msgstr "Esta política es de carácter obligatorio y estricto cumplimiento para UNCode."
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:37
