@@ -41,6 +41,7 @@ class MultilangForm(GraderForm):
                 raise InvalidGraderError("The weight for grader test cases must be a float")
 
             test_case["diff_shown"] = "diff_shown" in test_case
+            test_case["custom_feedback"] = test_case.get("custom_feedback", "")
 
             # Validate
             if not test_case.get("input_file", None):
@@ -116,6 +117,9 @@ class MultilangForm(GraderForm):
             "diff_context_lines": self.task_data["grader_diff_context_lines"],
             "output_diff_for": [test_case["input_file"] for test_case in self.task_data["grader_test_cases"]
                                 if test_case["diff_shown"]],
+            "custom_feedback": {test_case["input_file"]: test_case["custom_feedback"] for test_case in
+                                self.task_data["grader_test_cases"] if
+                                test_case["custom_feedback"] and test_case["diff_shown"]},
             "time_limit": time,
             "hard_time_limit": time,
             "output_limit": output_limit,
