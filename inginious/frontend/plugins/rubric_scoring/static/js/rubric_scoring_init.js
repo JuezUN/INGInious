@@ -1,5 +1,11 @@
 jQuery(document).ready(function () {
     if (document.location.href.match(/submission/)) {
+        /*===========================================
+        *                Code frame
+        * Display the submission's code
+        * There are two types of code: multi language and Notebook
+        * ===========================================*/
+        //Dictionary of Languages for codemirror
         const languages = {
             "java7": "java",
             "java8": "java",
@@ -11,43 +17,48 @@ jQuery(document).ready(function () {
             "vhdl": "vhdl",
             "verilog": "verilog"
         };
-
-
-        if (environment() === "multiple_languages") {
-            const textArea = $('#myTextCode')[0];
-            $('#myTextCode').show();
-            const language = languages[textArea.getAttribute('data-language')];
-            const myCodeMirror = registerCodeEditor(textArea, language, 20);
-            myCodeMirror.setOption("readOnly", "nocursor");
-        } else {
-            console.log(url_request());
+        //Set code frame
+        if (environment() === "Notebook") {
+            //Get notebook data
             $.ajax({
                 url: url_request(),
                 method: "GET",
                 dataType: 'json',
                 success: function (data) {
-                    console.log("2", data)
                     render(data)
                 }
             });
+        } else {
+            //Case if it is code. use code Mirror
+            const textArea = $('#myTextCode')[0];
+            $('#myTextCode').show();
+            const language = languages[textArea.getAttribute('data-language')];
+            const myCodeMirror = registerCodeEditor(textArea, language, 20);
+            myCodeMirror.setOption("readOnly", "nocursor");
         }
 
         function render(ipynb) {
+            //take a specific div in .html file and insert content. It is for Notebook case
             const notebookArea = $('#notebook-holder')[0];
-            const notebook = nb.parse(ipynb);
+            const notebook = nb.parse(ipynb); //Use a external .js file, it's property of multilang plugin
             notebookArea.appendChild(notebook.render());
             $('#notebook-holder').show();
-
         }
 
-        //
-        $('#info').click(function(){
+        //Add click functionality for problem title. It "toggle" the problem description text
+        $('#info').click(function () {
             $("#text-context").collapse("toggle");
         });
 
+
+        /* =======================================================
+        *                     Rubric configuration
+        * This work by add and delete a class named box1 that change the background of the square inside oh table
+        * That class is used to identify the selected fields
+        * =========================================================*/
         let score = 0.0;
         let matrix = [];
-//Add listeners to squares
+        //Add listeners to squares
         for (let i = 0; i < 5; i++) {
             matrix[i] = [];
             for (let j = 0; j < 5; j++) {
@@ -73,7 +84,7 @@ jQuery(document).ready(function () {
                 });
             }
         }
-
+        //Add or delete the class
         function removeClass(id) {
             document.getElementById(id).classList.remove("box1");
         }
@@ -82,7 +93,7 @@ jQuery(document).ready(function () {
             document.getElementById(id).classList.add("box1");
         }
 
-//
+
         function removeSelectionOnRow(row) {
             for (let i = 0; i < 5; i++) {
                 if (matrix[row][i].classList.contains("box1")) {
@@ -97,6 +108,7 @@ jQuery(document).ready(function () {
             document.getElementById("output").innerHTML = "Current Score: " + score.toFixed(1);
         }
 
+        /* Save the grade and comments */
         function save() {
             let content_info = "Submission graded and stored";
             let content_danger = "Something went wrong";
@@ -141,7 +153,7 @@ jQuery(document).ready(function () {
                 }
             });
         }
-
+        //Show an alert with save process result
         function studio_display_task_submit_message_rubric(content, type, dismissible) {
             let code = getAlertCode(content, type, dismissible);
             let element = document.getElementById('grade_edit_submit_status');
@@ -165,6 +177,10 @@ jQuery(document).ready(function () {
 
         window.save = save;
     }
+
+    /* =========================
+    *  Show the feedback cards about the submissions
+    * ========================== */
     load_feedback_code();
 
 });

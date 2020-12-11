@@ -3,7 +3,7 @@
 # This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
 # more information about the licensing of this file.
 
-""" A demo plugin that adds a page """
+""" A manual scoring plugin for students submissions  """
 import os
 
 from inginious.frontend.plugins.utils import create_static_resource_page
@@ -20,7 +20,7 @@ _STATIC_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "static")
 def init(plugin_manager, _, __, plugin_config):
     """ Init the plugin """
     plugin_manager.add_page(r'/rubric_scoring/static/(.*)', create_static_resource_page(_STATIC_FOLDER_PATH))
-
+    # Minified
     use_minified = plugin_config.get("use_minified", True)
 
     if use_minified:
@@ -30,6 +30,7 @@ def init(plugin_manager, _, __, plugin_config):
         plugin_manager.add_hook("css", lambda: "/rubric_scoring/static/css/rubric_scoring.css")
         plugin_manager.add_hook("javascript_footer", lambda: "/rubric_scoring/static/js/rubric_scoring_init.js")
 
+    # Add pages
     # First page of rubric scoring. It's a task list
     plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/rubric_scoring',
                             course_task_list.CourseTaskListPage)

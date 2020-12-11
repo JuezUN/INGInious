@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+#
+# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
+# more information about the licensing of this file.
+
+""" User list for a task in manual scoring page """
+
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from collections import OrderedDict
 
@@ -9,7 +16,10 @@ base_static_folder = pages.BASE_STATIC_FOLDER
 
 
 class UserListPage(INGIniousAdminPage):
+    """ List users for a specific task """
+
     def GET_AUTH(self, course_id, task_id):
+        """ Get request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
 
         self.template_helper.add_javascript("https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.6/papaparse.min.js")
@@ -22,6 +32,8 @@ class UserListPage(INGIniousAdminPage):
         """ Get all data and display the page """
 
         url = 'rubric_scoring'
+
+        # Database query
 
         result = list(self.database.submissions.aggregate(
 

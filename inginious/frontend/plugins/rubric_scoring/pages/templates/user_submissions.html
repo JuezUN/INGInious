@@ -1,5 +1,11 @@
 $def with (course, data, task, task_name, username, url)
 
+$#
+$# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
+$# more information about the licensing of this file.
+$#
+
+
 $var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
 
 $var Column: $:template_helper.call('course_admin_menu',course=course,current='rubric_scoring')

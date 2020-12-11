@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+#
+# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
+# more information about the licensing of this file.
+
+""" Course task list for manual scoring page"""
+
 import web
 
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
@@ -11,7 +18,7 @@ base_static_folder = pages.BASE_STATIC_FOLDER
 
 
 class CourseTaskListPage(INGIniousAdminPage):
-    """ List informations about all tasks """
+    """ List information about all tasks """
 
     def GET_AUTH(self, courseid):  # pylint: disable=arguments-differ
         """ GET request """
@@ -43,6 +50,9 @@ class CourseTaskListPage(INGIniousAdminPage):
         """ Get all data and display the page """
         url = 'rubric_scoring'
         student_list = self.user_manager.get_course_registered_users(course, False)
+
+        # Database query
+
         data = list(self.database.user_tasks.aggregate(
             [
                 {
@@ -64,12 +74,13 @@ class CourseTaskListPage(INGIniousAdminPage):
                         }
                 }
             ]))
-        # count students
+        # Number of students in the course
         num_students = len(student_list)
         # Load tasks and verify exceptions
         files = self.task_factory.get_readable_tasks(course)
         output = {}
         errors = []
+
         for task in files:
             try:
                 output[task] = course.get_task(task)
@@ -77,7 +88,7 @@ class CourseTaskListPage(INGIniousAdminPage):
                 errors.append({"taskid": task, "error": str(inst)})
         tasks = OrderedDict(sorted(list(output.items()), key=lambda t: (t[1].get_order(), t[1].get_id())))
 
-        # Now load additional informations
+        # Now load additional information
         result = OrderedDict()
         for taskid in tasks:
             result[taskid] = {"name": tasks[taskid].get_name(self.user_manager.session_language()), "viewed": 0,
@@ -91,5 +102,5 @@ class CourseTaskListPage(INGIniousAdminPage):
                 result[entry["_id"]]["attempts"] = entry["attempts"]
                 result[entry["_id"]]["succeeded"] = entry["succeeded"]
 
-        return self.template_helper.get_custom_renderer(base_renderer_path)\
+        return self.template_helper.get_custom_renderer(base_renderer_path) \
             .task_list(course, result, errors, url, num_students)

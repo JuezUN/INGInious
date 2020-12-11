@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+#
+# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
+# more information about the licensing of this file.
+
+""" A student's Submissions list page"""
+
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from collections import OrderedDict
 
@@ -14,7 +21,6 @@ class UserSubmissionsPage(INGIniousAdminPage):
     def GET_AUTH(self, course_id, task_id, username):
         """ GET request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
-        # user = self.user_manager.course_is_user_registered(course_id, username)
 
         return self.page(course, task_id, task, username, )
 
@@ -23,6 +29,7 @@ class UserSubmissionsPage(INGIniousAdminPage):
 
         url = 'rubric_scoring'
 
+        # Database request
         result = list(self.database.submissions.aggregate(
             [
                 {
