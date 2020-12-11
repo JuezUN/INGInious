@@ -35,7 +35,12 @@ $var Navbar: $:NavbarF()
     $for taskid in data:
     	<tr>
     		<td>
-    			<a href="$get_homepath()/admin/${course.get_id()}/$url/task/$taskid" class="font_size">$data[taskid]["name"]</a>
+    			<a href="$get_homepath()/admin/${course.get_id()}/$url/task/$taskid" class="font_size">
+                    $if data[taskid]["name"] == "":
+                        $taskid
+                    $else:
+                        $data[taskid]["name"]
+                </a>
                 <input type="hidden" name="task" value="$taskid">
     		</td>
             <td class="text-center font_size">$data[taskid]["succeeded"]/$num_students</td>

@@ -1,4 +1,4 @@
-$def with (course, data, task, task_name, username, url)
+$def with (course, data, task, task_name, username, name, url)
 
 $#
 $# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
@@ -23,8 +23,20 @@ $def NavbarF():
 
 $var Navbar: $:NavbarF()
 
-<h2>$:_("Rubric scoring for Task:") "$task_name"</h2>
-<h3 class="py-2">$:_("User"): $username</h3>
+<h2>
+    $:_("Rubric scoring for Task:")
+    $if task_name == "":
+        "$task.get_id()"
+    $else:
+        "$task_name"
+</h2>
+<h3 class="py-2">
+    $:_("User"):
+    $if name == "":
+        $username
+    $else:
+        $name
+</h3>
 
 <form method="post">
 <div class="row justify-conte py-2">

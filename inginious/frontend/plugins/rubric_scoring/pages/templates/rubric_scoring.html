@@ -22,11 +22,22 @@ $var Navbar: $:NavbarF()
 
 
 
+<h1 class="py-1">
+    $:_("Rubric scoring for:")
+    $if data['name'] == "":
+        $data['username']
+    $else:
+        $data['name']
+</h1>
 <!-- Code view -->
-<h2 class="py-1">$:_("Rubric scoring for:") $data['name'] </h2>
 <section class="py-2">
     <div class="py-1">
-    <h3 id="info" class="py-1" style="cursor: pointer">$:_("Task"): $data['task_name']</h3>
+    <h2 id="info" class="py-1" style="cursor: pointer">
+        $if data['task_name'] == "":
+            $task.get_id()
+        $else:
+            $data['task_name']
+    </h2>
         <div id="text-context" hidden>
             $:task.get_context(user_manager.session_language())
         </div>

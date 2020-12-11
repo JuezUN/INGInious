@@ -22,7 +22,13 @@ $def NavbarF():
 $var Navbar: $:NavbarF()
 
 <form method="post">
-<h2>$:_("Rubric scoring for Task:") "$task_name"</h2>
+<h2>
+    $:_("Rubric scoring for Task:")
+    $if task_name == "":
+        "$task_name"
+    $else:
+        "$course.get_id()"
+</h2>
 <div class="row justify-conte py-2">
    <div class="col-md-9 col-md-offset-1">
 <table class="table table-striped">
@@ -34,15 +40,28 @@ $var Navbar: $:NavbarF()
         </tr>
      </thead>
      <tbody>
-     $for user in data:
+     $if len(data) > 0:
+         $for user in data:
+            <tr>
+                <td>
+                    <a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/user/$user" class="font_size">
+                        $data[user]["username"]
+                    </a>
+                    <input type="hidden" name="task" value="$user">
+                </td>
+                <td class="font_size">
+                    $if data[user]["realname"] == "":
+                        $:_("Unnamed")
+                    $else:
+                        $data[user]["realname"]
+                </td>
+                <td class="font_size text-center">$data[user]["grade"]</td>
+            </tr>
+     $else:
         <tr>
-            <td>
-                <a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/user/$user" class="font_size">
-                    $data[user]["username"]</a>
-                <input type="hidden" name="task" value="$user">
+            <td colspan="3" class="text-center">
+                <h4>$:_("No Students Yet")</h4>
             </td>
-            <td class="font_size">$data[user]["realname"]</td>
-            <td class="font_size text-center">$data[user]["grade"]</td>
         </tr>
      </tbody>
 </table>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-10 23:31-0500\n"
+"POT-Creation-Date: 2020-12-11 09:48-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -470,7 +470,7 @@ msgid "Submitted on"
 msgstr "Envío realizado el"
 
 #: inginious/frontend/pages/course_admin/submissions.py:24
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:21
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:34
 msgid "User"
 msgstr "Usuario"
 
@@ -1195,7 +1195,7 @@ msgstr "Todos los servicios"
 #: inginious/frontend/plugins/analytics/pages/analytics.html:43
 #: inginious/frontend/plugins/auth/custom_auth_form.html:29
 #: inginious/frontend/plugins/register_students/static/email_template.html:12
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:25
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:37
 #: inginious/frontend/templates/auth.html:23
 msgid "Username"
 msgstr "Nombre de usuario"
@@ -1467,7 +1467,7 @@ msgid "Add a test"
 msgstr "Agregar prueba"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:263
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:26
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:38
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
 #: inginious/frontend/templates/course_admin/settings.html:29
@@ -1491,7 +1491,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:11
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:106
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:111
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:127
 msgid "Save"
 msgstr "Guardar"
 
@@ -1860,13 +1860,13 @@ msgstr "Nombre de la tarea"
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:34
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:28
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:46
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:42
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:58
 #: inginious/frontend/templates/course_admin/subproblems/code.html:16
 msgid "Language"
 msgstr "Lenguaje"
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:35
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:29
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:47
 msgid "Date"
 msgstr "Fecha"
 
@@ -1884,10 +1884,9 @@ msgid "Summary of plagiarism check"
 msgstr "Resumen del chequeo de plagio"
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:24
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:12
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:24
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:13
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:13
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:17
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:19
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:19
 #: inginious/frontend/templates/course_admin/aggregation_info.html:31
 msgid "Task"
 msgstr "Tarea"
@@ -2119,97 +2118,105 @@ msgstr ""
 "provisional y recibirá un correo pidiendo confirmación y activación de la"
 " cuenta.Después de esto, el estudiante podrá cambiar su contraseña."
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:11
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:59
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:17
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:22
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:12
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:12
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:32
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:16
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:75
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:18
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:23
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:18
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:18
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:50
 msgid "Rubric Scoring"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:13
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:14
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:18
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:20
 #: inginious/frontend/templates/course_admin/task_info.html:42
 #: inginious/frontend/templates/mycourses.html:136
 msgid "Student"
 msgstr "Estudiante"
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:14
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:19
 msgid "Manual Scoring"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:21
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:26
 msgid "Rubric scoring for:"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:39
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:55
 #: inginious/frontend/templates/task.html:14
 msgid "Information"
 msgstr "Información"
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:44
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:60
 msgid "Summary"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:60
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:76
 msgid "Select the best description to grade the student's code"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:61
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:77
 msgid "Click to select and double click to deselect"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:105
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:121
 msgid "Comments"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:22
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:23
 msgid "Tasks List"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:28
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:29
 msgid "Task Name"
 msgstr "Nombre de la Tarea"
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:29
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:30
 msgid "Student Succeeded"
 msgstr "Estudiantes Aprobados"
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:30
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:31
 msgid "Students who have tried"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:51
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:57
 #: inginious/frontend/templates/course_admin/task_list.html:87
 msgid "Errors while loading tasks"
 msgstr "Errores al cargar las tareas"
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:54
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:60
 #: inginious/frontend/templates/course_admin/task_list.html:90
 msgid "task id"
 msgstr "id de la Tarea"
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:55
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:61
 #: inginious/frontend/templates/course_admin/task_list.html:91
 msgid "error"
 msgstr "Error"
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:19
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:20
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:26
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:27
 msgid "Rubric scoring for Task:"
 msgstr "Puntuación de Rubrica para la tarea:"
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:27
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:39
 msgid "Best score"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:30
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:54
+msgid "Unnamed"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:63
+msgid "No Students Yet"
+msgstr ""
+
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:48
 msgid "Result Summary"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:31
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/user_submissions.html:49
 msgid "Score"
 msgstr ""
 

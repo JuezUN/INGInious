@@ -76,7 +76,7 @@ class UserSubmissionsPage(INGIniousAdminPage):
 
         data = OrderedDict()
         task_name = course.get_task(task_id).get_name(self.user_manager.session_language())
-
+        name = self.user_manager.get_user_realname(username)
         for entry in result:
             data[entry["_id"]] = {"taskid": entry["taskid"], "result": entry["result"], "_id": entry["_id"],
                                   "username": entry["username"], "date": entry["submitted_on"], "grade": entry["grade"],
@@ -91,5 +91,5 @@ class UserSubmissionsPage(INGIniousAdminPage):
 
         return (
             self.template_helper.get_custom_renderer(base_renderer_path).user_submissions(
-                course, data, task, task_name, username, url)
+                course, data, task, task_name, username, name,url)
         )
