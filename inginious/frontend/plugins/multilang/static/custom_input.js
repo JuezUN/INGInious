@@ -162,7 +162,7 @@ function sendTestNotebookAnalytics() {
     $.post("/api/analytics/", {
         service: {
             key: "custom_input_notebook",
-            name: "Test notebook"
+            name: "Custom input notebook"
         },
         course_id: getCourseId(),
     });

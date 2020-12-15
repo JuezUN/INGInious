@@ -22,7 +22,7 @@ def custom_input_notebook(client):
         def add_unsaved_job(self, task, inputdata):
             temp_client = ClientSync(self._client)
             return temp_client.new_job(task, inputdata,
-                                       "Test notebook - " + self.user_manager.session_username())
+                                       "Custom input notebook - " + self.user_manager.session_username())
 
         def is_valid_input(self, problem_id, user_input):
             if (problem_id + "/input") not in user_input:
