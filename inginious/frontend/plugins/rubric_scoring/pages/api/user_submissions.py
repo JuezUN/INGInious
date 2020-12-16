@@ -10,9 +10,9 @@ from collections import OrderedDict
 
 from inginious.frontend.plugins.rubric_scoring.pages.api import pages
 
-base_renderer_path = pages.RENDERER_PATH
+base_renderer_path = pages._RENDERER_PATH
 
-base_static_folder = pages.BASE_STATIC_FOLDER
+base_static_folder = pages._BASE_STATIC_FOLDER
 
 
 class UserSubmissionsPage(INGIniousAdminPage):
