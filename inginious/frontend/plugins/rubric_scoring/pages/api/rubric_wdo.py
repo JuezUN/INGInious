@@ -13,6 +13,7 @@ class RubricWdo:
         self.data = self.read_data(source)
 
     def read_data(self, source):
-        with open(source) as f:
-            data = json.load(f)
+        """ This function read a json file and return data """
+        with open(source) as file:
+            data = json.load(file)
             return data
