@@ -8,9 +8,7 @@
 import web
 from inginious.frontend.plugins.rubric_scoring.pages.api.rubric_wdo import RubricWdo
 from bson.objectid import ObjectId
-
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-
 from inginious.frontend.plugins.rubric_scoring.pages.api import pages
 
 base_renderer_path = pages._RENDERER_PATH
@@ -19,7 +17,7 @@ base_static_folder = pages._BASE_STATIC_FOLDER
 
 
 class RubricScoringPage(INGIniousAdminPage):
-    
+    """ Rubric scoring page to manual scoring """
     def POST_AUTH(self, course_id, task_id, submission_id):
         """ POST request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
@@ -68,29 +66,24 @@ class RubricScoringPage(INGIniousAdminPage):
             score = submission['custom']['rubric_score']
             
         # Information about the code
-        language = submission_input['input'][problem_id + '/language']
-
-        task_name = course.get_task(submission_input['taskid']).get_name(self.user_manager.session_language())
         info = submission_input['text']
         aux_info = info.replace('\n\n.. raw:: html\n\n\t', '')
-        aux_info_2 = aux_info.replace('\n', '')
-        # Notebook or multi lang
-        env = task.get_environment()
+        aux_info = aux_info.replace('\n', '')
 
         data = {
             "url": 'rubric_scoring',
             "summary": submission_input['custom']['custom_summary_result'],
             "grade": score,
-            "language": language,
+            "language": submission_input['input'][problem_id + '/language'],
             "comment": comment,
             "score": submission_input['grade'],
-            "task_name": task_name,
+            "task_name":  course.get_task(submission_input['taskid']).get_name(self.user_manager.session_language()),
             "result": submission_input['result'],
-            "text": aux_info_2,
+            "text": aux_info,
             "problem": submission_input['input'][problem_id],
             "username": submission_input['username'][0],
             "name": name,
-            "env": env,
+            "env": task.get_environment(),
             "question_id": problem_id,
             "submission_id": submission_id
         }
