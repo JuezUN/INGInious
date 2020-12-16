@@ -25,25 +25,18 @@ jQuery(document).ready(function () {
                 method: "GET",
                 dataType: 'json',
                 success: function (data) {
-                    render(data)
+                    render_notebook(data); //Use a external .js file, it's property of multilang plugin
                 }
             });
         } else {
             //Case if it is code. use code Mirror
             const textArea = $('#myTextCode')[0];
-            $('#myTextCode').show();
+            $('#myTextCodeArea').show();
             const language = languages[textArea.getAttribute('data-language')];
             const myCodeMirror = registerCodeEditor(textArea, language, 20);
             myCodeMirror.setOption("readOnly", "nocursor");
         }
 
-        function render(ipynb) {
-            //take a specific div in .html file and insert content. It is for Notebook case
-            const notebookArea = $('#notebook-holder')[0];
-            const notebook = nb.parse(ipynb); //Use a external .js file, it's property of multilang plugin
-            notebookArea.appendChild(notebook.render());
-            $('#notebook-holder').show();
-        }
 
         //Add click functionality for problem title. It "toggle" the problem description text
         $('#info').click(function () {
