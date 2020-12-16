@@ -5,7 +5,6 @@
 
 """ Course task list for manual scoring page"""
 
-import web
 
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from collections import OrderedDict
@@ -28,17 +27,6 @@ class CourseTaskListPage(INGIniousAdminPage):
     def POST_AUTH(self, courseid):  # pylint: disable=arguments-differ
         """ POST request """
         course, _ = self.get_course_and_check_rights(courseid)
-        data = web.input(task=[])
-
-        if "task" in data:
-            # Change tasks order
-            for index, taskid in enumerate(data["task"]):
-                try:
-                    task = self.task_factory.get_task_descriptor_content(courseid, taskid)
-                    task["order"] = index
-                    self.task_factory.update_task_descriptor_content(courseid, taskid, task)
-                except:
-                    pass
 
         return self.page(course)
 
@@ -48,7 +36,6 @@ class CourseTaskListPage(INGIniousAdminPage):
 
     def page(self, course):
         """ Get all data and display the page """
-        url = 'rubric_scoring'
         student_list = self.user_manager.get_course_registered_users(course, False)
 
         # Database query
@@ -78,6 +65,7 @@ class CourseTaskListPage(INGIniousAdminPage):
         num_students = len(student_list)
         # Load tasks and verify exceptions
         files = self.task_factory.get_readable_tasks(course)
+
         output = {}
         errors = []
 
@@ -103,4 +91,4 @@ class CourseTaskListPage(INGIniousAdminPage):
                 result[entry["_id"]]["succeeded"] = entry["succeeded"]
 
         return self.template_helper.get_custom_renderer(base_renderer_path) \
-            .task_list(course, result, errors, url, num_students)
+            .task_list(course, result, errors, num_students)

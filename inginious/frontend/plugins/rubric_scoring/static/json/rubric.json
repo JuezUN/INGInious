@@ -21,13 +21,13 @@
          "Level before":"Does not contain ay item belonging to the level 1."
       },
       {
-         "Data structures":"Has the right data estructures but they are not well implemented, bad used or they are not coherent."
+         "Data structures":"Has the right data structures, but they are not well implemented, bad used or they are not coherent."
       },
       {
-         "Test cases":"Does not pass any test case or pases one or  two maximum."
+         "Test cases":"Does not pass any test case or pass one or two maximum."
       },
       {
-         "Understanding of the problem":"It shows a very basic or alomost null understanding of the problem to be solved."
+         "Understanding of the problem":"It shows a very basic or almost null understanding of the problem to be solved."
       },
       {
          "Strategy used":"The solution does not use a right approach to solve the problem. Could have been using brute force or an other approache that does not work.\nTher is not a clear purpose in the source code and in the strategy (i.e difficult to follow)."
@@ -72,7 +72,7 @@
          "Level before":"Does not apply."
       },
       {
-         "Data structures":"Does not have any prolbme with data type, conditionals, cycles, etc."
+         "Data structures":"Does not have any problem with data type, conditionals, cycles, etc."
       },
       {
          "Test cases":"Passes all test cases."

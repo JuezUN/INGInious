@@ -1,4 +1,4 @@
-$def with (course,data,errors, url, num_students)
+$def with (course,data,errors, num_students)
 
 $#
 $# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
@@ -35,7 +35,7 @@ $var Navbar: $:NavbarF()
     $for taskid in data:
     	<tr>
     		<td>
-    			<a href="$get_homepath()/admin/${course.get_id()}/$url/task/$taskid" class="font_size">
+    			<a href="$get_homepath()/admin/${course.get_id()}/rubric_scoring/task/$taskid" class="font_size">
                     $if data[taskid]["name"] == "":
                         $taskid
                     $else:
