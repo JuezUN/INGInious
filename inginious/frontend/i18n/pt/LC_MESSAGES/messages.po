@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-11 09:48-0500\n"
+"POT-Creation-Date: 2020-12-16 16:37-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -1405,7 +1405,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:11
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:106
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:127
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:129
 msgid "Save"
 msgstr ""
 
@@ -1731,7 +1731,7 @@ msgstr ""
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:34
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:28
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:46
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:58
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:60
 #: inginious/frontend/templates/course_admin/subproblems/code.html:16
 msgid "Language"
 msgstr ""
@@ -1963,7 +1963,7 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:16
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:75
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:77
 #: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:18
 #: inginious/frontend/plugins/rubric_scoring/pages/templates/task_list.html:23
 #: inginious/frontend/plugins/rubric_scoring/pages/templates/user_list.html:18
@@ -1987,24 +1987,24 @@ msgstr ""
 msgid "Rubric scoring for:"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:55
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:57
 #: inginious/frontend/templates/task.html:14
 msgid "Information"
 msgstr "Informações"
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:60
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:62
 msgid "Summary"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:76
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:78
 msgid "Select the best description to grade the student's code"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:77
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:79
 msgid "Click to select and double click to deselect"
 msgstr ""
 
-#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:121
+#: inginious/frontend/plugins/rubric_scoring/pages/templates/rubric_scoring.html:123
 msgid "Comments"
 msgstr ""
 
