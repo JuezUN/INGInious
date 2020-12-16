@@ -1,5 +1,5 @@
-import web
 import os
+import web
 import yaml
 
 from inginious.frontend.pages.api._api_page import APIAuthenticatedPage, APIError
@@ -18,7 +18,7 @@ class TaskPreviewFileAPI(APIAuthenticatedPage):
         if task_id is None:
             raise APIError(400, {"error": "task_id is mandatory"})
         if language is None:
-            raise APIError(400, {'error': 'language is mandatory'})
+            raise APIError(400, {"error": "language is mandatory"})
 
         try:
             course = self.course_factory.get_course(course_id)
@@ -31,18 +31,17 @@ class TaskPreviewFileAPI(APIAuthenticatedPage):
         try:
             task = course.get_task(task_id)
         except:
-            raise APIError(400, {"error", "The task does not exists in the course"})
+            raise APIError(400, {"error", "The task does not exist in the course"})
 
         try:
-            # file_preview = open(os.path.join(task.get_fs().prefix, 'preview'), 'r')
-            task_yaml = open(os.path.join(task.get_fs().prefix, 'task.yaml'), 'r')
-            try:
-                data = yaml.safe_load(task_yaml)
-                filename = data['code_preview_pairs'][language]
-                file_preview = open(os.path.join(task.get_fs().prefix, filename), 'r')
-                return 200, file_preview.read()
-            except yaml.YAMLError as exc:
-                print(exc)
-                return 200, ""
+            with open(os.path.join(task.get_fs().prefix, 'task.yaml'), 'r') as task_yaml:
+                try:
+                    data = yaml.safe_load(task_yaml)
+                    filename = data['code_preview_pairs'][language]
+                    with open(os.path.join(task.get_fs().prefix, filename), 'r') as file_preview:
+                        return 200, file_preview.read()
+                except yaml.YAMLError as exc:
+                    print(exc)
+                    return 200, ""
         except:
             return 200, ""

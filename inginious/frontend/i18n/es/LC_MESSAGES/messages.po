@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-07 17:54-0500\n"
+"POT-Creation-Date: 2020-12-16 00:30-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -881,7 +881,7 @@ msgstr ""
 "sistema de archivos de la tarea."
 
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:21
-#: inginious/frontend/plugins/code_preview/pages/code_preview.html:13
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:18
 msgid "Files"
 msgstr "Archivos"
 
@@ -1266,23 +1266,36 @@ msgid ""
 "{task} !"
 msgstr ""
 
-#: inginious/frontend/plugins/code_preview/pages/code_preview.html:3
-msgid "Remove"
-msgstr "Remover"
+#: inginious/frontend/plugins/code_preview/pages/code_preview.py:11
+msgid "Code template"
+msgstr "Plantilla de código"
 
-#: inginious/frontend/plugins/code_preview/pages/code_preview.html:8
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:3
+msgid "Remove"
+msgstr "Eliminar"
+
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:4
+msgid "Select one language"
+msgstr "Seleccione un lenguaje"
+
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:7
+msgid ""
+"Tool to setup templates that students can use as base code to start "
+"solving the problem. It only works for multilang and HDL tasks."
+msgstr ""
+"Herramienta para configurar plantillas que los estudiantes pueden user "
+"como código base para comenzar a resolver el problema. Esta solo funciona"
+" para tareas multilang y HDL."
+
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:13
 #: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:23
 #: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:10
 msgid "Languages"
 msgstr "Lenguajes"
 
-#: inginious/frontend/plugins/code_preview/pages/code_preview.html:19
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:24
 msgid "Add/Update"
 msgstr "Agregar/Actualizar"
-
-#: inginious/frontend/plugins/code_preview/pages/code_preview.py:11
-msgid "Preview"
-msgstr "Previsualización"
 
 #: inginious/frontend/plugins/grader_generator/pages/grader.py:46
 msgid "Grader"

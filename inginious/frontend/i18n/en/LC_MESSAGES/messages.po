@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-07 17:54-0500\n"
+"POT-Creation-Date: 2020-12-16 00:30-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -828,7 +828,7 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:21
-#: inginious/frontend/plugins/code_preview/pages/code_preview.html:13
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:18
 msgid "Files"
 msgstr ""
 
@@ -1152,22 +1152,32 @@ msgid ""
 "{task} !"
 msgstr ""
 
-#: inginious/frontend/plugins/code_preview/pages/code_preview.html:3
+#: inginious/frontend/plugins/code_preview/pages/code_preview.py:11
+msgid "Code template"
+msgstr ""
+
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:3
 msgid "Remove"
 msgstr ""
 
-#: inginious/frontend/plugins/code_preview/pages/code_preview.html:8
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:4
+msgid "Select one language"
+msgstr ""
+
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:7
+msgid ""
+"Tool to setup templates that students can use as base code to start "
+"solving the problem. It only works for multilang and HDL tasks."
+msgstr ""
+
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:13
 #: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:23
 #: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:10
 msgid "Languages"
 msgstr ""
 
-#: inginious/frontend/plugins/code_preview/pages/code_preview.html:19
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:24
 msgid "Add/Update"
-msgstr ""
-
-#: inginious/frontend/plugins/code_preview/pages/code_preview.py:11
-msgid "Preview"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/grader.py:46
@@ -4231,5 +4241,15 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "\"Search course\""
+#~ msgstr ""
+
+#~ msgid "Preview"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Code template tool to setup templates"
+#~ " that students can see to start "
+#~ "coding. Only works for multilang and "
+#~ "HDL tasks."
 #~ msgstr ""
 
