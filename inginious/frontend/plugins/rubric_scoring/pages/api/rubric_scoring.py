@@ -6,8 +6,9 @@
 """ Rubric scoring page """
 
 import web
-from inginious.frontend.plugins.rubric_scoring.pages.api.rubric_wdo import RubricWdo
+
 from bson.objectid import ObjectId
+from inginious.frontend.plugins.rubric_scoring.pages.api.rubric_wdo import RubricWdo
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from inginious.frontend.plugins.rubric_scoring.pages.api import pages
 

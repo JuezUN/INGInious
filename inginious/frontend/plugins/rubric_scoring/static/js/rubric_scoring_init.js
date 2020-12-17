@@ -23,23 +23,23 @@ jQuery(document).ready(function () {
             $.ajax({
                 url: url_request(),
                 method: "GET",
-                dataType: 'json',
+                dataType: "json",
                 success: function (data) {
                     render_notebook(data); //Use a external .js file, it's property of multilang plugin
                 }
             });
         } else {
             //Case if it is code. use code Mirror
-            const textArea = $('#myTextCode')[0];
-            $('#myTextCodeArea').show();
-            const language = languages[textArea.getAttribute('data-language')];
+            const textArea = $("#myTextCode")[0];
+            $("#myTextCodeArea").show();
+            const language = languages[textArea.getAttribute("data-language")];
             const myCodeMirror = registerCodeEditor(textArea, language, 20);
             myCodeMirror.setOption("readOnly", "nocursor");
         }
 
 
         //Add click functionality for problem title. It "toggle" the problem description text
-        $('#info').click(function () {
+        $("#info").click(function () {
             $("#text-context").collapse("toggle");
         });
 
@@ -57,13 +57,13 @@ jQuery(document).ready(function () {
             for (let j = 0; j < 5; j++) {
                 matrix[i][j] = document.getElementById(i + "-" + j);
                 //Add function
-                matrix[i][j].addEventListener('click', function () {
+                matrix[i][j].addEventListener("click", function () {
                     removeSelectionOnRow(i);
                     addClass(i + "-" + j);
                     score += (j + 1) * 0.2;
                     updateScore();
                 });
-                matrix[i][j].addEventListener('dblclick', function () {
+                matrix[i][j].addEventListener("dblclick", function () {
                     removeClass(i + "-" + j);
                     score -= (j + 1) * 0.2;
                     updateScore();
@@ -149,19 +149,19 @@ jQuery(document).ready(function () {
         //Show an alert with save process result
         function studio_display_task_submit_message_rubric(content, type, dismissible) {
             let code = getAlertCode(content, type, dismissible);
-            let element = document.getElementById('grade_edit_submit_status');
-            document.getElementById('grade_edit_submit_status').innerHTML = code;
-            element.style.display = 'block';
+            let element = document.getElementById("grade_edit_submit_status");
+            document.getElementById("grade_edit_submit_status").innerHTML = code;
+            element.style.display = "block";
             if (dismissible) {
                 let op = 1;  // initial opacity
                 let timer = setInterval(function () {
                     if (op <= 0.1) {
                         clearInterval(timer);
-                        element.style.display = 'none';
+                        element.style.display = "none";
 
                     }
                     element.style.opacity = op;
-                    element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                    element.style.filter = "alpha(opacity=" + op * 100 + ")";
                     op -= op * 0.05;
                 }, 50);
 

@@ -5,10 +5,8 @@
 
 """ Course task list for manual scoring page"""
 
-
-from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from collections import OrderedDict
-
+from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from inginious.frontend.plugins.rubric_scoring.pages.api import pages
 
 base_renderer_path = pages.render_path
