@@ -1,4 +1,5 @@
 function loadCodePreviewToCodemirror() {
+    // TODO: Change the way this is checked as LTI does not work with this.
     if (location.href.indexOf("/course") > -1 && location.href.split('/').length === 6) {
         $.get("/api/code_preview/", {
             task_id: getTaskId(),
