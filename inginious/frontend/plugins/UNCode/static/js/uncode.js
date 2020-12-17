@@ -9,6 +9,7 @@ jQuery(document).ready(function () {
     }
 
     function updateNavbar(){
+        // Update navbar with new information.
          const navbar = $('#wrapper')
             .find('> div.navbar.navbar-default.navbar-static-top');
          navbar.find(' > div > div.collapse.navbar-collapse > ol.nav.navbar-nav.navbar-right')
