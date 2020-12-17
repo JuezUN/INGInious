@@ -7,9 +7,9 @@
 
 import os
 
-_RENDERER_PATH = 'frontend/plugins/rubric_scoring/pages/templates'
+render_path = 'frontend/plugins/rubric_scoring/pages/templates'
 
-_BASE_STATIC_FOLDER = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../../static')
+base_static_folder = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../../static')
 
 
 def rubric_course_admin_menu_hook(course):

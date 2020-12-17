@@ -14,12 +14,12 @@ from inginious.frontend.plugins.rubric_scoring.pages.api import course_task_list
 from inginious.frontend.plugins.rubric_scoring.pages.api import user_list
 from inginious.frontend.plugins.rubric_scoring.pages.api import rubric_scoring
 
-_STATIC_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "static")
+_static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
 
 def init(plugin_manager, _, __, plugin_config):
     """ Init the plugin """
-    plugin_manager.add_page(r'/rubric_scoring/static/(.*)', create_static_resource_page(_STATIC_FOLDER_PATH))
+    plugin_manager.add_page(r'/rubric_scoring/static/(.*)', create_static_resource_page(_static_folder_path))
     # Minified
     use_minified = plugin_config.get("use_minified", True)
 

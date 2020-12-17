@@ -11,9 +11,9 @@ from bson.objectid import ObjectId
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from inginious.frontend.plugins.rubric_scoring.pages.api import pages
 
-base_renderer_path = pages._RENDERER_PATH
+base_renderer_path = pages.render_path
 
-base_static_folder = pages._BASE_STATIC_FOLDER
+base_static_folder = pages.base_static_folder
 
 
 class RubricScoringPage(INGIniousAdminPage):
