@@ -146,7 +146,7 @@ $var Navbar: $:NavbarF()
     return a;
     }
 
-    function load_feedback_code() {
+    function loadFeedbackCode() {
 
         let result = "$data['result']";
         let content = "$data['text']";
@@ -164,7 +164,7 @@ $var Navbar: $:NavbarF()
         return "$data['env']"
     }
 
-    const url_request = function (){
+    const urlRequest = function (){
         return "$get_homepath()/course/$course.get_id()/$task.get_id()" + "?submissionid=" + "$data['submission_id']"+"&questionid="+"$data['question_id']";
     }
 
