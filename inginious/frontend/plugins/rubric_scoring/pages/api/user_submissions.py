@@ -5,9 +5,8 @@
 
 """ A student's Submissions list page"""
 
-from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from collections import OrderedDict
-
+from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from inginious.frontend.plugins.rubric_scoring.pages.api import pages
 
 base_renderer_path = pages._RENDERER_PATH
@@ -91,5 +90,5 @@ class UserSubmissionsPage(INGIniousAdminPage):
 
         return (
             self.template_helper.get_custom_renderer(base_renderer_path).user_submissions(
-                course, data, task, task_name, username, name,url)
+                course, data, task, task_name, username, name, url)
         )
