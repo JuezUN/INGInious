@@ -5,9 +5,8 @@
 
 """ User list for a task in manual scoring page """
 
-from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from collections import OrderedDict
-
+from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from inginious.frontend.plugins.rubric_scoring.pages.api import pages
 
 base_renderer_path = pages._RENDERER_PATH
@@ -81,5 +80,5 @@ class UserListPage(INGIniousAdminPage):
 
         return (
             self.template_helper.get_custom_renderer(base_renderer_path)
-                .user_list(course, data, task, task_name, url)
+            .user_list(course, data, task, task_name, url)
         )
