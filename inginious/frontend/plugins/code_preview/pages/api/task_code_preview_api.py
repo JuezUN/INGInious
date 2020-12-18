@@ -8,6 +8,10 @@ from inginious.frontend.plugins.utils import get_mandatory_parameter
 
 
 class TaskCodePreviewAPI(APIAuthenticatedPage):
+    """
+    API to get the code template associated to a language and a given task.
+    """
+
     def API_GET(self):
         # Validate parameters
         username = self.user_manager.session_username()
@@ -26,7 +30,7 @@ class TaskCodePreviewAPI(APIAuthenticatedPage):
 
         try:
             task = course.get_task(task_id)
-        except:
+        except Exception:
             raise APIError(400, {"error": "The task does not exist in the course"})
 
         try:
@@ -39,5 +43,5 @@ class TaskCodePreviewAPI(APIAuthenticatedPage):
                 except yaml.YAMLError as exc:
                     print(exc)
                     return 200, ""
-        except:
+        except Exception:
             return 200, ""

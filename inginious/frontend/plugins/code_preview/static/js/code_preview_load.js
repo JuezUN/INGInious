@@ -1,16 +1,3 @@
-function loadCodePreviewToCodemirror() {
-    $.get("/api/code_preview/", {
-        task_id: getTaskId(),
-        course_id: getCourseId(),
-        language: getInginiousLanguageForProblemId(getProblemId())
-    }).done(function write(result) {
-        const keysCodeEditors = Object.keys(codeEditors);
-        keysCodeEditors.forEach(element => {
-            codeEditors[element].setValue(result);
-        });
-    });
-}
-
 function updateCodePreviewFiles() {
     $.get("/api/grader_generator/test_file_api", {
         course_id: getCourseId(),
@@ -21,8 +8,8 @@ function updateCodePreviewFiles() {
         previewFileSelect.empty();
 
         $.each(files, function (index, file) {
-            const file_is_test_case = file.complete_name.includes(".in") || file.complete_name.includes(".out");
-            if (file.is_directory || file_is_test_case || file.complete_name === "run") {
+            const fileIsTestCase = file.complete_name.includes(".in") || file.complete_name.includes(".out");
+            if (file.is_directory || fileIsTestCase || file.complete_name === "run") {
                 return;
             }
 
@@ -84,11 +71,29 @@ function updateCodePreviewLanguages() {
     $(".code_preview_language").remove();
     codePreviewLanguagesElem.append(`<option class="code_preview_language" value="-1">${getSelectOneMessage()}</option>`);
     for (let i = 0; i < languages.length; i++) {
-        if (languages[i].checked)
+        if (languages[i].checked) {
             codePreviewLanguagesElem.append(
                 `<option class="code_preview_language"  
                          value="${languages[i].value}">${getLanguageName(languages[i].value)}</option>`);
+        }
     }
+}
+
+/**
+ * Function that calls an API to get the code template for the given course, task and language.
+ * In case a template file is associated to the language, it sets the code to Codemirror.
+ */
+function loadCodePreviewToCodemirror() {
+    $.get("/api/code_preview/", {
+        task_id: getTaskId(),
+        course_id: getCourseId(),
+        language: getInginiousLanguageForProblemId(getProblemId())
+    }).done(function write(result) {
+        const keysCodeEditors = Object.keys(codeEditors);
+        keysCodeEditors.forEach((element) => {
+            codeEditors[element].setValue(result);
+        });
+    });
 }
 
 /**
