@@ -1,17 +1,14 @@
 function loadCodePreviewToCodemirror() {
-    // TODO: Change the way this is checked as LTI does not work with this.
-    if (location.href.indexOf("/course") > -1 && location.href.split('/').length === 6) {
-        $.get("/api/code_preview/", {
-            task_id: getTaskId(),
-            course_id: getCourseId(),
-            language: getInginiousLanguageForProblemId(getProblemId())
-        }, function write(result) {
-            const ks = Object.keys(codeEditors);
-            ks.forEach(element => {
-                codeEditors[element].setValue(result);
-            });
+    $.get("/api/code_preview/", {
+        task_id: getTaskId(),
+        course_id: getCourseId(),
+        language: getInginiousLanguageForProblemId(getProblemId())
+    }).done(function write(result) {
+        const keysCodeEditors = Object.keys(codeEditors);
+        keysCodeEditors.forEach(element => {
+            codeEditors[element].setValue(result);
         });
-    }
+    });
 }
 
 function updateCodePreviewFiles() {
@@ -83,14 +80,27 @@ function removeCodePreviewPair(key) {
 function updateCodePreviewLanguages() {
     // Get the selected languages in subproblems tab.
     const languages = $(".checkbox_language");
+    const codePreviewLanguagesElem = $("#code_preview_languages");
     $(".code_preview_language").remove();
-    $("#code_preview_languages").append(`<option class="code_preview_language" value="-1">${getSelectOneMessage()}</option>`);
+    codePreviewLanguagesElem.append(`<option class="code_preview_language" value="-1">${getSelectOneMessage()}</option>`);
     for (let i = 0; i < languages.length; i++) {
         if (languages[i].checked)
-            $("#code_preview_languages").append(
+            codePreviewLanguagesElem.append(
                 `<option class="code_preview_language"  
                          value="${languages[i].value}">${getLanguageName(languages[i].value)}</option>`);
     }
+}
+
+/**
+ * Monkey-patch the function `changeSubmissionLanguage` from multilang plugin to run the function
+ * `loadCodePreviewToCodemirror`, which loads the code preview to Codemirror when the submission language is changed.
+ */
+function monkeyPatchChangeSubmissionLanguage() {
+    const changeSubmissionLanguageOriginal = changeSubmissionLanguage;
+    changeSubmissionLanguage = (key, problem_type) => {
+        changeSubmissionLanguageOriginal(key, problem_type);
+        loadCodePreviewToCodemirror();
+    };
 }
 
 $("a[data-toggle='tab'][href='#tab_code_preview']").on("show.bs.tab", function (e) {
@@ -106,20 +116,10 @@ $("a[data-toggle='tab'][href='#tab_code_preview']").on("show.bs.tab", function (
     }
 });
 
-/**
- * Monkey-patch the function `changeSubmissionLanguage` from multilang plugin to run the function
- * `loadCodePreviewToCodemirror`, which loads the code preview to Codemirror when the submission language is changed.
- */
-function monkeyPatchChangeSubmissionLanguage() {
-    const changeSubmissionLanguageOriginal = changeSubmissionLanguage;
-    changeSubmissionLanguage = (key, problem_type) => {
-        changeSubmissionLanguageOriginal(key, problem_type);
-        loadCodePreviewToCodemirror();
-    };
-}
-
 jQuery(document).ready(function () {
-    if (typeof getProblemId !== "undefined") {
+    if (typeof getTaskEnvironment !== "undefined"
+        && ["multiple_languages", "HDL", "Data Science"].includes(getTaskEnvironment())
+        && !location.href.includes("submission")) {
         monkeyPatchChangeSubmissionLanguage();
         loadCodePreviewToCodemirror();
     }
