@@ -28,6 +28,9 @@ def custom_input_notebook(client):
             if (problem_id + "/input") not in user_input:
                 return False
 
+            if not user_input[problem_id + "/input"]:
+                return False
+
             # The selected tests are given as a string separated by comma
             tests = user_input[problem_id + "/input"].split(',')
             if len(tests) <= 0 or len(tests) > 3:
@@ -67,7 +70,8 @@ def custom_input_notebook(client):
                 for problem_id in init_var.keys():
                     if not self.is_valid_input(problem_id, user_input):
                         return 200, json.dumps(
-                            {"status": "error", "text": _("An error occurred. The request is not correctly formed.")})
+                            {"status": "error",
+                             "text": _("Please select at least 1 and up to 3 tests.")})
                     user_input[problem_id + "/input"] = self.parse_selected_tests(user_input, problem_id, task_tests)
                 result, _1, problems, tests, custom, archive, stdout, stderr = self.add_unsaved_job(task, user_input)
 

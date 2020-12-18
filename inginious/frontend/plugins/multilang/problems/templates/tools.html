@@ -11,7 +11,11 @@ $def with (inputId, language, customInputId, type, pythonTutorURL, linterURL, co
         <div class="row panel-body">
             <div class="panel panel-default">
                 <div class="panel-body form-group">
-                    <h5 class="text-center">$:_("Select up to 3 tests to run")</h5>
+                    <h5 class="text-center">
+                        $:_("Select 1 and up to 3 tests to run")
+                        <i class="fa fa-question-circle" data-toggle="tooltip"
+                           title=$:_("\"To select several tests click on the tests using 'Ctrl' or select continuos tests with your mouse.\"")></i>
+                    </h5>
                     <select name="$customInputId" size="4" class="form-control" id="select_test" multiple>
                         $for key, name in notebook_tests.items():
                             <option value="$key">$name</option>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-10 14:26-0500\n"
+"POT-Creation-Date: 2020-12-17 20:32-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -857,7 +857,7 @@ msgstr ""
 #: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:144
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:195
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:78
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:82
 #: inginious/frontend/templates/auth.html:16
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
 #: inginious/frontend/templates/lti_login.html:30
@@ -1528,9 +1528,9 @@ msgstr "Múltiples lenguajes - Archivo de código"
 msgid "Code multiple languages"
 msgstr "Múltiples lenguajes - Código"
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:70
-msgid "An error occurred. The request is not correctly formed."
-msgstr "Ha ocurrido un error. La petición no fué correctamente formada."
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:74
+msgid "Please select at least 1 and up to 3 tests."
+msgstr "Por favor seleccione al menos 1 y hasta 3 tests"
 
 #: inginious/frontend/plugins/multilang/problems/notebook_file_problem.py:36
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:24
@@ -1769,41 +1769,49 @@ msgstr ""
 msgid "Test notebook"
 msgstr "Probar notebook"
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:14
-msgid "Select up to 3 tests to run"
-msgstr "Seleccione hasta 3 tests a ejecutar"
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:15
+msgid "Select 1 and up to 3 tests to run"
+msgstr "Seleccione 1 y hasta 3 tests para ejecutar"
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:23
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:17
+msgid ""
+"\"To select several tests click on the tests using 'Ctrl' or select "
+"continuos tests with your mouse.\""
+msgstr ""
+"\"Para seleccionar varios tests, haga clic en los tests usando 'Ctrl' o "
+"seleccione tests seguido con el mouse.\""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:27
 msgid "Run!"
-msgstr "Ejecutar!"
+msgstr "!Ejecutar!"
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:31
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:35
 msgid "Perform lint"
 msgstr "Verificar código (linter)"
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:33
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:37
 msgid "Tools"
 msgstr "Herramientas"
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:37
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:41
 msgid "Paste your input"
 msgstr "Copie su entrada aquí"
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:42
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:46
 msgid "'Your input goes here'"
 msgstr "'La entrada va aquí'"
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:51
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:55
 msgid "Your output goes here"
 msgstr "La salida va aquí"
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:59
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:86
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:63
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:90
 msgid "Test code!"
 msgstr "¡Probar código!"
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:65
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:74
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:69
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:78
 msgid "Visualize your code!"
 msgstr "¡Visualizar código!"
 
@@ -4517,4 +4525,10 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
+
+#~ msgid "An error occurred. The request is not correctly formed."
+#~ msgstr "Ha ocurrido un error. La petición no fué correctamente formada."
+
+#~ msgid "Select up to 3 tests to run"
+#~ msgstr "Seleccione hasta 3 tests a ejecutar"
 
