@@ -783,8 +783,8 @@ msgstr "Tratamiento y finalidad"
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:43
 msgid ""
-"Personal data is collected through forms and interaction and development of task on the platform. The software system collect personal "
-"information as Name, Career, contact data as e-mail, and demographic information. Also the system collects information about each "
+"Personal data is collected through forms and interaction and development of tasks on the platform. The software system collect personal "
+"information as name, career, contact data as e-mail, and demographic information. Also the system collects information about each "
 "solution provided on problem as attempt state, errors type, code or notebook provided, date of sumbimission, etc."
 msgstr ""
 "Los datos personales serán obtenidos mediante solicitudes de llenado de formularios y mediante la "
@@ -797,7 +797,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:47
 msgid ""
-"UNCode will execute the data processing through the collection, storage, use and circultation to:"
+"UNCode will execute the data processing through the collection, storage, use and circulation to:"
 msgstr ""
 "El tratamiento que realizará UNCode con la información será la recolección, almacenamiento, uso, "
 "circulación para:"
@@ -918,11 +918,11 @@ msgstr ""
 "en que se atenderá su reclamo, la cual en ningún caso podrá superar los ocho (8) días hábiles "
 "siguientes al vencimiento del primer término. "
 
-#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:128
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:118
 msgid ""
 "Once the terms indicated by Law 1581 of 2012 and the other norms that regulate o "
 "complement it have been fulfilled, the data owner who is denied, totally o partiality, "
-"the exercise of the rights of access, update, rextification, deletion and revoke, may bring your case "
+"the exercise of the rights of access, update, rectification, deletion and revoke, may bring your case "
 "to the attention of the Superintendencia de Industria y Comercio."
 msgstr ""
 ""
@@ -932,15 +932,15 @@ msgstr ""
 "conocimiento de la Superintendencia de Industria y Comercio –Delegatura para la Protección de Datos "
 "Personales-."
 
-#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:125
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:119
 msgid "Validity"
 msgstr "Vigencia"
 
-#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:134
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:120
 msgid "The present policy for personal data processing applies from Obtober 23, 2020."
 msgstr "La presente Política para el Tratamiento de datos personales rige a partir del 23 de Octubre de 2020."
 
-#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:136
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:121
 msgid ""
 "All the information provided will be kept as long as it is not requested for delete it, "
 "and that there is no legal duty to preserve it."
@@ -1446,6 +1446,7 @@ msgstr "Todos los cursos"
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:60
 #: inginious/frontend/templates/course_admin/classroom_edit.html:161
+#: inginious/frontend/templates/course_admin/classroom_edit.html:254
 #: inginious/frontend/templates/course_admin/teams_edit.html:226
 msgid "Update"
 msgstr "Actualizar"
@@ -1712,6 +1713,7 @@ msgid "Add a test"
 msgstr "Agregar prueba"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:263
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:9
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
 #: inginious/frontend/templates/course_admin/settings.html:29
@@ -2174,6 +2176,10 @@ msgstr "Archivo de código base"
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:63
 msgid "Start!"
 msgstr "Iniciar!"
+
+#: inginious/frontend/plugins/problem_bank/__init__.py:29
+msgid "<i class='fa fa-database' aria-hidden='true'></i> Problem bank"
+msgstr "<i class='fa fa-database' aria-hidden='true'></i> Banco de problemas"
 
 #: inginious/frontend/plugins/problem_bank/index.html:3
 #: inginious/frontend/plugins/problem_bank/index.html:15
@@ -3298,10 +3304,11 @@ msgstr ""
 msgid "Are you sure ?"
 msgstr "̉¿Estás seguro?"
 
+#: inginious/frontend/templates/course_admin/student_list_table.html:61
 #: inginious/frontend/templates/course_admin/student_list_table.html:74
 #: inginious/frontend/templates/unregister_button.html:22
-msgid "Unregister"
-msgstr "Eliminar registro"
+msgid "\"Unregister\""
+msgstr "\"Eliminar registro de estudiante\""
 
 #: inginious/frontend/templates/unregister_button.html:28
 msgid "Unregister from this course"
@@ -3521,6 +3528,12 @@ msgstr "Elegir estudiante:"
 msgid "Student username (will be registered) :"
 msgstr "El nombre de usuario será registrado:"
 
+#: inginious/frontend/templates/course_admin/student_list.html:44
+#: inginious/frontend/templates/course_admin/teams_edit.html:53
+#: inginious/frontend/templates/course_admin/classroom_edit.html:77
+msgid "\"Student username\""
+msgstr "\"Nombre del estudiante\""
+
 #: inginious/frontend/templates/course_admin/classroom_edit.html:100
 #: inginious/frontend/templates/course_admin/task_edit.html:44
 msgid "Basic settings"
@@ -3533,6 +3546,10 @@ msgid ""
 msgstr ""
 "Este es tu grupo inicial. El grupo no se puede eliminar y tampoco los "
 "estudiantes."
+
+#: inginious/frontend/templates/course_admin/classroom_edit.html:112
+msgid "Classroom description"
+msgstr "Descripción de grupo"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:122
 msgid "Delete classroom"
@@ -3554,6 +3571,10 @@ msgstr "Usuarios sin grupo"
 #: inginious/frontend/templates/course_admin/classroom_edit.html:206
 msgid "Max group size :"
 msgstr "Máximo número de integrantes para grupos:"
+
+#: inginious/frontend/templates/course_admin/classroom_edit.html:212
+msgid "Delete group"
+msgstr "Eliminar grupo"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:239
 msgid "New group"
@@ -3594,6 +3615,11 @@ msgstr ""
 "todos los cursos (tareas enviadas, grupos, equipos, estadísticas de "
 "usuarios) de esta base de datos.</p><p>Para confirmar dicha acción, "
 "escriba el identificador del curso:</p>"
+
+#: inginious/frontend/templates/course_admin/danger_zone.html:56
+#: inginious/frontend/templates/course_admin/danger_zone.html:141
+msgid "\"course id\""
+msgstr "\"id de curso\""
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:72
 msgid "Restore backup from {}"
@@ -4258,6 +4284,10 @@ msgstr ""
 msgid "Problem id:"
 msgstr "Id del problema"
 
+#: inginious/frontend/templates/course_admin/task_edit.html:147
+msgid "\"A title for this question\""
+msgstr "\"Titulo del subproblema\""
+
 #: inginious/frontend/templates/course_admin/task_info.html:26
 msgid "Results for task \"{}\""
 msgstr "Resultados para la tarea \"{}\""
@@ -4363,6 +4393,10 @@ msgstr "Tipo de archivo"
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:42
 msgid "Author"
 msgstr "Autor"
+
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:48
+msgid "\"Your name\""
+msgstr "\"Nombre autor\""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:53
 msgid "LTI task URL"
