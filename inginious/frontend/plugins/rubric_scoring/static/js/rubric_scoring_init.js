@@ -49,6 +49,33 @@ function displayTaskSubmitMessageRubric(content, type, dismissible) {
     }
 }
 
+function commentSubmit() {
+    let txtComment = document.getElementById("text_comment");
+    let contentInfo = "Successfully saved";
+    let contentDanger = "Error at saving Comment, please try again."
+    let contentWarning = "Error at saving Comment, comment to long, max length of comment is 1000."
+    let maxTam = 1000;
+
+    if (txtComment.value.length > maxTam) {
+        displayTaskSubmitMessageRubric(contentWarning, "warning", true);
+        return;
+    }
+    // alert(txt_comment.value);
+
+    jQuery.ajax({
+        success: function (data) {
+            displayTaskSubmitMessageRubric(contentInfo, "info", true);
+        },
+        method: "POST",
+
+        data: {"comment": txtComment.value},
+
+        error: function (request, status, error) {
+            displayTaskSubmitMessageRubric(contentDanger, "danger", true);
+        }
+    });
+}
+
 function save() {
     let contentInfo = "Submission graded and stored";
     let contentDanger = "Something went wrong";
@@ -63,33 +90,6 @@ function save() {
 
         error: function (request, status, error) {
             displayTaskSubmitMessageRubric(contentDanger, "danger", true);
-        }
-    });
-}
-
-function commentSubmit() {
-    let txt_comment = document.getElementById("text_comment");
-    let content_info = "Successfully saved";
-    let content_danger = "Error at saving Comment, please try again."
-    let content_warning = "Error at saving Comment, comment to long, max length of comment is 1000."
-    let maxTam = 1000;
-
-    if (txt_comment.value.length > maxTam) {
-        displayTaskSubmitMessageRubric(content_warning, "warning", true);
-        return;
-    }
-    // alert(txt_comment.value);
-
-    jQuery.ajax({
-        success: function (data) {
-            displayTaskSubmitMessageRubric(content_info, "info", true);
-        },
-        method: "POST",
-
-        data: {"comment": txt_comment.value},
-
-        error: function (request, status, error) {
-            displayTaskSubmitMessageRubric(content_danger, "danger", true);
         }
     });
 }

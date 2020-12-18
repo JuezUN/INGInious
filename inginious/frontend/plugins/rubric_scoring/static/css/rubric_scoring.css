@@ -17,6 +17,7 @@
   padding-top: 1rem;
   padding-bottom: 2rem;
 }
+
 .py-1 {
   padding-bottom: 0.5rem;
 }
@@ -28,48 +29,45 @@
 
 a.font_size,
 td.font_size {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 a.font_size-m,
 td.font_size-m {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .mr-1 {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 .ml-1 {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 td.box1 {
-    background: #2b6e44;
-    color: white;
+  background: #2b6e44;
+  color: white;
 }
 
 .box {
-    box-sizing: border-box;
-    border: solid #c0c0c0 1px;
+  box-sizing: border-box;
+  border: solid #c0c0c0 1px;
 }
 
 .DivToScroll {
-    background-color: #fcfcfc;
-    border: 1px solid #DDD;
-    border-radius: 4px 0 4px 0;
-    color: #3b3c3e;
-    font-size: 12px;
-    font-weight: bold;
-    left: -1px;
-    padding: 10px 7px 5px;
+  background-color: #fcfcfc;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 4px 0;
+  color: #3b3c3e;
+  font-size: 12px;
+  font-weight: bold;
+  left: -1px;
+  padding: 10px 7px 5px;
 }
 
 .DivWithScroll {
-    height: 300px;
-    overflow: scroll;
-    overflow-x: hidden;
+  height: 300px;
+  overflow: scroll;
+  overflow-x: hidden;
 }
-
-
-

@@ -55,7 +55,6 @@ class RubricScoringPage(INGIniousAdminPage):
         submission = self.submission_manager.get_submission(submission_id, user_check=False)
         submission_input = self.submission_manager.get_input_from_submission(submission)
         name = self.user_manager.get_user_realname(submission_input['username'][0])
-        
         # Manual scoring status
         comment = ""
 

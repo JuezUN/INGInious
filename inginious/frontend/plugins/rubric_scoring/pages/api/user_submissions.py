@@ -82,7 +82,6 @@ class UserSubmissionsPage(INGIniousAdminPage):
                                   "summary_result": entry["custom"]["custom_summary_result"],
                                   "realname": entry["realname"]
                                   }
-
             if "rubric_score" not in entry["custom"]:
                 data[entry["_id"]]["rubric_score"] = "not grade"
             else:
