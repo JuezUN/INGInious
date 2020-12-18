@@ -139,10 +139,6 @@ jQuery(document).ready(function () {
             $("#text-context").collapse("toggle");
         });
 
-        //Add click functionality for problem title. It "toggle" the problem description text
-        $('#info').click(function () {
-            $("#text-context").collapse("toggle");
-        });
 
         /* =======================================================
         *                     Rubric configuration
