@@ -100,10 +100,10 @@ function loadCodePreviewToCodemirror() {
  * Monkey-patch the function `changeSubmissionLanguage` from multilang plugin to run the function
  * `loadCodePreviewToCodemirror`, which loads the code preview to Codemirror when the submission language is changed.
  */
-function monkeyPatchChangeSubmissionLanguage() {
-    const changeSubmissionLanguageOriginal = changeSubmissionLanguage;
-    changeSubmissionLanguage = (key, problem_type) => {
-        changeSubmissionLanguageOriginal(key, problem_type);
+function monkeyPatchOnChangeLanguageDropdown() {
+    const onChangeLanguageDropdownOriginal = onChangeLanguageDropdown;
+    onChangeLanguageDropdown = (key, problem_type) => {
+        onChangeLanguageDropdownOriginal(key, problem_type);
         loadCodePreviewToCodemirror();
     };
 }
@@ -125,7 +125,7 @@ jQuery(document).ready(function () {
     if (typeof getTaskEnvironment !== "undefined"
         && ["multiple_languages", "HDL", "Data Science"].includes(getTaskEnvironment())
         && !location.href.includes("submission")) {
-        monkeyPatchChangeSubmissionLanguage();
+        monkeyPatchOnChangeLanguageDropdown();
         loadCodePreviewToCodemirror();
     }
 });

@@ -4,6 +4,9 @@ function load_input_code_multiple_languages(submissionid, key, input) {
     changeSubmissionLanguage(key);
 }
 
+function onChangeLanguageDropdown(key, problem) {
+    changeSubmissionLanguage(key, problem);
+}
 
 function setDropDownWithTheRightLanguage(key, language) {
     const dropDown = document.getElementById(key + '/language');
@@ -256,7 +259,7 @@ function getProblemIdEdition() {
 }
 
 function hideLanguages() {
-    let problemId = getProblemIdEdition();
+    const problemId = getProblemIdEdition();
     $(`.checkbox_language_${problemId}`).prop("hidden", true);
 }
 
