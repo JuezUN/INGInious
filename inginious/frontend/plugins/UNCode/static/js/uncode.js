@@ -8,6 +8,16 @@ jQuery(document).ready(function () {
         logoElement.html(image).append(" Code");
     }
 
+    function updateNavbar(){
+        // Update navbar with new information.
+         const navbar = $("#wrapper")
+            .find("> div.navbar.navbar-default.navbar-static-top");
+         //Add UNCode button
+         navbar.find("> div > div.collapse.navbar-collapse > ol.nav.navbar-nav.navbar-right")
+             .append("<li><a class='navbar-link' href='https://juezun.github.io/' target='_blank'>" +
+                 "<i class='fa fa-question-circle-o' style='margin-right: 5px' aria-hidden='true'></i>About UNCode</a></li>");
+    }
+
     function updateFooter() {
         // Update footer with new information.
         const footer = $("#footer");
@@ -33,6 +43,7 @@ jQuery(document).ready(function () {
         updateNavbarLogo(imagePath);
         updatePageIcon(imagePath);
         updateFooter();
+        updateNavbar();
     }
 
     function addTaskContextTemplate() {
