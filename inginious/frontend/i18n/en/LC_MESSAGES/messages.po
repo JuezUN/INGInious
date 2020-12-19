@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-17 20:32-0500\n"
+"POT-Creation-Date: 2020-12-18 22:02-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -1411,6 +1411,10 @@ msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:74
 msgid "Please select at least 1 and up to 3 tests."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:89
+msgid "An error occurred while running the notebook. Please run the tests again."
 msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/notebook_file_problem.py:36

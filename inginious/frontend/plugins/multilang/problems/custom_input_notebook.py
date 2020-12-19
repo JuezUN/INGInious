@@ -84,8 +84,9 @@ def custom_input_notebook(client):
                 }
                 web.header('Content-Type', 'application/json')
                 return 200, json.dumps(data)
-            except Exception as ex:
+            except Exception:
                 web.header('Content-Type', 'application/json')
-                return 200, json.dumps({"status": "error", "text": str(ex)})
+                return 200, json.dumps({"status": "error", "text": _(
+                    "An error occurred while running the notebook. Please run the tests again.")})
 
     return CustomInputNotebookManager
