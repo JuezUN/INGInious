@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-07 17:54-0500\n"
+"POT-Creation-Date: 2020-12-17 16:24-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.4.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -890,11 +890,11 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:104
 msgid "Complete name and lastname."
-msgstr "Nombre Completo y apellidos."
+msgstr "Nombre completo y apellidos."
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:107
 msgid "Contact information."
-msgstr "Datos de contacto (dirección física/o electrónica, teléfono de contacto)."
+msgstr "Datos de contacto (dirección física o electrónica, teléfono de contacto)."
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:111
 msgid ""
@@ -1704,8 +1704,8 @@ msgid ""
 msgstr ""
 "\"Código en Python ejecutado antes de todas las pruebas. Útil para establecer, "
 "por ejemplo, los datos iniciales y variables a usar en todas las pruebas. El código "
-"debe ser como el intérprete interactivo de Python, donde cada línea es un comando diferente en
-"el intérprete"\""
+"debe ser como el intérprete interactivo de Python, donde cada línea es un comando diferente en "
+"el intérprete\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:257
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:8
@@ -2178,8 +2178,8 @@ msgid "Start!"
 msgstr "Iniciar!"
 
 #: inginious/frontend/plugins/problem_bank/__init__.py:29
-msgid "<i class='fa fa-database' aria-hidden='true'></i> Problem bank"
-msgstr "<i class='fa fa-database' aria-hidden='true'></i> Banco de problemas"
+msgid " Problem bank"
+msgstr " Banco de problemas"
 
 #: inginious/frontend/plugins/problem_bank/index.html:3
 #: inginious/frontend/plugins/problem_bank/index.html:15
@@ -3532,7 +3532,7 @@ msgstr "El nombre de usuario será registrado:"
 #: inginious/frontend/templates/course_admin/teams_edit.html:53
 #: inginious/frontend/templates/course_admin/classroom_edit.html:77
 msgid "\"Student username\""
-msgstr "\"Nombre del estudiante\""
+msgstr "\"Nombre de usuario del estudiante\""
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:100
 #: inginious/frontend/templates/course_admin/task_edit.html:44
@@ -3549,7 +3549,7 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:112
 msgid "Classroom description"
-msgstr "Descripción de grupo"
+msgstr "Descripción del grupo"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:122
 msgid "Delete classroom"
@@ -3619,7 +3619,7 @@ msgstr ""
 #: inginious/frontend/templates/course_admin/danger_zone.html:56
 #: inginious/frontend/templates/course_admin/danger_zone.html:141
 msgid "\"course id\""
-msgstr "\"id de curso\""
+msgstr "\"id del curso\""
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:72
 msgid "Restore backup from {}"
@@ -4286,7 +4286,7 @@ msgstr "Id del problema"
 
 #: inginious/frontend/templates/course_admin/task_edit.html:147
 msgid "\"A title for this question\""
-msgstr "\"Titulo del subproblema\""
+msgstr "\"Título del subproblema\""
 
 #: inginious/frontend/templates/course_admin/task_info.html:26
 msgid "Results for task \"{}\""
