@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-22 19:18-0500\n"
+"POT-Creation-Date: 2020-12-23 12:47-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1698,7 +1698,7 @@ msgstr "Entidad (solo en VHDL)"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:173
 msgid "Testbench"
-msgstr "Banco de pruebas"
+msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:178
 msgid "Golden Model"
