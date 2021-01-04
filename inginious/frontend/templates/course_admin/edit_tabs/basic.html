@@ -6,7 +6,7 @@ $# more information about the licensing of this file.
 $#
 
 <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Name</label>
+    <label for="name" class="col-sm-2 control-label">$:_("Name")</label>
     <div class="col-sm-7">
         <input type="text" class="form-control" id="name" name="name" placeholder="title for this task" value="${task_data.get('name','')}">
     </div>
@@ -45,7 +45,7 @@ $else:
             $ a=', '.join(task_data.get('author',[]))
         $else:
             $ a=task_data.get('author',[])
-        <input type="text" class="form-control" id="author" name="author" placeholder="$:_('Your name')" value="$a"/>
+        <input type="text" class="form-control" id="author" name="author" placeholder=$:_('"Your name"') value="$a"/>
     </div>
 </div>
 $if course.is_lti():
