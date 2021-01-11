@@ -1,46 +1,27 @@
-import os
-import web
 import json
+import web
 
-from inginious.frontend.plugins.utils import create_static_resource_page, get_mandatory_parameter
+from inginious.frontend.plugins.utils import get_mandatory_parameter
 from inginious.client.client_sync import ClientSync
 from inginious.frontend.pages.api._api_page import APIAuthenticatedPage
 from inginious.frontend.parsable_text import ParsableText
-from bson.objectid import ObjectId
-
-_static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
 
-def custom_input_manager_with_curried_client(client):
+def custom_input_manager_multilang(client):
+    """
+    This function returns a CustomInputManager in charge of running the student's code against a custom input
+    given by the student. This is only for multilang tasks.
+    :param client:
+    :return: CustomInputManager
+    """
+
     class CustomInputManager(APIAuthenticatedPage):
         def __init__(self):
             self._client = client
 
         def add_unsaved_job(self, task, inputdata):
             temp_client = ClientSync(self._client)
-            return temp_client.new_job(task, inputdata)
-
-        def API_GET(self):
-            request_params = web.input()
-            submission_id = get_mandatory_parameter(request_params, "submission")
-
-            # A mongo request for the submission and his input
-            # How do i do this?
-            things = self.database.submissions.aggregate([
-                {
-                    '$match': {
-                        "_id": ObjectId(submission_id)
-                    }
-                },
-                {
-                    "$project": {
-                        "_id": 0,
-                        "taskid": 1,
-                        "courseid": 1
-                    }
-                }
-            ])
-            return 200, list(things)[0]
+            return temp_client.new_job(task, inputdata, "Custom input - " + self.user_manager.session_username())
 
         def API_POST(self):
             request_params = web.input()

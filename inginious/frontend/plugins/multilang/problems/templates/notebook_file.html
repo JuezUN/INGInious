@@ -1,4 +1,4 @@
-$def with (inputId, type, course_id, environment)
+$def with (inputId, type, course_id, task_id, environment)
 
 $#
 $# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
@@ -105,6 +105,10 @@ $#
 </div>
 
 <script>
+    function getTaskId() {
+        return '$task_id';
+    }
+
     function getProblemId() {
         return '$inputId';
     }
