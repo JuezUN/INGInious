@@ -1,70 +1,97 @@
-$def with (inputId, language, customInputId, type, pythonTutorURL, linterURL, course_id)
+$def with (inputId, language, customInputId, type, pythonTutorURL, linterURL, course_id, notebook_tests={})
 
 <br>
 <br>
 <div>
-    $if type == "code_multiple_languages":
-        <button type="button" class="btn btn-success" id="btn-lint" onclick="onClickLintButton()">$:_("Perform lint")</button>
-  &nbsp;<button type="button" class="btn btn-primary" onclick="toggleElement('tools-$inputId')">$:_("Tools")</button>
-  <div id="tools-$inputId" style="display: none">
-    <div class="row panel-body">
-      <div class="col-md-6 pr-1">
-        $:_("Paste your input")
-        <textarea
-          id="custominput-$inputId"
-          name="$customInputId"
-          class="form-control noresize in-out-area"
-          placeholder=$:_("'Your input goes here'")
-          data-optional="True"
-          rows="10"
-        ></textarea>
-      </div>
-      <div class="col-md-6 pl-1">
-        <br>
-        <pre
-            id="customoutput-$inputId"
-            class="form-control noresize in-out-area"
-            style="height:228px;"
-        ><span class="placeholder-text">$:_("Your output goes here")</span>
-        </pre>
-        <br>
-      </div>
-
-      $if type == "code_multiple_languages":
-          <div class="col-md-6">
-            <button type="button" class="btn btn-primary btn-md btn-block" onclick="runCustomTest('$inputId')">
-                $:_("Test code!")
-            </button>
-          </div>
-          <div class="col-md-6">
-            <button class="btn btn-success btn-md btn-block" type="button" data-toggle="modal"
-                    data-target="#modal-$inputId" onclick="visualizeCode('$language', '$inputId')">
-                $:_("Visualize your code!")
-            </button>
-          </div>
-
-          <div id="modal-$inputId" class="modal modal-wide fade">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                          <h4 class="modal-title">$:_("Visualize your code!")</h4>
-                      </div>
-                      <div class="modal-body"></div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-primary" data-dismiss="modal">$:_("Close")</button>
-                      </div>
-                  </div><!-- /.modal-content -->
-              </div><!-- /.modal-dialog -->
-          </div><!-- /.modal -->
-      $elif type == 'code_file_multiple_languages':
-          <div class="col-md-12">
-            <button type="button" class="btn btn-primary btn-md btn-block" onclick="runCustomTest('$inputId')">
-                $:_("Test code!")
-            </button>
-          </div>
+    $if type == "notebook_file":
+        <button type="button" class="btn btn-primary" onclick="toggleElement('test-notebook-$inputId')">
+            $:_("Test notebook")
+        </button>
+        <div id="test-notebook-$inputId" style="display: none">
+        <div class="row panel-body">
+            <div class="panel panel-default">
+                <div class="panel-body form-group">
+                    <h5 class="text-center">
+                        $:_("Select 1 and up to 3 tests to run")
+                        <i class="fa fa-question-circle" data-toggle="tooltip"
+                           title=$:_("\"To select several tests click on the tests using 'Ctrl' or select continuos tests with your mouse.\"")></i>
+                    </h5>
+                    <select name="$customInputId" size="4" class="form-control" id="select_test" multiple>
+                        $for key, name in notebook_tests.items():
+                            <option value="$key">$name</option>
+                     </select>
+                </div>
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-success btn-block"
+                            onclick="runCustomTest('$inputId', 'Notebook')">
+                        $:_("Run!")
+                    </button>
+                </div>
+            </div>
+        </div>
+    $else:
+        $if type == "code_multiple_languages":
+            <button type="button" class="btn btn-success" id="btn-lint" onclick="onClickLintButton()">
+                $:_("Perform lint")
+            </button>&nbsp;
+        <button type="button" class="btn btn-primary" onclick="toggleElement('tools-$inputId')">$:_("Tools")</button>
+        <div id="tools-$inputId" style="display: none">
+        <div class="row panel-body">
+            <div class="col-md-6 pr-1">
+                $:_("Paste your input")
+                <textarea
+                    id="custominput-$inputId"
+                    name="$customInputId"
+                    class="form-control noresize in-out-area"
+                    placeholder=$:_("'Your input goes here'")
+                    data-optional="True"
+                    rows="10"
+                ></textarea>
+            </div>
+            <div class="col-md-6 pl-1">
+                <br>
+                <pre id="customoutput-$inputId"
+                     class="form-control noresize in-out-area"
+                     style="height:228px;"><span class="placeholder-text">$:_("Your output goes here")</span>
+                </pre>
+                <br>
+            </div>
+        $if type == "code_multiple_languages":
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary btn-md btn-block"
+                        onclick="runCustomTest('$inputId', 'multilang')">
+                    $:_("Test code!")
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-success btn-md btn-block" type="button" data-toggle="modal"
+                        data-target="#modal-$inputId" onclick="visualizeCode('$language', '$inputId')">
+                    $:_("Visualize your code!")
+                </button>
+            </div>
+            <div id="modal-$inputId" class="modal modal-wide fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+                            </button>
+                            <h4 class="modal-title">$:_("Visualize your code!")</h4>
+                        </div>
+                        <div class="modal-body"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">$:_("Close")</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        $elif type == 'code_file_multiple_languages':
+            <div class="col-md-12">
+                <button type="button" class="btn btn-primary btn-md btn-block" onclick="runCustomTest('$inputId')">
+                    $:_("Test code!")
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <script>
     function getDefaultVisualServerURL() {
@@ -87,7 +114,7 @@ $def with (inputId, language, customInputId, type, pythonTutorURL, linterURL, co
             element.style.display = 'none';
         }
     }
-    
+
     function onClickLintButton() {
         let cm = document.querySelector(".CodeMirror");
         if(cm !== null){

@@ -5,7 +5,8 @@ from .problems.code_multiple_languages_problem import DisplayableCodeMultipleLan
 from .problems.code_multiple_file_languages_problem import DisplayableCodeFileMultipleLanguagesProblem
 from .problems.notebook_file_problem import DisplayableNotebookFileProblem
 from .problems.constants import set_linter_url, set_python_tutor_url, set_show_tools, get_show_tools
-from .problems.custom_input import custom_input_manager_with_curried_client
+from .problems.custom_input import custom_input_manager_multilang
+from .problems.custom_input_notebook import custom_input_notebook
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
@@ -18,7 +19,8 @@ def init(plugin_manager, course_factory, client, plugin_config):
 
     plugin_manager.add_page(r'/multilang/static/(.*)', create_static_resource_page(_static_folder_path))
 
-    plugin_manager.add_page("/api/custom_input/", custom_input_manager_with_curried_client(client))
+    plugin_manager.add_page("/api/custom_input/", custom_input_manager_multilang(client))
+    plugin_manager.add_page("/api/custom_input_notebook/", custom_input_notebook(client))
 
     use_minified = plugin_config.get("use_minified", True)
 
@@ -36,7 +38,6 @@ def init(plugin_manager, course_factory, client, plugin_config):
         plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/notebook_renderer.js")
         plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/multilang.js")
         plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/grader.js")
-        plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/custom_input.js")
         plugin_manager.add_hook("css", lambda: "/multilang/static/multilang.css")
 
     if get_show_tools():
@@ -47,6 +48,7 @@ def init(plugin_manager, course_factory, client, plugin_config):
             plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/pythonTutor.js")
             plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/codemirror_linter.js")
             plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/lint.js")
+            plugin_manager.add_hook("javascript_footer", lambda: "/multilang/static/custom_input.js")
             plugin_manager.add_hook("css", lambda: "/multilang/static/lint.css")
     course_factory.get_task_factory().add_problem_type(DisplayableCodeMultipleLanguagesProblem)
     course_factory.get_task_factory().add_problem_type(DisplayableCodeFileMultipleLanguagesProblem)

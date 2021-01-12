@@ -114,7 +114,7 @@ let selected_all_languages = false;
 
 function toggle_languages_checkboxes() {
     const environmentSelectElement = $("#environment");
-    const problemId = getProblemId();
+    const problemId = getProblemIdEdit();
 
     selected_all_languages = !selected_all_languages;
     $(".checkbox_language").prop("checked", selected_all_languages);
@@ -249,24 +249,24 @@ function highlight_code() {
 
 // These functions are intended to show the correct languages for multilang when the environment is HDL
 // or multilang.
-function getProblemId() {
+function getProblemIdEdit() {
     const problemId = $("#problem_id")[0];
     if (!problemId) return;
     return problemId.value;
 }
 
 function hideLanguages() {
-    let problemId = getProblemId();
+    let problemId = getProblemIdEdit();
     $(`.checkbox_language_${problemId}`).prop("hidden", true);
 }
 
 function showLanguages() {
-    const problemId = getProblemId();
+    const problemId = getProblemIdEdit();
     $(`.checkbox_language_${problemId}`).prop("hidden", false);
 }
 
 function showCorrectLanguagesEnvironment(uncheckBoxes = true) {
-    const problemId = getProblemId();
+    const problemId = getProblemIdEdit();
 
     const environmentSelectElement = $("#environment");
     if (!environmentSelectElement.length) return;
