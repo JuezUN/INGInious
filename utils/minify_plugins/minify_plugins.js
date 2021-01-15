@@ -12,6 +12,7 @@ const _GRADER_GENERATOR_PLUGIN_PATH = `${_BASE_PATH}/grader_generator/static`;
 const _CODE_PREVIEW_PLUGIN_PATH = `${_BASE_PATH}/code_preview/static`;
 const _ANALYTICS_PLUGIN_PATH = `${_BASE_PATH}/analytics/static`;
 const _PLAGIARISM_PLUGIN_PATH = `${_BASE_PATH}/plagiarism/static`;
+const _RUBRIC_SCORING_PATH = `${_BASE_PATH}/manual_scoring/static`;
 
 /**
  * Read file synchronously.
@@ -246,6 +247,21 @@ function minifyPlagiarismPlugin() {
 
     minifyCssFiles(cssFiles, cssFilesPath, "plagiarism");
 }
+function minifyManualScoringPlugin() {
+    const cssFilesPath = _RUBRIC_SCORING_PATH + "/css/";
+    const jsFilesPath = _RUBRIC_SCORING_PATH + "/js/";
+    const jsFiles = ["rubric_scoring_init"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+    const cssFiles = ["rubric_scoring"].map((name) => {
+        return getCssFilePath(cssFilesPath, name);
+    });
+
+    console.log("Minify 'rubric scoring' static files.");
+
+    minifyJSFiles(jsFiles, jsFilesPath, "rubric_scoring");
+    minifyCssFiles(cssFiles, cssFilesPath, "rubric_scoring");
+}
 
 minifyUNCodePlugin();
 minifyUNTemplatePlugin();
@@ -256,3 +272,4 @@ minifyGraderGeneratorPlugin();
 minifyCodePreviewPlugin();
 minifyAnalyticsPlugin();
 minifyPlagiarismPlugin();
+minifyManualScoringPlugin();

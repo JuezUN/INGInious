@@ -8,14 +8,14 @@ $#
 
 $var title: $:course.get_name(user_manager.session_language())
 
-$var Column: $:template_helper.call('course_admin_menu',course=course,current='rubric_scoring')
+$var Column: $:template_helper.call('course_admin_menu',course=course,current='manual_scoring')
 $ is_admin = user_manager.has_admin_rights_on_course(course)
 
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
             <i class="fa fa-user-secret"></i></a></li>
-        <li class="active"><a href="#"><i class="fa fa-table mr-1"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#"><i class="fa fa-table mr-1"></i>$:_("Manual Scoring")<span class="sr-only">(current)</span></a></li>
     </ol>
 $var Navbar: $:NavbarF()
 
@@ -35,7 +35,7 @@ $var Navbar: $:NavbarF()
     $for taskid in data:
     	<tr>
     		<td>
-    			<a href="$get_homepath()/admin/${course.get_id()}/rubric_scoring/task/$taskid" class="font_size">
+    			<a href="$get_homepath()/admin/${course.get_id()}/manual_scoring/task/$taskid" class="font_size">
                     $if data[taskid]["name"] == "":
                         $taskid
                     $else:

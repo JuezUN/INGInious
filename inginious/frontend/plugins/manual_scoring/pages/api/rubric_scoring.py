@@ -8,9 +8,9 @@
 import web
 
 from bson.objectid import ObjectId
-from inginious.frontend.plugins.rubric_scoring.pages.api.rubric_wdo import RubricWdo
+from inginious.frontend.plugins.manual_scoring.pages.api.rubric_wdo import RubricWdo
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.frontend.plugins.rubric_scoring.pages.api import pages
+from inginious.frontend.plugins.manual_scoring.pages.api import pages
 
 base_renderer_path = pages.render_path
 
@@ -71,7 +71,7 @@ class RubricScoringPage(INGIniousAdminPage):
         aux_info = aux_info.replace('\n', '')
 
         data = {
-            "url": 'rubric_scoring',
+            "url": 'manual_scoring',
             "summary": submission_input['custom']['custom_summary_result'],
             "grade": score,
             "language": submission_input['input'][problem_id + '/language'],
@@ -88,10 +88,10 @@ class RubricScoringPage(INGIniousAdminPage):
             "submission_id": submission_id
         }
         # Rubric text content
-        rubric_wdo = RubricWdo('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json')
+        rubric_wdo = RubricWdo('inginious/frontend/plugins/manual_scoring/static/json/rubric.json')
 
         return (
             self.template_helper.get_custom_renderer(base_renderer_path).rubric_scoring(
                 course, task,
-                rubric_wdo.read_data('inginious/frontend/plugins/rubric_scoring/static/json/rubric.json'), data)
+                rubric_wdo.read_data('inginious/frontend/plugins/manual_scoring/static/json/rubric.json'), data)
         )

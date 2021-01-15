@@ -7,7 +7,7 @@
 
 from collections import OrderedDict
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.frontend.plugins.rubric_scoring.pages.api import pages
+from inginious.frontend.plugins.manual_scoring.pages.api import pages
 
 base_renderer_path = pages.render_path
 
@@ -26,7 +26,7 @@ class UserSubmissionsPage(INGIniousAdminPage):
     def page(self, course, task_id, task, username):
         """ get submissions for user and display page """
 
-        url = 'rubric_scoring'
+        url = 'manual_scoring'
 
         # Database request
         result = list(self.database.submissions.aggregate(

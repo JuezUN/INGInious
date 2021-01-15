@@ -7,13 +7,13 @@ $#
 
 $var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
 
-$var Column: $:template_helper.call('course_admin_menu',course=course,current='rubric_scoring')
+$var Column: $:template_helper.call('course_admin_menu',course=course,current='manual_scoring')
 $ is_admin = user_manager.has_admin_rights_on_course(course)
 
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
-        <li><a href="$get_homepath()/admin/$course.get_id()/rubric_scoring"><i class="fa fa-table mr-1"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()/manual_scoring"><i class="fa fa-table mr-1"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
     <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task.get_id()">$:_("Task")</a></li>
         <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task.get_id()/user/$data['username']">$:_("Student")</a></li>
     <li class="active"><a href="#">$:_("Manual Scoring")<span class="sr-only">(current)</span></a></li>
