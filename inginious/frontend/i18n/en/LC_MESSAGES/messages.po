@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-18 23:15-0500\n"
+"POT-Creation-Date: 2021-01-15 00:30-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -670,6 +670,212 @@ msgstr ""
 msgid "Data Policy"
 msgstr ""
 
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:21
+msgid "Personal Data Policy"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:23
+msgid ""
+"The data processing policy establishes the terms in which UNCode use and "
+"save the user provisioned information when using the software system. "
+"UNCode is committed to the users data security. We ensure that all the "
+"data that the owner provide us, will only be used according to the "
+"stablished terms in this document, and with the law 1581 of 2012. "
+"However, we suggest checking frequently the page to make sure you agree "
+"to the possible changes that may be made on the policy in the future."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:25
+msgid "Goal"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:27
+msgid ""
+"Set the criteria for the collection, storage, use, movement and deletion "
+"of the personal data processed by UNCode. Such as treatment for "
+"assessment, decisions making, and observation and study."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:29
+msgid "Scope"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:31
+msgid ""
+"The policy applies for the personal data registered in the UNcode "
+"databases, who acts as the responsible of the personal data processing."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:33
+msgid "Liabilities"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:35
+msgid "This is a mandatory and strictly enforced policy for UNCode."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:37
+msgid "Processing responsible"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:39
+msgid ""
+"UNCode is a proyect developed by PLaS, a research group of the "
+"Universidad Nacional de Colombia, Bogotá headquarters."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:41
+msgid "Data processing"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:43
+msgid ""
+"Personal data is collected through forms and interaction and development "
+"of tasks on the platform. The software system collect personal "
+"information as name, career, contact data as e-mail, and demographic "
+"information. Also the system collects information about each solution "
+"provided on problem as attempt state, errors type, code or notebook "
+"provided, date of sumbimission, etc."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:47
+msgid ""
+"UNCode will execute the data processing through the collection, storage, "
+"use and circulation to:"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:52
+msgid ""
+"Evaluate and grade the knowledge communicated throughout the development "
+"of the courses."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:57
+msgid "Decisions making about the pedagogical methodologies and resources used."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:62
+msgid "Monitoring, observation and study to help research processes."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:67
+msgid "Data owners rights"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:70
+msgid "As the owner of your personal data, you have the following rights:"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:74
+msgid "Have a free access to the provided data that have been processed."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:77
+msgid ""
+"Read, update and verify the partial, incorrect and incomplete data that "
+"may cause error or whose processing is not allowed."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:80
+msgid ""
+"Present complaints for infractions to the provisions of current "
+"regulations or have not been authorized, at the Superintendencia de "
+"Industria y Comercio."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:83
+msgid "Request the proof of the granted authorization."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:86
+msgid ""
+"Revoke the authorization and request the data deletion, while there is no"
+" legal or contractual duty that prevents them from being deleted."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:89
+msgid ""
+"Do not answer question about sensitive data. They will be optionals the "
+"answers about sensitive data, or children and adolescents data."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:92
+msgid "Requests, queries and claims attention"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:93
+msgid ""
+"UNCode is that agency who is responsible for processing of the data "
+"owners to make effective their rights. You can communicate by writing to "
+"the following email"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:95
+msgid "Procedure for the exercise of the Hábeas Data right"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:97
+msgid ""
+"For the protection of personal data, UNCode presents the following steps "
+"and minimun requirements for the exercise of your rights."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:100
+msgid ""
+"Is necessary give the following information in order to attend your "
+"request:"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:104
+msgid "Complete name and lastname."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:107
+msgid "Contact information."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:111
+msgid ""
+"Reason of request claim with a brief description of the right that you "
+"want to exert (consult, update, verify, revoke, delete, request proof of "
+"the granted authorization, access the data)."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:116
+msgid ""
+"The max. provided term by the law to resolve your claim is fifteen (15) "
+"business days, from the day next to the date of the receipt. If it is not"
+" possible to attend the claim within these term, UNCode will inform of "
+"the reasons for the delay, and the attend date of your claim, which may "
+"not exceed eight (8) business days next to the expiration of the first "
+"term."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:118
+msgid ""
+"Once the terms indicated by Law 1581 of 2012 and the other norms that "
+"regulate o complement it have been fulfilled, the data owner who is "
+"denied, totally o partiality, the exercise of the rights of access, "
+"update, rectification, deletion and revoke, may bring your case to the "
+"attention of the Superintendencia de Industria y Comercio."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:119
+msgid "Validity"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:120
+msgid ""
+"The present policy for personal data processing applies from Obtober 23, "
+"2020."
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:121
+msgid ""
+"All the information provided will be kept as long as it is not requested "
+"for delete it, and that there is no legal duty to preserve it."
+msgstr ""
+
 #: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:8
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:2
 msgid "Delete all files"
@@ -807,7 +1013,7 @@ msgstr ""
 #: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:144
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:195
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:55
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:82
 #: inginious/frontend/templates/auth.html:16
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
 #: inginious/frontend/templates/lti_login.html:30
@@ -1096,6 +1302,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:60
 #: inginious/frontend/templates/course_admin/classroom_edit.html:161
+#: inginious/frontend/templates/course_admin/classroom_edit.html:254
 #: inginious/frontend/templates/course_admin/teams_edit.html:226
 msgid "Update"
 msgstr ""
@@ -1358,6 +1565,7 @@ msgid "Add a test"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:263
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:9
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
 #: inginious/frontend/templates/course_admin/settings.html:29
@@ -1419,7 +1627,15 @@ msgstr ""
 msgid "Code multiple languages"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/notebook_file_problem.py:33
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:74
+msgid "Please select at least 1 and up to 3 tests."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:89
+msgid "An error occurred while running the notebook. Please run the tests again."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/notebook_file_problem.py:36
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:24
 msgid "Notebook"
 msgstr ""
@@ -1613,33 +1829,51 @@ msgid ""
 "sure when you submit your notebook, you do not include it."
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:7
-msgid "Perform lint"
-msgstr ""
-
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:8
-msgid "Tools"
+msgid "Test notebook"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:12
-msgid "Paste your input"
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:15
+msgid "Select 1 and up to 3 tests to run"
 msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:17
+msgid ""
+"\"To select several tests click on the tests using 'Ctrl' or select "
+"continuos tests with your mouse.\""
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:27
+msgid "Run!"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:35
+msgid "Perform lint"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:37
+msgid "Tools"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:41
+msgid "Paste your input"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:46
 msgid "'Your input goes here'"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:28
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:55
 msgid "Your output goes here"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:36
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:63
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:90
 msgid "Test code!"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:42
-#: inginious/frontend/plugins/multilang/problems/templates/tools.html:51
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:69
+#: inginious/frontend/plugins/multilang/problems/templates/tools.html:78
 msgid "Visualize your code!"
 msgstr ""
 
@@ -1772,6 +2006,10 @@ msgstr ""
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:63
 msgid "Start!"
+msgstr ""
+
+#: inginious/frontend/plugins/problem_bank/__init__.py:29
+msgid " Problem bank"
 msgstr ""
 
 #: inginious/frontend/plugins/problem_bank/index.html:3
@@ -3046,6 +3284,11 @@ msgstr ""
 msgid "Student username (will be registered) :"
 msgstr ""
 
+#: inginious/frontend/templates/course_admin/classroom_edit.html:77
+#: inginious/frontend/templates/course_admin/teams_edit.html:53
+msgid "\"Student username\""
+msgstr ""
+
 #: inginious/frontend/templates/course_admin/classroom_edit.html:100
 #: inginious/frontend/templates/course_admin/task_edit.html:44
 msgid "Basic settings"
@@ -3055,6 +3298,10 @@ msgstr ""
 msgid ""
 "This is your default classroom. It can't be deleted and students can't be"
 " removed from."
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/classroom_edit.html:112
+msgid "Classroom description"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:122
@@ -3112,6 +3359,11 @@ msgid ""
 "<p>This will reset and backup all course data (submissions, "
 "classrooms/teams, user statistics) from the database.</p><p>To confirm "
 "your will, please type the course id below :</p>"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/danger_zone.html:56
+#: inginious/frontend/templates/course_admin/danger_zone.html:141
+msgid "\"course id\""
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:72
@@ -3439,6 +3691,10 @@ msgstr ""
 msgid "\"Unregister all\""
 msgstr ""
 
+#: inginious/frontend/templates/course_admin/student_list_table.html:61
+msgid "\"Unregister\""
+msgstr ""
+
 #: inginious/frontend/templates/course_admin/student_list_table.html:77
 msgid "This will remove {} from the course. Are you sure ?"
 msgstr ""
@@ -3744,6 +4000,10 @@ msgstr ""
 msgid "Problem id:"
 msgstr ""
 
+#: inginious/frontend/templates/course_admin/task_edit.html:147
+msgid "\"A title for this question\""
+msgstr ""
+
 #: inginious/frontend/templates/course_admin/task_info.html:26
 msgid "Results for task \"{}\""
 msgstr ""
@@ -3848,6 +4108,10 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:42
 msgid "Author"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:48
+msgid "\"Your name\""
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:53
@@ -4230,26 +4494,4 @@ msgstr ""
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr ""
-
-#~ msgid ""
-#~ "LTI courses are only accesible via "
-#~ "the the LMS platform such as "
-#~ "Moodle or OpenEdx"
-#~ msgstr ""
-
-#~ msgid "Id"
-#~ msgstr ""
-
-#~ msgid "\"Search course\""
-#~ msgstr ""
-
-#~ msgid "Preview"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Code template tool to setup templates"
-#~ " that students can see to start "
-#~ "coding. Only works for multilang and "
-#~ "HDL tasks."
-#~ msgstr ""
 

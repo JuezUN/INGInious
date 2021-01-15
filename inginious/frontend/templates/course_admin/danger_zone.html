@@ -53,7 +53,7 @@ $elif msg:
                         <input type="hidden" name="token" value="$thehash">
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="text" placeholder="course id" name="courseid" class="form-control">
+                                <input type="text" placeholder=$:_('"course id"') name="courseid" class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <button type="submit" name="wipeall" class="btn btn-block btn-warning"><i class="fa fa-archive"></i> $:_("Archive course data")</button>
@@ -138,7 +138,7 @@ $elif msg:
                         <input type="hidden" name="token" value="$thehash">
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="text" placeholder="course id" name="courseid" class="form-control">
+                                <input type="text" placeholder=$:_('"course id"') name="courseid" class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <button type="button" data-toggle="modal" data-target="#delete_modal" class="btn btn-block btn-danger">
