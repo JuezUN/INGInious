@@ -41,9 +41,7 @@ function addCodePreviewPair() {
     <div class="row" id="code-preview-${language}-row">
         <div class="form-group col-xs-12">
             <div class="col-xs-4">
-                <select class="form-control" readonly>
-                    <option selected>${getLanguageName(language)}</option>
-                </select>
+                <input class="form-control" value="${getLanguageName(language)}" readonly>
             </div>
             <div class="col-xs-4">
                 <input type=text class="form-control" id="code_preview_pairs_${language}" name="code_preview_pairs[${language}]" value="${file}" readonly />
