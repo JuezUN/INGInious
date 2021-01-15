@@ -121,6 +121,7 @@ class DockerInterface(object):  # pragma: no cover
             mem_limit=str(mem_limit) + "M",
             memswap_limit=str(mem_limit) + "M",
             mem_swappiness=0,
+            cpu_quota=100000,
             oom_kill_disable=True,
             network_mode=('none' if not network_grading else ('container:' + parent_container_id)),
             volumes={

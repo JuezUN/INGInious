@@ -1,0 +1,35 @@
+.mr-1 {
+  margin-right: 15px;
+}
+
+.mr-2 {
+  margin-right: 30px;
+}
+
+.ml-1 {
+  margin-left: 15px;
+}
+
+.px-6 {
+  padding-right: 5rem;
+  padding-left: 5rem;
+}
+
+.py-1 {
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.py-2 {
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+input[type=checkbox] {
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+}

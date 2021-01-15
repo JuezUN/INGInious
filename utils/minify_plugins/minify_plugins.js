@@ -12,6 +12,10 @@ const _GRADER_GENERATOR_PLUGIN_PATH = `${_BASE_PATH}/grader_generator/static`;
 const _CODE_PREVIEW_PLUGIN_PATH = `${_BASE_PATH}/code_preview/static`;
 const _ANALYTICS_PLUGIN_PATH = `${_BASE_PATH}/analytics/static`;
 const _PLAGIARISM_PLUGIN_PATH = `${_BASE_PATH}/plagiarism/static`;
+const _MANUAL_SCORING_PATH = `${_BASE_PATH}/manual_scoring/static`;
+const _TASK_EDITORIAL_PATH = `${_BASE_PATH}/task_editorial/static`;
+const _CONTACT_PAGE_PLUGIN_PATH = `${_BASE_PATH}/contact_page/static`;
+const _MANUAL_SCORING_PATH = `${_BASE_PATH}/manual_scoring/static`;
 
 /**
  * Read file synchronously.
@@ -247,6 +251,68 @@ function minifyPlagiarismPlugin() {
     minifyCssFiles(cssFiles, cssFilesPath, "plagiarism");
 }
 
+function minifyManualScoringPlugin() {
+    const cssFilesPath = _MANUAL_SCORING_PATH + "/css/";
+    const jsFilesPath = _MANUAL_SCORING_PATH + "/js/";
+
+    const commonJsFiles = ["manual_scoring_constants", "code_area", "message_box", "rubric"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+    const manualScoringJsFiles = ["manual_scoring_main"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+    const feedbackJsFiles = ["feedback_main"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+
+    const courseTaskListJsFiles = ["message_box", "task_list_main"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+
+    const cssFiles = ["manual_scoring"].map((name) => {
+        return getCssFilePath(cssFilesPath, name);
+    });
+
+    console.log("Minify 'manual scoring' static files.");
+
+    minifyJSFiles(commonJsFiles, jsFilesPath, "common_files");
+    minifyJSFiles(manualScoringJsFiles, jsFilesPath, "manual_scoring");
+    minifyJSFiles(feedbackJsFiles, jsFilesPath, "feedback");
+    minifyJSFiles(courseTaskListJsFiles, jsFilesPath, "course_task_list");
+    minifyCssFiles(cssFiles, cssFilesPath, "manual_scoring");
+}
+
+function minifyTaskEditorialPlugin() {
+    const jsFilesPath = _TASK_EDITORIAL_PATH + "/";
+
+    const jsFiles = ["task_editorial", "task_editorial_preview"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+
+    console.log("Minify 'task_editorial' static files.");
+
+    minifyJSFiles(jsFiles, jsFilesPath, "task_editorial");
+}
+
+function minifyContactPage() {
+    const cssFilesPath = _CONTACT_PAGE_PLUGIN_PATH + "/css/";
+    const jsFilesPath = _CONTACT_PAGE_PLUGIN_PATH + "/js/";
+
+    const cssFiles = ["contact_page"].map((name) => {
+        return getCssFilePath(cssFilesPath, name);
+    });
+
+    const jsFiles = ["message_box", "contact_page_form", "contact_page_main"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+
+    console.log("Minify 'Contact page' static files.");
+
+    minifyCssFiles(cssFiles, cssFilesPath, "contact_page");
+    minifyJSFiles(jsFiles, jsFilesPath, "contact_page");
+
+}
+
 minifyUNCodePlugin();
 minifyUNTemplatePlugin();
 minifyStatisticsPlugin();
@@ -256,3 +322,6 @@ minifyGraderGeneratorPlugin();
 minifyCodePreviewPlugin();
 minifyAnalyticsPlugin();
 minifyPlagiarismPlugin();
+minifyManualScoringPlugin();
+minifyTaskEditorialPlugin();
+minifyContactPage();

@@ -19,3 +19,7 @@ recursive-include inginious/frontend/plugins/register_students *
 recursive-include inginious/frontend/plugins/code_preview *
 recursive-include inginious/frontend/plugins/plagiarism *
 recursive-include inginious/frontend/plugins/analytics *
+recursive-include inginious/frontend/plugins/manual_scoring *
+recursive-include inginious/frontend/plugins/task_editorial *
+recursive-include inginious/frontend/plugins/contact_page *
+recursive-include inginious/frontend/plugins/manual_scoring *

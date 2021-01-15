@@ -1,7 +1,7 @@
 {
    "Grade 1:":[
       {
-         "Level before":"Does not apply."
+         "Code Clarity":"The code does not show any order. The variables, functions and classes do not have appropriate names. Comments are not being used appropriately. The concepts of the code are not properly abstracted."
       },
       {
          "Data structures":"No logic."
@@ -18,7 +18,7 @@
    ],
    "Grade 2:":[
       {
-         "Level before":"Does not contain ay item belonging to the level 1."
+         "Code Clarity":"The code shows a minimal order. A few variables, functions and classes have appropriate names. Sometimes comments are being used appropriately. It shows a minimal correct abstraction of the concepts of the code."
       },
       {
          "Data structures":"Has the right data structures, but they are not well implemented, bad used or they are not coherent."
@@ -35,7 +35,7 @@
    ],
    "Grade 3:":[
       {
-         "Level before":"Does not contain any item from the level 2."
+         "Code Clarity":"The code shows some notion of order. Some variables, functions, and classes have appropriate names. Comments are being used appropriately. The concepts of the code are properly abstracted in some parts of the code."
       },
       {
          "Data structures":"The right structures need to solve the problem exist and are well implemented."
@@ -52,7 +52,7 @@
    ],
    "Grade 4:":[
       {
-         "Level before":"Does not apply"
+         "Code Clarity":"The code is ordered. Variables, functions, and classes mostly have appropriate names. Comments are used appropriately. A correct abstraction of the concepts is made in most of the code."
       },
       {
          "Data structures":"Has problems with the definition of the data types, conditionals or number of cycles."
@@ -69,7 +69,7 @@
    ],
    "Grade 5:":[
       {
-         "Level before":"Does not apply."
+         "Code Clarity":"The code is ordered. Variables, functions, and classes have appropriate names. Comments are used appropriately. A correct abstraction of the concepts is made throughout the code."
       },
       {
          "Data structures":"Does not have any problem with data type, conditionals, cycles, etc."

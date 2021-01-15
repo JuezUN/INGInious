@@ -10,6 +10,9 @@ import web
 import inginious
 import json
 
+from collections import OrderedDict
+
+
 class TemplateHelper(object):
     """ Class accessible from templates that calls function defined in the Python part of the code. """
 
@@ -18,13 +21,17 @@ class TemplateHelper(object):
     # templates are rendered
     _WEB_CTX_KEY = "inginious_tpl_helper"
 
-    def __init__(self, plugin_manager, user_manager, default_template_dir, default_layout, default_layout_lti, use_minified=True):
+    def __init__(self, plugin_manager, user_manager, default_template_dir, default_layout, default_layout_lti,
+                 use_minified=True):
         """
         Init the Template Helper
         :param plugin_manager: an instance of a PluginManager
-        :param user_manager: an instance of UserManager. Can be None; in this case, LTI layout detection will never be used.
-        :param default_template_dir: the path to the template dir. If it is not absolute, it will be taken from the root of the inginious package.
-        :param default_layout: the path to the layout. If it is not absolute, it will be taken from the root of the inginious package.
+        :param user_manager: an instance of UserManager. Can be None; in this case, LTI layout detection will never
+                             be used.
+        :param default_template_dir: the path to the template dir. If it is not absolute, it will be taken from the
+                                     root of the inginious package.
+        :param default_layout: the path to the layout. If it is not absolute, it will be taken from the root of the
+                               inginious package.
         :param default_layout_lti: same but for the lti layout
         :param use_minified: weither to use minified js/css or not. Use True in production, False in dev envs.
         """
@@ -43,17 +50,19 @@ class TemplateHelper(object):
                                                                                            **kwargs)),
                               "superadmin_options": (
                                   lambda **kwargs: self._generic_hook('superadmin_options', **kwargs)),
+                              "uncode_navbar_options": (
+                                  lambda **kwargs: self._generic_hook('uncode_navbar_options', **kwargs))
                               }
         self._plugin_manager = plugin_manager
         self._template_dir = default_template_dir
-        self._user_manager = user_manager # can be None!
+        self._user_manager = user_manager  # can be None!
         self._layout = default_layout
         self._layout_lti = default_layout_lti
 
         self._template_globals = {}
 
         self._default_renderer = self.get_custom_renderer(default_template_dir)
-        self._default_renderer_lti = self.get_custom_renderer(default_template_dir, layout = self._layout_lti)
+        self._default_renderer_lti = self.get_custom_renderer(default_template_dir, layout=self._layout_lti)
         self._default_renderer_nolayout = self.get_custom_renderer(default_template_dir, layout=False)
 
         self.add_to_template_globals("include", self._default_renderer_nolayout)
@@ -83,9 +92,11 @@ class TemplateHelper(object):
     def get_custom_renderer(self, dir_path, layout=True):
         """
         Create a template renderer on templates in the directory specified, and returns it.
-        :param dir_path: the path to the template dir. If it is not absolute, it will be taken from the root of the inginious package.
-        :param layout: can either be True (use the base layout of the running app), False (use no layout at all), or the path to the layout to use.
-                       If this path is relative, it is taken from the INGInious package root.
+        :param dir_path: the path to the template dir. If it is not absolute, it will be taken from the root of the
+                         inginious package.
+        :param layout: can either be True (use the base layout of the running app), False (use no layout at all),
+                       or the path to the layout to use. If this path is relative, it is taken from the
+                       INGInious package root.
         """
 
         # if dir_path/base is a absolute path, os.path.join(something, an_absolute_path) returns an_absolute_path.
@@ -111,11 +122,11 @@ class TemplateHelper(object):
 
     def add_javascript(self, link, position="footer"):
         """ Add a javascript file to load. Position can either be "header" or "footer" """
-        self._get_ctx()["javascript"][position].append(link)
+        self._get_ctx()["javascript"][position][link] = None
 
     def add_css(self, link):
         """ Add a css file to load """
-        self._get_ctx()["css"].append(link)
+        self._get_ctx()["css"][link] = None
 
     def add_other(self, name, func):
         """ Add another callback to the template helper """
@@ -128,19 +139,24 @@ class TemplateHelper(object):
 
         # Load javascript files from plugins
         if position == "header":
-            entries = [entry for entry in self._plugin_manager.call_hook("javascript_header") if entry is not None]
+            entries = list(
+                OrderedDict((entry, None) for entry in self._plugin_manager.call_hook("javascript_header") if
+                            entry is not None).keys())
         else:
-            entries = [entry for entry in self._plugin_manager.call_hook("javascript_footer") if entry is not None]
+            entries = list(
+                OrderedDict((entry, None) for entry in self._plugin_manager.call_hook("javascript_footer") if
+                            entry is not None).keys())
         # Load javascript for the current page
-        entries += self._get_ctx()["javascript"][position]
+        entries += list(self._get_ctx()["javascript"][position].keys())
         entries = ["<script src='" + entry + "' type='text/javascript' charset='utf-8'></script>" for entry in entries]
         return "\n".join(entries)
 
     def _css_helper(self):
         """ Add CSS links for the current page and for the plugins """
-        entries = [entry for entry in self._plugin_manager.call_hook("css") if entry is not None]
+        entries = list(
+            OrderedDict((entry, None) for entry in self._plugin_manager.call_hook("css") if entry is not None).keys())
         # Load javascript for the current page
-        entries += self._get_ctx()["css"]
+        entries += list(self._get_ctx()["css"].keys())
         entries = ["<link href='" + entry + "' rel='stylesheet'>" for entry in entries]
         return "\n".join(entries)
 
@@ -148,8 +164,8 @@ class TemplateHelper(object):
         """ Get web.ctx object for the Template helper """
         if self._WEB_CTX_KEY not in web.ctx:
             web.ctx[self._WEB_CTX_KEY] = {
-                "javascript": {"footer": [], "header": []},
-                "css": []}
+                "javascript": {"footer": OrderedDict(), "header": OrderedDict()},
+                "css": OrderedDict()}
         return web.ctx.get(self._WEB_CTX_KEY)
 
     def _generic_hook(self, name, **kwargs):
@@ -158,7 +174,9 @@ class TemplateHelper(object):
         return "\n".join(entries)
 
     def _json_safe_dump(self, data):
-        """ Make a json dump of `data`, that can be used directly in a `<script>` tag. Available as json() inside templates """
+        """
+        Make a json dump of `data`, that can be used directly in a `<script>` tag. Available as json() inside templates
+        """
         return json.dumps(data).replace(u'<', u'\\u003c') \
             .replace(u'>', u'\\u003e') \
             .replace(u'&', u'\\u0026') \

@@ -1,7 +1,7 @@
 {
    "Grade 1:":[
       {
-         "items categoria anterior":"No Aplica."
+         "Claridad del código":"El código no muestra ningún orden. Las variables, funciones y clases no tienen nombres apropiados. No se hace un uso apropiado de los comentarios. No se hace una correcta abstracción de los conceptos del código."
       },
       {
          "estructuras de datos":"Sin lógica."
@@ -18,7 +18,7 @@
    ],
    "Grade 2:":[
       {
-         "items categoria anterior":"No contiene ningún item perteneciente al grado 1."
+         "Claridad del código":"El código muestra un orden mínimo. Son pocas las variables, funciones y clases que tienen nombres apropiados. En ocasiones se hace un uso apropiado de los comentarios. Muestra una mínima abstracción correcta de los conceptos del código."
       },
       {
          "estructuras de datos":"Tiene las estructuras de datos correctas pero estan mal implementadas, mal usadas o son incoherentes.\nIncluye otras estructuras de datos diferentes a las necesarias para resolver el problema. No interesa como las implemente o que esten bien implementadas."
@@ -35,7 +35,7 @@
    ],
    "Grade 3:":[
       {
-         "items categoria anterior":"No contiene ningún item del grado 2."
+         "Claridad del código":"El código muestra cierta noción de orden. Algunas variables, funciones y clases presentan nombres apropiados. Se hace uso apropiado de los comentarios.  Muestra una abstracción correcta de los conceptos en algunas partes del código."
       },
       {
          "estructuras de datos":"Las estructuras necesarias para solucionar el problema existen y estan bien implementadas."
@@ -52,7 +52,7 @@
    ],
    "Grade 4:":[
       {
-         "items categoria anterior":"No Aplica."
+         "Claridad del código":"El código está ordenado. Las variables, funciones y clases presentan en su mayoría nombres apropiados. Se hace uso apropiado de los comentarios.  Se hace una correcta abstracción de los conceptos en la mayor parte del código."
       },
       {
          "estructuras de datos":"Presenta problemas en la definición de tipo de datos, condicionales. Presenta mas iteraciones de las necesarias."
@@ -69,7 +69,7 @@
    ],
    "Grade 5:":[
       {
-         "items categoria anterior":"No Aplica."
+         "Claridad del código":"El código está ordenado. Las variables, funciones y clases presentan nombres apropiados. Se hace un uso apropiado de los comentarios.  Se hace una correcta abstracción de los conceptos en todo el código."
       },
       {
          "estructuras de datos":"No presenta ningún problema con la definición de tipo de datos, condicionales. Las iteraciones son las necesarias."

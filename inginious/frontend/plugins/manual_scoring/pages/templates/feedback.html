@@ -1,0 +1,164 @@
+$def with (course, rubric, data, task)
+
+$#
+$# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
+$# more information about the licensing of this file.
+$#
+
+$var title: $:course.get_name(user_manager.session_language()) - Feedback
+$var Column: $:template_helper.call('course_menu',course=course,template_helper=template_helper)
+
+$def NavbarF():
+    <ol class="nav navbar-nav nav-breadcrumb">
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+        <li><a href="$get_homepath()/feedback_list/$course.get_id()">$:_("Feedback List")<span class="sr-only"></span></a></li>
+        <li class="active"><a href="#"><i class="fa fa-comment" aria-hidden="true"></i>
+            $:_("Feedback")<span class="sr-only">(current)</span></a></li>
+    </ol>
+
+$var Navbar: $:NavbarF()
+
+<h1 class="py-1">
+    $:_("Feedback for:")
+    $if data['task_name'] == "":
+        $task.get_id()
+    $else:
+        $data['task_name']
+</h1>
+
+<!-- Code view -->
+<section class="py-1">
+    <div class="py-1">
+    <h2 id="taskName" class="py-1" style="cursor: pointer">
+        $if data['task_name'] == "":
+            $task.get_id()
+        $else:
+            $data['task_name']
+        <i class="fa fa-sort-desc" aria-hidden="true"></i>
+    </h2>
+        <div id="taskDescription" hidden>
+            $:task.get_context(user_manager.session_language())
+        </div>
+    </div>
+
+    <div class="DivToScroll DivWithScroll" id="notebookHolder" hidden></div>
+    <label for="codemirrorTextArea"></label>
+    <div class="box" hidden>
+        <textarea class="single " id="codemirrorTextArea" rows="4" cols="10" data-language="$data['language']">$data['problem']</textarea>
+    </div>
+    <div id="taskAlert" class="py-1"></div>
+</section>
+
+<!-- Information -->
+<section>
+    <h3 class="py-1">$:_("Information")</h3>
+    <table class="table table-bordered">
+        <tr>
+            <td><b>$:_("Language")</b></td>
+            <td>$data['language']</td>
+            <td><b>$:_("Summary")</b></td>
+            <td>$data['summary']</td>
+        </tr>
+        <tr>
+            <td><b>$_("Score")</b></td>
+            <td>$data['score']</td>
+            <td><b>$_("Manual grade")</b></td>
+            <td id="grade" data-grade="$data['grade']"></td>
+        </tr>
+    </table>
+</section>
+
+<!-- Comments -->
+<section class="py-1">
+    <h3 class="py-1">$:_("Comments")</h3>
+    <div class="DivToScroll DivWithScroll">$:data['comment']</div>
+</section>
+
+<!-- Rubric  -->
+<section>
+    <div class="row py-1">
+        <div class="col-lg-3">
+            <h3><strong>$:_("Rubric")</strong></h3>
+        </div>
+        <div class="col-lg-offset-9">
+            <h3>$:_("Manual grade: ")<strong id="output">$data['grade']</strong></h3>
+        </div>
+    </div>
+    <div>
+        <table class="table sorted_table table-bordered">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        $for header in rubric.keys():
+                        <th>$header</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    $ first_level = rubric[list(rubric.keys())[0]]
+
+                    $for category_index in range(len(first_level)):
+                    $ category_name = list(first_level[category_index])[0]
+                        <tr>
+                            <th>$category_name</th>
+                            $ col = 0
+                            $for level_key in rubric:
+                            $ category_content = rubric[level_key][category_index][category_name]
+                            $ category_content = "" if category_content is None else category_content
+
+                            $ category_content_lines = category_content.split("\n")
+                            <td id="$category_index-$col">
+                                $ col = col + 1
+                                <ul>
+                                    $for line in category_content_lines:
+                                    <li>$line</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                    </tbody>
+        </table>
+    </div>
+    <div id="gradeEditSubmitStatus"></div>
+</section>
+
+
+<!-- JS -->
+<script type="text/javascript">
+    function getTextBoxTypeBasedOnResult() {
+        const result = "$data['result']";
+        let alert_type = "danger";
+        if (result === "timeout" || result === "overflow") {
+            alert_type = "warning";
+        } else if (result === "success") {
+            alert_type = "success";
+        }
+        return alert_type;
+    }
+
+    function getHtmlCodeForFeedback() {
+        let content = "$data['feedback_result_text']";
+        let parser = new DOMParser();
+        let doc = parser.parseFromString(content, 'text/html');
+
+        return doc.body.innerText;
+    }
+
+
+    const environmentType = function () {
+        return "$data['environment_type']"
+    }
+
+    const getURLSubmissionCode = function () {
+        return "$get_homepath()/course/$course.get_id()/$task.get_id()" + "?submissionid=" + "$data['submission_id']" + "&questionid=" + "$data['question_id']";
+    }
+
+    const rubricStatus = function () {
+        return "$data['rubric_status']"
+    }
+
+    const getCourseId = function (){
+        return "$course.get_id()";
+    }
+
+
+</script>

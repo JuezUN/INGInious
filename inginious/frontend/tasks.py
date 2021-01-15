@@ -59,7 +59,7 @@ class WebAppTask(Task):
         self._regenerate_input_random = bool(self._data.get("regenerate_input_random", False))
 
         # Tags
-        self._tags = Tag.create_tags_from_dict(self._data.get("tags", {})) 
+        self._tags = Tag.create_tags_from_dict(self._data.get("tags", {}))
 
     def get_grading_weight(self):
         """ Get the relative weight of this task in the grading """

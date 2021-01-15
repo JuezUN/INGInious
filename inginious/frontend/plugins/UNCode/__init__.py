@@ -1,10 +1,11 @@
 import os
-from inginious.frontend.plugins.utils import create_static_resource_page, read_file
-from inginious.frontend.plugins.UNCode.pages.data_policy import DataPolicyPage
-from inginious.frontend.plugins.UNCode.pages.api.used_grading_environments import UsedGradingEnvironments
-from inginious.frontend.plugins.UNCode.pages.api.used_subproblem_types import UsedSubproblemTypes
-from .constants import set_used_grading_environments, set_used_subproblem_types
 
+from inginious.frontend.plugins.utils import create_static_resource_page, read_file
+
+from .pages.data_policy import DataPolicyPage
+from .pages.api.used_grading_environments import UsedGradingEnvironments
+from .pages.api.used_subproblem_types import UsedSubproblemTypes
+from .constants import set_used_grading_environments, set_used_subproblem_types, about_us_option_hook
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
@@ -42,3 +43,5 @@ def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_hook("additional_body_html", lambda: str(renderer.task_files_upload_multiple_modal()))
     plugin_manager.add_hook("additional_body_html", lambda: str(renderer.task_result_legend_modal()))
     plugin_manager.add_hook("additional_body_html", lambda: str(renderer.delete_all_files_confirm_modal()))
+
+    plugin_manager.add_hook("uncode_navbar_options", lambda: str(about_us_option_hook()))

@@ -1,5 +1,10 @@
 $def with (languages)
 
+<br>
+<button class='btn btn-success' data-toggle='modal' data-target='#register_students_modal'>
+    <i class='fa fa-users'></i> $:_("Register students")
+</button>
+
 <div id="register_students_modal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -19,7 +24,7 @@ $def with (languages)
                                 <input type='file' id='students_file' class="form-control">
                             </div>
                             <div class="col-xs-6">
-                                <label class="control-label" for="students_file"><strong>$:_("Email language:"):</strong></label>
+                                <label class="control-label" for="students_file"><strong>$:_("Email language:")</strong></label>
                                 <select
                                     class="btn dropdown-toggle form-control"
                                     name="email_language"

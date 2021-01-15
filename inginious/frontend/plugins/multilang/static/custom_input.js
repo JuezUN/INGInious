@@ -65,22 +65,47 @@ function displayCustomInputResults(data, customTestOutputArea = null, placeholde
     }
 }
 
+function waitForCustomTest(customTestId) {
+    setTimeout(() => {
+        $.get("/api/custom_input_notebook/", {"custom_test_id": customTestId})
+            .done((data) => {
+                data = JSON.parse(data);
+                if ("status" in data && data["status"] === "waiting") {
+                    displayTaskLoadingAlert(data, null);
+                    waitForCustomTest(customTestId);
+                } else if ("status" in data && data["status"] === "done") {
+                    displayCustomInputResults(data);
+                    unblurTaskForm();
+                } else {
+                    displayCustomTestAlertError(data);
+                    unblurTaskForm();
+                }
+            })
+            .fail((data) => {
+                const response = JSON.parse(data.responseJSON || "{}");
+                if ("status" in response && response["status"] === "error" && "text" in response) {
+                    displayCustomTestAlertError(response);
+                } else {
+                    displayCustomTestAlertError({
+                        "text": "An error occurred while running the custom tests. Please try again or submitting " +
+                            "to know the results."
+                    });
+                }
+                unblurTaskForm();
+            });
+    }, 1000);
+}
+
 function apiTestNotebookRequest(inputId, taskForm) {
-    // POST REQUEST to run some specified tests from notebook.
+    // POST REQUEST to run custom tests for Notebooks.
     if (!taskFormValid()) return;
 
-    const runTestNotebookCallback = function (data) {
-        data = JSON.parse(data);
-        displayCustomInputResults(data);
-        unblurTaskForm();
-    };
-
-    displayTaskLoadingAlert({"text": "Running custom tests"}, null);
     $("html, body").animate({
         scrollTop: $("#task_alert").offset().top - 100
     }, 200);
     blurTaskForm();
     sendTestNotebookAnalytics();
+
     $.ajax({
         url: "/api/custom_input_notebook/",
         method: "POST",
@@ -88,8 +113,27 @@ function apiTestNotebookRequest(inputId, taskForm) {
         data: taskForm,
         processData: false,
         contentType: false,
-        success: runTestNotebookCallback,
-        error: function (error) {
+        success: (data) => {
+            data = JSON.parse(data);
+            if ("status" in data && data["status"] === "error") {
+                displayCustomTestAlertError(data);
+                unblurTaskForm();
+            } else {
+                displayTaskLoadingAlert(data, null);
+                waitForCustomTest(data["custom_test_id"]);
+            }
+        },
+        error: (data) => {
+            const response = JSON.parse(data.responseJSON || "{}");
+            if ("status" in response && response["status"] === "error" && "text" in response) {
+                displayCustomTestAlertError(response);
+            } else {
+                displayCustomTestAlertError({
+                    "text": "An error occurred while running the custom tests. The tests likely took more time " +
+                        "than expect or check your session has not expired. Please try again or try submitting to " +
+                        "know the results."
+                });
+            }
             unblurTaskForm();
         }
     });

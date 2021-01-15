@@ -1,31 +1,35 @@
 jQuery(document).ready(function () {
 
-    let register_succeeded = false;
+    let registerSucceeded = false;
 
     function displayRegisterStudentsAlertError(data) {
-        let alert_element = $("#register_students_alert");
-        alert_element.prop("class", "alert alert-danger");
-        alert_element.text(data);
-        alert_element.prop("hidden", false);
+        const alertElement = $("#register_students_alert");
+        alertElement.prop("class", "alert alert-danger");
+        if (typeof data !== "string") {
+            alertElement.text("Something went wrong while registering the students. Please try again.");
+        } else {
+            alertElement.text(data);
+        }
+        alertElement.prop("hidden", false);
     }
 
-    function displayLoadingAlert(){
-        let alert_element = $("#register_students_alert");
-        alert_element.prop("class", "alert alert-info");
-        alert_element.text("Registering students...");
-        alert_element.prop("hidden", false);
+    function displayLoadingAlert() {
+        const alertElement = $("#register_students_alert");
+        alertElement.prop("class", "alert alert-info");
+        alertElement.text("Registering students...");
+        alertElement.prop("hidden", false);
     }
 
-    function preventModalToBeClosed(){
-        $('#register_students_modal').modal({backdrop: 'static', keyboard: false});
-        $('#register_students_modal button[data-dismiss=modal]').each(function(){
+    function preventModalToBeClosed() {
+        $("#register_students_modal").modal({backdrop: "static", keyboard: false});
+        $("#register_students_modal button[data-dismiss=modal]").each(function () {
             $(this).prop("disabled", true);
         });
     }
 
-    function makeModalClosable(){
-        $('#register_students_modal').modal({backdrop: '', keyboard: true});
-        $('#register_students_modal button[data-dismiss=modal]').each(function(){
+    function makeModalClosable() {
+        $("#register_students_modal").modal({backdrop: '', keyboard: true});
+        $("#register_students_modal button[data-dismiss=modal]").each(function () {
             $(this).prop("disabled", false);
         });
     }
@@ -35,48 +39,49 @@ jQuery(document).ready(function () {
         if ("status" in data && data["status"] === "error") {
             displayRegisterStudentsAlertError(data["text"]);
         } else if ("status" in data && data["status"] === "success") {
-            let alert_element = $("#register_students_alert");
-            register_succeeded = true;
+            const alertElement = $("#register_students_alert");
+            registerSucceeded = true;
             $("#students_file").val('');
-            alert_element.prop("class", "alert alert-success");
-            alert_element.text(data["text"]);
-            alert_element.prop("hidden", false);
+            alertElement.prop("class", "alert alert-warning");
+            alertElement.text("");
+            alertElement.append($.parseHTML(data["text"]));
+            alertElement.prop("hidden", false);
             setTimeout(function () {
-                alert_element.prop("hidden", true);
-            }, 10000)
+                alertElement.prop("hidden", true);
+            }, 100000);
         } else {
             displayRegisterStudentsAlertError("An error occurred while registering. Please try again.");
         }
     }
 
-    function getCourseId(){
+    function getCourseId() {
         return window.location.href.split("/")[4]; // Get the course id using the current URL.
     }
 
     function submitRegisterStudents() {
         $("form#upload_students_file").submit(function (e) {
             e.preventDefault();
-            let file = $("#students_file").prop('files')[0];
-            let language = $("#email_language").val();
-            const file_extensions = /(\.csv)$/i;
+            const file = $("#students_file").prop("files")[0];
+            const language = $("#email_language").val();
+            const allowedFileExtensions = /(\.csv)$/i;
             if (file === undefined) {
                 displayRegisterStudentsAlertError("Please select a file before submitting it.");
-            } else if (!file_extensions.exec(file.name)) {
+            } else if (!allowedFileExtensions.exec(file.name)) {
                 displayRegisterStudentsAlertError("The inserted file should be a .csv file.");
             } else {
-                let formData = new FormData();
+                const formData = new FormData();
                 formData.append("file", file);
                 formData.append("course", getCourseId());
                 formData.append("language", language);
                 $.ajax({
-                    url: '/api/addStudents/',
+                    url: "/api/addStudents/",
                     method: "POST",
-                    dataType: 'json',
+                    dataType: "json",
                     data: formData,
                     mimeType: "multipart/form-data",
                     processData: false,
                     contentType: false,
-                    beforeSend: function() {
+                    beforeSend: function () {
                         $("#submit_register_students").prop("disabled", true);
                         preventModalToBeClosed();
                         displayLoadingAlert();
@@ -96,18 +101,10 @@ jQuery(document).ready(function () {
         });
     }
 
-    function appendRegisterStudentsButton() {
-        // Function intended for appending the button to open the modal in the 'students' page.
-        const html = "<br><button class='btn btn-success' data-toggle='modal' data-target='#register_students_modal'>" +
-            "<i class='fa fa-users'></i> Register students</button>";
-        let tab_students = $('#tab_students');
-        tab_students.append(html);
-    }
-
-    function closeModal(){
+    function closeModal() {
         // Function to describe the process to follow when the modal is closed.
-        $('#register_students_modal').on('hidden.bs.modal', function () {
-            if(register_succeeded){
+        $("#register_students_modal").on("hidden.bs.modal", function () {
+            if (registerSucceeded) {
                 window.location.replace(window.location.href);
             } else {
                 $("#students_file").val('');
@@ -117,6 +114,5 @@ jQuery(document).ready(function () {
     }
 
     closeModal();
-    appendRegisterStudentsButton();
     submitRegisterStudents();
 });

@@ -1,0 +1,142 @@
+$def with (course, task, is_task_open, all_languages, task_tutorial_description, task_solution_code, task_solution_code_language, task_solution_code_notebook, task_environment)
+
+
+    $if not (task_tutorial_description is None and (task_solution_code is None or task_solution_code_notebook is None)):
+
+        <h3>$:_("Editorial")</h3>
+
+        <div class="tab-pane fade in active" id="tutorial_tab">
+        <div class="list-group">
+            $if task_tutorial_description is not None:
+                <a class="list-group-item list-group-item-info
+                    $if is_task_open:
+                        disabled
+                    " data-toggle="modal"
+                    data-target="#task_tutorial_modal"
+                    style="cursor:pointer;"
+                    $if is_task_open:
+                        title=$:_('"Task tutorial not available until the task deadline is over"')
+                    >
+                    <i class="fa fa-graduation-cap fa-fw"></i>&nbsp;
+                        $:_("Task tutorial")
+
+                </a>
+            $if task_environment in {"multiple_languages" , "Data Science" , "HDL"}:
+                $if task_solution_code is not None:
+                    <a class="list-group-item list-group-item-info
+                        $if is_task_open:
+                            disabled
+                        " data-toggle="modal"
+                        data-target="#task_solution_modal"
+                        style="cursor:pointer;"
+                        $if is_task_open:
+                            title=$:_('"Task solution not available until the task deadline is over"')
+                        >
+                        <i class="fa fa-graduation-cap fa-fw"></i>&nbsp;
+                            $:_("Task solution")
+                    </a>
+            $elif task_environment in {"Notebook"}:
+                $if task_solution_code_notebook is not None:
+                    <a class="list-group-item list-group-item-info
+                        $if is_task_open:
+                            disabled
+                        " data-toggle="modal"
+                        data-target="#task_solution_notebook_modal"
+                        style="cursor:pointer;"
+                        $if is_task_open:
+                            title=$:_('"Task solution not available until the task deadline is over"')
+                        >
+                        <i class="fa fa-graduation-cap fa-fw"></i>&nbsp;
+                            $:_("Task solution")
+                    </a>
+        </div>
+    </div>
+
+$if not is_task_open:
+    <div id="task_tutorial_modal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>$:_("Task tutorial")</h2>
+                </div>
+                <div class="modal-body">
+                    $:task_tutorial_description
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    $if task_environment in {"multiple_languages" , "Data Science" , "HDL"}:
+        <div id="task_solution_modal" class="modal fade">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>$:_("Task solution")</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row form-group">
+                            <div class="col-sm-4">
+                                <label>
+                                    $:_("Solution language"):
+                                    $if task_solution_code_language is None:
+                                        $:_("No language")
+                                    $else:
+                                        $all_languages[task_solution_code_language]
+                                </label>
+                            </div>
+                        </div>
+                        <div id="task_solution_container" class="box" hidden>
+                            <textarea id="task_solution_code" class="form-control single" name="task_solution_code" style="resize:none" value="$:task_solution_code"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    $elif task_environment in {"Notebook"}:
+        <div id="task_solution_notebook_modal" class="modal fade">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>$:_("Task solution")</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row form-group">
+                            <div class="col-sm-2">
+                                <label>
+                                    $:_("Solution notebook"):
+                                </label>
+                            </div>
+                            <div id="solution_notebook" class="col-sm-10">
+                                <label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+<script type="text/javascript">
+
+    function getSolutionLanguage(){
+        return "$task_solution_code_language";
+    }
+
+    function getNotebookName(){
+        return "$task_solution_code_notebook";
+    }
+
+    function getCourseId(){
+        return "$course.get_id()";
+    }
+
+    function getTaskId(){
+        return "$task.get_id()";
+    }
+
+</script>
