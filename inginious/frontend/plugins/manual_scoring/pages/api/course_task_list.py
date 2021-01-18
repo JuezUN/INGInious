@@ -20,30 +20,31 @@ class CourseTaskListPage(INGIniousAdminPage):
     def GET_AUTH(self, courseid):  # pylint: disable=arguments-differ
         """ GET request """
         course, _ = self.get_course_and_check_rights(courseid)
-        return self.page(course)
+        return self.render_page(course)
 
     def POST_AUTH(self, courseid):  # pylint: disable=arguments-differ
         """ POST request """
         course, _ = self.get_course_and_check_rights(courseid)
 
-        return self.page(course)
+        return self.render_page(course)
 
-    def submission_url_generator(self, taskid):
-        """ Generates a submission url """
-        return "?format=taskid%2Fusername&tasks=" + taskid
-
-    def page(self, course):
+    def render_page(self, course):
         """ Get all data and display the page """
+        num_students = len(self.user_manager.get_course_registered_users(course, False))
+        data = self.get_task_information(course)
+
+        return self.template_helper.get_custom_renderer(base_renderer_path) \
+            .task_list(course, data, num_students)
+
+    def get_tasks_and_its_num_of_attempted_and_succeeded(self, course):
+        course_id = course.get_id()
         student_list = self.user_manager.get_course_registered_users(course, False)
-
-        # Database query
-
         data = list(self.database.user_tasks.aggregate(
             [
                 {
                     "$match":
                         {
-                            "courseid": course.get_id(),
+                            "courseid": course_id,
                             "username": {"$in": student_list}
                         }
                 },
@@ -51,42 +52,27 @@ class CourseTaskListPage(INGIniousAdminPage):
                     "$group":
                         {
                             "_id": "$taskid",
-                            "viewed": {"$sum": 1},
                             "attempted": {"$sum": {"$cond": [{"$ne": ["$tried", 0]}, 1, 0]}},
-                            "attempts": {"$sum": "$tried"},
                             "succeeded": {"$sum": {"$cond": ["$succeeded", 1, 0]}}
 
                         }
                 }
             ]))
-        # Number of students in the course
-        num_students = len(student_list)
-        # Load tasks and verify exceptions
-        files = self.task_factory.get_readable_tasks(course)
 
-        output = {}
-        errors = []
+        return data
 
-        for task in files:
-            try:
-                output[task] = course.get_task(task)
-            except Exception as inst:
-                errors.append({"taskid": task, "error": str(inst)})
-        tasks = OrderedDict(sorted(list(output.items()), key=lambda t: (t[1].get_order(), t[1].get_id())))
+    def get_task_information(self, course):
+        attempted_succeeded_per_task = self.get_tasks_and_its_num_of_attempted_and_succeeded(course)
+        tasks = self.get_task_in_order_dict(course)
+        task_dict = OrderedDict()
 
-        # Now load additional information
-        result = OrderedDict()
-        for taskid in tasks:
-            result[taskid] = {"name": tasks[taskid].get_name(self.user_manager.session_language()), "viewed": 0,
-                              "attempted": 0, "attempts": 0, "succeeded": 0,
-                              "url": self.submission_url_generator(taskid)}
+        for task in attempted_succeeded_per_task:
+            task_id = task["_id"]
+            task_dict[task_id] = {"name": tasks[task_id].get_name(self.user_manager.session_language()),
+                                  "attempted":  task["attempted"], "succeeded": task["succeeded"]}
 
-        for entry in data:
-            if entry["_id"] in result:
-                result[entry["_id"]]["viewed"] = entry["viewed"]
-                result[entry["_id"]]["attempted"] = entry["attempted"]
-                result[entry["_id"]]["attempts"] = entry["attempts"]
-                result[entry["_id"]]["succeeded"] = entry["succeeded"]
+        return task_dict
 
-        return self.template_helper.get_custom_renderer(base_renderer_path) \
-            .task_list(course, result, errors, num_students)
+    def get_task_in_order_dict(self, course):
+        task_array = self.task_factory.get_all_tasks(course)
+        return OrderedDict(sorted(list(task_array.items()), key=lambda t: (t[1].get_order(), t[1].get_id())))

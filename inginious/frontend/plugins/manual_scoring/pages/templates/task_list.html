@@ -1,4 +1,4 @@
-$def with (course,data,errors, num_students)
+$def with (course,data, num_students)
 
 $#
 $# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
@@ -52,18 +52,4 @@ $var Navbar: $:NavbarF()
     </div>
 </form>
 
-
-$if len(errors) != 0:
-    <h3>$:_("Errors while loading tasks")</h3>
-    <table class="table">
-        <tr>
-            <th>$:_("task id")</th>
-            <th>$:_("error")</th>
-        </tr>
-        $for task in errors:
-            <tr>
-                <td>$task['taskid']</td>
-                <td><pre>$task['error']</pre></td>
-            </tr>
-    </table>
 
