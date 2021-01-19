@@ -8,6 +8,8 @@
 import web
 
 from bson.objectid import ObjectId
+
+from inginious.frontend.parsable_text import ParsableText
 from inginious.frontend.plugins.manual_scoring.pages.api.rubric_wdo import RubricWdo
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from inginious.frontend.plugins.manual_scoring.pages.api import pages
@@ -17,11 +19,39 @@ base_renderer_path = pages.render_path
 base_static_folder = pages.base_static_folder
 
 
+def define_content_of_comment_and_grade(submission):
+    comment = ""
+    score = "No grade"
+
+    if 'custom' in submission and 'comment' in submission['custom']:
+        comment = submission['custom']['comment']
+
+    if 'custom' in submission and 'rubric_score' in submission['custom']:
+        score = submission['custom']['rubric_score']
+
+    return comment, score
+
+
+def get_submission_result_text(submission_input):
+    info = submission_input['text']
+    pars_text = ParsableText(info)
+    final_text = pars_text.parse()
+    final_text = final_text.replace('\n', '')
+    return final_text
+
+
 class RubricScoringPage(INGIniousAdminPage):
     """ Rubric scoring page to manual scoring """
+
     def POST_AUTH(self, course_id, task_id, submission_id):
         """ POST request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
+
+        self.update_comment_and_grade(submission_id)
+
+        return self.render_page(course, task, submission_id)
+
+    def update_comment_and_grade(self, submission_id):
         data = web.input()
 
         if "grade" in data:
@@ -35,8 +65,6 @@ class RubricScoringPage(INGIniousAdminPage):
                 {"$set": {"custom.comment": data["comment"]}
                  })
 
-        return self.page(course, task, submission_id)
-
     def GET_AUTH(self, course_id, task_id, submission_id):
         """ Get request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
@@ -45,30 +73,15 @@ class RubricScoringPage(INGIniousAdminPage):
         self.template_helper.add_javascript("https://cdn.plot.ly/plotly-1.30.0.min.js")
         self.template_helper.add_javascript("https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js")
 
-        return self.page(course, task, submission_id)
+        return self.render_page(course, task, submission_id)
 
-    def page(self, course, task, submission_id):
+    def render_page(self, course, task, submission_id):
         """ Get all data and display the page """
-        # Get basic data
+        rubric_wdo = RubricWdo('inginious/frontend/plugins/manual_scoring/static/json/rubric.json')
         problem_id = task.get_problems()[0].get_id()
-
         submission = self.submission_manager.get_submission(submission_id, user_check=False)
         submission_input = self.submission_manager.get_input_from_submission(submission)
-        name = self.user_manager.get_user_realname(submission_input['username'][0])
-        # Manual scoring status
-        comment = ""
-
-        if 'custom' in submission and 'comment' in submission['custom']:
-            comment = submission['custom']['comment']
-
-        score = "No grade"
-        if 'custom' in submission and 'rubric_score' in submission['custom']:
-            score = submission['custom']['rubric_score']
-            
-        # Information about the code
-        info = submission_input['text']
-        aux_info = info.replace('\n\n.. raw:: html\n\n\t', '')
-        aux_info = aux_info.replace('\n', '')
+        comment, score = define_content_of_comment_and_grade(submission)
 
         data = {
             "url": 'manual_scoring',
@@ -77,18 +90,16 @@ class RubricScoringPage(INGIniousAdminPage):
             "language": submission_input['input'][problem_id + '/language'],
             "comment": comment,
             "score": submission_input['grade'],
-            "task_name":  course.get_task(submission_input['taskid']).get_name(self.user_manager.session_language()),
+            "task_name": course.get_task(submission_input['taskid']).get_name(self.user_manager.session_language()),
             "result": submission_input['result'],
-            "text": aux_info,
+            "feedback_result_text": get_submission_result_text(submission_input),
             "problem": submission_input['input'][problem_id],
             "username": submission_input['username'][0],
-            "name": name,
+            "name": self.user_manager.get_user_realname(submission_input['username'][0]),
             "env": task.get_environment(),
             "question_id": problem_id,
             "submission_id": submission_id
         }
-        # Rubric text content
-        rubric_wdo = RubricWdo('inginious/frontend/plugins/manual_scoring/static/json/rubric.json')
 
         return (
             self.template_helper.get_custom_renderer(base_renderer_path).rubric_scoring(

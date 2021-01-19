@@ -114,7 +114,7 @@ jQuery(document).ready(function () {
             "verilog": "verilog"
         };
         //Set code frame
-        if (environment() === "Notebook") {
+        if (environmentType() === "Notebook") {
             //Get notebook data
             $.ajax({
                 url: urlRequest(),

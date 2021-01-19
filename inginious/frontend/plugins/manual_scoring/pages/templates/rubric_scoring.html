@@ -149,7 +149,7 @@ $var Navbar: $:NavbarF()
     function loadFeedbackCode() {
 
         let result = "$data['result']";
-        let content = "$data['text']";
+        let content = "$data['feedback_result_text']";
         let parser = new DOMParser();
         let doc = parser.parseFromString(content,'text/html');
         let alert_type = "danger";
@@ -160,7 +160,7 @@ $var Navbar: $:NavbarF()
         document.getElementById('task_alert').innerHTML = getAlertCode(doc.body.innerText,alert_type,false);
     }
 
-    const environment = function (){
+    const environmentType = function (){
         return "$data['env']"
     }
 
