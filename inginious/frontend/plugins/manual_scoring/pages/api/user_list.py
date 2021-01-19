@@ -14,6 +14,14 @@ base_renderer_path = pages.render_path
 base_static_folder = pages.base_static_folder
 
 
+def create_student_dict(user_list):
+    data = OrderedDict()
+    for user in user_list:
+        data[user["username"][0]] = {"username": user["username"][0],
+                                     "realname": user["realname"], "grade": user["grade"]}
+    return data
+
+
 class UserListPage(INGIniousAdminPage):
     """ List users for a specific task """
 
@@ -25,16 +33,22 @@ class UserListPage(INGIniousAdminPage):
         self.template_helper.add_javascript("https://cdn.plot.ly/plotly-1.30.0.min.js")
         self.template_helper.add_javascript("https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js")
 
-        return self.page(course, task_id, task)
+        return self.render_page(course, task_id, task)
 
-    def page(self, course, task_id, task):
+    def render_page(self, course, task_id, task):
         """ Get all data and display the page """
-
+        task_name = course.get_task(task_id).get_name(self.user_manager.session_language())
+        user_list = self.get_user_list_and_its_best_score(course, task_id)
         url = 'manual_scoring'
+        data = create_student_dict(user_list)
 
-        # Database query
+        return (
+            self.template_helper.get_custom_renderer(base_renderer_path)
+                .user_list(course, data, task, task_name, url)
+        )
 
-        result = list(self.database.submissions.aggregate(
+    def get_user_list_and_its_best_score(self, course, task_id):
+        user_list = list(self.database.submissions.aggregate(
 
             [
                 {
@@ -69,16 +83,4 @@ class UserListPage(INGIniousAdminPage):
                 },
 
             ]))
-
-        # get task name
-        task_name = course.get_task(task_id).get_name(self.user_manager.session_language())
-
-        data = OrderedDict()
-        for entry in result:
-            data[entry["username"][0]] = {"username": entry["username"][0],
-                                          "realname": entry["realname"], "grade": entry["grade"]}
-
-        return (
-            self.template_helper.get_custom_renderer(base_renderer_path)
-            .user_list(course, data, task, task_name, url)
-        )
+        return user_list

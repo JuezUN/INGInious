@@ -25,9 +25,9 @@ $var Navbar: $:NavbarF()
 <h2>
     $:_("Rubric scoring for Task:")
     $if task_name == "":
-        "$task_name"
+        "$task.get_id()"
     $else:
-        "$course.get_id()"
+        "$task_name"
 </h2>
 <div class="row justify-conte py-2">
    <div class="col-md-9 col-md-offset-1">
