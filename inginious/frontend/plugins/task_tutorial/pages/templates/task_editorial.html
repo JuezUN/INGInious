@@ -1,0 +1,71 @@
+$def with (task_data, taskid)
+
+
+<div class="form-group">
+
+    <div id="tutorial_tab">
+        <div class="jumbotron">
+            <div class="form-group">
+                <h3>Task tutorial</h3>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <label class="control-label">$:_("Tutorial id")</label>
+                </div>
+                <div class="col-sm-7">
+                    <input class="form-control" id="tutorial_id" placeholder='$:_("Tutorial id")'>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <label class="control-label">
+                        $:_("Tutorial title")
+                    </label>
+                </div>
+                <div class="col-sm-9">
+                    <input class="form-control" placeholder='$:_("Tutorial title")'>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <label class="control-label">
+                        $:_("Tutorial description")
+                    </label>
+                </div>
+                <div class="col-sm-9">
+                    <textarea id="tutorial_description" class="code-editor form-control" name="tutorial_description" data-x-language="rst" data-x-lines="10"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9">
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-success" onclick="add_tutorial"
+                            data-toggle="modal"
+                            data-target="#tutorial_modal"
+                        >
+                        <i class="fa fa-plus">
+                        </i>
+                        $:_("Add new tutorial")
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <h3>Task solution</h3>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function get_ID(){
+        return "$taskid";
+    }
+
+    function add_tutorial(){
+        let x = $$("#tutorial_id").value
+        console.log(x);
+    }
+
+</script>

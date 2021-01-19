@@ -1,0 +1,123 @@
+$def with (course, tasks_list)
+
+$var title: $:course.get_name(user_manager.session_language()) - $:_("Editorial")
+
+$var Column: $:template_helper.call('course_admin_menu', course=course, current='editorial')
+
+<h3>$:_("Course editorials")</h3>
+
+<div class="form-group">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-toggle="tab" href="#tutorial_tab">$:_("Tasks tutorials")</a>
+        </li>
+        <li>
+            <a data-toggle="tab" href="#solution_tab">$:_("Tasks solutions")</a>
+        </li>
+    </ul>
+
+    <div class="tab-pane fade in active" id="tutorial_tab">
+        <div class="jumbotron">
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <label class="control-label">$:_("Tutorial id")</label>
+                </div>
+                <div class="col-sm-7">
+                    <input class="form-control" id="tutorial_id" placeholder='$:_("Tutorial id")'>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success" onclick="add_tutorial"
+                            data-toggle="modal"
+                            data-target="#tutorial_modal"
+                        >
+                        <i class="fa fa-plus">
+                        </i>
+                        $:_("Add new tutorial")
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="tab-pane fade in active" id="solution_tab">
+    </div>
+</div>
+
+<div id="tutorial_modal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-sm-9">
+                    <h3>Tasks tutorial</h3>
+                </div>
+                <div class="col-sm-3">
+                    <button class="close" data-dismiss="modal">x</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row form-group">
+                    <div class="col-sm-3">
+                       <label class="control-label">
+                           $:_("Tutorial title (optional)")
+                        </label>
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control" placeholder="">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-3">
+                        <label class="control-label">
+                            $:_("Tutorial description")
+                        </label>
+                    </div>
+                    <div class="col-sm-9">
+                        <textarea id="tutorial_description" class="code-editor form-control" name="tutorial_description" data-x-language="rst" data-x-lines="10"></textarea>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-3">
+                        <label>
+                            $:_("Tasks list")
+                        </label>
+                    </div>
+                    <div class="col-sm-3">
+                        <select multiple size="3" id="tasks_tutorial_select">
+                            $for task in tasks_list:
+                                <option>$tasks_list[task]["name"]</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>
+                            $:_("Problem")
+                        </label>
+                    </div>
+                    <div class="col-sm-3">
+                        <select>
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                        <button class="btn btn-success">
+                            $:_("Add")
+                        </button>
+                        <button class="btn btn-danger">
+                            $:_("Cancel")
+                        </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    for(int i = 0; i < $len(tasks_list); i++){
+        $$('#tasks_tutorial_select').append("<option>"+$len(tasks_list)+"</option>")
+    }
+
+</script>
