@@ -36,6 +36,18 @@ class CourseTaskListPage(INGIniousAdminPage):
         return self.template_helper.get_custom_renderer(base_renderer_path) \
             .task_list(course, data, num_students)
 
+    def get_task_information(self, course):
+        attempted_succeeded_per_task = self.get_tasks_and_its_num_of_attempted_and_succeeded(course)
+        tasks = self.get_task_in_order_dict(course)
+        task_dict = OrderedDict()
+
+        for task in attempted_succeeded_per_task:
+            task_id = task["_id"]
+            task_dict[task_id] = {"name": tasks[task_id].get_name(self.user_manager.session_language()),
+                                  "attempted": task["attempted"], "succeeded": task["succeeded"]}
+
+        return task_dict
+
     def get_tasks_and_its_num_of_attempted_and_succeeded(self, course):
         course_id = course.get_id()
         student_list = self.user_manager.get_course_registered_users(course, False)
@@ -60,18 +72,6 @@ class CourseTaskListPage(INGIniousAdminPage):
             ]))
 
         return data
-
-    def get_task_information(self, course):
-        attempted_succeeded_per_task = self.get_tasks_and_its_num_of_attempted_and_succeeded(course)
-        tasks = self.get_task_in_order_dict(course)
-        task_dict = OrderedDict()
-
-        for task in attempted_succeeded_per_task:
-            task_id = task["_id"]
-            task_dict[task_id] = {"name": tasks[task_id].get_name(self.user_manager.session_language()),
-                                  "attempted":  task["attempted"], "succeeded": task["succeeded"]}
-
-        return task_dict
 
     def get_task_in_order_dict(self, course):
         task_array = self.task_factory.get_all_tasks(course)

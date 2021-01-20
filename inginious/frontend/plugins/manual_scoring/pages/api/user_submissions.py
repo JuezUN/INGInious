@@ -14,6 +14,22 @@ base_renderer_path = pages.render_path
 base_static_folder = pages.base_static_folder
 
 
+def create_submissions_dict(submissions_list):
+    data = OrderedDict()
+    for submission in submissions_list:
+        data[submission["_id"]] = {
+            "_id": submission["_id"],
+            "date": submission["submitted_on"],
+            "grade": submission["grade"],
+            "summary_result": submission["custom"]["custom_summary_result"],
+        }
+        if "rubric_score" not in submission["custom"]:
+            data[submission["_id"]]["rubric_score"] = "not grade"
+        else:
+            data[submission["_id"]]["rubric_score"] = submission["custom"]["rubric_score"]
+    return data
+
+
 class UserSubmissionsPage(INGIniousAdminPage):
     """ List user's submissions respect a task """
 
@@ -21,20 +37,28 @@ class UserSubmissionsPage(INGIniousAdminPage):
         """ GET request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
 
-        return self.page(course, task_id, task, username, )
+        return self.render_page(course, task_id, task, username, )
 
-    def page(self, course, task_id, task, username):
+    def render_page(self, course, task_id, task, username):
         """ get submissions for user and display page """
-
         url = 'manual_scoring'
+        task_name = course.get_task(task_id).get_name(self.user_manager.session_language())
+        name = self.user_manager.get_user_realname(username)
+        result = self.get_list_of_submissions(course.get_id(), task_id, username)
+        data = create_submissions_dict(result)
 
-        # Database request
-        result = list(self.database.submissions.aggregate(
+        return (
+            self.template_helper.get_custom_renderer(base_renderer_path).user_submissions(
+                course, data, task, task_name, username, name, url)
+        )
+
+    def get_list_of_submissions(self, course_id, task_id, username):
+        data = list(self.database.submissions.aggregate(
             [
                 {
                     "$match":
                         {
-                            "courseid": course.get_id(),
+                            "courseid": course_id,
                             "taskid": task_id,
                             "username": username
 
@@ -55,13 +79,9 @@ class UserSubmissionsPage(INGIniousAdminPage):
 
                 {
                     "$project": {
-                        "taskid": 1,
-                        "result": 1,
                         "submitted_on": 1,
-                        "username": 1,
                         "custom": 1,
                         "grade": 1,
-                        "realname": 1
                     }
                 },
                 {
@@ -72,22 +92,4 @@ class UserSubmissionsPage(INGIniousAdminPage):
                 }
 
             ]))
-
-        data = OrderedDict()
-        task_name = course.get_task(task_id).get_name(self.user_manager.session_language())
-        name = self.user_manager.get_user_realname(username)
-        for entry in result:
-            data[entry["_id"]] = {"taskid": entry["taskid"], "result": entry["result"], "_id": entry["_id"],
-                                  "username": entry["username"], "date": entry["submitted_on"], "grade": entry["grade"],
-                                  "summary_result": entry["custom"]["custom_summary_result"],
-                                  "realname": entry["realname"]
-                                  }
-            if "rubric_score" not in entry["custom"]:
-                data[entry["_id"]]["rubric_score"] = "not grade"
-            else:
-                data[entry["_id"]]["rubric_score"] = entry["custom"]["rubric_score"]
-
-        return (
-            self.template_helper.get_custom_renderer(base_renderer_path).user_submissions(
-                course, data, task, task_name, username, name, url)
-        )
+        return data

@@ -43,6 +43,16 @@ def get_submission_result_text(submission_input):
 class RubricScoringPage(INGIniousAdminPage):
     """ Rubric scoring page to manual scoring """
 
+    def GET_AUTH(self, course_id, task_id, submission_id):
+        """ Get request """
+        course, task = self.get_course_and_check_rights(course_id, task_id)
+
+        self.template_helper.add_javascript("https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.6/papaparse.min.js")
+        self.template_helper.add_javascript("https://cdn.plot.ly/plotly-1.30.0.min.js")
+        self.template_helper.add_javascript("https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js")
+
+        return self.render_page(course, task, submission_id)
+
     def POST_AUTH(self, course_id, task_id, submission_id):
         """ POST request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
@@ -64,16 +74,6 @@ class RubricScoringPage(INGIniousAdminPage):
                 {"_id": ObjectId(submission_id)},
                 {"$set": {"custom.comment": data["comment"]}
                  })
-
-    def GET_AUTH(self, course_id, task_id, submission_id):
-        """ Get request """
-        course, task = self.get_course_and_check_rights(course_id, task_id)
-
-        self.template_helper.add_javascript("https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.6/papaparse.min.js")
-        self.template_helper.add_javascript("https://cdn.plot.ly/plotly-1.30.0.min.js")
-        self.template_helper.add_javascript("https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js")
-
-        return self.render_page(course, task, submission_id)
 
     def render_page(self, course, task, submission_id):
         """ Get all data and display the page """
