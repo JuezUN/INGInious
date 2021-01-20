@@ -122,16 +122,16 @@ class MatrixField {
 
 class MessageBox {
     constructor(divId, textContent, type, dismissible = true) {
-        this.divElement = $(`#${divId}`).get(0);
+        this.divElement = document.getElementById(divId);
         this.textContent = textContent;
         this.type = type;
         this.dismissible = dismissible;
-        this.code = this.generateHtmlCode();
+        this.generateHtmlCode();
         this.displayBoxMessage();
     }
 
     displayBoxMessage() {
-        this.divElement.append(this.code);
+        this.divElement.innerHTML += this.code;
         this.divElement.style.display = "block";
         if (this.dismissible) {
             this.doDisappearEffect();
@@ -140,29 +140,29 @@ class MessageBox {
 
     doDisappearEffect() {
         let opacity = 1;
+        const element = this.divElement;
         const timer = setInterval(function () {
             if (opacity <= 0.1) {
+                element.style.display = "none";
                 clearInterval(timer);
-                this.divElement.style.display = "none";
-
+                element.innerHTML = "";
             }
-            this.divElement.style.opacity = opacity;
-            this.divElement.style.filter = "alpha(opacity=" + opacity * 100 + ")";
+            element.style.opacity = opacity;
+            element.style.filter = "alpha(opacity=" + opacity * 100 + ")";
             opacity -= opacity * 0.05;
-        }, 50);
+        }, 100);
     }
 
     generateHtmlCode() {
-        let a = '<div class="alert fade in ';
+        let code = '<div class="alert fade in ';
         if (this.dismissible)
-            a += 'alert-dismissible ';
-        a += 'alert-' + this.type + '" role="alert">';
+            code += 'alert-dismissible ';
+        code += 'alert-' + this.type + '" role="alert">';
         if (this.dismissible)
-            a += '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
-        a += this.textContent;
-        a += '</div>';
-        a += "<br>";
-        this.code = a;
+            code += '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
+        code += this.textContent;
+        code += '</div>';
+        this.code = code;
     }
 
 }
@@ -193,7 +193,7 @@ function commentSubmit() {
     });
 }
 
-function save() {
+function save(rubric) {
     let contentInfo = "Submission graded and stored";
     let contentDanger = "Something went wrong";
     jQuery.ajax({
@@ -203,7 +203,7 @@ function save() {
         },
         method: "POST",
 
-        data: {"grade": score},
+        data: {"grade": rubric.score},
 
         error: function (request, status, error) {
             const message = new MessageBox("grade_edit_submit_status", contentDanger, "danger");
@@ -214,15 +214,14 @@ function save() {
 function loadFeedBack() {
     const feedbackContent = getHtmlCodeForFeedBack();
     const feedbackType = getTextBoxTypeBaseOnResult();
-    const feedback = new MessageBox("task_alert", feedbackContent, feedbackType, false);
-    feedback.displayBoxMessage()
+    new MessageBox("task_alert", feedbackContent, feedbackType, false);
 }
 
 class CodeField {
     constructor() {
         this.environmentType = environmentType();
         this.multilangCodeArea = $("#myTextCode")[0];
-        this.showMultiLangCodeArea();
+        this.displayCodeArea();
     }
 
     displayCodeArea() {
@@ -249,10 +248,11 @@ class CodeField {
     }
 
     showMultiLangCodeArea() {
+        $("#myTextCodeArea").show();
+
         const language = languages[this.multilangCodeArea.getAttribute("data-language")];
         const myCodeMirror = registerCodeEditor(this.multilangCodeArea, language, 20);
 
-        $("#myTextCodeArea").show();
         myCodeMirror.setOption("readOnly", "nocursor");
     }
 }
@@ -263,10 +263,19 @@ function addToggleBehaviorToProblemDescription() {
     });
 }
 
+function addSaveFunctionToSaveButton(rubric) {
+    $("#save_button").click(function () {
+        save(rubric);
+    })
+}
+
+
 jQuery(document).ready(function () {
-    new RubricScoring();
+    new CodeField();
+    const rubric = new RubricScoring();
     addToggleBehaviorToProblemDescription();
     loadFeedBack();
+    addSaveFunctionToSaveButton(rubric);
 
     window.save = save;
 });

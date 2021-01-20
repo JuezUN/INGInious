@@ -11,35 +11,34 @@ $var Column: $:template_helper.call('course_admin_menu',course=course,current='m
 $ is_admin = user_manager.has_admin_rights_on_course(course)
 
 $def NavbarF():
-<ol class="nav navbar-nav nav-breadcrumb">
-    <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
-    <li><a href="$get_homepath()/admin/$course.get_id()/manual_scoring"><i class="fa fa-table mr-1"></i>$:_("Rubric
-        Scoring")<span class="sr-only">(current)</span></a></li>
+    <ol class="nav navbar-nav nav-breadcrumb">
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()/manual_scoring"><i class="fa fa-table mr-1"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
     <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task.get_id()">$:_("Task")</a></li>
-    <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task.get_id()/user/$data['username']">$:_("Student")</a>
-    </li>
+        <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task.get_id()/user/$data['username']">$:_("Student")</a></li>
     <li class="active"><a href="#">$:_("Manual Scoring")<span class="sr-only">(current)</span></a></li>
-</ol>
+    </ol>
 $var Navbar: $:NavbarF()
+
 
 
 <h1 class="py-1">
     $:_("Rubric scoring for:")
     $if data['name'] == "":
-    $data['username']
+        $data['username']
     $else:
-    $data['name']
+        $data['name']
 </h1>
 <!-- Code view -->
-<section class="py-2">
+<section class="py-1">
     <div class="py-1">
-        <h2 id="info" class="py-1" style="cursor: pointer">
-            $if data['task_name'] == "":
+    <h2 id="info" class="py-1" style="cursor: pointer">
+        $if data['task_name'] == "":
             $task.get_id()
-            $else:
+        $else:
             $data['task_name']
-            <i class="fa fa-sort-desc" aria-hidden="true"></i>
-        </h2>
+        <i class="fa fa-sort-desc" aria-hidden="true"></i>
+    </h2>
         <div id="text-context" hidden>
             $:task.get_context(user_manager.session_language())
         </div>
@@ -48,10 +47,9 @@ $var Navbar: $:NavbarF()
     <div class="DivToScroll DivWithScroll" id="notebook-holder" hidden></div>
     <label for="myTextCode"></label>
     <div class="box" hidden id="myTextCodeArea">
-        <textarea class="single " id="myTextCode" rows="4" cols="10"
-                  data-language="$data['language']">$data['problem']</textarea>
+    <textarea class="single " id="myTextCode" rows="4" cols="10" data-language="$data['language']">$data['problem']</textarea>
     </div>
-    <div id="task_alert" class="py-2"></div>
+    <div id="task_alert" class="py-1"></div>
 </section>
 
 <!-- Information -->
@@ -76,44 +74,44 @@ $var Navbar: $:NavbarF()
 <!-- Rubric  -->
 <section>
     <div class="py-1">
-        <h4>$:_("Rubric Scoring")</h4>
+        <h4 class="my-1">$:_("Rubric Scoring")</h4>
         <p>$:_("Select the best description to grade the student's code")</p>
         <p>$:_("Click to select and double click to deselect")</p>
     </div>
     <div>
-        <table class="table sorted_table table-bordered">
-            <thead>
-            <tr>
-                <th></th>
-                $for header in rubric.keys():
-                <th>$header</th>
-            </tr>
-            </thead>
-            <tbody>
-            $ first_level = rubric[list(rubric.keys())[0]]
+    <table class="table sorted_table table-bordered">
+                <thead>
+                <tr>
+                    <th></th>
+                    $for header in rubric.keys():
+                    <th>$header</th>
+                </tr>
+                </thead>
+                <tbody>
+                $ first_level = rubric[list(rubric.keys())[0]]
 
-            $for category_index in range(len(first_level)):
-            $ category_name = list(first_level[category_index])[0]
-            <tr>
-                <th>$category_name</th>
-                $ col = 0
-                $for level_key in rubric:
-                $ category_content = rubric[level_key][category_index][category_name]
-                $ category_content = "" if category_content is None else category_content
+                $for category_index in range(len(first_level)):
+                $ category_name = list(first_level[category_index])[0]
+                <tr>
+                    <th>$category_name</th>
+                    $ col = 0
+                    $for level_key in rubric:
+                    $ category_content = rubric[level_key][category_index][category_name]
+                    $ category_content = "" if category_content is None else category_content
 
-                $ category_content_lines = category_content.split("\n")
-                <td id="$category_index-$col">
-                    $ col = col + 1
-                    <ul>
-                        $for line in category_content_lines:
-                        <li>$line</li>
-                    </ul>
-                </td>
-            </tr>
+                    $ category_content_lines = category_content.split("\n")
+                    <td id="$category_index-$col">
+                        $ col = col + 1
+                        <ul>
+                            $for line in category_content_lines:
+                            <li>$line</li>
+                        </ul>
+                    </td>
+                </tr>
 
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+    </table>
+        </div>
     <div>
         <strong><p id="output">Current Score: 0.0</p></strong>
     </div>
@@ -122,13 +120,13 @@ $var Navbar: $:NavbarF()
 <!-- Comments -->
 <section class="py-2">
     <form method="post">
-        <h4>$:_("Comments")</h4>
+        <h4 >$:_("Comments")</h4>
         <div class="py-1">
-            <label for="text_comment"></label>
-            <textarea class="form-control" id="text_comment" rows="8">$data['comment']</textarea>
-        </div>
+        <label for="text_comment"></label>
+        <textarea class="form-control" id="text_comment" rows="8">$data['comment']</textarea>
+            </div>
         <div>
-            <a class="btn btn-primary" id="save_button" onclick="save()"><i class="fa fa-save mr-1"></i>$:_("Save")</a>
+            <a class="btn btn-primary" id="save_button" ><i class="fa fa-save mr-1"></i>$:_("Save")</a>
         </div>
     </form>
 </section>
