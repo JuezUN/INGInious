@@ -48,7 +48,7 @@ function save(rubric) {
         },
         method: "POST",
 
-        data: {"grade": rubric.score},
+        data: {"grade": rubric.score.toFixed(1)},
 
         error: function (request, status, error) {
             const message = new MessageBox(responseFieldId, contentDanger, "danger");
