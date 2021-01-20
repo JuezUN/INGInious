@@ -1,77 +1,194 @@
-let score = 0.0;
-let matrix = [];
+const languages = {
+    "java7": "java",
+    "java8": "java",
+    "cpp": "cpp",
+    "cpp11": "cpp",
+    "c": "c",
+    "c11": "c",
+    "python3": "python",
+    "vhdl": "vhdl",
+    "verilog": "verilog"
+};
 
-//Add or delete the class
-function removeClass(id) {
-    document.getElementById(id).classList.remove("box1");
-}
+class RubricScoring {
+    constructor() {
+        this.score = 0.0;
+        this.matrix = [];
+        this.matrixLength = 5;
+        this.classMarkerId = "box1";
+        this.scoreTextId = "output";
+        this.formMatrixRespectRubric();
+        this.addListeners();
+    }
 
-function addClass(id) {
-    document.getElementById(id).classList.add("box1");
-}
+    removeMarkerClass(fieldId) {
+        document.getElementById(fieldId).classList.remove(this.classMarkerId);
+    }
 
+    addMarkerClass(fieldId) {
+        document.getElementById(fieldId).classList.add(this.classMarkerId);
+    }
 
-function removeSelectionOnRow(row) {
-    for (let i = 0; i < 5; i++) {
-        if (matrix[row][i].classList.contains("box1")) {
-            removeClass(`${row}-${i}`);
-            score -= (i + 1) * 0.2;
-            break;
+    isFieldSelected(matrixField) {
+        return this.matrix[matrixField.iIndex][matrixField.jIndex].classList.contains(this.classMarkerId);
+    }
+
+    removeSelectionOnRow(row) {
+        for (let i = 0; i < this.matrixLength; i++) {
+            let matrixField = new MatrixField(row, i);
+            if (this.isFieldSelected(matrixField)) {
+                this.removeMarkerClass(matrixField.fieldId);
+                this.updateScore(i, false);
+                break;
+            }
+        }
+    }
+
+    updateScoreText() {
+        document.getElementById(this.scoreTextId).innerHTML = "Current Score: " + this.score.toFixed(1);
+    }
+
+    addListeners() {
+        for (let i = 0; i < this.matrixLength; i++) {
+            for (let j = 0; j < this.matrixLength; j++) {
+                let matrixField = new MatrixField(i, j);
+                this.addSelectFunction(matrixField);
+                this.addDeselectFunction(matrixField);
+                this.changeCursorToDefaultWhenIsOut(matrixField);
+                this.changeCursorToPointerWhenIsOver(matrixField);
+            }
+        }
+    }
+
+    addSelectFunction(matrixField) {
+        const self = this;
+        this.matrix[matrixField.iIndex][matrixField.jIndex].addEventListener("click", function () {
+            self.removeSelectionOnRow(matrixField.iIndex);
+            self.addMarkerClass(matrixField.fieldId);
+            self.updateScore(matrixField.jIndex);
+        });
+    }
+
+    updateScore(colPosition, isAdd = true) {
+        if (isAdd) {
+            this.score += (colPosition + 1) * 0.2;
+        } else {
+            this.score -= (colPosition + 1) * 0.2;
+        }
+        this.updateScoreText();
+    }
+
+    addDeselectFunction(matrixField) {
+        const self = this;
+        this.matrix[matrixField.iIndex][matrixField.jIndex].addEventListener("dblclick", function () {
+            self.removeMarkerClass(matrixField.fieldId);
+            self.updateScore(matrixField.jIndex, false);
+        });
+    }
+
+    changeCursorToPointerWhenIsOver(matrixField) {
+        this.matrix[matrixField.iIndex][matrixField.jIndex].addEventListener("mouseover", function () {
+            document.body.style.cursor = "pointer";
+        });
+    }
+
+    changeCursorToDefaultWhenIsOut(matrixField) {
+        this.matrix[matrixField.iIndex][matrixField.jIndex].addEventListener("mouseout", function () {
+            document.body.style.cursor = "default";
+        });
+    }
+
+    formMatrixRespectRubric() {
+        for (let i = 0; i < this.matrixLength; i++) {
+            this.matrix[i] = [];
+            for (let j = 0; j < this.matrixLength; j++) {
+                let matrixField = new MatrixField(i, j);
+                this.matrix[i][j] = document.getElementById(matrixField.fieldId);
+            }
         }
     }
 }
 
-function updateScore() {
-    document.getElementById("output").innerHTML = "Current Score: " + score.toFixed(1);
+class MatrixField {
+    constructor(iIndex, jIndex) {
+        this.iIndex = iIndex;
+        this.jIndex = jIndex;
+    }
+
+    get fieldId() {
+        return `${this.iIndex}-${this.jIndex}`;
+    }
 }
 
-/* Save the grade and comments */
+class MessageBox {
+    constructor(divId, textContent, type, dismissible = true) {
+        this.divElement = $(`#${divId}`).get(0);
+        this.textContent = textContent;
+        this.type = type;
+        this.dismissible = dismissible;
+        this.code = this.generateHtmlCode();
+        this.displayBoxMessage();
+    }
 
-//Show an alert with save process result
-function displayTaskSubmitMessageRubric(content, type, dismissible) {
-    let code = getAlertCode(content, type, dismissible);
-    let element = document.getElementById("grade_edit_submit_status");
-    document.getElementById("grade_edit_submit_status").innerHTML = code;
-    element.style.display = "block";
-    if (dismissible) {
-        let op = 1;  // initial opacity
-        let timer = setInterval(function () {
-            if (op <= 0.1) {
+    displayBoxMessage() {
+        this.divElement.append(this.code);
+        this.divElement.style.display = "block";
+        if (this.dismissible) {
+            this.doDisappearEffect();
+        }
+    }
+
+    doDisappearEffect() {
+        let opacity = 1;
+        const timer = setInterval(function () {
+            if (opacity <= 0.1) {
                 clearInterval(timer);
-                element.style.display = "none";
+                this.divElement.style.display = "none";
 
             }
-            element.style.opacity = op;
-            element.style.filter = "alpha(opacity=" + op * 100 + ")";
-            op -= op * 0.05;
+            this.divElement.style.opacity = opacity;
+            this.divElement.style.filter = "alpha(opacity=" + opacity * 100 + ")";
+            opacity -= opacity * 0.05;
         }, 50);
-
     }
+
+    generateHtmlCode() {
+        let a = '<div class="alert fade in ';
+        if (this.dismissible)
+            a += 'alert-dismissible ';
+        a += 'alert-' + this.type + '" role="alert">';
+        if (this.dismissible)
+            a += '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
+        a += this.textContent;
+        a += '</div>';
+        a += "<br>";
+        this.code = a;
+    }
+
 }
 
 function commentSubmit() {
-    let txtComment = document.getElementById("text_comment");
-    let contentInfo = "Successfully saved";
-    let contentDanger = "Error at saving Comment, please try again."
-    let contentWarning = "Error at saving Comment, comment to long, max length of comment is 1000."
-    let maxTam = 1000;
+    const txtComment = document.getElementById("text_comment");
+    const contentInfo = "Successfully saved";
+    const contentDanger = "Error at saving Comment, please try again."
+    const contentWarning = "Error at saving Comment, comment to long, max length of comment is 1000."
+    const maxTam = 1000;
 
     if (txtComment.value.length > maxTam) {
-        displayTaskSubmitMessageRubric(contentWarning, "warning", true);
+        const message = new MessageBox("grade_edit_submit_status", contentWarning, "warning");
         return;
     }
-    // alert(txt_comment.value);
 
     jQuery.ajax({
         success: function (data) {
-            displayTaskSubmitMessageRubric(contentInfo, "info", true);
+            const message = new MessageBox("grade_edit_submit_status", contentInfo, "info");
         },
         method: "POST",
 
         data: {"comment": txtComment.value},
 
         error: function (request, status, error) {
-            displayTaskSubmitMessageRubric(contentDanger, "danger", true);
+            const message = new MessageBox("grade_edit_submit_status", contentDanger, "danger");
         }
     });
 }
@@ -82,105 +199,76 @@ function save() {
     jQuery.ajax({
         success: function (data) {
             commentSubmit();
-            displayTaskSubmitMessageRubric(contentInfo, "info", true);
+            const message = new MessageBox("grade_edit_submit_status", contentInfo, "info");
         },
         method: "POST",
 
         data: {"grade": score},
 
         error: function (request, status, error) {
-            displayTaskSubmitMessageRubric(contentDanger, "danger", true);
+            const message = new MessageBox("grade_edit_submit_status", contentDanger, "danger");
         }
     });
 }
 
-jQuery(document).ready(function () {
-    if (document.location.href.match(/submission/)) {
-        /*===========================================
-        *                Code frame
-        * Display the submission's code
-        * There are two types of code: multi language and Notebook
-        * ===========================================*/
-        //Dictionary of Languages for codemirror
-        const languages = {
-            "java7": "java",
-            "java8": "java",
-            "cpp": "cpp",
-            "cpp11": "cpp",
-            "c": "c",
-            "c11": "c",
-            "python3": "python",
-            "vhdl": "vhdl",
-            "verilog": "verilog"
-        };
-        //Set code frame
-        if (environmentType() === "Notebook") {
-            //Get notebook data
-            $.ajax({
-                url: urlRequest(),
-                method: "GET",
-                dataType: "json",
-                success: function (data) {
-                    render_notebook(data); //Use a external .js file, it's property of multilang plugin
-                }
-            });
-        } else {
-            //Case if it is code. use code Mirror
-            const textArea = $("#myTextCode")[0];
-            $("#myTextCodeArea").show();
-            const language = languages[textArea.getAttribute("data-language")];
-            const myCodeMirror = registerCodeEditor(textArea, language, 20);
-            myCodeMirror.setOption("readOnly", "nocursor");
-        }
+function loadFeedBack() {
+    const feedbackContent = getHtmlCodeForFeedBack();
+    const feedbackType = getTextBoxTypeBaseOnResult();
+    const feedback = new MessageBox("task_alert", feedbackContent, feedbackType, false);
+    feedback.displayBoxMessage()
+}
 
-
-        //Add click functionality for problem title. It "toggle" the problem description text
-        $("#info").click(function () {
-            $("#text-context").collapse("toggle");
-        });
-
-
-        /* =======================================================
-        *                     Rubric configuration
-        * This work by add and delete a class named box1 that change the background of the square inside oh table
-        * That class is used to identify the selected fields
-        * =========================================================*/
-        //Add listeners to squares
-        for (let i = 0; i < 5; i++) {
-            matrix[i] = [];
-            for (let j = 0; j < 5; j++) {
-                matrix[i][j] = document.getElementById(i + "-" + j);
-                //Add function
-                matrix[i][j].addEventListener("click", function () {
-                    removeSelectionOnRow(i);
-                    addClass(i + "-" + j);
-                    score += (j + 1) * 0.2;
-                    updateScore();
-                });
-                matrix[i][j].addEventListener("dblclick", function () {
-                    removeClass(i + "-" + j);
-                    score -= (j + 1) * 0.2;
-                    updateScore();
-                });
-                //Static, just change the cursor
-                matrix[i][j].addEventListener('mouseover', function () {
-                    document.body.style.cursor = "pointer";
-                });
-                matrix[i][j].addEventListener('mouseout', function () {
-                    document.body.style.cursor = "default";
-                });
-            }
-        }
-
-
-        window.save = save;
+class CodeField {
+    constructor() {
+        this.environmentType = environmentType();
+        this.multilangCodeArea = $("#myTextCode")[0];
+        this.showMultiLangCodeArea();
     }
 
-    /* =========================
-    *  Show the feedback cards about the submissions
-    * ========================== */
-    loadFeedbackCode();
+    displayCodeArea() {
+        if (this.isNotebook()) {
+            this.getNotebookCodeDataAndRender();
+        } else {
+            this.showMultiLangCodeArea()
+        }
+    }
 
+    isNotebook() {
+        return this.environmentType === "Notebook";
+    }
+
+    getNotebookCodeDataAndRender() {
+        $.ajax({
+            url: getUrlToGetCode(),
+            method: "GET",
+            dataType: "json",
+            success: function (data) {
+                render_notebook(data); //Use a external .js file, it's property of multilang plugin
+            }
+        });
+    }
+
+    showMultiLangCodeArea() {
+        const language = languages[this.multilangCodeArea.getAttribute("data-language")];
+        const myCodeMirror = registerCodeEditor(this.multilangCodeArea, language, 20);
+
+        $("#myTextCodeArea").show();
+        myCodeMirror.setOption("readOnly", "nocursor");
+    }
+}
+
+function addToggleBehaviorToProblemDescription() {
+    $("#info").click(function () {
+        $("#text-context").collapse("toggle");
+    });
+}
+
+jQuery(document).ready(function () {
+    new RubricScoring();
+    addToggleBehaviorToProblemDescription();
+    loadFeedBack();
+
+    window.save = save;
 });
 
 

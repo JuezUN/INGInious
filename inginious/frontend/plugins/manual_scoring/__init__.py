@@ -20,12 +20,11 @@ _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 def init(plugin_manager, _, __, plugin_config):
     """ Init the plugin """
     plugin_manager.add_page(r'/manual_scoring/static/(.*)', create_static_resource_page(_static_folder_path))
-    # Minified
-    use_minified = plugin_config.get("use_minified", True)
+
+    use_minified = plugin_config.get("use_minified", False)
 
     if use_minified:
         plugin_manager.add_hook("css", lambda: "/manual_scoring/static/css/rubric_scoring.min.css")
-        plugin_manager.add_hook("javascript_footer", lambda: "/manual_scoring/static/js/rubric_scoring.min.js")
     else:
         plugin_manager.add_hook("css", lambda: "/manual_scoring/static/css/rubric_scoring.css")
         plugin_manager.add_hook("javascript_footer", lambda: "/manual_scoring/static/js/rubric_scoring_init.js")
