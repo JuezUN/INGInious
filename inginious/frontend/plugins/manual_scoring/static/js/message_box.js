@@ -8,6 +8,18 @@ class MessageBox {
         this.displayBoxMessage();
     }
 
+    generateHtmlCode() {
+        let code = '<div class="alert fade in ';
+        if (this.dismissible)
+            code += 'alert-dismissible ';
+        code += 'alert-' + this.type + '" role="alert">';
+        if (this.dismissible)
+            code += '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
+        code += this.textContent;
+        code += '</div>';
+        this.code = code;
+    }
+
     displayBoxMessage() {
         this.divElement.innerHTML += this.code;
         this.divElement.style.display = "block";
@@ -31,16 +43,5 @@ class MessageBox {
         }, 100);
     }
 
-    generateHtmlCode() {
-        let code = '<div class="alert fade in ';
-        if (this.dismissible)
-            code += 'alert-dismissible ';
-        code += 'alert-' + this.type + '" role="alert">';
-        if (this.dismissible)
-            code += '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
-        code += this.textContent;
-        code += '</div>';
-        this.code = code;
-    }
 
 }

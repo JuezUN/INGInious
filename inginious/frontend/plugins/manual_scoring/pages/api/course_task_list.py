@@ -37,6 +37,7 @@ class CourseTaskListPage(INGIniousAdminPage):
             .task_list(course, data, num_students)
 
     def get_task_information(self, course):
+        """ cross the task data and return the result """
         attempted_succeeded_per_task = self.get_tasks_and_its_num_of_attempted_and_succeeded(course)
         tasks = self.get_task_in_order_dict(course)
         task_dict = OrderedDict()
@@ -49,6 +50,7 @@ class CourseTaskListPage(INGIniousAdminPage):
         return task_dict
 
     def get_tasks_and_its_num_of_attempted_and_succeeded(self, course):
+        """ do request to db to get the number of attempted and succeeded per task """
         course_id = course.get_id()
         student_list = self.user_manager.get_course_registered_users(course, False)
         data = list(self.database.user_tasks.aggregate(
@@ -74,5 +76,7 @@ class CourseTaskListPage(INGIniousAdminPage):
         return data
 
     def get_task_in_order_dict(self, course):
+        """ get all the tasks in a course.
+        it is necessary because no name is found on db """
         task_array = self.task_factory.get_all_tasks(course)
         return OrderedDict(sorted(list(task_array.items()), key=lambda t: (t[1].get_order(), t[1].get_id())))

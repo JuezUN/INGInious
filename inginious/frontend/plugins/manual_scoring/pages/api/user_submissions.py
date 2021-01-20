@@ -15,6 +15,7 @@ base_static_folder = pages.base_static_folder
 
 
 def create_submissions_dict(submissions_list):
+    """  """
     data = OrderedDict()
     for submission in submissions_list:
         data[submission["_id"]] = {
@@ -40,7 +41,7 @@ class UserSubmissionsPage(INGIniousAdminPage):
         return self.render_page(course, task_id, task, username, )
 
     def render_page(self, course, task_id, task, username):
-        """ get submissions for user and display page """
+        """ get submissions for a user and display page """
         url = 'manual_scoring'
         task_name = course.get_task(task_id).get_name(self.user_manager.session_language())
         name = self.user_manager.get_user_realname(username)
@@ -53,6 +54,7 @@ class UserSubmissionsPage(INGIniousAdminPage):
         )
 
     def get_list_of_submissions(self, course_id, task_id, username):
+        """ do request to db to get the data about user's submissions """
         data = list(self.database.submissions.aggregate(
             [
                 {

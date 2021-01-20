@@ -20,6 +20,7 @@ base_static_folder = pages.base_static_folder
 
 
 def define_content_of_comment_and_grade(submission):
+    """  """
     comment = ""
     score = "No grade"
 
@@ -62,6 +63,7 @@ class RubricScoringPage(INGIniousAdminPage):
         return self.render_page(course, task, submission_id)
 
     def update_comment_and_grade(self, submission_id):
+        """ update the grade and comment on db """
         data = web.input()
 
         if "grade" in data:

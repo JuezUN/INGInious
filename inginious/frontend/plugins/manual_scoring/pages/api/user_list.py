@@ -15,6 +15,7 @@ base_static_folder = pages.base_static_folder
 
 
 def create_student_dict(user_list):
+    """  """
     data = OrderedDict()
     for user in user_list:
         data[user["username"][0]] = {"username": user["username"][0],
@@ -48,6 +49,7 @@ class UserListPage(INGIniousAdminPage):
         )
 
     def get_user_list_and_its_best_score(self, course, task_id):
+        """ do request to db to get the data about users respect a task """
         user_list = list(self.database.submissions.aggregate(
 
             [
