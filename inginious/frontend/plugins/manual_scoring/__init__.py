@@ -21,13 +21,18 @@ def init(plugin_manager, _, __, plugin_config):
     """ Init the plugin """
     plugin_manager.add_page(r'/manual_scoring/static/(.*)', create_static_resource_page(_static_folder_path))
 
-    use_minified = plugin_config.get("use_minified", False)
+    use_minified = plugin_config.get("use_minified", True)
 
     if use_minified:
-        plugin_manager.add_hook("css", lambda: "/manual_scoring/static/css/rubric_scoring.min.css")
+        plugin_manager.add_hook("css", lambda: "/manual_scoring/static/css/manual_scoring.min.css")
+        plugin_manager.add_hook("javascript_footer", lambda: "/manual_scoring/static/js/manual_scoring.min.js")
+
     else:
-        plugin_manager.add_hook("css", lambda: "/manual_scoring/static/css/rubric_scoring.css")
-        plugin_manager.add_hook("javascript_footer", lambda: "/manual_scoring/static/js/rubric_scoring_init.js")
+        plugin_manager.add_hook("css", lambda: "/manual_scoring/static/css/manual_scoring.css")
+        plugin_manager.add_hook("javascript_footer", lambda: "/manual_scoring/static/js/code_field.js")
+        plugin_manager.add_hook("javascript_footer", lambda: "/manual_scoring/static/js/message_box.js")
+        plugin_manager.add_hook("javascript_footer", lambda: "/manual_scoring/static/js/rubric_scoring.js")
+        plugin_manager.add_hook("javascript_footer", lambda: "/manual_scoring/static/js/rubric_scoring_main.js")
 
     # Add pages
     # First page of rubric scoring. It's a task list
