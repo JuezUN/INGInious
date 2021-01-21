@@ -1072,7 +1072,7 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:21
-#: inginious/frontend/plugins/code_preview/pages/code_preview.html:13
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:18
 msgid "Files"
 msgstr ""
 
@@ -1398,22 +1398,32 @@ msgid ""
 "{task} !"
 msgstr ""
 
-#: inginious/frontend/plugins/code_preview/pages/code_preview.html:3
+#: inginious/frontend/plugins/code_preview/pages/code_preview.py:11
+msgid "Code template"
+msgstr ""
+
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:3
 msgid "Remove"
 msgstr ""
 
-#: inginious/frontend/plugins/code_preview/pages/code_preview.html:8
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:4
+msgid "Select one language"
+msgstr ""
+
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:7
+msgid ""
+"Tool to setup templates that students can use as base code to start "
+"solving the problem. It only works for multilang and HDL tasks."
+msgstr ""
+
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:13
 #: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:23
 #: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:10
 msgid "Languages"
 msgstr ""
 
-#: inginious/frontend/plugins/code_preview/pages/code_preview.html:19
+#: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:24
 msgid "Add/Update"
-msgstr ""
-
-#: inginious/frontend/plugins/code_preview/pages/code_preview.py:11
-msgid "Preview"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/grader.py:46
@@ -4665,28 +4675,4 @@ msgstr ""
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr ""
-
-#~ msgid ""
-#~ "LTI courses are only accesible via "
-#~ "the the LMS platform such as "
-#~ "Moodle or OpenEdx"
-#~ msgstr ""
-
-#~ msgid "Id"
-#~ msgstr ""
-
-#~ msgid "\"Search course\""
-#~ msgstr ""
-
-#~ msgid "Custom tests"
-#~ msgstr ""
-
-#~ msgid "Test notebook!"
-#~ msgstr ""
-
-#~ msgid "An error occurred. The request is not correctly formed."
-#~ msgstr ""
-
-#~ msgid "Select up to 3 tests to run"
-#~ msgstr ""
 

@@ -17,7 +17,7 @@ $#
 	<input type="hidden" name="$inputId/type" value="$type">
 	<select
 		class="col-sm-4 btn dropdown-toggle"
-		onchange="changeSubmissionLanguage('$problemid', '$type')"
+		onchange="onChangeLanguageDropdown('$problemid', '$type')"
 		name="$dropdownId"
 		id="$dropdownId">
 	  	$for language in languages:
