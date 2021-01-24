@@ -23,8 +23,12 @@ $def with (task_data, editorial_task_data, task_languages)
                     </label>
                 </div>
                 <div class="col-sm-9">
-                    <textarea id="tutorial_description" class="code-editor form-control" name="tutorial_description" data-x-language="rst" data-x-lines="10">
-                        ${task_data.get('tutorial_description'),''}
+                    <a href="#" type="button" data-toggle="modal" data-target="#task_context_help_modal">
+                        <i class="fa fa-question-circle">
+                            Help.
+                        </i>
+                    </a>
+                    <textarea id="tutorial_description" class="code-editor form-control" name="tutorial_description" data-x-language="rst" data-x-lines="10">${task_data.get('tutorial_description','')}
                     </textarea>
                 </div>
             </div>
@@ -32,6 +36,30 @@ $def with (task_data, editorial_task_data, task_languages)
                 <div class="col-sm-3">
                     <label>
                         $:_("Tutorial code")
+                    </label>
+                    <i class="fa fa-question-circle" title="" data-toggle="tooltip" data-original-title='$:_("Put the tutorial code in c++ language")'></i>
+                </div>
+                <div class="col-sm-9">
+                    <textarea id="tutorial_code" class="code-editor form-control"
+                        name="tutorial_code" data-x-language="c++" data-x-lines="10">${task_data.get('tutorial_code','')}
+                    </textarea>
+                </div>
+            </div>
+            <div class="row form-group" id="task_tutorial">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="solution_tab">
+        <div class="jumbotron">
+            <div class="row form-group">
+                <h3>Task solution</h3>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label>
+                        $:_("File language")
                     </label>
                 </div>
             </div>
@@ -44,6 +72,7 @@ $def with (task_data, editorial_task_data, task_languages)
                     <button type="button" class="btn btn-success"
                             data-toggle="modal"
                             data-target="#tutorial_modal"
+
                         >
                         <i class="fa fa-plus">
                         </i>
@@ -51,15 +80,6 @@ $def with (task_data, editorial_task_data, task_languages)
                     </button>
                 </div>
             </div>
-        </div>
-        <div id="task_tutorial">
-
-        </div>
-    </div>
-
-    <div class="tab-pane fade" id="solution_tab">
-        <div class="jumbotron">
-            <h3>Task solution</h3>
         </div>
     </div>
 </div>
@@ -83,9 +103,7 @@ $def with (task_data, editorial_task_data, task_languages)
                         </label>
                     </div>
                     <div class="col-sm-9">
-                        <textarea id="tutorial_code" class="code-editor form-control" name="tutorial_code" data-x-language="python" data-x-lines="10">
-                            ${task_data.get('tutorial_code','')}
-                        </textarea>
+
                     </div>
                 </div>
                 <div class="row form-group">
@@ -107,9 +125,9 @@ $def with (task_data, editorial_task_data, task_languages)
 
 <script type="text/javascript">
 
-    function getAllLanguages(key){
-        const allLanguages = $:{dict(task_languages)};
-        return allLanguages[key];
+    function getLanguages(key){
+        const languages = $:{dict(task_languages)};
+        return languages[key];
     }
 
 </script>
