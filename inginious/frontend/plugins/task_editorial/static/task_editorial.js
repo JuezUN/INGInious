@@ -1,35 +1,29 @@
-
-/*
-function getLanguages(){
-    const languagesList = "$task_data.get('problems',{})";
-    return languagesList;
-}
-*/
 function addTaskLanguages() {
 
-    const tutorial_language_select = $("#task_tutorial_language");
+    const tutorial_language_select = $("#task_solution_language");
 
     const languages_list = $(".checkbox_language");
     const languages_list_size = languages_list.length;
 
     for(let i = 0; i < languages_list_size; i++){
         if(languages_list[i].checked){
-           new_option = `<option value="${languages_list[i].value}">${getLanguages(languages_list[i].value)}</option>`;
+           new_option = `<option value="${languages_list[i].value}">${getLanguagesCodes(languages_list[i].value)}</option>`;
            tutorial_language_select.append(new_option);
         }
     }
 }
 
-function addCodeTutorial(){
+function setSolutionCodeLanguage(){
 
-    const code_tutorial = $("#task_tutorial");
+    const solution_language_key = $("#task_solution_language")[0].value;
+    const solution_language = convertInginiousLanguageToCodemirror(solution_language_key);
 
-    const text_area = `<textarea id="tutorial_code" class="code-editor form-control"
-                        name="tutorial_code" data-x-language="c++" data-x-lines="10">
-                            ${task_data.get('tutorial_code','')}
-                        </textarea>`;
+    const solution_editor = codeEditors["solution_code"];
+    const mode = CodeMirror.findModeByName(solution_language);
+    solution_editor.setOption("mode", mode.mime);
 
-    code_tutorial.append(text_area);
+    CodeMirror.autoLoadMode(solution_editor, mode["mode"]);
+
 }
 
 jQuery(document).ready(function () {

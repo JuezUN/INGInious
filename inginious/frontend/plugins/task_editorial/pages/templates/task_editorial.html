@@ -1,133 +1,63 @@
 $def with (task_data, editorial_task_data, task_languages)
-
-<div class="form-group">
-    <ul class="nav nav-tabs">
-        <li class="active">
-            <a data-toggle="tab" href="#tutorial_tab">$:_("Tasks tutorials")</a>
-        </li>
-        <li>
-            <a data-toggle="tab" href="#solution_tab">$:_("Tasks solutions")</a>
-        </li>
-    </ul>
+<div class="alert alert-warning">
+    <i class="fa fa-info-circle"/>
+    </i>
+    $:_("Write a description of a tutorial that helps students to guide themselves in developing of a possible solution. Also write its corresponding code, which can be accessed when the deadline ends.")
 </div>
-<div class="tab-content">
-    <div class="tab-pane fade in active" id="tutorial_tab">
-        <div class="jumbotron">
-            <div class="form-group">
-                <h3>Task tutorial</h3>
-            </div>
-            <div class="row form-group">
-                <div class="col-sm-3">
-                    <label class="control-label">
-                        $:_("Tutorial description")
-                    </label>
-                </div>
-                <div class="col-sm-9">
-                    <a href="#" type="button" data-toggle="modal" data-target="#task_context_help_modal">
-                        <i class="fa fa-question-circle">
-                            Help.
-                        </i>
-                    </a>
-                    <textarea id="tutorial_description" class="code-editor form-control" name="tutorial_description" data-x-language="rst" data-x-lines="10">${task_data.get('tutorial_description','')}
-                    </textarea>
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col-sm-3">
-                    <label>
-                        $:_("Tutorial code")
-                    </label>
-                    <i class="fa fa-question-circle" title="" data-toggle="tooltip" data-original-title='$:_("Put the tutorial code in c++ language")'></i>
-                </div>
-                <div class="col-sm-9">
-                    <textarea id="tutorial_code" class="code-editor form-control"
-                        name="tutorial_code" data-x-language="c++" data-x-lines="10">${task_data.get('tutorial_code','')}
-                    </textarea>
-                </div>
-            </div>
-            <div class="row form-group" id="task_tutorial">
-
-            </div>
+<div class="jumbotron">
+    <div class="form-group">
+        <h3>Task tutorial</h3>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-3">
+            <label class="control-label">
+                $:_("Tutorial description")
+            </label>
+        </div>
+        <div class="col-sm-9">
+            <a href="#" type="button" data-toggle="modal" data-target="#task_context_help_modal">
+                <i class="fa fa-question-circle">
+                    Help.
+                </i>
+            </a>
+            <textarea id="tutorial_description" class="code-editor form-control" name="tutorial_description" data-x-language="rst" data-x-lines="10">${task_data.get('tutorial_description','')}
+            </textarea>
         </div>
     </div>
-
-    <div class="tab-pane fade" id="solution_tab">
-        <div class="jumbotron">
-            <div class="row form-group">
-                <h3>Task solution</h3>
-            </div>
-            <div class="row form-group">
-                <div class="col-sm-4">
-                    <label>
-                        $:_("File language")
-                    </label>
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col-sm-4">
-                    <select class="form-control" id="task_tutorial_language">
-                    </select>
-                </div>
-                <div class="col-sm-4">
-                    <button type="button" class="btn btn-success"
-                            data-toggle="modal"
-                            data-target="#tutorial_modal"
-
-                        >
-                        <i class="fa fa-plus">
-                        </i>
-                        $:_("Add tutorial code")
-                    </button>
-                </div>
-            </div>
+    <div class="row form-group">
+        <h3>Task solution</h3>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-3">
+            <label>
+                $:_("File language")
+            </label>
+        </div>
+        <div class="col-sm-9">
+            <label>
+                $:_("Solution code")
+            </label>
+            <i class="fa fa-question-circle" title="" data-toggle="tooltip" data-original-title='$:_("Put the tutorial code in selected language")'></i>
         </div>
     </div>
-</div>
-
-<div id="tutorial_modal" class="modal fade">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="col-sm-9">
-                    <h3>$:_("Tutorial code")</h3>
-                </div>
-                <div class="col-sm-3">
-                    <button class="close" data-dismiss="modal">x</button>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="row form-group">
-                    <div class="col-sm-3">
-                        <label class="control-label">
-                            $:_("Tutorial code")
-                        </label>
-                    </div>
-                    <div class="col-sm-9">
-
-                    </div>
-                </div>
-                <div class="row form-group">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="form-group">
-                        <button type="button" class="btn btn-info" onclick="add_task_tutorial()">
-                            $:_("Save")
-                        </button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">
-                            $:_("Cancel")
-                        </button>
-                </div>
-            </div>
+    <div class="row form-group">
+        <div class="col-sm-3">
+            <select class="form-control" id="task_solution_language" name="solution_code_language" onchange="setSolutionCodeLanguage()">
+            </select>
+        </div>
+        <div class="col-sm-9">
+            <textarea id="solution_code" class="code-editor form-control"
+                      name="solution_code" data-x-language="c++" data-x-lines="10">${task_data.get('solution_code','')}
+            </textarea>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
 
-    function getLanguages(key){
-        const languages = $:{dict(task_languages)};
-        return languages[key];
+    function getLanguagesCodes(key){
+        const languages = getLanguageName(key);
+        return languages;
     }
 
 </script>

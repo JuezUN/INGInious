@@ -20,7 +20,7 @@ def editorial_task_tab(course, taskid, task_data, template_helper):
 
 def editorial_task_preview(course, task, template_helper):
 
-    content = template_helper.get_custom_renderer(_TASK_EDITORIAL_TEMPLATE_PATH, layout=False).task_editorial_menu(course, task)
+    content = template_helper.get_custom_renderer(_TASK_EDITORIAL_TEMPLATE_PATH, layout=False).task_editorial_preview(course, task)
 
     return str(content)
 
