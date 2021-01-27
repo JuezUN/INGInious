@@ -26,11 +26,12 @@ def on_task_editor_submit(course, taskid, task_data, task_fs):
     task_files = {complete_name[1:] if complete_name.startswith("/") else complete_name for
                   level, is_directory, name, complete_name in task_files}
 
-    for language, file in task_data["code_preview_pairs"].items():
-        if language not in available_languages:
-            del task_data["code_preview_pairs"][language]
-        if file not in task_files:
-            del task_data["code_preview_pairs"][language]
+    if "code_preview_pairs" in task_data and task_data["code_preview_pairs"]:
+        for language, file in task_data["code_preview_pairs"].items():
+            if language not in available_languages:
+                del task_data["code_preview_pairs"][language]
+            if file not in task_files:
+                del task_data["code_preview_pairs"][language]
 
     to_delete = []
     for key in task_data:
