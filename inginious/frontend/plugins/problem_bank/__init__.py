@@ -1,6 +1,7 @@
 from inginious.frontend.plugins.utils import create_static_resource_page
-from inginious.frontend.plugins.problem_bank.constants import _REACT_BASE_URL, _REACT_BUILD_FOLDER, _BASE_STATIC_FOLDER, \
-    _BASE_STATIC_URL, _BASE_RENDERER_PATH
+from .constants import REACT_BASE_URL, REACT_BUILD_FOLDER, BASE_STATIC_FOLDER, BASE_STATIC_URL
+
+from pymongo.errors import CollectionInvalid
 
 from .pages.api.copy_task_api import CopyTaskApi
 from .pages.api.manage_banks_courses_api import ManageBanksCoursesApi
@@ -10,8 +11,6 @@ from .pages.api.filter_tasks_api import FilterTasksApi
 from .pages.api.available_courses_to_copy_api import AvailableCoursesToCopyApi
 
 from .pages.bank_page import BankPage
-
-from pymongo.errors import CollectionInvalid
 
 
 def init(plugin_manager, course_factory, client, config):
@@ -39,8 +38,8 @@ def init(plugin_manager, course_factory, client, config):
             pass
     plugin_manager.get_database().problem_banks.create_index([("courseid", 1)], unique=True)
 
-    plugin_manager.add_page(_REACT_BASE_URL + r'(.*)', create_static_resource_page(_REACT_BUILD_FOLDER))
-    plugin_manager.add_page(_BASE_STATIC_URL + r'(.*)', create_static_resource_page(_BASE_STATIC_FOLDER))
+    plugin_manager.add_page(REACT_BASE_URL + r'(.*)', create_static_resource_page(REACT_BUILD_FOLDER))
+    plugin_manager.add_page(BASE_STATIC_URL + r'(.*)', create_static_resource_page(BASE_STATIC_FOLDER))
 
     plugin_manager.add_page('/plugins/problems_bank/api/copy_task', CopyTaskApi)
     plugin_manager.add_page('/plugins/problems_bank/api/bank_courses', ManageBanksCoursesApi)
