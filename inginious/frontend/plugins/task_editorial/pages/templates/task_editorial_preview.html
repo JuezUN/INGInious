@@ -1,15 +1,17 @@
-$def with (course, task)
+$def with (course, task, all_languages)
 
     <h3>$:_("Editorial")</h3>
 
     <div class="tab-pane fade in active" id="tutorial_tab">
         <div class="list-group">
-            <a class="list-group-item list-group-item-info" data-toggle="modal" data-target="#task_tutorial_modal" style="cursor:pointer;">
-                <i class="fa fa-tasks fa-fw"></i>&nbsp; $:_("Task tutorial")
-            </a>
-            <a class="list-group-item list-group-item-info" data-toggle="modal" data-target="#task_editorial_modal" style="cursor:pointer;">
-                <i class="fa fa-tasks fa-fw"></i>&nbsp; $:_("Task solution")
-            </a>
+            $if (task.get_tutorial() is not None):
+                <a class="list-group-item list-group-item-info" data-toggle="modal" data-target="#task_tutorial_modal" style="cursor:pointer;">
+                    <i class="fa fa-tasks fa-fw"></i>&nbsp; $:_("Task tutorial")
+                </a>
+            $if (task.get_solution_content() is not None):
+                <a class="list-group-item list-group-item-info" data-toggle="modal" data-target="#task_editorial_modal" style="cursor:pointer;">
+                    <i class="fa fa-tasks fa-fw"></i>&nbsp; $:_("Task solution")
+                </a>
         </div>
     </div>
 
@@ -39,17 +41,16 @@ $def with (course, task)
                     <div class="row form-group">
                         <div class="col-sm-3">
                             <label>
-                                $:_("Solution language")
+                                 $:_("Solution language"):
+                                 $:all_languages[task.get_solution_language()]
                             </label>
-                        </div>
-                        <div  class="col-sm-3">
-                            "$:task.get_solution_language()"
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea class="code-editor form-control" data-x-language="" data-x-lines="10">
+                        <
+                        <div>
                             "$:task.get_solution_content()"
-                        </textarea>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -61,12 +62,16 @@ $def with (course, task)
 
 <script type="text/javascript">
 
-    function getTaskTutorial(){
-        return $:task.get_tutorial();
+    function getTaskCourse(){
+        return "$course";
     }
 
-    function getTaskSolutionCode(){
-        return $:task.get_solution_content();
+    function getTask(){
+        return "$task";
+    }
+
+    function getAllLanguages(){
+        return "$all_languages";
     }
 
 </script>

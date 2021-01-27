@@ -23,14 +23,15 @@ function addTaskLanguages() {
 function setLastTaskSolutionCodeLanguage(){
 
     const solution_code_language = getTaskSolutionCodeLanguage();
-    const tutorial_language_select = $("#task_solution_language");
-    tutorial_language_select[0].value = getTaskSolutionCodeLanguage;
+    const tutorial_language_select = $("#solution_code_language");
+    tutorial_language_select[0].value = solution_code_language;
+
 };
 
 //From the selected option, change the language of the code editor
 function setSolutionCodeLanguage(){
 
-    const solution_language_key = $("#task_solution_language")[0].value;
+    const solution_language_key = $("#solution_code_language")[0].value;
     const solution_language = convertInginiousLanguageToCodemirror(solution_language_key);
 
     const solution_editor = codeEditors["solution_code"];
