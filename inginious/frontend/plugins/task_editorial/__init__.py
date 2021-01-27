@@ -14,9 +14,10 @@ def init(plugin_manager, course_factory, client , config):
 
     plugin_manager.add_page("/api/task_editorial_api/", TaskEditorialAPI)
 
-    plugin_manager.add_hook("javascript_footer", lambda: "/task_editorial/static/task_editorial.js")
+    if (use_minified):
+        plugin_manager.add_hook("javascript_footer", lambda: "/task_editorial/static/task_editorial.js")
+    #else:
+        #plugin_manager.add_hook("javascript_footer", lambda: "/task_editorial/static/task_editorial.min.js")
+
     plugin_manager.add_hook('task_editor_tab',editorial_task_tab)
     plugin_manager.add_hook('task_menu',editorial_task_preview)
-
-
-

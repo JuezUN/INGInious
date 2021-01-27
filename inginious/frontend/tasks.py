@@ -61,7 +61,14 @@ class WebAppTask(Task):
         # Tags
         self._tags = Tag.create_tags_from_dict(self._data.get("tags", {}))
 
+        # Task tutorial content
         self._tutorial = self._data.get('tutorial_description','')
+
+        # Task solution content
+        self._solution = self._data.get('solution_code','')
+
+        # Task solution code language
+        self._solution_language = self._data.get('solution_code_language','')
 
     def get_grading_weight(self):
         """ Get the relative weight of this task in the grading """
@@ -105,8 +112,17 @@ class WebAppTask(Task):
             ParsableText(context, "rst", self._translations.get(language, gettext.NullTranslations()))
 
     def get_tutorial(self):
+        """ Get the task tutorial on RST"""
         parseTutorial = ParsableText(self._tutorial,"rst");
         return parseTutorial
+
+    def get_solution_content(self):
+        """ Get the solution of the task """
+        return self._solution
+
+    def get_solution_language(self):
+        """ Get the language of the solution """
+        return self._solution_language
 
     def get_authors(self, language):
         """ Return the list of this task's authors """

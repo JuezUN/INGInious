@@ -1,18 +1,33 @@
+//Remove options from selector to avoid duplication
+function deleteLanguageSelectOptions(){
+    $(".tutorial_language_select_option").remove();
+}
+
+//Add a new option for each language for multilang and HDL problems
 function addTaskLanguages() {
 
-    const tutorial_language_select = $("#task_solution_language");
+    deleteLanguageSelectOptions();
 
+    const tutorial_language_select = $("#solution_code_language");
     const languages_list = $(".checkbox_language");
     const languages_list_size = languages_list.length;
 
     for(let i = 0; i < languages_list_size; i++){
         if(languages_list[i].checked){
-           new_option = `<option value="${languages_list[i].value}">${getLanguagesCodes(languages_list[i].value)}</option>`;
+           new_option = `<option class="tutorial_language_select_option" value="${languages_list[i].value}">${getLanguages(languages_list[i].value)}</option>`;
            tutorial_language_select.append(new_option);
         }
     }
-}
+};
 
+function setLastTaskSolutionCodeLanguage(){
+
+    const solution_code_language = getTaskSolutionCodeLanguage();
+    const tutorial_language_select = $("#task_solution_language");
+    tutorial_language_select[0].value = getTaskSolutionCodeLanguage;
+};
+
+//From the selected option, change the language of the code editor
 function setSolutionCodeLanguage(){
 
     const solution_language_key = $("#task_solution_language")[0].value;
@@ -23,9 +38,11 @@ function setSolutionCodeLanguage(){
     solution_editor.setOption("mode", mode.mime);
 
     CodeMirror.autoLoadMode(solution_editor, mode["mode"]);
-
-}
+};
 
 jQuery(document).ready(function () {
-    addTaskLanguages();
+    if (["HDL", "multiple_languages"].includes(getTaskEnvironment())){
+        addTaskLanguages();
+    }
+    setTaskSolutionCodeLanguage();
 });
