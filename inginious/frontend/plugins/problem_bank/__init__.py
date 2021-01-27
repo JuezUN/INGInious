@@ -11,6 +11,8 @@ from .pages.api.available_courses_to_copy_api import AvailableCoursesToCopyApi
 
 from .pages.bank_page import BankPage
 
+from pymongo.errors import CollectionInvalid
+
 
 def init(plugin_manager, course_factory, client, config):
     def on_course_updated(courseid, new_content):
@@ -29,7 +31,12 @@ def init(plugin_manager, course_factory, client, config):
             return "problem_bank", "<i class='fa fa-database' aria-hidden='true'></i>" + _(" Problem bank")
 
     if "problem_banks" not in plugin_manager.get_database().collection_names():
-        plugin_manager.get_database().create_collection("problem_banks")
+        # This exception is handle as the web server main lunch several processes and run this line at the same time.
+        # Thus, this collection must be created by only one worker.
+        try:
+            plugin_manager.get_database().create_collection("problem_banks")
+        except CollectionInvalid:
+            pass
     plugin_manager.get_database().problem_banks.create_index([("courseid", 1)], unique=True)
 
     plugin_manager.add_page(_REACT_BASE_URL + r'(.*)', create_static_resource_page(_REACT_BUILD_FOLDER))
