@@ -1,10 +1,11 @@
-$def with (task_data, task, task_grader_environment)
+$def with (task_data, task, task_all_languages, task_grader_environment)
 
 <div class="alert alert-warning">
     <i class="fa fa-info-circle"/>
     </i>
     $:_("Write a description of a tutorial that helps students to guide themselves in developing of a possible solution. Also write its corresponding code, which can be accessed when the deadline ends.")
 </div>
+
 <div class="jumbotron">
     <div class="form-group">
         <h3>Task tutorial</h3>
@@ -24,8 +25,7 @@ $def with (task_data, task, task_grader_environment)
             </a>
             -->
             <i class="fa fa-question-circle" data-toggle="tooltip" data-original-title='$:_("Description on RST format. See task context help for more information")'></i>
-            <textarea id="tutorial_description" class="code-editor form-control" name="tutorial_description" data-x-language="rst" data-x-lines="10">$:task_data.get('tutorial_description')
-            </textarea>
+            <textarea id="tutorial_description" class="code-editor form-control" name="tutorial_description" data-x-language="rst" data-x-lines="10">$:task_data.get('tutorial_description')</textarea>
         </div>
     </div>
 
@@ -42,7 +42,7 @@ $def with (task_data, task, task_grader_environment)
             <label>
                 $:_("Solution code")
             </label>
-            <i class="fa fa-question-circle" title="" data-toggle="tooltip" data-original-title='$:_("Put the tutorial code in selected language")'></i>
+            <i class="fa fa-question-circle" data-toggle="tooltip" data-original-title='$:_("Put the tutorial code on selected language")'></i>
         </div>
     </div>
     <div class="row form-group">
@@ -54,8 +54,7 @@ $def with (task_data, task, task_grader_environment)
             </div>
             <div class="col-sm-9">
                 <textarea id="solution_code" class="code-editor form-control"
-                          name="solution_code" data-x-language="" data-x-lines="10">$:task_data.get('solution_code')
-                </textarea>
+                          name="solution_code" data-x-language="" data-x-lines="10">$:task_data.get('solution_code')</textarea>
             </div>
         $else:
             <div class="col-sm-3">
@@ -63,13 +62,12 @@ $def with (task_data, task, task_grader_environment)
              </div>
             <div class="col-sm-9">
                 <textarea id="solution_code_notebook" class="code-editor form-control"
-                          name="solution_code" data-x-language="python" data-x-lines="10">$:task_data.get('solution_code')
-                </textarea>
+                          name="solution_code" data-x-language="python" data-x-lines="10">$:task_data.get('solution_code')</textarea>
             </div>
     </div>
 </div>
 
-<script type="text/javascript">
+<script>
 
     function getLanguages(key){
         const languages = getLanguageName(key);
@@ -80,10 +78,16 @@ $def with (task_data, task, task_grader_environment)
         return "$task_data";
     }
 
-    function getTaskEnvironment(){
-        return "$task_data['environment']";
+    function getTask(){
+        return "$task.get_environment()";
     }
 
+    function getTaskSolutionCodeLanguage(){
+        return "$task_data.get('solution_code_language')";
+    }
 
+    function qwe(){
+        return "$task_all_languages";
+    }
 
 </script>

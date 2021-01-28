@@ -19,7 +19,7 @@ $def with (course, task, all_languages)
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>Tutorial</h4>
+                    <h2>$:_("Task Tutorial")</h2>
                 </div>
                 <div class="modal-body">
                     $:task.get_tutorial()
@@ -35,7 +35,7 @@ $def with (course, task, all_languages)
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>Solution</h4>
+                    <h2>$:_("Task Solution")</h2>
                 </div>
                 <div class="modal-body">
                     <div class="row form-group">
@@ -47,10 +47,7 @@ $def with (course, task, all_languages)
                         </div>
                     </div>
                     <div class="form-group">
-                        <
-                        <div>
-                            "$:task.get_solution_content()"
-                        </div>
+                        <textarea id="task_solution_code" class="code-editor form-control" data-x-lines="10">$:task.get_solution_content()</textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -3,7 +3,7 @@ function deleteLanguageSelectOptions(){
     $(".tutorial_language_select_option").remove();
 }
 
-//Add a new option for each language for multilang and HDL problems
+//Add a new option for each language for multilang, HDL and Data Science problems
 function addTaskLanguages() {
 
     deleteLanguageSelectOptions();
@@ -23,8 +23,8 @@ function addTaskLanguages() {
 function setLastTaskSolutionCodeLanguage(){
 
     const solution_code_language = getTaskSolutionCodeLanguage();
-    const tutorial_language_select = $("#solution_code_language");
-    tutorial_language_select[0].value = solution_code_language;
+    const solution_language_select = $("#solution_code_language");
+    solution_language_select[0].value = solution_code_language;
 
 };
 
@@ -41,9 +41,14 @@ function setSolutionCodeLanguage(){
     CodeMirror.autoLoadMode(solution_editor, mode["mode"]);
 };
 
+function loadLastSolutionConfiguration(){
+    addTaskLanguages();
+    setLastTaskSolutionCodeLanguage();
+    setSolutionCodeLanguage();
+}
+
 jQuery(document).ready(function () {
-    if (["HDL", "multiple_languages"].includes(getTaskEnvironment())){
-        addTaskLanguages();
-    }
-    setTaskSolutionCodeLanguage();
+
+    loadLastSolutionConfiguration();
+
 });
