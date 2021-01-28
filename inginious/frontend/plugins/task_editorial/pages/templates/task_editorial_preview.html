@@ -6,11 +6,11 @@ $def with (course, task, all_languages)
         <div class="list-group">
             $if (task.get_tutorial() is not None):
                 <a class="list-group-item list-group-item-info" data-toggle="modal" data-target="#task_tutorial_modal" style="cursor:pointer;">
-                    <i class="fa fa-tasks fa-fw"></i>&nbsp; $:_("Task tutorial")
+                    <i class="fa fa-graduation-cap fa-fw"></i>&nbsp; $:_("Task tutorial")
                 </a>
             $if (task.get_solution_content() is not None):
-                <a class="list-group-item list-group-item-info" data-toggle="modal" data-target="#task_editorial_modal" style="cursor:pointer;">
-                    <i class="fa fa-tasks fa-fw"></i>&nbsp; $:_("Task solution")
+                <a class="list-group-item list-group-item-info" data-toggle="modal" data-target="#task_solution_modal" style="cursor:pointer;" onclick="setTaskSolutionCode()">
+                    <i class="fa fa-graduation-cap fa-fw"></i>&nbsp; $:_("Task solution")
                 </a>
         </div>
     </div>
@@ -19,7 +19,7 @@ $def with (course, task, all_languages)
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2>$:_("Task Tutorial")</h2>
+                    <h2>$:_("Task tutorial")</h2>
                 </div>
                 <div class="modal-body">
                     $:task.get_tutorial()
@@ -31,11 +31,11 @@ $def with (course, task, all_languages)
         </div>
     </div>
 
-    <div id="task_editorial_modal" class="modal fade">
+    <div id="task_solution_modal" class="modal fade">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2>$:_("Task Solution")</h2>
+                    <h2>$:_("Task solution")</h2>
                 </div>
                 <div class="modal-body">
                     <div class="row form-group">
@@ -47,11 +47,10 @@ $def with (course, task, all_languages)
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea id="task_solution_code" class="code-editor form-control" data-x-lines="10">$:task.get_solution_content()</textarea>
+                        <textarea id="task_solution_code" class="form-control" name="task_solution_code" rows="10" style="resize:none">$:task.get_solution_content()</textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-
                 </div>
             </div>
         </div>
@@ -59,16 +58,12 @@ $def with (course, task, all_languages)
 
 <script type="text/javascript">
 
-    function getTaskCourse(){
-        return "$course";
+    function getSolutionLanguage(){
+        return "$:task.get_solution_language()"
     }
 
-    function getTask(){
-        return "$task";
-    }
+    jQuery(document).ready(function () {
 
-    function getAllLanguages(){
-        return "$all_languages";
-    }
+    });
 
 </script>

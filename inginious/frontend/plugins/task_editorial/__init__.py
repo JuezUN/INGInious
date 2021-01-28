@@ -13,6 +13,7 @@ def init(plugin_manager, course_factory, client , config):
 
     if (use_minified):
         plugin_manager.add_hook("javascript_footer", lambda: "/task_editorial/static/task_editorial.js")
+        plugin_manager.add_hook("javascript_footer", lambda: "/task_editorial/static/task_editorial_preview.js")
     #else:
         #plugin_manager.add_hook("javascript_footer", lambda: "/task_editorial/static/task_editorial.min.js")
 

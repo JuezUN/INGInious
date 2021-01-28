@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-15 00:30-0500\n"
+"POT-Creation-Date: 2021-01-28 13:07-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -53,11 +53,11 @@ msgstr "choix multiple"
 msgid "match"
 msgstr "correspondance"
 
-#: inginious/frontend/tasks.py:80
+#: inginious/frontend/tasks.py:89
 msgid "No deadline"
 msgstr "Pas de date limite"
 
-#: inginious/frontend/tasks.py:82
+#: inginious/frontend/tasks.py:91
 msgid "It's too late"
 msgstr "Date limite dépassée"
 
@@ -2280,6 +2280,58 @@ msgstr ""
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:21
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:33
 msgid "Bar Submissions Per Tasks"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/task_editorial.py:15
+msgid "Task editorial"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:6
+msgid ""
+"Describe a posible solution to the problem through a tutorial that helps "
+"students to guide themselves in developing of that solution and its "
+"corresponding code, which can be accessed when the deadline ends."
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:11
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:9
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:22
+msgid "Task tutorial"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:16
+msgid "Tutorial description"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:20
+msgid "\"Description on RST format. See task context help for more information\""
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:26
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:13
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:38
+msgid "Task solution"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:31
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:44
+msgid "Solution language"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:36
+msgid "Solution code"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:38
+msgid "\"Put the solution code on the selected language.\""
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:45
+msgid "Select language"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:3
+msgid "Editorial"
 msgstr ""
 
 #: inginious/frontend/templates/auth.html:8
@@ -4624,4 +4676,10 @@ msgstr "Taille fichier max.:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensions autorisées:"
+
+#~ msgid "Description on RST format. See task context help for more information"
+#~ msgstr ""
+
+#~ msgid "Put the tutorial code on selected language."
+#~ msgstr ""
 

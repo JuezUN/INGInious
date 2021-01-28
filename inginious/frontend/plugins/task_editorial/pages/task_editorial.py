@@ -12,13 +12,15 @@ def check_task_access(task):
 def editorial_task_tab(course, taskid, task_data, template_helper):
 
     tab_id = 'tab_editorial'
-    link = '<i class="fa fa-graduation-cap fa-fw"></i>&nbsp; ' + _('Task editorial')
+    link = '<i class="fa fa-graduation-cap fa-fw"></i>&nbsp; ' + _("Task editorial")
 
-    task = course.get_task(taskid)
-    task_environment = task.get_environment();
+    task_environment = task_data.get('environment')
 
-    content = template_helper.get_custom_renderer(_TASK_EDITORIAL_TEMPLATE_PATH, layout=False).task_editorial(task_data, task, get_all_available_languages(), task_environment)
-    return tab_id, link ,content
+    if(task_environment == "multiple_languages" or task_environment == "Data Science" or task_environment == "HDL" or task_environment is None):
+        content = template_helper.get_custom_renderer(_TASK_EDITORIAL_TEMPLATE_PATH, layout=False).task_editorial(task_data, get_all_available_languages())
+        return tab_id, link ,content
+    else:
+        return
 
 def editorial_task_preview(course, task, template_helper):
 
