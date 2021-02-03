@@ -1,9 +1,9 @@
-$def with (task_data, task_all_languages)
+$def with (task_data, task_all_languages, task_solution_code_language)
 
 <div class="alert alert-warning">
     <i class="fa fa-info-circle"/>
     </i>
-    $:_("Describe a posible solution to the problem through a tutorial that helps students to guide themselves in developing of that solution and its corresponding code, which can be accessed when the deadline ends.")
+    $:_("Describe a possible solution to the problem through a tutorial that helps students to guide themselves in developing of that solution and its corresponding code, which can be accessed when the deadline ends.")
 </div>
 
 <div class="jumbotron">
@@ -58,17 +58,8 @@ $def with (task_data, task_all_languages)
         return languages;
     }
 
-    function getTaskData(){
-        return "$task_data";
-    }
-
-    function getEnvironment(){
-        return "$task_data.get('environment')";
-    }
-
     function getTaskSolutionCodeLanguage(){
-        return "$task_data.get('solution_code_language')";
+        return "$task_solution_code_language";
     }
-
 
 </script>

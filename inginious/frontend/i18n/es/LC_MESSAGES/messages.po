@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-28 13:07-0500\n"
+"POT-Creation-Date: 2021-02-02 19:46-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -56,11 +56,11 @@ msgstr "opciones múltiples"
 msgid "match"
 msgstr "coincidencia"
 
-#: inginious/frontend/tasks.py:89
+#: inginious/frontend/tasks.py:80
 msgid "No deadline"
 msgstr "Sin fecha de envío"
 
-#: inginious/frontend/tasks.py:91
+#: inginious/frontend/tasks.py:82
 msgid "It's too late"
 msgstr "Demasiado tarde"
 
@@ -2525,14 +2525,14 @@ msgstr "Intentos y mejor nota"
 msgid "Bar Submissions Per Tasks"
 msgstr "Barra - Submissions por tarea"
 
-#: inginious/frontend/plugins/task_editorial/pages/task_editorial.py:15
+#: inginious/frontend/plugins/task_editorial/pages/task_editorial.py:16
 msgid "Task editorial"
 msgstr "Editorial"
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:6
 msgid ""
-"Describe a posible solution to the problem through a tutorial that helps "
-"students to guide themselves in developing of that solution and its "
+"Describe a possible solution to the problem through a tutorial that helps"
+" students to guide themselves in developing of that solution and its "
 "corresponding code, which can be accessed when the deadline ends."
 msgstr ""
 "Describa una posible solución a la tarea mediante un tutorial que ayude a"
@@ -2574,7 +2574,7 @@ msgstr "Código de la solución"
 msgid "\"Put the solution code on the selected language.\""
 msgstr "\"Establezca el código de la solución en el lenguaje seleccionado\""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:45
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:44
 msgid "Select language"
 msgstr "Seleccionar lenguaje"
 
