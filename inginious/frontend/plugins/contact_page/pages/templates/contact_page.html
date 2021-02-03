@@ -1,0 +1,93 @@
+$def with ()
+
+$#
+$# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
+$# more information about the licensing of this file.
+$#
+
+$var title: $:_("Contact page")
+
+$def NavbarF():
+    <ol class="nav navbar-nav nav-breadcrumb">
+        <li class="active"><a href="#">$:_("Contact page")<span class="sr-only">(current)</span></a></li>
+    </ol>
+$var Navbar: $:NavbarF()
+
+$ IsLoggedIn = user_manager.session_logged_in()
+
+<section>
+    <div class="container px-6">
+        <h1>$:_("Contact Page")</h1>
+        <div class="py-2">
+            <form class="form-horizontal">
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="subject-selection"><h3>$:_("Subject")</h3></label>
+                        <select class="form-control" id="subject-selection">
+                            <option id="subject-no-selected">$:_("Select an option")</option>
+                            <option id="subject-comment">$:_("Report a problem or make a comment")</option>
+                            <option id="subject-new-course">$:_("Request a new course")</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div style="margin-right: 0.9rem" class="form-group
+                    $if IsLoggedIn:
+                        col-md-5
+                    $else:
+                        col-md-6"
+                    >
+                        <label for="email-input"><h3>$:_("Email")</h3></label>
+                        <input type="email" class="form-control" id="email-input" placeholder='$:_("Email")' value="$user_manager.session_email()"
+                        $if IsLoggedIn:
+                               disabled
+                        >
+                    </div>
+                    <div style="margin-right: 0.9rem" class="form-group
+                    $if IsLoggedIn:
+                        col-md-5
+                    $else:
+                        col-md-6"
+                    >
+                        <label for="name-input"><h3>$:_("Name")</h3></label>
+                        <input type="text" class="form-control" id="name-input" placeholder='$:_("Name")' value="$user_manager.session_realname()"
+                        $if IsLoggedIn:
+                               disabled
+                        >
+                    </div>
+
+                    <div class="checkbox col-md-2" id="checkbox-space"
+                    $if not IsLoggedIn:
+                        hidden
+                        data-isLoggedIn="true"
+                    $else:
+                        data-isLoggedIn="false"
+                    >
+                        <label class="py-2">
+                            <input type="checkbox" id="checkbox-edit"> <h4 class="ml-1">$:_("Edit")</h4>
+                        </label>
+                    </div>
+                </div>
+                <div class="row" id="course-space" hidden>
+                    <div class="form-group col-md-12">
+                        <label for="course-name"><h3>$:_("Course Name")</h3></label>
+                        <input type="text" class="form-control" id="course-name" placeholder='$:_("Course Name")'>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <label for="textarea-contact-page"><h3>$:_("Comments or description")</h3></label>
+                        <p hidden id="description-comment" class="py-1"><em>$:_("Just put your honest opinion or tell us about the problem you have encountered ")</em></p>
+                        <p hidden id="description-new-course" class="py-1"><em>$:_("Describe and justify the course you want to create ")</em></p>
+                        <textarea class="form-control" rows="5" id="textarea-contact-page"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-9 mr-2">
+                        <button class="btn btn-primary btn-block" id="send-contact-page-button">$:_("Send")</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
