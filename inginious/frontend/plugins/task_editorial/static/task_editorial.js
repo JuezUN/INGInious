@@ -25,8 +25,21 @@ function setLastTaskSolutionCodeLanguage(){
     const solution_code_language = getTaskSolutionCodeLanguage();
 
     if(solution_code_language){
+
+        //Check if the last saved language is in the available languages
+        let isInOptions = false;
+        $("#solution_code_language option").each(function() {
+            if(this.value.localeCompare(solution_code_language) == 0){
+                isInOptions = true;
+            };
+        });
+
         const solution_language_select = $("#solution_code_language");
-        solution_language_select[0].value = solution_code_language;
+        if(isInOptions){
+            solution_language_select[0].value = solution_code_language;
+        }else{
+            solution_language_select[0].value = "0";
+        }
     }
 };
 
@@ -34,7 +47,7 @@ function setLastTaskSolutionCodeLanguage(){
 function setSolutionCodeLanguage(){
 
     const solution_language_key = $("#solution_code_language")[0].value;
-    if(solution_language_key != -1){
+    if(solution_language_key != 0){
         const solution_language = convertInginiousLanguageToCodemirror(solution_language_key);
 
         const solution_editor = codeEditors["solution_code"];
@@ -45,17 +58,44 @@ function setSolutionCodeLanguage(){
     }
 };
 
+//Get all the task files and put their names on the notebook solution selector
+
+function addTaskFiles(){
+
+     $(".solution_notebook_select_option").remove();
+     const solution_language_select = $("#solution_code_notebook");
+
+     $.get("/api/grader_generator/test_file_api", {
+        course_id: getCourseId(),
+        task_id: getTaskId(),
+     }, function (files) {
+        $.each(files, function (index, file) {
+            solution_language_select.append(`<option class="solution_notebook_select_option" value="${file.complete_name}">${file.complete_name}</option>`);
+            console.log(file.complete_name);
+        })
+     });
+}
+
 //Get the solution code and language from previous task save
 function loadLastSolutionConfiguration(){
     addTaskLanguages();
     setLastTaskSolutionCodeLanguage();
     setSolutionCodeLanguage();
 }
+
 //Update editorial elements when click on editorial tab
 $("a[data-toggle='tab'][href='#tab_editorial']").on("show.bs.tab", function (e) {
-    loadLastSolutionConfiguration();
+    if(["multiple_languages" , "Data Science" , "HDL"].includes(getTaskEnvironment())){
+       loadLastSolutionConfiguration();
+    }else if (["Notebook"].includes(getTaskEnvironment())){
+        addTaskFiles();
+    }
 });
 
 jQuery(document).ready(function () {
-    loadLastSolutionConfiguration();
+    if(["multiple_languages" , "Data Science" , "HDL"].includes(getTaskEnvironment())){
+       loadLastSolutionConfiguration();
+    }else if (["Notebook"].includes(getTaskEnvironment())){
+        addTaskFiles();
+    }
 });

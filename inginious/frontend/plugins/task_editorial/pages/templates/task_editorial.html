@@ -1,4 +1,4 @@
-$def with (task_data, task_all_languages, task_solution_code_language)
+$def with (task_data, task_environment, task_all_languages, task_solution_code_language)
 
 <div class="alert alert-warning">
     <i class="fa fa-info-circle"/>
@@ -25,30 +25,48 @@ $def with (task_data, task_all_languages, task_solution_code_language)
     <div class="row form-group">
         <h3>$:_("Task solution")</h3>
     </div>
-    <div class="row form-group">
-        <div class="col-sm-3">
-            <label>
-                $:_("Solution language")
-            </label>
+
+    $if task_environment in {"multiple_languages" , "Data Science" , "HDL"} or task_environment is None:
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <label>
+                    $:_("Solution language")
+                </label>
+            </div>
+
+            <div class="col-sm-9">
+                <label>
+                    $:_("Solution code")
+                </label>
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-original-title=$:_("\"Put the solution code on the selected language.\"")></i>
+            </div>
         </div>
-        <div class="col-sm-9">
-            <label>
-                $:_("Solution code")
-            </label>
-            <i class="fa fa-question-circle" data-toggle="tooltip" data-original-title=$:_("\"Put the solution code on the selected language.\"")></i>
-        </div>
-    </div>
-    <div class="row form-group">
+        <div class="row form-group">
             <div class="col-sm-3">
                 <select class="form-control" id="solution_code_language" name="solution_code_language" onchange="setSolutionCodeLanguage()">
-                        <option disabled selected value="-1">$:_("Select language")</option>
+                    <option disabled selected value="0">$:_("Select language")</option>
                 </select>
             </div>
             <div class="col-sm-9">
                 <textarea id="solution_code" class="code-editor form-control"
                           name="solution_code" data-x-language="" data-x-lines="10">$:task_data.get('solution_code')</textarea>
             </div>
-    </div>
+        </div>
+    $else:
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <label>
+                    $:_("Solution notebook")
+                </label>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <select class="form-control" id="solution_code_notebook" name="solution_code_notebook">
+                    <option disabled selected value="0">$:_("Solution notebook name")</option>
+                </select>
+            </div>
+        </div>
 </div>
 
 <script>
@@ -60,6 +78,14 @@ $def with (task_data, task_all_languages, task_solution_code_language)
 
     function getTaskSolutionCodeLanguage(){
         return "$task_solution_code_language";
+    }
+
+    function getTaskEnvironment(){
+        return "$task_environment";
+    }
+
+    function getTaskSolutionNotebook(){
+        return "$task_data.get('solution_notebook_name')";
     }
 
 </script>

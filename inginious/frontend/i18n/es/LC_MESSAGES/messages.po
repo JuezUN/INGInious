@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-02 19:46-0500\n"
+"POT-Creation-Date: 2021-02-03 19:55-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -2525,7 +2525,7 @@ msgstr "Intentos y mejor nota"
 msgid "Bar Submissions Per Tasks"
 msgstr "Barra - Submissions por tarea"
 
-#: inginious/frontend/plugins/task_editorial/pages/task_editorial.py:16
+#: inginious/frontend/plugins/task_editorial/pages/task_editorial.py:15
 msgid "Task editorial"
 msgstr "Editorial"
 
@@ -2540,8 +2540,8 @@ msgstr ""
 "al que podrán acceder cuando finalice la fecha límite"
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:11
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:9
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:22
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:13
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:34
 msgid "Task tutorial"
 msgstr "Tutorial de la tarea"
 
@@ -2556,31 +2556,52 @@ msgstr ""
 "contexto de la tarea\""
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:26
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:13
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:38
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:23
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:50
 msgid "Task solution"
 msgstr "Solución de la tarea"
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:31
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:44
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:33
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:56
 msgid "Solution language"
 msgstr "Lenguaje del código"
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:36
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:39
 msgid "Solution code"
 msgstr "Código de la solución"
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:38
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:41
 msgid "\"Put the solution code on the selected language.\""
 msgstr "\"Establezca el código de la solución en el lenguaje seleccionado\""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:44
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:47
 msgid "Select language"
 msgstr "Seleccionar lenguaje"
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:59
+#, fuzzy
+msgid "Solution notebook"
+msgstr "Notebook de la solución"
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:66
+#, fuzzy
+msgid "Solution notebook name"
+msgstr "Nombre del notebook"
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:3
 msgid "Editorial"
 msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:15
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:25
+#, fuzzy
+msgid "Not available yet"
+msgstr "Aun no está disponible"
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:58
+#, fuzzy
+msgid "No language"
+msgstr "Sin lenguaje"
 
 #: inginious/frontend/templates/auth.html:8
 msgid "Welcome"

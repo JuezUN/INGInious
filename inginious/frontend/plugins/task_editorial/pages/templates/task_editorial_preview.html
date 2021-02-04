@@ -1,20 +1,32 @@
-$def with (course, task, all_languages, task_tutorial_description, task_solution_code, task_solution_code_language)
+$def with (course, task, is_task_open, all_languages, task_tutorial_description, task_solution_code, task_solution_code_language)
 
     <h3>$:_("Editorial")</h3>
 
     <div class="tab-pane fade in active" id="tutorial_tab">
         <div class="list-group">
-            $if (task_tutorial_description is not None):
-                <a class="list-group-item list-group-item-info" data-toggle="modal" data-target="#task_tutorial_modal" style="cursor:pointer;">
-                    <i class="fa fa-graduation-cap fa-fw"></i>&nbsp; $:_("Task tutorial")
+            $if task_tutorial_description is not None:
+                <a class="list-group-item list-group-item-info
+                    $if is_task_open:
+                        disabled
+                    " data-toggle="modal" data-target="#task_tutorial_modal" style="cursor:pointer;">
+                    <i class="fa fa-graduation-cap fa-fw"></i>&nbsp;
+                        $:_("Task tutorial")
+                        $if is_task_open:
+                            - $:_("Not available yet")
                 </a>
-            $if (task_solution_code is not None):
-                <a class="list-group-item list-group-item-info" data-toggle="modal" data-target="#task_solution_modal" style="cursor:pointer;" onclick="setTaskSolutionCode()">
-                    <i class="fa fa-graduation-cap fa-fw"></i>&nbsp; $:_("Task solution")
+            $if task_solution_code is not None:
+                <a class="list-group-item list-group-item-info
+                    $if is_task_open:
+                        disabled
+                    " data-toggle="modal" data-target="#task_solution_modal" style="cursor:pointer;" onclick="setTaskSolutionCode()">
+                    <i class="fa fa-graduation-cap fa-fw"></i>&nbsp;
+                        $:_("Task solution")
+                        $if is_task_open:
+                            - $:_("Not available yet")
                 </a>
         </div>
     </div>
-
+$if not is_task_open:
     <div id="task_tutorial_modal" class="modal fade">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -39,15 +51,18 @@ $def with (course, task, all_languages, task_tutorial_description, task_solution
                 </div>
                 <div class="modal-body">
                     <div class="row form-group">
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>
                                  $:_("Solution language"):
-                                 $#:all_languages[task_solution_code_language]
+                                 $if task_solution_code_language is None:
+                                    $:_("No language")
+                                 $else:
+                                    $all_languages[task_solution_code_language]
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea id="task_solution_code" class="form-control" name="task_solution_code" rows="10" style="resize:none">$:task_solution_code</textarea>
+                        <textarea id="task_solution_code" class="code-editor form-control" name="task_solution_code" style="resize:none" data-x-language="" data-x-lines="10" value="$:task_solution_code"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -59,7 +74,11 @@ $def with (course, task, all_languages, task_tutorial_description, task_solution
 <script type="text/javascript">
 
     function getSolutionLanguage(){
-        return ""
+        return "$task_solution_code_language";
     }
+
+    jQuery(document).ready(function(){
+        setTaskSolutionCode();
+    });
 
 </script>

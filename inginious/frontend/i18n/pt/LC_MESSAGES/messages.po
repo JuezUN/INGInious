@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-02 19:46-0500\n"
+"POT-Creation-Date: 2021-02-03 19:55-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -2274,7 +2274,7 @@ msgstr ""
 msgid "Bar Submissions Per Tasks"
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/task_editorial.py:16
+#: inginious/frontend/plugins/task_editorial/pages/task_editorial.py:15
 msgid "Task editorial"
 msgstr ""
 
@@ -2286,8 +2286,8 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:11
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:9
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:22
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:13
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:34
 msgid "Task tutorial"
 msgstr ""
 
@@ -2300,30 +2300,48 @@ msgid "\"Description on RST format. See task context help for more information\"
 msgstr ""
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:26
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:13
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:38
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:23
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:50
 msgid "Task solution"
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:31
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:44
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:33
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:56
 msgid "Solution language"
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:36
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:39
 msgid "Solution code"
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:38
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:41
 msgid "\"Put the solution code on the selected language.\""
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:44
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:47
 msgid "Select language"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:59
+msgid "Solution notebook"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:66
+msgid "Solution notebook name"
 msgstr ""
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:3
 msgid "Editorial"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:15
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:25
+#, fuzzy
+msgid "Not available yet"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:58
+msgid "No language"
 msgstr ""
 
 #: inginious/frontend/templates/auth.html:8
