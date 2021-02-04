@@ -16,3 +16,5 @@ def init(plugin_manager, _, __, plugin_config):
     plugin_manager.add_hook("css", lambda: "/contact_page/static/css/contact_page.css")
     plugin_manager.add_hook("javascript_footer", lambda: "/contact_page/static/js/contact_page_main.js")
     plugin_manager.add_hook("javascript_footer", lambda: "/contact_page/static/js/formulary.js")
+    plugin_manager.add_hook("javascript_footer", lambda: "/contact_page/static/js/message_box.js")
+

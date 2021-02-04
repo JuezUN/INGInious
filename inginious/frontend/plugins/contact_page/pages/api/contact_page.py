@@ -18,6 +18,8 @@ URL_channel = {
 }
 subject_new_course_id = "subject-new-course"
 
+base_renderer_path = "frontend/plugins/contact_page/pages/templates"
+
 
 def create_text_block(title, content):
     text = "*%s:* \n %s" % (title, content)
@@ -45,7 +47,7 @@ def create_payload(data):
 
 def send_request_to_slack(subject_id, payload):
     response = requests.post(URL_channel[subject_id], data=payload)
-    print(response)
+    print("Slack response: ", response)
 
 
 def is_new_course_request(subject_id):
@@ -54,10 +56,10 @@ def is_new_course_request(subject_id):
 
 class ContactPage(INGIniousPage):
     def GET(self):
-        return self.template_helper.get_custom_renderer("frontend/plugins/contact_page/pages/templates").contact_page()
+        return self.template_helper.get_custom_renderer(base_renderer_path).contact_page()
 
     def POST(self):
         data = web.input()
         payload = create_payload(data)
         send_request_to_slack(data["subject_id"], payload)
-        return self.template_helper.get_custom_renderer("frontend/plugins/contact_page/pages/templates").contact_page()
+        return self.template_helper.get_custom_renderer(base_renderer_path).contact_page()

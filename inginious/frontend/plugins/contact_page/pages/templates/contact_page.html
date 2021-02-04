@@ -18,8 +18,13 @@ $ IsLoggedIn = user_manager.session_logged_in()
 <section>
     <div class="container px-6">
         <h1>$:_("Contact Page")</h1>
-        <div class="py-2">
+        <div class="py-1">
             <form class="form-horizontal">
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <div id="alert-space"></div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="subject-selection"><h3>$:_("Subject")</h3></label>
@@ -59,9 +64,6 @@ $ IsLoggedIn = user_manager.session_logged_in()
                     <div class="checkbox col-md-2" id="checkbox-space"
                     $if not IsLoggedIn:
                         hidden
-                        data-isLoggedIn="true"
-                    $else:
-                        data-isLoggedIn="false"
                     >
                         <label class="py-2">
                             <input type="checkbox" id="checkbox-edit"> <h4 class="ml-1">$:_("Edit")</h4>
@@ -84,7 +86,7 @@ $ IsLoggedIn = user_manager.session_logged_in()
                 </div>
                 <div class="row">
                     <div class="col-md-offset-9 mr-2">
-                        <button class="btn btn-primary btn-block" id="send-contact-page-button">$:_("Send")</button>
+                        <a class="btn btn-primary btn-block" id="send-contact-page-button">$:_("Send")</a>
                     </div>
                 </div>
             </form>

@@ -5,14 +5,13 @@ const NEW_COURSE_ID = "subject-new-course";
 const EMAIL_INPUT_ID = "email-input";
 const NAME_INPUT_ID = "name-input";
 const CHECKBOX_ID = "checkbox-edit";
-const CHECKBOX_SPACE_ID = "checkbox-space";
 const COURSE_NAME_ID = "course-name";
 const COURSE_NAME_SPACE_ID = "course-space";
 const TEXTAREA_ID = "textarea-contact-page";
 const SEND_BUTTON_ID = "send-contact-page-button";
 const COMMENTS_INSTRUCTIONS = "description-comment";
 const NEW_COURSE_INSTRUCTIONS = "description-new-course";
-
+const ALERT_SPACE_ID = "alert-space";
 
 class Formulary {
     constructor() {
@@ -20,7 +19,6 @@ class Formulary {
         this.emailInput = $(`#${EMAIL_INPUT_ID}`);
         this.nameInput = $(`#${NAME_INPUT_ID}`);
         this.editCheckbox = $(`#${CHECKBOX_ID}`);
-        this.checkBoxSpace = $(`#${CHECKBOX_SPACE_ID}`);
         this.courseNameInput = $(`#${COURSE_NAME_ID}`);
         this.courseNameSpace = $(`#${COURSE_NAME_SPACE_ID}`);
         this.textarea = $(`#${TEXTAREA_ID}`);
@@ -91,17 +89,16 @@ class Formulary {
         this.commentInstructions.hide();
     }
 
-    isLoggedIn() {
-        return Boolean(this.checkBoxSpace.attr("data-isLoggedIn"))
-    }
-
     changeSelection(optionId = NO_SELECTED_ID) {
         $(`#${optionId}`).attr('selected', 'selected');
     }
 
     sendInfo() {
-        if (this.checkFieldStatus()) {
+        if (this.validateFieldsStatus()) {
             this.sendRequest();
+        }else
+        {
+            new MessageBox(ALERT_SPACE_ID,"Correct all the errors noted in order to send the message ", "warning",false);
         }
     }
 
@@ -114,19 +111,87 @@ class Formulary {
                 "name": this.nameInput.val(),
                 "courseName": this.courseNameInput.val(),
                 "textarea": this.textarea.val()
-
             },
             success: function (data) {
-                //TODO
+                new MessageBox(ALERT_SPACE_ID, "The message has been sent", "info", false);
             },
             error: function (request, status, error) {
-                //TODO
+                console.log(error)
+                new MessageBox(ALERT_SPACE_ID, "The message could not be sent", "danger", false);
             }
         });
     }
 
-    checkFieldStatus() {
-        //TODO
+    validateFieldsStatus() {
+        this.removeErrorStyle(this.selectGroup);
+        this.removeErrorStyle(this.emailInput);
+        this.removeErrorStyle(this.nameInput);
+        this.removeErrorStyle(this.textarea);
+        return this.checkSubjectIsOk() & this.checkEmailFieldIsOk() & this.checkNameFieldIsOk() & this.checkTextAreaIsOk();
+    }
+
+    checkSubjectIsSelected() {
+        return this.getOptionSelected() !== NO_SELECTED_ID;
+    }
+
+    checkInputContent(inputObj, minLen) {
+        return inputObj.val().length > minLen;
+    }
+
+    validateEmailFormat() {
+        const emailFormat = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z0-9._%+-]/i;
+        return emailFormat.test(this.emailInput.val());
+    }
+
+    addErrorStyle(inputObj, errorText) {
+        const inputObjParent = inputObj.parent();
+
+        inputObjParent.addClass("has-error");
+        inputObjParent.append(`<span class=\"help-block\">${errorText}</span>`);
+    }
+
+    removeErrorStyle(inputObj) {
+        const inputObjParent = inputObj.parent();
+
+        inputObjParent.removeClass("has-error");
+        inputObjParent.find("span").remove();
+    }
+
+    checkEmailFieldIsOk() {
+        if (!this.checkInputContent(this.emailInput, 0)) {
+            this.addErrorStyle(this.emailInput, "The email field is required");
+            return false;
+        }
+        if (!this.validateEmailFormat()) {
+            this.addErrorStyle(this.emailInput, "An email is requested");
+            return false;
+        }
         return true;
     }
+
+    checkSubjectIsOk() {
+        if (!this.checkSubjectIsSelected()) {
+            this.addErrorStyle(this.selectGroup, "Select an option");
+            return false;
+        }
+        return true;
+    }
+
+    checkNameFieldIsOk() {
+        if (!this.checkInputContent(this.nameInput, 0)) {
+            this.addErrorStyle(this.nameInput, "The name field is required");
+            return false;
+        }
+        return true;
+    }
+
+    checkTextAreaIsOk() {
+        if (!this.checkInputContent(this.textarea, 21)) {
+            this.addErrorStyle(this.textarea, "The comment is too short");
+            return false;
+        }
+        return true;
+    }
+
+
 }
