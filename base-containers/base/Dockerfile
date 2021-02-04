@@ -37,4 +37,7 @@ RUN     groupadd --gid 4242 worker && \
 RUN     echo -e "export LANG=en_US.UTF-8\nexport LANGUAGE=en_US:en\nexport LC_ALL=en_US.UTF-8\n" > /etc/profile
 RUN     sed -i.bak '/^AcceptEnv/ d' /etc/ssh/sshd_config
 
+# Set proxy vars in case the agent is behind a proxy
+RUN     echo -e "export http_proxy=\"$http_proxy\"\nexport https_proxy=\"$http_proxy\"\nexport HTTP_PROXY=\"$http_proxy\"\nexport HTTPS_PROXY=\"$http_proxy\"\n" >> /etc/profile
+
 CMD ["INGInious"]
