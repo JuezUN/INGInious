@@ -5,17 +5,20 @@ jQuery(document).ready(function () {
             .find('> div.navbar.navbar-default.navbar-static-top > div > div.navbar-header > a');
         const image = logoElement.find("> img").attr("src", imagePath);
         logoElement.text("");
-        logoElement.html(image).append(" Code");
+        logoElement.html(image);
+        image.width("70%");
+        image.height("auto%")
+        image.css("margin-left", "35%");
     }
 
-    function updateNavbar(){
+    function updateNavbar() {
         // Update navbar with new information.
-         const navbar = $("#wrapper")
+        const navbar = $("#wrapper")
             .find("> div.navbar.navbar-default.navbar-static-top");
-         //Add UNCode button
-         navbar.find("> div > div.collapse.navbar-collapse > ol.nav.navbar-nav.navbar-right")
-             .append("<li><a class='navbar-link' href='https://juezun.github.io/' target='_blank'>" +
-                 "<i class='fa fa-question-circle-o' style='margin-right: 5px' aria-hidden='true'></i>About UNCode</a></li>");
+        //Add UNCode button
+        navbar.find("> div > div.collapse.navbar-collapse > ol.nav.navbar-nav.navbar-right")
+            .append("<li><a class='navbar-link' href='https://juezun.github.io/' target='_blank'>" +
+                "<i class='fa fa-question-circle-o' style='margin-right: 5px' aria-hidden='true'></i>About UNCode</a></li>");
     }
 
     function updateFooter() {
@@ -39,7 +42,7 @@ jQuery(document).ready(function () {
 
     function updateTemplate() {
         // This updates all necessary changes in INGInious.
-        const imagePath = window.location.origin + "/UNCode/static/images/LogotipoUNAL.png";
+        const imagePath = window.location.origin + "/UNCode/static/images/logo_unc.svg";
         updateNavbarLogo(imagePath);
         updatePageIcon(imagePath);
         updateFooter();
