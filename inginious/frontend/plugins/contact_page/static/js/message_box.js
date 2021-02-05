@@ -21,7 +21,6 @@ class MessageBox {
         code += this.textContent;
         code += '</div>';
         this.code = code;
-        console.log(code);
     }
 
     displayBoxMessage() {

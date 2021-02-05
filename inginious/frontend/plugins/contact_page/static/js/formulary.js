@@ -116,7 +116,6 @@ class Formulary {
                 new MessageBox(ALERT_SPACE_ID, "The message has been sent", "info", false);
             },
             error: function (request, status, error) {
-                console.log(error)
                 new MessageBox(ALERT_SPACE_ID, "The message could not be sent", "danger", false);
             }
         });

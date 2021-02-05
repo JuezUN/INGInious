@@ -7,6 +7,7 @@ import web
 import requests
 import json
 from inginious.frontend.pages.utils import INGIniousPage
+from inginious.frontend.plugins.contact_page.pages.api.slack_url_error import SlackURLError
 
 subject_text = {
     "subject-comment": "Comentario o reporte de un problema",
@@ -19,6 +20,18 @@ URL_channel = {
 subject_new_course_id = "subject-new-course"
 
 base_renderer_path = "frontend/plugins/contact_page/pages/templates"
+
+
+def set_url_channel(main_message_channel, new_course_channel):
+    global URL_channel
+    if main_message_channel != "":
+        URL_channel["subject-comment"] = main_message_channel
+        if new_course_channel != "":
+            URL_channel["subject-new-course"] = new_course_channel
+        else:
+            URL_channel["subject-new-course"] = main_message_channel
+    else:
+        raise SlackURLError("The main slack's URL is empty")
 
 
 def create_text_block(title, content):
@@ -46,8 +59,7 @@ def create_payload(data):
 
 
 def send_request_to_slack(subject_id, payload):
-    response = requests.post(URL_channel[subject_id], data=payload)
-    print("Slack response: ", response)
+    requests.post(URL_channel[subject_id], data=payload)
 
 
 def is_new_course_request(subject_id):
