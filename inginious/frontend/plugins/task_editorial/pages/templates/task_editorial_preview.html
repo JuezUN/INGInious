@@ -1,6 +1,8 @@
-$def with (course, task, is_task_open, all_languages, task_tutorial_description, task_solution_code, task_solution_code_language)
+$def with (course, task, is_task_open, all_languages, task_tutorial_description, task_solution_code, task_solution_code_language, task_environment)
 
-    <h3>$:_("Editorial")</h3>
+    $if not (task_tutorial_description is None and task_solution_code is None):
+
+        <h3>$:_("Editorial")</h3>
 
     <div class="tab-pane fade in active" id="tutorial_tab">
         <div class="list-group">
@@ -18,7 +20,7 @@ $def with (course, task, is_task_open, all_languages, task_tutorial_description,
                 <a class="list-group-item list-group-item-info
                     $if is_task_open:
                         disabled
-                    " data-toggle="modal" data-target="#task_solution_modal" style="cursor:pointer;" onclick="setTaskSolutionCode()">
+                    " data-toggle="modal" data-target="#task_solution_modal" style="cursor:pointer;">
                     <i class="fa fa-graduation-cap fa-fw"></i>&nbsp;
                         $:_("Task solution")
                         $if is_task_open:
@@ -61,8 +63,8 @@ $if not is_task_open:
                             </label>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <textarea id="task_solution_code" class="code-editor form-control" name="task_solution_code" style="resize:none" data-x-language="" data-x-lines="10" value="$:task_solution_code"></textarea>
+                    <div id="solution_test" class="box" hidden>
+                        <textarea id="task_solution_code" class="form-control single" name="task_solution_code" style="resize:none" value="$:task_solution_code"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -76,9 +78,5 @@ $if not is_task_open:
     function getSolutionLanguage(){
         return "$task_solution_code_language";
     }
-
-    jQuery(document).ready(function(){
-        setTaskSolutionCode();
-    });
 
 </script>

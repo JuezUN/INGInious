@@ -70,8 +70,9 @@ function addTaskFiles(){
         task_id: getTaskId(),
      }, function (files) {
         $.each(files, function (index, file) {
-            solution_language_select.append(`<option class="solution_notebook_select_option" value="${file.complete_name}">${file.complete_name}</option>`);
-            console.log(file.complete_name);
+            if(file.complete_name.includes('ipynb')){
+                solution_language_select.append(`<option class="solution_notebook_select_option" value="${file.complete_name}">${file.complete_name}</option>`);
+            }
         })
      });
 }
@@ -83,19 +84,34 @@ function loadLastSolutionConfiguration(){
     setSolutionCodeLanguage();
 }
 
+function setTaskSolutionForm(){
+
+    const task_environment = $("#environment").val();
+    if(["multiple_languages" , "Data Science" , "HDL"].includes(task_environment)){
+        $("#multiple_languages_task_solution").show();
+        $("#notebook_task_solution").hide();
+    }
+    else if (["Notebook"].includes(task_environment)){
+        $("#notebook_task_solution").show();
+        $("#multiple_languages_task_solution").hide();
+    }
+}
+
 //Update editorial elements when click on editorial tab
 $("a[data-toggle='tab'][href='#tab_editorial']").on("show.bs.tab", function (e) {
-    if(["multiple_languages" , "Data Science" , "HDL"].includes(getTaskEnvironment())){
+    setTaskSolutionForm();
+    if(["multiple_languages" , "Data Science" , "HDL"].includes($("#environment").val())){
        loadLastSolutionConfiguration();
-    }else if (["Notebook"].includes(getTaskEnvironment())){
+    }else if (["Notebook"].includes($("#environment").val())){
         addTaskFiles();
     }
 });
 
 jQuery(document).ready(function () {
-    if(["multiple_languages" , "Data Science" , "HDL"].includes(getTaskEnvironment())){
+    setTaskSolutionForm();
+    if(["multiple_languages" , "Data Science" , "HDL"].includes($("#environment").val())){
        loadLastSolutionConfiguration();
-    }else if (["Notebook"].includes(getTaskEnvironment())){
+    }else if (["Notebook"].includes($("#environment").val())){
         addTaskFiles();
     }
 });
