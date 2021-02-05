@@ -101,14 +101,22 @@ class RegistrationPage(INGIniousPage):
                                             "password": passwd_hash,
                                             "activate": activate_hash,
                                             "bindings": {},
-                                            "language": self.user_manager._session.get("language", "en")})
+                                            "language": self.user_manager._session.get("language", "en"),
+                                            "send_data_policy": {}
+                                            })
                 try:
                     web.sendmail(web.config.smtp_sendername, data["email"], _("Welcome on UNCode"),
                                  _("""Welcome on UNCode !
 
 To activate your account, please click on the following link :
 """)
-                                 + web.ctx.home + "/register?activate=" + activate_hash)
+                                 + web.ctx.home + "/register?activate=" + activate_hash
+                                 + _("""
+                                 
+See user data policy here:
+""")
+                                 + web.ctx.home + "/data_policy"
+                                 )
                     msg = _("You are succesfully registered. An email has been sent to you for activation.")
                 except:
                     error = True
