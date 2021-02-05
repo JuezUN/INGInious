@@ -7,7 +7,7 @@ jQuery(document).ready(function () {
         logoElement.text("");
         logoElement.html(image);
         image.width("70%");
-        image.height("auto")
+        image.height("auto");
         image.css("margin-left", "35%");
     }
 
