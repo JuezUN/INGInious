@@ -6,7 +6,8 @@ import os
 
 from inginious.frontend.plugins.contact_page.pages.api.slack_url_error import SlackURLError
 from inginious.frontend.plugins.utils import create_static_resource_page
-from inginious.frontend.plugins.contact_page.pages.api.contact_page import ContactPage, set_url_channel
+from inginious.frontend.plugins.contact_page.pages.api.contact_page import ContactPage, set_url_channel, \
+    set_destination_email
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
@@ -24,8 +25,10 @@ def init(plugin_manager, _, __, plugin_config):
     use_minified = plugin_config.get("use_minified", True)
     slack_message_url = plugin_config.get("main_slack_url_message", "")
     slack_new_course_url = plugin_config.get("slack_url_for_new_course", "")
+    destination_email = plugin_config.get("destination_email")
 
     define_slack_url(slack_message_url, slack_new_course_url)
+    set_destination_email(destination_email)
 
     if use_minified:
         plugin_manager.add_hook("css", lambda: "/contact_page/static/css/contact_page.min.css")
