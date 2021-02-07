@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-04 20:23-0500\n"
+"POT-Creation-Date: 2021-02-07 16:43-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -2274,8 +2274,8 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:11
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:15
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:36
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:21
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:60
 msgid "Task tutorial"
 msgstr ""
 
@@ -2288,13 +2288,15 @@ msgid "\"Description on RST format. See task context help for more information\"
 msgstr ""
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:26
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:25
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:52
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:36
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:50
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:76
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:104
 msgid "Task solution"
 msgstr ""
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:33
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:58
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:82
 msgid "Solution language"
 msgstr ""
 
@@ -2310,28 +2312,33 @@ msgstr ""
 msgid "Select language"
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:60
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:61
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:110
 msgid "Solution notebook"
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:64
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:65
 msgid "\"Select a notebook file with .ipynb extension\""
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:66
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:67
 msgid "Solution notebook name"
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:5
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:6
 msgid "Editorial"
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:17
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:27
-msgid "Not available yet"
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:18
+msgid "\"Task tutorial not available until the task deadline is over\""
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:60
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:33
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:47
+msgid "\"Task solution not available until the task deadline is over\""
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:84
 msgid "No language"
 msgstr ""
 
@@ -4593,10 +4600,4 @@ msgstr ""
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr ""
-
-#~ msgid "Description on RST format. See task context help for more information"
-#~ msgstr ""
-
-#~ msgid "Put the tutorial code on selected language."
-#~ msgstr ""
 

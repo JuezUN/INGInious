@@ -17,7 +17,7 @@ def editorial_task_tab(course, taskid, task_data, template_helper):
 
     task_solution_code_language = task_data.get('solution_code_language')
 
-    content = template_helper.get_custom_renderer(_TASK_EDITORIAL_TEMPLATE_PATH, layout=False).task_editorial(task_data, get_all_available_languages(), task_solution_code_language)
+    content = template_helper.get_custom_renderer(_TASK_EDITORIAL_TEMPLATE_PATH, layout=False).task_editorial(task_data, task_solution_code_language)
     return tab_id, link ,content
 
 def editorial_task_preview(course, task, template_helper):
@@ -38,12 +38,12 @@ def editorial_task_preview(course, task, template_helper):
 
 def check_editorial_submit(course, taskid, task_data, task_fs):
 
+    if task_data['tutorial_description'] is '':
+        del task_data['tutorial_description']
+
     if task_data['environment'] in {"multiple_languages" , "Data Science" , "HDL"}:
 
         #Delete empty fields to show tutorial and solution in preview
-
-        if task_data['tutorial_description'] is '':
-            del  task_data['tutorial_description']
 
         if task_data['solution_code'] is '':
             del task_data['solution_code']
@@ -55,11 +55,9 @@ def check_editorial_submit(course, taskid, task_data, task_fs):
 
     elif task_data['environment'] in {"Notebook"}:
 
-        if task_data['tutorial_description'] is '':
-            del  task_data['tutorial_description']
-
         all_files = CourseTaskFiles.get_task_filelist(course._task_factory, course.get_id(), taskid)
-        solution_code_notebook = task_data['solution_code_notebook']
+        all_files = {complete_name[1:] if complete_name.startswith("/") else complete_name for
+                  level, is_directory, name, complete_name in all_files}
 
-        if task_data['solution_code_notebook'] is '0':
+        if task_data['solution_code_notebook'] is '0' or not task_data['solution_code_notebook'] in all_files:
             del task_data['solution_code_notebook']

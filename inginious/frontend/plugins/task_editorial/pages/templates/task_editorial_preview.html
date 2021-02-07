@@ -1,12 +1,11 @@
 $def with (course, task, is_task_open, all_languages, task_tutorial_description, task_solution_code, task_solution_code_language, task_solution_code_notebook, task_environment)
 
-    $if not (task_tutorial_description is None and task_solution_code is None):
+
+    $if not (task_tutorial_description is None and (task_solution_code is None or task_solution_code_notebook is None)):
 
         <h3>$:_("Editorial")</h3>
 
-        <div class="DivToScroll DivWithScroll" id="notebook-test" hidden></div>
-
-    <div class="tab-pane fade in active" id="tutorial_tab">
+        <div class="tab-pane fade in active" id="tutorial_tab">
         <div class="list-group">
             $if task_tutorial_description is not None:
                 <a class="list-group-item list-group-item-info
@@ -16,7 +15,7 @@ $def with (course, task, is_task_open, all_languages, task_tutorial_description,
                     data-target="#task_tutorial_modal"
                     style="cursor:pointer;"
                     $if is_task_open:
-                        title=$:_('"Task not available until the task deadline is over"')
+                        title=$:_('"Task tutorial not available until the task deadline is over"')
                     >
                     <i class="fa fa-graduation-cap fa-fw"></i>&nbsp;
                         $:_("Task tutorial")
@@ -31,7 +30,7 @@ $def with (course, task, is_task_open, all_languages, task_tutorial_description,
                         data-target="#task_solution_modal"
                         style="cursor:pointer;"
                         $if is_task_open:
-                            title="$:_('"Task not available until the task deadline is over"')
+                            title=$:_('"Task solution not available until the task deadline is over"')
                         >
                         <i class="fa fa-graduation-cap fa-fw"></i>&nbsp;
                             $:_("Task solution")
@@ -45,15 +44,14 @@ $def with (course, task, is_task_open, all_languages, task_tutorial_description,
                         data-target="#task_solution_notebook_modal"
                         style="cursor:pointer;"
                         $if is_task_open:
-                            title=$:_('"Task not available until the task deadline is over"')
+                            title=$:_('"Task solution not available until the task deadline is over"')
                         >
                         <i class="fa fa-graduation-cap fa-fw"></i>&nbsp;
                             $:_("Task solution")
-                            $if is_task_open:
-                                - $:_("Not available yet")
                     </a>
         </div>
     </div>
+
 $if not is_task_open:
     <div id="task_tutorial_modal" class="modal fade">
         <div class="modal-dialog modal-lg">
@@ -109,7 +107,7 @@ $if not is_task_open:
                         <div class="row form-group">
                             <div class="col-sm-2">
                                 <label>
-                                    $:_("Notebook solution"):
+                                    $:_("Solution notebook"):
                                 </label>
                             </div>
                             <div id="solution_notebook" class="col-sm-10">
@@ -139,10 +137,6 @@ $if not is_task_open:
 
     function getTaskId(){
         return "$task.get_id()";
-    }
-
-    function getTaskEnvironment(){
-        return "$task_environment";
     }
 
 </script>

@@ -1,6 +1,5 @@
 import os
 import web
-import yaml
 
 from inginious.frontend.pages.api._api_page import APIAuthenticatedPage, APIError
 from inginious.common.course_factory import CourseNotFoundException, CourseUnreadableException, InvalidNameException
@@ -29,5 +28,5 @@ class SolutionNotebookApi(APIAuthenticatedPage):
             with open(os.path.join(task.get_fs().prefix, notebook_name), 'r') as notebook_file:
                 return 200, notebook_file.read()
         except Exception:
-            return 200, os.path.join(task.get_fs().prefix, notebook_name)
+            return 200, ""
 

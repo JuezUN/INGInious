@@ -55,15 +55,25 @@ function setSolutionCodeLanguage(){
         solution_editor.setOption("mode", mode.mime);
 
         CodeMirror.autoLoadMode(solution_editor, mode["mode"]);
+    }else{
+        const solution_editor = codeEditors["solution_code"];
+        solution_editor.setOption("mode", "text/plain");
     }
 };
+
+//Remove options from selector to avoid duplication
+
+function deleteNotebookNameSelectOptions(){
+    $(".solution_notebook_select_option").remove();
+}
 
 //Get all the task files and put their names on the notebook solution selector
 
 function addTaskFiles(){
 
-     $(".solution_notebook_select_option").remove();
+     deleteNotebookNameSelectOptions();
      const solution_language_select = $("#solution_code_notebook");
+     const solution_notebook_name = getTaskSolutionNotebook();
 
      $.get("/api/grader_generator/test_file_api", {
         course_id: getCourseId(),
@@ -72,6 +82,11 @@ function addTaskFiles(){
         $.each(files, function (index, file) {
             if(file.complete_name.includes('ipynb')){
                 solution_language_select.append(`<option class="solution_notebook_select_option" value="${file.complete_name}">${file.complete_name}</option>`);
+
+                //Set the last notebook name saved on task
+                if(file.complete_name.localeCompare(solution_notebook_name) == 0){
+                    $("#solution_code_notebook")[0].value = solution_notebook_name;
+                };
             }
         })
      });
@@ -103,7 +118,7 @@ $("a[data-toggle='tab'][href='#tab_editorial']").on("show.bs.tab", function (e) 
     if(["multiple_languages" , "Data Science" , "HDL"].includes($("#environment").val())){
        loadLastSolutionConfiguration();
     }else if (["Notebook"].includes($("#environment").val())){
-        addTaskFiles();
+       addTaskFiles();
     }
 });
 
@@ -112,6 +127,6 @@ jQuery(document).ready(function () {
     if(["multiple_languages" , "Data Science" , "HDL"].includes($("#environment").val())){
        loadLastSolutionConfiguration();
     }else if (["Notebook"].includes($("#environment").val())){
-        addTaskFiles();
+       addTaskFiles();
     }
 });
