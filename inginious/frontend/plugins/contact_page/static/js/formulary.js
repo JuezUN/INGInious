@@ -9,8 +9,8 @@ const COURSE_NAME_ID = "course-name";
 const COURSE_NAME_SPACE_ID = "course-space";
 const TEXTAREA_ID = "textarea-contact-page";
 const SEND_BUTTON_ID = "send-contact-page-button";
-const COMMENTS_INSTRUCTIONS = "description-comment";
-const NEW_COURSE_INSTRUCTIONS = "description-new-course";
+const COMMENTS_INSTRUCTIONS_ID = "description-comment";
+const NEW_COURSE_INSTRUCTIONS_ID = "description-new-course";
 const ALERT_SPACE_ID = "alert-space";
 
 class Formulary {
@@ -23,9 +23,39 @@ class Formulary {
         this.courseNameSpace = $(`#${COURSE_NAME_SPACE_ID}`);
         this.textarea = $(`#${TEXTAREA_ID}`);
         this.sendButton = $(`#${SEND_BUTTON_ID}`);
-        this.commentInstructions = $(`#${COMMENTS_INSTRUCTIONS}`);
-        this.newCourseInstructions = $(`#${NEW_COURSE_INSTRUCTIONS}`);
+        this.commentInstructions = $(`#${COMMENTS_INSTRUCTIONS_ID}`);
+        this.newCourseInstructions = $(`#${NEW_COURSE_INSTRUCTIONS_ID}`);
         this.configForm();
+        this.addChangeListenerToSelect();
+        this.addChangeListenerToCheckbox();
+        this.addClickListenerToSendButton();
+    }
+
+    configForm() {
+        this.hideAllSpecialSpaces();
+        this.showSpecialSpaces();
+    }
+
+
+    hideAllSpecialSpaces() {
+        this.courseNameSpace.hide();
+        this.newCourseInstructions.hide();
+        this.commentInstructions.hide();
+    }
+
+    showSpecialSpaces() {
+        switch (this.getOptionSelected()) {
+            case PROBLEM_OR_COMMENT_ID:
+                this.commentInstructions.show();
+                break;
+            case NEW_COURSE_ID:
+                this.courseNameSpace.show();
+                this.newCourseInstructions.show();
+                break;
+            case NO_SELECTED_ID:
+                //Do Nothing
+                break;
+        }
     }
 
     addChangeListenerToSelect() {
@@ -59,47 +89,20 @@ class Formulary {
         }
     }
 
-    getOptionSelected() {
-        return $(`#${SELECT_ID} option:selected`).attr("id");
-    }
-
-    configForm() {
-        this._hideAllSpecialSpaces();
-        this.showSpecialSpaces();
-    }
-
-    showSpecialSpaces() {
-        switch (this.getOptionSelected()) {
-            case PROBLEM_OR_COMMENT_ID:
-                this.commentInstructions.show();
-                break;
-            case NEW_COURSE_ID:
-                this.courseNameSpace.show();
-                this.newCourseInstructions.show();
-                break;
-            case NO_SELECTED_ID:
-                //Do Nothing
-                break;
-        }
-    }
-
-    _hideAllSpecialSpaces() {
-        this.courseNameSpace.hide();
-        this.newCourseInstructions.hide();
-        this.commentInstructions.hide();
-    }
-
-    changeSelection(optionId = NO_SELECTED_ID) {
-        $(`#${optionId}`).attr('selected', 'selected');
-    }
-
     sendInfo() {
         if (this.validateFieldsStatus()) {
             this.sendRequest();
-        }else
-        {
-            new MessageBox(ALERT_SPACE_ID,"Correct all the errors noted in order to send the message ", "warning",false);
+        } else {
+            new MessageBox(ALERT_SPACE_ID, "Correct all the errors noted in order to send the message ", "warning", false);
         }
+    }
+
+    validateFieldsStatus() {
+        this.removeErrorStyle(this.selectGroup);
+        this.removeErrorStyle(this.emailInput);
+        this.removeErrorStyle(this.nameInput);
+        this.removeErrorStyle(this.textarea);
+        return this.checkSubjectIsOk() & this.checkEmailFieldIsOk() & this.checkNameFieldIsOk() & this.checkTextAreaIsOk();
     }
 
     sendRequest() {
@@ -121,27 +124,6 @@ class Formulary {
         });
     }
 
-    validateFieldsStatus() {
-        this.removeErrorStyle(this.selectGroup);
-        this.removeErrorStyle(this.emailInput);
-        this.removeErrorStyle(this.nameInput);
-        this.removeErrorStyle(this.textarea);
-        return this.checkSubjectIsOk() & this.checkEmailFieldIsOk() & this.checkNameFieldIsOk() & this.checkTextAreaIsOk();
-    }
-
-    checkSubjectIsSelected() {
-        return this.getOptionSelected() !== NO_SELECTED_ID;
-    }
-
-    checkInputContent(inputObj, minLen) {
-        return inputObj.val().length > minLen;
-    }
-
-    validateEmailFormat() {
-        const emailFormat = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z0-9._%+-]/i;
-        return emailFormat.test(this.emailInput.val());
-    }
-
     addErrorStyle(inputObj, errorText) {
         const inputObjParent = inputObj.parent();
 
@@ -156,6 +138,14 @@ class Formulary {
         inputObjParent.find("span").remove();
     }
 
+    checkSubjectIsOk() {
+        if (!this.checkSubjectIsSelected()) {
+            this.addErrorStyle(this.selectGroup, "Select an option");
+            return false;
+        }
+        return true;
+    }
+
     checkEmailFieldIsOk() {
         if (!this.checkInputContent(this.emailInput, 0)) {
             this.addErrorStyle(this.emailInput, "The email field is required");
@@ -163,14 +153,6 @@ class Formulary {
         }
         if (!this.validateEmailFormat()) {
             this.addErrorStyle(this.emailInput, "An email is requested");
-            return false;
-        }
-        return true;
-    }
-
-    checkSubjectIsOk() {
-        if (!this.checkSubjectIsSelected()) {
-            this.addErrorStyle(this.selectGroup, "Select an option");
             return false;
         }
         return true;
@@ -190,6 +172,28 @@ class Formulary {
             return false;
         }
         return true;
+    }
+
+    checkSubjectIsSelected() {
+        return this.getOptionSelected() !== NO_SELECTED_ID;
+    }
+
+    checkInputContent(inputObj, minLen) {
+        return inputObj.val().length > minLen;
+    }
+
+    validateEmailFormat() {
+        const emailFormat = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z0-9._%+-]/i;
+        return emailFormat.test(this.emailInput.val());
+    }
+
+    getOptionSelected() {
+        return $(`#${SELECT_ID} option:selected`).attr("id");
+    }
+
+
+    changeSelection(optionId = NO_SELECTED_ID) {
+        $(`#${optionId}`).attr('selected', 'selected');
     }
 
 
