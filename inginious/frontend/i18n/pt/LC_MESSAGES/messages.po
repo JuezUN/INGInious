@@ -2045,7 +2045,7 @@ msgstr ""
 msgid "Start!"
 msgstr ""
 
-#: inginious/frontend/plugins/problem_bank/__init__.py:29
+#: inginious/frontend/plugins/problem_bank/__init__.py:30
 msgid " Problem bank"
 msgstr ""
 
@@ -4668,4 +4668,3 @@ msgstr ""
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr ""
-

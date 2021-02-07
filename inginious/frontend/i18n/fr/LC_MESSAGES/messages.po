@@ -2052,7 +2052,7 @@ msgstr ""
 msgid "Start!"
 msgstr ""
 
-#: inginious/frontend/plugins/problem_bank/__init__.py:29
+#: inginious/frontend/plugins/problem_bank/__init__.py:30
 #, fuzzy
 msgid " Problem bank"
 msgstr "Nouvel identifiant de problème"
@@ -4705,4 +4705,3 @@ msgstr "Taille fichier max.:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensions autorisées:"
-
