@@ -5,11 +5,11 @@ $# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
 $# more information about the licensing of this file.
 $#
 
-$var title: $:_("Contact page")
+$var title: $:_("Contact Page")
 
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
-        <li class="active"><a href="#">$:_("Contact page")<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#">$:_("Contact Page")<span class="sr-only">(current)</span></a></li>
     </ol>
 $var Navbar: $:NavbarF()
 
@@ -31,7 +31,7 @@ $ IsLoggedIn = user_manager.session_logged_in()
                         <select class="form-control" id="subject-selection">
                             <option id="subject-no-selected">$:_("Select an option")</option>
                             <option id="subject-comment">$:_("Report a problem or make a comment")</option>
-                            <option id="subject-new-course">$:_("Request a new course")</option>
+                            <option id="subject-new-course">$:_("Request to create a new course ")</option>
                         </select>
                     </div>
                 </div>
@@ -79,7 +79,7 @@ $ IsLoggedIn = user_manager.session_logged_in()
                 <div class="row">
                     <div class="col-md-12 form-group">
                         <label for="textarea-contact-page"><h3>$:_("Comments or description")</h3></label>
-                        <p hidden id="description-comment" class="py-1"><em>$:_("Just put your honest opinion or tell us about the problem you have encountered ")</em></p>
+                        <p hidden id="description-comment" class="py-1"><em>$:_("Put your opinion or tell us about the problem you have encountered ")</em></p>
                         <p hidden id="description-new-course" class="py-1"><em>$:_("Describe and justify the course you want to create ")</em></p>
                         <textarea class="form-control" rows="5" id="textarea-contact-page"></textarea>
                     </div>
