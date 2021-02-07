@@ -1,7 +1,7 @@
 import os
 
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.frontend.plugins.problem_bank.constants import _REACT_BUILD_FOLDER, _REACT_BASE_URL
+from ..constants import REACT_BUILD_FOLDER, REACT_BASE_URL
 
 _BASE_RENDERER_PATH = 'frontend/plugins/problem_bank'
 
@@ -30,7 +30,7 @@ class BankPage(INGIniousAdminPage):
             self.template_helper.add_javascript(base_url + 'static/js/' + file)
 
     def GET_AUTH(self, course_id):
-        self._set_up_compiled_resources(_REACT_BUILD_FOLDER, _REACT_BASE_URL)
+        self._set_up_compiled_resources(REACT_BUILD_FOLDER, REACT_BASE_URL)
         self.get_course_and_check_rights(course_id, None, False)
         course = self.course_factory.get_course(course_id)
         return (

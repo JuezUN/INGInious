@@ -38,7 +38,9 @@ class DisplayableCodeMultipleLanguagesProblem(CodeMultipleLanguagesProblem, Disp
         return renderer.multilang_edit(key, get_all_available_languages())
 
     def show_input(self, template_helper, language, seed):
-        allowed_languages = {language: get_all_available_languages()[language] for language in self._languages}
+        available_languages = get_all_available_languages()
+        allowed_languages = {language: available_languages[language] for language in self._languages if
+                             language in available_languages}
         dropdown_id = self.get_id() + "/language"
         custom_input_id = self.get_id() + "/input"
 
