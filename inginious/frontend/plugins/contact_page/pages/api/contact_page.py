@@ -3,6 +3,8 @@
 # This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
 # more information about the licensing of this file.
 
+""" Contact page """
+
 import web
 import requests
 import json
@@ -23,6 +25,7 @@ base_renderer_path = "frontend/plugins/contact_page/pages/templates"
 
 
 def set_url_channel(main_message_channel, new_course_channel):
+    """ Define the URL directions where do the request """
     global URL_channel
     if main_message_channel != "":
         URL_channel["subject-comment"] = main_message_channel
@@ -35,6 +38,7 @@ def set_url_channel(main_message_channel, new_course_channel):
 
 
 def create_payload(data):
+    """ Create the payload to be send """
     blocks = [create_slack_text_block("Asunto", subject_text[data["subject_id"]]),
               create_slack_text_block("Email", data["email"]),
               create_slack_text_block("Nombre", data["name"])]
@@ -45,6 +49,7 @@ def create_payload(data):
 
 
 def create_slack_text_block(title, content):
+    """ Create the blocks or sections of the message """
     text = "*%s:* \n %s" % (title, content)
     text = text.replace("\n", "\n>")
     text_content = {
@@ -59,18 +64,23 @@ def create_slack_text_block(title, content):
 
 
 def send_request_to_slack(subject_id, payload):
+    """  """
     requests.post(URL_channel[subject_id], data=payload)
 
 
 def is_new_course_request(subject_id):
+    """  """
     return subject_id == subject_new_course_id
 
 
 class ContactPage(INGIniousPage):
+    """ Contact page """
     def GET(self):
+        """ Get request. Return the contact page """
         return self.template_helper.get_custom_renderer(base_renderer_path).contact_page()
 
     def POST(self):
+        """ Post request. send a message to slack """
         data = web.input()
         subject_id = data["subject_id"]
         payload = create_payload(data)
