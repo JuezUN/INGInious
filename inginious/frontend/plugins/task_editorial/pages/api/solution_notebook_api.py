@@ -5,6 +5,7 @@ from inginious.frontend.pages.api._api_page import APIAuthenticatedPage, APIErro
 from inginious.common.course_factory import CourseNotFoundException, CourseUnreadableException, InvalidNameException
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 
+
 class SolutionNotebookApi(APIAuthenticatedPage):
 
     def API_GET(self):
@@ -29,4 +30,3 @@ class SolutionNotebookApi(APIAuthenticatedPage):
                 return 200, notebook_file.read()
         except Exception:
             return 200, ""
-

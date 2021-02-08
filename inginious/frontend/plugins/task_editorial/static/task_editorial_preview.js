@@ -1,32 +1,30 @@
 //Set the solution code and language on for CodeMirror
-
 function setTaskSolutionCode(){
 
     $("#task_solution_container").show();
-    const solution_code = $("#task_solution_code")[0].attributes["value"].value;
-    const solution_code_language = convertInginiousLanguageToCodemirror(getSolutionLanguage());
-    if(solution_code_language){
-        const solution_preview_editor = registerCodeEditor($("#task_solution_code")[0], solution_code_language, 10);
-        solution_preview_editor.setValue(solution_code);
-        solution_preview_editor.setOption("readOnly", "nocursor");
+    const solutionCode = $("#task_solution_code")[0].attributes["value"].value;
+    const solutionCodeLanguage = convertInginiousLanguageToCodemirror(getSolutionLanguage());
+    if(solutionCodeLanguage){
+        const solutionPreviewEditor = registerCodeEditor($("#task_solution_code")[0], solutionCodeLanguage, 10);
+        solutionPreviewEditor.setValue(solutionCode);
+        solutionPreviewEditor.setOption("readOnly", "nocursor");
     }else{
-        const solution_preview_editor = registerCodeEditor($("#task_solution_code")[0], 'text', 10);
-        solution_preview_editor.setValue(solution_code);
-        solution_preview_editor.setOption("readOnly", "nocursor");
+        const solutionPreviewEditor = registerCodeEditor($("#task_solution_code")[0], 'text', 10);
+        solutionPreviewEditor.setValue(solutionCode);
+        solutionPreviewEditor.setOption("readOnly", "nocursor");
     }
 }
 
 //Get and render the notebook file
-
 function setSolutionNotebook(){
     $.get("/api/task_editorial/", {
         course_id: getCourseId(),
         task_id: getTaskId(),
         notebook_name: getNotebookName()
     }).done(function write(result) {
-        const notebook_content = JSON.parse(result);
-        const solution_notebook_container = $("#solution_notebook");
-        render_notebook(notebook_content, solution_notebook_container);
+        const notebookContent = JSON.parse(result);
+        const solutionNotebookContainer = $("#solution_notebook");
+        render_notebook(notebookContent, solutionNotebookContainer);
     });
 }
 

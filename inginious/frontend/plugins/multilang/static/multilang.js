@@ -168,16 +168,16 @@ function toggle_display_new_subproblem_option() {
     else new_subproblem_element.show();
 }
 
-const render_notebook = function (ipynb, notebook_holder_id) {
-    const notebook_holder = notebook_holder_id[0];
-    notebook_holder_id.hide();
+const render_notebook = function (ipynb, notebook_holder_element) {
+    const notebook_holder = notebook_holder_element[0];
+    notebook_holder_element.hide();
     const notebook = this.notebook = nb.parse(ipynb);
     while (notebook_holder.hasChildNodes()) {
         notebook_holder.removeChild(notebook_holder.lastChild);
     }
     notebook_holder.appendChild(notebook.render());
     highlight_code();
-    notebook_holder_id.show();
+    notebook_holder_element.show();
 };
 
 function notebook_start_renderer() {
