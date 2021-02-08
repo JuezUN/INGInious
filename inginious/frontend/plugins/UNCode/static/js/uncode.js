@@ -17,7 +17,7 @@ jQuery(document).ready(function () {
         navbar.find("> div > div.collapse.navbar-collapse > ol.nav.navbar-nav.navbar-right")
             .append(
                 "<li class='dropdown'><a class=\"dropdown-toggle\" role=\"button\" data-toggle=\"dropdown\">\n" +
-                `<i class='fa fa-plus-circle' aria-hidden='true' style='margin-right: 5px'></i>UNCode <span class=\"caret\"></span></a>` +
+                "<i class='fa fa-plus-circle' aria-hidden='true' style='margin-right: 5px'></i>UNCode <span class=\"caret\"></span></a>" +
                 "<ul class=\"dropdown-menu\">" +
                 "<li><a class='navbar-link' href='https://juezun.github.io/' target='_blank' >" +
                 "<i class='fa fa-question-circle-o' aria-hidden='true' style='margin-right: 5px'></i>About UNCode</a></li>" +
