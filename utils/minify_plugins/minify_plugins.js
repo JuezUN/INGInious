@@ -256,7 +256,7 @@ function minifyContactPage() {
         return getCssFilePath(cssFilesPath, name);
     });
 
-    const jsFiles = ["message_box", "formulary", "contact_page_main"].map((name) => {
+    const jsFiles = ["message_box", "contact_page_form", "contact_page_main"].map((name) => {
         return getJSFilePath(jsFilesPath, name);
     });
 

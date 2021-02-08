@@ -1,4 +1,4 @@
 jQuery(document).ready(function () {
-    const form = new Formulary();
+    const form = new ContactPageForm();
     form.changeSelection();
 });

@@ -13,7 +13,7 @@ const COMMENTS_INSTRUCTIONS_ID = "description-comment";
 const NEW_COURSE_INSTRUCTIONS_ID = "description-new-course";
 const ALERT_SPACE_ID = "alert-space";
 
-class Formulary {
+class ContactPageForm {
     constructor() {
         this.selectGroup = $(`#${SELECT_ID}`);
         this.emailInput = $(`#${EMAIL_INPUT_ID}`);

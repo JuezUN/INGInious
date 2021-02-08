@@ -13,7 +13,7 @@ $def NavbarF():
     </ol>
 $var Navbar: $:NavbarF()
 
-$ IsLoggedIn = user_manager.session_logged_in()
+$ is_logged_in = user_manager.session_logged_in()
 
 <section>
     <div class="container px-6">
@@ -37,32 +37,32 @@ $ IsLoggedIn = user_manager.session_logged_in()
                 </div>
                 <div class="row">
                     <div style="margin-right: 0.9rem" class="form-group
-                    $if IsLoggedIn:
+                    $if is_logged_in:
                         col-md-5
                     $else:
                         col-md-6"
                     >
                         <label for="email-input"><h3>$:_("Email")</h3></label>
                         <input type="email" class="form-control" id="email-input" placeholder='$:_("Email")' value="$user_manager.session_email()"
-                        $if IsLoggedIn:
+                        $if is_logged_in:
                                disabled
                         >
                     </div>
                     <div style="margin-right: 0.9rem" class="form-group
-                    $if IsLoggedIn:
+                    $if is_logged_in:
                         col-md-5
                     $else:
                         col-md-6"
                     >
                         <label for="name-input"><h3>$:_("Name")</h3></label>
                         <input type="text" class="form-control" id="name-input" placeholder='$:_("Name")' value="$user_manager.session_realname()"
-                        $if IsLoggedIn:
+                        $if is_logged_in:
                                disabled
                         >
                     </div>
 
                     <div class="checkbox col-md-2" id="checkbox-space"
-                    $if not IsLoggedIn:
+                    $if not is_logged_in:
                         hidden
                     >
                         <label class="py-2">

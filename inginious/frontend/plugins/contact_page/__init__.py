@@ -4,9 +4,10 @@
 # more information about the licensing of this file.
 import os
 
-from inginious.frontend.plugins.contact_page.pages.api.slack_url_error import SlackURLError
+from inginious.frontend.plugins.contact_page.pages.slack_url_error import SlackURLError
 from inginious.frontend.plugins.utils import create_static_resource_page
-from inginious.frontend.plugins.contact_page.pages.api.contact_page import ContactPage, set_url_channel
+from inginious.frontend.plugins.contact_page.pages.contact_page import ContactPage
+from .pages.constants import set_url_channel
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
@@ -22,10 +23,10 @@ def init(plugin_manager, _, __, plugin_config):
     plugin_manager.add_page(r'/contact_page/static/(.*)', create_static_resource_page(_static_folder_path))
 
     use_minified = plugin_config.get("use_minified", True)
-    slack_message_url = plugin_config.get("main_slack_url_message", "")
-    slack_new_course_url = plugin_config.get("slack_url_for_new_course", "")
+    slack_url_contact_channel = plugin_config.get("slack_url_contact_channel", "")
+    slack_url_course_creation_channel = plugin_config.get("slack_url_course_creation_channel", "")
 
-    define_slack_url(slack_message_url, slack_new_course_url)
+    define_slack_url(slack_url_contact_channel, slack_url_course_creation_channel)
 
     if use_minified:
         plugin_manager.add_hook("css", lambda: "/contact_page/static/css/contact_page.min.css")
