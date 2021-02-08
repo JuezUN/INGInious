@@ -10,16 +10,15 @@ class MessageBox {
     }
 
     generateHtmlCode() {
-        let code = '<div class="alert ';
+        let code = "<div class=\"alert ";
         if (this.dismissible) {
-            code += 'alert-dismissible ';
+            code += "alert-dismissible ";
         }
         code += `alert-${this.type}" role="alert">`;
         if (!this.dismissible) {
-            code += '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
+            code += "<button type=\"button\" class=\"close\" data-dismiss=\"alert\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>";
         }
-        code += this.textContent;
-        code += '</div>';
+        code += this.textContent + "</div>";
         this.code = code;
     }
 
@@ -48,3 +47,4 @@ class MessageBox {
 
 
 }
+export default MessageBox;

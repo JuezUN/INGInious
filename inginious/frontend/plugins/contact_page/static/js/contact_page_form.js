@@ -1,3 +1,5 @@
+import MessageBox from "./message_box";
+
 const SELECT_ID = "subject-selection";
 const NO_SELECTED_ID = "subject-no-selected";
 const PROBLEM_OR_COMMENT_ID = "subject-comment";
@@ -93,7 +95,7 @@ class ContactPageForm {
         if (this.validateFieldsStatus()) {
             this.sendRequest();
         } else {
-            new MessageBox(ALERT_SPACE_ID, "Correct all the errors noted in order to send the message ", "warning", false);
+            const message = new MessageBox(ALERT_SPACE_ID, "Correct all the errors noted in order to send the message ", "warning", false);
         }
     }
 
@@ -116,10 +118,10 @@ class ContactPageForm {
                 "textarea": this.textarea.val()
             },
             success: function (data) {
-                new MessageBox(ALERT_SPACE_ID, "The message has been sent", "info", false);
+                const message = new MessageBox(ALERT_SPACE_ID, "The message has been sent", "info", false);
             },
             error: function (request, status, error) {
-                new MessageBox(ALERT_SPACE_ID, "The message could not be sent", "danger", false);
+                const message = new MessageBox(ALERT_SPACE_ID, "The message could not be sent", "danger", false);
             }
         });
     }
@@ -191,10 +193,10 @@ class ContactPageForm {
         return $(`#${SELECT_ID} option:selected`).attr("id");
     }
 
-
     changeSelection(optionId = NO_SELECTED_ID) {
-        $(`#${optionId}`).attr('selected', 'selected');
+        $(`#${optionId}`).attr("selected", "selected");
     }
 
-
 }
+
+export default ContactPageForm;
