@@ -5,11 +5,11 @@
 
 """ Contact page """
 
+import json
 import web
 import requests
-import json
 from inginious.frontend.pages.utils import INGIniousPage
-from .constants import _URL_channel, _SUBJECT_NEW_COURSE_ID
+from .constants import _url_channel, _subject_new_course_id
 
 base_renderer_path = "frontend/plugins/contact_page/pages/templates"
 
@@ -45,13 +45,13 @@ def create_slack_text_block(title, content):
 
 
 def send_request_to_slack(subject_id, payload):
-    """  """
-    requests.post(_URL_channel[subject_id], data=payload)
+    """ Send a post request to some Slack channel (previously defined ) whit the user message """
+    requests.post(_url_channel[subject_id], data=payload)
 
 
 def is_new_course_request(subject_id):
-    """  """
-    return subject_id == _SUBJECT_NEW_COURSE_ID
+    """ Return true value if the subject of the message is create a new course """
+    return subject_id == _subject_new_course_id
 
 
 class ContactPage(INGIniousPage):
