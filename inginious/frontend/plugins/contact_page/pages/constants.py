@@ -11,7 +11,6 @@ _subject_new_course_id = "subject-new-course"
 
 def set_url_channel(main_message_channel, new_course_channel):
     """ Define the URL directions where do the request """
-    global _url_channel
     if main_message_channel != "":
         _url_channel["subject-comment"] = main_message_channel
         if new_course_channel != "":

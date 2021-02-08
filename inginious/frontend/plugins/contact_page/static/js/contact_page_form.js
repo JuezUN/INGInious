@@ -1,5 +1,3 @@
-import MessageBox from "./message_box";
-
 const SELECT_ID = "subject-selection";
 const NO_SELECTED_ID = "subject-no-selected";
 const PROBLEM_OR_COMMENT_ID = "subject-comment";
@@ -198,5 +196,3 @@ class ContactPageForm {
     }
 
 }
-
-export default ContactPageForm;

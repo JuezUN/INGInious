@@ -40,7 +40,7 @@ def init(plugin_manager, course_factory, client, plugin_config):
     else:
         plugin_manager.add_hook("css", lambda: "/contact_page/static/css/contact_page.css")
         plugin_manager.add_hook("javascript_footer", lambda: "/contact_page/static/js/contact_page_main.js")
-        plugin_manager.add_hook("javascript_footer", lambda: "/contact_page/static/js/formulary.js")
+        plugin_manager.add_hook("javascript_footer", lambda: "/contact_page/static/js/contact_page_form.js")
         plugin_manager.add_hook("javascript_footer", lambda: "/contact_page/static/js/message_box.js")
 
     plugin_manager.add_page("/contact_page", ContactPage)

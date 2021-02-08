@@ -47,4 +47,3 @@ class MessageBox {
 
 
 }
-export default MessageBox;
