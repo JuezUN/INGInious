@@ -9,7 +9,6 @@ jQuery(document).ready(function () {
     }
 
     function updateNavbar() {
-        const imagePath = window.location.origin + "/UNCode/static/images/Icono.svg";
         // Update navbar with new information.
         const navbar = $("#wrapper")
             .find("> div.navbar.navbar-default.navbar-static-top");
