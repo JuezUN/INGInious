@@ -12,6 +12,7 @@ const _GRADER_GENERATOR_PLUGIN_PATH = `${_BASE_PATH}/grader_generator/static`;
 const _CODE_PREVIEW_PLUGIN_PATH = `${_BASE_PATH}/code_preview/static`;
 const _ANALYTICS_PLUGIN_PATH = `${_BASE_PATH}/analytics/static`;
 const _PLAGIARISM_PLUGIN_PATH = `${_BASE_PATH}/plagiarism/static`;
+const _TASK_EDITORIAL_PATH = `${_BASE_PATH}/task_editorial/static`;
 
 /**
  * Read file synchronously.
@@ -247,6 +248,18 @@ function minifyPlagiarismPlugin() {
     minifyCssFiles(cssFiles, cssFilesPath, "plagiarism");
 }
 
+function minifyTaskEditorialPlugin() {
+    const jsFilesPath = _TASK_EDITORIAL_PATH + "/";
+
+    const jsFiles = ["task_editorial", "task_editorial_preview"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+
+    console.log("Minify 'task_editorial' static files.");
+
+    minifyJSFiles(jsFiles, jsFilesPath, "task_editorial");
+}
+
 minifyUNCodePlugin();
 minifyUNTemplatePlugin();
 minifyStatisticsPlugin();
@@ -256,3 +269,4 @@ minifyGraderGeneratorPlugin();
 minifyCodePreviewPlugin();
 minifyAnalyticsPlugin();
 minifyPlagiarismPlugin();
+minifyTaskEditorialPlugin();
