@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-08 18:35-0500\n"
+"POT-Creation-Date: 2021-02-09 12:28-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -126,19 +126,19 @@ msgid "Invalid username format."
 msgstr "El formato del nombre de usuario es invalido."
 
 #: inginious/frontend/pages/register.py:79
-#: inginious/frontend/pages/register.py:138
+#: inginious/frontend/pages/register.py:136
 msgid "Invalid email format."
 msgstr "El formato del correo electrónico es inválido."
 
 #: inginious/frontend/pages/preferences/profile.py:47
 #: inginious/frontend/pages/register.py:82
-#: inginious/frontend/pages/register.py:168
+#: inginious/frontend/pages/register.py:166
 msgid "Password too short."
 msgstr "La contraseña no contiene el mínimo de caracteres."
 
 #: inginious/frontend/pages/preferences/profile.py:51
 #: inginious/frontend/pages/register.py:85
-#: inginious/frontend/pages/register.py:171
+#: inginious/frontend/pages/register.py:169
 msgid "Passwords don't match !"
 msgstr "¡Las contraseñas no coinciden!"
 
@@ -150,13 +150,13 @@ msgstr "¡El nombre de usuario ya existe!"
 msgid "This email address is already in use !"
 msgstr "¡La dirección de correo electrónico ya existe!"
 
-#: inginious/frontend/pages/register.py:107
+#: inginious/frontend/pages/register.py:106
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:109
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr "Bienvenido a UNCode"
 
-#: inginious/frontend/pages/register.py:108
+#: inginious/frontend/pages/register.py:107
 msgid ""
 "Welcome on UNCode !\n"
 "\n"
@@ -166,7 +166,7 @@ msgstr ""
 "\n"
 "Para activar tu cuenta, haz clic en el siguiente enlace:\n"
 
-#: inginious/frontend/pages/register.py:113
+#: inginious/frontend/pages/register.py:112
 msgid ""
 "\n"
 "                                 \n"
@@ -176,7 +176,7 @@ msgstr ""
 "                                 \n"
 "Puedes consultar la política de tratamiento de datos aqui:\n"
 
-#: inginious/frontend/pages/register.py:119
+#: inginious/frontend/pages/register.py:117
 msgid ""
 "You are succesfully registered. An email has been sent to you for "
 "activation."
@@ -184,7 +184,7 @@ msgstr ""
 "Ahora estas registrado. Un correo electrónico ha sido enviado para "
 "activar tu cuenta."
 
-#: inginious/frontend/pages/register.py:122
+#: inginious/frontend/pages/register.py:120
 msgid ""
 "Something went wrong while sending you activation email. Please contact "
 "the administrator."
@@ -192,15 +192,15 @@ msgstr ""
 "Ocurrió un error durante el envío del correo de activación de tu cuenta. "
 "Contacta al administrador."
 
-#: inginious/frontend/pages/register.py:145
+#: inginious/frontend/pages/register.py:143
 msgid "This email address was not found in database."
 msgstr "El correo electrónico no se encontró en la base de datos."
 
-#: inginious/frontend/pages/register.py:148
+#: inginious/frontend/pages/register.py:146
 msgid "UNCode password recovery"
 msgstr "Recuperación de la contraseña de UNCode"
 
-#: inginious/frontend/pages/register.py:149
+#: inginious/frontend/pages/register.py:147
 msgid ""
 "Dear {realname},\n"
 "\n"
@@ -212,11 +212,11 @@ msgstr ""
 "Ha realizado una petición para actualizar su contraseña en UNCode. Si "
 "usted realizó esta petición, por favor diríjase al siguiente enlace:\n"
 
-#: inginious/frontend/pages/register.py:153
+#: inginious/frontend/pages/register.py:151
 msgid "An email has been sent to you to reset your password."
 msgstr "Un correo electrónico ha sido enviado para cambiar tu contraseña."
 
-#: inginious/frontend/pages/register.py:156
+#: inginious/frontend/pages/register.py:154
 msgid ""
 "Something went wrong while sending you reset email. Please contact the "
 "administrator."
@@ -224,11 +224,11 @@ msgstr ""
 "Ocurrió un error durante el envío del correo para cambiar tu contraseña. "
 "Contacta al administrador."
 
-#: inginious/frontend/pages/register.py:180
+#: inginious/frontend/pages/register.py:178
 msgid "Invalid reset hash."
 msgstr "El cambio del hash es inválido."
 
-#: inginious/frontend/pages/register.py:182
+#: inginious/frontend/pages/register.py:180
 msgid "Your password has been successfully changed."
 msgstr "La contraseña ha sido actualizada con éxito."
 
