@@ -2148,7 +2148,7 @@ msgstr ""
 msgid "Start!"
 msgstr ""
 
-#: inginious/frontend/plugins/problem_bank/__init__.py:29
+#: inginious/frontend/plugins/problem_bank/__init__.py:30
 #, fuzzy
 msgid " Problem bank"
 msgstr "Nouvel identifiant de problème"

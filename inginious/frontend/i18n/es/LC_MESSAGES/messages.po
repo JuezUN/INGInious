@@ -1843,7 +1843,7 @@ msgstr "Salida esperada"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_submissions.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_submissions.html:50
 msgid "Rubric Scoring"
-msgstr ""
+msgstr "Rubrica"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:17
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_list.html:19
@@ -1863,11 +1863,11 @@ msgstr "Estudiante"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:19
 #: inginious/frontend/plugins/manual_scoring/pages/templates/task_list.html:18
 msgid "Manual Scoring"
-msgstr ""
+msgstr "Calificación manual"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:26
 msgid "Rubric scoring for:"
-msgstr ""
+msgstr "Rubrica"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:57
 #: inginious/frontend/templates/task.html:14
@@ -1884,52 +1884,52 @@ msgstr "Lenguaje"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:62
 msgid "Summary"
-msgstr ""
+msgstr "Resumen"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:78
 msgid "Select the best description to grade the student's code"
-msgstr ""
+msgstr "Seleccione la mejor descripción para evaluar el código del estudiante"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:79
 msgid "Click to select and double click to deselect"
-msgstr ""
+msgstr "Haz clicl para seleccionar y doble click para deseleccionar"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:123
 msgid "Comments"
-msgstr ""
+msgstr "Comentarios"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/task_list.html:23
 msgid "Tasks List"
-msgstr ""
+msgstr "Lista de tareas"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/task_list.html:29
 msgid "Task Name"
-msgstr ""
+msgstr "Nombre de tarea"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/task_list.html:30
 msgid "Student Succeeded"
-msgstr ""
+msgstr "Estudiantes aprobados"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/task_list.html:31
 msgid "Students who have tried"
-msgstr ""
+msgstr "Estudiantes que lo han intentado"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_list.html:26
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_submissions.html:27
 msgid "Rubric scoring for Task:"
-msgstr ""
+msgstr "Rubrica para la tarea"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_list.html:39
 msgid "Best score"
-msgstr ""
+msgstr "Mejor puntaje"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_list.html:54
 msgid "Unnamed"
-msgstr ""
+msgstr "Sin nombre"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_list.html:63
 msgid "No Students Yet"
-msgstr ""
+msgstr "Aún no hay estudiantes"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_submissions.html:47
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:35
@@ -1938,11 +1938,11 @@ msgstr "Fecha"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_submissions.html:48
 msgid "Result Summary"
-msgstr ""
+msgstr "Resumen de los resultados"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_submissions.html:49
 msgid "Score"
-msgstr ""
+msgstr "Puntaje"
 
 #: inginious/frontend/plugins/multilang/problems/code_multiple_file_languages_problem.py:37
 msgid "code file multiple languages"
@@ -2367,7 +2367,7 @@ msgstr "Archivo de código base"
 msgid "Start!"
 msgstr "Iniciar!"
 
-#: inginious/frontend/plugins/problem_bank/__init__.py:29
+#: inginious/frontend/plugins/problem_bank/__init__.py:30
 msgid " Problem bank"
 msgstr " Banco de problemas"
 

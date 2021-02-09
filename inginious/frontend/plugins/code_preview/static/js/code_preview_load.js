@@ -122,7 +122,8 @@ $("a[data-toggle='tab'][href='#tab_code_preview']").on("show.bs.tab", function (
 jQuery(document).ready(function () {
     if (typeof getTaskEnvironment !== "undefined"
         && ["multiple_languages", "HDL", "Data Science"].includes(getTaskEnvironment())
-        && !location.href.includes("submission")) {
+        && !location.href.includes("submission")
+        && !document.referrer.includes("submission")) {
         monkeyPatchOnChangeLanguageDropdown();
         loadCodePreviewToCodemirror();
     }

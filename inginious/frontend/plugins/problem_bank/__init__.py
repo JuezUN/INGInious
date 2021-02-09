@@ -1,6 +1,7 @@
 from inginious.frontend.plugins.utils import create_static_resource_page
-from inginious.frontend.plugins.problem_bank.constants import _REACT_BASE_URL, _REACT_BUILD_FOLDER, _BASE_STATIC_FOLDER, \
-    _BASE_STATIC_URL, _BASE_RENDERER_PATH
+from .constants import REACT_BASE_URL, REACT_BUILD_FOLDER, BASE_STATIC_FOLDER, BASE_STATIC_URL
+
+from pymongo.errors import CollectionInvalid
 
 from .pages.api.copy_task_api import CopyTaskApi
 from .pages.api.manage_banks_courses_api import ManageBanksCoursesApi
@@ -29,11 +30,16 @@ def init(plugin_manager, course_factory, client, config):
             return "problem_bank", "<i class='fa fa-database' aria-hidden='true'></i>" + _(" Problem bank")
 
     if "problem_banks" not in plugin_manager.get_database().collection_names():
-        plugin_manager.get_database().create_collection("problem_banks")
+        # This exception is handle as the web server main lunch several processes and run this line at the same time.
+        # Thus, this collection must be created by only one worker.
+        try:
+            plugin_manager.get_database().create_collection("problem_banks")
+        except CollectionInvalid:
+            pass
     plugin_manager.get_database().problem_banks.create_index([("courseid", 1)], unique=True)
 
-    plugin_manager.add_page(_REACT_BASE_URL + r'(.*)', create_static_resource_page(_REACT_BUILD_FOLDER))
-    plugin_manager.add_page(_BASE_STATIC_URL + r'(.*)', create_static_resource_page(_BASE_STATIC_FOLDER))
+    plugin_manager.add_page(REACT_BASE_URL + r'(.*)', create_static_resource_page(REACT_BUILD_FOLDER))
+    plugin_manager.add_page(BASE_STATIC_URL + r'(.*)', create_static_resource_page(BASE_STATIC_FOLDER))
 
     plugin_manager.add_page('/plugins/problems_bank/api/copy_task', CopyTaskApi)
     plugin_manager.add_page('/plugins/problems_bank/api/bank_courses', ManageBanksCoursesApi)
