@@ -12,6 +12,7 @@ const _GRADER_GENERATOR_PLUGIN_PATH = `${_BASE_PATH}/grader_generator/static`;
 const _CODE_PREVIEW_PLUGIN_PATH = `${_BASE_PATH}/code_preview/static`;
 const _ANALYTICS_PLUGIN_PATH = `${_BASE_PATH}/analytics/static`;
 const _PLAGIARISM_PLUGIN_PATH = `${_BASE_PATH}/plagiarism/static`;
+const _TASK_EDITORIAL_PATH = `${_BASE_PATH}/task_editorial/static`;
 const _CONTACT_PAGE_PLUGIN_PATH = `${_BASE_PATH}/contact_page/static`;
 
 /**
@@ -248,6 +249,18 @@ function minifyPlagiarismPlugin() {
     minifyCssFiles(cssFiles, cssFilesPath, "plagiarism");
 }
 
+function minifyTaskEditorialPlugin() {
+    const jsFilesPath = _TASK_EDITORIAL_PATH + "/";
+
+    const jsFiles = ["task_editorial", "task_editorial_preview"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+
+    console.log("Minify 'task_editorial' static files.");
+
+    minifyJSFiles(jsFiles, jsFilesPath, "task_editorial");
+}
+
 function minifyContactPage() {
     const cssFilesPath = _CONTACT_PAGE_PLUGIN_PATH + "/css/";
     const jsFilesPath = _CONTACT_PAGE_PLUGIN_PATH + "/js/";
@@ -276,4 +289,5 @@ minifyGraderGeneratorPlugin();
 minifyCodePreviewPlugin();
 minifyAnalyticsPlugin();
 minifyPlagiarismPlugin();
+minifyTaskEditorialPlugin();
 minifyContactPage();

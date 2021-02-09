@@ -2577,6 +2577,95 @@ msgstr "Intentos y mejor nota"
 msgid "Bar Submissions Per Tasks"
 msgstr "Barra - Submissions por tarea"
 
+#: inginious/frontend/plugins/task_editorial/pages/task_editorial.py:16
+msgid "Task editorial"
+msgstr "Editorial"
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:6
+msgid ""
+"Describe a possible solution to the problem through a tutorial that helps"
+" students to guide themselves in developing of that solution and its "
+"corresponding code, which can be accessed when the deadline ends."
+msgstr ""
+"Describa una posible solución a la tarea mediante un tutorial que ayude a"
+" los estudiantes a guiarse en el desarrollo de la solución y su código, "
+"al que podrán acceder cuando finalice la fecha límite"
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:11
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:21
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:60
+msgid "Task tutorial"
+msgstr "Tutorial de la tarea"
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:16
+msgid "Tutorial description"
+msgstr "Descipción del tutorial"
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:20
+msgid "\"Description in RST format. See task context help for more information\""
+msgstr ""
+"\"Descripción en formato RST. Para más información revisar ayuda del "
+"contexto de la tarea\""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:26
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:36
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:50
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:76
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:104
+msgid "Task solution"
+msgstr "Solución de la tarea"
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:33
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:82
+msgid "Solution language"
+msgstr "Lenguaje del código"
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:39
+msgid "Solution code"
+msgstr "Código de la solución"
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:41
+msgid "\"Put the solution code on the selected language.\""
+msgstr "\"Establezca el código de la solución en el lenguaje seleccionado\""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:47
+msgid "Select language"
+msgstr "Seleccionar lenguaje"
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:61
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:110
+msgid "Solution notebook"
+msgstr "Notebook solución"
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:65
+msgid "\"Select a notebook file with .ipynb extension\""
+msgstr "\"Seleccionar un archivo de notebook con extensión .ipynb\""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:67
+msgid "Solution notebook name"
+msgstr "Nombre del notebook"
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:6
+msgid "Editorial"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:18
+msgid "\"Task tutorial not available until the task deadline is over\""
+msgstr ""
+"\"Tutorial de la tarea no disponible hasta finalizar la fecha límite de "
+"entrega\""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:33
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:47
+msgid "\"Task solution not available until the task deadline is over\""
+msgstr ""
+"\"Solución de la tarea no disponible hasta finalizar la fecha límite de "
+"entrega\""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:84
+msgid "No language"
+msgstr "Sin lenguaje"
+
 #: inginious/frontend/templates/auth.html:8
 msgid "Welcome"
 msgstr "Bienvenido"
@@ -4924,8 +5013,6 @@ msgstr "Tamaño máximo del archivo:"
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
 
-#~ msgid "Delete group"
-#~ msgstr "Eliminar grupo"
 
 #~ msgid "Contact page"
 #~ msgstr ""

@@ -88,7 +88,7 @@ function load_input_notebook_file(submissionid, key, input) {
         method: "GET",
         dataType: 'json',
         success: function (data) {
-            render_notebook(data)
+            render_notebook(data, $("#notebook-holder"))
         }
     });
     highlight_code();
@@ -168,16 +168,16 @@ function toggle_display_new_subproblem_option() {
     else new_subproblem_element.show();
 }
 
-const render_notebook = function (ipynb) {
-    const notebook_holder = $("#notebook-holder")[0];
-    $("#notebook-holder").hide();
+const render_notebook = function (ipynb, notebook_holder_element) {
+    const notebook_holder = notebook_holder_element[0];
+    notebook_holder_element.hide();
     const notebook = this.notebook = nb.parse(ipynb);
     while (notebook_holder.hasChildNodes()) {
         notebook_holder.removeChild(notebook_holder.lastChild);
     }
     notebook_holder.appendChild(notebook.render());
     highlight_code();
-    $("#notebook-holder").show();
+    notebook_holder_element.show();
 };
 
 function notebook_start_renderer() {
@@ -188,7 +188,7 @@ function notebook_start_renderer() {
         const reader = new FileReader();
         reader.onload = function (e) {
             const parsed = JSON.parse(this.result);
-            render_notebook(parsed);
+            render_notebook(parsed, $("#notebook-holder"));
         };
         reader.readAsText(file);
     };
