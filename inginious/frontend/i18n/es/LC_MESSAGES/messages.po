@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-09 18:34-0500\n"
+"POT-Creation-Date: 2021-02-09 18:35-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1892,7 +1892,7 @@ msgstr "Seleccione la mejor descripción para evaluar el código del estudiante"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:79
 msgid "Click to select and double click to deselect"
-msgstr "Haz clicl para seleccionar y doble click para deseleccionar"
+msgstr "Haz click para seleccionar y doble click para deseleccionar"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:123
 msgid "Comments"
