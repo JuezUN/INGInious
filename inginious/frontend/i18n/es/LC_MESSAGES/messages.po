@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-09 18:35-0500\n"
+"POT-Creation-Date: 2021-02-09 19:29-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1837,13 +1837,13 @@ msgid "Expected output"
 msgstr "Salida esperada"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:16
-#: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:77
+#: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:19
+#: inginious/frontend/plugins/manual_scoring/pages/templates/task_list.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/task_list.html:23
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_list.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_submissions.html:18
-#: inginious/frontend/plugins/manual_scoring/pages/templates/user_submissions.html:50
-msgid "Rubric Scoring"
-msgstr "Rubrica"
+msgid "Manual Scoring"
+msgstr "Calificación manual"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:17
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_list.html:19
@@ -1860,14 +1860,9 @@ msgstr "Tarea"
 msgid "Student"
 msgstr "Estudiante"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:19
-#: inginious/frontend/plugins/manual_scoring/pages/templates/task_list.html:18
-msgid "Manual Scoring"
-msgstr "Calificación manual"
-
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:26
-msgid "Rubric scoring for:"
-msgstr "Rubrica"
+msgid "Manual scoring for:"
+msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:57
 #: inginious/frontend/templates/task.html:14
@@ -1885,6 +1880,10 @@ msgstr "Lenguaje"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:62
 msgid "Summary"
 msgstr "Resumen"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:77
+msgid "Rubric Scoring"
+msgstr "Rubrica"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/rubric_scoring.html:78
 msgid "Select the best description to grade the student's code"
@@ -1907,25 +1906,25 @@ msgid "Task Name"
 msgstr "Nombre de tarea"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/task_list.html:30
-msgid "Student Succeeded"
-msgstr "Estudiantes aprobados"
+msgid "Students succeeded"
+msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/task_list.html:31
-msgid "Students who have tried"
-msgstr "Estudiantes que lo han intentado"
+msgid "Students attempted"
+msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_list.html:26
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_submissions.html:27
-msgid "Rubric scoring for Task:"
-msgstr "Rubrica para la tarea"
+msgid "Manual scoring for Task:"
+msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_list.html:39
 msgid "Best score"
 msgstr "Mejor puntaje"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_list.html:54
-msgid "Unnamed"
-msgstr "Sin nombre"
+msgid "Unknown"
+msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_list.html:63
 msgid "No Students Yet"
@@ -1943,6 +1942,10 @@ msgstr "Resumen de los resultados"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/user_submissions.html:49
 msgid "Score"
 msgstr "Puntaje"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/user_submissions.html:50
+msgid "Manual scoring"
+msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/code_multiple_file_languages_problem.py:37
 msgid "code file multiple languages"
@@ -5051,4 +5054,19 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
+
+#~ msgid "Rubric scoring for:"
+#~ msgstr "Rubrica"
+
+#~ msgid "Student Succeeded"
+#~ msgstr "Estudiantes aprobados"
+
+#~ msgid "Students who have tried"
+#~ msgstr "Estudiantes que lo han intentado"
+
+#~ msgid "Rubric scoring for Task:"
+#~ msgstr "Rubrica para la tarea"
+
+#~ msgid "Unnamed"
+#~ msgstr "Sin nombre"
 
