@@ -7,11 +7,9 @@
 
 from collections import OrderedDict
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.frontend.plugins.manual_scoring.pages.api import pages
+from inginious.frontend.plugins.manual_scoring.pages.api import constants
 
-base_renderer_path = pages.render_path
-
-base_static_folder = pages.base_static_folder
+base_renderer_path = constants.render_path
 
 
 def create_student_dict(user_list):

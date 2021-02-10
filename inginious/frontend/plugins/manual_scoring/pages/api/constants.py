@@ -5,11 +5,7 @@
 
 """ General data for all manual scoring pages """
 
-import os
-
 render_path = 'frontend/plugins/manual_scoring/pages/templates'
-
-base_static_folder = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../../static')
 
 
 def rubric_course_admin_menu_hook(course):

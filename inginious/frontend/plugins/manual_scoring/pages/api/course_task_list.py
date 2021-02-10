@@ -7,11 +7,9 @@
 
 from collections import OrderedDict
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.frontend.plugins.manual_scoring.pages.api import pages
+from inginious.frontend.plugins.manual_scoring.pages.api import constants
 
-base_renderer_path = pages.render_path
-
-base_static_folder = pages.base_static_folder
+base_renderer_path = constants.render_path
 
 
 class CourseTaskListPage(INGIniousAdminPage):
@@ -50,7 +48,12 @@ class CourseTaskListPage(INGIniousAdminPage):
         return task_dict
 
     def get_total_attempted_and_succeeded_per_task(self, course):
-        """ do request to db to get the number of attempted and succeeded per task """
+        """ do request to db to get the number of attempted and succeeded per task
+            EXAMPLE:
+                [{_id:'sum_two_numbers', 'attempted':2, 'succeeded':2},
+                {...}, ...
+                ]
+        """
         course_id = course.get_id()
         student_list = self.user_manager.get_course_registered_users(course, False)
         data = list(self.database.user_tasks.aggregate(

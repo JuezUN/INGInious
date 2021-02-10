@@ -8,7 +8,7 @@ import os
 
 from inginious.frontend.plugins.utils import create_static_resource_page
 
-from inginious.frontend.plugins.manual_scoring.pages.api import pages
+from inginious.frontend.plugins.manual_scoring.pages.api import constants
 from inginious.frontend.plugins.manual_scoring.pages.api import user_submissions
 from inginious.frontend.plugins.manual_scoring.pages.api import course_task_list
 from inginious.frontend.plugins.manual_scoring.pages.api import user_list
@@ -49,4 +49,4 @@ def init(plugin_manager, _, __, plugin_config):
         r'/admin/([a-z0-9A-Z\-_]+)/manual_scoring/task/([a-z0-9A-Z\-_]+)/submission/([a-z0-9A-Z\-_]+)',
         rubric_scoring.RubricScoringPage)
 
-    plugin_manager.add_hook('course_admin_menu', pages.rubric_course_admin_menu_hook)
+    plugin_manager.add_hook('course_admin_menu', constants.rubric_course_admin_menu_hook)

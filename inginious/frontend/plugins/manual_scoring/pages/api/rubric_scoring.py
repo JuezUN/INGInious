@@ -12,11 +12,9 @@ from bson.objectid import ObjectId
 from inginious.frontend.parsable_text import ParsableText
 from inginious.frontend.plugins.manual_scoring.pages.api.rubric_wdo import RubricWdo
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.frontend.plugins.manual_scoring.pages.api import pages
+from inginious.frontend.plugins.manual_scoring.pages.api import constants
 
-base_renderer_path = pages.render_path
-
-base_static_folder = pages.base_static_folder
+base_renderer_path = constants.render_path
 
 
 def define_content_of_comment_and_grade(submission):
