@@ -61,14 +61,21 @@ class Rubric {
     }
 
     removeSelectionOnRow(row) {
+        let matrixField = this.getSelectionOnRow(row);
+        if (matrixField !== null) {
+            this.removeMarkerClass(matrixField.fieldId);
+            this.updateScore(matrixField.jIndex, false);
+        }
+    }
+
+    getSelectionOnRow(row) {
         for (let i = 0; i < this.matrixLength; i++) {
             let matrixField = new MatrixField(row, i);
             if (this.isFieldSelected(matrixField)) {
-                this.removeMarkerClass(matrixField.fieldId);
-                this.updateScore(i, false);
-                break;
+                return matrixField;
             }
         }
+        return null;
     }
 
     addMarkerClass(fieldId) {
@@ -97,6 +104,21 @@ class Rubric {
             this.score -= (colPosition + 1) * 0.2;
         }
         this.updateScoreText();
+    }
+
+    getSelectedFieldIds() {
+        let fieldIds = []
+        for (let i = 0; i < this.matrixLength; i++) {
+            let matrixField = this.getSelectionOnRow(i);
+            if (matrixField !== null) {
+                fieldIds.push(matrixField.fieldId);
+            }
+        }
+        return fieldIds;
+    }
+
+    loadSelectedFields(fieldIds){
+        fieldIds.forEach(id => this.addMarkerClass(id));
     }
 
 
