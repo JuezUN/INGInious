@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-09 18:16-0500\n"
+"POT-Creation-Date: 2021-02-10 14:47-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -582,7 +582,7 @@ msgstr "Ha ocurrido un error eliminando los archivos"
 #: inginious/frontend/templates/course_admin/settings.html:17
 #: inginious/frontend/templates/course_admin/settings.html:21
 msgid "Course settings"
-msgstr "Opciones del curso"
+msgstr "Configuración del curso"
 
 #: inginious/frontend/pages/course_admin/utils.py:258
 #: inginious/frontend/templates/classroom.html:104
@@ -3043,6 +3043,10 @@ msgstr ""
 "especificado contiene un carácter inválido (solamente alfanumérico y  '_'"
 " y '-' son aceptados)."
 
+#: inginious/frontend/templates/mycourses.html:67
+msgid "'New course id'"
+msgstr "ID del curso nuevo."
+
 #: inginious/frontend/templates/mycourses.html:70
 msgid "Create new course"
 msgstr "Crear un curso"
@@ -3975,6 +3979,10 @@ msgstr "Opciones"
 msgid "Settings saved."
 msgstr "Guardar configuración."
 
+#: inginious/frontend/templates/course_admin/settings.html:31
+msgid "\"Course name\""
+msgstr "\"Nombre del curso\""
+
 #: inginious/frontend/templates/course_admin/settings.html:35
 msgid "Administrators"
 msgstr "Administradores"
@@ -3998,10 +4006,10 @@ msgid ""
 "will deactivate the access to the course from the main page for non-staff"
 " members of the course, and the team/classroom system."
 msgstr ""
-"Active esta opción para permitir que tu curso de UNCode se pueda usar en "
-"Learning Management Systems (LMS) externos, tales como Moodle o edX. Note"
-" que esto desactivará el acceso al curso desde la página principal para "
-"no administradores del curso."
+"Permitir que tu curso de UNCode se pueda usar en Learning Management "
+"Systems (LMS) externos, tales como Moodle o edX. Esto desactivará el "
+"acceso al curso desde la página principal para miembros no "
+"administradores del curso, y el sistema de grupos/equipos."
 
 #: inginious/frontend/templates/course_admin/settings.html:60
 msgid "Course preview"
@@ -4015,7 +4023,7 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/settings.html:72
 msgid "Not allowed"
-msgstr "Acción no permitida"
+msgstr "Acceso no permitido"
 
 #: inginious/frontend/templates/course_admin/settings.html:77
 msgid "Students aggregations"
@@ -4029,8 +4037,8 @@ msgstr "Grupos"
 #: inginious/frontend/templates/course_admin/settings.html:89
 msgid "(Warning : changing this will unregister all students)"
 msgstr ""
-"(Precaución: esta acción eliminará el registro a este curso de todos los "
-"estudiantes)"
+"(Precaución: esta acción eliminará el registro de todos los estudiantes "
+"en el curso)"
 
 #: inginious/frontend/templates/course_admin/settings.html:94
 msgid "Group/Team attribution"
@@ -4050,7 +4058,7 @@ msgstr "Accesibilidad"
 
 #: inginious/frontend/templates/course_admin/settings.html:118
 msgid "Course hidden from students"
-msgstr "Este curso esta oculto para los estudiantes"
+msgstr "Oculto a los estudiantes"
 
 #: inginious/frontend/templates/course_admin/settings.html:124
 msgid "Always accessible"
@@ -4064,12 +4072,12 @@ msgstr "Personalizar:"
 #: inginious/frontend/templates/course_admin/settings.html:134
 #: inginious/frontend/templates/course_admin/settings.html:180
 msgid "From"
-msgstr "De"
+msgstr "Desde"
 
 #: inginious/frontend/templates/course_admin/settings.html:141
 #: inginious/frontend/templates/course_admin/settings.html:187
 msgid "To"
-msgstr "A"
+msgstr "Hasta"
 
 #: inginious/frontend/templates/course_admin/settings.html:158
 msgid "Registration"
@@ -4085,7 +4093,7 @@ msgstr "Contenido público"
 
 #: inginious/frontend/templates/course_admin/settings.html:204
 msgid "Allow auto-unregistration"
-msgstr "Permitir eliminar registro automáticamente"
+msgstr "Permitir la eliminación automática de un usuario registrado"
 
 #: inginious/frontend/templates/course_admin/settings.html:222
 msgid "Registration password"
@@ -4096,8 +4104,8 @@ msgid ""
 "\"Password needed for registration. Leave blank if you don't want to set "
 "a password.\""
 msgstr ""
-"\"La contraseña se necesita para hacer el registro. Deje en blanco el "
-"campo de contraseña si no se desea cambiar la misma.\""
+"\"Contraseña requerida para registrarse al curso. Deje el campo vacío si "
+"no se desea establecer una contraseña.\""
 
 #: inginious/frontend/templates/course_admin/settings.html:230
 msgid "Access control"
@@ -4113,7 +4121,7 @@ msgstr "Verificar por nombre de usuario"
 
 #: inginious/frontend/templates/course_admin/settings.html:248
 msgid "Check by authentication binding"
-msgstr "Verificar con autenticación la dependencia"
+msgstr "Verificar mediante enlace de autenticación"
 
 #: inginious/frontend/templates/course_admin/settings.html:254
 msgid "Check by email"
@@ -4151,8 +4159,8 @@ msgid ""
 "Enable this to send back grades to the calling Tool Consumer (which is, "
 "most of the time, your LMS)."
 msgstr ""
-"Activa esta opción para enviar las notas a el Tool Consumer (el cuál es, "
-"la mayoría del ,tiempo el LMS)."
+"Enviar las notas al Tool Consumer (el cuál es la mayoría del tiempo el "
+"LMS)."
 
 #: inginious/frontend/templates/course_admin/settings.html:283
 #: inginious/frontend/templates/course_admin/task_edit.html:31
