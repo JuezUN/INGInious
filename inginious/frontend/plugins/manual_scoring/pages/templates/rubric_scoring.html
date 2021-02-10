@@ -5,7 +5,7 @@ $# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
 $# more information about the licensing of this file.
 $#
 
-$var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
+$var title: $:course.get_name(user_manager.session_language()) - Manual Scoring
 
 $var Column: $:template_helper.call('course_admin_menu',course=course,current='manual_scoring')
 $ is_admin = user_manager.has_admin_rights_on_course(course)
@@ -163,4 +163,3 @@ $var Navbar: $:NavbarF()
 
 
 </script>
-
