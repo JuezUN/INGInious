@@ -10,9 +10,9 @@ import web
 from bson.objectid import ObjectId
 
 from inginious.frontend.parsable_text import ParsableText
-from inginious.frontend.plugins.manual_scoring.pages.api.rubric_wdo import RubricWdo
+from inginious.frontend.plugins.manual_scoring.pages.rubric_wdo import RubricWdo
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.frontend.plugins.manual_scoring.pages.api import constants
+from inginious.frontend.plugins.manual_scoring.pages import constants
 
 base_renderer_path = constants.render_path
 
@@ -39,7 +39,7 @@ def get_submission_result_text(submission_input):
     return final_text
 
 
-class RubricScoringPage(INGIniousAdminPage):
+class ManualScoringPage(INGIniousAdminPage):
     """ Rubric scoring page to manual scoring """
 
     def GET_AUTH(self, course_id, task_id, submission_id):

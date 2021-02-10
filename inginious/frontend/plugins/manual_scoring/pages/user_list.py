@@ -7,7 +7,7 @@
 
 from collections import OrderedDict
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.frontend.plugins.manual_scoring.pages.api import constants
+from inginious.frontend.plugins.manual_scoring.pages import constants
 
 base_renderer_path = constants.render_path
 
