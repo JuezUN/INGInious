@@ -11,8 +11,6 @@ from inginious.frontend.plugins.manual_scoring.pages import constants
 
 base_renderer_path = constants.render_path
 
-base_static_folder = constants._base_static_folder
-
 
 def create_submissions_dict(submissions_list):
     """  """
