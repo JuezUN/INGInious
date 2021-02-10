@@ -8,7 +8,7 @@ import os
 
 from inginious.frontend.plugins.utils import create_static_resource_page
 
-from inginious.frontend.plugins.manual_scoring.pages import user_list, constants, user_submissions, manual_scoring, \
+from inginious.frontend.plugins.manual_scoring.pages import students_list, constants, student_submissions, manual_scoring, \
     course_task_list
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
@@ -28,8 +28,8 @@ def init(plugin_manager, _, __, plugin_config):
         plugin_manager.add_hook("css", lambda: "/manual_scoring/static/css/manual_scoring.css")
         plugin_manager.add_hook("javascript_footer", lambda: "/manual_scoring/static/js/code_field.js")
         plugin_manager.add_hook("javascript_footer", lambda: "/manual_scoring/static/js/message_box.js")
-        plugin_manager.add_hook("javascript_footer", lambda: "/manual_scoring/static/js/rubric_scoring.js")
-        plugin_manager.add_hook("javascript_footer", lambda: "/manual_scoring/static/js/rubric_scoring_main.js")
+        plugin_manager.add_hook("javascript_footer", lambda: "/manual_scoring/static/js/rubric.js")
+        plugin_manager.add_hook("javascript_footer", lambda: "/manual_scoring/static/js/manual_scoring_main.js")
 
     # Add pages
     # First page of rubric scoring. It's a task list
@@ -37,10 +37,10 @@ def init(plugin_manager, _, __, plugin_config):
                             course_task_list.CourseTaskListPage)
     # Second page of rubric scoring. It's a list of users who have done a submission
     plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/manual_scoring/task/([a-z0-9A-Z\-_]+)',
-                            user_list.UserListPage)
+                            students_list.StudentsListPage)
     # Third page of rubric scoring. It's a list of submissions have done it by a student
     plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/manual_scoring/task/([a-z0-9A-Z\-_]+)/user/([a-z0-9A-Z\-_]+)',
-                            user_submissions.UserSubmissionsPage)
+                            student_submissions.StudentSubmissionsPage)
     # Fourth page. The rubric scoring page
     plugin_manager.add_page(
         r'/admin/([a-z0-9A-Z\-_]+)/manual_scoring/task/([a-z0-9A-Z\-_]+)/submission/([a-z0-9A-Z\-_]+)',

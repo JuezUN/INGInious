@@ -21,33 +21,34 @@ def create_student_dict(user_list):
     return data
 
 
-class UserListPage(INGIniousAdminPage):
+class StudentsListPage(INGIniousAdminPage):
     """ List users for a specific task """
 
     def GET_AUTH(self, course_id, task_id):
         """ Get request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
 
-        self.template_helper.add_javascript("https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.6/papaparse.min.js")
-        self.template_helper.add_javascript("https://cdn.plot.ly/plotly-1.30.0.min.js")
-        self.template_helper.add_javascript("https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js")
-
         return self.render_page(course, task_id, task)
 
     def render_page(self, course, task_id, task):
         """ Get all data and display the page """
         task_name = course.get_task(task_id).get_name(self.user_manager.session_language())
-        user_list = self.get_user_list_and_its_best_score(course, task_id)
+        user_list = self.get_students_list_and_max_score(course, task_id)
         url = 'manual_scoring'
         data = create_student_dict(user_list)
 
         return (
             self.template_helper.get_custom_renderer(base_renderer_path)
-                .user_list(course, data, task, task_name, url)
+                .students_list(course, data, task, task_name, url)
         )
 
-    def get_user_list_and_its_best_score(self, course, task_id):
-        """ do request to db to get the data about users respect a task """
+    def get_students_list_and_max_score(self, course, task_id):
+        """ do request to db to get the data about users respect a task
+            EXAMPLE:
+                [{_id: Objectid(''), 'username':['student1'], 'realname':'pablo', 'taskid': 'pow', 'grade': 100.0},
+                {...}, ...
+                ]
+        """
         user_list = list(self.database.submissions.aggregate(
 
             [

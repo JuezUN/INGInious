@@ -1,4 +1,4 @@
-class RubricScoring {
+class Rubric {
     constructor() {
         this.score = 0.0;
         this.matrix = [];

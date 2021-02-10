@@ -32,7 +32,7 @@ class CourseTaskListPage(INGIniousAdminPage):
         tasks_data = self.get_tasks_data(course)
 
         return self.template_helper.get_custom_renderer(base_renderer_path) \
-            .task_list(course, tasks_data, total_students)
+            .course_task_list(course, tasks_data, total_students)
 
     def get_tasks_data(self, course):
         """ cross the task data and return the result """

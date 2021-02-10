@@ -82,7 +82,7 @@ function isRubricScoringPage(){
 jQuery(document).ready(function () {
     if (isRubricScoringPage()) {
         new CodeField();
-        const rubric = new RubricScoring();
+        const rubric = new Rubric();
         addToggleBehaviorToProblemDescription();
         loadFeedBack();
         addSaveFunctionToSaveButton(rubric);

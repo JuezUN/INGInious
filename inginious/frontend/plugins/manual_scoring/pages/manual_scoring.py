@@ -17,7 +17,7 @@ from inginious.frontend.plugins.manual_scoring.pages import constants
 base_renderer_path = constants.render_path
 
 
-def define_content_of_comment_and_grade(submission):
+def get_manual_comment_and_grade_submission(submission):
     """  """
     comment = ""
     score = "No grade"
@@ -46,21 +46,17 @@ class ManualScoringPage(INGIniousAdminPage):
         """ Get request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
 
-        self.template_helper.add_javascript("https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.6/papaparse.min.js")
-        self.template_helper.add_javascript("https://cdn.plot.ly/plotly-1.30.0.min.js")
-        self.template_helper.add_javascript("https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js")
-
         return self.render_page(course, task, submission_id)
 
     def POST_AUTH(self, course_id, task_id, submission_id):
         """ POST request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
 
-        self.update_comment_and_grade(submission_id)
+        self.update_manual_comment_and_grade(submission_id)
 
         return self.render_page(course, task, submission_id)
 
-    def update_comment_and_grade(self, submission_id):
+    def update_manual_comment_and_grade(self, submission_id):
         """ update the grade and comment on db """
         data = web.input()
 
@@ -81,7 +77,7 @@ class ManualScoringPage(INGIniousAdminPage):
         problem_id = task.get_problems()[0].get_id()
         submission = self.submission_manager.get_submission(submission_id, user_check=False)
         submission_input = self.submission_manager.get_input_from_submission(submission)
-        comment, score = define_content_of_comment_and_grade(submission)
+        comment, score = get_manual_comment_and_grade_submission(submission)
 
         data = {
             "url": 'manual_scoring',
@@ -102,7 +98,7 @@ class ManualScoringPage(INGIniousAdminPage):
         }
 
         return (
-            self.template_helper.get_custom_renderer(base_renderer_path).rubric_scoring(
+            self.template_helper.get_custom_renderer(base_renderer_path).manual_scoring(
                 course, task,
                 rubric_wdo.read_data('inginious/frontend/plugins/manual_scoring/static/json/rubric.json'), data)
         )

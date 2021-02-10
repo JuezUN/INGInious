@@ -251,7 +251,7 @@ function minifyPlagiarismPlugin() {
 function minifyManualScoringPlugin() {
     const cssFilesPath = _MANUAL_SCORING_PATH + "/css/";
     const jsFilesPath = _MANUAL_SCORING_PATH + "/js/";
-    const jsFiles = ["code_field","message_box","rubric_scoring","rubric_scoring_main"].map((name) => {
+    const jsFiles = ["code_field","message_box","rubric","manual_scoring_main"].map((name) => {
         return getJSFilePath(jsFilesPath, name);
     });
     const cssFiles = ["manual_scoring"].map((name) => {
