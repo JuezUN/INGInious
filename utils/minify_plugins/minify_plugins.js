@@ -13,6 +13,7 @@ const _CODE_PREVIEW_PLUGIN_PATH = `${_BASE_PATH}/code_preview/static`;
 const _ANALYTICS_PLUGIN_PATH = `${_BASE_PATH}/analytics/static`;
 const _PLAGIARISM_PLUGIN_PATH = `${_BASE_PATH}/plagiarism/static`;
 const _TASK_EDITORIAL_PATH = `${_BASE_PATH}/task_editorial/static`;
+const _CONTACT_PAGE_PLUGIN_PATH = `${_BASE_PATH}/contact_page/static`;
 const _MANUAL_SCORING_PATH = `${_BASE_PATH}/manual_scoring/static`;
 
 /**
@@ -276,6 +277,25 @@ function minifyTaskEditorialPlugin() {
     minifyJSFiles(jsFiles, jsFilesPath, "task_editorial");
 }
 
+function minifyContactPage() {
+    const cssFilesPath = _CONTACT_PAGE_PLUGIN_PATH + "/css/";
+    const jsFilesPath = _CONTACT_PAGE_PLUGIN_PATH + "/js/";
+
+    const cssFiles = ["contact_page"].map((name) => {
+        return getCssFilePath(cssFilesPath, name);
+    });
+
+    const jsFiles = ["message_box", "contact_page_form", "contact_page_main"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+
+    console.log("Minify 'Contact page' static files.");
+
+    minifyCssFiles(cssFiles, cssFilesPath, "contact_page");
+    minifyJSFiles(jsFiles, jsFilesPath, "contact_page");
+
+}
+
 minifyUNCodePlugin();
 minifyUNTemplatePlugin();
 minifyStatisticsPlugin();
@@ -287,3 +307,4 @@ minifyAnalyticsPlugin();
 minifyPlagiarismPlugin();
 minifyManualScoringPlugin();
 minifyTaskEditorialPlugin();
+minifyContactPage();
