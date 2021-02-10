@@ -65,7 +65,7 @@ $var Navbar: $:NavbarF()
         <tr>
             <td><b>$_("Score")</b></td>
             <td>$data['score']</td>
-            <td><b>$_("Grade")</b></td>
+            <td><b>$_("Manual grade")</b></td>
             <td>$data['grade']</td>
         </tr>
     </table>
@@ -74,7 +74,7 @@ $var Navbar: $:NavbarF()
 <!-- Rubric  -->
 <section>
     <div class="py-1">
-        <h4 class="my-1">$:_("Rubric Scoring")</h4>
+        <h4 class="my-1">$:_("Rubric")</h4>
         <p>$:_("Select the best description to grade the student's code")</p>
         <p>$:_("Click to select and double click to deselect")</p>
     </div>
@@ -113,7 +113,7 @@ $var Navbar: $:NavbarF()
     </table>
         </div>
     <div>
-        <strong><p id="output">Current Score: 0.0</p></strong>
+        <strong>$:_("Current Score: ")<strong style="color: #cc0808" id="output">0.0</strong></strong>
     </div>
     <div id="grade_edit_submit_status"></div>
 </section>
@@ -157,7 +157,7 @@ $var Navbar: $:NavbarF()
         return "$data['env']"
     }
 
-    const getUrlToGetCode = function () {
+    const getURLSubmissionCode = function () {
         return "$get_homepath()/course/$course.get_id()/$task.get_id()" + "?submissionid=" + "$data['submission_id']" + "&questionid=" + "$data['question_id']";
     }
 

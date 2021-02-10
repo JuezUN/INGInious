@@ -56,9 +56,9 @@ function save(rubric) {
     });
 }
 
-function loadFeedback() {
-    const feedbackContent = getHtmlCodeForFeedBack();
-    const feedbackType = getTextBoxTypeBaseOnResult();
+function loadFeedBack() {
+    const feedbackContent = getHtmlCodeForFeedback();
+    const feedbackType = getTextBoxTypeBasedOnResult();
     new MessageBox(feedbackFieldId, feedbackContent, feedbackType, false);
 }
 

@@ -86,7 +86,7 @@ class Rubric {
 
 
     updateScoreText() {
-        document.getElementById(this.scoreTextId).innerHTML = "Current Score: " + this.score.toFixed(1);
+        document.getElementById(this.scoreTextId).innerHTML = this.score.toFixed(1);
     }
 
 

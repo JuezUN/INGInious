@@ -19,7 +19,7 @@ class CodeField {
 
     getNotebookCodeDataAndRender() {
         $.ajax({
-            url: getUrlToGetCode(),
+            url: getURLSubmissionCode(),
             method: "GET",
             dataType: "json",
             success: function (data) {
