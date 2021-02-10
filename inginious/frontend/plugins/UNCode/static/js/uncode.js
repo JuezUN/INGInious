@@ -5,7 +5,9 @@ jQuery(document).ready(function () {
             .find('> div.navbar.navbar-default.navbar-static-top > div > div.navbar-header > a');
         const image = logoElement.find("> img").attr("src", imagePath);
         logoElement.text("");
-        logoElement.html(image).append(" Code");
+        logoElement.html(image);
+        image.width("70%");
+        image.css("margin-left", "35%");
     }
 
     function updateNavbar() {
@@ -45,7 +47,7 @@ jQuery(document).ready(function () {
 
     function updateTemplate() {
         // This updates all necessary changes in INGInious.
-        const imagePath = window.location.origin + "/UNCode/static/images/LogotipoUNAL.png";
+        const imagePath = window.location.origin + "/UNCode/static/images/logo_unc.svg";
         updateNavbarLogo(imagePath);
         updatePageIcon(imagePath);
         updateFooter();
