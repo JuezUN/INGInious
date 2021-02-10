@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-08 11:33-0500\n"
+"POT-Creation-Date: 2021-02-09 18:16-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.4.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -1584,6 +1584,69 @@ msgstr "Lenguajes"
 msgid "Add/Update"
 msgstr "Agregar/Actualizar"
 
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:8
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:12
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:20
+msgid "Contact Page"
+msgstr "Página de contacto"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:30
+msgid "Subject"
+msgstr "Asunto"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:32
+msgid "Select an option"
+msgstr "Seleccione una opción"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:33
+msgid "Report a problem or make a comment"
+msgstr "Reportar un problema o hacer un comentario"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:34
+msgid "Request to create a new course "
+msgstr "Petición para crear un nuevo curso"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:45
+msgid "Email"
+msgstr "Email"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:57
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:263
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:9
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
+#: inginious/frontend/templates/course_admin/settings.html:29
+#: inginious/frontend/templates/course_admin/task_edit.html:145
+#: inginious/frontend/templates/queue.html:29
+#: inginious/frontend/templates/queue.html:59
+msgid "Name"
+msgstr "Nombre"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:69
+#: inginious/frontend/templates/course_admin/edit_tabs/files.html:17
+msgid "Edit"
+msgstr "Editar"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:75
+msgid "Course Name"
+msgstr "Nombre del Curso"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:81
+msgid "Comments or description"
+msgstr "Comentarios o descripción"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:82
+msgid "Put your opinion or tell us about the problem you have encountered "
+msgstr "Danos su opinión o hablanos sobre un problema que hayas encontrado"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:83
+msgid "Describe and justify the course you want to create "
+msgstr "Describe y justifica el curso que deseas crear"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:89
+msgid "Send"
+msgstr "Enviar"
+
 #: inginious/frontend/plugins/grader_generator/pages/grader.py:46
 msgid "Grader"
 msgstr "Calificador"
@@ -1775,17 +1838,6 @@ msgstr ""
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:8
 msgid "Add a test"
 msgstr "Agregar prueba"
-
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:263
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:9
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
-#: inginious/frontend/templates/course_admin/settings.html:29
-#: inginious/frontend/templates/course_admin/task_edit.html:145
-#: inginious/frontend/templates/queue.html:29
-#: inginious/frontend/templates/queue.html:59
-msgid "Name"
-msgstr "Nombre"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:267
 msgid "Show debug info"
@@ -4703,10 +4755,6 @@ msgstr "Subir"
 msgid "Path"
 msgstr "Ruta"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/files.html:17
-msgid "Edit"
-msgstr "Editar"
-
 #: inginious/frontend/templates/course_admin/edit_tabs/files.html:18
 msgid "Move"
 msgstr "Mover"
@@ -4964,4 +5012,16 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
+
+#~ msgid "Contact page"
+#~ msgstr ""
+
+#~ msgid "Request a new course"
+#~ msgstr "Solicitar crear un nuevo curso"
+
+#~ msgid ""
+#~ "Just put your honest opinion or "
+#~ "tell us about the problem you have"
+#~ " encountered "
+#~ msgstr ""
 
