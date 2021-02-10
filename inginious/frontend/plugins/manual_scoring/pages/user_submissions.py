@@ -25,7 +25,7 @@ def create_submissions_dict(submissions_list):
             "summary_result": submission["custom"]["custom_summary_result"],
         }
         if "rubric_score" not in submission["custom"]:
-            data[submission["_id"]]["rubric_score"] = "not grade"
+            data[submission["_id"]]["rubric_score"] = "No grade"
         else:
             data[submission["_id"]]["rubric_score"] = submission["custom"]["rubric_score"]
     return data

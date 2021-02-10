@@ -6,7 +6,7 @@ $# more information about the licensing of this file.
 $#
 
 
-$var title: $:course.get_name(user_manager.session_language()) - Rubric Scoring
+$var title: $:course.get_name(user_manager.session_language()) - Manual Scoring
 
 $var Column: $:template_helper.call('course_admin_menu',course=course,current='manual_scoring')
 $ is_admin = user_manager.has_admin_rights_on_course(course)
@@ -15,7 +15,7 @@ $ is_admin = user_manager.has_admin_rights_on_course(course)
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
-        <li><a href="$get_homepath()/admin/$course.get_id()/manual_scoring"><i class="fa fa-table mr-1"></i>$:_("Rubric Scoring")<span class="sr-only">(current)</span></a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()/manual_scoring"><i class="fa fa-table mr-1"></i>$:_("Manual Scoring")<span class="sr-only">(current)</span></a></li>
         <li><a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()">$:_("Task")<span class="sr-only">(current)</span></a></li>
         <li class="active"><a href="#">$:_("Student")<span class="sr-only">(current)</span></a></li>
 
@@ -24,7 +24,7 @@ $def NavbarF():
 $var Navbar: $:NavbarF()
 
 <h2>
-    $:_("Rubric scoring for Task:")
+    $:_("Manual scoring for Task:")
     $if task_name == "":
         "$task.get_id()"
     $else:
@@ -47,7 +47,7 @@ $var Navbar: $:NavbarF()
             <th><h4>$:_("Date")</h4></th>
             <th><h4>$:_("Result Summary")</h4></th>
             <th><h4>$:_("Score")</h4></th>
-            <th><h4>$:_("Rubric Scoring")</h4></th>
+            <th><h4>$:_("Manual scoring")</h4></th>
         </tr>
     </thead>
     <tbody>
