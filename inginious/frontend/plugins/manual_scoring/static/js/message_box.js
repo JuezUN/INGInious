@@ -1,3 +1,4 @@
+/* This class uses bootstrap's alert types */
 class MessageBox {
     constructor(divId, textContent, type, dismissible = true) {
         this.divElement = document.getElementById(divId);
@@ -9,14 +10,15 @@ class MessageBox {
     }
 
     generateHtmlCode() {
-        let code = '<div class="alert fade in ';
-        if (this.dismissible)
-            code += 'alert-dismissible ';
-        code += 'alert-' + this.type + '" role="alert">';
-        if (this.dismissible)
-            code += '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
-        code += this.textContent;
-        code += '</div>';
+        let code = "<div class=\"alert ";
+        if (this.dismissible) {
+            code += "alert-dismissible ";
+        }
+        code += `alert-${this.type}" role="alert">`;
+        if (!this.dismissible) {
+            code += "<button type=\"button\" class=\"close\" data-dismiss=\"alert\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>";
+        }
+        code += this.textContent + "</div>";
         this.code = code;
     }
 
