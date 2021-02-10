@@ -1,0 +1,89 @@
+$def with (task_data, task_solution_code_language)
+
+<div class="alert alert-warning">
+    <i class="fa fa-info-circle"/>
+    </i>
+    $:_("Describe a possible solution to the problem through a tutorial that helps students to guide themselves in developing of that solution and its corresponding code, which can be accessed when the deadline ends.")
+</div>
+
+<div class="jumbotron">
+    <div class="form-group">
+        <h3>$:_("Task tutorial")</h3>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-3">
+            <label class="control-label">
+                $:_("Tutorial description")
+            </label>
+        </div>
+        <div class="col-sm-9">
+            <i class="fa fa-question-circle" data-toggle="tooltip" data-original-title=$:_("\"Description in RST format. See task context help for more information\"")></i>
+            <textarea id="tutorial_description" class="code-editor form-control" name="tutorial_description" data-x-language="rst" data-x-lines="10">$:task_data.get('tutorial_description')</textarea>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <h3>$:_("Task solution")</h3>
+    </div>
+
+    <div id="multiple_languages_task_solution" hidden>
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <label>
+                    $:_("Solution language")
+                </label>
+            </div>
+
+            <div class="col-sm-9">
+                <label>
+                    $:_("Solution code")
+                </label>
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-original-title=$:_("\"Put the solution code on the selected language.\"")></i>
+            </div>
+        </div>
+        <div class="row form-group">
+                <div class="col-sm-3">
+                    <select class="form-control" id="solution_code_language" name="solution_code_language" onchange="setSolutionCodeLanguage()">
+                        <option selected value="0">$:_("Select language")</option>
+                    </select>
+                </div>
+                <div class="col-sm-9">
+                    <textarea id="solution_code" class="code-editor form-control"
+                              name="solution_code" data-x-language="" data-x-lines="10">$:task_data.get('solution_code')</textarea>
+                </div>
+            </div>
+    </div>
+
+    <div id="notebook_task_solution" hidden>
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <label>
+                    $:_("Solution notebook")
+                </label>
+            </div>
+            <div class="col-sm-5">
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-original-title=$:_("\"Select a notebook file with .ipynb extension\"")></i>
+                <select class="form-control" id="solution_code_notebook" name="solution_code_notebook">
+                    <option selected value="0">$:_("Solution notebook name")</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function getLanguages(key){
+        const languages = getLanguageName(key);
+        return languages;
+    }
+
+    function getTaskSolutionCodeLanguage(){
+        return "$task_solution_code_language";
+    }
+
+    function getTaskSolutionNotebook(){
+        return "$task_data.get('solution_code_notebook')";
+    }
+
+</script>
