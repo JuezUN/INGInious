@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-07 17:40-0500\n"
+"POT-Creation-Date: 2021-02-09 18:16-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -1387,6 +1387,69 @@ msgstr ""
 msgid "Add/Update"
 msgstr ""
 
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:8
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:12
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:20
+msgid "Contact Page"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:30
+msgid "Subject"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:32
+msgid "Select an option"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:33
+msgid "Report a problem or make a comment"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:34
+msgid "Request to create a new course "
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:45
+msgid "Email"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:57
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:263
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:9
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
+#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
+#: inginious/frontend/templates/course_admin/settings.html:29
+#: inginious/frontend/templates/course_admin/task_edit.html:145
+#: inginious/frontend/templates/queue.html:29
+#: inginious/frontend/templates/queue.html:59
+msgid "Name"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:69
+#: inginious/frontend/templates/course_admin/edit_tabs/files.html:17
+msgid "Edit"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:75
+msgid "Course Name"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:81
+msgid "Comments or description"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:82
+msgid "Put your opinion or tell us about the problem you have encountered "
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:83
+msgid "Describe and justify the course you want to create "
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:89
+msgid "Send"
+msgstr ""
+
 #: inginious/frontend/plugins/grader_generator/pages/grader.py:46
 msgid "Grader"
 msgstr ""
@@ -1562,17 +1625,6 @@ msgstr ""
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:257
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:8
 msgid "Add a test"
-msgstr ""
-
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:263
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:9
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
-#: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
-#: inginious/frontend/templates/course_admin/settings.html:29
-#: inginious/frontend/templates/course_admin/task_edit.html:145
-#: inginious/frontend/templates/queue.html:29
-#: inginious/frontend/templates/queue.html:59
-msgid "Name"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:267
@@ -2235,6 +2287,86 @@ msgstr ""
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:21
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:33
 msgid "Bar Submissions Per Tasks"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/task_editorial.py:16
+msgid "Task editorial"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:6
+msgid ""
+"Describe a possible solution to the problem through a tutorial that helps"
+" students to guide themselves in developing of that solution and its "
+"corresponding code, which can be accessed when the deadline ends."
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:11
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:21
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:60
+msgid "Task tutorial"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:16
+msgid "Tutorial description"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:20
+msgid "\"Description in RST format. See task context help for more information\""
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:26
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:36
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:50
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:76
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:104
+msgid "Task solution"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:33
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:82
+msgid "Solution language"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:39
+msgid "Solution code"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:41
+msgid "\"Put the solution code on the selected language.\""
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:47
+msgid "Select language"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:61
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:110
+msgid "Solution notebook"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:65
+msgid "\"Select a notebook file with .ipynb extension\""
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:67
+msgid "Solution notebook name"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:6
+msgid "Editorial"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:18
+msgid "\"Task tutorial not available until the task deadline is over\""
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:33
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:47
+msgid "\"Task solution not available until the task deadline is over\""
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:84
+msgid "No language"
 msgstr ""
 
 #: inginious/frontend/templates/auth.html:8
@@ -4235,10 +4367,6 @@ msgstr ""
 msgid "Path"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/files.html:17
-msgid "Edit"
-msgstr ""
-
 #: inginious/frontend/templates/course_admin/edit_tabs/files.html:18
 msgid "Move"
 msgstr ""
@@ -4494,4 +4622,16 @@ msgstr ""
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr ""
+
+#~ msgid "Contact page"
+#~ msgstr ""
+
+#~ msgid "Request a new course"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Just put your honest opinion or "
+#~ "tell us about the problem you have"
+#~ " encountered "
+#~ msgstr ""
 

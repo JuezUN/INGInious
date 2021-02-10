@@ -16,8 +16,14 @@ jQuery(document).ready(function () {
             .find("> div.navbar.navbar-default.navbar-static-top");
         //Add UNCode button
         navbar.find("> div > div.collapse.navbar-collapse > ol.nav.navbar-nav.navbar-right")
-            .append("<li><a class='navbar-link' href='https://juezun.github.io/' target='_blank'>" +
-                "<i class='fa fa-question-circle-o' style='margin-right: 5px' aria-hidden='true'></i>About UNCode</a></li>");
+            .append(
+                "<li class='dropdown'><a class=\"dropdown-toggle\" role=\"button\" data-toggle=\"dropdown\">\n" +
+                "<i class='fa fa-plus-circle' aria-hidden='true' style='margin-right: 5px'></i>UNCode <span class=\"caret\"></span></a>" +
+                "<ul class=\"dropdown-menu\">" +
+                "<li><a class='navbar-link' href='https://juezun.github.io/' target='_blank' >" +
+                "<i class='fa fa-question-circle-o' aria-hidden='true' style='margin-right: 5px'></i>About UNCode</a></li>" +
+                "<li><a href=\"/contact_page\" class=\"navbar-link\"><i class=\"fa fa-envelope\">" +
+                "</i> Contact Page</a></ul></li>");
     }
 
     function updateFooter() {
