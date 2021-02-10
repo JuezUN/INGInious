@@ -10,9 +10,9 @@ import web
 from bson.objectid import ObjectId
 
 from inginious.frontend.parsable_text import ParsableText
-from inginious.frontend.plugins.manual_scoring.pages.rubric_wdo import RubricWdo
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from inginious.frontend.plugins.manual_scoring.pages import constants
+from inginious.frontend.plugins.utils import read_json_file
 
 base_renderer_path = constants.render_path
 
@@ -73,7 +73,7 @@ class ManualScoringPage(INGIniousAdminPage):
 
     def render_page(self, course, task, submission_id):
         """ Get all data and display the page """
-        rubric_wdo = RubricWdo('inginious/frontend/plugins/manual_scoring/static/json/rubric.json')
+        rubric_content = self.get_rubric_content()
         problem_id = task.get_problems()[0].get_id()
         submission = self.submission_manager.get_submission(submission_id, user_check=False)
         submission_input = self.submission_manager.get_input_from_submission(submission)
@@ -99,6 +99,14 @@ class ManualScoringPage(INGIniousAdminPage):
 
         return (
             self.template_helper.get_custom_renderer(base_renderer_path).manual_scoring(
-                course, task,
-                rubric_wdo.read_data('inginious/frontend/plugins/manual_scoring/static/json/rubric.json'), data)
+                course, task, rubric_content, data)
         )
+
+    def get_rubric_content(self):
+        path = 'inginious/frontend/plugins/manual_scoring/static/json/'
+        language_file = {'es': 'rubric_es.json', 'en': 'rubric.json', 'de': 'rubric.json', 'fr': 'rubric.json',
+                         'pt': 'rubric.json'}
+        current_language = self.user_manager.session_language()
+        path += language_file[current_language]
+
+        return read_json_file(path)
