@@ -15,6 +15,7 @@ base_renderer_path = constants.render_path
 def create_submissions_dict(submissions_list):
     """  """
     data = OrderedDict()
+    default_grade = "No grade"
     for submission in submissions_list:
         data[submission["_id"]] = {
             "_id": submission["_id"],
@@ -22,10 +23,10 @@ def create_submissions_dict(submissions_list):
             "grade": submission["grade"],
             "summary_result": submission["custom"]["custom_summary_result"],
         }
-        if "rubric_score" not in submission["custom"]:
-            data[submission["_id"]]["rubric_score"] = "No grade"
+        if "manual_scoring" in submission:
+            data[submission["_id"]]["manual_grade"] = submission["manual_scoring"]["grade"]
         else:
-            data[submission["_id"]]["rubric_score"] = submission["custom"]["rubric_score"]
+            data[submission["_id"]]["manual_grade"] = default_grade
     return data
 
 
@@ -87,6 +88,7 @@ class StudentSubmissionsPage(INGIniousAdminPage):
                         "submitted_on": 1,
                         "custom": 1,
                         "grade": 1,
+                        "manual_scoring": 1
                     }
                 },
                 {

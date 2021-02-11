@@ -161,5 +161,9 @@ $var Navbar: $:NavbarF()
         return "$get_homepath()/course/$course.get_id()/$task.get_id()" + "?submissionid=" + "$data['submission_id']" + "&questionid=" + "$data['question_id']";
     }
 
+    const rubricStatus = function () {
+        return "$data['rubric_status']"
+    }
+
 
 </script>

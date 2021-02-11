@@ -12,23 +12,23 @@ from bson.objectid import ObjectId
 from inginious.frontend.parsable_text import ParsableText
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from inginious.frontend.plugins.manual_scoring.pages import constants
-from inginious.frontend.plugins.utils import read_json_file
+from inginious.frontend.plugins.utils import read_json_file, get_mandatory_parameter
 
 base_renderer_path = constants.render_path
 
 
-def get_manual_comment_and_grade_submission(submission):
+def get_manual_scoring_data_of_submission(submission):
     """  """
     comment = ""
     score = "No grade"
+    rubric = []
 
-    if 'custom' in submission and 'comment' in submission['custom']:
-        comment = submission['custom']['comment']
+    if 'manual_scoring' in submission:
+        score = submission['manual_scoring']['grade']
+        comment = submission['manual_scoring']['comment']
+        rubric = submission['manual_scoring']['rubric_status']
 
-    if 'custom' in submission and 'rubric_score' in submission['custom']:
-        score = submission['custom']['rubric_score']
-
-    return comment, score
+    return comment, score, rubric
 
 
 def get_submission_result_text(submission_input):
@@ -58,18 +58,18 @@ class ManualScoringPage(INGIniousAdminPage):
 
     def update_manual_comment_and_grade(self, submission_id):
         """ update the grade and comment on db """
-        data = web.input()
+        a = web.input()
+        manual_grade = get_mandatory_parameter(web.input(), "manual_grade")
+        comment = get_mandatory_parameter(web.input(), "comment")
+        rubric_status = get_mandatory_parameter(web.input(), "rubric")
 
-        if "grade" in data:
-            self.database.submissions.update(
-                {"_id": ObjectId(submission_id)},
-                {"$set": {"custom.rubric_score": data["grade"]}
-                 })
-        elif "comment" in data:
-            self.database.submissions.update(
-                {"_id": ObjectId(submission_id)},
-                {"$set": {"custom.comment": data["comment"]}
-                 })
+        self.database.submissions.update(
+            {"_id": ObjectId(submission_id)},
+            {"$set": {"manual_scoring.grade": manual_grade,
+                      "manual_scoring.comment": comment,
+                      "manual_scoring.rubric_status": rubric_status
+                      }
+             })
 
     def render_page(self, course, task, submission_id):
         """ Get all data and display the page """
@@ -77,7 +77,7 @@ class ManualScoringPage(INGIniousAdminPage):
         problem_id = task.get_problems()[0].get_id()
         submission = self.submission_manager.get_submission(submission_id, user_check=False)
         submission_input = self.submission_manager.get_input_from_submission(submission)
-        comment, score = get_manual_comment_and_grade_submission(submission)
+        comment, score, rubric_status = get_manual_scoring_data_of_submission(submission)
 
         data = {
             "url": 'manual_scoring',
@@ -94,7 +94,8 @@ class ManualScoringPage(INGIniousAdminPage):
             "name": self.user_manager.get_user_realname(submission_input['username'][0]),
             "env": task.get_environment(),
             "question_id": problem_id,
-            "submission_id": submission_id
+            "submission_id": submission_id,
+            "rubric_status": rubric_status
         }
 
         return (
