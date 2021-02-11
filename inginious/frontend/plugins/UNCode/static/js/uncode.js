@@ -6,7 +6,7 @@ jQuery(document).ready(function () {
         const image = logoElement.find("> img").attr("src", imagePath);
         logoElement.text("");
         logoElement.html(image);
-        image.width("70%");
+        image.width("58%");
         image.css("margin-left", "35%");
     }
 
