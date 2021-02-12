@@ -73,6 +73,7 @@ class ContactPage(INGIniousPage):
         return self.template_helper.get_custom_renderer(base_renderer_path).contact_page()
 
     def add_js_and_css_files(self):
+        """ Add the the js and css files depending if use minify """
         if get_use_minify():
             self.template_helper.add_javascript("/contact_page/static/js/contact_page.min.js")
             self.template_helper.add_css("/contact_page/static/css/contact_page.min.css")
