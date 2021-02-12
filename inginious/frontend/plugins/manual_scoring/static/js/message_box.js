@@ -16,7 +16,7 @@ class MessageBox {
         }
         code += `alert-${this.type}" role="alert">`;
         if (!this.dismissible) {
-            code += "<button type=\"button\" class=\"close\" data-dismiss=\"alert\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>";
+            code += "<button id='close-b' type=\"button\" class=\"close\" data-dismiss=\"alert\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>";
         }
         code += this.textContent + "</div>";
         this.code = code;
@@ -45,5 +45,8 @@ class MessageBox {
         }, 100);
     }
 
+    deleteCloseButton() {
+        document.getElementById("close-b").remove();
+    }
 
 }

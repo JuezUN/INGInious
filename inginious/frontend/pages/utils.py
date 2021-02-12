@@ -136,7 +136,7 @@ class INGIniousAuthPage(INGIniousPage):
             if not self.user_manager.session_username() and not self.__class__.__name__ == "ProfilePage":
                 raise web.seeother("/preferences/profile")
 
-            if not self.is_lti_page and self.user_manager.session_lti_info() is not None: #lti session
+            if not self.is_lti_page and self.user_manager.session_lti_info() is not None:  # lti session
                 self.user_manager.disconnect_user()
                 return self.template_helper.get_renderer().auth(self.user_manager.get_auth_methods(), False)
 

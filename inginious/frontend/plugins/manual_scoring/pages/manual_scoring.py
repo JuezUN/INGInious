@@ -58,11 +58,9 @@ class ManualScoringPage(INGIniousAdminPage):
 
     def update_manual_comment_and_grade(self, submission_id):
         """ update the grade and comment on db """
-        a = web.input()
         manual_grade = get_mandatory_parameter(web.input(), "manual_grade")
         comment = get_mandatory_parameter(web.input(), "comment")
         rubric_status = get_mandatory_parameter(web.input(), "rubric")
-
         self.database.submissions.update(
             {"_id": ObjectId(submission_id)},
             {"$set": {"manual_scoring.grade": manual_grade,

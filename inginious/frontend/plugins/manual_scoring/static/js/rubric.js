@@ -117,8 +117,13 @@ class Rubric {
         return fieldIds;
     }
 
-    loadSelectedFields(fieldIds){
-        fieldIds.forEach(id => this.addMarkerClass(id));
+    loadSelectedFields(fieldIds) {
+        const self = this;
+        fieldIds.forEach(function (id) {
+                self.addMarkerClass(id);
+                self.updateScore(parseInt(id[2]));
+            }
+        );
     }
 
 

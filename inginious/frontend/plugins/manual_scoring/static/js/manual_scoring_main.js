@@ -22,14 +22,14 @@ function save(rubric) {
             const message = new MessageBox(responseFieldId, contentInfo, "info");
         },
         method: "POST",
-        dataType: "json",
         data: {
-            manual_grade: rubric.score.toFixed(1),
-            comment: txtComment.value,
-            rubric: JSON.stringify(rubric.getSelectedFieldIds())
+            "manual_grade": rubric.score.toFixed(1),
+            "comment": txtComment.value,
+            "rubric": JSON.stringify(rubric.getSelectedFieldIds())
         },
 
         error: function (request, status, error) {
+            console.log(error);
             const message = new MessageBox(responseFieldId, contentDanger, "danger");
         }
     });
@@ -38,7 +38,8 @@ function save(rubric) {
 function loadFeedBack() {
     const feedbackContent = getHtmlCodeForFeedback();
     const feedbackType = getTextBoxTypeBasedOnResult();
-    new MessageBox(feedbackFieldId, feedbackContent, feedbackType, false);
+    const message = new MessageBox(feedbackFieldId, feedbackContent, feedbackType, false);
+    message.deleteCloseButton();
 }
 
 
@@ -64,7 +65,8 @@ jQuery(document).ready(function () {
         new CodeField();
         const rubric = new Rubric();
         let rubric_status = rubricStatus();
-        console.log(rubric_status);
+        rubric_status = JSON.parse(rubric_status.replace(/&quot;/g, '"'));
+        rubric.loadSelectedFields(rubric_status);
         addToggleBehaviorToProblemDescription();
         loadFeedBack();
         addSaveFunctionToSaveButton(rubric);
