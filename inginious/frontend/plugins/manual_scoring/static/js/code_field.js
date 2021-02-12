@@ -23,7 +23,7 @@ class CodeField {
             method: "GET",
             dataType: "json",
             success: function (data) {
-                render_notebook(data); //Use a external .js file, it's property of multilang plugin
+                render_notebook(data, $("#notebook-holder")); //Use a external .js file, it's property of multilang plugin
             }
         });
     }

@@ -16,7 +16,7 @@ $def NavbarF():
         <li><a href="$get_homepath()/admin/$course.get_id()/manual_scoring"><i class="fa fa-table mr-1"></i>$:_("Manual Scoring")<span class="sr-only">(current)</span></a></li>
     <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task.get_id()">$:_("Task")</a></li>
         <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task.get_id()/user/$data['username']">$:_("Student")</a></li>
-    <li class="active"><a href="#">$:_("Manual Scoring")<span class="sr-only">(current)</span></a></li>
+    <li class="active"><a href="#">$:_("Rubric")<span class="sr-only">(current)</span></a></li>
     </ol>
 $var Navbar: $:NavbarF()
 
@@ -92,22 +92,22 @@ $var Navbar: $:NavbarF()
 
                 $for category_index in range(len(first_level)):
                 $ category_name = list(first_level[category_index])[0]
-                <tr>
-                    <th>$category_name</th>
-                    $ col = 0
-                    $for level_key in rubric:
-                    $ category_content = rubric[level_key][category_index][category_name]
-                    $ category_content = "" if category_content is None else category_content
+                    <tr>
+                        <th>$category_name</th>
+                        $ col = 0
+                        $for level_key in rubric:
+                        $ category_content = rubric[level_key][category_index][category_name]
+                        $ category_content = "" if category_content is None else category_content
 
-                    $ category_content_lines = category_content.split("\n")
-                    <td id="$category_index-$col">
-                        $ col = col + 1
-                        <ul>
-                            $for line in category_content_lines:
-                            <li>$line</li>
-                        </ul>
-                    </td>
-                </tr>
+                        $ category_content_lines = category_content.split("\n")
+                        <td id="$category_index-$col">
+                            $ col = col + 1
+                            <ul>
+                                $for line in category_content_lines:
+                                <li>$line</li>
+                            </ul>
+                        </td>
+                    </tr>
 
                 </tbody>
     </table>
