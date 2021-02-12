@@ -101,10 +101,11 @@ class AddCourseStudentsCsvFile(AdminApi):
                     }
             try:
                 activate_account_link = web.ctx.home + "/register?activate=" + activate_hash
+                data_policy_link = web.ctx.home + "/data_policy"
                 content = str(
                     self.template_helper.get_custom_renderer(_static_folder_path, False).email_template()).format(
                     activation_link=activate_account_link, username=data["username"],
-                    password=password, course_name=course.get_name("en"))
+                    password=password, course_name=course.get_name("en"), data_policy=data_policy_link)
                 subject = _("Welcome on UNCode")
                 headers = {"Content-Type": 'text/html'}
                 web.sendmail(web.config.smtp_sendername, data["email"], subject, content, headers)

@@ -108,7 +108,12 @@ class RegistrationPage(INGIniousPage):
 
 To activate your account, please click on the following link :
 """)
-                                 + web.ctx.home + "/register?activate=" + activate_hash)
+                                 + web.ctx.home + "/register?activate=" + activate_hash
+                                 + _("""
+                                 
+You can check the data policy here:
+""")
+                                 + web.ctx.home + "/data_policy")
                     msg = _("You are succesfully registered. An email has been sent to you for activation.")
                 except:
                     error = True
