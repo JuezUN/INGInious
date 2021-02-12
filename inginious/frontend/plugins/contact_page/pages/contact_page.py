@@ -9,7 +9,7 @@ import json
 import web
 import requests
 from inginious.frontend.pages.utils import INGIniousPage
-from .constants import _url_channel, _subject_new_course_id
+from .constants import get_url_channel, get_subject_new_course_id, get_use_minify
 
 base_renderer_path = "frontend/plugins/contact_page/pages/templates"
 
@@ -46,12 +46,13 @@ def create_slack_text_block(title, content):
 
 def send_request_to_slack(subject_id, payload):
     """ Send a post request to some Slack channel (previously defined ) whit the user message """
-    requests.post(_url_channel[subject_id], data=payload)
+    slack_url = get_url_channel()
+    requests.post(slack_url[subject_id], data=payload)
 
 
 def is_new_course_request(subject_id):
     """ Return true value if the subject of the message is create a new course """
-    return subject_id == _subject_new_course_id
+    return subject_id == get_subject_new_course_id()
 
 
 class ContactPage(INGIniousPage):
@@ -59,6 +60,7 @@ class ContactPage(INGIniousPage):
 
     def GET(self):
         """ Get request. Return the contact page """
+        self.add_js_and_css_files()
         return self.template_helper.get_custom_renderer(base_renderer_path).contact_page()
 
     def POST(self):
@@ -67,4 +69,15 @@ class ContactPage(INGIniousPage):
         subject_id = data["subject_id"]
         payload = generate_slack_request_payload(data)
         send_request_to_slack(subject_id, payload)
+        self.add_js_and_css_files()
         return self.template_helper.get_custom_renderer(base_renderer_path).contact_page()
+
+    def add_js_and_css_files(self):
+        if get_use_minify():
+            self.template_helper.add_javascript("/contact_page/static/js/contact_page.min.js")
+            self.template_helper.add_css("/contact_page/static/css/contact_page.min.css")
+        else:
+            self.template_helper.add_javascript("/contact_page/static/js/contact_page_main.js")
+            self.template_helper.add_javascript("/contact_page/static/js/contact_page_form.js")
+            self.template_helper.add_javascript("/contact_page/static/js/message_box.js")
+            self.template_helper.add_css("/contact_page/static/css/contact_page.css")
