@@ -107,7 +107,7 @@ class Rubric {
     }
 
     getSelectedFieldIds() {
-        let fieldIds = []
+        let fieldIds = [];
         for (let i = 0; i < this.matrixLength; i++) {
             let matrixField = this.getSelectionOnRow(i);
             if (matrixField !== null) {
@@ -119,9 +119,10 @@ class Rubric {
 
     loadSelectedFields(fieldIds) {
         const self = this;
+        const jIndex = 2;
         fieldIds.forEach(function (id) {
                 self.addMarkerClass(id);
-                self.updateScore(parseInt(id[2]));
+                self.updateScore(parseInt(id[jIndex],10));
             }
         );
     }

@@ -13,7 +13,7 @@ base_renderer_path = constants.render_path
 
 
 def create_student_dict(user_list):
-    """  """
+    """ Organize student's data in a dictionary """
     data = OrderedDict()
     for user in user_list:
         data[user["username"][0]] = {"username": user["username"][0],
@@ -38,8 +38,8 @@ class StudentsListPage(INGIniousAdminPage):
         data = create_student_dict(user_list)
 
         return (
-            self.template_helper.get_custom_renderer(base_renderer_path)
-                .students_list(course, data, task, task_name, url)
+            self.template_helper.get_custom_renderer(base_renderer_path).students_list(course, data, task, task_name,
+                                                                                       url)
         )
 
     def get_students_list_and_max_score(self, course, task_id):

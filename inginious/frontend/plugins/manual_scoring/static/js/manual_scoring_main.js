@@ -1,16 +1,5 @@
-const languages = {
-    "java7": "java",
-    "java8": "java",
-    "cpp": "cpp",
-    "cpp11": "cpp",
-    "c": "c",
-    "c11": "c",
-    "python3": "python",
-    "vhdl": "vhdl",
-    "verilog": "verilog"
-};
-const responseFieldId = "grade_edit_submit_status";
-const feedbackFieldId = "task_alert";
+const RESPONSE_FIELD_ID = "grade_edit_submit_status";
+const FEEDBACK_FIELD_ID = "task_alert";
 
 function save(rubric) {
     const contentInfo = "Submission graded and stored";
@@ -19,7 +8,7 @@ function save(rubric) {
 
     jQuery.ajax({
         success: function (data) {
-            const message = new MessageBox(responseFieldId, contentInfo, "info");
+            const message = new MessageBox(RESPONSE_FIELD_ID, contentInfo, "info");
         },
         method: "POST",
         data: {
@@ -29,8 +18,7 @@ function save(rubric) {
         },
 
         error: function (request, status, error) {
-            console.log(error);
-            const message = new MessageBox(responseFieldId, contentDanger, "danger");
+            const message = new MessageBox(RESPONSE_FIELD_ID, contentDanger, "danger");
         }
     });
 }
@@ -38,7 +26,7 @@ function save(rubric) {
 function loadFeedBack() {
     const feedbackContent = getHtmlCodeForFeedback();
     const feedbackType = getTextBoxTypeBasedOnResult();
-    const message = new MessageBox(feedbackFieldId, feedbackContent, feedbackType, false);
+    const message = new MessageBox(FEEDBACK_FIELD_ID, feedbackContent, feedbackType, false);
     message.deleteCloseButton();
 }
 
@@ -52,7 +40,7 @@ function addToggleBehaviorToProblemDescription() {
 function addSaveFunctionToSaveButton(rubric) {
     $("#save_button").click(function () {
         save(rubric);
-    })
+    });
 }
 
 function isRubricScoringPage() {
@@ -62,11 +50,11 @@ function isRubricScoringPage() {
 
 jQuery(document).ready(function () {
     if (isRubricScoringPage()) {
-        new CodeField();
+        const condeField = new CodeField();
         const rubric = new Rubric();
-        let rubric_status = rubricStatus();
-        rubric_status = JSON.parse(rubric_status.replace(/&quot;/g, '"'));
-        rubric.loadSelectedFields(rubric_status);
+        let rubricStatusIds = rubricStatus();
+        rubricStatusIds = JSON.parse(rubricStatusIds.replace(/&quot;/g, "\""));
+        rubric.loadSelectedFields(rubricStatusIds);
         addToggleBehaviorToProblemDescription();
         loadFeedBack();
         addSaveFunctionToSaveButton(rubric);

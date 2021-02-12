@@ -17,8 +17,8 @@ from inginious.frontend.plugins.utils import read_json_file, get_mandatory_param
 base_renderer_path = constants.render_path
 
 
-def get_manual_scoring_data_of_submission(submission):
-    """  """
+def get_manual_scoring_data(submission):
+    """ return the comment, score and rubric status if they are storage """
     comment = ""
     score = "No grade"
     rubric = []
@@ -32,6 +32,7 @@ def get_manual_scoring_data_of_submission(submission):
 
 
 def get_submission_result_text(submission_input):
+    """ return the result of a submission """
     info = submission_input['text']
     pars_text = ParsableText(info)
     final_text = pars_text.parse()
@@ -75,7 +76,7 @@ class ManualScoringPage(INGIniousAdminPage):
         problem_id = task.get_problems()[0].get_id()
         submission = self.submission_manager.get_submission(submission_id, user_check=False)
         submission_input = self.submission_manager.get_input_from_submission(submission)
-        comment, score, rubric_status = get_manual_scoring_data_of_submission(submission)
+        comment, score, rubric_status = get_manual_scoring_data(submission)
 
         data = {
             "url": 'manual_scoring',
@@ -102,6 +103,7 @@ class ManualScoringPage(INGIniousAdminPage):
         )
 
     def get_rubric_content(self):
+        """ return the content of the rubric depending of the language """
         path = 'inginious/frontend/plugins/manual_scoring/static/json/'
         language_file = {'es': 'rubric_es.json', 'en': 'rubric.json', 'de': 'rubric.json', 'fr': 'rubric.json',
                          'pt': 'rubric.json'}
