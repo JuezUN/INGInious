@@ -12,6 +12,7 @@ _url_channel = {
     "subject-new-course": "",
 }
 _subject_new_course_id = "subject-new-course"
+_use_minified = True
 
 
 def set_url_channel(main_message_channel, new_course_channel):
@@ -24,3 +25,24 @@ def set_url_channel(main_message_channel, new_course_channel):
             _url_channel["subject-new-course"] = main_message_channel
     else:
         raise SlackURLError("The main slack's URL is empty")
+
+
+def set_use_minified(use_minified):
+    """ Define if use minified files """
+    global _use_minified
+    _use_minified = use_minified
+
+
+def get_url_channel():
+    """ return the url dictionary """
+    return _url_channel
+
+
+def get_subject_new_course_id():
+    """ return the id of new course subject """
+    return _subject_new_course_id
+
+
+def get_use_minify():
+    """ return a boolean to define if use minified files """
+    return _use_minified
