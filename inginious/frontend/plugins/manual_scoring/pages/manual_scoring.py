@@ -11,10 +11,10 @@ from bson.objectid import ObjectId
 
 from inginious.frontend.parsable_text import ParsableText
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.frontend.plugins.manual_scoring.pages import constants
+from inginious.frontend.plugins.manual_scoring.pages.constants import get_use_minify, get_render_path
 from inginious.frontend.plugins.utils import read_json_file, get_mandatory_parameter
 
-base_renderer_path = constants.render_path
+base_renderer_path = get_render_path()
 
 
 def get_manual_scoring_data(submission):
@@ -46,7 +46,7 @@ class ManualScoringPage(INGIniousAdminPage):
     def GET_AUTH(self, course_id, task_id, submission_id):
         """ Get request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
-
+        self.add_css_and_js_file()
         return self.render_page(course, task, submission_id)
 
     def POST_AUTH(self, course_id, task_id, submission_id):
@@ -54,7 +54,7 @@ class ManualScoringPage(INGIniousAdminPage):
         course, task = self.get_course_and_check_rights(course_id, task_id)
 
         self.update_manual_comment_and_grade(submission_id)
-
+        self.add_css_and_js_file()
         return self.render_page(course, task, submission_id)
 
     def update_manual_comment_and_grade(self, submission_id):
@@ -111,3 +111,14 @@ class ManualScoringPage(INGIniousAdminPage):
         path += language_file[current_language]
 
         return read_json_file(path)
+
+    def add_css_and_js_file(self):
+        if get_use_minify():
+            self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.min.css")
+            self.template_helper.add_javascript("/manual_scoring/static/js/manual_scoring.min.js")
+        else:
+            self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.css")
+            self.template_helper.add_javascript("/manual_scoring/static/js/code_field.js")
+            self.template_helper.add_javascript("/manual_scoring/static/js/message_box.js")
+            self.template_helper.add_javascript("/manual_scoring/static/js/rubric.js")
+            self.template_helper.add_javascript("/manual_scoring/static/js/manual_scoring_main.js")

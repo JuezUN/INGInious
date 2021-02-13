@@ -7,9 +7,9 @@
 
 from collections import OrderedDict
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.frontend.plugins.manual_scoring.pages import constants
+from inginious.frontend.plugins.manual_scoring.pages.constants import get_use_minify, get_render_path
 
-base_renderer_path = constants.render_path
+base_renderer_path = get_render_path()
 
 
 class CourseTaskListPage(INGIniousAdminPage):
@@ -18,12 +18,13 @@ class CourseTaskListPage(INGIniousAdminPage):
     def GET_AUTH(self, courseid):  # pylint: disable=arguments-differ
         """ GET request """
         course, _ = self.get_course_and_check_rights(courseid)
+        self.add_css_file()
         return self.render_page(course)
 
     def POST_AUTH(self, courseid):  # pylint: disable=arguments-differ
         """ POST request """
         course, _ = self.get_course_and_check_rights(courseid)
-
+        self.add_css_file()
         return self.render_page(course)
 
     def render_page(self, course):
@@ -83,3 +84,9 @@ class CourseTaskListPage(INGIniousAdminPage):
         it is necessary because no name is found on db """
         task_array = self.task_factory.get_all_tasks(course)
         return OrderedDict(sorted(list(task_array.items()), key=lambda t: (t[1].get_order(), t[1].get_id())))
+
+    def add_css_file(self):
+        if get_use_minify():
+            self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.min.css")
+        else:
+            self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.css")

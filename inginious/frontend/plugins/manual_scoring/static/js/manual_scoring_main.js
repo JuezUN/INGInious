@@ -43,22 +43,15 @@ function addSaveFunctionToSaveButton(rubric) {
     });
 }
 
-function isRubricScoringPage() {
-    const userKeyRegExp = new RegExp("[a-z0-9A-Z\\-_]+/admin/[a-z0-9A-Z\\-_]+/manual_scoring/task/[a-z0-9A-Z\\-_]+/submission/[a-z0-9A-Z\\-_]+");
-    return userKeyRegExp.test(document.location.href);
-}
-
 jQuery(document).ready(function () {
-    if (isRubricScoringPage()) {
-        const condeField = new CodeField();
-        const rubric = new Rubric();
-        let rubricStatusIds = rubricStatus();
-        rubricStatusIds = JSON.parse(rubricStatusIds.replace(/&quot;/g, "\""));
-        rubric.loadSelectedFields(rubricStatusIds);
-        addToggleBehaviorToProblemDescription();
-        loadFeedBack();
-        addSaveFunctionToSaveButton(rubric);
-    }
+    const condeField = new CodeField();
+    const rubric = new Rubric();
+    let rubricStatusIds = rubricStatus();
+    rubricStatusIds = JSON.parse(rubricStatusIds.replace(/&quot;/g, "\""));
+    rubric.loadSelectedFields(rubricStatusIds);
+    addToggleBehaviorToProblemDescription();
+    loadFeedBack();
+    addSaveFunctionToSaveButton(rubric);
     window.save = save;
 });
 

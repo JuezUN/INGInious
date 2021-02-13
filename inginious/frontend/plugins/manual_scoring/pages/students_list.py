@@ -7,9 +7,9 @@
 
 from collections import OrderedDict
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.frontend.plugins.manual_scoring.pages import constants
+from inginious.frontend.plugins.manual_scoring.pages.constants import get_render_path, get_use_minify
 
-base_renderer_path = constants.render_path
+base_renderer_path = get_render_path()
 
 
 def create_student_dict(user_list):
@@ -27,7 +27,7 @@ class StudentsListPage(INGIniousAdminPage):
     def GET_AUTH(self, course_id, task_id):
         """ Get request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
-
+        self.add_css_file()
         return self.render_page(course, task_id, task)
 
     def render_page(self, course, task_id, task):
@@ -85,3 +85,9 @@ class StudentsListPage(INGIniousAdminPage):
 
             ]))
         return user_list
+
+    def add_css_file(self):
+        if get_use_minify():
+            self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.min.css")
+        else:
+            self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.css")
