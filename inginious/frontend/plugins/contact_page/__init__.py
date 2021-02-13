@@ -10,7 +10,7 @@ import os
 from inginious.frontend.plugins.contact_page.pages.slack_url_error import SlackURLError
 from inginious.frontend.plugins.utils import create_static_resource_page
 from inginious.frontend.plugins.contact_page.pages.contact_page import ContactPage
-from .pages.constants import set_url_channel
+from .pages.constants import set_url_channel, set_use_minified
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
@@ -33,14 +33,6 @@ def init(plugin_manager, course_factory, client, plugin_config):
     slack_url_course_creation_ch = plugin_config.get("slack_url_course_creation_channel", "")
 
     define_slack_url(slack_url_contact_channel, slack_url_course_creation_ch)
-
-    if use_minified:
-        plugin_manager.add_hook("css", lambda: "/contact_page/static/css/contact_page.min.css")
-        plugin_manager.add_hook("javascript_footer", lambda: "/contact_page/static/js/contact_page.min.js")
-    else:
-        plugin_manager.add_hook("css", lambda: "/contact_page/static/css/contact_page.css")
-        plugin_manager.add_hook("javascript_footer", lambda: "/contact_page/static/js/contact_page_main.js")
-        plugin_manager.add_hook("javascript_footer", lambda: "/contact_page/static/js/contact_page_form.js")
-        plugin_manager.add_hook("javascript_footer", lambda: "/contact_page/static/js/message_box.js")
+    set_use_minified(use_minified)
 
     plugin_manager.add_page("/contact_page", ContactPage)
