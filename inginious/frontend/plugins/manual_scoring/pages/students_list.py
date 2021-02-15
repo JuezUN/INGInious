@@ -32,7 +32,7 @@ class StudentsListPage(INGIniousAdminPage):
 
     def render_page(self, course, task_id, task):
         """ Get all data and display the page """
-        task_name = course.get_task(task_id).get_name(self.user_manager.session_language())
+        task_name = task.get_name(self.user_manager.session_language())
         user_list = self.get_students_list_and_max_score(course, task_id)
         url = 'manual_scoring'
         data = create_student_dict(user_list)
