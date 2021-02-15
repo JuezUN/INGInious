@@ -36,7 +36,6 @@ class StudentSubmissionsPage(INGIniousAdminPage):
     def GET_AUTH(self, course_id, task_id, username):
         """ GET request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
-        self.add_css_file()
         return self.render_page(course, task_id, task, username, )
 
     def render_page(self, course, task_id, task, username):
@@ -46,6 +45,9 @@ class StudentSubmissionsPage(INGIniousAdminPage):
         name = self.user_manager.get_user_realname(username)
         result = self.get_student_submissions(course.get_id(), task_id, username)
         data = create_submissions_dict(result)
+
+        self.add_css_file()
+
         return (
             self.template_helper.get_custom_renderer(base_renderer_path).student_submissions(
                 course, data, task, task_name, username, name, url)

@@ -18,19 +18,19 @@ class CourseTaskListPage(INGIniousAdminPage):
     def GET_AUTH(self, courseid):  # pylint: disable=arguments-differ
         """ GET request """
         course, _ = self.get_course_and_check_rights(courseid)
-        self.add_css_file()
         return self.render_page(course)
 
     def POST_AUTH(self, courseid):  # pylint: disable=arguments-differ
         """ POST request """
         course, _ = self.get_course_and_check_rights(courseid)
-        self.add_css_file()
         return self.render_page(course)
 
     def render_page(self, course):
         """ Get all data and display the page """
         total_students = len(self.user_manager.get_course_registered_users(course, False))
         tasks_data = self.get_tasks_data(course)
+
+        self.add_css_file()
 
         return self.template_helper.get_custom_renderer(base_renderer_path) \
             .course_task_list(course, tasks_data, total_students)

@@ -4,6 +4,7 @@
 # more information about the licensing of this file.
 
 """ Rubric scoring page """
+import os
 
 import web
 

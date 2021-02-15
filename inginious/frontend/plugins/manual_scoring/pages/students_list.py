@@ -27,7 +27,6 @@ class StudentsListPage(INGIniousAdminPage):
     def GET_AUTH(self, course_id, task_id):
         """ Get request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
-        self.add_css_file()
         return self.render_page(course, task_id, task)
 
     def render_page(self, course, task_id, task):
@@ -36,6 +35,8 @@ class StudentsListPage(INGIniousAdminPage):
         user_list = self.get_students_list_and_max_score(course, task_id)
         url = 'manual_scoring'
         data = create_student_dict(user_list)
+
+        self.add_css_file()
 
         return (
             self.template_helper.get_custom_renderer(base_renderer_path).students_list(course, data, task, task_name,
