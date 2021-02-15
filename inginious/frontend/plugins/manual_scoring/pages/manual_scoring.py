@@ -108,7 +108,7 @@ class ManualScoringPage(INGIniousAdminPage):
         language_file = {'es': 'rubric_es.json', 'en': 'rubric.json', 'de': 'rubric.json', 'fr': 'rubric.json',
                          'pt': 'rubric.json'}
         current_language = self.user_manager.session_language()
-        path += language_file[current_language]
+        path = os.path.join(path, language_file[current_language])
 
         return read_json_file(path)
 
