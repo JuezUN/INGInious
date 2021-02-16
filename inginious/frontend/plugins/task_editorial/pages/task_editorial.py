@@ -32,8 +32,10 @@ def editorial_task_preview(course, task, template_helper):
         task_tutorial_description = None
 
     task_problems = task.get_problems()
-    if task_environment in {"multiple_languages", "Data Science", "HDL"} and task_problems[0].get_type() in {"code_multiple_languages", "code_file_multiple_languages"}:
-        if task_solution_code_language and task_solution_code_language not in task_problems[0].get_original_content()['languages'].values():
+    if task_environment in {"multiple_languages", "Data Science", "HDL"} and task_problems[0].get_type() in {
+        "code_multiple_languages", "code_file_multiple_languages"}:
+        if task_solution_code_language and task_solution_code_language not in task_problems[0].get_original_content()[
+            'languages'].values():
             task_solution_code_language = None
 
     content = template_helper.get_custom_renderer(_TASK_EDITORIAL_TEMPLATE_PATH, layout=False).task_editorial_preview(
