@@ -1,3 +1,6 @@
+let solution_language = "";
+let notebook_name = "";
+
 //Remove options from selector to avoid duplication
 function deleteLanguageSelectOptions(){
     $(".solution_language_select_option").remove();
@@ -23,7 +26,7 @@ function addTaskLanguages() {
 //Set the last language saved on task
 function setLastTaskSolutionCodeLanguage(){
 
-    const solutionCodeLanguage = getTaskSolutionCodeLanguage();
+    const solutionCodeLanguage = solution_language;
 
     if(solutionCodeLanguage){
 
@@ -72,7 +75,7 @@ function addTaskFiles(){
 
      deleteNotebookNameSelectOptions();
      const solutionLanguageSelect = $("#solution_code_notebook");
-     const solutionNotebookName = getTaskSolutionNotebook();
+     const solutionNotebookName = notebook_name;
 
      $.get("/api/grader_generator/test_file_api", {
         course_id: getCourseId(),
@@ -121,11 +124,21 @@ $("a[data-toggle='tab'][href='#tab_editorial']").on("show.bs.tab", function (e) 
     }
 });
 
+$("#solution_code_language").on("change", function (e) {
+    solution_language = $("#solution_code_language")[0].value;
+});
+
+$("#solution_code_notebook").on("change", function (e) {
+    notebook_name = $("#solution_code_notebook")[0].value;
+});
+
 jQuery(document).ready(function () {
     setTaskSolutionForm();
     if(["multiple_languages" , "Data Science" , "HDL"].includes($("#environment").val())){
+       solution_language = getTaskSolutionCodeLanguage();
        loadLastSolutionConfiguration();
     }else if (["Notebook"].includes($("#environment").val())){
+       notebook_name = getTaskSolutionNotebook();
        addTaskFiles();
     }
 });
