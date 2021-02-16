@@ -32,24 +32,24 @@ $var Navbar: $:NavbarF()
 <!-- Code view -->
 <section class="py-1">
     <div class="py-1">
-    <h2 id="info" class="py-1" style="cursor: pointer">
+    <h2 id="taskName" class="py-1" style="cursor: pointer">
         $if data['task_name'] == "":
             $task.get_id()
         $else:
             $data['task_name']
         <i class="fa fa-sort-desc" aria-hidden="true"></i>
     </h2>
-        <div id="text-context" hidden>
+        <div id="taskDescription" hidden>
             $:task.get_context(user_manager.session_language())
         </div>
     </div>
 
-    <div class="DivToScroll DivWithScroll" id="notebook-holder" hidden></div>
-    <label for="myTextCode"></label>
-    <div class="box" hidden id="myTextCodeArea">
-    <textarea class="single " id="myTextCode" rows="4" cols="10" data-language="$data['language']">$data['problem']</textarea>
+    <div class="DivToScroll DivWithScroll" id="notebookHolder" hidden></div>
+    <label for="codemirrorTextArea"></label>
+    <div class="box" hidden>
+        <textarea class="single " id="codemirrorTextArea" rows="4" cols="10" data-language="$data['language']">$data['problem']</textarea>
     </div>
-    <div id="task_alert" class="py-1"></div>
+    <div id="taskAlert" class="py-1"></div>
 </section>
 
 <!-- Information -->
@@ -113,20 +113,20 @@ $var Navbar: $:NavbarF()
     </table>
         </div>
     <div>
-        <strong>$:_("Current Score: ")<strong style="color: #cc0808" id="output">0.0</strong></strong>
+        <strong>$:_("Current Score: ")<strong style="color: #cc0808" id="output">$data['grade']</strong></strong>
     </div>
-    <div id="grade_edit_submit_status"></div>
+    <div id="gradeEditSubmitStatus"></div>
 </section>
 <!-- Comments -->
 <section class="py-2">
     <form method="post">
         <h4 >$:_("Comments")</h4>
         <div class="py-1">
-        <label for="text_comment"></label>
-        <textarea class="form-control" id="text_comment" rows="8">$data['comment']</textarea>
+        <label for="textComments"></label>
+        <textarea class="form-control" id="textComments" rows="8">$data['comment']</textarea>
             </div>
         <div>
-            <a class="btn btn-primary" id="save_button" ><i class="fa fa-save mr-1"></i>$:_("Save")</a>
+            <a class="btn btn-primary" id="saveButton" ><i class="fa fa-save mr-1"></i>$:_("Save")</a>
         </div>
     </form>
 </section>

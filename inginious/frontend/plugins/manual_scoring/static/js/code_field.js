@@ -1,5 +1,3 @@
-const CODE_AREA_ID = "myTextCode";
-const NOTEBOOK_CODE_AREA_ID = "notebook-holder";
 const LANGUAGES = {
     "java7": "java",
     "java8": "java",
@@ -13,9 +11,10 @@ const LANGUAGES = {
 };
 
 class CodeField {
-    constructor() {
+    constructor(multiLangCodeDivId, notebookDivId) {
         this.environmentType = environmentType();
-        this.multilangCodeArea = $(`#${CODE_AREA_ID}`)[0];
+        this.multilangCodeArea = $(`#${multiLangCodeDivId}`);
+        this.notebookDiv = $(`#${notebookDivId}`);
         this.displayCodeArea();
     }
 
@@ -32,21 +31,21 @@ class CodeField {
     }
 
     getNotebookCodeDataAndRender() {
+        const self = this;
         $.ajax({
             url: getURLSubmissionCode(),
             method: "GET",
             dataType: "json",
             success: function (data) {
-                render_notebook(data, $(`#${NOTEBOOK_CODE_AREA_ID}`)); //Use a external .js file, it's property of multilang plugin
+                render_notebook(data, self.notebookDiv); //Use a external .js file, it's property of multilang plugin
             }
         });
     }
 
     showMultiLangCodeArea() {
-        $("#myTextCodeArea").show();
-
-        const language = LANGUAGES[this.multilangCodeArea.getAttribute("data-language")];
-        const myCodeMirror = registerCodeEditor(this.multilangCodeArea, language, 20);
+        this.multilangCodeArea.parent().show();
+        const language = LANGUAGES[this.multilangCodeArea.data("language")];
+        const myCodeMirror = registerCodeEditor(this.multilangCodeArea.get(0), language, 20);
 
         myCodeMirror.setOption("readOnly", "nocursor");
     }
