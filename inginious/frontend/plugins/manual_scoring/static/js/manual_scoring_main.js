@@ -55,6 +55,7 @@ jQuery(document).ready(function () {
     let rubricStatusIds = rubricStatus();
     rubricStatusIds = JSON.parse(rubricStatusIds.replace(/&quot;/g, "\""));
     rubric.loadSelectedFields(rubricStatusIds);
+    loadFeedBack();
     addToggleBehaviorToProblemDescription();
     addSaveFunctionToSaveButton(rubric);
     window.save = save;
