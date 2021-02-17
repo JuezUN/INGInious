@@ -8,7 +8,6 @@ import os
 
 import web
 import re
-import types
 from bson.objectid import ObjectId
 from ast import literal_eval
 
@@ -46,6 +45,7 @@ def get_submission_result_text(submission_input):
 
 
 def check_manual_scoring_data():
+    """ check the three data related to manual scoring """
     manual_grade = get_mandatory_parameter(web.input(), "manual_grade")
     comment = get_mandatory_parameter(web.input(), "comment")
     rubric_status = get_mandatory_parameter(web.input(), "rubric")
@@ -58,6 +58,11 @@ def check_manual_scoring_data():
 
 
 def check_rubric_format(rubric):
+    """ Check the rubric format
+    * it must be a list
+    * the elements must have the id format ex: 1-1
+    * its length must be less than 5
+    """
     rubric_id_list = check_string_is_list(rubric)
 
     rubric_len = len(rubric_id_list)
@@ -73,6 +78,7 @@ def check_rubric_format(rubric):
 
 
 def check_string_is_list(rubric):
+    """ Check if the rubric is a list inside of string """
     error_text = "rubric need be a list"
     try:
         rubric = literal_eval(rubric)
@@ -85,6 +91,11 @@ def check_string_is_list(rubric):
 
 
 def check_manual_grade_format(manual_grade):
+    """ Check the grade:
+     * it must only has a decimal
+     * it must be between 0-5
+     * it must be a float number
+     """
     max_grade = 5
     min_grade = 0
     float_regular_expression = re.compile(r"^([0-9].[0-9])$")
@@ -99,6 +110,7 @@ def check_manual_grade_format(manual_grade):
 
 
 def check_comment_format(comment):
+    """ Check if the comment is a string """
     if not isinstance(comment, str):
         raise ManualScoringError("The comment isn't a string")
 
