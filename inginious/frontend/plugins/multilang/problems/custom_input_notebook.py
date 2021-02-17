@@ -44,12 +44,13 @@ def custom_input_notebook(client):
             Here is how this is parsed:
                 [((test_name, test_id, number_of_cases), test_weight), ...]
             """
-            parsed_selected_tests = []
+            parsed_selected_tests = [None] * len(task_tests)
             selected_tests = map(int, user_input[problem_id + "/input"].split(','))
             for test_idx in selected_tests:
-                parsed_selected_tests.append(
-                    ((task_tests[test_idx]["name"], "q{:02d}".format(test_idx), len(task_tests[test_idx]["cases"])),
-                     task_tests[test_idx]["weight"]))
+                parsed_selected_tests[test_idx] = (
+                    (task_tests[test_idx]["name"], "q{:02d}".format(test_idx), len(task_tests[test_idx]["cases"])),
+                    task_tests[test_idx]["weight"])
+            print(parsed_selected_tests)
             return parsed_selected_tests
 
         def API_POST(self):
