@@ -1,4 +1,4 @@
-$def with (task_data, task_solution_code_language)
+$def with (task_data)
 
 <div class="alert alert-warning">
     <i class="fa fa-info-circle"/>
@@ -79,7 +79,7 @@ $def with (task_data, task_solution_code_language)
     }
 
     function getTaskSolutionCodeLanguage(){
-        return "$task_solution_code_language";
+        return "$task_data.get('solution_code_language')";
     }
 
     function getTaskSolutionNotebook(){
