@@ -4,7 +4,7 @@ const TASK_NAME = "taskName";
 const TASK_DESCRIPTION_TEXT_ID = "taskDescription";
 const CODE_AREA_ID = "codemirrorTextArea";
 const NOTEBOOK_CODE_AREA_ID = "notebookHolder";
-const SAVE_BUTTON_ID = "save_button";
+const SAVE_BUTTON_ID = "saveButton";
 const COMMENTS_TEXT_AREA_ID = "textComments";
 
 function save(rubric) {
