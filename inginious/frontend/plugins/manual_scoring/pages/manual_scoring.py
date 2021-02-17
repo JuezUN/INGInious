@@ -193,6 +193,7 @@ class ManualScoringPage(INGIniousAdminPage):
         return read_json_file(path)
 
     def add_css_and_js_file(self):
+        """ Add the css and js files """
         if get_use_minify():
             self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.min.css")
             self.template_helper.add_javascript("/manual_scoring/static/js/manual_scoring.min.js")

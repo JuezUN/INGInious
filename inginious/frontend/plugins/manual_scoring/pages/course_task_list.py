@@ -86,6 +86,7 @@ class CourseTaskListPage(INGIniousAdminPage):
         return OrderedDict(sorted(list(task_array.items()), key=lambda t: (t[1].get_order(), t[1].get_id())))
 
     def add_css_file(self):
+        """ add the css styles"""
         if get_use_minify():
             self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.min.css")
         else:

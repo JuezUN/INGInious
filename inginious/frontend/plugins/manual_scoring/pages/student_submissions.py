@@ -104,6 +104,7 @@ class StudentSubmissionsPage(INGIniousAdminPage):
         return data
 
     def add_css_file(self):
+        """ add the css styles"""
         if get_use_minify():
             self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.min.css")
         else:

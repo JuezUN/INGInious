@@ -6,4 +6,5 @@ class ManualScoringError(ValueError):
         self._message = message
 
     def get_message(self):
+        """ return the message """
         return self._message
