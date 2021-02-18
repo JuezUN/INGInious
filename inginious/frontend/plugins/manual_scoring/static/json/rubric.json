@@ -1,0 +1,87 @@
+{
+   "Grade 1:":[
+      {
+         "Code Clarity":"The code does not show any order. The variables, functions and classes do not have appropriate names. Comments are not being used appropriately. The concepts of the code are not properly abstracted."
+      },
+      {
+         "Data structures":"No logic."
+      },
+      {
+         "Test cases":"Does not pass any test case."
+      },
+      {
+         "Understanding of the problem":"It shows not understanding of the problem."
+      },
+      {
+         "Strategy used":"Could be a strategy to solve an other problem."
+      }
+   ],
+   "Grade 2:":[
+      {
+         "Code Clarity":"The code shows a minimal order. A few variables, functions and classes have appropriate names. Sometimes comments are being used appropriately. It shows a minimal correct abstraction of the concepts of the code."
+      },
+      {
+         "Data structures":"Has the right data structures, but they are not well implemented, bad used or they are not coherent."
+      },
+      {
+         "Test cases":"Does not pass any test case or pass one or two maximum."
+      },
+      {
+         "Understanding of the problem":"It shows a very basic or almost null understanding of the problem to be solved."
+      },
+      {
+         "Strategy used":"The solution does not use a right approach to solve the problem. Could have been using brute force or another approach that does not work.\nThere is not a clear purpose in the source code and in the strategy (i.e difficult to follow)."
+      }
+   ],
+   "Grade 3:":[
+      {
+         "Code Clarity":"The code shows some notion of order. Some variables, functions, and classes have appropriate names. Comments are being used appropriately. The concepts of the code are properly abstracted in some parts of the code."
+      },
+      {
+         "Data structures":"The correct data structures need to solve the problem and are well implemented."
+      },
+      {
+         "Test cases":"Could pass some test cases."
+      },
+      {
+         "Understanding of the problem":"Shows a partial understanding of how to solve the problem."
+      },
+      {
+         "Strategy used":"The strategy used to solve the problem is close to the actual solution."
+      }
+   ],
+   "Grade 4:":[
+      {
+         "Code Clarity":"The code is ordered. Variables, functions, and classes mostly have appropriate names. Comments are used appropriately. A correct abstraction of the concepts is made in most of code."
+      },
+      {
+         "Data structures":"Has problems with the definition of the data types, conditionals or number of cycles."
+      },
+      {
+         "Test cases":"Passes almost all test cases."
+      },
+      {
+         "Understanding of the problem":"Shows a complete understanding of how to solve the problem.\nDoes not identify small details like edge cases."
+      },
+      {
+         "Strategy used":"The strategy used to solve the problem is clear, easy to follow and according to the expected."
+      }
+   ],
+   "Grade 5:":[
+      {
+         "Code Clarity":"The code is ordered. Variables, functions, and classes have appropriate names. Comments are used appropriately. A correct abstraction of the concepts is made throughout the code."
+      },
+      {
+         "Data structures":"Does not have any problem with data type, conditionals, cycles, etc."
+      },
+      {
+         "Test cases":"Passes all test cases."
+      },
+      {
+         "Understanding of the problem":"Shows a full understanding of how to solve the problem."
+      },
+      {
+         "Strategy used":"The strategy used to solve the problem is clear, easy to read and according to the expected."
+      }
+   ]
+}
