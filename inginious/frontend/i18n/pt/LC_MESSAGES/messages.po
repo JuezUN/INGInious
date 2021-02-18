@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-13 19:20-0500\n"
+"POT-Creation-Date: 2021-02-18 15:44-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -150,7 +150,7 @@ msgid "This email address is already in use !"
 msgstr "Este endereço de e-mail já está em uso!"
 
 #: inginious/frontend/pages/register.py:106
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:109
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:121
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr "Bem-vindo ao UNCode"
@@ -2133,28 +2133,29 @@ msgstr ""
 msgid "\"Administration\""
 msgstr "\"Administração\""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:26
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:27
 msgid "Language is not available."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:31
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:32
 msgid "The course does not exist or the user does not have permissions."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:36
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:37
 msgid "The file is not coded in UTF-8. Please change the encoding."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:42
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:43
 msgid ""
 "The file is not formatted as expected, check it is comma separated and \n"
 "                             emails are actual emails."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:52
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:53
 msgid ""
-"The process finished. Registered students on the course: {0!s}. \n"
-"            Registered students on UNCode: {1!s} out of {2!s}."
+"The process finished. {0!s} students were registered on the course and \n"
+"            {1!s} students were registered on UNCode out of {2!s} "
+"students listed in the file."
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_template.html:5
@@ -4742,5 +4743,10 @@ msgstr ""
 #~ "Just put your honest opinion or "
 #~ "tell us about the problem you have"
 #~ " encountered "
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The process finished. Registered students on the course: {0!s}. \n"
+#~ "            Registered students on UNCode: {1!s} out of {2!s}."
 #~ msgstr ""
 

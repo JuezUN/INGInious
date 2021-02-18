@@ -5,27 +5,31 @@ jQuery(document).ready(function () {
     function displayRegisterStudentsAlertError(data) {
         let alert_element = $("#register_students_alert");
         alert_element.prop("class", "alert alert-danger");
-        alert_element.text(data);
+        if (typeof data !== "string") {
+            alert_element.text("Something went wrong while registering the students. Please try again.");
+        } else {
+            alert_element.text(data);
+        }
         alert_element.prop("hidden", false);
     }
 
-    function displayLoadingAlert(){
+    function displayLoadingAlert() {
         let alert_element = $("#register_students_alert");
         alert_element.prop("class", "alert alert-info");
         alert_element.text("Registering students...");
         alert_element.prop("hidden", false);
     }
 
-    function preventModalToBeClosed(){
+    function preventModalToBeClosed() {
         $('#register_students_modal').modal({backdrop: 'static', keyboard: false});
-        $('#register_students_modal button[data-dismiss=modal]').each(function(){
+        $('#register_students_modal button[data-dismiss=modal]').each(function () {
             $(this).prop("disabled", true);
         });
     }
 
-    function makeModalClosable(){
+    function makeModalClosable() {
         $('#register_students_modal').modal({backdrop: '', keyboard: true});
-        $('#register_students_modal button[data-dismiss=modal]').each(function(){
+        $('#register_students_modal button[data-dismiss=modal]').each(function () {
             $(this).prop("disabled", false);
         });
     }
@@ -38,7 +42,7 @@ jQuery(document).ready(function () {
             let alert_element = $("#register_students_alert");
             register_succeeded = true;
             $("#students_file").val('');
-            alert_element.prop("class", "alert alert-success");
+            alert_element.prop("class", "alert alert-warning");
             alert_element.text(data["text"]);
             alert_element.prop("hidden", false);
             setTimeout(function () {
@@ -49,7 +53,7 @@ jQuery(document).ready(function () {
         }
     }
 
-    function getCourseId(){
+    function getCourseId() {
         return window.location.href.split("/")[4]; // Get the course id using the current URL.
     }
 
@@ -76,7 +80,7 @@ jQuery(document).ready(function () {
                     mimeType: "multipart/form-data",
                     processData: false,
                     contentType: false,
-                    beforeSend: function() {
+                    beforeSend: function () {
                         $("#submit_register_students").prop("disabled", true);
                         preventModalToBeClosed();
                         displayLoadingAlert();
@@ -104,10 +108,10 @@ jQuery(document).ready(function () {
         tab_students.append(html);
     }
 
-    function closeModal(){
+    function closeModal() {
         // Function to describe the process to follow when the modal is closed.
         $('#register_students_modal').on('hidden.bs.modal', function () {
-            if(register_succeeded){
+            if (register_succeeded) {
                 window.location.replace(window.location.href);
             } else {
                 $("#students_file").val('');

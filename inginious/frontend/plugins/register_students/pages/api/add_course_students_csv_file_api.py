@@ -4,10 +4,11 @@ import hashlib
 import random
 import csv
 import string
+import threading
 
 from os.path import dirname, join
 from inginious.frontend.plugins.utils.admin_api import AdminApi
-from inginious.frontend.plugins.utils import get_mandatory_parameter, read_file
+from inginious.frontend.plugins.utils import get_mandatory_parameter
 
 _static_folder_path = join(dirname(dirname(dirname(__file__))), "static")
 
@@ -50,8 +51,8 @@ class AddCourseStudentsCsvFile(AdminApi):
 
         total_to_register = len(parsed_file)
         message = _(
-            """The process finished. Registered students on the course: {0!s}. 
-            Registered students on UNCode: {1!s} out of {2!s}.""").format(
+            """The process finished. {0!s} students were registered on the course and 
+            {1!s} students were registered on UNCode out of {2!s} students listed in the file.""").format(
             registered_on_course, registered_users, total_to_register)
 
         return 200, {"status": "success", "text": message}
@@ -59,19 +60,25 @@ class AddCourseStudentsCsvFile(AdminApi):
     def register_all_students(self, parsed_file, course, email_language):
         registered_on_course = 0
         registered_users = 0
+        all_emails = []
         for user_data in parsed_file:
             data = self._parse_user_data(user_data)
 
-            result = self._register_student(data, course, email_language)
-            if result:
+            was_registered, email = self._register_student(data, course, email_language)
+            if was_registered:
                 registered_users += 1
+                all_emails.append(email)
             try:
-                result = self.user_manager.course_register_user(course, data["username"], '', True)
-                if result:
+                was_registered_on_course = self.user_manager.course_register_user(course, data["username"], '', True)
+                if was_registered_on_course:
                     registered_on_course += 1
             except:
                 pass
 
+        # Send the emails in the background as this may take a long time.
+        emails_thread = threading.Thread(target=self._send_emails_in_background,
+                                         args=[all_emails, self.database.users.delete_one])
+        emails_thread.start()
         return registered_on_course, registered_users
 
     def _register_student(self, data, course, email_language):
@@ -81,39 +88,44 @@ class AddCourseStudentsCsvFile(AdminApi):
         :param data: Dict containing the user data
         :return: True if succeeded the register. If user already exists returns False.
         """
-        success = True
-
         existing_user = self.database.users.find_one(
             {"$or": [{"username": data["username"]}, {"email": data["email"]}]})
         if existing_user is not None:
-            success = False
-        else:
-            password = data["password"]
-            passwd_hash = hashlib.sha512(data["password"].encode("utf-8")).hexdigest()
-            activate_hash = hashlib.sha512(str(random.getrandbits(256)).encode("utf-8")).hexdigest()
-            data = {"username": data["username"],
-                    "realname": data["realname"],
-                    "email": data["email"],
-                    "password": passwd_hash,
-                    "activate": activate_hash,
-                    "bindings": {},
-                    "language": email_language
-                    }
-            try:
-                activate_account_link = web.ctx.home + "/register?activate=" + activate_hash
-                data_policy_link = web.ctx.home + "/data_policy"
-                content = str(
-                    self.template_helper.get_custom_renderer(_static_folder_path, False).email_template()).format(
-                    activation_link=activate_account_link, username=data["username"],
-                    password=password, course_name=course.get_name("en"), data_policy=data_policy_link)
-                subject = _("Welcome on UNCode")
-                headers = {"Content-Type": 'text/html'}
-                web.sendmail(web.config.smtp_sendername, data["email"], subject, content, headers)
-                self.database.users.insert(data)
-            except:
-                success = False
+            return False, None
+        password = data["password"]
+        passwd_hash = hashlib.sha512(data["password"].encode("utf-8")).hexdigest()
+        activate_hash = hashlib.sha512(str(random.getrandbits(256)).encode("utf-8")).hexdigest()
+        data = {"username": data["username"],
+                "realname": data["realname"],
+                "email": data["email"],
+                "password": passwd_hash,
+                "activate": activate_hash,
+                "bindings": {},
+                "language": email_language
+                }
+        try:
+            activate_account_link = web.ctx.home + "/register?activate=" + activate_hash
+            data_policy_link = web.ctx.home + "/data_policy"
+            content = str(
+                self.template_helper.get_custom_renderer(_static_folder_path, False).email_template()).format(
+                activation_link=activate_account_link, username=data["username"],
+                password=password, course_name=course.get_name("en"), data_policy=data_policy_link)
+            self.database.users.insert(data)
+        except:
+            return False, None
 
-        return success
+        email = (data["email"], content)
+        return True, email
+
+    def _send_emails_in_background(self, emails, delete_user_function):
+        subject = _("Welcome on UNCode")
+        headers = {"Content-Type": 'text/html'}
+        for (email_address, email_content) in emails:
+            try:
+                web.sendmail(web.config.smtp_sendername, email_address, subject, email_content, headers)
+            except:
+                # Unregister student in case it failed to send the email.
+                delete_user_function({"email": email_address})
 
     def _check_email_format(self, email):
         """Checks email matches a real email."""
@@ -182,5 +194,5 @@ class AddCourseStudentsCsvFile(AdminApi):
 
 
 def random_password(length):
-    pool = string.ascii_letters + string.digits + string.punctuation
+    pool = string.ascii_letters + string.digits
     return ''.join(random.choice(pool) for _ in range(length))
