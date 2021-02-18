@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-13 19:20-0500\n"
+"POT-Creation-Date: 2021-02-17 22:18-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -3939,6 +3939,11 @@ msgstr "exercice"
 msgid "status"
 msgstr "état"
 
+#: inginious/frontend/templates/course_admin/student_info.html:65
+#: inginious/frontend/templates/course_admin/student_info.html:68
+msgid "\"View evaluation submission\""
+msgstr ""
+
 #: inginious/frontend/templates/course_admin/student_info.html:74
 msgid "\"View all submissions\""
 msgstr "\"Voir toutes les soumissions\""
@@ -4381,6 +4386,10 @@ msgstr "Vider les équipes"
 msgid "Delete all teams"
 msgstr "Supprimer toutes les équipes"
 
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:11
+msgid "\"title for this task\""
+msgstr ""
+
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:22
 msgid "Filetype"
 msgstr "Type de fichier"
@@ -4465,8 +4474,8 @@ msgid "Random inputs"
 msgstr "Paramètres aléatoires"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:219
-msgid "Regenerate input random"
-msgstr ""
+msgid "Regenerate random input"
+msgstr "Paramètres aléatoires"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:9
 msgid "Timeout limit (in seconds)"
@@ -4788,3 +4797,4 @@ msgstr "Extensions autorisées:"
 #~ "tell us about the problem you have"
 #~ " encountered "
 #~ msgstr ""
+

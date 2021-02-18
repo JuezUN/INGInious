@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-13 19:20-0500\n"
+"POT-Creation-Date: 2021-02-17 22:18-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -1221,7 +1221,7 @@ msgid ""
 "Awesome! Everything worked as it should have: your code passed all the "
 "test cases. Congratulations!"
 msgstr ""
-"¡Grandioso! Todo funcionó como lo esperado: tu código pasó todos los "
+"¡Grandioso! Todo funcionó como se esperaba: tu código pasó todos los "
 "casos de prueba. ¡Felicitaciones!"
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:37
@@ -1229,8 +1229,8 @@ msgid ""
 "Sorry, but your code failed to solve the problem. It does not solve "
 "correctly the problem you were asked for."
 msgstr ""
-"Lo siento pero tu código falló al resolver el problema ya que no resuelve"
-" correctamente la tarea esperada."
+"Lo sentimos, tu código falló al resolver el problema ya que no resuelve "
+"correctamente la tarea esperada."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:39
 msgid ""
@@ -1250,7 +1250,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:43
 msgid "Read carefully what you are asked to do and check again your code."
-msgstr "Lea cuidadosamente las instrucciones y vuela a revisar su código."
+msgstr "Lee cuidadosamente las instrucciones y vuelve a revisar tu código."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:45
 msgid ""
@@ -1281,7 +1281,7 @@ msgid ""
 " went wrong."
 msgstr ""
 "El mensaje \"compilation error\" incluye la salida con el error producido"
-" por el compilador. Lea el mensaje con cuidado, este puede contener "
+" por el compilador. Lee el mensaje con cuidado, este puede contener "
 "información importante sobre el error."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:69
@@ -1317,8 +1317,8 @@ msgid ""
 "There are two options: either  your code  got stuck in an infinite loop "
 "or your code takes much longer than it should."
 msgstr ""
-"Hay dos opciones: ya sea que tu código se quedó un ciclo infinito o o tu "
-"código toma más tiempo del que debería."
+"Hay dos opciones: ya sea que tu código se quedó en un ciclo infinito o "
+"que tu código toma más tiempo del que debería."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:87
 msgid ""
@@ -1330,23 +1330,21 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:97
 msgid "Getting this result means your code is using too much memory at runtime."
-msgstr ""
-"Al obtener este resultado, tu código toma mucha memoria en tiempo de "
-"ejecución."
+msgstr "Tu código toma mucha memoria en tiempo de ejecución."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:99
 msgid ""
 "Check the data structures you are using, or find a more \"optimal\" "
 "solution, a solution that uses less memory."
 msgstr ""
-"Revisa la estructuras de datos usadas, o encuentre una solución más "
-"\"óptima\". una que use menos memoria."
+"Revisa las estructuras de datos usadas, o encuentra una solución más "
+"\"óptima\", una que use menos memoria."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:109
 msgid ""
 "Getting this result means the output of your code is longer that the "
 "allowed."
-msgstr "Esto significa que la salida de tu código es más grande que lo permitido."
+msgstr "Esto significa que la salida de tu código es más grande de lo permitido."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:111
 msgid "Check for print expressions in a loop."
@@ -1366,17 +1364,18 @@ msgid ""
 "existent variable or function) or student code (i.e. the function to be "
 "tested is not present in the notebook)."
 msgstr ""
-"Este error puede ser ya sea en el código de evaluación (llamando una "
-"función o que no existe) o en el código del estudiante (por ejemplo la "
-"función a ser probada no está en el código del estudiante)."
+"Esto puede ser un error en el código de evaluación (por ejemplo al llamar"
+" una función o variable que no existe) o en el código del estudiante (por"
+" ejemplo que la función a ser probada no está en el código del "
+"estudiante)."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:125
 msgid ""
 "Check that your code implements all that was requested with the correct "
 "signature."
 msgstr ""
-"Revisa que tu código implementa todos lo solicitado siguiendo las "
-"instrucciones, así como las las firmas de variables y funciones sin "
+"Revisa que tu código implementa todo lo solicitado siguiendo las "
+"instrucciones, así como las firmas de variables y funciones sin "
 "modificar."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:131
@@ -1384,14 +1383,14 @@ msgid ""
 "Results related to UNCode. Unexpected errors when your code was been "
 "executed."
 msgstr ""
-"Resultados relacionado a UNCode. Errores internos al momento de ejecutar "
-"tu código."
+"Resultados relacionados a UNCode. Errores internos al momento de ejecutar"
+" tu código."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:139
 msgid ""
 "If you get this message, do not worry, There's Nothing Wrong With Your "
 "Code!"
-msgstr "Si obtienes este mensaje, no te preocupes, tu código no está mal!"
+msgstr "Si obtienes este mensaje, no te preocupes, ¡tu código no está mal!"
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:141
 msgid ""
@@ -1407,16 +1406,16 @@ msgid ""
 " If you still get the same result, please wait a while and try again or "
 "contact your professor."
 msgstr ""
-"Nos disculpamos por esto. Por recargue la página e intente enviar de "
-"nuevo! Si el error persiste, por favor espere un tiempo y vuelva a "
-"intentar o contacte a su profesor."
+"Nos disculpamos por esto. ¡Recarga la página e intenta enviarlo de nuevo!"
+" Si el error persiste, por favor espera un tiempo y vuelve a intentarlo, "
+"o contacta con tu profesor."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:153
 msgid ""
 "If you get this, it means that we had a problem running and assessing "
 "your code. Wait for a while and try to send a submission again."
 msgstr ""
-"Tuvimos un problema ejecutando tu código. Espere por un tiempo y vuelva a"
+"Tuvimos un problema ejecutando tu código. Espera por un tiempo y vuelve a"
 " realizar el envío."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:155
@@ -1424,8 +1423,8 @@ msgid ""
 "This might be also caused by a too small time limit in the task "
 "configuration (talk to your professor about it)."
 msgstr ""
-"Esto también puede se causado por un tiempo límite muy pequeño al "
-"configurar la tarea (háblele a su profesor al respecto)."
+"Esto también puede ser ocasionado por un tiempo límite muy pequeño al "
+"configurar la tarea (hábla con tu profesor al respecto)."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:165
 msgid ""
@@ -1456,8 +1455,8 @@ msgid ""
 "There was a problem while assessing your submission. Please wait a while "
 "and reload the page, and try submitting again."
 msgstr ""
-"Hubo un problema al evaluar tu submission. Por favor espere un momento, "
-"recargue la página e intente de nuevo."
+"Hubo un problema al evaluar tu submission. Por favor espera un momento, "
+"recarga la página e intenta de nuevo."
 
 #: inginious/frontend/plugins/analytics/__init__.py:30
 msgid ""
@@ -1696,8 +1695,8 @@ msgid ""
 "or TIME_LIMIT_EXCEEDED.\""
 msgstr ""
 "\"En caso de que no esté chequeado, los resultados del estudiante son "
-"solo ACCEPTED or WRONG_ANSWER. Si está chequeado, se muestran errores "
-"adicionales cómo RUNTIME_ERROR or TIME_LIMIT_EXCEEDED.\""
+"solo ACCEPTED o WRONG_ANSWER. Si está chequeado, se muestran errores "
+"adicionales cómo RUNTIME_ERROR o TIME_LIMIT_EXCEEDED.\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:76
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:216
@@ -1715,7 +1714,7 @@ msgstr "Límite de memoria casos de prueba (MB)"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:88
 msgid "\"Memory limit for each test case in MBs. (Max. 500 MBs)\""
-msgstr "\"Límite de memoria para cada caso de prueba in MBs. (Max. 500 MBs)\""
+msgstr "\"Límite de memoria para cada caso de prueba en MBs. (Max. 500 MBs)\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:96
 msgid "Output limit test cases (MB)"
@@ -1804,8 +1803,9 @@ msgstr ""
 "\"URL del dataset para descargar el archivo antes de ejecutar el código "
 "de evaluación. Esto es de ayuda cuando el dataset es demasiado grande y "
 "no puede ser subido en la pestaña de archivos. Recuerde permitir el "
-"acceso a internet al entorno de evaluación en la pestaña 'Container "
-"setup'. Además, establezca el nombre del archivo en el campo de abajo.\""
+"acceso a internet al entorno de evaluación en la pestaña 'Configuraciones"
+" del contenedor'. Además, establezca el nombre del archivo en el campo de"
+" abajo.\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:202
 msgid "Dataset filename"
@@ -1817,7 +1817,7 @@ msgid ""
 "filename is the one used to load the dataset in the code.\""
 msgstr ""
 "\"Nombre de archivo con extensión para el dataset descargado (es decir "
-"data.csv).Este nombre de archivo es el utilizado para cargar el dataset "
+"data.csv). Este nombre de archivo es el utilizado para cargar el dataset "
 "en el código.\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:217
@@ -2521,10 +2521,10 @@ msgid ""
 "password and will receive an email asking them to confirm the account and"
 " after that, the student can change the password."
 msgstr ""
-"Todos los estudiantes serán registrados en UNCode y el curso. si un "
+"Todos los estudiantes serán registrados en UNCode y el curso. Si un "
 "estudiante no existe, este será registrado usando una contraseña "
 "provisional y recibirá un correo pidiendo confirmación y activación de la"
-" cuenta.Después de esto, el estudiante podrá cambiar su contraseña."
+" cuenta. Después de esto, el estudiante podrá cambiar su contraseña."
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:3
 #: inginious/frontend/plugins/statistics/pages/user_statistics.py:27
@@ -3750,7 +3750,7 @@ msgstr "Definir configuración inicial"
 
 #: inginious/frontend/templates/course_admin/aggregation_list.html:139
 msgid "New classroom description"
-msgstr "Nueva descripción de grupo"
+msgstr "Descripción del grupo nuevo"
 
 #: inginious/frontend/templates/course_admin/aggregation_list.html:140
 msgid "New classroom"
@@ -4203,6 +4203,11 @@ msgstr "tarea"
 msgid "status"
 msgstr "estado"
 
+#: inginious/frontend/templates/course_admin/student_info.html:65
+#: inginious/frontend/templates/course_admin/student_info.html:68
+msgid "\"View evaluation submission\""
+msgstr "\"Ver la evaluación de la tarea\""
+
 #: inginious/frontend/templates/course_admin/student_info.html:74
 msgid "\"View all submissions\""
 msgstr "\"Ver todas las tareas enviadas\""
@@ -4602,7 +4607,7 @@ msgstr "\"Ver resultados\""
 
 #: inginious/frontend/templates/course_admin/task_list.html:82
 msgid "\"New task id\""
-msgstr "\"Nuevo id para la tarea\""
+msgstr "\"ID de la tarea nueva\""
 
 #: inginious/frontend/templates/course_admin/task_list.html:83
 msgid "Create new task"
@@ -4646,6 +4651,10 @@ msgstr "Limpiar equipos"
 msgid "Delete all teams"
 msgstr "Eliminar todos los equipos"
 
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:11
+msgid "\"title for this task\""
+msgstr "\"Nombre de la tarea\""
+
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:22
 msgid "Filetype"
 msgstr "Tipo de archivo"
@@ -4656,7 +4665,7 @@ msgstr "Autor"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:48
 msgid "\"Your name\""
-msgstr "\"Nombre autor\""
+msgstr "\"Nombre del autor\""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:53
 msgid "LTI task URL"
@@ -4727,7 +4736,7 @@ msgid "Random inputs"
 msgstr "Entradas aleatorias"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:219
-msgid "Regenerate input random"
+msgid "Regenerate random input"
 msgstr "Regenerar entradas aleatorias"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:9
@@ -4736,11 +4745,11 @@ msgstr "Tiempo límite (en segundos)"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:15
 msgid "Hard timeout limit (in seconds) <small>Default to 3*timeout</small>"
-msgstr "Timeout límite fuerte (en segundos) <small>Por defector 3*timeout</small>"
+msgstr "Timeout límite fuerte (en segundos) <small>Por defecto 3*timeout</small>"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:22
 msgid "Memory limit (in megabytes)"
-msgstr "Límite de memoria (en megabytes)"
+msgstr "Límite de memoria (en MegaBytes)"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:28
 msgid "Output limit (in megabytes)"
@@ -4748,7 +4757,7 @@ msgstr "Límite de salida (en MegaBytes)"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:34
 msgid "Grading environment"
-msgstr "Ambiente de evaluación"
+msgstr "Entorno de evaluación"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:46
 msgid "Allow internet access inside the grading container?"
@@ -5050,3 +5059,4 @@ msgstr "Extensiones permitidas"
 #~ "tell us about the problem you have"
 #~ " encountered "
 #~ msgstr ""
+
