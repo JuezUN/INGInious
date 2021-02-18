@@ -81,7 +81,8 @@
          "casos de prueba":"Pasa todos los casos de prueba de manera eficiente."
       },
       {
-         "entendimiento del problema":"Muestra un entimiento completo del problema y su solucion tiene aceptada como veredicto."
+         "entendimiento del problema":"Muestra un entimiento completo del problema y el veredicto de su solución es 'ACCEPTED'"
+
       },
       {
          "estrategia usada":"No Aplica."
