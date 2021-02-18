@@ -103,12 +103,15 @@ $else:
 
 <hr/>
 <div class="row">
-    <div class="form-group col-sm-10">
-        <input type="text" class="form-control" id="course_query" placeholder=$:_("'Search course'") value="$current_query">
-    </div>
-    <div class="form-group col-sm-2">
-        <button type="submit" class="btn btn-block btn-success" onclick="onSearch()">$:_("Search")</button>
-    </div>
+    <form class="form" role="form" id="search_course_form">
+        <div class="form-group col-sm-10">
+            <input type="text" class="form-control" id="course_query" placeholder=$:_("'Search course'")
+            value="$current_query">
+        </div>
+        <div class="form-group col-sm-2">
+            <button type="submit" class="btn btn-block btn-success">$:_("Search")</button>
+        </div>
+    </form>
 </div>
 <div class="list-group list-group-progress" style="margin-left: 16px; margin-right: 16px;">
 	$if len(open_courses) != 0:
@@ -164,6 +167,11 @@ $if len(open_courses) > 0:
         </nav>
     </div>
 <script>
+    $$("#search_course_form").submit((e) => {
+        e.preventDefault();
+        change_page(1);
+    });
+
     function change_page(page) {
         let new_path = '$get_homepath()/mycourses?page=' + page;
         const searchQuery = $$("#course_query").val();
@@ -171,9 +179,6 @@ $if len(open_courses) > 0:
             new_path += '&query=' + searchQuery;
         }
         location.href = new_path;
-    }
-    function onSearch(){
-        change_page(1);
     }
 </script>
 
