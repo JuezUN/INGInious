@@ -58,7 +58,7 @@
          "Data structures":"Has problems with the definition of the data types, conditionals or number of cycles."
       },
       {
-         "Test cases":"Passes some test cases."
+         "Test cases":"Passes almost all test cases."
       },
       {
          "Understanding of the problem":"Shows a complete understanding of how to solve the problem\nDoes not identify small details like border cases."
