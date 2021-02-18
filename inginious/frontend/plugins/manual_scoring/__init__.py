@@ -9,8 +9,8 @@ import os
 from inginious.frontend.plugins.utils import create_static_resource_page
 
 from inginious.frontend.plugins.manual_scoring.pages import students_list, student_submissions, manual_scoring, \
-    course_task_list
-from .pages.constants import set_use_minified, get_manual_scoring_link_code
+    course_task_list, student_feedback_list
+from .pages.constants import set_use_minified, get_manual_scoring_link_code, get_manual_scoring_feedback_hook
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
@@ -23,7 +23,8 @@ def init(plugin_manager, _, __, plugin_config):
 
     set_use_minified(use_minified)
 
-    # Add pages
+    # Admin pages
+
     # First page of rubric scoring. It's a task list
     plugin_manager.add_page(r'/admin/([a-z0-9A-Z\-_]+)/manual_scoring',
                             course_task_list.CourseTaskListPage)
@@ -39,3 +40,7 @@ def init(plugin_manager, _, __, plugin_config):
         manual_scoring.ManualScoringPage)
 
     plugin_manager.add_hook('course_admin_menu', get_manual_scoring_link_code)
+
+    # Student pages
+    plugin_manager.add_page(r'/feedback_list/([a-z0-9A-Z\-_]+)', student_feedback_list.StudentFeedbackListPage)
+    plugin_manager.add_hook('course_menu', get_manual_scoring_feedback_hook)
