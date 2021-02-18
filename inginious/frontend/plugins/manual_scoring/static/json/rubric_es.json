@@ -31,7 +31,8 @@
 
       },
       {
-         "estrategia usada":"La solución no usa una aproximación adecuada. Puede ser usando fuerza bruta u otra aproximación que no funcione bien.\nNo se ve un propósito claro en el código y en la estrategia usada. (i.e es difícil seguir la lógica del mismo)."
+         "estrategia usada":"La solución no usa una aproximación adecuada. Puede ser usando fuerza bruta u otra aproximación que no funcione bien.\nNo se ve un propósito claro en el código y en la estrategia usada,  es difícil seguir la lógica del mismo."
+
       }
    ],
    "Grade 3:":[
