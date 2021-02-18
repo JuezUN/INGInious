@@ -46,3 +46,8 @@ def get_subject_new_course_id():
 def get_use_minify():
     """ return a boolean to define if use minified files """
     return _use_minified
+
+
+def contact_us_option_hook():
+    return "<li><a href='https://juezun.github.io/' class='navbar-link' target='_blank'>" + \
+           "<i class='fa fa-envelope fa-fw' style='margin-right: 4px'></i>" + _("Contact us") + "</a></li>"

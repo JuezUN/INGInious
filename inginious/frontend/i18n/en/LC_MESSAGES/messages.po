@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-18 15:44-0500\n"
+"POT-Creation-Date: 2021-02-18 17:10-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -670,6 +670,10 @@ msgstr ""
 
 #: inginious/frontend/pages/preferences/utils.py:19
 msgid "Delete my account"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/constants.py:31
+msgid "About us"
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:7
@@ -1345,7 +1349,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/auth/custom_auth_form.html:34
 #: inginious/frontend/templates/auth.html:28
-#: inginious/frontend/templates/layout.html:135
+#: inginious/frontend/templates/layout.html:143
 #: inginious/frontend/templates/signin_button.html:8
 #: inginious/frontend/templates/signin_button.html:15
 msgid "Sign in"
@@ -1392,6 +1396,10 @@ msgstr ""
 
 #: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:24
 msgid "Add/Update"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/constants.py:53
+msgid "Contact us"
 msgstr ""
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:8
@@ -2569,7 +2577,7 @@ msgstr ""
 #: inginious/frontend/templates/index.html:12
 #: inginious/frontend/templates/index.html:36
 #: inginious/frontend/templates/layout.html:102
-#: inginious/frontend/templates/layout.html:131
+#: inginious/frontend/templates/layout.html:139
 msgid "Course list"
 msgstr ""
 
@@ -2618,17 +2626,17 @@ msgstr ""
 msgid "Log out"
 msgstr ""
 
-#: inginious/frontend/templates/layout.html:123
+#: inginious/frontend/templates/layout.html:131
 msgid "English"
 msgstr ""
 
-#: inginious/frontend/templates/layout.html:134
+#: inginious/frontend/templates/layout.html:142
 #: inginious/frontend/templates/mycourses.html:101
 #: inginious/frontend/templates/register.html:8
 msgid "Register"
 msgstr ""
 
-#: inginious/frontend/templates/layout.html:171
+#: inginious/frontend/templates/layout.html:186
 #: inginious/frontend/templates/maintenance.html:93
 msgid "UNCode is distributed under AGPL license"
 msgstr ""
@@ -2756,36 +2764,36 @@ msgstr ""
 msgid "Select a course"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:107
+#: inginious/frontend/templates/mycourses.html:108
 msgid "'Search course'"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:110
+#: inginious/frontend/templates/mycourses.html:112
 msgid "Search"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:127
+#: inginious/frontend/templates/mycourses.html:130
 msgid "LTI course"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:129
+#: inginious/frontend/templates/mycourses.html:132
 msgid "Hidden course"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:132
+#: inginious/frontend/templates/mycourses.html:135
 msgid "Administrator"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:134
+#: inginious/frontend/templates/mycourses.html:137
 msgid "Tutor"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/task_info.html:42
-#: inginious/frontend/templates/mycourses.html:136
+#: inginious/frontend/templates/mycourses.html:139
 msgid "Student"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:141
+#: inginious/frontend/templates/mycourses.html:144
 msgid "You are not registered to any course"
 msgstr ""
 

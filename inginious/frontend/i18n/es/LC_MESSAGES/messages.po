@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-18 15:44-0500\n"
+"POT-Creation-Date: 2021-02-18 17:10-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -716,6 +716,10 @@ msgstr "Enlaces de autenticación"
 #: inginious/frontend/pages/preferences/utils.py:19
 msgid "Delete my account"
 msgstr "Eliminar mi cuenta"
+
+#: inginious/frontend/plugins/UNCode/constants.py:31
+msgid "About us"
+msgstr "Sobre nosotros"
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:7
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:12
@@ -1542,7 +1546,7 @@ msgstr "Contraseña"
 
 #: inginious/frontend/plugins/auth/custom_auth_form.html:34
 #: inginious/frontend/templates/auth.html:28
-#: inginious/frontend/templates/layout.html:135
+#: inginious/frontend/templates/layout.html:143
 #: inginious/frontend/templates/signin_button.html:8
 #: inginious/frontend/templates/signin_button.html:15
 msgid "Sign in"
@@ -1593,6 +1597,10 @@ msgstr "Lenguajes"
 #: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:24
 msgid "Add/Update"
 msgstr "Agregar/Actualizar"
+
+#: inginious/frontend/plugins/contact_page/pages/constants.py:53
+msgid "Contact us"
+msgstr "Contáctenos"
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:8
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:12
@@ -2879,7 +2887,7 @@ msgstr "No estas registrado a este curso."
 #: inginious/frontend/templates/index.html:12
 #: inginious/frontend/templates/index.html:36
 #: inginious/frontend/templates/layout.html:102
-#: inginious/frontend/templates/layout.html:131
+#: inginious/frontend/templates/layout.html:139
 msgid "Course list"
 msgstr "Lista de cursos"
 
@@ -2931,17 +2939,17 @@ msgstr "Estado del servicio"
 msgid "Log out"
 msgstr "Cerrar sesión"
 
-#: inginious/frontend/templates/layout.html:123
+#: inginious/frontend/templates/layout.html:131
 msgid "English"
 msgstr "Español"
 
-#: inginious/frontend/templates/layout.html:134
+#: inginious/frontend/templates/layout.html:142
 #: inginious/frontend/templates/mycourses.html:101
 #: inginious/frontend/templates/register.html:8
 msgid "Register"
 msgstr "Registrarse"
 
-#: inginious/frontend/templates/layout.html:171
+#: inginious/frontend/templates/layout.html:186
 #: inginious/frontend/templates/maintenance.html:93
 msgid "UNCode is distributed under AGPL license"
 msgstr "UNCode sigue la especificación de la licencia AGPL"
@@ -3083,36 +3091,36 @@ msgstr "El nuevo registro ha fallado. Verifique su contraseña."
 msgid "Select a course"
 msgstr "Seleccione un curso"
 
-#: inginious/frontend/templates/mycourses.html:107
+#: inginious/frontend/templates/mycourses.html:108
 msgid "'Search course'"
 msgstr "'Buscar curso'"
 
-#: inginious/frontend/templates/mycourses.html:110
+#: inginious/frontend/templates/mycourses.html:112
 msgid "Search"
 msgstr "Buscar"
 
-#: inginious/frontend/templates/mycourses.html:127
+#: inginious/frontend/templates/mycourses.html:130
 msgid "LTI course"
 msgstr "Curso LTI"
 
-#: inginious/frontend/templates/mycourses.html:129
+#: inginious/frontend/templates/mycourses.html:132
 msgid "Hidden course"
 msgstr "Curso oculto"
 
-#: inginious/frontend/templates/mycourses.html:132
+#: inginious/frontend/templates/mycourses.html:135
 msgid "Administrator"
 msgstr "Administrador"
 
-#: inginious/frontend/templates/mycourses.html:134
+#: inginious/frontend/templates/mycourses.html:137
 msgid "Tutor"
 msgstr "Tutor"
 
 #: inginious/frontend/templates/course_admin/task_info.html:42
-#: inginious/frontend/templates/mycourses.html:136
+#: inginious/frontend/templates/mycourses.html:139
 msgid "Student"
 msgstr "Estudiante"
 
-#: inginious/frontend/templates/mycourses.html:141
+#: inginious/frontend/templates/mycourses.html:144
 msgid "You are not registered to any course"
 msgstr "No estás registrado a ningún curso"
 
