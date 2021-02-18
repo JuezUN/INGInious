@@ -15,10 +15,7 @@ def editorial_task_tab(course, taskid, task_data, template_helper):
     tab_id = 'tab_editorial'
     link = '<i class="fa fa-graduation-cap fa-fw"></i>&nbsp; ' + _("Task editorial")
 
-    task_solution_code_language = task_data.get('solution_code_language')
-
-    content = template_helper.get_custom_renderer(_TASK_EDITORIAL_TEMPLATE_PATH, layout=False).task_editorial(task_data,
-                                                                                                              task_solution_code_language)
+    content = template_helper.get_custom_renderer(_TASK_EDITORIAL_TEMPLATE_PATH, layout=False).task_editorial(task_data)
     return tab_id, link, content
 
 
@@ -33,6 +30,13 @@ def editorial_task_preview(course, task, template_helper):
         task_tutorial_description = ParsableText(task_tutorial_description_content, 'rst')
     else:
         task_tutorial_description = None
+
+    task_problems = task.get_problems()
+    if task_environment in {"multiple_languages", "Data Science", "HDL"} and task_problems[0].get_type() in {
+        "code_multiple_languages", "code_file_multiple_languages"}:
+        if task_solution_code_language and task_solution_code_language not in task_problems[0].get_original_content()[
+            'languages'].values():
+            task_solution_code_language = None
 
     content = template_helper.get_custom_renderer(_TASK_EDITORIAL_TEMPLATE_PATH, layout=False).task_editorial_preview(
         course, task, is_task_open(task), get_all_available_languages(), task_tutorial_description, task_solution_code,
@@ -53,7 +57,6 @@ def check_editorial_submit(course, taskid, task_data, task_fs):
         else:
             if task_data['solution_code_language'] is '0':
                 del task_data['solution_code_language']
-
 
     elif task_data['environment'] in {"Notebook"}:
 
