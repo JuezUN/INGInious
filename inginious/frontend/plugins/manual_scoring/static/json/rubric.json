@@ -30,7 +30,7 @@
          "Understanding of the problem":"It shows a very basic or almost null understanding of the problem to be solved."
       },
       {
-         "Strategy used":"The solution does not use a right approach to solve the problem. Could have been using brute force or an other approache that does not work.\nTher is not a clear purpose in the source code and in the strategy (i.e difficult to follow)."
+         "Strategy used":"The solution does not use a right approach to solve the problem. Could have been using brute force or another approach that does not work.\nThere is not a clear purpose in the source code and in the strategy (i.e difficult to follow)."
       }
    ],
    "Grade 3:":[
