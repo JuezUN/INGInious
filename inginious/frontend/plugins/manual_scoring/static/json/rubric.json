@@ -52,7 +52,7 @@
    ],
    "Grade 4:":[
       {
-         "Code Clarity":"The code is ordered. Variables, functions, and classes mostly have appropriate names. Comments are used appropriately. A correct abstraction of the concepts is made in most of the code."
+         "Code Clarity":"The code is ordered. Variables, functions, and classes mostly have appropriate names. Comments are used appropriately. A correct abstraction of the concepts is made in most of code."
       },
       {
          "Data structures":"Has problems with the definition of the data types, conditionals or number of cycles."
