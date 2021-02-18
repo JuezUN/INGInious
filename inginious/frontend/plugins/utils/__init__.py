@@ -1,3 +1,4 @@
+import json
 import posixpath
 import urllib
 import web
@@ -37,3 +38,10 @@ def create_static_resource_page(base_static_folder):
             raise web.notfound()
 
     return StaticResourcePage
+
+
+def read_json_file(source):
+    """ This function read a json file and return data """
+    with open(source) as file:
+        data = json.load(file)
+        return data

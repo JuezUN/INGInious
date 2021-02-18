@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-18 17:10-0500\n"
+"POT-Creation-Date: 2021-02-18 17:17-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -480,6 +480,7 @@ msgid "Submitted on"
 msgstr "Envío realizado el"
 
 #: inginious/frontend/pages/course_admin/submissions.py:24
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:34
 msgid "User"
 msgstr "Usuario"
 
@@ -1493,6 +1494,7 @@ msgstr "Todos los servicios"
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:43
 #: inginious/frontend/plugins/auth/custom_auth_form.html:29
+#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:37
 #: inginious/frontend/plugins/register_students/static/email_template.html:12
 #: inginious/frontend/templates/auth.html:23
 msgid "Username"
@@ -1630,6 +1632,7 @@ msgstr "Email"
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:57
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:263
+#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:38
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:9
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
@@ -1871,6 +1874,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:11
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:106
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:129
 msgid "Save"
 msgstr "Guardar"
 
@@ -1901,6 +1905,121 @@ msgstr "Código"
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:96
 msgid "Expected output"
 msgstr "Salida esperada"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:18
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:23
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:16
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:18
+#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:18
+msgid "Manual Scoring"
+msgstr "Calificación manual"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:23
+msgid "Tasks List"
+msgstr "Lista de tareas"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:29
+msgid "Task Name"
+msgstr "Nombre de tarea"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:30
+msgid "Students succeeded"
+msgstr "Estudiantes que tuvieron éxito"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:31
+msgid "Students attempted"
+msgstr "Estudiantes que lo han intentado"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:17
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:19
+#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:19
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:24
+#: inginious/frontend/templates/course_admin/aggregation_info.html:31
+msgid "Task"
+msgstr "Tarea"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:18
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:20
+#: inginious/frontend/templates/course_admin/task_info.html:42
+#: inginious/frontend/templates/mycourses.html:139
+msgid "Student"
+msgstr "Estudiante"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:19
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:77
+msgid "Rubric"
+msgstr "Rubrica"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:26
+msgid "Manual scoring for:"
+msgstr "Calificación manual para:"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:57
+#: inginious/frontend/templates/task.html:14
+msgid "Information"
+msgstr "Información"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:60
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:34
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:28
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:46
+#: inginious/frontend/templates/course_admin/subproblems/code.html:16
+msgid "Language"
+msgstr "Lenguaje"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:62
+msgid "Summary"
+msgstr "Resumen"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:78
+msgid "Select the best description to grade the student's code"
+msgstr "Seleccione la mejor descripción para evaluar el código del estudiante"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:79
+msgid "Click to select and double click to deselect"
+msgstr "Haz click para seleccionar y doble click para deseleccionar"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:116
+msgid "Current Score: "
+msgstr "Puntaje actual: "
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:123
+msgid "Comments"
+msgstr "Comentarios"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:27
+#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:26
+msgid "Manual scoring for Task:"
+msgstr "Calificación manual para la tarea: "
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:47
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:35
+msgid "Date"
+msgstr "Fecha"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:48
+msgid "Result Summary"
+msgstr "Resumen de los resultados"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:49
+msgid "Score"
+msgstr "Puntaje"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:50
+msgid "Manual scoring"
+msgstr "Calificación manual"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:39
+msgid "Best score"
+msgstr "Mejor puntaje"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:54
+msgid "Unknown"
+msgstr "Desconocido"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:63
+msgid "No Students Yet"
+msgstr "Aún no hay estudiantes"
 
 #: inginious/frontend/plugins/multilang/problems/code_multiple_file_languages_problem.py:37
 msgid "code file multiple languages"
@@ -2266,17 +2385,6 @@ msgstr "Chequeos de plagio por tarea"
 msgid "Task name"
 msgstr "Nombre de la tarea"
 
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:34
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:28
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:46
-#: inginious/frontend/templates/course_admin/subproblems/code.html:16
-msgid "Language"
-msgstr "Lenguaje"
-
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:35
-msgid "Date"
-msgstr "Fecha"
-
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:36
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:36
 #: inginious/frontend/templates/course_admin/aggregation_info.html:32
@@ -2289,11 +2397,6 @@ msgstr "Estado"
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:14
 msgid "Summary of plagiarism check"
 msgstr "Resumen del chequeo de plagio"
-
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:24
-#: inginious/frontend/templates/course_admin/aggregation_info.html:31
-msgid "Task"
-msgstr "Tarea"
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:32
 msgid "Created on"
@@ -3115,11 +3218,6 @@ msgstr "Administrador"
 msgid "Tutor"
 msgstr "Tutor"
 
-#: inginious/frontend/templates/course_admin/task_info.html:42
-#: inginious/frontend/templates/mycourses.html:139
-msgid "Student"
-msgstr "Estudiante"
-
 #: inginious/frontend/templates/mycourses.html:144
 msgid "You are not registered to any course"
 msgstr "No estás registrado a ningún curso"
@@ -3265,10 +3363,6 @@ msgid ""
 msgstr ""
 "Regístrese o ingrese para observar la lista completa de cursos y poder "
 "enviar sus respuestas a los ejercicios."
-
-#: inginious/frontend/templates/task.html:14
-msgid "Information"
-msgstr "Información"
 
 #: inginious/frontend/templates/task.html:18
 msgid "Author(s)"
