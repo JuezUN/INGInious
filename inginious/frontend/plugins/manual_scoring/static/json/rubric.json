@@ -38,7 +38,7 @@
          "Code Clarity":"The code shows some notion of order. Some variables, functions, and classes have appropriate names. Comments are being used appropriately. The concepts of the code are properly abstracted in some parts of the code."
       },
       {
-         "Data structures":"The right structures need to solve the problem exist and are well implemented."
+         "Data structures":"The correct data structures need to solve the problem and are well implemented."
       },
       {
          "Test cases":"Could pass some test cases."
