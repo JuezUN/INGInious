@@ -27,7 +27,8 @@
          "casos de prueba":"No pasa ningún caso de prueba o máximo pasa un caso de prueba."
       },
       {
-         "entendimiento del problema":"Se muestra una compresión muy básica o casi nula del problema."
+         "entendimiento del problema":"Se muestra una comprensión muy básica o casi nula del problema."
+
       },
       {
          "estrategia usada":"La solución no usa una aproximación adecuada. Puede ser usando fuerza bruta u otra aproximación que no funcione bien.\nNo se ve un propósito claro en el código y en la estrategia usada. (i.e es difícil seguir la lógica del mismo)."
