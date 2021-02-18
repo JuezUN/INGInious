@@ -14,6 +14,7 @@ const _ANALYTICS_PLUGIN_PATH = `${_BASE_PATH}/analytics/static`;
 const _PLAGIARISM_PLUGIN_PATH = `${_BASE_PATH}/plagiarism/static`;
 const _TASK_EDITORIAL_PATH = `${_BASE_PATH}/task_editorial/static`;
 const _CONTACT_PAGE_PLUGIN_PATH = `${_BASE_PATH}/contact_page/static`;
+const _MANUAL_SCORING_PATH = `${_BASE_PATH}/manual_scoring/static`;
 
 /**
  * Read file synchronously.
@@ -248,6 +249,21 @@ function minifyPlagiarismPlugin() {
 
     minifyCssFiles(cssFiles, cssFilesPath, "plagiarism");
 }
+function minifyManualScoringPlugin() {
+    const cssFilesPath = _MANUAL_SCORING_PATH + "/css/";
+    const jsFilesPath = _MANUAL_SCORING_PATH + "/js/";
+    const jsFiles = ["code_field","message_box","rubric","manual_scoring_main"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+    const cssFiles = ["manual_scoring"].map((name) => {
+        return getCssFilePath(cssFilesPath, name);
+    });
+
+    console.log("Minify 'manual scoring' static files.");
+
+    minifyJSFiles(jsFiles, jsFilesPath, "manual_scoring");
+    minifyCssFiles(cssFiles, cssFilesPath, "manual_scoring");
+}
 
 function minifyTaskEditorialPlugin() {
     const jsFilesPath = _TASK_EDITORIAL_PATH + "/";
@@ -289,5 +305,6 @@ minifyGraderGeneratorPlugin();
 minifyCodePreviewPlugin();
 minifyAnalyticsPlugin();
 minifyPlagiarismPlugin();
+minifyManualScoringPlugin();
 minifyTaskEditorialPlugin();
 minifyContactPage();

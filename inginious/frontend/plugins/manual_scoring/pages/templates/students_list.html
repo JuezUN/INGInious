@@ -1,0 +1,71 @@
+$def with (course, data, task, task_name, url)
+
+$#
+$# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
+$# more information about the licensing of this file.
+$#
+
+
+$var title: $:course.get_name(user_manager.session_language()) - Manual Scoring
+
+$var Column: $:template_helper.call('course_admin_menu',course=course,current='manual_scoring')
+$ is_admin = user_manager.has_admin_rights_on_course(course)
+
+
+$def NavbarF():
+    <ol class="nav navbar-nav nav-breadcrumb">
+        <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()/manual_scoring"><i class="fa fa-table mr-1"></i>$:_("Manual Scoring")<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#">$:_("Task")<span class="sr-only">(current)</span></a></li>
+    </ol>
+
+$var Navbar: $:NavbarF()
+
+<form method="post">
+<h2>
+    $:_("Manual scoring for Task:")
+    $if task_name == "":
+        "$task.get_id()"
+    $else:
+        "$task_name"
+</h2>
+<div class="row justify-conte py-2">
+   <div class="col-md-9 col-md-offset-1">
+<table class="table table-striped">
+     <thead>
+        <tr>
+            <th><h3>$:_("Username")</h3></th>
+            <th><h3>$:_("Name")</h3></th>
+            <th class="text-center"><h3>$:_("Best score")</h3></th>
+        </tr>
+     </thead>
+     <tbody>
+     $if len(data) > 0:
+         $for user in data:
+            <tr>
+                <td>
+                    <a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/user/$user" class="font_size">
+                        $data[user]["username"]
+                    </a>
+                    <input type="hidden" name="task" value="$user">
+                </td>
+                <td class="font_size">
+                    $if data[user]["realname"] == "":
+                        $:_("Unknown")
+                    $else:
+                        $data[user]["realname"]
+                </td>
+                <td class="font_size text-center">$data[user]["grade"]</td>
+            </tr>
+     $else:
+        <tr>
+            <td colspan="3" class="text-center">
+                <h4>$:_("No Students Yet")</h4>
+            </td>
+        </tr>
+     </tbody>
+</table>
+    </div>
+    </div>
+
+</form>
