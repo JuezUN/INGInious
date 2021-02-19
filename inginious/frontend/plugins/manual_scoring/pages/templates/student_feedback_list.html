@@ -44,7 +44,7 @@ $ course_name = course.get_name(user_manager.session_language())
                             <tbody>
                             $for submission in data[task_id]:
                                 <tr>
-                                     <td><a href="#"
+                                     <td><a href="$get_homepath()/submission_feedback/${course.get_id()}/submission/$submission['_id']"
                                            class="font_size-m">
                                             $submission["date"]</a></td>
                                      <td class="font_size-m">$submission["result"]</td>

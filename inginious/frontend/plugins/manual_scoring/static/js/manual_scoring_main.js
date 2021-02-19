@@ -1,11 +1,5 @@
-const RESPONSE_FIELD_ID = "gradeEditSubmitStatus";
-const FEEDBACK_FIELD_ID = "taskAlert";
-const TASK_NAME = "taskName";
-const TASK_DESCRIPTION_TEXT_ID = "taskDescription";
-const CODE_AREA_ID = "codemirrorTextArea";
-const NOTEBOOK_CODE_AREA_ID = "notebookHolder";
-const SAVE_BUTTON_ID = "saveButton";
 const COMMENTS_TEXT_AREA_ID = "textComments";
+const SAVE_BUTTON_ID = "saveButton";
 
 function save(rubric) {
     const contentInfo = "Submission graded and stored";
@@ -29,20 +23,6 @@ function save(rubric) {
     });
 }
 
-function loadFeedBack() {
-    const feedbackContent = getHtmlCodeForFeedback();
-    const feedbackType = getTextBoxTypeBasedOnResult();
-    const message = new MessageBox(FEEDBACK_FIELD_ID, feedbackContent, feedbackType, false);
-    message.deleteCloseButton();
-}
-
-
-function addToggleBehaviorToProblemDescription() {
-    $(`#${TASK_NAME}`).click(function () {
-        $(`#${TASK_DESCRIPTION_TEXT_ID}`).collapse("toggle");
-    });
-}
-
 function addSaveFunctionToSaveButton(rubric) {
     $(`#${SAVE_BUTTON_ID}`).click(function () {
         save(rubric);
@@ -51,12 +31,16 @@ function addSaveFunctionToSaveButton(rubric) {
 
 jQuery(document).ready(function () {
     const condeField = new CodeField(CODE_AREA_ID,NOTEBOOK_CODE_AREA_ID);
+
     const rubric = new Rubric();
     let rubricStatusIds = rubricStatus();
     rubricStatusIds = JSON.parse(rubricStatusIds.replace(/&quot;/g, "\""));
     rubric.loadSelectedFields(rubricStatusIds);
-    loadFeedBack();
-    addToggleBehaviorToProblemDescription();
+    rubric.makeRubricInteractive();
+
+    loadFeedBack(FEEDBACK_FIELD_ID);
+    addToggleBehaviorToProblemDescription(TASK_NAME, TASK_DESCRIPTION_TEXT_ID);
+
     addSaveFunctionToSaveButton(rubric);
     window.save = save;
 });

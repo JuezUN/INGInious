@@ -1,34 +1,29 @@
-$def with (course, task, rubric, data)
+$def with (course, rubric, data, task)
 
 $#
 $# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
 $# more information about the licensing of this file.
 $#
 
-$var title: $:course.get_name(user_manager.session_language()) - Manual Scoring
-
-$var Column: $:template_helper.call('course_admin_menu',course=course,current='manual_scoring')
-$ is_admin = user_manager.has_admin_rights_on_course(course)
+$var title: $:course.get_name(user_manager.session_language()) - Feedback
 
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
-        <li><a href="$get_homepath()/admin/$course.get_id()/manual_scoring"><i class="fa fa-table mr-1"></i>$:_("Manual Scoring")<span class="sr-only"></span></a></li>
-    <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task.get_id()">$:_("Task")</a></li>
-        <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task.get_id()/user/$data['username']">$:_("Student")</a></li>
-    <li class="active"><a href="#">$:_("Rubric")<span class="sr-only">(current)</span></a></li>
+        <li><a href="$get_homepath()/feedback_list/$course.get_id()">$:_("Feedback List")<span class="sr-only"></span></a></li>
+        <li class="active"><a href="#">$:_("Feedback")<span class="sr-only">(current)</span></a></li>
     </ol>
+
 $var Navbar: $:NavbarF()
 
-
-
 <h1 class="py-1">
-    $:_("Manual scoring for:")
-    $if data['name'] == "":
-        $data['username']
+    $:_("Feedback for:")
+    $if data['task_name'] == "":
+        $task.get_id()
     $else:
-        $data['name']
+        $data['task_name']
 </h1>
+
 <!-- Code view -->
 <section class="py-1">
     <div class="py-1">
@@ -66,7 +61,7 @@ $var Navbar: $:NavbarF()
             <td><b>$_("Score")</b></td>
             <td>$data['score']</td>
             <td><b>$_("Manual grade")</b></td>
-            <td>$data['grade']</td>
+            <td style="color: #cc0808">$data['grade']</td>
         </tr>
     </table>
 </section>
@@ -75,8 +70,6 @@ $var Navbar: $:NavbarF()
 <section>
     <div class="py-1">
         <h4 class="my-1">$:_("Rubric")</h4>
-        <p>$:_("Select the best description to grade the student's code")</p>
-        <p>$:_("Click to select and double click to deselect")</p>
     </div>
     <div>
     <table class="table sorted_table table-bordered">
@@ -113,22 +106,18 @@ $var Navbar: $:NavbarF()
     </table>
         </div>
     <div>
-        <strong>$:_("Current Score: ")<strong style="color: #cc0808" id="output">$data['grade']</strong></strong>
+        <h4><strong>$:_("Manual grade: ")<strong style="color: #cc0808" id="output">$data['grade']</strong></strong></h4>
     </div>
     <div id="gradeEditSubmitStatus"></div>
 </section>
 <!-- Comments -->
 <section class="py-2">
-    <form method="post">
-        <h4 >$:_("Comments")</h4>
-        <div class="py-1">
-        <label for="textComments"></label>
-        <textarea class="form-control" id="textComments" rows="8">$data['comment']</textarea>
-            </div>
-        <div>
-            <a class="btn btn-primary" id="saveButton" ><i class="fa fa-save mr-1"></i>$:_("Save")</a>
+    <div class="panel panel-default">
+        <div class="panel-heading"><h4 >$:_("Comments")</h4></div>
+        <div class="py-1 panel-body">
+            $data['comment']
         </div>
-    </form>
+    </div>
 </section>
 
 <!-- JS -->

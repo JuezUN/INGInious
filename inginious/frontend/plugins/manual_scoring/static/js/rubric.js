@@ -6,7 +6,6 @@ class Rubric {
         this.classMarkerId = "box1";
         this.scoreTextId = "output";
         this.formMatrixRespectRubric();
-        this.addListeners();
     }
 
     formMatrixRespectRubric() {
@@ -19,7 +18,7 @@ class Rubric {
         }
     }
 
-    addListeners() {
+    makeRubricInteractive() {
         for (let i = 0; i < this.matrixLength; i++) {
             for (let j = 0; j < this.matrixLength; j++) {
                 let matrixField = new MatrixField(i, j);
