@@ -49,7 +49,7 @@ $var Navbar: $:NavbarF()
 
 <!-- Information -->
 <section>
-    <h4 class="py-1">$:_("Information")</h4>
+    <h3 class="py-1">$:_("Information")</h3>
     <table class="table table-bordered">
         <tr>
             <td><b>$:_("Language")</b></td>
@@ -69,7 +69,7 @@ $var Navbar: $:NavbarF()
 <!-- Rubric  -->
 <section>
     <div class="py-1">
-        <h4 class="my-1">$:_("Rubric")</h4>
+        <h3 class="my-1">$:_("Rubric")</h3>
     </div>
     <div>
     <table class="table sorted_table table-bordered">
@@ -106,18 +106,14 @@ $var Navbar: $:NavbarF()
     </table>
         </div>
     <div>
-        <h4><strong>$:_("Manual grade: ")<strong style="color: #cc0808" id="output">$data['grade']</strong></strong></h4>
+        <h3><strong>$:_("Manual grade: ")<strong style="color: #cc0808" id="output">$data['grade']</strong></strong></h3>
     </div>
     <div id="gradeEditSubmitStatus"></div>
 </section>
 <!-- Comments -->
 <section class="py-2">
-    <div class="panel panel-default">
-        <div class="panel-heading"><h4 >$:_("Comments")</h4></div>
-        <div class="py-1 panel-body">
-            $data['comment']
-        </div>
-    </div>
+    <h3>$:_("Comments")</h3>
+    <div class="DivToScroll DivWithScroll">$:data['comment']</div>
 </section>
 
 <!-- JS -->

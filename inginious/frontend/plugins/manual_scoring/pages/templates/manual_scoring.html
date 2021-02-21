@@ -47,7 +47,7 @@ $var Navbar: $:NavbarF()
     <div class="DivToScroll DivWithScroll" id="notebookHolder" hidden></div>
     <label for="codemirrorTextArea"></label>
     <div class="box" hidden>
-        <textarea class="single " id="codemirrorTextArea" rows="4" cols="10" data-language="$data['language']">$data['problem']</textarea>
+        <textarea class="single " id="codemirrorTextArea" data-language="$data['language']">$data['problem']</textarea>
     </div>
     <div id="taskAlert" class="py-1"></div>
 </section>
@@ -121,11 +121,11 @@ $var Navbar: $:NavbarF()
 <section class="py-2">
     <form method="post">
         <h4 >$:_("Comments")</h4>
-        <div class="py-1">
-        <label for="textComments"></label>
-        <textarea class="form-control" id="textComments" rows="8">$data['comment']</textarea>
-            </div>
-        <div>
+        <div class="box">
+            <label for="textComments"></label>
+            <textarea class="form-control" id="textComments" data-language="rst">$data['comment']</textarea>
+        </div>
+        <div class="py-2">
             <a class="btn btn-primary" id="saveButton" ><i class="fa fa-save mr-1"></i>$:_("Save")</a>
         </div>
     </form>

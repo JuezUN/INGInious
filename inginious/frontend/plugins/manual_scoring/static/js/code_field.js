@@ -7,15 +7,18 @@ const LANGUAGES = {
     "c11": "c",
     "python3": "python",
     "vhdl": "vhdl",
-    "verilog": "verilog"
+    "verilog": "verilog",
+    "rst": "rst"
 };
 
 class CodeField {
-    constructor(multiLangCodeDivId, notebookDivId) {
-        this.environmentType = environmentType();
+    codeMirror;
+
+    constructor(multiLangCodeDivId, notebookDivId = null, environmentType = "") {
+        this.environmentType = environmentType
         this.multilangCodeArea = $(`#${multiLangCodeDivId}`);
-        this.notebookDiv = $(`#${notebookDivId}`);
-        this.displayCodeArea();
+        if (notebookDivId)
+            this.notebookDiv = $(`#${notebookDivId}`);
     }
 
     displayCodeArea() {
@@ -23,6 +26,7 @@ class CodeField {
             this.getNotebookCodeDataAndRender();
         } else {
             this.showMultiLangCodeArea();
+            this.disabledCodeMirrorEdit();
         }
     }
 
@@ -45,8 +49,15 @@ class CodeField {
     showMultiLangCodeArea() {
         this.multilangCodeArea.parent().show();
         const language = LANGUAGES[this.multilangCodeArea.data("language")];
-        const myCodeMirror = registerCodeEditor(this.multilangCodeArea.get(0), language, 20);
-
-        myCodeMirror.setOption("readOnly", "nocursor");
+        this.codeMirror = registerCodeEditor(this.multilangCodeArea.get(0), language, 20);
     }
+
+    disabledCodeMirrorEdit() {
+        this.codeMirror.setOption("readOnly", "nocursor");
+    }
+
+    disabledCodeMirrorLineNumbers() {
+        this.codeMirror.setOption("lineNumbers", false);
+    }
+
 }

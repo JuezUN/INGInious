@@ -1,5 +1,7 @@
+const COMMENTS_AREA = "codemirrorCommentArea";
 jQuery(document).ready(function () {
-    const condeField = new CodeField(CODE_AREA_ID, NOTEBOOK_CODE_AREA_ID);
+    const codeField = new CodeField(CODE_AREA_ID, NOTEBOOK_CODE_AREA_ID, environmentType());
+    codeField.displayCodeArea();
 
     const rubric = new Rubric();
     let rubricStatusIds = rubricStatus();
@@ -8,5 +10,4 @@ jQuery(document).ready(function () {
 
     loadFeedBack(FEEDBACK_FIELD_ID);
     addToggleBehaviorToProblemDescription(TASK_NAME, TASK_DESCRIPTION_TEXT_ID);
-
 });
