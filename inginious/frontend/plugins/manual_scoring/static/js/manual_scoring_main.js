@@ -1,6 +1,7 @@
 const COMMENTS_TEXT_AREA_ID = "textComments";
 const SAVE_BUTTON_ID = "saveButton";
-
+const PREVIEW_TAB_ID = "preview_tab";
+const PREVIEW_AREA_ID = "preview_area";
 function save(rubric) {
     const contentInfo = "Submission graded and stored";
     const contentDanger = "Something went wrong";
@@ -29,6 +30,26 @@ function addSaveFunctionToSaveButton(rubric) {
     });
 }
 
+function previewCode() {
+    const contentDanger = "Something went wrong";
+    const txtComment = document.getElementById(COMMENTS_TEXT_AREA_ID);
+    $(`#${PREVIEW_TAB_ID}`).click(function () {
+        $.ajax("/api/preview_content", {
+            method: "POST",
+            data: {
+                content: txtComment.value
+            },
+            success: function (data) {
+                $(`#${PREVIEW_AREA_ID}`).html(data);
+            },
+            error: function (request, status, error) {
+                const message = new MessageBox(RESPONSE_FIELD_ID, contentDanger, "danger");
+            }
+
+        })
+    });
+}
+
 jQuery(document).ready(function () {
     const codeField = new CodeField(CODE_AREA_ID, NOTEBOOK_CODE_AREA_ID, environmentType());
     codeField.displayCodeArea();
@@ -46,6 +67,7 @@ jQuery(document).ready(function () {
 
     const comment = new CodeField(COMMENTS_TEXT_AREA_ID);
     comment.showMultiLangCodeArea();
+    previewCode();
     window.save = save;
 });
 

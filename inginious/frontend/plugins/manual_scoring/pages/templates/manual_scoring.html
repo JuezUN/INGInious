@@ -54,7 +54,7 @@ $var Navbar: $:NavbarF()
 
 <!-- Information -->
 <section>
-    <h4 class="py-1">$:_("Information")</h4>
+    <h3 class="py-1">$:_("Information")</h3>
     <table class="table table-bordered">
         <tr>
             <td><b>$:_("Language")</b></td>
@@ -74,7 +74,7 @@ $var Navbar: $:NavbarF()
 <!-- Rubric  -->
 <section>
     <div class="py-1">
-        <h4 class="my-1">$:_("Rubric")</h4>
+        <h3 class="my-1">$:_("Rubric")</h3>
         <p>$:_("Select the best description to grade the student's code")</p>
         <p>$:_("Click to select and double click to deselect")</p>
     </div>
@@ -120,10 +120,19 @@ $var Navbar: $:NavbarF()
 <!-- Comments -->
 <section class="py-2">
     <form method="post">
-        <h4 >$:_("Comments")</h4>
-        <div class="box">
-            <label for="textComments"></label>
-            <textarea class="form-control" id="textComments" data-language="rst">$data['comment']</textarea>
+        <h3 >$:_("Comments")</h3>
+        <div style="margin-left: -1.1em">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#code_tab">$:_("Write")</a></li>
+                <li><a id="preview_tab" data-toggle="tab" href="#preview_area">$:_("Preview")</a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div id="code_tab" class="tab-pane fade in active box">
+                <label for="textComments"></label>
+                <textarea class="form-control" id="textComments" data-language="rst">$data['comment']</textarea>
+            </div>
+            <div id="preview_area" class="tab-pane fade DivToScroll DivWithScroll"></div>
         </div>
         <div class="py-2">
             <a class="btn btn-primary" id="saveButton" ><i class="fa fa-save mr-1"></i>$:_("Save")</a>
