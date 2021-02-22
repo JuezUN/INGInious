@@ -86,7 +86,7 @@ class StudentFeedbackListPage(INGIniousAuthPage):
         for feedback in feedback_list:
             submission = {
                 "_id": feedback["_id"],
-                "date": feedback["submitted_on"],
+                "date": feedback["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S"),
                 "grade": feedback["grade"],
                 "result": feedback["custom"]["custom_summary_result"],
                 "manual_grade": feedback["manual_scoring"]["grade"],

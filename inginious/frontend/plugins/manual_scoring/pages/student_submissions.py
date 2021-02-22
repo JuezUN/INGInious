@@ -19,7 +19,7 @@ def create_submissions_dict(submissions_list):
     for submission in submissions_list:
         data[submission["_id"]] = {
             "_id": submission["_id"],
-            "date": submission["submitted_on"],
+            "date": submission["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S"),
             "grade": submission["grade"],
             "summary_result": submission["custom"]["custom_summary_result"],
         }

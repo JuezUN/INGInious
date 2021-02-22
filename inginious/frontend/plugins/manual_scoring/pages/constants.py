@@ -15,15 +15,13 @@ def get_manual_scoring_link_code(course):
 
 
 def get_manual_scoring_feedback_hook(course, template_helper):
-    manual_scoring_str = _("Manual Scoring")
     feedback_str = _("Feedback")
     return """
-            <h3>{manual_scoring_str}</h3>
-            <a class="list-group-item list-group-item-info"
+            <a class="list-group-item"
                 href="/feedback_list/{course_id}">
                 <i class="fa fa-commenting" aria-hidden="true"></i>
                 {feedback_str}
-            </a>""".format(course_id=course.get_id(), manual_scoring_str=manual_scoring_str,
+            </a>""".format(course_id=course.get_id(),
                            feedback_str=feedback_str)
 
 

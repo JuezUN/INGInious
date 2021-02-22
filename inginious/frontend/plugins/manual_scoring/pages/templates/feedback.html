@@ -6,6 +6,7 @@ $# more information about the licensing of this file.
 $#
 
 $var title: $:course.get_name(user_manager.session_language()) - Feedback
+$var Column: $:template_helper.call('course_menu',course=course,template_helper=template_helper)
 
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
@@ -66,6 +67,12 @@ $var Navbar: $:NavbarF()
     </table>
 </section>
 
+<!-- Comments -->
+<section class="py-1">
+    <h3 class="py-1">$:_("Comments")</h3>
+    <div class="DivToScroll DivWithScroll">$:data['comment']</div>
+</section>
+
 <!-- Rubric  -->
 <section>
     <div class="py-1">
@@ -110,11 +117,7 @@ $var Navbar: $:NavbarF()
     </div>
     <div id="gradeEditSubmitStatus"></div>
 </section>
-<!-- Comments -->
-<section class="py-2">
-    <h3>$:_("Comments")</h3>
-    <div class="DivToScroll DivWithScroll">$:data['comment']</div>
-</section>
+
 
 <!-- JS -->
 <script type="text/javascript">
