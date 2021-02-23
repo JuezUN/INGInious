@@ -154,13 +154,19 @@ class Score {
     }
 
     updateScore() {
-        this.text.html(this.score.toFixed(1));
+        let currentScore;
+        try {
+            currentScore = parseFloat(this.score).toFixed(1);
+        } catch (error) {
+            currentScore = this.score;
+        }
+        this.text.html(currentScore);
     }
 
     pickColor(score) {
         const defaultText = "No grade";
         const defaultColor = "#002a95"
-        if (score === defaultText){
+        if (score === defaultText) {
             return defaultColor;
         }
         let color = "";
@@ -182,9 +188,9 @@ class Score {
             color = "#a5d424";
         } else if (score < 4.5) {
             color = "#67a00c";
-        } else if (score <= 5){
+        } else if (score <= 5) {
             color = "#2d8e00";
-        }else {
+        } else {
             color = defaultColor;
         }
         return color;
