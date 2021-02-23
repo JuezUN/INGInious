@@ -11,12 +11,12 @@ const LANGUAGES = {
     "rst": "rst"
 };
 
-class CodeField {
-    codeMirror;
+class CodeArea {
 
     constructor(multiLangCodeDivId, notebookDivId = null, environmentType = "") {
         this.environmentType = environmentType
         this.multilangCodeArea = $(`#${multiLangCodeDivId}`);
+        this.codeMirror = null;
         if (notebookDivId)
             this.notebookDiv = $(`#${notebookDivId}`);
     }
@@ -54,10 +54,6 @@ class CodeField {
 
     disabledCodeMirrorEdit() {
         this.codeMirror.setOption("readOnly", "nocursor");
-    }
-
-    disabledCodeMirrorLineNumbers() {
-        this.codeMirror.setOption("lineNumbers", false);
     }
 
 }
