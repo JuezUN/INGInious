@@ -79,5 +79,9 @@ td.box1 {
 }
 
 .CodeMirror-scroll {
-    max-height:500px;
+  max-height:500px;
+}
+
+#nav-tabs {
+  margin: 0 0 -1.1em -1.2em ;
 }

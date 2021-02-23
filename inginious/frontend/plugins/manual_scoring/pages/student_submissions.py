@@ -21,7 +21,7 @@ def create_submissions_dict(submissions_list):
             "_id": submission["_id"],
             "date": submission["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S"),
             "grade": submission["grade"],
-            "summary_result": submission["custom"]["custom_summary_result"],
+            "result": submission["custom"]["custom_summary_result"],
         }
         if "manual_scoring" in submission:
             data[submission["_id"]]["manual_grade"] = submission["manual_scoring"]["grade"]

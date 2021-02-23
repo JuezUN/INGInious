@@ -182,7 +182,7 @@ class Score {
             color = "#a5d424";
         } else if (score < 4.5) {
             color = "#67a00c";
-        } else if (score < 5){
+        } else if (score <= 5){
             color = "#2d8e00";
         }else {
             color = defaultColor;

@@ -80,7 +80,7 @@ jQuery(document).ready(function () {
 
     comment.showMultiLangCodeArea();
     previewCode();
-    
+
     grade.changeColor();
     grade.updateScore();
 
