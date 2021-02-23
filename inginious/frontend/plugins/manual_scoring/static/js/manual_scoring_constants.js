@@ -4,6 +4,7 @@ const TASK_NAME = "taskName";
 const TASK_DESCRIPTION_TEXT_ID = "taskDescription";
 const CODE_AREA_ID = "codemirrorTextArea";
 const NOTEBOOK_CODE_AREA_ID = "notebookHolder";
+const GRADE_ID = "grade";
 
 function loadFeedBack(feedbackFieldId) {
     const feedbackContent = getHtmlCodeForFeedback();

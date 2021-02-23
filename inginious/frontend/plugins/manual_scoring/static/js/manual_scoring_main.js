@@ -2,6 +2,7 @@ const COMMENTS_TEXT_AREA_ID = "textComments";
 const SAVE_BUTTON_ID = "saveButton";
 const PREVIEW_TAB_ID = "preview_tab";
 const PREVIEW_AREA_ID = "preview_area";
+
 function save(rubric) {
     const contentInfo = "Submission graded and stored";
     const contentDanger = "Something went wrong";
@@ -10,6 +11,7 @@ function save(rubric) {
     jQuery.ajax({
         success: function (data) {
             const message = new MessageBox(RESPONSE_FIELD_ID, contentInfo, "info");
+            updateScoreOnInfo(rubric.score);
         },
         method: "POST",
         data: {
@@ -22,6 +24,12 @@ function save(rubric) {
             const message = new MessageBox(RESPONSE_FIELD_ID, contentDanger, "danger");
         }
     });
+}
+
+function updateScoreOnInfo(score) {
+    const grade = new Score(GRADE_ID, score);
+    grade.updateScore();
+    grade.changeColor();
 }
 
 function addSaveFunctionToSaveButton(rubric) {
@@ -52,10 +60,15 @@ function previewCode() {
 
 jQuery(document).ready(function () {
     const codeField = new CodeField(CODE_AREA_ID, NOTEBOOK_CODE_AREA_ID, environmentType());
+    const rubric = new Rubric();
+    const comment = new CodeField(COMMENTS_TEXT_AREA_ID);
+    const currentGrade = $(`#${GRADE_ID}`).data("grade");
+    const grade = new Score(GRADE_ID, currentGrade);
+
+    let rubricStatusIds = rubricStatus();
+
     codeField.displayCodeArea();
 
-    const rubric = new Rubric();
-    let rubricStatusIds = rubricStatus();
     rubricStatusIds = JSON.parse(rubricStatusIds.replace(/&quot;/g, "\""));
     rubric.loadSelectedFields(rubricStatusIds);
     rubric.makeRubricInteractive();
@@ -65,9 +78,12 @@ jQuery(document).ready(function () {
 
     addSaveFunctionToSaveButton(rubric);
 
-    const comment = new CodeField(COMMENTS_TEXT_AREA_ID);
     comment.showMultiLangCodeArea();
     previewCode();
+    
+    grade.changeColor();
+    grade.updateScore();
+
     window.save = save;
 });
 

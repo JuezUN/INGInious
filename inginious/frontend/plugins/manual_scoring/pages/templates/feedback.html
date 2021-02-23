@@ -62,7 +62,7 @@ $var Navbar: $:NavbarF()
             <td><b>$_("Score")</b></td>
             <td>$data['score']</td>
             <td><b>$_("Manual grade")</b></td>
-            <td style="color: #cc0808">$data['grade']</td>
+            <td id="grade" data-grade="$data['grade']"></td>
         </tr>
     </table>
 </section>
@@ -113,7 +113,7 @@ $var Navbar: $:NavbarF()
     </table>
         </div>
     <div>
-        <h3><strong>$:_("Manual grade: ")<strong style="color: #cc0808" id="output">$data['grade']</strong></strong></h3>
+        <h3><strong>$:_("Manual grade: ")<strong id="output">$data['grade']</strong></strong></h3>
     </div>
     <div id="gradeEditSubmitStatus"></div>
 </section>
