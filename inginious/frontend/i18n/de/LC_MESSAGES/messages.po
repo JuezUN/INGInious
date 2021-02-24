@@ -2857,8 +2857,8 @@ msgstr ""
 
 #: inginious/frontend/templates/mycourses.html:45
 msgid ""
-"LTI courses are only accessible via the the LMS platform such as Moodle "
-"or OpenEdx"
+"LTI courses are only accessible via the LMS platforms such as Moodle or "
+"OpenEdx"
 msgstr ""
 
 #: inginious/frontend/templates/mycourses.html:57
@@ -2870,6 +2870,10 @@ msgid ""
 "Failed to create the course. It might either already exist or contain an "
 "invalid character (only alphanumeric in addition to '_' and '-' are "
 "accepted)."
+msgstr ""
+
+#: inginious/frontend/templates/mycourses.html:67
+msgid "'New course id'"
 msgstr ""
 
 #: inginious/frontend/templates/mycourses.html:70
@@ -3754,6 +3758,10 @@ msgstr ""
 msgid "Settings saved."
 msgstr ""
 
+#: inginious/frontend/templates/course_admin/settings.html:31
+msgid "\"Course name\""
+msgstr ""
+
 #: inginious/frontend/templates/course_admin/settings.html:35
 msgid "Administrators"
 msgstr ""
@@ -3937,6 +3945,11 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_info.html:31
 msgid "status"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/student_info.html:65
+#: inginious/frontend/templates/course_admin/student_info.html:68
+msgid "\"View evaluation submission\""
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_info.html:74
@@ -4378,6 +4391,10 @@ msgstr ""
 msgid "Delete all teams"
 msgstr ""
 
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:11
+msgid "\"title for this task\""
+msgstr ""
+
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:22
 msgid "Filetype"
 msgstr ""
@@ -4459,7 +4476,7 @@ msgid "Random inputs"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:219
-msgid "Regenerate input random"
+msgid "Regenerate random input"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:9

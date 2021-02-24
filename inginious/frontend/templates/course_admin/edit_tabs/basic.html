@@ -8,7 +8,7 @@ $#
 <div class="form-group">
     <label for="name" class="col-sm-2 control-label">$:_("Name")</label>
     <div class="col-sm-7">
-        <input type="text" class="form-control" id="name" name="name" placeholder="title for this task" value="${task_data.get('name','')}">
+        <input type="text" class="form-control" id="name" name="name" placeholder=$:_('"title for this task"') value="${task_data.get('name','')}">
     </div>
     <div class="col-sm-3">
         <button type="button" data-toggle="modal" data-target="#delete_modal" class="btn btn-block btn-danger">
@@ -216,7 +216,7 @@ $if course.is_lti():
             </div>
         </div>
     </div>
-    <label for="regenerate_input_random" class="col-md-2 control-label" data-toggle="tooltip" data-placement="top" title="$:_('Regenerate random inputs for each reloading of the task page')">$:_("Regenerate input random")</label>
+    <label for="regenerate_input_random" class="col-md-2 control-label" data-toggle="tooltip" data-placement="top" title="$:_('Regenerate random inputs for each reloading of the task page')">$:_("Regenerate random input")</label>
     <div class="col-md-1">
         <div class="checkbox"><label>
             <input type="checkbox" id="regenerate_input_random" name="regenerate_input_random"

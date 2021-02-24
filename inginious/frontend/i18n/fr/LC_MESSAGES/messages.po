@@ -2900,8 +2900,8 @@ msgstr ""
 
 #: inginious/frontend/templates/mycourses.html:45
 msgid ""
-"LTI courses are only accessible via the the LMS platform such as Moodle "
-"or OpenEdx"
+"LTI courses are only accessible via the LMS platforms such as Moodle or "
+"OpenEdx"
 msgstr ""
 
 #: inginious/frontend/templates/mycourses.html:57
@@ -2913,6 +2913,10 @@ msgid ""
 "Failed to create the course. It might either already exist or contain an "
 "invalid character (only alphanumeric in addition to '_' and '-' are "
 "accepted)."
+msgstr ""
+
+#: inginious/frontend/templates/mycourses.html:67
+msgid "'New course id'"
 msgstr ""
 
 #: inginious/frontend/templates/mycourses.html:70
@@ -3839,6 +3843,10 @@ msgstr "Paramètres"
 msgid "Settings saved."
 msgstr "Paramètres sauvegardés."
 
+#: inginious/frontend/templates/course_admin/settings.html:31
+msgid "\"Course name\""
+msgstr ""
+
 #: inginious/frontend/templates/course_admin/settings.html:35
 msgid "Administrators"
 msgstr "Administrateurs"
@@ -4033,6 +4041,11 @@ msgstr "exercice"
 #: inginious/frontend/templates/course_admin/student_info.html:31
 msgid "status"
 msgstr "état"
+
+#: inginious/frontend/templates/course_admin/student_info.html:65
+#: inginious/frontend/templates/course_admin/student_info.html:68
+msgid "\"View evaluation submission\""
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_info.html:74
 msgid "\"View all submissions\""
@@ -4476,6 +4489,10 @@ msgstr "Vider les équipes"
 msgid "Delete all teams"
 msgstr "Supprimer toutes les équipes"
 
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:11
+msgid "\"title for this task\""
+msgstr ""
+
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:22
 msgid "Filetype"
 msgstr "Type de fichier"
@@ -4560,8 +4577,8 @@ msgid "Random inputs"
 msgstr "Paramètres aléatoires"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:219
-msgid "Regenerate input random"
-msgstr ""
+msgid "Regenerate random input"
+msgstr "Paramètres aléatoires"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:9
 msgid "Timeout limit (in seconds)"
