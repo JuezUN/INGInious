@@ -2,6 +2,7 @@
 #
 # This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
 # more information about the licensing of this file.
+""" The list of feedbacks for a student """
 from collections import OrderedDict, defaultdict
 
 from inginious.frontend.pages.utils import INGIniousAuthPage
@@ -11,6 +12,7 @@ base_renderer_path = get_render_path()
 
 
 def get_task_titles(submissions):
+    """ Get the title of the tasks. It is a dict between ids and names; if the name is empty, it takes the id"""
     titles = {}
     for task_id in submissions:
         submission_list = submissions[task_id]
@@ -24,10 +26,12 @@ def get_task_titles(submissions):
 
 class StudentFeedbackListPage(INGIniousAuthPage):
     def GET_AUTH(self, course_id):
+        """ Get request """
         course = self.course_factory.get_course(course_id)
         return self.render_page(course)
 
     def render_page(self, course):
+        """ Get all data and display the page """
         db_data = self.get_submissions_with_feedback(course.get_id())
         data = self.create_feedback_dict(db_data, course)
         task_names = get_task_titles(data)
@@ -82,6 +86,7 @@ class StudentFeedbackListPage(INGIniousAuthPage):
             self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.css")
 
     def create_feedback_dict(self, feedback_list, course):
+        """ Sort the information on a dictionary, classifying it by task id  """
         data = defaultdict(list)
         for feedback in feedback_list:
             submission = {

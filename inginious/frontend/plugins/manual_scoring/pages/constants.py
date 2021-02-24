@@ -15,6 +15,7 @@ def get_manual_scoring_link_code(course):
 
 
 def get_manual_scoring_feedback_hook(course, template_helper):
+    """ return the html code to add a new link to course_menu """
     feedback_str = _("Feedback")
     return """
             <a class="list-group-item"
@@ -37,4 +38,5 @@ def get_use_minify():
 
 
 def get_render_path():
+    """ getter for render path """
     return _render_path

@@ -2,7 +2,7 @@
 #
 # This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
 # more information about the licensing of this file.
-
+""" Feedback view for the students """
 from inginious.frontend.pages.api._api_page import APIError
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from inginious.frontend.parsable_text import ParsableText
@@ -14,16 +14,19 @@ base_renderer_path = get_render_path()
 
 class FeedbackPage(INGIniousAdminPage):
     def GET_AUTH(self, course_id, submission_id):
+        """ Get request """
         course = self.course_factory.get_course(course_id)
         submission = self.submission_manager.get_input_from_submission(self.get_submission(submission_id))
         return self.render_page(course, submission)
 
     def render_page(self, course, submission):
+        """ Get all data and display the page """
         rubric_content = get_rubric_content(self.user_manager)
         comment, score, rubric_status = get_manual_scoring_data(submission)
         task_id = submission['taskid']
         task = self.get_task(course, task_id)
         problem_id = task.get_problems()[0].get_id()
+
         data = {
             "summary": submission['custom']['custom_summary_result'],
             "grade": score,
@@ -39,17 +42,20 @@ class FeedbackPage(INGIniousAdminPage):
             "submission_id": submission['_id'],
             "rubric_status": rubric_status
         }
+        rubric = self.template_helper.get_custom_renderer(base_renderer_path).rubric()
 
         self.add_css_and_js_file()
         return self.template_helper.get_custom_renderer(base_renderer_path).feedback(course, rubric_content, data, task)
 
     def get_submission(self, submission_id):
+        """ get a submission by id """
         submission = self.submission_manager.get_submission(submission_id)
         if submission is None:
             raise APIError(404, "Submission no found")
         return submission
 
     def get_task(self, course, task_id):
+        """ get a task """
         task = self.task_factory.get_task(course, task_id)
         return task
 

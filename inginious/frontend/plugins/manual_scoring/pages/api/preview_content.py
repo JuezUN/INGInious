@@ -7,6 +7,7 @@ from inginious.frontend.plugins.utils import get_mandatory_parameter
 
 
 def _transform_rst_content(content):
+    """ transform the rst content """
     try:
         _check_string(content)
     except APIError as error:
@@ -19,12 +20,15 @@ def _transform_rst_content(content):
 
 
 def _check_string(content):
+    """ Check if the content is a string """
     if not isinstance(content, str):
         raise APIError(400, "The content isn't a string")
 
 
 class PreviewContent(UserApi):
+    """ api for preview rst code """
     def API_POST(self):
+        """ post request """
         try:
             content = get_mandatory_parameter(web.input(), "content")
         except APIError as error:

@@ -1,3 +1,4 @@
+""" Contents all logic related with rubric """
 import os
 
 from inginious.frontend.parsable_text import ParsableText
