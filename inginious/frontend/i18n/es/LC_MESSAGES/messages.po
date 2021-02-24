@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-23 16:18-0500\n"
+"POT-Creation-Date: 2021-02-24 13:49-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1898,7 +1898,7 @@ msgstr "Código"
 msgid "Expected output"
 msgstr "Salida esperada"
 
-#: inginious/frontend/plugins/manual_scoring/pages/constants.py:18
+#: inginious/frontend/plugins/manual_scoring/pages/constants.py:19
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:15
 msgid "Feedback"
 msgstr "Retroalimentación"
