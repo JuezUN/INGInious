@@ -90,6 +90,7 @@ function apiTestNotebookRequest(inputId, taskForm) {
         contentType: false,
         success: runTestNotebookCallback,
         error: function (error) {
+            displayCustomTestAlertError({"text": "An error occurred while running the custom tests. Please try again."});
             unblurTaskForm();
         }
     });
