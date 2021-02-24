@@ -42,7 +42,6 @@ class FeedbackPage(INGIniousAdminPage):
             "submission_id": submission['_id'],
             "rubric_status": rubric_status
         }
-        rubric = self.template_helper.get_custom_renderer(base_renderer_path).rubric()
 
         self.add_css_and_js_file()
         return self.template_helper.get_custom_renderer(base_renderer_path).feedback(course, rubric_content, data, task)
