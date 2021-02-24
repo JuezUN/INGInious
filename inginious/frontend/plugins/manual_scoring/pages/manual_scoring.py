@@ -153,10 +153,8 @@ class ManualScoringPage(INGIniousAdminPage):
             "rubric_status": rubric_status
         }
 
-        return (
-            self.template_helper.get_custom_renderer(base_renderer_path).manual_scoring(
-                course, task, rubric_content, data)
-        )
+        return self.template_helper.get_custom_renderer(base_renderer_path).manual_scoring(course, task, rubric_content,
+                                                                                           data)
 
     def add_css_and_js_file(self):
         """ Add the css and js files """

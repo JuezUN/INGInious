@@ -1,3 +1,13 @@
+function sendSeeFeedbackAnalytics() {
+    $.post('/api/analytics/', {
+        service: {
+            key: "manual_scoring_see_feedback",
+            name: "Manual Scoring - See feedback"
+        },
+        course_id: getCourseId(),
+    });
+}
+
 jQuery(document).ready(function () {
     const codeField = new CodeArea(CODE_AREA_ID, NOTEBOOK_CODE_AREA_ID, environmentType());
     const rubric = new Rubric();
@@ -15,4 +25,6 @@ jQuery(document).ready(function () {
 
     grade.changeColor();
     grade.updateScore();
+
+    sendSeeFeedbackAnalytics();
 });

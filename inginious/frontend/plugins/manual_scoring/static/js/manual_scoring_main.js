@@ -12,6 +12,7 @@ function save(rubric) {
         success: function (data) {
             const message = new MessageBox(RESPONSE_FIELD_ID, contentInfo, "info");
             updateScoreOnInfo(rubric.score);
+            sendManualScoringAnalytics();
         },
         method: "POST",
         data: {
@@ -55,6 +56,16 @@ function previewCode() {
             }
 
         })
+    });
+}
+
+function sendManualScoringAnalytics() {
+    $.post('/api/analytics/', {
+        service: {
+            key: "manual_scoring_review",
+            name: "Manual Scoring - review"
+        },
+        course_id: getCourseId(),
     });
 }
 
