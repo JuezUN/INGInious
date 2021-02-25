@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-24 08:18-0500\n"
+"POT-Creation-Date: 2021-02-24 22:59-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -151,7 +151,7 @@ msgid "This email address is already in use !"
 msgstr "¡La dirección de correo electrónico ya existe!"
 
 #: inginious/frontend/pages/register.py:106
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:109
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:149
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr "Bienvenido a UNCode"
@@ -717,6 +717,10 @@ msgstr "Enlaces de autenticación"
 #: inginious/frontend/pages/preferences/utils.py:19
 msgid "Delete my account"
 msgstr "Eliminar mi cuenta"
+
+#: inginious/frontend/plugins/UNCode/constants.py:31
+msgid "About us"
+msgstr "Sobre nosotros"
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:7
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:12
@@ -1543,7 +1547,7 @@ msgstr "Contraseña"
 
 #: inginious/frontend/plugins/auth/custom_auth_form.html:34
 #: inginious/frontend/templates/auth.html:28
-#: inginious/frontend/templates/layout.html:135
+#: inginious/frontend/templates/layout.html:143
 #: inginious/frontend/templates/signin_button.html:8
 #: inginious/frontend/templates/signin_button.html:15
 msgid "Sign in"
@@ -1594,6 +1598,10 @@ msgstr "Lenguajes"
 #: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:24
 msgid "Add/Update"
 msgstr "Agregar/Actualizar"
+
+#: inginious/frontend/plugins/contact_page/pages/constants.py:53
+msgid "Contact us"
+msgstr "Contáctenos"
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:8
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:12
@@ -1933,7 +1941,7 @@ msgstr "Tarea"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:20
 #: inginious/frontend/templates/course_admin/task_info.html:42
-#: inginious/frontend/templates/mycourses.html:136
+#: inginious/frontend/templates/mycourses.html:139
 msgid "Student"
 msgstr "Estudiante"
 
@@ -2466,19 +2474,19 @@ msgstr "Banco de problemas"
 msgid "\"Administration\""
 msgstr "\"Administración\""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:26
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:27
 msgid "Language is not available."
 msgstr "Lenguaje no disponible."
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:31
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:32
 msgid "The course does not exist or the user does not have permissions."
 msgstr "El curso no existe o el usuario no tiene permisos."
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:36
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:37
 msgid "The file is not coded in UTF-8. Please change the encoding."
 msgstr "El archivo no está codificado en UTF-8. Por favor cambie la codificación."
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:42
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:43
 msgid ""
 "The file is not formatted as expected, check it is comma separated and \n"
 "                             emails are actual emails."
@@ -2486,13 +2494,35 @@ msgstr ""
 "El archivo no tiene el formato esperado, revise que esté separado por "
 "comas y los correos son verdaderos."
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:52
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:54
 msgid ""
-"The process finished. Registered students on the course: {0!s}. \n"
-"            Registered students on UNCode: {1!s} out of {2!s}."
+"The process finished with {0!s} students registered on the course and "
+"{1!s} students registered \n"
+"            on UNCode out of {2!s} students listed in the file. The "
+"emails for the new students are being sent in the \n"
+"            background, wait a while and check again that all the "
+"students were registered."
 msgstr ""
-"El proceso terminó. Usuarios registrados en el curso: {0!s}. \n"
-"            Registrados en UNCode: {1!s} de un total de {2!s}."
+"El proceso terminó con {0!s} estudiantes registrados en el curso y {1!s} "
+"estudiantes registrados \n"
+"            en UNCode de un total del {2!s} estudiantes listados en el "
+"archivo. Los correos para los nuevos estudiantes están siendo enviados en"
+" segundo plano, por favor espere un tiempo y vuelva a revisar que todos "
+"los             estudiantes hayan sido registrados."
+
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:66
+msgid ""
+"<br><br>The next students were not registered because of an unexpected "
+"error, probably the user \n"
+"                is already registered with another username or the "
+"username is already taken:\n"
+"                {}"
+msgstr ""
+"<br><br>Los siguientes estudiantes no fueron registrados debido a un "
+"error inesperado, es probable que el usuario \n"
+"                ya está registrado con otro nombre de usuario o el nombre"
+" de usuario ya ha sido tomado: \n"
+"                {}"
 
 #: inginious/frontend/plugins/register_students/static/email_template.html:5
 msgid ""
@@ -2981,7 +3011,7 @@ msgstr "No estas registrado a este curso."
 #: inginious/frontend/templates/index.html:12
 #: inginious/frontend/templates/index.html:36
 #: inginious/frontend/templates/layout.html:102
-#: inginious/frontend/templates/layout.html:131
+#: inginious/frontend/templates/layout.html:139
 msgid "Course list"
 msgstr "Lista de cursos"
 
@@ -3033,17 +3063,17 @@ msgstr "Estado del servicio"
 msgid "Log out"
 msgstr "Cerrar sesión"
 
-#: inginious/frontend/templates/layout.html:123
+#: inginious/frontend/templates/layout.html:131
 msgid "English"
 msgstr "Español"
 
-#: inginious/frontend/templates/layout.html:134
+#: inginious/frontend/templates/layout.html:142
 #: inginious/frontend/templates/mycourses.html:101
 #: inginious/frontend/templates/register.html:8
 msgid "Register"
 msgstr "Registrarse"
 
-#: inginious/frontend/templates/layout.html:171
+#: inginious/frontend/templates/layout.html:186
 #: inginious/frontend/templates/maintenance.html:93
 msgid "UNCode is distributed under AGPL license"
 msgstr "UNCode sigue la especificación de la licencia AGPL"
@@ -3189,31 +3219,31 @@ msgstr "El nuevo registro ha fallado. Verifique su contraseña."
 msgid "Select a course"
 msgstr "Seleccione un curso"
 
-#: inginious/frontend/templates/mycourses.html:107
+#: inginious/frontend/templates/mycourses.html:108
 msgid "'Search course'"
 msgstr "'Buscar curso'"
 
-#: inginious/frontend/templates/mycourses.html:110
+#: inginious/frontend/templates/mycourses.html:112
 msgid "Search"
 msgstr "Buscar"
 
-#: inginious/frontend/templates/mycourses.html:127
+#: inginious/frontend/templates/mycourses.html:130
 msgid "LTI course"
 msgstr "Curso LTI"
 
-#: inginious/frontend/templates/mycourses.html:129
+#: inginious/frontend/templates/mycourses.html:132
 msgid "Hidden course"
 msgstr "Curso oculto"
 
-#: inginious/frontend/templates/mycourses.html:132
+#: inginious/frontend/templates/mycourses.html:135
 msgid "Administrator"
 msgstr "Administrador"
 
-#: inginious/frontend/templates/mycourses.html:134
+#: inginious/frontend/templates/mycourses.html:137
 msgid "Tutor"
 msgstr "Tutor"
 
-#: inginious/frontend/templates/mycourses.html:141
+#: inginious/frontend/templates/mycourses.html:144
 msgid "You are not registered to any course"
 msgstr "No estás registrado a ningún curso"
 
@@ -5142,34 +5172,4 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
-
-#~ msgid "Rubric scoring for:"
-#~ msgstr "Rubrica"
-
-#~ msgid "Contact page"
-#~ msgstr ""
-
-#~ msgid "Student Succeeded"
-#~ msgstr "Estudiantes aprobados"
-
-#~ msgid "Students who have tried"
-#~ msgstr "Estudiantes que lo han intentado"
-
-#~ msgid "Rubric scoring for Task:"
-#~ msgstr "Rubrica para la tarea"
-
-#~ msgid "Unnamed"
-#~ msgstr "Sin nombre"
-
-#~ msgid "Request a new course"
-#~ msgstr "Solicitar crear un nuevo curso"
-
-#~ msgid ""
-#~ "Just put your honest opinion or "
-#~ "tell us about the problem you have"
-#~ " encountered "
-#~ msgstr ""
-
-#~ msgid "Rubric Scoring"
-#~ msgstr "Rubrica"
 

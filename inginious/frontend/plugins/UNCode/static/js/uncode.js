@@ -1,21 +1,4 @@
 jQuery(document).ready(function () {
-
-    function updateNavbar() {
-        // Update navbar with new information.
-        const navbar = $("#wrapper")
-            .find("> div.navbar.navbar-default.navbar-static-top");
-        //Add UNCode button
-        navbar.find("> div > div.collapse.navbar-collapse > ol.nav.navbar-nav.navbar-right")
-            .append(
-                "<li class='dropdown'><a class=\"dropdown-toggle\" role=\"button\" data-toggle=\"dropdown\">\n" +
-                "<i class='fa fa-plus-circle' aria-hidden='true' style='margin-right: 5px'></i>UNCode <span class=\"caret\"></span></a>" +
-                "<ul class=\"dropdown-menu\">" +
-                "<li><a class='navbar-link' href='https://juezun.github.io/' target='_blank' >" +
-                "<i class='fa fa-question-circle-o' aria-hidden='true' style='margin-right: 5px'></i>About UNCode</a></li>" +
-                "<li><a href=\"/contact_page\" class=\"navbar-link\"><i class=\"fa fa-envelope\">" +
-                "</i> Contact Us</a></ul></li>");
-    }
-
     function updateFooter() {
         // Update footer with new information.
         const footer = $("#footer");
@@ -40,7 +23,6 @@ jQuery(document).ready(function () {
         const imagePath = window.location.origin + "/UNCode/static/images/logo_unc.svg";
         updatePageIcon(imagePath);
         updateFooter();
-        updateNavbar();
     }
 
     function addTaskContextTemplate() {

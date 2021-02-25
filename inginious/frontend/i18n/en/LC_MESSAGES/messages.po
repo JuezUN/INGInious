@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-24 08:18-0500\n"
+"POT-Creation-Date: 2021-02-24 22:59-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -143,7 +143,7 @@ msgid "This email address is already in use !"
 msgstr ""
 
 #: inginious/frontend/pages/register.py:106
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:109
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:149
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr ""
@@ -671,6 +671,10 @@ msgstr ""
 
 #: inginious/frontend/pages/preferences/utils.py:19
 msgid "Delete my account"
+msgstr ""
+
+#: inginious/frontend/plugins/UNCode/constants.py:31
+msgid "About us"
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:7
@@ -1347,7 +1351,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/auth/custom_auth_form.html:34
 #: inginious/frontend/templates/auth.html:28
-#: inginious/frontend/templates/layout.html:135
+#: inginious/frontend/templates/layout.html:143
 #: inginious/frontend/templates/signin_button.html:8
 #: inginious/frontend/templates/signin_button.html:15
 msgid "Sign in"
@@ -1394,6 +1398,10 @@ msgstr ""
 
 #: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:24
 msgid "Add/Update"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/constants.py:53
+msgid "Contact us"
 msgstr ""
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:8
@@ -1716,7 +1724,7 @@ msgstr ""
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:20
 #: inginious/frontend/templates/course_admin/task_info.html:42
-#: inginious/frontend/templates/mycourses.html:136
+#: inginious/frontend/templates/mycourses.html:139
 msgid "Student"
 msgstr ""
 
@@ -2199,28 +2207,41 @@ msgstr ""
 msgid "\"Administration\""
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:26
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:27
 msgid "Language is not available."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:31
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:32
 msgid "The course does not exist or the user does not have permissions."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:36
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:37
 msgid "The file is not coded in UTF-8. Please change the encoding."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:42
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:43
 msgid ""
 "The file is not formatted as expected, check it is comma separated and \n"
 "                             emails are actual emails."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:52
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:54
 msgid ""
-"The process finished. Registered students on the course: {0!s}. \n"
-"            Registered students on UNCode: {1!s} out of {2!s}."
+"The process finished with {0!s} students registered on the course and "
+"{1!s} students registered \n"
+"            on UNCode out of {2!s} students listed in the file. The "
+"emails for the new students are being sent in the \n"
+"            background, wait a while and check again that all the "
+"students were registered."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:66
+msgid ""
+"<br><br>The next students were not registered because of an unexpected "
+"error, probably the user \n"
+"                is already registered with another username or the "
+"username is already taken:\n"
+"                {}"
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_template.html:5
@@ -2671,7 +2692,7 @@ msgstr ""
 #: inginious/frontend/templates/index.html:12
 #: inginious/frontend/templates/index.html:36
 #: inginious/frontend/templates/layout.html:102
-#: inginious/frontend/templates/layout.html:131
+#: inginious/frontend/templates/layout.html:139
 msgid "Course list"
 msgstr ""
 
@@ -2720,17 +2741,17 @@ msgstr ""
 msgid "Log out"
 msgstr ""
 
-#: inginious/frontend/templates/layout.html:123
+#: inginious/frontend/templates/layout.html:131
 msgid "English"
 msgstr ""
 
-#: inginious/frontend/templates/layout.html:134
+#: inginious/frontend/templates/layout.html:142
 #: inginious/frontend/templates/mycourses.html:101
 #: inginious/frontend/templates/register.html:8
 msgid "Register"
 msgstr ""
 
-#: inginious/frontend/templates/layout.html:171
+#: inginious/frontend/templates/layout.html:186
 #: inginious/frontend/templates/maintenance.html:93
 msgid "UNCode is distributed under AGPL license"
 msgstr ""
@@ -2862,31 +2883,31 @@ msgstr ""
 msgid "Select a course"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:107
+#: inginious/frontend/templates/mycourses.html:108
 msgid "'Search course'"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:110
+#: inginious/frontend/templates/mycourses.html:112
 msgid "Search"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:127
+#: inginious/frontend/templates/mycourses.html:130
 msgid "LTI course"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:129
+#: inginious/frontend/templates/mycourses.html:132
 msgid "Hidden course"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:132
+#: inginious/frontend/templates/mycourses.html:135
 msgid "Administrator"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:134
+#: inginious/frontend/templates/mycourses.html:137
 msgid "Tutor"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:141
+#: inginious/frontend/templates/mycourses.html:144
 msgid "You are not registered to any course"
 msgstr ""
 
@@ -4749,18 +4770,49 @@ msgstr ""
 msgid "Allowed extensions:"
 msgstr ""
 
-#~ msgid "Contact page"
-#~ msgstr ""
-
-#~ msgid "Request a new course"
+#~ msgid ""
+#~ "The process finished. {0!s} students "
+#~ "were registered on the course and \n"
+#~ ""
+#~ "            {1!s} students were registered "
+#~ "on UNCode out of {2!s} students "
+#~ "listed in the file."
 #~ msgstr ""
 
 #~ msgid ""
-#~ "Just put your honest opinion or "
-#~ "tell us about the problem you have"
-#~ " encountered "
+#~ "The process finished. {0!s} students "
+#~ "were registered on the course and  "
+#~ "{1!s} students were registered \n"
+#~ "            on UNCode out of {2!s} "
+#~ "students listed in the file. The "
+#~ "emails for the new students are "
+#~ "being sent in the \n"
+#~ "            background, wait a while and"
+#~ " check again that all the students"
+#~ " were registered."
 #~ msgstr ""
 
-#~ msgid "Rubric Scoring"
+#~ msgid ""
+#~ "<br><br>The next students were not "
+#~ "registered because of an unexpected "
+#~ "error, check that the user \n"
+#~ "                is not already registered "
+#~ "with another username or the username"
+#~ " is already used with another email:"
+#~ "\n"
+#~ "                {}"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The process finished. {0!s} students "
+#~ "were registered on the course and "
+#~ "{1!s} students were registered \n"
+#~ "            on UNCode out of {2!s} "
+#~ "students listed in the file. The "
+#~ "emails for the new students are "
+#~ "being sent in the \n"
+#~ "            background, wait a while and"
+#~ " check again that all the students"
+#~ " were registered."
 #~ msgstr ""
 

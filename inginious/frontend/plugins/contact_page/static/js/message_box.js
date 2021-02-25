@@ -23,7 +23,7 @@ class MessageBox {
     }
 
     displayBoxMessage() {
-        this.divElement.innerHTML += this.code;
+        this.divElement.innerHTML = this.code;
         this.divElement.style.display = "block";
         if (this.dismissible) {
             this.doDisappearEffect();
