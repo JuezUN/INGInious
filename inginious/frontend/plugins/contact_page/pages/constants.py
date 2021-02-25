@@ -5,7 +5,7 @@
 
 """ Define the constants elements """
 
-from inginious.frontend.plugins.contact_page.pages.slack_url_error import SlackURLError
+from .slack_url_error import SlackURLError
 
 _url_channel = {
     "subject-comment": "",
@@ -49,5 +49,5 @@ def get_use_minify():
 
 
 def contact_us_option_hook():
-    return "<li><a href='https://juezun.github.io/' class='navbar-link' target='_blank'>" + \
+    return "<li><a href='/contact_page' class='navbar-link' target='_blank'>" + \
            "<i class='fa fa-envelope fa-fw' style='margin-right: 4px'></i>" + _("Contact us") + "</a></li>"
