@@ -21,15 +21,15 @@ jQuery(document).ready(function () {
     }
 
     function preventModalToBeClosed() {
-        $('#register_students_modal').modal({backdrop: 'static', keyboard: false});
-        $('#register_students_modal button[data-dismiss=modal]').each(function () {
+        $("#register_students_modal").modal({backdrop: "static", keyboard: false});
+        $("#register_students_modal button[data-dismiss=modal]").each(function () {
             $(this).prop("disabled", true);
         });
     }
 
     function makeModalClosable() {
-        $('#register_students_modal').modal({backdrop: '', keyboard: true});
-        $('#register_students_modal button[data-dismiss=modal]').each(function () {
+        $("#register_students_modal").modal({backdrop: '', keyboard: true});
+        $("#register_students_modal button[data-dismiss=modal]").each(function () {
             $(this).prop("disabled", false);
         });
     }
@@ -61,7 +61,7 @@ jQuery(document).ready(function () {
     function submitRegisterStudents() {
         $("form#upload_students_file").submit(function (e) {
             e.preventDefault();
-            const file = $("#students_file").prop('files')[0];
+            const file = $("#students_file").prop("files")[0];
             const language = $("#email_language").val();
             const allowedFileExtensions = /(\.csv)$/i;
             if (file === undefined) {
@@ -74,9 +74,9 @@ jQuery(document).ready(function () {
                 formData.append("course", getCourseId());
                 formData.append("language", language);
                 $.ajax({
-                    url: '/api/addStudents/',
+                    url: "/api/addStudents/",
                     method: "POST",
-                    dataType: 'json',
+                    dataType: "json",
                     data: formData,
                     mimeType: "multipart/form-data",
                     processData: false,
@@ -105,13 +105,13 @@ jQuery(document).ready(function () {
         // Function intended for appending the button to open the modal in the 'students' page.
         const html = "<br><button class='btn btn-success' data-toggle='modal' data-target='#register_students_modal'>" +
             "<i class='fa fa-users'></i> Register students</button>";
-        const tabStudents = $('#tab_students');
+        const tabStudents = $("#tab_students");
         tabStudents.append(html);
     }
 
     function closeModal() {
         // Function to describe the process to follow when the modal is closed.
-        $('#register_students_modal').on('hidden.bs.modal', function () {
+        $("#register_students_modal").on("hidden.bs.modal", function () {
             if (registerSucceeded) {
                 window.location.replace(window.location.href);
             } else {
