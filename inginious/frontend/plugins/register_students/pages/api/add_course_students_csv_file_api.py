@@ -46,14 +46,25 @@ class AddCourseStudentsCsvFile(AdminApi):
 
         session_language = self.user_manager.session_language()
         self.user_manager.set_session_language(email_language)
-        registered_on_course, registered_users = self.register_all_students(parsed_file, course, email_language)
+        registered_on_course, registered_users, users_failed = self.register_all_students(parsed_file, course,
+                                                                                          email_language)
         self.user_manager.set_session_language(session_language)
 
         total_to_register = len(parsed_file)
         message = _(
-            """The process finished. {0!s} students were registered on the course and 
-            {1!s} students were registered on UNCode out of {2!s} students listed in the file.""").format(
+            """The process finished with {0!s} students registered on the course and {1!s} students registered 
+            on UNCode out of {2!s} students listed in the file. The emails for the new students are being sent in the 
+            background, wait a while and check again that all the students were registered.""").format(
             registered_on_course, registered_users, total_to_register)
+
+        if len(users_failed) > 0:
+            html_users_failed = "".join(
+                map(lambda x: "<br>  - {} - {}".format(x["username"], x["email"]), users_failed))
+            failed_students_message = _(
+                """<br><br>The next students were not registered because of an unexpected error, probably the user 
+                is already registered with another username or the username is already taken:
+                {}""".format(html_users_failed))
+            message += failed_students_message
 
         return 200, {"status": "success", "text": message}
 
@@ -61,13 +72,19 @@ class AddCourseStudentsCsvFile(AdminApi):
         registered_on_course = 0
         registered_users = 0
         all_emails = []
+        users_failed = []
         for user_data in parsed_file:
             data = self._parse_user_data(user_data)
 
-            was_registered, email = self._register_student(data, course, email_language)
+            was_registered, email, failed = self._register_student(data, course, email_language)
             if was_registered:
                 registered_users += 1
                 all_emails.append(email)
+
+            if self._is_failed_register(was_registered, failed, data):
+                users_failed.append(data)
+                continue
+
             try:
                 was_registered_on_course = self.user_manager.course_register_user(course, data["username"], '', True)
                 if was_registered_on_course:
@@ -79,7 +96,18 @@ class AddCourseStudentsCsvFile(AdminApi):
         emails_thread = threading.Thread(target=self._send_emails_in_background,
                                          args=[all_emails, self.database.users.delete_one])
         emails_thread.start()
-        return registered_on_course, registered_users
+        return registered_on_course, registered_users, users_failed
+
+    def _is_failed_register(self, was_registered, failed, data):
+        """
+        Check when the student was not registered on UNCode but still does not exist in DB, thus, the student is
+        already registered on UNCode with a different username or the username was already taken with another email.
+        Also check if the register failed due to an unexpected error.
+        """
+
+        user = self.database.users.find_one({"username": data["username"]})
+
+        return (not was_registered and user is None) or (user is not None and user["email"] != data["email"]) or failed
 
     def _register_student(self, data, course, email_language):
         """
@@ -91,7 +119,7 @@ class AddCourseStudentsCsvFile(AdminApi):
         existing_user = self.database.users.find_one(
             {"$or": [{"username": data["username"]}, {"email": data["email"]}]})
         if existing_user is not None:
-            return False, None
+            return False, None, False
         password = data["password"]
         passwd_hash = hashlib.sha512(data["password"].encode("utf-8")).hexdigest()
         activate_hash = hashlib.sha512(str(random.getrandbits(256)).encode("utf-8")).hexdigest()
@@ -112,10 +140,10 @@ class AddCourseStudentsCsvFile(AdminApi):
                 password=password, course_name=course.get_name("en"), data_policy=data_policy_link)
             self.database.users.insert(data)
         except:
-            return False, None
+            return False, None, True
 
         email = (data["email"], content)
-        return True, email
+        return True, email, False
 
     def _send_emails_in_background(self, emails, delete_user_function):
         subject = _("Welcome on UNCode")

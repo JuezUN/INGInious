@@ -39,15 +39,16 @@ jQuery(document).ready(function () {
         if ("status" in data && data["status"] === "error") {
             displayRegisterStudentsAlertError(data["text"]);
         } else if ("status" in data && data["status"] === "success") {
-            let alert_element = $("#register_students_alert");
+            const alert_element = $("#register_students_alert");
             register_succeeded = true;
             $("#students_file").val('');
             alert_element.prop("class", "alert alert-warning");
-            alert_element.text(data["text"]);
+            alert_element.text("");
+            alert_element.append($.parseHTML(data["text"]));
             alert_element.prop("hidden", false);
             setTimeout(function () {
                 alert_element.prop("hidden", true);
-            }, 10000)
+            }, 100000)
         } else {
             displayRegisterStudentsAlertError("An error occurred while registering. Please try again.");
         }
