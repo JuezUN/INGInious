@@ -1,10 +1,10 @@
-import web
-import re
+import csv
 import hashlib
 import random
-import csv
+import re
 import string
 import threading
+import web
 
 from os.path import dirname, join
 from inginious.frontend.plugins.utils.admin_api import AdminApi
@@ -57,7 +57,7 @@ class AddCourseStudentsCsvFile(AdminApi):
             background, wait a while and check again that all the students were registered.""").format(
             registered_on_course, registered_users, total_to_register)
 
-        if len(users_failed) > 0:
+        if users_failed:
             html_users_failed = "".join(
                 map(lambda x: "<br>  - {} - {}".format(x["username"], x["email"]), users_failed))
             failed_students_message = _(
