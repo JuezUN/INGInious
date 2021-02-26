@@ -4,7 +4,7 @@
 # more information about the licensing of this file.
 """ Feedback view for the students """
 from inginious.frontend.pages.api._api_page import APIError
-from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
+from inginious.frontend.pages.utils import INGIniousAuthPage
 from inginious.frontend.parsable_text import ParsableText
 from inginious.frontend.plugins.manual_scoring.pages.constants import get_render_path, get_use_minify
 from .rubric import get_manual_scoring_data, get_submission_result_text, get_rubric_content
@@ -12,7 +12,7 @@ from .rubric import get_manual_scoring_data, get_submission_result_text, get_rub
 base_renderer_path = get_render_path()
 
 
-class FeedbackPage(INGIniousAdminPage):
+class FeedbackPage(INGIniousAuthPage):
     def GET_AUTH(self, course_id, submission_id):
         """ Get request """
         course = self.course_factory.get_course(course_id)

@@ -1,5 +1,5 @@
 function sendSeeFeedbackAnalytics() {
-    $.post('/api/analytics/', {
+    $.post("/api/analytics/", {
         service: {
             key: "manual_scoring_see_feedback",
             name: "Manual Scoring - See feedback"

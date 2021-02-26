@@ -249,21 +249,6 @@ function minifyPlagiarismPlugin() {
 
     minifyCssFiles(cssFiles, cssFilesPath, "plagiarism");
 }
-function minifyManualScoringPlugin() {
-    const cssFilesPath = _MANUAL_SCORING_PATH + "/css/";
-    const jsFilesPath = _MANUAL_SCORING_PATH + "/js/";
-    const jsFiles = ["code_field","message_box","rubric","manual_scoring_main"].map((name) => {
-        return getJSFilePath(jsFilesPath, name);
-    });
-    const cssFiles = ["manual_scoring"].map((name) => {
-        return getCssFilePath(cssFilesPath, name);
-    });
-
-    console.log("Minify 'manual scoring' static files.");
-
-    minifyJSFiles(jsFiles, jsFilesPath, "manual_scoring");
-    minifyCssFiles(cssFiles, cssFilesPath, "manual_scoring");
-}
 
 function minifyManualScoringPlugin() {
     const cssFilesPath = _MANUAL_SCORING_PATH + "/css/";
@@ -279,6 +264,10 @@ function minifyManualScoringPlugin() {
         return getJSFilePath(jsFilesPath, name);
     });
 
+    const courseTaskListJsFiles = ["message_box", "task_list_main"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+
     const cssFiles = ["manual_scoring"].map((name) => {
         return getCssFilePath(cssFilesPath, name);
     });
@@ -288,6 +277,7 @@ function minifyManualScoringPlugin() {
     minifyJSFiles(commonJsFiles, jsFilesPath, "common_files");
     minifyJSFiles(manualScoringJsFiles, jsFilesPath, "manual_scoring");
     minifyJSFiles(feedbackJsFiles, jsFilesPath, "feedback");
+    minifyJSFiles(courseTaskListJsFiles, jsFilesPath, "course_task_list");
     minifyCssFiles(cssFiles, cssFilesPath, "manual_scoring");
 }
 

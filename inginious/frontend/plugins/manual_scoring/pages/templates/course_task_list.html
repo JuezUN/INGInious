@@ -24,10 +24,11 @@ $var Navbar: $:NavbarF()
     <h2>$:_("Manual Scoring"): $:_("Tasks List")</h2>
     </div>
     <div class="col-md-1 ">
-        <button type="button" class="btn btn-info" >
+        <a type="button" class="btn btn-info" id="download_csv">
                 <i class="fa fa-table"></i> $:_("Download CSV")
-        </button>
+        </a>
     </div>
+    <div class="col-md-12 py-1" id="information_area"></div>
 </div>
 
 <form method="post">
@@ -61,3 +62,9 @@ $var Navbar: $:NavbarF()
         </div>
     </div>
 </form>
+
+<script>
+    const getCourseId = function (){
+        return "$course.get_id()";
+    }
+</script>
