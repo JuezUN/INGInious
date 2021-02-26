@@ -43,6 +43,8 @@ class TemplateHelper(object):
                                                                                            **kwargs)),
                               "superadmin_options": (
                                   lambda **kwargs: self._generic_hook('superadmin_options', **kwargs)),
+                              "uncode_navbar_options": (
+                                  lambda **kwargs: self._generic_hook('uncode_navbar_options', **kwargs))
                               }
         self._plugin_manager = plugin_manager
         self._template_dir = default_template_dir

@@ -92,9 +92,19 @@ class ContactPageForm {
     sendInfo() {
         if (this.validateFieldsStatus()) {
             this.sendRequest();
+            this.sendContactPageAnalytics();
         } else {
-            const message = new MessageBox(ALERT_SPACE_ID, "Correct all the errors noted in order to send the message ", "warning", false);
+            new MessageBox(ALERT_SPACE_ID, "Correct all the errors noted in order to send the message ", "danger", false);
         }
+    }
+
+    sendContactPageAnalytics() {
+        jQuery.post("/api/analytics/", {
+            service: {
+                key: "contact_page",
+                name: "Contact us"
+            },
+        });
     }
 
     validateFieldsStatus() {
@@ -116,10 +126,10 @@ class ContactPageForm {
                 "textarea": this.textarea.val()
             },
             success: function (data) {
-                const message = new MessageBox(ALERT_SPACE_ID, "The message has been sent", "info", false);
+                new MessageBox(ALERT_SPACE_ID, "The message has been sent", "info", false);
             },
             error: function (request, status, error) {
-                const message = new MessageBox(ALERT_SPACE_ID, "The message could not be sent", "danger", false);
+                new MessageBox(ALERT_SPACE_ID, "The message could not be sent", "danger", false);
             }
         });
     }

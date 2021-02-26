@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-26 12:34-0500\n"
+"POT-Creation-Date: 2021-02-24 22:59-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -151,7 +151,7 @@ msgid "This email address is already in use !"
 msgstr "¡La dirección de correo electrónico ya existe!"
 
 #: inginious/frontend/pages/register.py:106
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:109
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:149
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr "Bienvenido a UNCode"
@@ -593,7 +593,7 @@ msgstr "Ha ocurrido un error eliminando los archivos"
 #: inginious/frontend/templates/course_admin/settings.html:17
 #: inginious/frontend/templates/course_admin/settings.html:21
 msgid "Course settings"
-msgstr "Opciones del curso"
+msgstr "Configuración del curso"
 
 #: inginious/frontend/pages/course_admin/utils.py:258
 #: inginious/frontend/templates/classroom.html:104
@@ -717,6 +717,10 @@ msgstr "Enlaces de autenticación"
 #: inginious/frontend/pages/preferences/utils.py:19
 msgid "Delete my account"
 msgstr "Eliminar mi cuenta"
+
+#: inginious/frontend/plugins/UNCode/constants.py:31
+msgid "About us"
+msgstr "Sobre nosotros"
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:7
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:12
@@ -1222,7 +1226,7 @@ msgid ""
 "Awesome! Everything worked as it should have: your code passed all the "
 "test cases. Congratulations!"
 msgstr ""
-"¡Grandioso! Todo funcionó como lo esperado: tu código pasó todos los "
+"¡Grandioso! Todo funcionó como se esperaba: tu código pasó todos los "
 "casos de prueba. ¡Felicitaciones!"
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:37
@@ -1230,8 +1234,8 @@ msgid ""
 "Sorry, but your code failed to solve the problem. It does not solve "
 "correctly the problem you were asked for."
 msgstr ""
-"Lo siento pero tu código falló al resolver el problema ya que no resuelve"
-" correctamente la tarea esperada."
+"Lo sentimos, tu código falló al resolver el problema ya que no resuelve "
+"correctamente la tarea esperada."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:39
 msgid ""
@@ -1251,7 +1255,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:43
 msgid "Read carefully what you are asked to do and check again your code."
-msgstr "Lea cuidadosamente las instrucciones y vuela a revisar su código."
+msgstr "Lee cuidadosamente las instrucciones y vuelve a revisar tu código."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:45
 msgid ""
@@ -1282,7 +1286,7 @@ msgid ""
 " went wrong."
 msgstr ""
 "El mensaje \"compilation error\" incluye la salida con el error producido"
-" por el compilador. Lea el mensaje con cuidado, este puede contener "
+" por el compilador. Lee el mensaje con cuidado, este puede contener "
 "información importante sobre el error."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:69
@@ -1318,8 +1322,8 @@ msgid ""
 "There are two options: either  your code  got stuck in an infinite loop "
 "or your code takes much longer than it should."
 msgstr ""
-"Hay dos opciones: ya sea que tu código se quedó un ciclo infinito o o tu "
-"código toma más tiempo del que debería."
+"Hay dos opciones: ya sea que tu código se quedó en un ciclo infinito o "
+"que tu código toma más tiempo del que debería."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:87
 msgid ""
@@ -1331,23 +1335,21 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:97
 msgid "Getting this result means your code is using too much memory at runtime."
-msgstr ""
-"Al obtener este resultado, tu código toma mucha memoria en tiempo de "
-"ejecución."
+msgstr "Tu código toma mucha memoria en tiempo de ejecución."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:99
 msgid ""
 "Check the data structures you are using, or find a more \"optimal\" "
 "solution, a solution that uses less memory."
 msgstr ""
-"Revisa la estructuras de datos usadas, o encuentre una solución más "
-"\"óptima\". una que use menos memoria."
+"Revisa las estructuras de datos usadas, o encuentra una solución más "
+"\"óptima\", una que use menos memoria."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:109
 msgid ""
 "Getting this result means the output of your code is longer that the "
 "allowed."
-msgstr "Esto significa que la salida de tu código es más grande que lo permitido."
+msgstr "Esto significa que la salida de tu código es más grande de lo permitido."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:111
 msgid "Check for print expressions in a loop."
@@ -1367,17 +1369,18 @@ msgid ""
 "existent variable or function) or student code (i.e. the function to be "
 "tested is not present in the notebook)."
 msgstr ""
-"Este error puede ser ya sea en el código de evaluación (llamando una "
-"función o que no existe) o en el código del estudiante (por ejemplo la "
-"función a ser probada no está en el código del estudiante)."
+"Esto puede ser un error en el código de evaluación (por ejemplo al llamar"
+" una función o variable que no existe) o en el código del estudiante (por"
+" ejemplo que la función a ser probada no está en el código del "
+"estudiante)."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:125
 msgid ""
 "Check that your code implements all that was requested with the correct "
 "signature."
 msgstr ""
-"Revisa que tu código implementa todos lo solicitado siguiendo las "
-"instrucciones, así como las las firmas de variables y funciones sin "
+"Revisa que tu código implementa todo lo solicitado siguiendo las "
+"instrucciones, así como las firmas de variables y funciones sin "
 "modificar."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:131
@@ -1385,14 +1388,14 @@ msgid ""
 "Results related to UNCode. Unexpected errors when your code was been "
 "executed."
 msgstr ""
-"Resultados relacionado a UNCode. Errores internos al momento de ejecutar "
-"tu código."
+"Resultados relacionados a UNCode. Errores internos al momento de ejecutar"
+" tu código."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:139
 msgid ""
 "If you get this message, do not worry, There's Nothing Wrong With Your "
 "Code!"
-msgstr "Si obtienes este mensaje, no te preocupes, tu código no está mal!"
+msgstr "Si obtienes este mensaje, no te preocupes, ¡tu código no está mal!"
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:141
 msgid ""
@@ -1408,16 +1411,16 @@ msgid ""
 " If you still get the same result, please wait a while and try again or "
 "contact your professor."
 msgstr ""
-"Nos disculpamos por esto. Por recargue la página e intente enviar de "
-"nuevo! Si el error persiste, por favor espere un tiempo y vuelva a "
-"intentar o contacte a su profesor."
+"Nos disculpamos por esto. ¡Recarga la página e intenta enviarlo de nuevo!"
+" Si el error persiste, por favor espera un tiempo y vuelve a intentarlo, "
+"o contacta con tu profesor."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:153
 msgid ""
 "If you get this, it means that we had a problem running and assessing "
 "your code. Wait for a while and try to send a submission again."
 msgstr ""
-"Tuvimos un problema ejecutando tu código. Espere por un tiempo y vuelva a"
+"Tuvimos un problema ejecutando tu código. Espera por un tiempo y vuelve a"
 " realizar el envío."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:155
@@ -1425,8 +1428,8 @@ msgid ""
 "This might be also caused by a too small time limit in the task "
 "configuration (talk to your professor about it)."
 msgstr ""
-"Esto también puede se causado por un tiempo límite muy pequeño al "
-"configurar la tarea (háblele a su profesor al respecto)."
+"Esto también puede ser ocasionado por un tiempo límite muy pequeño al "
+"configurar la tarea (hábla con tu profesor al respecto)."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:165
 msgid ""
@@ -1457,8 +1460,8 @@ msgid ""
 "There was a problem while assessing your submission. Please wait a while "
 "and reload the page, and try submitting again."
 msgstr ""
-"Hubo un problema al evaluar tu submission. Por favor espere un momento, "
-"recargue la página e intente de nuevo."
+"Hubo un problema al evaluar tu submission. Por favor espera un momento, "
+"recarga la página e intenta de nuevo."
 
 #: inginious/frontend/plugins/analytics/__init__.py:30
 msgid ""
@@ -1544,7 +1547,7 @@ msgstr "Contraseña"
 
 #: inginious/frontend/plugins/auth/custom_auth_form.html:34
 #: inginious/frontend/templates/auth.html:28
-#: inginious/frontend/templates/layout.html:135
+#: inginious/frontend/templates/layout.html:143
 #: inginious/frontend/templates/signin_button.html:8
 #: inginious/frontend/templates/signin_button.html:15
 msgid "Sign in"
@@ -1595,6 +1598,10 @@ msgstr "Lenguajes"
 #: inginious/frontend/plugins/code_preview/pages/templates/code_preview.html:24
 msgid "Add/Update"
 msgstr "Agregar/Actualizar"
+
+#: inginious/frontend/plugins/contact_page/pages/constants.py:53
+msgid "Contact us"
+msgstr "Contáctenos"
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:8
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:12
@@ -1699,8 +1706,8 @@ msgid ""
 "or TIME_LIMIT_EXCEEDED.\""
 msgstr ""
 "\"En caso de que no esté chequeado, los resultados del estudiante son "
-"solo ACCEPTED or WRONG_ANSWER. Si está chequeado, se muestran errores "
-"adicionales cómo RUNTIME_ERROR or TIME_LIMIT_EXCEEDED.\""
+"solo ACCEPTED o WRONG_ANSWER. Si está chequeado, se muestran errores "
+"adicionales cómo RUNTIME_ERROR o TIME_LIMIT_EXCEEDED.\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:76
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:216
@@ -1718,7 +1725,7 @@ msgstr "Límite de memoria casos de prueba (MB)"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:88
 msgid "\"Memory limit for each test case in MBs. (Max. 500 MBs)\""
-msgstr "\"Límite de memoria para cada caso de prueba in MBs. (Max. 500 MBs)\""
+msgstr "\"Límite de memoria para cada caso de prueba en MBs. (Max. 500 MBs)\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:96
 msgid "Output limit test cases (MB)"
@@ -1807,8 +1814,9 @@ msgstr ""
 "\"URL del dataset para descargar el archivo antes de ejecutar el código "
 "de evaluación. Esto es de ayuda cuando el dataset es demasiado grande y "
 "no puede ser subido en la pestaña de archivos. Recuerde permitir el "
-"acceso a internet al entorno de evaluación en la pestaña 'Container "
-"setup'. Además, establezca el nombre del archivo en el campo de abajo.\""
+"acceso a internet al entorno de evaluación en la pestaña 'Configuraciones"
+" del contenedor'. Además, establezca el nombre del archivo en el campo de"
+" abajo.\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:202
 msgid "Dataset filename"
@@ -1820,7 +1828,7 @@ msgid ""
 "filename is the one used to load the dataset in the code.\""
 msgstr ""
 "\"Nombre de archivo con extensión para el dataset descargado (es decir "
-"data.csv).Este nombre de archivo es el utilizado para cargar el dataset "
+"data.csv). Este nombre de archivo es el utilizado para cargar el dataset "
 "en el código.\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:217
@@ -1997,7 +2005,7 @@ msgstr "Tarea"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:20
 #: inginious/frontend/templates/course_admin/task_info.html:42
-#: inginious/frontend/templates/mycourses.html:136
+#: inginious/frontend/templates/mycourses.html:139
 msgid "Student"
 msgstr "Estudiante"
 
@@ -2168,8 +2176,8 @@ msgid ""
 "creating your notebook."
 msgstr ""
 "En general, cuando se envía un notebook, solo código en <strong>Python "
-"3.6</strong> es permitido en UNCode. Sin embargo, Notebooks y código "
-"python difieren en algunas funcionalidades, port esto UNCode puede "
+"3.6</strong> es permitido en UNCode. Sin embargo, los Notebooks y el "
+"código python difieren en algunas funcionalidades, por esto UNCode puede "
 "permitirlas o no. También, hay unas cosas que se deben tener en cuenta "
 "cuando desarrolla la tarea"
 
@@ -2232,8 +2240,8 @@ msgid ""
 msgstr ""
 "Usualmente al ejecutar su código, puede agregar algunas expresiones <code"
 " class='language-python' data-language='python'>print</code> , sin "
-"embargo, estas expresiones son borradas y por ende estas salidasno serán "
-"mostradas en UNCode."
+"embargo, estas expresiones son borradas y por lo tanto estas salidas no "
+"serán mostradas en UNCode."
 
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:53
 msgid "Internet access in grading environment"
@@ -2244,8 +2252,8 @@ msgid ""
 "The internet access when your code is being graded is dependant on the "
 "task. Some tasks might allow it or not."
 msgstr ""
-"El acceso a internet cuando el código está siendo evaluado es restringido"
-" a la tarea, algunas tareas puede permitirlo o no."
+"Cuando el código está siendo evaluado el acceso a internet es restringido"
+" a la tarea. Algunas tareas pueden permitirlo o no."
 
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:56
 msgid ""
@@ -2253,17 +2261,18 @@ msgid ""
 "download files or data, for instance datasets. As stated above, you "
 "cannot install modules."
 msgstr ""
-"En caso de que tenga acceso a internet, este principalmente "
-"funcionarápara descargar archivos o datos, por ejemplo datasets. "
-"Igualmente recuerde que no puede instalar módulos."
+"En caso de que tenga acceso a internet, este funcionará principalmente "
+"para descargar archivos o datos, por ejemplo datasets. Igualmente "
+"recuerde que no puede instalar módulos."
 
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:58
 msgid ""
 "In case there is not access, be careful when using code that requires "
 "internet access as it will fail while grading."
 msgstr ""
-"En caso que acceso sea restringido, tenga cuidado al usar código que "
-"requiere acceso a internet ya que este va a fallar."
+"En caso de que el acceso esté restringido, tenga cuidado al usar código "
+"que requiera acceso a internet ya que este va a fallar durante la "
+"calificación."
 
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:61
 msgid "Magic functionality execution"
@@ -2274,7 +2283,7 @@ msgid ""
 " functions are not allowed when your notebook is graded. For example the "
 "next line"
 msgstr ""
-" son funciones no permitidas al momento de evaluación. Por ejemplo la "
+" son funciones no permitidas al momento de la evaluación. Por ejemplo la "
 "siguiente línea"
 
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:66
@@ -2282,8 +2291,8 @@ msgid ""
 "In case your notebook contains some lines like this, they will be "
 "automatically removed to avoid runtime execution errors."
 msgstr ""
-"Si su notebook tiene este tipo código, estas se eliminan automáticamente "
-"para evitar errores en tiempo de ejecución."
+"Si su notebook tiene este tipo de líneas en el código, estas se eliminan "
+"automáticamente para evitar errores en tiempo de ejecución."
 
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:69
 msgid "Commands execution"
@@ -2297,7 +2306,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:73
 msgid "However, this kind of lines are transformed as follows"
-msgstr "Sin embargo, este tipo de líneas son transformadas cómo sigue"
+msgstr "Sin embargo, este tipo de líneas son transformadas de la siguiente forma"
 
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:75
 msgid "is turned into the following code:"
@@ -2325,8 +2334,8 @@ msgid ""
 "sure when you submit your notebook, you do not include it."
 msgstr ""
 "Cuando usa Google Collaboratory (Colab) y usa unos módulos específicos de"
-" Google Colab, estos módulos no están soportados por UNCode. Asegúrese "
-"estos no se incluyen al momento de realizar el submission."
+" Google Colab, estos no son soportados por UNCode. Asegúrese de que esos "
+"módulos no se incluyen al momento de realizar el submission."
 
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:8
 msgid "Test notebook"
@@ -2528,19 +2537,19 @@ msgstr "Banco de problemas"
 msgid "\"Administration\""
 msgstr "\"Administración\""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:26
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:27
 msgid "Language is not available."
 msgstr "Lenguaje no disponible."
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:31
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:32
 msgid "The course does not exist or the user does not have permissions."
 msgstr "El curso no existe o el usuario no tiene permisos."
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:36
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:37
 msgid "The file is not coded in UTF-8. Please change the encoding."
 msgstr "El archivo no está codificado en UTF-8. Por favor cambie la codificación."
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:42
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:43
 msgid ""
 "The file is not formatted as expected, check it is comma separated and \n"
 "                             emails are actual emails."
@@ -2548,13 +2557,35 @@ msgstr ""
 "El archivo no tiene el formato esperado, revise que esté separado por "
 "comas y los correos son verdaderos."
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:52
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:54
 msgid ""
-"The process finished. Registered students on the course: {0!s}. \n"
-"            Registered students on UNCode: {1!s} out of {2!s}."
+"The process finished with {0!s} students registered on the course and "
+"{1!s} students registered \n"
+"            on UNCode out of {2!s} students listed in the file. The "
+"emails for the new students are being sent in the \n"
+"            background, wait a while and check again that all the "
+"students were registered."
 msgstr ""
-"El proceso terminó. Usuarios registrados en el curso: {0!s}. \n"
-"            Registrados en UNCode: {1!s} de un total de {2!s}."
+"El proceso terminó con {0!s} estudiantes registrados en el curso y {1!s} "
+"estudiantes registrados \n"
+"            en UNCode de un total del {2!s} estudiantes listados en el "
+"archivo. Los correos para los nuevos estudiantes están siendo enviados en"
+" segundo plano, por favor espere un tiempo y vuelva a revisar que todos "
+"los             estudiantes hayan sido registrados."
+
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:66
+msgid ""
+"<br><br>The next students were not registered because of an unexpected "
+"error, probably the user \n"
+"                is already registered with another username or the "
+"username is already taken:\n"
+"                {}"
+msgstr ""
+"<br><br>Los siguientes estudiantes no fueron registrados debido a un "
+"error inesperado, es probable que el usuario \n"
+"                ya está registrado con otro nombre de usuario o el nombre"
+" de usuario ya ha sido tomado: \n"
+"                {}"
 
 #: inginious/frontend/plugins/register_students/static/email_template.html:5
 msgid ""
@@ -2687,10 +2718,10 @@ msgid ""
 "password and will receive an email asking them to confirm the account and"
 " after that, the student can change the password."
 msgstr ""
-"Todos los estudiantes serán registrados en UNCode y el curso. si un "
+"Todos los estudiantes serán registrados en UNCode y el curso. Si un "
 "estudiante no existe, este será registrado usando una contraseña "
 "provisional y recibirá un correo pidiendo confirmación y activación de la"
-" cuenta.Después de esto, el estudiante podrá cambiar su contraseña."
+" cuenta. Después de esto, el estudiante podrá cambiar su contraseña."
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:3
 #: inginious/frontend/templates/course_admin/submissions.html:210
@@ -3037,7 +3068,7 @@ msgstr "No estas registrado a este curso."
 #: inginious/frontend/templates/index.html:12
 #: inginious/frontend/templates/index.html:36
 #: inginious/frontend/templates/layout.html:102
-#: inginious/frontend/templates/layout.html:131
+#: inginious/frontend/templates/layout.html:139
 msgid "Course list"
 msgstr "Lista de cursos"
 
@@ -3089,17 +3120,17 @@ msgstr "Estado del servicio"
 msgid "Log out"
 msgstr "Cerrar sesión"
 
-#: inginious/frontend/templates/layout.html:123
+#: inginious/frontend/templates/layout.html:131
 msgid "English"
 msgstr "Español"
 
-#: inginious/frontend/templates/layout.html:134
+#: inginious/frontend/templates/layout.html:142
 #: inginious/frontend/templates/mycourses.html:101
 #: inginious/frontend/templates/register.html:8
 msgid "Register"
 msgstr "Registrarse"
 
-#: inginious/frontend/templates/layout.html:171
+#: inginious/frontend/templates/layout.html:186
 #: inginious/frontend/templates/maintenance.html:93
 msgid "UNCode is distributed under AGPL license"
 msgstr "UNCode sigue la especificación de la licencia AGPL"
@@ -3201,11 +3232,11 @@ msgstr "<b>UNCode esta actualmente en mantenimiento.</b> ¡Regrese más tarde!"
 
 #: inginious/frontend/templates/mycourses.html:45
 msgid ""
-"LTI courses are only accessible via the the LMS platform such as Moodle "
-"or OpenEdx"
+"LTI courses are only accessible via the LMS platforms such as Moodle or "
+"OpenEdx"
 msgstr ""
-"Cursos LTI se pueden acceder únicamente a través de una plataforma LMS "
-"tales como Moodle o OpenEdx."
+"Cursos LTI se pueden acceder únicamente a través de plataformas LMS tales"
+" como Moodle o OpenEdx."
 
 #: inginious/frontend/templates/mycourses.html:57
 msgid "Course created."
@@ -3220,6 +3251,10 @@ msgstr ""
 "Error durante la creación del curso. Puede que ya exista este ID o el ID "
 "especificado contiene un carácter inválido (solamente alfanumérico y  '_'"
 " y '-' son aceptados)."
+
+#: inginious/frontend/templates/mycourses.html:67
+msgid "'New course id'"
+msgstr "ID del curso nuevo."
 
 #: inginious/frontend/templates/mycourses.html:70
 msgid "Create new course"
@@ -3241,31 +3276,31 @@ msgstr "El nuevo registro ha fallado. Verifique su contraseña."
 msgid "Select a course"
 msgstr "Seleccione un curso"
 
-#: inginious/frontend/templates/mycourses.html:107
+#: inginious/frontend/templates/mycourses.html:108
 msgid "'Search course'"
 msgstr "'Buscar curso'"
 
-#: inginious/frontend/templates/mycourses.html:110
+#: inginious/frontend/templates/mycourses.html:112
 msgid "Search"
 msgstr "Buscar"
 
-#: inginious/frontend/templates/mycourses.html:127
+#: inginious/frontend/templates/mycourses.html:130
 msgid "LTI course"
 msgstr "Curso LTI"
 
-#: inginious/frontend/templates/mycourses.html:129
+#: inginious/frontend/templates/mycourses.html:132
 msgid "Hidden course"
 msgstr "Curso oculto"
 
-#: inginious/frontend/templates/mycourses.html:132
+#: inginious/frontend/templates/mycourses.html:135
 msgid "Administrator"
 msgstr "Administrador"
 
-#: inginious/frontend/templates/mycourses.html:134
+#: inginious/frontend/templates/mycourses.html:137
 msgid "Tutor"
 msgstr "Tutor"
 
-#: inginious/frontend/templates/mycourses.html:141
+#: inginious/frontend/templates/mycourses.html:144
 msgid "You are not registered to any course"
 msgstr "No estás registrado a ningún curso"
 
@@ -3897,7 +3932,7 @@ msgstr "Definir configuración inicial"
 
 #: inginious/frontend/templates/course_admin/aggregation_list.html:139
 msgid "New classroom description"
-msgstr "Nueva descripción de grupo"
+msgstr "Descripción del grupo nuevo"
 
 #: inginious/frontend/templates/course_admin/aggregation_list.html:140
 msgid "New classroom"
@@ -4144,6 +4179,10 @@ msgstr "Opciones"
 msgid "Settings saved."
 msgstr "Guardar configuración."
 
+#: inginious/frontend/templates/course_admin/settings.html:31
+msgid "\"Course name\""
+msgstr "\"Nombre del curso\""
+
 #: inginious/frontend/templates/course_admin/settings.html:35
 msgid "Administrators"
 msgstr "Administradores"
@@ -4167,10 +4206,10 @@ msgid ""
 "will deactivate the access to the course from the main page for non-staff"
 " members of the course, and the team/classroom system."
 msgstr ""
-"Active esta opción para permitir que tu curso de UNCode se pueda usar en "
-"Learning Management Systems (LMS) externos, tales como Moodle o edX. Note"
-" que esto desactivará el acceso al curso desde la página principal para "
-"no administradores del curso."
+"Permitir que tu curso de UNCode se pueda usar en Learning Management "
+"Systems (LMS) externos, tales como Moodle o edX. Esto desactivará el "
+"acceso al curso desde la página principal para miembros no "
+"administradores del curso, y el sistema de grupos/equipos."
 
 #: inginious/frontend/templates/course_admin/settings.html:60
 msgid "Course preview"
@@ -4184,7 +4223,7 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/settings.html:72
 msgid "Not allowed"
-msgstr "Acción no permitida"
+msgstr "Acceso no permitido"
 
 #: inginious/frontend/templates/course_admin/settings.html:77
 msgid "Students aggregations"
@@ -4198,8 +4237,8 @@ msgstr "Grupos"
 #: inginious/frontend/templates/course_admin/settings.html:89
 msgid "(Warning : changing this will unregister all students)"
 msgstr ""
-"(Precaución: esta acción eliminará el registro a este curso de todos los "
-"estudiantes)"
+"(Precaución: esta acción eliminará el registro de todos los estudiantes "
+"en el curso)"
 
 #: inginious/frontend/templates/course_admin/settings.html:94
 msgid "Group/Team attribution"
@@ -4219,7 +4258,7 @@ msgstr "Accesibilidad"
 
 #: inginious/frontend/templates/course_admin/settings.html:118
 msgid "Course hidden from students"
-msgstr "Este curso esta oculto para los estudiantes"
+msgstr "Oculto a los estudiantes"
 
 #: inginious/frontend/templates/course_admin/settings.html:124
 msgid "Always accessible"
@@ -4233,12 +4272,12 @@ msgstr "Personalizar:"
 #: inginious/frontend/templates/course_admin/settings.html:134
 #: inginious/frontend/templates/course_admin/settings.html:180
 msgid "From"
-msgstr "De"
+msgstr "Desde"
 
 #: inginious/frontend/templates/course_admin/settings.html:141
 #: inginious/frontend/templates/course_admin/settings.html:187
 msgid "To"
-msgstr "A"
+msgstr "Hasta"
 
 #: inginious/frontend/templates/course_admin/settings.html:158
 msgid "Registration"
@@ -4254,7 +4293,7 @@ msgstr "Contenido público"
 
 #: inginious/frontend/templates/course_admin/settings.html:204
 msgid "Allow auto-unregistration"
-msgstr "Permitir eliminar registro automáticamente"
+msgstr "Permitir la eliminación automática de un usuario registrado"
 
 #: inginious/frontend/templates/course_admin/settings.html:222
 msgid "Registration password"
@@ -4265,8 +4304,8 @@ msgid ""
 "\"Password needed for registration. Leave blank if you don't want to set "
 "a password.\""
 msgstr ""
-"\"La contraseña se necesita para hacer el registro. Deje en blanco el "
-"campo de contraseña si no se desea cambiar la misma.\""
+"\"Contraseña requerida para registrarse al curso. Deje el campo vacío si "
+"no se desea establecer una contraseña.\""
 
 #: inginious/frontend/templates/course_admin/settings.html:230
 msgid "Access control"
@@ -4282,7 +4321,7 @@ msgstr "Verificar por nombre de usuario"
 
 #: inginious/frontend/templates/course_admin/settings.html:248
 msgid "Check by authentication binding"
-msgstr "Verificar con autenticación la dependencia"
+msgstr "Verificar mediante enlace de autenticación"
 
 #: inginious/frontend/templates/course_admin/settings.html:254
 msgid "Check by email"
@@ -4320,8 +4359,8 @@ msgid ""
 "Enable this to send back grades to the calling Tool Consumer (which is, "
 "most of the time, your LMS)."
 msgstr ""
-"Activa esta opción para enviar las notas a el Tool Consumer (el cuál es, "
-"la mayoría del ,tiempo el LMS)."
+"Enviar las notas al Tool Consumer (el cuál es la mayoría del tiempo el "
+"LMS)."
 
 #: inginious/frontend/templates/course_admin/settings.html:283
 #: inginious/frontend/templates/course_admin/task_edit.html:31
@@ -4345,6 +4384,11 @@ msgstr "tarea"
 #: inginious/frontend/templates/course_admin/student_info.html:31
 msgid "status"
 msgstr "estado"
+
+#: inginious/frontend/templates/course_admin/student_info.html:65
+#: inginious/frontend/templates/course_admin/student_info.html:68
+msgid "\"View evaluation submission\""
+msgstr "\"Ver la evaluación de la tarea\""
 
 #: inginious/frontend/templates/course_admin/student_info.html:74
 msgid "\"View all submissions\""
@@ -4745,7 +4789,7 @@ msgstr "\"Ver resultados\""
 
 #: inginious/frontend/templates/course_admin/task_list.html:82
 msgid "\"New task id\""
-msgstr "\"Nuevo id para la tarea\""
+msgstr "\"ID de la tarea nueva\""
 
 #: inginious/frontend/templates/course_admin/task_list.html:83
 msgid "Create new task"
@@ -4789,6 +4833,10 @@ msgstr "Limpiar equipos"
 msgid "Delete all teams"
 msgstr "Eliminar todos los equipos"
 
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:11
+msgid "\"title for this task\""
+msgstr "\"Nombre de la tarea\""
+
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:22
 msgid "Filetype"
 msgstr "Tipo de archivo"
@@ -4799,7 +4847,7 @@ msgstr "Autor"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:48
 msgid "\"Your name\""
-msgstr "\"Nombre autor\""
+msgstr "\"Nombre del autor\""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:53
 msgid "LTI task URL"
@@ -4870,7 +4918,7 @@ msgid "Random inputs"
 msgstr "Entradas aleatorias"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:219
-msgid "Regenerate input random"
+msgid "Regenerate random input"
 msgstr "Regenerar entradas aleatorias"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:9
@@ -4879,11 +4927,11 @@ msgstr "Tiempo límite (en segundos)"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:15
 msgid "Hard timeout limit (in seconds) <small>Default to 3*timeout</small>"
-msgstr "Timeout límite fuerte (en segundos) <small>Por defector 3*timeout</small>"
+msgstr "Timeout límite fuerte (en segundos) <small>Por defecto 3*timeout</small>"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:22
 msgid "Memory limit (in megabytes)"
-msgstr "Límite de memoria (en megabytes)"
+msgstr "Límite de memoria (en MegaBytes)"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:28
 msgid "Output limit (in megabytes)"
@@ -4891,7 +4939,7 @@ msgstr "Límite de salida (en MegaBytes)"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:34
 msgid "Grading environment"
-msgstr "Ambiente de evaluación"
+msgstr "Entorno de evaluación"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:46
 msgid "Allow internet access inside the grading container?"
@@ -5181,34 +5229,4 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
-
-#~ msgid "Rubric scoring for:"
-#~ msgstr "Rubrica"
-
-#~ msgid "Contact page"
-#~ msgstr ""
-
-#~ msgid "Student Succeeded"
-#~ msgstr "Estudiantes aprobados"
-
-#~ msgid "Students who have tried"
-#~ msgstr "Estudiantes que lo han intentado"
-
-#~ msgid "Rubric scoring for Task:"
-#~ msgstr "Rubrica para la tarea"
-
-#~ msgid "Unnamed"
-#~ msgstr "Sin nombre"
-
-#~ msgid "Request a new course"
-#~ msgstr "Solicitar crear un nuevo curso"
-
-#~ msgid ""
-#~ "Just put your honest opinion or "
-#~ "tell us about the problem you have"
-#~ " encountered "
-#~ msgstr ""
-
-#~ msgid "Rubric Scoring"
-#~ msgstr "Rubrica"
 

@@ -90,7 +90,10 @@ function apiTestNotebookRequest(inputId, taskForm) {
         contentType: false,
         success: runTestNotebookCallback,
         error: function (error) {
-            displayCustomTestAlertError({"text": "An error occurred while running the custom tests. Please try again."});
+            displayCustomTestAlertError({
+                "text": "An error occurred while running the custom tests. The tests probably took more time than " +
+                    "expect, please try again or try making the submission to know the results."
+            });
             unblurTaskForm();
         }
     });

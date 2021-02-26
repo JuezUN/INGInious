@@ -7,10 +7,10 @@
 
 import os
 
-from inginious.frontend.plugins.contact_page.pages.slack_url_error import SlackURLError
+from .pages.slack_url_error import SlackURLError
 from inginious.frontend.plugins.utils import create_static_resource_page
-from inginious.frontend.plugins.contact_page.pages.contact_page import ContactPage
-from .pages.constants import set_url_channel, set_use_minified
+from .pages.contact_page import ContactPage
+from .pages.constants import set_url_channel, set_use_minified, contact_us_option_hook
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
@@ -36,3 +36,5 @@ def init(plugin_manager, course_factory, client, plugin_config):
     set_use_minified(use_minified)
 
     plugin_manager.add_page("/contact_page", ContactPage)
+
+    plugin_manager.add_hook("uncode_navbar_options", lambda: contact_us_option_hook())

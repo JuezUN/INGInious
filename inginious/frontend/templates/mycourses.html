@@ -42,7 +42,7 @@ $def ColumnF():
     <div class="list-group">
         <div class="list-group-item list-group-item-warning">
             <i class="fa fa-info-circle"></i>
-            $:_("LTI courses are only accessible via the the LMS platform such as Moodle or OpenEdx")
+            $:_("LTI courses are only accessible via the LMS platforms such as Moodle or OpenEdx")
         </div>
 
     </div>
@@ -64,7 +64,7 @@ $if user_manager.user_is_superadmin():
     <form class="form row" role="form" method="post">
         <div class="form-group col-sm-8">
             <label class="sr-only" for="new_courseid">$:_("Course")</label>
-            <input name="new_courseid" type="text" class="form-control" id="new_courseid" placeholder="$:_('New course id')">
+            <input name="new_courseid" type="text" class="form-control" id="new_courseid" placeholder=$:_("'New course id'")>
         </div>
         <div class="form-group col-sm-4">
             <button type="submit" class="btn btn-block btn-primary">$:_("Create new course")</button>
@@ -103,12 +103,15 @@ $else:
 
 <hr/>
 <div class="row">
-    <div class="form-group col-sm-10">
-        <input type="text" class="form-control" id="course_query" placeholder=$:_("'Search course'") value="$current_query">
-    </div>
-    <div class="form-group col-sm-2">
-        <button type="submit" class="btn btn-block btn-success" onclick="onSearch()">$:_("Search")</button>
-    </div>
+    <form class="form" role="form" id="search_course_form">
+        <div class="form-group col-sm-10">
+            <input type="text" class="form-control" id="course_query" placeholder=$:_("'Search course'")
+            value="$current_query">
+        </div>
+        <div class="form-group col-sm-2">
+            <button type="submit" class="btn btn-block btn-success">$:_("Search")</button>
+        </div>
+    </form>
 </div>
 <div class="list-group list-group-progress" style="margin-left: 16px; margin-right: 16px;">
 	$if len(open_courses) != 0:
@@ -164,6 +167,11 @@ $if len(open_courses) > 0:
         </nav>
     </div>
 <script>
+    $$("#search_course_form").submit((e) => {
+        e.preventDefault();
+        change_page(1);
+    });
+
     function change_page(page) {
         let new_path = '$get_homepath()/mycourses?page=' + page;
         const searchQuery = $$("#course_query").val();
@@ -171,9 +179,6 @@ $if len(open_courses) > 0:
             new_path += '&query=' + searchQuery;
         }
         location.href = new_path;
-    }
-    function onSearch(){
-        change_page(1);
     }
 </script>
 

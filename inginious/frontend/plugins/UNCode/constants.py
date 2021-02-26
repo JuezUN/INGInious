@@ -24,3 +24,8 @@ def get_used_grading_environments():
 
 def get_used_subproblem_types():
     return _used_subproblem_types
+
+
+def about_us_option_hook():
+    return "<li><a href='https://juezun.github.io/' class='navbar-link' target='_blank'>" + \
+           "<i class='fa fa-question-circle-o fa-fw' style='margin-right: 4px'></i>" + _("About us") + "</a></li>"
