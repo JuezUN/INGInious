@@ -28,7 +28,7 @@ def statistics_course_menu_hook(course, template_helper):
     my_statistics_str = _("My statistics")
     return """
             <h3>{student_tools_str}</h3>
-            <a class="list-group-item"
+            <a class="list-group-item list-group-item-info"
                 href="/user_statistics/{course_id}">
                 <i class="fa fa-line-chart"></i>
                 {my_statistics_str}

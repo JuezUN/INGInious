@@ -15,7 +15,7 @@ base_renderer_path = get_render_path()
 def create_submissions_dict(submissions_list):
     """ Organize all data in a dictionary """
     data = OrderedDict()
-    default_grade = "No grade"
+    default_grade = _("No grade")
     for submission in submissions_list:
         data[submission["_id"]] = {
             "_id": submission["_id"],

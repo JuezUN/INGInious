@@ -54,7 +54,9 @@ $var Navbar: $:NavbarF()
     <tbody>
     $for submission in data:
         <tr>
-            <td>$data[submission]["date"]</td>
+            <td><a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/submission/$submission"
+                class="font_size-m">
+                $data[submission]["date"]</a></td>
             <td class="font_size-m">$data[submission]["result"]</td>
             <td class="font_size-m">$data[submission]["grade"]</td>
             <td class="font_size-m">$data[submission]["manual_grade"]</td>

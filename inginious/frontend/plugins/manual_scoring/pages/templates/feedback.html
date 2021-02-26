@@ -12,7 +12,8 @@ $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
         <li><a href="$get_homepath()/feedback_list/$course.get_id()">$:_("Feedback List")<span class="sr-only"></span></a></li>
-        <li class="active"><a href="#">$:_("Feedback")<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#"><i class="fa fa-comment" aria-hidden="true"></i>
+            $:_("Feedback")<span class="sr-only">(current)</span></a></li>
     </ol>
 
 $var Navbar: $:NavbarF()
@@ -75,45 +76,47 @@ $var Navbar: $:NavbarF()
 
 <!-- Rubric  -->
 <section>
-    <div class="py-1">
-        <h3 class="my-1">$:_("Rubric")</h3>
+    <div class="row py-1">
+        <div class="col-lg-3">
+            <h3><strong>$:_("Rubric")</strong></h3>
+        </div>
+        <div class="col-lg-offset-9">
+            <h3>$:_("Manual grade: ")<strong id="output">$data['grade']</strong></h3>
+        </div>
     </div>
     <div>
-    <table class="table sorted_table table-bordered">
-                <thead>
-                <tr>
-                    <th></th>
-                    $for header in rubric.keys():
-                    <th>$header</th>
-                </tr>
-                </thead>
-                <tbody>
-                $ first_level = rubric[list(rubric.keys())[0]]
-
-                $for category_index in range(len(first_level)):
-                $ category_name = list(first_level[category_index])[0]
+        <table class="table sorted_table table-bordered">
+                    <thead>
                     <tr>
-                        <th>$category_name</th>
-                        $ col = 0
-                        $for level_key in rubric:
-                        $ category_content = rubric[level_key][category_index][category_name]
-                        $ category_content = "" if category_content is None else category_content
-
-                        $ category_content_lines = category_content.split("\n")
-                        <td id="$category_index-$col">
-                            $ col = col + 1
-                            <ul>
-                                $for line in category_content_lines:
-                                <li>$line</li>
-                            </ul>
-                        </td>
+                        <th></th>
+                        $for header in rubric.keys():
+                        <th>$header</th>
                     </tr>
+                    </thead>
+                    <tbody>
+                    $ first_level = rubric[list(rubric.keys())[0]]
 
-                </tbody>
-    </table>
-        </div>
-    <div>
-        <h3><strong>$:_("Manual grade: ")<strong id="output">$data['grade']</strong></strong></h3>
+                    $for category_index in range(len(first_level)):
+                    $ category_name = list(first_level[category_index])[0]
+                        <tr>
+                            <th>$category_name</th>
+                            $ col = 0
+                            $for level_key in rubric:
+                            $ category_content = rubric[level_key][category_index][category_name]
+                            $ category_content = "" if category_content is None else category_content
+
+                            $ category_content_lines = category_content.split("\n")
+                            <td id="$category_index-$col">
+                                $ col = col + 1
+                                <ul>
+                                    $for line in category_content_lines:
+                                    <li>$line</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                    </tbody>
+        </table>
     </div>
     <div id="gradeEditSubmitStatus"></div>
 </section>

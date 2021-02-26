@@ -8,7 +8,7 @@ from inginious.frontend.plugins.utils import read_json_file
 def get_manual_scoring_data(submission):
     """ return the comment, score and rubric status if they are storage """
     comment = ""
-    score = "No grade"
+    score = _("No grade")
     rubric = []
 
     if 'manual_scoring' in submission:

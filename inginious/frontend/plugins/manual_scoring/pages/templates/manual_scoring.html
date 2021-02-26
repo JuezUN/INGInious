@@ -120,7 +120,12 @@ $var Navbar: $:NavbarF()
 <!-- Comments -->
 <section class="py-1">
     <form method="post">
-        <h3 class="py-1">$:_("Comments")</h3>
+        <h3 class="py-1">
+            $:_("Comments")<i data-toggle="tooltip" data-placement="right"
+                              title="$:_('Use rst format to write the comment')"
+                              class="fa fa-question-circle px-2" aria-hidden="true"></i>
+
+        </h3>
         <div id="nav-tabs">
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#code_tab">$:_("Write")</a></li>

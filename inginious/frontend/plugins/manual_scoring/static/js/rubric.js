@@ -155,44 +155,38 @@ class Score {
 
     updateScore() {
         let currentScore;
-        try {
-            currentScore = parseFloat(this.score).toFixed(1);
-        } catch (error) {
+        currentScore = parseFloat(this.score).toFixed(1);
+        if (isNaN(currentScore))
             currentScore = this.score;
-        }
         this.text.html(currentScore);
     }
 
     pickColor(score) {
-        const defaultText = "No grade";
-        const defaultColor = "#002a95"
-        if (score === defaultText) {
-            return defaultColor;
+        const colorScale = {
+            0: "#950000",
+            1: "#cc0808",
+            2: "#e73509",
+            3: "#ff7903",
+            4: "#ffb700",
+            5: "#ffc800",
+            6: "#bfc604",
+            7: "#a5d424",
+            8: "#67a00c",
+            9: "#2d8e00",
+            10: "#008e02",
+            "defaultColor": "#002a95"
         }
-        let color = "";
-        if (score < 0.5) {
-            color = "#950000";
-        } else if (score < 1) {
-            color = "#cc0808";
-        } else if (score < 1.5) {
-            color = "#e73509";
-        } else if (score < 2) {
-            color = "#ff7903";
-        } else if (score < 2.5) {
-            color = "#ffb700";
-        } else if (score < 3) {
-            color = "#ffc800";
-        } else if (score < 3.5) {
-            color = "#bfc604";
-        } else if (score < 4) {
-            color = "#a5d424";
-        } else if (score < 4.5) {
-            color = "#67a00c";
-        } else if (score <= 5) {
-            color = "#2d8e00";
-        } else {
-            color = defaultColor;
+
+        const id = this.scoreToDictId(score)
+        return colorScale[id];
+    }
+
+    scoreToDictId(score) {
+        let floatScore;
+        floatScore = parseFloat(score);
+        if (isNaN(floatScore)) {
+            return "defaultColor";
         }
-        return color;
+        return Math.floor(floatScore * 2);
     }
 }

@@ -62,8 +62,8 @@ function previewCode() {
 function sendManualScoringAnalytics() {
     $.post('/api/analytics/', {
         service: {
-            key: "manual_scoring_review",
-            name: "Manual Scoring - review"
+            key: "manual_scoring_creation",
+            name: "Manual Scoring - Creation"
         },
         course_id: getCourseId(),
     });

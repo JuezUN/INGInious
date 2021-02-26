@@ -14,11 +14,11 @@ def get_manual_scoring_link_code(course):
     return "manual_scoring", '<i class="fa fa-table" aria-hidden="true"></i> Manual Scoring'
 
 
-def get_manual_scoring_feedback_hook(course, template_helper):
+def get_feedback_link_code(course, template_helper):
     """ return the html code to add a new link to course_menu """
     feedback_str = _("Feedback")
     return """
-            <a class="list-group-item"
+            <a class="list-group-item list-group-item-info"
                 href="/feedback_list/{course_id}">
                 <i class="fa fa-commenting" aria-hidden="true"></i>
                 {feedback_str}

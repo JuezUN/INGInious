@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-24 13:49-0500\n"
+"POT-Creation-Date: 2021-02-26 12:34-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1866,7 +1866,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:11
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:106
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:138
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:143
 msgid "Save"
 msgstr "Guardar"
 
@@ -1899,31 +1899,46 @@ msgid "Expected output"
 msgstr "Salida esperada"
 
 #: inginious/frontend/plugins/manual_scoring/pages/constants.py:19
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:15
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:16
 msgid "Feedback"
 msgstr "Retroalimentación"
 
+#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:11
+#: inginious/frontend/plugins/manual_scoring/pages/student_submissions.py:18
+msgid "No grade"
+msgstr "Sin calificar"
+
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:18
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:23
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:24
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:16
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:18
 msgid "Manual Scoring"
 msgstr "Calificación manual"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:23
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:24
 msgid "Tasks List"
 msgstr "Lista de tareas"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:29
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:28
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:55
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:66
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:75
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:89
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:30
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:40
+msgid "Download CSV"
+msgstr "Descargar CSV"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:40
 msgid "Task Name"
 msgstr "Nombre de tarea"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:30
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:41
 msgid "Students succeeded"
 msgstr "Estudiantes que tuvieron éxito"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:31
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:42
 msgid "Students attempted"
 msgstr "Estudiantes que lo han intentado"
 
@@ -1932,17 +1947,17 @@ msgstr "Estudiantes que lo han intentado"
 msgid "Feedback List"
 msgstr "Lista de Retroalimentación"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:21
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:22
 msgid "Feedback for:"
 msgstr "Retroalimentación para:"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:53
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:54
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:57
 #: inginious/frontend/templates/task.html:14
 msgid "Information"
 msgstr "Información"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:56
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:57
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:60
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:34
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:28
@@ -1951,23 +1966,23 @@ msgstr "Información"
 msgid "Language"
 msgstr "Lenguaje"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:58
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:59
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:62
 msgid "Summary"
 msgstr "Resumen"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:72
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:123
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:73
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:124
 msgid "Comments"
 msgstr "Comentarios"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:79
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:81
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:19
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:77
 msgid "Rubric"
 msgstr "Rubrica"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:116
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:84
 msgid "Manual grade: "
 msgstr "Calificación: "
 
@@ -2002,11 +2017,11 @@ msgstr "Haz click para seleccionar y doble click para deseleccionar"
 msgid "Current Score: "
 msgstr "Puntaje actual: "
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:126
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:131
 msgid "Write"
 msgstr "Escribir"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:127
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:132
 msgid "Preview"
 msgstr "Vista previa"
 
@@ -2709,15 +2724,6 @@ msgstr "Veredicto submissions (MEJOR)"
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:52
 msgid "Submissions by grade"
 msgstr "Submissions por nota"
-
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:55
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:66
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:75
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:89
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:30
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:40
-msgid "Download CSV"
-msgstr "Descargar CSV"
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:63
 msgid "Final grade distribution"
