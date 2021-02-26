@@ -65,17 +65,38 @@ function displayCustomInputResults(data, customTestOutputArea = null, placeholde
     }
 }
 
+function waitForCustomTest(customTestId) {
+    setTimeout(() => {
+        $.get("/api/custom_input_notebook/", {"custom_test_id": customTestId})
+            .done((data) => {
+                data = JSON.parse(data);
+                if ("status" in data && data['status'] === "waiting") {
+                    waitForCustomTest(customTestId);
+                } else if ("status" in data && "result" in data) {
+                    displayCustomInputResults(data);
+                    unblurTaskForm();
+                } else {
+                    displayCustomTestAlertError(data);
+                    unblurTaskForm();
+                }
+            })
+            .fail(() => {
+                displayCustomTestAlertError({"text": "Something went wrong, probably it was a bad request."});
+                unblurTaskForm();
+            });
+    }, 2000);
+}
+
 function apiTestNotebookRequest(inputId, taskForm) {
     // POST REQUEST to run some specified tests from notebook.
     if (!taskFormValid()) return;
 
     const runTestNotebookCallback = function (data) {
         data = JSON.parse(data);
-        displayCustomInputResults(data);
-        unblurTaskForm();
+        waitForCustomTest(data['custom_test_id']);
     };
 
-    displayTaskLoadingAlert({"text": "Running custom tests"}, null);
+    displayTaskLoadingAlert({"text": "Running custom tests."}, null);
     $("html, body").animate({
         scrollTop: $("#task_alert").offset().top - 100
     }, 200);
