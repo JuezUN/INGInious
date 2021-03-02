@@ -4,15 +4,18 @@ from pymongo.collection import ReturnDocument
 
 
 class CustomTestManager(object):
-    """ Runs job asynchronously """
+    """ Runs custom test job asynchronously """
 
     def __init__(self, client, user_manager, database):
         self._client = client
         self._user_manager = user_manager
         self._database = database
 
-    def _job_done_callback(self, custom_test_id, task, result, stdout, stderr):
+    def _job_done_callback(self, custom_test_id, result, stdout, stderr):
         custom_test = self.get_custom_test(custom_test_id, False)
+
+        if not custom_test:
+            return
 
         data = {
             "status": ("done" if result[0] == "success" or result[0] == "failed" else "error"),
@@ -34,13 +37,15 @@ class CustomTestManager(object):
 
     def new_job(self, task, input_data, launcher_name="Unknown"):
         """
-            Runs a new job.
-            It works exactly like the Client class, instead that there is no callback and directly returns result,
-            in the form of a tuple (result, grade, problems, tests, custom, archive).
+            Runs a new custom tests job asynchronously.
+            The general idea works like the SubmissionManager, as it creates a new document in DB to keep track of
+            the running custom tests, When the job is done, it calls a callback to update the document in DB to tell
+            the frontend the job has finished plus the given results.
+            Returns the custom test id.
         """
 
         if not self._user_manager.session_logged_in():
-            raise Exception(_("A user must be logged in to submit an object"))
+            raise Exception(_("An user must be logged in to run custom tests"))
 
         username = self._user_manager.session_username()
 
@@ -52,23 +57,24 @@ class CustomTestManager(object):
 
         if current_custom_test is not None:
             # This is in case there is a job in DB that was not previously deleted but already finished.
-            # Also, in case the current custom test is still in waiting status but the job in not in the queue.
-            if current_custom_test["status"] in {"done", "error"} or \
-                    not self.is_job_in_queue(current_custom_test["job_id"]):
+            # Also, in case the current custom test is still in waiting status but the job is there for more than 3
+            # minutes because the job probably already finished but the callback was not successfully run.
+            if self.is_done(str(current_custom_test["_id"])) or (
+                    self.is_waiting(str(current_custom_test["_id"])) and self.is_old(current_custom_test)):
                 self.delete_custom_test(str(current_custom_test["_id"]))
             else:
-                raise Exception(_("A custom test is already pending for this task!"))
+                raise Exception(_("A custom test is already pending for this task. Wait for a while to run the tests."))
 
         job_id = self._client.new_job(task, input_data,
                                       (lambda result, grade, problems, tests, custom, archive, stdout, stderr:
-                                       self._job_done_callback(custom_test_id, task, result, stdout, stderr)),
+                                       self._job_done_callback(custom_test_id, result, stdout, stderr)),
                                       launcher_name)
 
         custom_test_obj = {
             "courseid": task.get_course_id(),
             "taskid": task.get_id(),
             "sent_on": datetime.now(),
-            "username": [username],
+            "username": username,
             "response_type": task.get_response_type(),
             "status": "waiting",
             "job_id": job_id
@@ -78,64 +84,49 @@ class CustomTestManager(object):
         return str(custom_test_id)
 
     def get_custom_test(self, custom_test_id, user_check=True):
-        """ Get a submission from the database """
+        """ Get a custom test from the database """
         custom_test = self._database.custom_tests.find_one({'_id': ObjectId(custom_test_id)})
+        if not custom_test:
+            return None
         if user_check and not self.user_is_custom_test_owner(custom_test):
             return None
         return custom_test
 
     def user_is_custom_test_owner(self, custom_test):
-        """ Returns true if the current user is the owner of this jobid, false else """
+        """ Returns True if the current user is the owner of this custom test, otherwise returns False"""
         if not self._user_manager.session_logged_in():
-            raise Exception("A user must be logged in to verify if he owns a jobid")
+            raise Exception("An user must be logged in to verify if he owns this custom test")
 
-        return self._user_manager.session_username() in custom_test["username"]
+        return self._user_manager.session_username() == custom_test["username"]
 
     def delete_custom_test(self, custom_test_id):
         self._database.custom_tests.delete_one({'_id': ObjectId(custom_test_id)})
 
-    def is_running(self, custom_test_id, user_check=True):
-        """ Tells if a submission is running/in queue """
+    def is_waiting(self, custom_test_id, user_check=True):
+        """ Tells if a custom test is running/in queue """
         custom_test = self.get_custom_test(custom_test_id, user_check)
+        if not custom_test:
+            return None
         return custom_test["status"] == "waiting"
 
+    def is_old(self, custom_test):
+        """
+        Check if the custom test is old. A custom test is considered to be old if this was submitted more than 3 minutes
+        ago. This means that the job callback did not update the document in the database.
+        """
+        if not custom_test:
+            return None
+
+        now = datetime.now()
+        difference = now - custom_test["sent_on"]
+        three_minutes_in_seconds = 3 * 60
+        return difference.total_seconds() >= three_minutes_in_seconds
+
     def is_done(self, custom_test_id, user_check=True):
-        """ Tells if a submission is done and its result is available """
+        """ Tells if a custom test is done and its result is available """
         custom_test = self.get_custom_test(custom_test_id, False)
+        if not custom_test:
+            return None
         if user_check and not self.user_is_custom_test_owner(custom_test):
             return None
-        return custom_test["status"] == "done" or custom_test["status"] == "error"
-
-    def get_job_queue_snapshot(self):
-        """ Get a snapshot of the remote backend job queue. May be a cached version.
-            May not contain recent jobs. May return None if no snapshot is available
-
-        Return a tuple of two lists (None, None):
-        jobs_running: a list of tuples in the form
-            (job_id, is_current_client_job, info, launcher, started_at, max_end)
-            where
-            - job_id is a job id. It may be from another client.
-            - is_current_client_job is a boolean indicating if the client that asked the request has started the job
-            - agent_name is the agent name
-            - info is "courseid/taskid"
-            - launcher is the name of the launcher, which may be anything
-            - started_at the time (in seconds since UNIX epoch) at which the job started
-            - max_end the time at which the job will timeout (in seconds since UNIX epoch), or -1 if no timeout is set
-        jobs_waiting: a list of tuples in the form
-            (job_id, is_current_client_job, info, launcher, max_time)
-            where
-            - job_id is a job id. It may be from another client.
-            - is_current_client_job is a boolean indicating if the client that asked the request has started the job
-            - info is "courseid/taskid"
-            - launcher is the name of the launcher, which may be anything
-            - max_time the maximum time that can be used, or -1 if no timeout is set
-        """
-        return self._client.get_job_queue_snapshot()
-
-    def is_job_in_queue(self, job_id):
-        jobs_queue = self.get_job_queue_snapshot()
-
-        running_job_ids = set(map(lambda job: job[0], jobs_queue[0]))
-        waiting_job_ids = set(map(lambda job: job[0], jobs_queue[1]))
-
-        return job_id in running_job_ids or job_id in waiting_job_ids
+        return custom_test["status"] in {"done", "error"}

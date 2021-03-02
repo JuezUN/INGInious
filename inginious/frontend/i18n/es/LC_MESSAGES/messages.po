@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-24 22:59-0500\n"
+"POT-Creation-Date: 2021-03-02 15:53-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -2030,15 +2030,37 @@ msgstr "Múltiples lenguajes - Archivo de código"
 msgid "Code multiple languages"
 msgstr "Múltiples lenguajes - Código"
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:75
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:64
+msgid "Custom test job not found. Try running the custom tests again."
+msgstr ""
+"Test personalizado no se encontró. Intente correr los tests "
+"personalizados de nuevo."
+
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:74
+msgid "Custom tests are still running."
+msgstr "Tests personalizados aún están corriendo."
+
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:95
 msgid "Please select at least 1 and up to 3 tests."
 msgstr "Por favor seleccione al menos 1 y hasta 3 tests"
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:90
-msgid "An error occurred while running the notebook. Please run the tests again."
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:102
+msgid "Custom tests are running."
+msgstr "Tests personalizados están corriendo."
+
+#: inginious/frontend/plugins/multilang/problems/custom_test_manager.py:48
+msgid "An user must be logged in to run custom tests"
 msgstr ""
-"Un error ocurrió mientras se ejecutaba el notebook. Por favor ejecute de "
-"nuevo los tests."
+"El usuario debe tener iniciada sesión para correr los tests "
+"personalizados."
+
+#: inginious/frontend/plugins/multilang/problems/custom_test_manager.py:66
+msgid ""
+"A custom test is already pending for this task. Wait for a while to run "
+"the tests."
+msgstr ""
+"Un envío de tests personalizados está corriendo para esta tarea. Espere "
+"un tiempo para correr los tests."
 
 #: inginious/frontend/plugins/multilang/problems/notebook_file_problem.py:36
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:24

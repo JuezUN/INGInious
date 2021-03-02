@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-24 22:59-0500\n"
+"POT-Creation-Date: 2021-03-02 15:53-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -1857,12 +1857,30 @@ msgstr ""
 msgid "Code multiple languages"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:75
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:64
+msgid "Custom test job not found. Try running the custom tests again."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:74
+msgid "Custom tests are still running."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:95
 msgid "Please select at least 1 and up to 3 tests."
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:90
-msgid "An error occurred while running the notebook. Please run the tests again."
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:102
+msgid "Custom tests are running."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_test_manager.py:48
+msgid "An user must be logged in to run custom tests"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_test_manager.py:66
+msgid ""
+"A custom test is already pending for this task. Wait for a while to run "
+"the tests."
 msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/notebook_file_problem.py:36
@@ -4945,5 +4963,10 @@ msgstr "Extensions autorisées:"
 #~ "            background, wait a while and"
 #~ " check again that all the students"
 #~ " were registered."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "An error occurred while running the "
+#~ "notebook. Please run the tests again."
 #~ msgstr ""
 

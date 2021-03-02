@@ -60,7 +60,8 @@ def custom_input_notebook(client, custom_test_manager):
 
             if not custom_test:
                 web.header('Content-Type', 'application/json')
-                return 404, json.dumps({'status': "error", "text": _("Custom test was not found")})
+                return 404, json.dumps(
+                    {'status': "error", "text": _("Custom test job not found. Try running the custom tests again.")})
             elif self._custom_test_manager.is_done(custom_test_id):
                 data = {
                     "status": custom_test["status"],
@@ -69,7 +70,7 @@ def custom_input_notebook(client, custom_test_manager):
                 }
                 self._custom_test_manager.delete_custom_test(custom_test_id)
                 return 200, json.dumps(data)
-            elif self._custom_test_manager.is_running(custom_test_id):
+            elif self._custom_test_manager.is_waiting(custom_test_id):
                 return 200, json.dumps({'status': "waiting", "text": _("Custom tests are still running.")})
 
         def API_POST(self):
@@ -97,10 +98,10 @@ def custom_input_notebook(client, custom_test_manager):
                 custom_test_id = self._add_custom_test_job(task, user_input)
 
                 web.header('Content-Type', 'application/json')
-                return 200, json.dumps({"status": "ok", "custom_test_id": custom_test_id})
-            except Exception:
+                return 200, json.dumps(
+                    {"status": "ok", "custom_test_id": custom_test_id, "text": _("Custom tests are running.")})
+            except Exception as exp:
                 web.header('Content-Type', 'application/json')
-                return 200, json.dumps({"status": "error", "text": _(
-                    "An error occurred while running the notebook. Please run the tests again.")})
+                return 200, json.dumps({"status": "error", "text": str(exp)})
 
     return CustomTestNotebookAPI
