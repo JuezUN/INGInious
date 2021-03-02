@@ -32,7 +32,7 @@ def custom_input_notebook(client, custom_test_manager):
                 return False
 
             # The selected tests are given as a string separated by comma
-            tests = user_input[problem_id + "/input"].split(',')
+            tests = user_input[problem_id + "/input"].split(",")
             if len(tests) <= 0 or len(tests) > 3:
                 return False
             return True
@@ -45,7 +45,7 @@ def custom_input_notebook(client, custom_test_manager):
                 [((test_name, test_id, number_of_cases), test_weight), ...]
             """
             parsed_selected_tests = [None] * len(task_tests)
-            selected_tests = map(int, user_input[problem_id + "/input"].split(','))
+            selected_tests = map(int, user_input[problem_id + "/input"].split(","))
             for test_idx in selected_tests:
                 parsed_selected_tests[test_idx] = (
                     (task_tests[test_idx]["name"], "q{:02d}".format(test_idx), len(task_tests[test_idx]["cases"])),
@@ -59,19 +59,21 @@ def custom_input_notebook(client, custom_test_manager):
             custom_test = self._custom_test_manager.get_custom_test(custom_test_id)
 
             if not custom_test:
-                web.header('Content-Type', 'application/json')
+                web.header("Content-Type", "application/json")
                 return 404, json.dumps(
-                    {'status': "error", "text": _("Custom test job not found. Try running the custom tests again.")})
+                    {"status": "error", "text": _("Custom test job not found. Try running the custom tests again.")})
             elif self._custom_test_manager.is_done(custom_test_id):
                 data = {
                     "status": custom_test["status"],
                     "result": custom_test["result"],
                     "text": ParsableText(custom_test["text"]).parse(),
                 }
+                web.header("Content-Type", "application/json")
                 self._custom_test_manager.delete_custom_test(custom_test_id)
                 return 200, json.dumps(data)
             elif self._custom_test_manager.is_waiting(custom_test_id):
-                return 200, json.dumps({'status': "waiting", "text": _("Custom tests are still running.")})
+                web.header("Content-Type", "application/json")
+                return 200, json.dumps({"status": "waiting", "text": _("Custom tests are still running.")})
 
         def API_POST(self):
             request_params = web.input()
@@ -90,6 +92,7 @@ def custom_input_notebook(client, custom_test_manager):
                 task_tests = task._data.get("grader_test_cases", [])
                 for problem_id in init_var.keys():
                     if not self._is_valid_input(problem_id, user_input):
+                        web.header("Content-Type", "application/json")
                         return 200, json.dumps(
                             {"status": "error",
                              "text": _("Please select at least 1 and up to 3 tests.")})
@@ -97,11 +100,11 @@ def custom_input_notebook(client, custom_test_manager):
 
                 custom_test_id = self._add_custom_test_job(task, user_input)
 
-                web.header('Content-Type', 'application/json')
+                web.header("Content-Type", "application/json")
                 return 200, json.dumps(
-                    {"status": "ok", "custom_test_id": custom_test_id, "text": _("Custom tests are running.")})
+                    {"status": "done", "custom_test_id": custom_test_id, "text": _("Custom tests are running.")})
             except Exception as exp:
-                web.header('Content-Type', 'application/json')
+                web.header("Content-Type", "application/json")
                 return 200, json.dumps({"status": "error", "text": str(exp)})
 
     return CustomTestNotebookAPI

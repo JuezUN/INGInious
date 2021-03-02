@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-02 15:53-0500\n"
+"POT-Creation-Date: 2021-03-02 17:27-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -1817,15 +1817,15 @@ msgstr ""
 msgid "Custom test job not found. Try running the custom tests again."
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:74
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:76
 msgid "Custom tests are still running."
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:95
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:98
 msgid "Please select at least 1 and up to 3 tests."
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:102
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:105
 msgid "Custom tests are running."
 msgstr ""
 

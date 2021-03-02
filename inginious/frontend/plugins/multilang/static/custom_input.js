@@ -70,7 +70,7 @@ function waitForCustomTest(customTestId) {
         $.get("/api/custom_input_notebook/", {"custom_test_id": customTestId})
             .done((data) => {
                 data = JSON.parse(data);
-                if ("status" in data && data['status'] === "waiting") {
+                if ("status" in data && data["status"] === "waiting") {
                     displayTaskLoadingAlert(data, null);
                     waitForCustomTest(customTestId);
                 } else if ("status" in data && "result" in data) {
@@ -120,7 +120,7 @@ function apiTestNotebookRequest(inputId, taskForm) {
                 unblurTaskForm();
             } else {
                 displayTaskLoadingAlert(data, null);
-                waitForCustomTest(data['custom_test_id']);
+                waitForCustomTest(data["custom_test_id"]);
             }
         },
         error: (data) => {

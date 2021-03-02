@@ -37,7 +37,7 @@ class CustomTestManager(object):
 
     def new_job(self, task, input_data, launcher_name="Unknown"):
         """
-            Runs a new custom tests job asynchronously.
+            Runs a new custom test job asynchronously.
             The general idea works like the SubmissionManager, as it creates a new document in DB to keep track of
             the running custom tests, When the job is done, it calls a callback to update the document in DB to tell
             the frontend the job has finished plus the given results.
@@ -85,7 +85,7 @@ class CustomTestManager(object):
 
     def get_custom_test(self, custom_test_id, user_check=True):
         """ Get a custom test from the database """
-        custom_test = self._database.custom_tests.find_one({'_id': ObjectId(custom_test_id)})
+        custom_test = self._database.custom_tests.find_one({"_id": ObjectId(custom_test_id)})
         if not custom_test:
             return None
         if user_check and not self.user_is_custom_test_owner(custom_test):
@@ -100,7 +100,7 @@ class CustomTestManager(object):
         return self._user_manager.session_username() == custom_test["username"]
 
     def delete_custom_test(self, custom_test_id):
-        self._database.custom_tests.delete_one({'_id': ObjectId(custom_test_id)})
+        self._database.custom_tests.delete_one({"_id": ObjectId(custom_test_id)})
 
     def is_waiting(self, custom_test_id, user_check=True):
         """ Tells if a custom test is running/in queue """
