@@ -27,7 +27,7 @@ class MultilangForm(GraderForm):
             del self.task_data[key]
 
         # Order test cases to load them correctly
-        grader_test_cases = OrderedDict(sorted(grader_test_cases.items(), key=lambda test: test[1]["input_file"]))
+        grader_test_cases = OrderedDict(sorted(grader_test_cases.items()))
         return grader_test_cases
 
     def parse_and_validate_test_cases(self):

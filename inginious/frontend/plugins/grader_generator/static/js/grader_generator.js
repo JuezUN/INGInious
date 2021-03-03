@@ -1,7 +1,5 @@
-let studio_grader_test_case_sequence = 0;
 let grader_test_cases_count = 0;
 let test_cases_input = [];
-let ids_test_cases_input = [];
 
 function studio_add_test_case_from_form() {
     studio_add_test_case({
@@ -19,7 +17,7 @@ function studio_add_test_case(test_case) {
         "diff_shown": false
     }, test_case);
 
-    const test_id = studio_grader_test_case_sequence;
+    const test_id = grader_test_cases_count;
 
     const inputFile = test_case["input_file"];
     const outputFile = test_case["output_file"];
@@ -31,27 +29,31 @@ function studio_add_test_case(test_case) {
     const template = $("#test_case_template").html().replace(/TID/g, test_id);
 
     const templateElement = $(template);
-    templateElement.find("#grader_test_cases_" + test_id + "_input_file").val(inputFile);
-    templateElement.find("#grader_test_cases_" + test_id + "_output_file").val(outputFile);
-    templateElement.find("#grader_test_cases_" + test_id + "_weight").val(
-        test_case["weight"]);
-    templateElement.find("#grader_test_cases_" + test_id + "_custom_feedback").val(
-        test_case["custom_feedback"]);
-    templateElement.find("#grader_test_cases_" + test_id + "_diff_shown").prop('checked',
-        test_case["diff_shown"]);
 
-    studio_grader_test_case_sequence++;
+    insertDataContent(templateElement, test_case);
+
     grader_test_cases_count++;
     test_cases_input.push(inputFile);
-    ids_test_cases_input.push(test_id);
 
-    const first_row = (grader_test_cases_count === 1);
-
-    if (first_row) {
-        $('#grader_test_cases_header').show();
-    }
+    hideOrShowHeader();
 
     $('#grader_test_cases_container').append(templateElement);
+}
+
+function insertDataContent(templateElement, test_data) {
+    const baseId = templateElement.attr("id");
+
+    templateElement.find(`#${baseId}_input_file`).val(test_data["input_file"]);
+    templateElement.find(`#${baseId}_output_file`).val(test_data["output_file"]);
+    templateElement.find(`#${baseId}_weight`).val(test_data["weight"]);
+    templateElement.find(`#${baseId}_custom_feedback`).val(test_data["custom_feedback"]);
+    templateElement.find(`#${baseId}_diff_shown`).prop('checked', test_data["diff_shown"]);
+}
+
+
+function getIdNum(id) {
+    const baseIdPrefixLen = "grader_test_cases_".length;
+    return id.substr(baseIdPrefixLen);
 }
 
 function studio_load_grader_test_cases(test_cases) {
@@ -65,14 +67,30 @@ function studio_load_grader_test_cases(test_cases) {
 }
 
 function studio_remove_test_case(id) {
-    $("#grader_test_cases_" + id).remove();
+    const baseId = `grader_test_cases_${id}`;
+    const inputFileName = $(`#${baseId}_input_file`).val();
+    const indexToDelete = test_cases_input.indexOf(inputFileName);
+
+    $(`#${baseId}`).remove();
+    correctIds(id);
     grader_test_cases_count--;
+
+    hideOrShowHeader();
+    test_cases_input.splice(indexToDelete, 1);
+}
+
+function hideOrShowHeader() {
     if (grader_test_cases_count === 0) {
         $('#grader_test_cases_header').hide();
+    } else {
+        $('#grader_test_cases_header').show();
     }
-    let ind_of_test_case = ids_test_cases_input.findIndex(el => el === id);
-    test_cases_input.splice(ind_of_test_case, 1);
-    ids_test_cases_input.splice(ind_of_test_case, 1);
+}
+
+function correctIds(idDeleted) {
+    for (let i = idDeleted + 1; i < grader_test_cases_count; i++) {
+        updateItemIds(i, i - 1);
+    }
 }
 
 function studio_update_grader_problems() {
@@ -263,17 +281,18 @@ function toggle_selection_tests_cases() {
     // Activate in case of button press and not checkbox
     $("#toggle_select_test_cases").prop("checked", option);
 
-    ids_test_cases_input.forEach((item, _) => {
-        $("#grader_test_cases_" + item + "_diff_shown").prop("checked", option);
-    })
+    for (let i = 0; i < grader_test_cases_count; i++) {
+        $(`#grader_test_cases_${i}_diff_shown`).prop("checked", option);
+    }
 
 }
 
 function remove_all_test_cases() {
-    const to_delete = ids_test_cases_input.slice();
-    to_delete.forEach((item, _) => {
-        studio_remove_test_case(item);
-    });
+    for (let i = 0; i < grader_test_cases_count; i++) {
+        studio_remove_test_case(i);
+    }
+    grader_test_cases_count = 0;
+
 }
 
 function expand_text_area(elem, rows = 6) {
@@ -282,4 +301,94 @@ function expand_text_area(elem, rows = 6) {
 
 function compress_text_area(elem, rows = 2) {
     elem.rows = rows;
+}
+
+function addSwitchBehavior() {
+    function shiftClasses(object) {
+        object.find('.btn').toggleClass('active');
+        object.find('.btn').toggleClass('btn-primary');
+        object.find('.btn').toggleClass('btn-default');
+    }
+
+    $('.btn-toggle').click(function () {
+        shiftClasses($(this));
+    });
+
+}
+
+
+function activeSortableMode() {
+    const testCases = $("#grader_test_cases_container")[0];
+    //TODO: add comments
+    Sortable.create(testCases, {
+        group: "test-cases",
+        animation: 150,
+        easing: "cubic-bezier(0.895, 0.03, 0.685, 0.22)",
+        handle: ".item-cursor-move",
+        chosenClass: "active",
+        onEnd: (moveEvent) => {
+            const oldPos = moveEvent["oldIndex"];
+            const newPos = moveEvent["newIndex"];
+            updateAllIds(oldPos, newPos);
+        }
+    });
+}
+
+function updateAllIds(oldPos, newPos) {
+    const itemPosIncreased = (oldPos - newPos) < 0;
+    if (itemPosIncreased) {
+        updateIdsLowestToHighest(oldPos, newPos);
+    } else {
+        updateIdsHighestToLowest(oldPos, newPos);
+    }
+
+}
+
+function updateIdsHighestToLowest(oldPos, newPos) {
+    const auxName = "AUX"
+    updateItemIds(oldPos, auxName);
+    for (let i = oldPos - 1; i >= newPos; i--) {
+        updateItemIds(i, i + 1);
+    }
+    updateItemIds(auxName, newPos)
+
+}
+
+function updateIdsLowestToHighest(oldPos, newPos) {
+    const auxName = "AUX"
+    updateItemIds(oldPos, auxName);
+    for (let i = oldPos + 1; i <= newPos; i++) {
+        updateItemIds(i, i - 1);
+    }
+    updateItemIds(auxName, newPos)
+
+}
+
+function updateItemIds(itemId, newPos) {
+    const oldId = `grader_test_cases_${itemId}`
+    const newId = `grader_test_cases_${newPos}`;
+    const newName = `grader_test_cases[${newPos}]`;
+
+    const template = $(`#${oldId}`);
+    const input = $(`#${oldId}_input_file`);
+    const output = $(`#${oldId}_output_file`);
+    const weight = $(`#${oldId}_weight`);
+    const diff = $(`#${oldId}_diff_shown`);
+    const feedback = $(`#${oldId}_custom_feedback`);
+    const btn = $(`#${oldId}_delete_btn`);
+
+    input.attr("id", `${newId}_input_file`);
+    input.attr("name", `${newName}[input_file]`);
+    output.attr("id", `${newId}_output_file`);
+    output.attr("name", `${newName}[output_file]`);
+    weight.attr("id", `${newId}_weight`);
+    weight.attr("name", `${newName}[weight]`);
+    diff.attr("id", `${newId}_diff_shown`);
+    diff.attr("name", `${newName}[diff_shown]`)
+    feedback.attr("id", `${newId}_custom_feedback`);
+    feedback.attr("name", `${newName}[custom_feedback]`);
+    btn.attr("id", `${newId}_delete_btn`);
+    btn.attr("onclick", `studio_remove_test_case(${newPos})`);
+    template.attr("id", newId);
+
 }

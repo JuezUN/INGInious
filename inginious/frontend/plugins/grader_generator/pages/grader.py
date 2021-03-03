@@ -53,6 +53,8 @@ def grader_generator_tab(course, taskid, task_data, template_helper):
     else:
         template_helper.add_javascript('/grader_generator/static/js/grader_generator.js')
         template_helper.add_javascript('/grader_generator/static/js/notebook_grader_generator.js')
+        template_helper.add_css('/grader_generator/static/css/grader_tab.css')
+        template_helper.add_javascript('https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js')
 
     return tab_id, link, content
 

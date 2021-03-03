@@ -1,0 +1,28 @@
+#toggle_select_test_cases {
+  margin-right: 0.3em;
+  margin-bottom: 4px;
+}
+
+#remove_btn {
+  margin-right: 0.3em;
+}
+
+.py-1{
+  padding-top: 1em;
+}
+
+.panel-placeholder {
+  border: 1px dotted black;
+  border-radius: 4px;
+  margin: 0 15px 20px 15px;
+  padding: 0;
+  height: 50px;
+}
+
+.item-cursor-move:hover {
+  cursor: move;
+}
+
+.pb-0 {
+  padding-bottom: 0 !important;
+}
