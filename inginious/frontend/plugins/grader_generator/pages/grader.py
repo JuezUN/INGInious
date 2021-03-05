@@ -51,6 +51,7 @@ def grader_generator_tab(course, taskid, task_data, template_helper):
     if get_use_minified():
         template_helper.add_javascript('/grader_generator/static/js/grader_generator.min.js')
     else:
+        template_helper.add_javascript('/grader_generator/static/js/grader.js')
         template_helper.add_javascript('/grader_generator/static/js/grader_generator.js')
         template_helper.add_javascript('/grader_generator/static/js/notebook_grader_generator.js')
         template_helper.add_css('/grader_generator/static/css/grader_tab.css')

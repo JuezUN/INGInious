@@ -1,3 +1,8 @@
+const notebookTestCaseParameterIds = ["name", "weight", "setup_code", "custom_feedback", "show_debug_info"];
+const notebookButtons = [new Button("edit_btn", "notebook_grader_on_edit_test"),
+    new Button("delete_btn", "notebook_grader_remove_test")];
+const notebookModalParameterIds = ["code", "expected_output"];
+const notebookModalButtonIds = [new Button("delete_btn", "notebook_grader_remove_test_case")];
 let notebook_grader_tests_sequence = 0;
 let notebook_grader_tests_cases_count = {};
 let editing_test_id = null;
@@ -9,6 +14,10 @@ function toggle_test_case_form_alert(show, message) {
     alert.text(message);
     if (show) alert.show();
     else alert.hide();
+}
+
+function getCountTestCases(testId) {
+    return $(`#notebook_grader_test_${testId}_cases_container div[class="row"]`).length;
 }
 
 function notebook_grader_add_test_case_from_form() {

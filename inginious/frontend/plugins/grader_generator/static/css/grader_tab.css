@@ -7,6 +7,10 @@
   margin-right: 0.3em;
 }
 
+#notebook_grader_form .CodeMirror-scroll {
+  max-height: 150px;
+}
+
 .py-1{
   padding-top: 1em;
 }

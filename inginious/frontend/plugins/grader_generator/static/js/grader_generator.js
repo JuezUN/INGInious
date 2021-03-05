@@ -1,3 +1,6 @@
+const multiLangTestCaseParameters = ["input_file", "output_file", "weight", "custom_feedback", "diff_shown"];
+const multiLangButtons = [new Button("delete_btn", "studio_remove_test_case")];
+
 let grader_test_cases_count = 0;
 let test_cases_input = [];
 
@@ -42,11 +45,13 @@ function studio_add_test_case(test_case) {
 
 function insertDataContent(templateElement, test_data) {
     const baseId = templateElement.attr("id");
+    const subArrayParameters = multiLangTestCaseParameters.slice(0, -1);
 
-    templateElement.find(`#${baseId}_input_file`).val(test_data["input_file"]);
-    templateElement.find(`#${baseId}_output_file`).val(test_data["output_file"]);
-    templateElement.find(`#${baseId}_weight`).val(test_data["weight"]);
-    templateElement.find(`#${baseId}_custom_feedback`).val(test_data["custom_feedback"]);
+    $.each(subArrayParameters, (_, parameterId) => {
+            templateElement.find(`#${baseId}_${parameterId}`).val(test_data[parameterId]);
+        }
+    );
+
     templateElement.find(`#${baseId}_diff_shown`).prop('checked', test_data["diff_shown"]);
 }
 
@@ -56,14 +61,10 @@ function getIdNum(id) {
     return id.substr(baseIdPrefixLen);
 }
 
-function studio_load_grader_test_cases(test_cases) {
-    if ($("#environment").val() === "Notebook") {
-        notebook_grader_load_all_tests(test_cases)
-    } else {
-        $.each(test_cases, function (_, test_case) {
-            studio_add_test_case(test_case);
-        });
-    }
+function multiLangLoadAllTests(testCases) {
+    $.each(testCases, function (_, testCase) {
+        studio_add_test_case(testCase);
+    });
 }
 
 function studio_remove_test_case(id) {
@@ -303,92 +304,3 @@ function compress_text_area(elem, rows = 2) {
     elem.rows = rows;
 }
 
-function addSwitchBehavior() {
-    function shiftClasses(object) {
-        object.find('.btn').toggleClass('active');
-        object.find('.btn').toggleClass('btn-primary');
-        object.find('.btn').toggleClass('btn-default');
-    }
-
-    $('.btn-toggle').click(function () {
-        shiftClasses($(this));
-    });
-
-}
-
-
-function activeSortableMode() {
-    const testCases = $("#grader_test_cases_container")[0];
-    //TODO: add comments
-    Sortable.create(testCases, {
-        group: "test-cases",
-        animation: 150,
-        easing: "cubic-bezier(0.895, 0.03, 0.685, 0.22)",
-        handle: ".item-cursor-move",
-        chosenClass: "active",
-        onEnd: (moveEvent) => {
-            const oldPos = moveEvent["oldIndex"];
-            const newPos = moveEvent["newIndex"];
-            updateAllIds(oldPos, newPos);
-        }
-    });
-}
-
-function updateAllIds(oldPos, newPos) {
-    const itemPosIncreased = (oldPos - newPos) < 0;
-    if (itemPosIncreased) {
-        updateIdsLowestToHighest(oldPos, newPos);
-    } else {
-        updateIdsHighestToLowest(oldPos, newPos);
-    }
-
-}
-
-function updateIdsHighestToLowest(oldPos, newPos) {
-    const auxName = "AUX"
-    updateItemIds(oldPos, auxName);
-    for (let i = oldPos - 1; i >= newPos; i--) {
-        updateItemIds(i, i + 1);
-    }
-    updateItemIds(auxName, newPos)
-
-}
-
-function updateIdsLowestToHighest(oldPos, newPos) {
-    const auxName = "AUX"
-    updateItemIds(oldPos, auxName);
-    for (let i = oldPos + 1; i <= newPos; i++) {
-        updateItemIds(i, i - 1);
-    }
-    updateItemIds(auxName, newPos)
-
-}
-
-function updateItemIds(itemId, newPos) {
-    const oldId = `grader_test_cases_${itemId}`
-    const newId = `grader_test_cases_${newPos}`;
-    const newName = `grader_test_cases[${newPos}]`;
-
-    const template = $(`#${oldId}`);
-    const input = $(`#${oldId}_input_file`);
-    const output = $(`#${oldId}_output_file`);
-    const weight = $(`#${oldId}_weight`);
-    const diff = $(`#${oldId}_diff_shown`);
-    const feedback = $(`#${oldId}_custom_feedback`);
-    const btn = $(`#${oldId}_delete_btn`);
-
-    input.attr("id", `${newId}_input_file`);
-    input.attr("name", `${newName}[input_file]`);
-    output.attr("id", `${newId}_output_file`);
-    output.attr("name", `${newName}[output_file]`);
-    weight.attr("id", `${newId}_weight`);
-    weight.attr("name", `${newName}[weight]`);
-    diff.attr("id", `${newId}_diff_shown`);
-    diff.attr("name", `${newName}[diff_shown]`)
-    feedback.attr("id", `${newId}_custom_feedback`);
-    feedback.attr("name", `${newName}[custom_feedback]`);
-    btn.attr("id", `${newId}_delete_btn`);
-    btn.attr("onclick", `studio_remove_test_case(${newPos})`);
-    template.attr("id", newId);
-
-}
