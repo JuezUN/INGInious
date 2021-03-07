@@ -23,8 +23,12 @@ function getCurrentNumTestCases(testId) {
     return getContainerNumTestCases(`notebook_grader_test_${testId}_cases_container`);
 }
 
+function getNumTestCasesOnModal(){
+    return getContainerNumTestCases("notebook_grader_test_cases_container");
+}
+
 function notebook_grader_add_test_case_from_form() {
-    const currentNumOfCases = getContainerNumTestCases("notebook_grader_test_cases_container");
+    const currentNumOfCases = getNumTestCasesOnModal();
     const new_test_case = notebook_grader_create_test_case({
         "code": $("#notebook_grader_test_case_code").val(),
         "expected_output": $("#notebook_grader_test_case_expected_output").val(),
@@ -82,7 +86,7 @@ function notebook_grader_remove_test_case(test_id, case_id) {
     });
 
 
-    if (getContainerNumTestCases(containerName) === 0) {
+    if (getNumTestCasesOnModal() === 0) {
         $('#notebook_grader_test_cases_header').hide();
     }
 }
@@ -92,7 +96,7 @@ function notebook_grader_remove_test_case(test_id, case_id) {
  * This is to update the HTML ids and names to have a better counting.
  */
 function _notebook_grader_shift_test_cases(test_id, case_id_to_remove) {
-    const amount_cases = getCurrentNumTestCases(test_id);
+    const amount_cases = getNumTestCasesOnModal();
     const test_cases = [];
     let case_id = 0;
     for (let index = 0; index < amount_cases; index++) {
