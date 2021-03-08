@@ -33,6 +33,15 @@ function activeSortableMode() {
     });
 }
 
+function getContainerDiv() {
+    if (isNotebook) {
+        return $("#notebook_grader_tests_container")[0];
+    } else {
+        return $("#grader_test_cases_container")[0];
+    }
+}
+
+
 function updateAllIds(oldPos, newPos) {
     const itemPosIncreased = (oldPos - newPos) < 0;
     if (itemPosIncreased) {
@@ -63,15 +72,32 @@ function updateIdsLowestToHighest(oldPos, newPos) {
 
 }
 
-function updateItemIds(itemId, newPos) {
-    const idPrefix = getIdPrefix();
+function updateItemIds(itemId, newId) {
+
+    updateRowId(itemId, newId);
+    updateParametersId(itemId, newId);
+    updateButtonsId(itemId, newId);
+
+    if (isNotebook) {
+        updateTestCasesContainer(itemId, newId);
+    }
+
+
+}
+
+
+function updateRowId(itemId, newId) {
+    const baseOldId = getBaseId(itemId);
+    const baseNewId = getBaseId(newId);
+
+    $(`#${baseOldId}`).attr("id", baseNewId);
+}
+
+function updateParametersId(itemId, newId) {
     const parameters = getParametersArray();
-    const buttons = getButtons();
-
-    const baseOldId = `${idPrefix}_${itemId}`
-    const baseNewId = `${idPrefix}_${newPos}`;
-    const newNameAttrPrefix = `${idPrefix}[${newPos}]`;
-
+    const newNameAttrPrefix = `${getIdPrefix()}[${newId}]`;
+    const baseOldId = getBaseId(itemId);
+    const baseNewId = getBaseId(newId);
 
     $.each(parameters, (_, parameterId) => {
         let parameter = $(`#${baseOldId}_${parameterId}`);
@@ -79,28 +105,25 @@ function updateItemIds(itemId, newPos) {
         parameter.attr("name", `${newNameAttrPrefix}[${parameterId}]`)
     });
 
+}
+
+function updateButtonsId(itemId, newId) {
+    const baseOldId = getBaseId(itemId);
+    const baseNewId = getBaseId(newId);
+    const buttons = getButtons();
+
     $.each(buttons, (_, button) => {
         let buttonId = button.buttonId;
         let functionName = button.functionName;
         let buttonParameter = $(`#${baseOldId}_${buttonId}`);
         buttonParameter.attr("id", `${baseNewId}_${buttonId}`)
-        buttonParameter.attr("onclick", `${functionName}(${newPos})`)
+        buttonParameter.attr("onclick", `${functionName}(${newId})`)
     });
-
-    if (isNotebook) {
-    }
-
-    $(`#${baseOldId}`).attr("id", baseNewId);
-
 
 }
 
-function getContainerDiv() {
-    if (isNotebook) {
-        return $("#notebook_grader_tests_container")[0];
-    } else {
-        return $("#grader_test_cases_container")[0];
-    }
+function getBaseId(id) {
+    return `${getIdPrefix()}_${id}`;
 }
 
 function getIdPrefix() {
@@ -125,4 +148,30 @@ function getButtons() {
     } else {
         return multiLangButtons;
     }
+}
+
+
+function updateTestCasesContainer(itemId, newId) {
+    const numOfCases = getCurrentNumTestCases(itemId);
+    const baseOldId = getBaseId(itemId);
+    const baseNewId = getBaseId(newId);
+    const newNameAttrPrefix = `${getIdPrefix()}[${newId}]`;
+
+    $(`#${baseOldId}_cases_container`).attr("id",`${baseNewId}_cases_container`);
+    for (let i = 0; i < numOfCases; i++) {
+        $(`#${baseOldId}_cases_${i}`).attr("id", `${baseNewId}_cases_${i}`);
+        $.each(notebookModalParameterIds, (_, parameterId) => {
+            let parameter = $(`#${baseOldId}_cases_${i}_${parameterId}`);
+            parameter.attr("id", `${baseNewId}_cases_${i}_${parameterId}`);
+            parameter.attr("name", `${newNameAttrPrefix}[cases][${i}][${parameterId}]`);
+        });
+        $.each(notebookModalButtonIds, (_, button) => {
+            let buttonId = button.buttonId;
+            let functionName = button.functionName;
+            let buttonParameter = $(`#${baseOldId}_cases_${i}_${buttonId}`);
+            buttonParameter.attr("id", `${baseOldId}_cases_${i}_${buttonId}`);
+            buttonParameter.attr("onclick", `${functionName}(${newId},${i})`);
+        });
+    }
+
 }
