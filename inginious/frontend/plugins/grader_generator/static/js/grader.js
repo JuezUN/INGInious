@@ -116,8 +116,8 @@ function updateButtonsId(itemId, newId) {
         let buttonId = button.buttonId;
         let functionName = button.functionName;
         let buttonParameter = $(`#${baseOldId}_${buttonId}`);
-        buttonParameter.attr("id", `${baseNewId}_${buttonId}`)
-        buttonParameter.attr("onclick", `${functionName}(${newId})`)
+        buttonParameter.attr("id", `${baseNewId}_${buttonId}`);
+        buttonParameter.attr("onclick", `${functionName}(${newId})`);
     });
 
 }
@@ -157,7 +157,7 @@ function updateTestCasesContainer(itemId, newId) {
     const baseNewId = getBaseId(newId);
     const newNameAttrPrefix = `${getIdPrefix()}[${newId}]`;
 
-    $(`#${baseOldId}_cases_container`).attr("id",`${baseNewId}_cases_container`);
+    $(`#${baseOldId}_cases_container`).attr("id", `${baseNewId}_cases_container`);
     for (let i = 0; i < numOfCases; i++) {
         $(`#${baseOldId}_cases_${i}`).attr("id", `${baseNewId}_cases_${i}`);
         $.each(notebookModalParameterIds, (_, parameterId) => {
@@ -169,8 +169,8 @@ function updateTestCasesContainer(itemId, newId) {
             let buttonId = button.buttonId;
             let functionName = button.functionName;
             let buttonParameter = $(`#${baseOldId}_cases_${i}_${buttonId}`);
-            buttonParameter.attr("id", `${baseOldId}_cases_${i}_${buttonId}`);
             buttonParameter.attr("onclick", `${functionName}(${newId},${i})`);
+            buttonParameter.attr("id", `${baseNewId}_cases_${i}_${buttonId}`);
         });
     }
 

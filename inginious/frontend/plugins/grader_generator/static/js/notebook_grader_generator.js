@@ -23,7 +23,7 @@ function getCurrentNumTestCases(testId) {
     return getContainerNumTestCases(`notebook_grader_test_${testId}_cases_container`);
 }
 
-function getNumTestCasesOnModal(){
+function getNumTestCasesOnModal() {
     return getContainerNumTestCases("notebook_grader_test_cases_container");
 }
 
@@ -259,8 +259,7 @@ function _notebook_grader_load_test_case_in_modal(test_case_element) {
     modal_element.find("#notebook_grader_test_cases_container").append(test_case_element);
     $("#notebook_grader_test_cases_header").show();
     $(`#${test_case_element.attr('id')} .notebook_code`).each(function (index, elem) {
-        if (!codeEditors[elem.name])
-            registerCodeEditor(elem, $(elem).attr('data-x-language'), $(elem).attr('data-x-lines'));
+        registerCodeEditor(elem, $(elem).attr('data-x-language'), $(elem).attr('data-x-lines'));
     });
 }
 
@@ -316,14 +315,17 @@ function notebook_grader_update_test() {
 
     test_to_update.find(`#notebook_grader_test_${test_id}_cases_container`).html("");
     $.each(test_cases, (_, test_case) => {
-        test_to_update.find(`#notebook_grader_test_${test_id}_cases_container`).append(test_case);
+        let currentTestCase = test_to_update.find(`#notebook_grader_test_${test_id}_cases_container`);
+        _deleteCodeMirror(test_case);
+        currentTestCase.append(test_case);
     });
 
     modal_element.modal('hide');
     editing_test_id = null;
 }
 
-function _clear_modal() {let notebook_grader_tests_cases_count = {};
+function _clear_modal() {
+    let notebook_grader_tests_cases_count = {};
 
     $('#notebook_grader_test_form_modal input').val("");
     $('#notebook_grader_test_form_modal textarea').val("");
@@ -333,6 +335,12 @@ function _clear_modal() {let notebook_grader_tests_cases_count = {};
     $(modal + ' .CodeMirror').each(function (i, el) {
         el.CodeMirror.getDoc().setValue("")
     });
+}
+
+function _deleteCodeMirror(testCase) {
+    const textAreaId = testCase.attr("id");
+    testCase.find(".CodeMirror").remove();
+    delete codeEditors[$(`#${textAreaId}_code`).attr("name")];
 }
 
 $(".notebook_grader_submit_test_form").click((e) => {
