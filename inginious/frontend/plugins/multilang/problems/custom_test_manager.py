@@ -59,8 +59,9 @@ class CustomTestManager(object):
             # This is in case there is a job in DB that was not previously deleted but already finished.
             # Also, in case the current custom test is still in waiting status but the job is there for more than 3
             # minutes because the job probably already finished but the callback was not successfully run.
-            if self.is_done(str(current_custom_test["_id"])) or (
-                    self.is_waiting(str(current_custom_test["_id"])) and self.is_old(current_custom_test)):
+            current_custom_test_id = str(current_custom_test["_id"])
+            if self.is_done(current_custom_test_id) or (
+                    self.is_waiting(current_custom_test_id) and self.is_old(current_custom_test)):
                 self.delete_custom_test(str(current_custom_test["_id"]))
             else:
                 raise Exception(_("A custom test is already pending for this task. Wait for a while to run the tests."))

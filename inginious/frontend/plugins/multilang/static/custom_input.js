@@ -73,7 +73,7 @@ function waitForCustomTest(customTestId) {
                 if ("status" in data && data["status"] === "waiting") {
                     displayTaskLoadingAlert(data, null);
                     waitForCustomTest(customTestId);
-                } else if ("status" in data && "result" in data) {
+                } else if ("status" in data && data["status"] === "done") {
                     displayCustomInputResults(data);
                     unblurTaskForm();
                 } else {
