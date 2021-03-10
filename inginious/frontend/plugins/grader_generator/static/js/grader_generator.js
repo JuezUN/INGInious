@@ -277,16 +277,6 @@ function read_files_and_match() {
  * Remove all: Removes all the test cases
  */
 
-function toggle_selection_tests_cases() {
-    const option = !($("#toggle_select_test_cases")[0].checked);
-    // Activate in case of button press and not checkbox
-    $("#toggle_select_test_cases").prop("checked", option);
-
-    for (let i = 0; i < grader_test_cases_count; i++) {
-        $(`#grader_test_cases_${i}_diff_shown`).prop("checked", option);
-    }
-
-}
 
 function remove_all_test_cases() {
     for (let i = 0; i < grader_test_cases_count; i++) {
@@ -303,4 +293,3 @@ function expand_text_area(elem, rows = 6) {
 function compress_text_area(elem, rows = 2) {
     elem.rows = rows;
 }
-

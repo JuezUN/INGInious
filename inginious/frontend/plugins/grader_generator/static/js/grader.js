@@ -175,3 +175,60 @@ function updateTestCasesContainer(itemId, newId) {
     }
 
 }
+
+function toggle_selection_tests_cases() {
+    const checkboxButton = getDiffCheckboxButton();
+    const option = !checkboxButton[0].checked;
+    // Activate in case of button press and not checkbox
+    checkboxButton.prop("checked", option);
+    changeSelectionTestCases(option);
+
+}
+
+function changeSelectionTestCases(option) {
+    const numTests = getCurrentNumTests();
+    for (let i = 0; i < numTests; i++) {
+        $(`#${getIdPrefix()}_${i}_${getDiffIdSuffix()}`).prop("checked", option);
+    }
+}
+
+function isAllShowDiffChecked() {
+    const numListChecked = $(`[id$='${getDiffIdSuffix()}']:visible:checked`).length;
+    return getCurrentNumTests() === numListChecked;
+}
+
+function checkDiffStatus() {
+    const checkboxButton = getDiffCheckboxButton();
+    if (isAllShowDiffChecked()) {
+        checkboxButton.prop("checked", true);
+    } else {
+        checkboxButton.prop("checked", false);
+    }
+}
+
+function getDiffCheckboxButton() {
+    if (isNotebook) {
+        return $("#notebookToggleSelectTestCases");
+    } else {
+        return $("#toggle_select_test_cases");
+    }
+}
+
+function getDiffIdSuffix() {
+    if (isNotebook) {
+        return "show_debug_info";
+    } else {
+        return "diff_shown";
+    }
+}
+
+function getCurrentNumTests() {
+    if (isNotebook){
+        return notebook_grader_tests_sequence;
+    }else {
+        return grader_test_cases_count;
+    }
+}
+$("#tab_grader").show(function () {
+    checkDiffStatus();
+});

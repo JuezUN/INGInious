@@ -1,8 +1,3 @@
-#toggle_select_test_cases {
-  margin-right: 0.3em;
-  margin-bottom: 4px;
-}
-
 #remove_btn {
   margin-right: 0.3em;
 }
@@ -22,11 +17,21 @@
   padding: 0;
   height: 50px;
 }
-
+.item-cursor-move {
+  color: #919193;
+  padding-top: 0.5rem;
+  margin-left: 0.5em;
+}
 .item-cursor-move:hover {
+  color: #000000;
   cursor: move;
 }
 
 .pb-0 {
   padding-bottom: 0 !important;
+}
+
+.all-diffs {
+  margin-right: 0.3em !important;
+  margin-bottom: 4px!important;
 }

@@ -106,9 +106,9 @@ $#
     <hr/>
     <h3 align="center">$:_("Test cases")</h3>
     <div class="col-4 py-1" style="height: 100%;">
-        <div class="btn btn-success" onclick="toggle_selection_tests_cases()">
-            <input id="toggle_select_test_cases" type="checkbox"
-                   onchange="toggle_selection_tests_cases()">$:_("All diffs")</input>
+        <div class="btn btn-warning" onclick="toggle_selection_tests_cases()">
+            <input id="toggle_select_test_cases" type="checkbox" class="all-diffs"
+                   onclick="toggle_selection_tests_cases()">$:_("All diffs")</input>
         </div>
         <button type="button" class="btn btn-danger" onclick="remove_all_test_cases()">
             <i class="fa fa-trash" aria-hidden="true" id="remove_btn"></i>$:_("Remove all tests")
@@ -251,6 +251,10 @@ $#
         </div>
         <hr>
         <div class="col-4" style="height: 100%;">
+            <div class="btn btn-warning" onclick="toggle_selection_tests_cases()">
+                <input id="notebookToggleSelectTestCases" type="checkbox" class="all-diffs"
+                       onclick="toggle_selection_tests_cases()">$:_("All diffs")</input>
+            </div>
             <button type="button" class="btn btn-success" data-toggle="modal"
                     data-target="#notebook_grader_test_form_modal"
                     onclick="">
@@ -298,7 +302,6 @@ $#
                 read_files_and_match();
             }
         });
-
         activeSortableMode();
     });
 </script>
