@@ -31,9 +31,9 @@ def add_course_creation_main_menu(plugin_manager, course_factory):
                 template_helper.get_custom_renderer(_TEMPLATES_FOLDER_PATH, layout=False).create_course_modal(
                     courses_list))
 
-            return """<div class="list-group"><button class="list-group-item list-group-item-info" data-toggle='modal' 
-            data-target="#create_course_modal"><i class="fa fa-plus-circle fa-fw"></i>{}</button></div>""".format(
-                create_course_str) + modal_template
+            return """<div class="list-group"><h3>Create course</h3><button class="list-group-item list-group-item-info" 
+            data-toggle='modal' data-target="#create_course_modal"><i class="fa fa-plus-circle fa-fw"></i>{}
+            </button></div>""".format(create_course_str) + modal_template
         else:
             return None
 

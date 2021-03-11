@@ -1,6 +1,8 @@
+import uuid
 import web
 
 from inginious.frontend.plugins.utils import get_mandatory_parameter
+from inginious.common.exceptions import InvalidNameException, CourseAlreadyExistsException
 import inginious.frontend.pages.api._api_page as api
 
 
@@ -14,26 +16,53 @@ class CreateCourseAPI(api.APIAuthenticatedPage):
         course_semester = get_mandatory_parameter(request_params, "course_semester")
 
         course_group = request_params.get("course_group", None)
+        course_to_copy_id = request_params.get("course_to_copy_id", None)
 
         if not course_name:
             raise api.APIError(400, _("The course name cannot be empty."))
 
         if not course_year:
-            raise api.APIError(400, _("The course year cannot be empty."))
+            raise api.APIError(400, _("The year field cannot be empty."))
 
         if not course_year.isnumeric():
-            raise api.APIError(400, _("The course year must be a number."))
+            raise api.APIError(400, _("The year must be a number."))
 
         if not course_semester:
-            raise api.APIError(400, _("The course semester cannot be empty."))
+            raise api.APIError(400, _("The semester field cannot be empty."))
 
         if not course_semester.isnumeric():
-            raise api.APIError(400, _("The course semester must be a number."))
+            raise api.APIError(400, _("The semester must be a number."))
 
         if course_group and not course_group.isnumeric():
             raise api.APIError(400, _("The group must be a number."))
 
-        return {"name": course_name, "group": course_group, "year": course_year, "semester": course_semester}
+        data = {"name": course_name, "group": course_group, "year": course_year, "semester": course_semester}
+
+        all_courses = set(self.course_factory.get_all_courses().keys())
+        if course_to_copy_id and course_to_copy_id != "-1":
+            if course_to_copy_id not in all_courses:
+                raise api.APIError(400, _("The selected course to copy tasks from does not exist."))
+            else:
+                data["course_to_copy"] = course_to_copy_id
+
+        return data
+
+    def _copy_tasks(self, source_course_id, target_course_id):
+        source_course = self.course_factory.get_course(source_course_id)
+        source_tasks = self.task_factory.get_all_tasks(source_course)
+
+        target_fs = self.course_factory.get_course_fs(target_course_id)
+
+        copied_tasks_target_course = set()
+
+        for source_task in source_tasks.values():
+            new_task_id = _generate_new_task_id(copied_tasks_target_course)
+            try:
+                target_fs.copy_to(source_task.get_fs().prefix, new_task_id)
+                copied_tasks_target_course.add(new_task_id)
+            except:
+                return True
+        return False
 
     def API_POST(self):
         try:
@@ -48,29 +77,58 @@ class CreateCourseAPI(api.APIAuthenticatedPage):
                                                                             data["semester"])
 
                 self.course_factory.create_course(course_id, {"name": course_final_name, "accessible": False})
+
+                if "course_to_copy" in data:
+                    # Copy tasks in case a course was selected
+                    clone_failed = self._copy_tasks(data["course_to_copy"], course_id)
+                    if clone_failed:
+                        web.header('Content-Type', 'text/json; charset=utf-8')
+                        return 500, {"status": "error", "text": _("An internal error occurred while copying tasks.")}
+
                 web.header('Content-Type', 'text/json; charset=utf-8')
-                return 200, {"status": "done", "course_page": "/admin/{}/settings".format(course_id)}
-            except:
+                return 200, {
+                    "status": "done",
+                    "course_page": "/admin/{}/settings".format(course_id),
+                    "text": _("The course was successfully created.")
+                }
+            except InvalidNameException as e:
                 web.header('Content-Type', 'text/json; charset=utf-8')
                 return 400, {"status": "error", "text": _(
-                    "Failed to create the course. It might either already exist or contain an invalid character (only alphanumeric in addition to '_' and '-' are accepted).")}
+                    "The text may contain an invalid character. Only alphanumeric characters, in addition to '_' and '-' are accepted.")}
+            except CourseAlreadyExistsException as e:
+                web.header('Content-Type', 'text/json; charset=utf-8')
+                return 400, {"status": "error", "text": _(
+                    "A course with the id {} already exists.".format(course_id))}
+            except Exception as e:
+                web.header('Content-Type', 'text/json; charset=utf-8')
+                return 400, {"status": "error", "text": _("An error occurred while creating the course")}
 
 
 def _generate_course_id_and_name(name, group, year, semester):
     name_words = name.strip().split(" ")
-    name_initials = "".join(map(lambda word: word.strip()[0].capitalize(), name_words))
 
+    # If the number of words is greater than 1, the final ID will have the capitalized initials of each word in the
+    # name. Otherwise, the final name is the given name by the user.
     if len(name_words) > 1:
-        final_id = name_initials
+        # Get the capitalized initials for each word in the name
+        name_initials = "".join(map(lambda word: word.strip()[0].capitalize(), name_words))
+        new_course_id = name_initials
     else:
-        final_id = name_words[0]
+        new_course_id = name.strip()
 
-    final_name = name
+    new_course_name = name.strip()
     if group:
-        final_id += "-Grupo{}".format(group)
-        final_name += " - Grupo {}".format(group)
+        new_course_id += "-Group{}".format(group)
+        new_course_name += " | Grupo {}".format(group)
 
-    final_id += "-{year}-{semester}".format(year=year, semester=semester)
-    final_name += " - {year} - {semester}".format(year=year, semester=semester)
+    new_course_id += "-{year}-{semester}".format(year=year, semester=semester)
+    new_course_name += " | {year} - {semester}".format(year=year, semester=semester)
 
-    return final_id, final_name
+    return new_course_id, new_course_name
+
+
+def _generate_new_task_id(target_course_tasks):
+    copy_id = str(uuid.uuid4())
+    while copy_id in target_course_tasks:
+        copy_id = str(uuid.uuid4())
+    return copy_id

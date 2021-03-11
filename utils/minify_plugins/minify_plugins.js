@@ -15,6 +15,7 @@ const _PLAGIARISM_PLUGIN_PATH = `${_BASE_PATH}/plagiarism/static`;
 const _TASK_EDITORIAL_PATH = `${_BASE_PATH}/task_editorial/static`;
 const _CONTACT_PAGE_PLUGIN_PATH = `${_BASE_PATH}/contact_page/static`;
 const _MANUAL_SCORING_PATH = `${_BASE_PATH}/manual_scoring/static`;
+const _COURSE_CREATION_PATH = `${_BASE_PATH}/course_creation/static`;
 
 /**
  * Read file synchronously.
@@ -249,10 +250,11 @@ function minifyPlagiarismPlugin() {
 
     minifyCssFiles(cssFiles, cssFilesPath, "plagiarism");
 }
+
 function minifyManualScoringPlugin() {
     const cssFilesPath = _MANUAL_SCORING_PATH + "/css/";
     const jsFilesPath = _MANUAL_SCORING_PATH + "/js/";
-    const jsFiles = ["code_field","message_box","rubric","manual_scoring_main"].map((name) => {
+    const jsFiles = ["code_field", "message_box", "rubric", "manual_scoring_main"].map((name) => {
         return getJSFilePath(jsFilesPath, name);
     });
     const cssFiles = ["manual_scoring"].map((name) => {
@@ -277,7 +279,7 @@ function minifyTaskEditorialPlugin() {
     minifyJSFiles(jsFiles, jsFilesPath, "task_editorial");
 }
 
-function minifyContactPage() {
+function minifyContactPagePlugin() {
     const cssFilesPath = _CONTACT_PAGE_PLUGIN_PATH + "/css/";
     const jsFilesPath = _CONTACT_PAGE_PLUGIN_PATH + "/js/";
 
@@ -293,7 +295,18 @@ function minifyContactPage() {
 
     minifyCssFiles(cssFiles, cssFilesPath, "contact_page");
     minifyJSFiles(jsFiles, jsFilesPath, "contact_page");
+}
 
+function minifyCourseCreationPlugin() {
+    const jsFilesPath = _COURSE_CREATION_PATH + "/js/";
+
+    const jsFiles = ["course_creation"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+
+    console.log("Minify 'Contact page' static files.");
+
+    minifyJSFiles(jsFiles, jsFilesPath, "course_creation");
 }
 
 minifyUNCodePlugin();
@@ -307,4 +320,5 @@ minifyAnalyticsPlugin();
 minifyPlagiarismPlugin();
 minifyManualScoringPlugin();
 minifyTaskEditorialPlugin();
-minifyContactPage();
+minifyContactPagePlugin();
+minifyCourseCreationPlugin();
