@@ -33,13 +33,10 @@ def add_course_creation_main_menu(plugin_manager, course_factory, use_minified):
         if not user_manager.user_is_superadmin():
             return None
 
-        print("running")
-
         if use_minified:
-            plugin_manager.add_hook("javascript_footer",
-                                    lambda: "/course_creation/static/js/course_creation.min.js")
+            template_helper.add_javascript("/course_creation/static/js/course_creation.min.js")
         else:
-            plugin_manager.add_hook("javascript_footer", lambda: "/course_creation/static/js/course_creation.js")
+            template_helper.add_javascript("/course_creation/static/js/course_creation.js")
 
         courses_list = _get_courses_list()
 
