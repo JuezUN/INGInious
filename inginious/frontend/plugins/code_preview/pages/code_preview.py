@@ -2,6 +2,7 @@ import os
 
 from inginious.frontend.pages.course_admin.task_edit import CourseEditTask, CourseTaskFiles
 from inginious.frontend.plugins.multilang.problems.languages import get_all_available_languages
+from ..constants import use_minified
 
 _TEMPLATES_PATH = os.path.join(os.path.dirname(__file__), "templates/")
 
@@ -15,6 +16,12 @@ def code_preview_tab(course, taskid, task_data, template_helper):
     content = template_helper.get_custom_renderer(
         _TEMPLATES_PATH, layout=False).code_preview(course.get_id(), taskid, code_preview_pairs,
                                                     get_all_available_languages())
+
+    if use_minified():
+        template_helper.add_javascript("/code_preview/static/js/code_preview_load.min.js")
+    else:
+        template_helper.add_javascript("/code_preview/static/js/code_preview_load.js")
+
     return tab_id, link, content
 
 

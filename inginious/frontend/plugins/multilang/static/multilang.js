@@ -41,8 +41,7 @@ function getInginiousLanguageForProblemId(key) {
     if (dropDown == null)
         return "plain";
 
-    const inginiousLanguage = dropDown.options[dropDown.selectedIndex].value;
-    return inginiousLanguage;
+    return dropDown.options[dropDown.selectedIndex].value;
 }
 
 function convertInginiousLanguageToCodemirror(inginiousLanguage) {

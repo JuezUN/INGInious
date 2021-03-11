@@ -2,7 +2,7 @@ import web
 
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from ..plagiarism_manager import PlagiarismManagerSingleton
-from ..constants import AVAILABLE_PLAGIARISM_LANGUAGES
+from ..constants import AVAILABLE_PLAGIARISM_LANGUAGES, add_static_files
 
 
 class PlagiarismPage(INGIniousAdminPage):
@@ -50,5 +50,7 @@ class PlagiarismPage(INGIniousAdminPage):
 
         renderer = self.template_helper.get_custom_renderer('frontend/plugins/plagiarism/pages/templates')
         language = self.user_manager.session_language()
+
+        add_static_files(self.template_helper)
 
         return renderer.plagiarism(course, plagiarism_checks, language)

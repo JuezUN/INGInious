@@ -4,6 +4,7 @@ import urllib
 import web
 
 import inginious.frontend.pages.api._api_page as api
+from collections import OrderedDict
 from inginious.frontend.pages.utils import INGIniousPage
 from inginious.common.filesystems.local import LocalFSProvider
 

@@ -101,14 +101,6 @@ jQuery(document).ready(function () {
         });
     }
 
-    function appendRegisterStudentsButton() {
-        // Function intended for appending the button to open the modal in the 'students' page.
-        const html = "<br><button class='btn btn-success' data-toggle='modal' data-target='#register_students_modal'>" +
-            "<i class='fa fa-users'></i> Register students</button>";
-        const tabStudents = $("#tab_students");
-        tabStudents.append(html);
-    }
-
     function closeModal() {
         // Function to describe the process to follow when the modal is closed.
         $("#register_students_modal").on("hidden.bs.modal", function () {
@@ -122,6 +114,5 @@ jQuery(document).ready(function () {
     }
 
     closeModal();
-    appendRegisterStudentsButton();
     submitRegisterStudents();
 });
