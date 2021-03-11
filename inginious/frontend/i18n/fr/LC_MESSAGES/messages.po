@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-26 12:42-0500\n"
+"POT-Creation-Date: 2021-03-11 11:58-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -1733,22 +1733,23 @@ msgstr ""
 msgid "Expected output"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/constants.py:19
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:16
-msgid "Feedback"
-msgstr ""
-
-#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:11
-#: inginious/frontend/plugins/manual_scoring/pages/student_submissions.py:18
-msgid "No grade"
-msgstr ""
-
+#: inginious/frontend/plugins/manual_scoring/pages/constants.py:14
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:24
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:16
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:18
 msgid "Manual Scoring"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/constants.py:20
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:16
+msgid "Feedback"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:15
+#: inginious/frontend/plugins/manual_scoring/pages/student_submissions.py:18
+msgid "No grade"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:24
@@ -1850,6 +1851,10 @@ msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:116
 msgid "Current Score: "
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:125
+msgid "\"Use RST format to write the comment\""
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:131
@@ -5002,5 +5007,14 @@ msgstr "Extensions autorisées:"
 #~ "            background, wait a while and"
 #~ " check again that all the students"
 #~ " were registered."
+#~ msgstr ""
+
+#~ msgid "\"Use rst format to write the comment\""
+#~ msgstr ""
+
+#~ msgid "Use rst format to write the comment"
+#~ msgstr ""
+
+#~ msgid "\"Check Use rst format to write the comment\""
 #~ msgstr ""
 

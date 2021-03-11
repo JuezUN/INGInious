@@ -43,7 +43,7 @@ function previewCode() {
     const contentDanger = "Something went wrong";
     const txtComment = document.getElementById(COMMENTS_TEXT_AREA_ID);
     $(`#${PREVIEW_TAB_ID}`).click(function () {
-        $.ajax("/api/preview_content", {
+        $.ajax("/api/parse_rst", {
             method: "POST",
             data: {
                 content: txtComment.value

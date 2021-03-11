@@ -11,7 +11,7 @@ from inginious.frontend.plugins.utils import create_static_resource_page
 from inginious.frontend.plugins.manual_scoring.pages import students_list, student_submissions, manual_scoring, \
     course_task_list, student_feedback_list, feedback
 from .pages.constants import set_use_minified, get_manual_scoring_link_code, get_feedback_link_code
-from .pages.api.preview_content import PreviewContent
+from .pages.api.rst_parser import RstParserAPI
 from .pages.api.manual_scoring_info import ManualScoringInfoApi
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
@@ -48,6 +48,6 @@ def init(plugin_manager, _, __, plugin_config):
     plugin_manager.add_page(r'/feedback_list/([a-z0-9A-Z\-_]+)', student_feedback_list.StudentFeedbackListPage)
     plugin_manager.add_page(r'/submission_feedback/([a-z0-9A-Z\-_]+)/submission/([a-z0-9A-Z\-_]+)',
                             feedback.FeedbackPage)
-    plugin_manager.add_page(r'/api/preview_content', PreviewContent)
+    plugin_manager.add_page(r'/api/parse_rst', RstParserAPI)
     plugin_manager.add_page(r'/api/manual_scoring/([a-z0-9A-Z\-_]+)', ManualScoringInfoApi)
     plugin_manager.add_hook('course_menu', get_feedback_link_code)

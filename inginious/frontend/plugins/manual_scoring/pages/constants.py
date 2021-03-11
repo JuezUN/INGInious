@@ -11,7 +11,8 @@ _use_minified = True
 
 def get_manual_scoring_link_code(course):
     """ Add new Manual scoring item to side bar """
-    return "manual_scoring", '<i class="fa fa-table" aria-hidden="true"></i> Manual Scoring'
+    manual_scoring_str = _("Manual Scoring")
+    return "manual_scoring", f'<i class="fa fa-table" aria-hidden="true"></i> {manual_scoring_str}'
 
 
 def get_feedback_link_code(course, template_helper):

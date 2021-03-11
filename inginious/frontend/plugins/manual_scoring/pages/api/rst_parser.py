@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+#
+# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
+# more information about the licensing of this file.
+
 import web
 
 from inginious.frontend.pages.api._api_page import APIError
@@ -25,7 +30,7 @@ def _check_string(content):
         raise APIError(400, "The content isn't a string")
 
 
-class PreviewContent(UserApi):
+class RstParserAPI(UserApi):
     """ api for preview rst code """
     def API_POST(self):
         """ post request """

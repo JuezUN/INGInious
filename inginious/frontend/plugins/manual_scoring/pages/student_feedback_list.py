@@ -40,7 +40,7 @@ class StudentFeedbackListPage(INGIniousAuthPage):
                                                                                                   task_names)
 
     def get_submissions_with_feedback(self, course_id):
-        """ do request to db to get the data about user's submissions
+        """ does request to db to get the data about user's submissions
             EXAMPLE:
                 [{_id: Objectid(''), 'submitted_on':datetime.datetime(), 'custom.custom_summary_result':'ACCEPTED',
                  'manual_scoring.grade': 100.0, 'manual_scoring.comment': "text", 'rubric_status': '["1-1","2-2"]',

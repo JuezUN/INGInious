@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-26 12:42-0500\n"
+"POT-Creation-Date: 2021-03-11 11:58-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1906,16 +1906,7 @@ msgstr "Código"
 msgid "Expected output"
 msgstr "Salida esperada"
 
-#: inginious/frontend/plugins/manual_scoring/pages/constants.py:19
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:16
-msgid "Feedback"
-msgstr "Retroalimentación"
-
-#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:11
-#: inginious/frontend/plugins/manual_scoring/pages/student_submissions.py:18
-msgid "No grade"
-msgstr "Sin calificar"
-
+#: inginious/frontend/plugins/manual_scoring/pages/constants.py:14
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:24
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:16
@@ -1923,6 +1914,16 @@ msgstr "Sin calificar"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:18
 msgid "Manual Scoring"
 msgstr "Calificación manual"
+
+#: inginious/frontend/plugins/manual_scoring/pages/constants.py:20
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:16
+msgid "Feedback"
+msgstr "Retroalimentación"
+
+#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:15
+#: inginious/frontend/plugins/manual_scoring/pages/student_submissions.py:18
+msgid "No grade"
+msgstr "Sin calificar"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:24
 msgid "Tasks List"
@@ -2024,6 +2025,10 @@ msgstr "Haz click para seleccionar y doble click para deseleccionar"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:116
 msgid "Current Score: "
 msgstr "Puntaje actual: "
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:125
+msgid "\"Use RST format to write the comment\""
+msgstr "\"Utilice el formato RST para escribir el comentario\""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:131
 msgid "Write"
@@ -5229,4 +5234,7 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
+
+#~ msgid "\"Check Use rst format to write the comment\""
+#~ msgstr ""
 
