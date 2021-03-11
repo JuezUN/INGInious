@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-11 15:23-0500\n"
+"POT-Creation-Date: 2021-03-11 18:35-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -1493,7 +1493,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: inginious/frontend/plugins/course_creation/constants.py:46
+#: inginious/frontend/plugins/course_creation/constants.py:43
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:10
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:69
 msgid "Create course"
