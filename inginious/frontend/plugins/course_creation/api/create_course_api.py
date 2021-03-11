@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+#
+# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
+# more information about the licensing of this file.
+
 import uuid
 import web
 
@@ -7,6 +12,7 @@ import inginious.frontend.pages.api._api_page as api
 
 
 class CreateCourseAPI(api.APIAuthenticatedPage):
+    """ API to create a course from the Course Creation Modal. """
 
     def _parse_and_validate_input(self):
         request_params = web.input()
@@ -42,8 +48,8 @@ class CreateCourseAPI(api.APIAuthenticatedPage):
         if course_to_copy_id and course_to_copy_id != "-1":
             if course_to_copy_id not in all_courses:
                 raise api.APIError(400, _("The selected course to copy tasks from does not exist."))
-            else:
-                data["course_to_copy"] = course_to_copy_id
+
+            data["course_to_copy"] = course_to_copy_id
 
         return data
 
@@ -67,9 +73,9 @@ class CreateCourseAPI(api.APIAuthenticatedPage):
     def API_POST(self):
         try:
             data = self._parse_and_validate_input()
-        except api.APIError as e:
-            web.header('Content-Type', 'text/json; charset=utf-8')
-            return e.status_code, {"status": "error", "text": e.return_value}
+        except api.APIError as exception:
+            web.header("Content-Type", "text/json; charset=utf-8")
+            return exception.status_code, {"status": "error", "text": exception.return_value}
 
         if self.user_manager.user_is_superadmin():
             try:
@@ -82,29 +88,30 @@ class CreateCourseAPI(api.APIAuthenticatedPage):
                     # Copy tasks in case a course was selected
                     clone_failed = self._copy_tasks(data["course_to_copy"], course_id)
                     if clone_failed:
-                        web.header('Content-Type', 'text/json; charset=utf-8')
+                        web.header("Content-Type", "text/json; charset=utf-8")
                         return 500, {"status": "error", "text": _("An internal error occurred while copying tasks.")}
 
-                web.header('Content-Type', 'text/json; charset=utf-8')
+                web.header("Content-Type", "text/json; charset=utf-8")
                 return 200, {
                     "status": "done",
                     "course_page": "/admin/{}/settings".format(course_id),
                     "text": _("The course was successfully created.")
                 }
-            except InvalidNameException as e:
-                web.header('Content-Type', 'text/json; charset=utf-8')
+            except InvalidNameException:
+                web.header("Content-Type", "text/json; charset=utf-8")
                 return 400, {"status": "error", "text": _(
                     "The text may contain an invalid character. Only alphanumeric characters, in addition to '_' and '-' are accepted.")}
-            except CourseAlreadyExistsException as e:
-                web.header('Content-Type', 'text/json; charset=utf-8')
+            except CourseAlreadyExistsException:
+                web.header("Content-Type", "text/json; charset=utf-8")
                 return 400, {"status": "error", "text": _(
                     "A course with the id {} already exists.".format(course_id))}
-            except Exception as e:
-                web.header('Content-Type', 'text/json; charset=utf-8')
+            except Exception:
+                web.header("Content-Type", "text/json; charset=utf-8")
                 return 400, {"status": "error", "text": _("An error occurred while creating the course")}
 
 
 def _generate_course_id_and_name(name, group, year, semester):
+    """ Generate the new course id and name taking into account the inserted data. """
     name_words = name.strip().split(" ")
 
     # If the number of words is greater than 1, the final ID will have the capitalized initials of each word in the
@@ -128,6 +135,7 @@ def _generate_course_id_and_name(name, group, year, semester):
 
 
 def _generate_new_task_id(target_course_tasks):
+    """ Generate an uuid for the new task to be copied. """
     copy_id = str(uuid.uuid4())
     while copy_id in target_course_tasks:
         copy_id = str(uuid.uuid4())

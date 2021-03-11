@@ -56,7 +56,7 @@ $def with (courses)
                                 <select class="btn dropdown-toggle form-control" id="list_copy_courses">
                                     <option value="-1" selected>$:_("Select a course to copy tasks")</option>
                                     $for course_id, course_name in courses:
-                                        <option value="$course_id">$course_name</option>
+                                    <option value="$course_id">$course_name</option>
                                 </select>
                             </div>
                         </div>
@@ -65,7 +65,7 @@ $def with (courses)
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">$:_("Cancel")</button>
-                <button class="btn btn-success" form="create_course_form" id="submit_create_course" type="submit">
+                <button class="btn btn-primary" form="create_course_form" id="submit_create_course" type="submit">
                     $:_("Create course")
                 </button>
             </div>

@@ -20,7 +20,7 @@ function displayCourseCreationSuccessAlert(data) {
 function displayCourseCreationLoadingAlert() {
     const alertElement = $("#create_course_alert");
     alertElement.prop("class", "alert alert-info");
-    const spinner = '<i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i>';
+    const spinner = "<i class='fa fa-spinner fa-pulse fa-fw' aria-hidden='true'></i>";
     alertElement.html(spinner + " The course is being created...");
     alertElement.prop("hidden", false);
 }
@@ -33,7 +33,7 @@ function preventCourseCreationModalToBeClosed() {
 }
 
 function makeCourseCreationModalClosable() {
-    $("#create_course_modal").modal({backdrop: '', keyboard: true});
+    $("#create_course_modal").modal({backdrop: "", keyboard: true});
     $("#create_course_modal button[data-dismiss=modal]").each(function () {
         $(this).prop("disabled", false);
     });
@@ -68,19 +68,19 @@ function onSubmitCourseCreation() {
         url: "/api/create_course",
         method: "POST",
         dataType: "json",
-        data: data,
-        beforeSend: function () {
+        data,
+        beforeSend: () => {
             blurCourseCreationModal();
             preventCourseCreationModalToBeClosed();
             displayCourseCreationLoadingAlert();
         },
-        success: function (data) {
+        success: (data) => {
             unblurCourseCreationModal();
             makeCourseCreationModalClosable();
             displayCourseCreationSuccessAlert(data);
             redirectToCoursePage(data);
         },
-        error: function (data) {
+        error: (data) => {
             const response = data.responseJSON || {};
             makeCourseCreationModalClosable();
             unblurCourseCreationModal();

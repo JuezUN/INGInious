@@ -304,7 +304,7 @@ function minifyCourseCreationPlugin() {
         return getJSFilePath(jsFilesPath, name);
     });
 
-    console.log("Minify 'Contact page' static files.");
+    console.log("Minify 'Course creation' plugin static files.");
 
     minifyJSFiles(jsFiles, jsFilesPath, "course_creation");
 }

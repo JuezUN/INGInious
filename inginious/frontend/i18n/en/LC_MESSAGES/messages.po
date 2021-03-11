@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-11 00:12-0500\n"
+"POT-Creation-Date: 2021-03-11 15:23-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -1468,59 +1468,59 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: inginious/frontend/plugins/course_creation/constants.py:29
+#: inginious/frontend/plugins/course_creation/constants.py:46
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:10
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:69
 msgid "Create course"
 msgstr ""
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:22
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:28
 msgid "The course name cannot be empty."
 msgstr ""
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:25
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:31
 msgid "The year field cannot be empty."
 msgstr ""
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:28
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:34
 msgid "The year must be a number."
 msgstr ""
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:31
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:37
 msgid "The semester field cannot be empty."
 msgstr ""
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:34
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:40
 msgid "The semester must be a number."
 msgstr ""
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:37
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:43
 msgid "The group must be a number."
 msgstr ""
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:44
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:50
 msgid "The selected course to copy tasks from does not exist."
 msgstr ""
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:86
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:92
 msgid "An internal error occurred while copying tasks."
 msgstr ""
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:92
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:98
 msgid "The course was successfully created."
 msgstr ""
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:96
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:102
 msgid ""
 "The text may contain an invalid character. Only alphanumeric characters, "
 "in addition to '_' and '-' are accepted."
 msgstr ""
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:101
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:107
 msgid "A course with the id {} already exists."
 msgstr ""
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:104
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:110
 msgid "An error occurred while creating the course"
 msgstr ""
 

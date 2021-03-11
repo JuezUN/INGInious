@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-11 00:12-0500\n"
+"POT-Creation-Date: 2021-03-11 15:23-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1667,49 +1667,49 @@ msgstr "Describe y justifica el curso que deseas crear"
 msgid "Send"
 msgstr "Enviar"
 
-#: inginious/frontend/plugins/course_creation/constants.py:29
+#: inginious/frontend/plugins/course_creation/constants.py:46
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:10
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:69
 msgid "Create course"
 msgstr "Crear curso"
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:22
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:28
 msgid "The course name cannot be empty."
 msgstr "El nombre del curso no puede estar vacío."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:25
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:31
 msgid "The year field cannot be empty."
 msgstr "El campo año no puede estar vacío."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:28
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:34
 msgid "The year must be a number."
 msgstr "El año debe der un número."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:31
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:37
 msgid "The semester field cannot be empty."
 msgstr "El campo semestre no puede estar vacío."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:34
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:40
 msgid "The semester must be a number."
 msgstr "El semestre debe ser un número."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:37
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:43
 msgid "The group must be a number."
 msgstr "El grupo debe ser un número."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:44
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:50
 msgid "The selected course to copy tasks from does not exist."
 msgstr "El curso del que se copiarán las tareas no existe."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:86
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:92
 msgid "An internal error occurred while copying tasks."
 msgstr "Un error interno ocurrió mientras las tareas eran copiadas."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:92
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:98
 msgid "The course was successfully created."
 msgstr "El curso fue creado satisfactoriamente."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:96
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:102
 msgid ""
 "The text may contain an invalid character. Only alphanumeric characters, "
 "in addition to '_' and '-' are accepted."
@@ -1717,11 +1717,11 @@ msgstr ""
 "El texto puede contener un carácter inválido. Solamente caracteres "
 "alfanuméricos, junto con '_' y '-' son aceptados."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:101
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:107
 msgid "A course with the id {} already exists."
 msgstr "Un curso con el id {} ya existe."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:104
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:110
 msgid "An error occurred while creating the course"
 msgstr "Un error ocurrió mientras el curso era creado."
 
@@ -5247,13 +5247,4 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
-
-#~ msgid "'New course id'"
-#~ msgstr "ID del curso nuevo."
-
-#~ msgid "Create new course"
-#~ msgstr "Crear un curso"
-
-#~ msgid "Create a course"
-#~ msgstr ""
 
