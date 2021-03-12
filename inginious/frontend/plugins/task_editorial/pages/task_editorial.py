@@ -3,6 +3,7 @@ import os
 from inginious.frontend.plugins.multilang.problems.languages import get_all_available_languages
 from inginious.frontend.parsable_text import ParsableText
 from inginious.frontend.pages.course_admin.task_edit import CourseTaskFiles
+from .constants import use_minified
 
 _TASK_EDITORIAL_TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), "templates")
 
@@ -15,6 +16,7 @@ def editorial_task_tab(course, taskid, task_data, template_helper):
     tab_id = 'tab_editorial'
     link = '<i class="fa fa-graduation-cap fa-fw"></i>&nbsp; ' + _("Task editorial")
 
+    _add_static_files(template_helper)
     content = template_helper.get_custom_renderer(_TASK_EDITORIAL_TEMPLATE_PATH, layout=False).task_editorial(task_data)
     return tab_id, link, content
 
@@ -32,15 +34,17 @@ def editorial_task_preview(course, task, template_helper):
         task_tutorial_description = None
 
     task_problems = task.get_problems()
-    if task_environment in {"multiple_languages", "Data Science", "HDL"} and task_problems[0].get_type() in {
-        "code_multiple_languages", "code_file_multiple_languages"}:
-        if task_solution_code_language and task_solution_code_language not in task_problems[0].get_original_content()[
-            'languages'].values():
+    if task_environment in {"multiple_languages", "Data Science", "HDL"} and \
+            task_problems[0].get_type() in {"code_multiple_languages", "code_file_multiple_languages"}:
+        if task_solution_code_language and task_solution_code_language \
+                not in task_problems[0].get_original_content()['languages'].values():
             task_solution_code_language = None
 
     content = template_helper.get_custom_renderer(_TASK_EDITORIAL_TEMPLATE_PATH, layout=False).task_editorial_preview(
         course, task, is_task_open(task), get_all_available_languages(), task_tutorial_description, task_solution_code,
         task_solution_code_language, task_solution_code_notebook, task_environment)
+    _add_static_files(template_helper)
+
     return str(content)
 
 
@@ -66,3 +70,11 @@ def check_editorial_submit(course, taskid, task_data, task_fs):
 
         if task_data['solution_code_notebook'] is '0' or not task_data['solution_code_notebook'] in all_files:
             del task_data['solution_code_notebook']
+
+
+def _add_static_files(template_helper):
+    if use_minified():
+        template_helper.add_javascript("/task_editorial/static/task_editorial.min.js")
+    else:
+        template_helper.add_javascript("/task_editorial/static/task_editorial.js")
+        template_helper.add_javascript("/task_editorial/static/task_editorial_preview.js")

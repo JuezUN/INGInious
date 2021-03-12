@@ -1,6 +1,8 @@
 import os
 from collections import OrderedDict
 
+_use_minified = True
+
 JPLAG_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), "resources", "jplag.jar")
 
 LANGUAGE_FILE_EXTENSION_MAP = {
@@ -35,3 +37,16 @@ AVAILABLE_PLAGIARISM_LANGUAGES = OrderedDict(sorted([
     ("vhdl", "VHDL"),
     ("notebook", "Jupyter notebook"),
 ], key=lambda x: x[0]))
+
+
+def set_use_minified(use_minified):
+    """ Define if use minified files """
+    global _use_minified
+    _use_minified = use_minified
+
+
+def add_static_files(template_helper):
+    if _use_minified:
+        template_helper.add_css("/plagiarism/static/css/plagiarism.css")
+    else:
+        template_helper.add_css("/plagiarism/static/css/plagiarism.min.css")
