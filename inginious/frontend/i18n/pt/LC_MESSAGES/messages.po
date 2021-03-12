@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-11 23:23-0500\n"
+"POT-Creation-Date: 2021-03-11 23:33-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -177,6 +177,8 @@ msgid ""
 "You are successfully registered. An email has been sent to you for "
 "activation."
 msgstr ""
+"Você foi registrado com sucesso. Um e-mail foi enviado para você para a "
+"ativação da sua conta."
 
 #: inginious/frontend/pages/register.py:120
 msgid ""
@@ -541,7 +543,7 @@ msgstr "Seu navegador retornou um formulário inválido ({})"
 
 #: inginious/frontend/pages/course_admin/task_edit.py:288
 msgid "Error while reading course's information"
-msgstr ""
+msgstr "Erro ao ler as informações do curso"
 
 #: inginious/frontend/pages/course_admin/task_edit.py:312
 msgid "Invalid data: {}"
@@ -874,7 +876,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:104
 msgid "Complete name and last name."
-msgstr ""
+msgstr "Nome completo."
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:107
 #, fuzzy
@@ -4942,89 +4944,4 @@ msgstr ""
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr ""
-
-#~ msgid ""
-#~ "You are succesfully registered. An email"
-#~ " has been sent to you for "
-#~ "activation."
-#~ msgstr ""
-#~ "Você foi registrado com sucesso. Um "
-#~ "e-mail foi enviado para você para "
-#~ "a ativação da sua conta."
-
-#~ msgid "Error while reading course's informations"
-#~ msgstr "Erro ao ler as informações do curso"
-
-#~ msgid ""
-#~ "The data processing policy establishes "
-#~ "the terms in which UNCode use and"
-#~ " save the user provisioned information "
-#~ "when using the software system. UNCode"
-#~ " is committed to the users data "
-#~ "security. We ensure that all the "
-#~ "data that the owner provide us, "
-#~ "will only be used according to the"
-#~ " stablished terms in this document, "
-#~ "and with the law 1581 of 2012. "
-#~ "However, we suggest checking frequently "
-#~ "the page to make sure you agree"
-#~ " to the possible changes that may "
-#~ "be made on the policy in the "
-#~ "future."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The policy applies for the personal "
-#~ "data registered in the UNcode databases,"
-#~ " who acts as the responsible of "
-#~ "the personal data processing."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "UNCode is a proyect developed by "
-#~ "PLaS, a research group of the "
-#~ "Universidad Nacional de Colombia, Bogotá "
-#~ "headquarters."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Personal data is collected through forms"
-#~ " and interaction and development of "
-#~ "tasks on the platform. The software "
-#~ "system collect personal information as "
-#~ "name, career, contact data as e-mail,"
-#~ " and demographic information. Also the "
-#~ "system collects information about each "
-#~ "solution provided on problem as attempt"
-#~ " state, errors type, code or notebook"
-#~ " provided, date of sumbimission, etc."
-#~ msgstr ""
-
-#~ msgid "Procedure for the exercise of the Hábeas Data right"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "For the protection of personal data, "
-#~ "UNCode presents the following steps and"
-#~ " minimun requirements for the exercise "
-#~ "of your rights."
-#~ msgstr ""
-
-#~ msgid "Complete name and lastname."
-#~ msgstr "Nome completo:"
-
-#~ msgid ""
-#~ "The present policy for personal data "
-#~ "processing applies from Obtober 23, "
-#~ "2020."
-#~ msgstr ""
-
-#~ msgid "Basecode file"
-#~ msgstr ""
-
-#~ msgid "Click here to hide/display context informations"
-#~ msgstr ""
-
-#~ msgid "Filetype"
-#~ msgstr ""
 
