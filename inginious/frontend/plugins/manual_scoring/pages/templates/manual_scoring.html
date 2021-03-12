@@ -13,7 +13,7 @@ $ is_admin = user_manager.has_admin_rights_on_course(course)
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
-        <li><a href="$get_homepath()/admin/$course.get_id()/manual_scoring"><i class="fa fa-table mr-1"></i>$:_("Manual Scoring")<span class="sr-only">(current)</span></a></li>
+        <li><a href="$get_homepath()/admin/$course.get_id()/manual_scoring"><i class="fa fa-table mr-1"></i>$:_("Manual Scoring")<span class="sr-only"></span></a></li>
     <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task.get_id()">$:_("Task")</a></li>
         <li><a href="$get_homepath()/admin/$course.get_id()/$data['url']/task/$task.get_id()/user/$data['username']">$:_("Student")</a></li>
     <li class="active"><a href="#">$:_("Rubric")<span class="sr-only">(current)</span></a></li>
@@ -47,14 +47,14 @@ $var Navbar: $:NavbarF()
     <div class="DivToScroll DivWithScroll" id="notebookHolder" hidden></div>
     <label for="codemirrorTextArea"></label>
     <div class="box" hidden>
-        <textarea class="single " id="codemirrorTextArea" rows="4" cols="10" data-language="$data['language']">$data['problem']</textarea>
+        <textarea class="single " id="codemirrorTextArea" data-language="$data['language']">$data['problem']</textarea>
     </div>
     <div id="taskAlert" class="py-1"></div>
 </section>
 
 <!-- Information -->
 <section>
-    <h4 class="py-1">$:_("Information")</h4>
+    <h3 class="py-1">$:_("Information")</h3>
     <table class="table table-bordered">
         <tr>
             <td><b>$:_("Language")</b></td>
@@ -66,7 +66,7 @@ $var Navbar: $:NavbarF()
             <td><b>$_("Score")</b></td>
             <td>$data['score']</td>
             <td><b>$_("Manual grade")</b></td>
-            <td>$data['grade']</td>
+            <td id="grade" data-grade="$data['grade']"></td>
         </tr>
     </table>
 </section>
@@ -74,7 +74,7 @@ $var Navbar: $:NavbarF()
 <!-- Rubric  -->
 <section>
     <div class="py-1">
-        <h4 class="my-1">$:_("Rubric")</h4>
+        <h3 class="my-1">$:_("Rubric")</h3>
         <p>$:_("Select the best description to grade the student's code")</p>
         <p>$:_("Click to select and double click to deselect")</p>
     </div>
@@ -113,19 +113,33 @@ $var Navbar: $:NavbarF()
     </table>
         </div>
     <div>
-        <strong>$:_("Current Score: ")<strong style="color: #cc0808" id="output">$data['grade']</strong></strong>
+        <h4><strong>$:_("Current Score: ")<strong id="output" style="color: #002a95">$data['grade']</strong></strong></h4>
     </div>
     <div id="gradeEditSubmitStatus"></div>
 </section>
 <!-- Comments -->
-<section class="py-2">
+<section class="py-1">
     <form method="post">
-        <h4 >$:_("Comments")</h4>
-        <div class="py-1">
-        <label for="textComments"></label>
-        <textarea class="form-control" id="textComments" rows="8">$data['comment']</textarea>
+        <h3 class="py-1">
+            $:_("Comments")<i data-toggle="tooltip" data-placement="right"
+                              title=$:_("\"Use RST format to write the comment\"")}
+                              class="fa fa-question-circle px-2" aria-hidden="true"></i>
+
+        </h3>
+        <div id="nav-tabs">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#code_tab">$:_("Write")</a></li>
+                <li><a id="preview_tab" data-toggle="tab" href="#preview_area">$:_("Preview")</a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div id="code_tab" class="tab-pane fade in active box">
+                <label for="textComments"></label>
+                <textarea class="form-control" id="textComments" data-language="rst">$data['comment']</textarea>
             </div>
-        <div>
+            <div id="preview_area" class="tab-pane fade DivToScroll DivWithScroll"></div>
+        </div>
+        <div class="py-2">
             <a class="btn btn-primary" id="saveButton" ><i class="fa fa-save mr-1"></i>$:_("Save")</a>
         </div>
     </form>
@@ -154,7 +168,7 @@ $var Navbar: $:NavbarF()
 
 
     const environmentType = function () {
-        return "$data['env']"
+        return "$data['environment_type']"
     }
 
     const getURLSubmissionCode = function () {
@@ -163,6 +177,9 @@ $var Navbar: $:NavbarF()
 
     const rubricStatus = function () {
         return "$data['rubric_status']"
+    }
+    const getCourseId = function (){
+        return "$course.get_id()";
     }
 
 

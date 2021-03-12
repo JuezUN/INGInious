@@ -3,7 +3,7 @@ import tarfile
 
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from ..plagiarism_manager import PlagiarismManagerSingleton
-from ..constants import AVAILABLE_PLAGIARISM_LANGUAGES
+from ..constants import AVAILABLE_PLAGIARISM_LANGUAGES, add_static_files
 
 
 class PlagiarismCheckSummary(INGIniousAdminPage):
@@ -53,6 +53,8 @@ class PlagiarismCheckSummary(INGIniousAdminPage):
                     f.close()
             file_list = list(file_list)
         file_list.sort()
+
+        add_static_files(self.template_helper)
         renderer = self.template_helper.get_custom_renderer('frontend/plugins/plagiarism/pages/templates')
         return renderer.plagiarism_check_summary(course, check_id, done, task_name, created_on, return_code, stdout,
                                                  stderr, file_list, language)

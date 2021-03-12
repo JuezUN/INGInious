@@ -2,7 +2,7 @@ import os
 
 from inginious.common.tasks_problems import FileProblem
 from inginious.frontend.task_problems import DisplayableFileProblem
-from .constants import get_show_tools
+from .constants import get_show_tools, add_static_files
 
 from collections import OrderedDict
 
@@ -38,6 +38,7 @@ class DisplayableNotebookFileProblem(NotebookFileProblem, DisplayableFileProblem
     @classmethod
     def show_editbox(cls, template_helper, key):
         renderer = DisplayableNotebookFileProblem.get_renderer(template_helper)
+        add_static_files(template_helper)
         return renderer.notebook_file_edit(cls.get_type(), key)
 
     def show_input(self, template_helper, language, seed):
@@ -61,4 +62,5 @@ class DisplayableNotebookFileProblem(NotebookFileProblem, DisplayableFileProblem
                 renderer.tools(self.get_id(), None, custom_input_id, self.get_type(), None, None, task.get_course_id(),
                                notebook_tests))
 
+        add_static_files(template_helper)
         return notebook_render + standard_code_problem_render + tools_render
