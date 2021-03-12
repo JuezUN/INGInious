@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-11 11:58-0500\n"
+"POT-Creation-Date: 2021-03-11 20:01-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -2098,15 +2098,37 @@ msgstr "Múltiples lenguajes - Archivo de código"
 msgid "Code multiple languages"
 msgstr "Múltiples lenguajes - Código"
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:75
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:65
+msgid "Custom test job not found. Try running the custom tests again."
+msgstr ""
+"Test personalizado no se encontró. Intente correr los tests "
+"personalizados de nuevo."
+
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:77
+msgid "Custom tests are still running."
+msgstr "Tests personalizados aún están corriendo."
+
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:99
 msgid "Please select at least 1 and up to 3 tests."
 msgstr "Por favor seleccione al menos 1 y hasta 3 tests"
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:90
-msgid "An error occurred while running the notebook. Please run the tests again."
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:106
+msgid "Custom tests are running."
+msgstr "Tests personalizados están corriendo."
+
+#: inginious/frontend/plugins/multilang/problems/custom_test_manager.py:48
+msgid "An user must be logged in to run custom tests"
 msgstr ""
-"Un error ocurrió mientras se ejecutaba el notebook. Por favor ejecute de "
-"nuevo los tests."
+"El usuario debe tener la sesión iniciada  para correr los tests "
+"personalizados."
+
+#: inginious/frontend/plugins/multilang/problems/custom_test_manager.py:67
+msgid ""
+"A custom test is already pending for this task. Wait for a while to run "
+"the tests."
+msgstr ""
+"Un envío de tests personalizados está corriendo para esta tarea. Espere "
+"un tiempo para correr los tests."
 
 #: inginious/frontend/plugins/multilang/problems/notebook_file_problem.py:36
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:24
@@ -5234,7 +5256,4 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
-
-#~ msgid "\"Check Use rst format to write the comment\""
-#~ msgstr ""
 
