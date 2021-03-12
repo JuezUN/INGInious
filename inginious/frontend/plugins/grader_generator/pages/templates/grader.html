@@ -289,7 +289,6 @@ $#
     const grader_test_cases = $:{grader_test_cases_dump};
     const courseId = "$:course.get_id()";
     const taskId = "$:taskid";
-    console.log(grader_test_cases)
     $$(document).ready(function () {
         let problem_id = "${task_data.get('grader_problem_id', '')}";
         studio_set_initial_problem(problem_id);
