@@ -33,7 +33,8 @@ def custom_input_notebook(client, custom_test_manager):
 
             # The selected tests are given as a string separated by comma
             tests = user_input[problem_id + "/input"].split(",")
-            if len(tests) <= 0 or len(tests) > 3:
+            max_custom_tests = 3
+            if len(tests) <= 0 or len(tests) > max_custom_tests:
                 return False
             return True
 
