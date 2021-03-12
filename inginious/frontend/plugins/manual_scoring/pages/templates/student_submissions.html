@@ -48,17 +48,23 @@ $var Navbar: $:NavbarF()
             <th><h4>$:_("Result Summary")</h4></th>
             <th><h4>$:_("Score")</h4></th>
             <th><h4>$:_("Manual scoring")</h4></th>
+            <th><h4>$:_("See submission")</h4></th>
         </tr>
     </thead>
     <tbody>
     $for submission in data:
         <tr>
             <td><a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/submission/$submission"
-                   class="font_size-m">
-                    $data[submission]["date"]</a></td>
-            <td class="font_size-m">$data[submission]["summary_result"]</td>
+                class="font_size-m">
+                $data[submission]["date"]</a></td>
+            <td class="font_size-m">$data[submission]["result"]</td>
             <td class="font_size-m">$data[submission]["grade"]</td>
             <td class="font_size-m">$data[submission]["manual_grade"]</td>
+            <td class="font_size-m">
+                <a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/submission/$submission"
+                   class="font_size-m"><i class="fa fa-eye fa-lg" aria-hidden="true"></i>
+                </a>
+            </td>
         </tr>
     </tbody>
 </table>

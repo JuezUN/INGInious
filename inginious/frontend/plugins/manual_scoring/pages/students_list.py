@@ -82,7 +82,7 @@ class StudentsListPage(INGIniousAdminPage):
                         "realname": 1,
                         "grade": {"$max": "$grade"}
                     }
-                },
+                }
 
             ]))
         return user_list
