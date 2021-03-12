@@ -16,9 +16,15 @@ function studio_load_grader_test_cases(test_cases) {
 }
 
 function activeSortableMode() {
+    /*It uses a library named SortableJS. The parameters are:
+    * group: it's just a name in this case
+    * animation: It's to give a animation effect whit 150ms
+    * easing: it's a function who complements the animation behavior
+    * handle: it takes a selector to indicate what elements are the only who can be grabbed
+    * chosenClass: it adds a CSS class when a item has been chose
+    * onEnd: it defines a behavior when the user ends to move a item*/
     const testCases = getContainerDiv();
 
-    //TODO: add comments
     Sortable.create(testCases, {
         group: "test-cases",
         animation: 150,
@@ -43,6 +49,8 @@ function getContainerDiv() {
 
 
 function updateAllIds(oldPos, newPos) {
+    /*Depending of where the test will be moved,
+    * it's just necessary update a few test ids*/
     const itemPosIncreased = (oldPos - newPos) < 0;
     if (itemPosIncreased) {
         updateIdsLowestToHighest(oldPos, newPos);
@@ -54,46 +62,45 @@ function updateAllIds(oldPos, newPos) {
 
 function updateIdsHighestToLowest(oldPos, newPos) {
     const auxName = "AUX"
-    updateItemIds(oldPos, auxName);
+    updateTestInternalIds(oldPos, auxName);
     for (let i = oldPos - 1; i >= newPos; i--) {
-        updateItemIds(i, i + 1);
+        updateTestInternalIds(i, i + 1);
     }
-    updateItemIds(auxName, newPos)
+    updateTestInternalIds(auxName, newPos)
 
 }
 
 function updateIdsLowestToHighest(oldPos, newPos) {
     const auxName = "AUX"
-    updateItemIds(oldPos, auxName);
+    updateTestInternalIds(oldPos, auxName);
     for (let i = oldPos + 1; i <= newPos; i++) {
-        updateItemIds(i, i - 1);
+        updateTestInternalIds(i, i - 1);
     }
-    updateItemIds(auxName, newPos)
+    updateTestInternalIds(auxName, newPos)
 
 }
 
-function updateItemIds(itemId, newId) {
+function updateTestInternalIds(itemId, newId) {
 
-    updateRowId(itemId, newId);
-    updateParametersId(itemId, newId);
+    updateTestRowId(itemId, newId);
+    updateTestParametersId(itemId, newId);
     updateButtonsId(itemId, newId);
 
     if (isNotebook) {
-        updateTestCasesContainer(itemId, newId);
+        updateNotebookTestCasesContainer(itemId, newId);
     }
 
 
 }
 
-
-function updateRowId(itemId, newId) {
+function updateTestRowId(itemId, newId) {
     const baseOldId = getBaseId(itemId);
     const baseNewId = getBaseId(newId);
 
     $(`#${baseOldId}`).attr("id", baseNewId);
 }
 
-function updateParametersId(itemId, newId) {
+function updateTestParametersId(itemId, newId) {
     const parameters = getParametersArray();
     const newNameAttrPrefix = `${getIdPrefix()}[${newId}]`;
     const baseOldId = getBaseId(itemId);
@@ -110,7 +117,7 @@ function updateParametersId(itemId, newId) {
 function updateButtonsId(itemId, newId) {
     const baseOldId = getBaseId(itemId);
     const baseNewId = getBaseId(newId);
-    const buttons = getButtons();
+    const buttons = getButtonsInfo();
 
     $.each(buttons, (_, button) => {
         let buttonId = button.buttonId;
@@ -142,7 +149,7 @@ function getParametersArray() {
     }
 }
 
-function getButtons() {
+function getButtonsInfo() {
     if (isNotebook) {
         return notebookButtons;
     } else {
@@ -151,7 +158,7 @@ function getButtons() {
 }
 
 
-function updateTestCasesContainer(itemId, newId) {
+function updateNotebookTestCasesContainer(itemId, newId) {
     const numOfCases = getCurrentNumTestCases(itemId);
     const baseOldId = getBaseId(itemId);
     const baseNewId = getBaseId(newId);
@@ -176,16 +183,15 @@ function updateTestCasesContainer(itemId, newId) {
 
 }
 
-function toggle_selection_tests_cases() {
+function toggleSelectionTestsCases() {
     const checkboxButton = getDiffCheckboxButton();
     const option = !checkboxButton[0].checked;
-    // Activate in case of button press and not checkbox
     checkboxButton.prop("checked", option);
-    changeSelectionTestCases(option);
+    setAllDiffShowCheckboxValue(option);
 
 }
 
-function changeSelectionTestCases(option) {
+function setAllDiffShowCheckboxValue(option) {
     const numTests = getCurrentNumTests();
     for (let i = 0; i < numTests; i++) {
         $(`#${getIdPrefix()}_${i}_${getDiffIdSuffix()}`).prop("checked", option);
@@ -197,7 +203,7 @@ function isAllShowDiffChecked() {
     return getCurrentNumTests() === numListChecked;
 }
 
-function checkDiffStatus() {
+function updateMainShowDiffsCheckbox() {
     const checkboxButton = getDiffCheckboxButton();
     if (isAllShowDiffChecked()) {
         checkboxButton.prop("checked", true);
@@ -231,5 +237,5 @@ function getCurrentNumTests() {
 }
 
 $("[href='#tab_grader']").click(function () {
-    checkDiffStatus();
+    updateMainShowDiffsCheckbox();
 });

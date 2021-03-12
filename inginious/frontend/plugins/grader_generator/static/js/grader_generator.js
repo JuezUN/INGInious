@@ -90,7 +90,7 @@ function hideOrShowHeader() {
 
 function correctIds(idDeleted) {
     for (let i = idDeleted + 1; i < grader_test_cases_count; i++) {
-        updateItemIds(i, i - 1);
+        updateTestInternalIds(i, i - 1);
     }
 }
 
