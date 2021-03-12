@@ -201,13 +201,18 @@ function minifyMultilangPlugin() {
 
 function minifyGraderGeneratorPlugin() {
     const jsFilesPath = _GRADER_GENERATOR_PLUGIN_PATH + "/js/";
-    const jsFiles = ["grader_generator", "notebook_grader_generator"].map((name) => {
+    const cssFilesPath = _GRADER_GENERATOR_PLUGIN_PATH + "/css/"
+    const jsFiles = ["grader", "grader_generator", "notebook_grader_generator"].map((name) => {
         return getJSFilePath(jsFilesPath, name);
+    });
+    const cssFiles = ["grader_tab"].map((name) => {
+        return getCssFilePath(cssFilesPath, name);
     });
 
     console.log("Minify 'grader_generator' static files.");
 
     minifyJSFiles(jsFiles, jsFilesPath, "grader_generator");
+    minifyCssFiles(cssFiles, cssFilesPath, "grader_tab");
 }
 
 function minifyCodePreviewPlugin() {
@@ -249,10 +254,11 @@ function minifyPlagiarismPlugin() {
 
     minifyCssFiles(cssFiles, cssFilesPath, "plagiarism");
 }
+
 function minifyManualScoringPlugin() {
     const cssFilesPath = _MANUAL_SCORING_PATH + "/css/";
     const jsFilesPath = _MANUAL_SCORING_PATH + "/js/";
-    const jsFiles = ["code_field","message_box","rubric","manual_scoring_main"].map((name) => {
+    const jsFiles = ["code_field", "message_box", "rubric", "manual_scoring_main"].map((name) => {
         return getJSFilePath(jsFilesPath, name);
     });
     const cssFiles = ["manual_scoring"].map((name) => {

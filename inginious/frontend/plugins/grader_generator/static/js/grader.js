@@ -193,7 +193,7 @@ function changeSelectionTestCases(option) {
 }
 
 function isAllShowDiffChecked() {
-    const numListChecked = $(`[id$='${getDiffIdSuffix()}']:visible:checked`).length;
+    const numListChecked = $(`[id$='${getDiffIdSuffix()}']:checked`).length;
     return getCurrentNumTests() === numListChecked;
 }
 
@@ -223,12 +223,13 @@ function getDiffIdSuffix() {
 }
 
 function getCurrentNumTests() {
-    if (isNotebook){
+    if (isNotebook) {
         return notebook_grader_tests_sequence;
-    }else {
+    } else {
         return grader_test_cases_count;
     }
 }
-$("#tab_grader").show(function () {
+
+$("[href='#tab_grader']").click(function () {
     checkDiffStatus();
 });
