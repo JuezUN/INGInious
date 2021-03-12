@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-11 21:32-0500\n"
+"POT-Creation-Date: 2021-03-11 21:45-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -1918,12 +1918,30 @@ msgstr ""
 msgid "Code multiple languages"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:75
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:65
+msgid "Custom test job not found. Try running the custom tests again."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:77
+msgid "Custom tests are still running."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:99
 msgid "Please select at least 1 and up to 3 tests."
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:90
-msgid "An error occurred while running the notebook. Please run the tests again."
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:106
+msgid "Custom tests are running."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_test_manager.py:48
+msgid "An user must be logged in to run custom tests"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_test_manager.py:67
+msgid ""
+"A custom test is already pending for this task. Wait for a while to run "
+"the tests."
 msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/notebook_file_problem.py:36
@@ -4926,59 +4944,4 @@ msgstr ""
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr ""
-
-#~ msgid ""
-#~ "The process finished. {0!s} students "
-#~ "were registered on the course and \n"
-#~ ""
-#~ "            {1!s} students were registered "
-#~ "on UNCode out of {2!s} students "
-#~ "listed in the file."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The process finished. {0!s} students "
-#~ "were registered on the course and  "
-#~ "{1!s} students were registered \n"
-#~ "            on UNCode out of {2!s} "
-#~ "students listed in the file. The "
-#~ "emails for the new students are "
-#~ "being sent in the \n"
-#~ "            background, wait a while and"
-#~ " check again that all the students"
-#~ " were registered."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "<br><br>The next students were not "
-#~ "registered because of an unexpected "
-#~ "error, check that the user \n"
-#~ "                is not already registered "
-#~ "with another username or the username"
-#~ " is already used with another email:"
-#~ "\n"
-#~ "                {}"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The process finished. {0!s} students "
-#~ "were registered on the course and "
-#~ "{1!s} students were registered \n"
-#~ "            on UNCode out of {2!s} "
-#~ "students listed in the file. The "
-#~ "emails for the new students are "
-#~ "being sent in the \n"
-#~ "            background, wait a while and"
-#~ " check again that all the students"
-#~ " were registered."
-#~ msgstr ""
-
-#~ msgid "\"Use rst format to write the comment\""
-#~ msgstr ""
-
-#~ msgid "Use rst format to write the comment"
-#~ msgstr ""
-
-#~ msgid "\"Check Use rst format to write the comment\""
-#~ msgstr ""
 

@@ -7,6 +7,7 @@ from .problems.notebook_file_problem import DisplayableNotebookFileProblem
 from .problems.constants import set_linter_url, set_python_tutor_url, set_show_tools, set_use_wavedrom, set_use_minified
 from .problems.custom_input import custom_input_manager_multilang
 from .problems.custom_input_notebook import custom_input_notebook
+from .problems.custom_test_manager import CustomTestManager
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
@@ -26,9 +27,10 @@ def init(plugin_manager, course_factory, client, plugin_config):
         set_linter_url(linter_url)
 
     plugin_manager.add_page(r'/multilang/static/(.*)', create_static_resource_page(_static_folder_path))
-
     plugin_manager.add_page("/api/custom_input/", custom_input_manager_multilang(client))
-    plugin_manager.add_page("/api/custom_input_notebook/", custom_input_notebook(client))
+
+    custom_test_manager = CustomTestManager(client, plugin_manager._user_manager, plugin_manager._database)
+    plugin_manager.add_page("/api/custom_input_notebook/", custom_input_notebook(client, custom_test_manager))
 
     course_factory.get_task_factory().add_problem_type(DisplayableCodeMultipleLanguagesProblem)
     course_factory.get_task_factory().add_problem_type(DisplayableCodeFileMultipleLanguagesProblem)
