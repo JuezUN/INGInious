@@ -4,7 +4,6 @@
 # more information about the licensing of this file.
 
 """ Rubric scoring page """
-import os
 
 import web
 import re
@@ -12,36 +11,13 @@ from bson.objectid import ObjectId
 from ast import literal_eval
 
 from inginious.frontend.pages.api._api_page import APIError
-from inginious.frontend.parsable_text import ParsableText
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from inginious.frontend.plugins.manual_scoring.pages.constants import get_use_minify, get_render_path
 from inginious.frontend.plugins.manual_scoring.pages.manual_scoring_error import ManualScoringError
-from inginious.frontend.plugins.utils import read_json_file, get_mandatory_parameter
+from inginious.frontend.plugins.utils import get_mandatory_parameter
+from .rubric import get_manual_scoring_data, get_submission_result_text, get_rubric_content
 
 base_renderer_path = get_render_path()
-
-
-def get_manual_scoring_data(submission):
-    """ return the comment, score and rubric status if they are storage """
-    comment = ""
-    score = "No grade"
-    rubric = []
-
-    if 'manual_scoring' in submission:
-        score = submission['manual_scoring']['grade']
-        comment = submission['manual_scoring']['comment']
-        rubric = submission['manual_scoring']['rubric_status']
-
-    return comment, score, rubric
-
-
-def get_submission_result_text(submission_input):
-    """ return the result of a submission """
-    info = submission_input['text']
-    pars_text = ParsableText(info)
-    final_text = pars_text.parse()
-    final_text = final_text.replace('\n', '')
-    return final_text
 
 
 def check_manual_scoring_data():
@@ -152,7 +128,7 @@ class ManualScoringPage(INGIniousAdminPage):
 
     def render_page(self, course, task, submission_id):
         """ Get all data and display the page """
-        rubric_content = self.get_rubric_content()
+        rubric_content = get_rubric_content(self.user_manager)
         problem_id = task.get_problems()[0].get_id()
         submission = self.submission_manager.get_submission(submission_id, user_check=False)
         submission_input = self.submission_manager.get_input_from_submission(submission)
@@ -171,35 +147,25 @@ class ManualScoringPage(INGIniousAdminPage):
             "problem": submission_input['input'][problem_id],
             "username": submission_input['username'][0],
             "name": self.user_manager.get_user_realname(submission_input['username'][0]),
-            "env": task.get_environment(),
+            "environment_type": task.get_environment(),
             "question_id": problem_id,
             "submission_id": submission_id,
             "rubric_status": rubric_status
         }
 
-        return (
-            self.template_helper.get_custom_renderer(base_renderer_path).manual_scoring(
-                course, task, rubric_content, data)
-        )
-
-    def get_rubric_content(self):
-        """ return the content of the rubric depending of the language """
-        path = 'inginious/frontend/plugins/manual_scoring/static/json/'
-        language_file = {'es': 'rubric_es.json', 'en': 'rubric.json', 'de': 'rubric.json', 'fr': 'rubric.json',
-                         'pt': 'rubric.json'}
-        current_language = self.user_manager.session_language()
-        path = os.path.join(path, language_file[current_language])
-
-        return read_json_file(path)
+        return self.template_helper.get_custom_renderer(base_renderer_path).manual_scoring(course, task, rubric_content,
+                                                                                           data)
 
     def add_css_and_js_file(self):
         """ Add the css and js files """
         if get_use_minify():
             self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.min.css")
+            self.template_helper.add_javascript("/manual_scoring/static/js/common_files.min.js")
             self.template_helper.add_javascript("/manual_scoring/static/js/manual_scoring.min.js")
         else:
             self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.css")
-            self.template_helper.add_javascript("/manual_scoring/static/js/code_field.js")
+            self.template_helper.add_javascript("/manual_scoring/static/js/code_area.js")
             self.template_helper.add_javascript("/manual_scoring/static/js/message_box.js")
             self.template_helper.add_javascript("/manual_scoring/static/js/rubric.js")
+            self.template_helper.add_javascript("/manual_scoring/static/js/manual_scoring_constants.js")
             self.template_helper.add_javascript("/manual_scoring/static/js/manual_scoring_main.js")

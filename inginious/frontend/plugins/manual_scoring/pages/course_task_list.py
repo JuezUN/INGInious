@@ -30,7 +30,7 @@ class CourseTaskListPage(INGIniousAdminPage):
         total_students = len(self.user_manager.get_course_registered_users(course, False))
         tasks_data = self.get_tasks_data(course)
 
-        self.add_css_file()
+        self.add_css_and_js_file()
 
         return self.template_helper.get_custom_renderer(base_renderer_path) \
             .course_task_list(course, tasks_data, total_students)
@@ -85,9 +85,14 @@ class CourseTaskListPage(INGIniousAdminPage):
         task_array = self.task_factory.get_all_tasks(course)
         return OrderedDict(sorted(list(task_array.items()), key=lambda t: (t[1].get_order(), t[1].get_id())))
 
-    def add_css_file(self):
-        """ add the css styles"""
+    def add_css_and_js_file(self):
+        """ add the css styles and js files"""
+        self.template_helper.add_javascript(
+            "https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.6/papaparse.min.js")
         if get_use_minify():
             self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.min.css")
+            self.template_helper.add_javascript("/manual_scoring/static/js/course_task_list.min.js")
         else:
             self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.css")
+            self.template_helper.add_javascript("/manual_scoring/static/js/message_box.js")
+            self.template_helper.add_javascript("/manual_scoring/static/js/task_list_main.js")
