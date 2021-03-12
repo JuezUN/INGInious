@@ -15,13 +15,13 @@ base_renderer_path = get_render_path()
 def create_submissions_dict(submissions_list):
     """ Organize all data in a dictionary """
     data = OrderedDict()
-    default_grade = "No grade"
+    default_grade = _("No grade")
     for submission in submissions_list:
         data[submission["_id"]] = {
             "_id": submission["_id"],
-            "date": submission["submitted_on"],
+            "date": submission["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S"),
             "grade": submission["grade"],
-            "summary_result": submission["custom"]["custom_summary_result"],
+            "result": submission["custom"]["custom_summary_result"],
         }
         if "manual_scoring" in submission:
             data[submission["_id"]]["manual_grade"] = submission["manual_scoring"]["grade"]
@@ -54,7 +54,7 @@ class StudentSubmissionsPage(INGIniousAdminPage):
         )
 
     def get_student_submissions(self, course_id, task_id, username):
-        """ do request to db to get the data about user's submissions
+        """ does request to db to get the data about user's submissions
             EXAMPLE:
                 [{_id: Objectid(''), 'submitted_on':datetime.datetime(), 'custom.custom_summary_result':'ACCEPTED',
                  'manual_scoring.grade': 100.0, 'manual_scoring.comment': "text", 'rubric_status': '["1-1","2-2"]' },
