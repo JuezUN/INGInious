@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-11 17:50-0500\n"
+"POT-Creation-Date: 2021-03-11 21:21-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -2318,6 +2318,7 @@ msgstr ""
 msgid "Code and learn!"
 msgstr ""
 
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:5
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:15
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:69
 msgid "Register students"

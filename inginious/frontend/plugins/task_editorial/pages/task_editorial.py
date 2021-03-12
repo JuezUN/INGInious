@@ -3,7 +3,7 @@ import os
 from inginious.frontend.plugins.multilang.problems.languages import get_all_available_languages
 from inginious.frontend.parsable_text import ParsableText
 from inginious.frontend.pages.course_admin.task_edit import CourseTaskFiles
-from .constants import use_minify
+from .constants import use_minified
 
 _TASK_EDITORIAL_TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), "templates")
 
@@ -73,7 +73,7 @@ def check_editorial_submit(course, taskid, task_data, task_fs):
 
 
 def _add_static_files(template_helper):
-    if use_minify():
+    if use_minified():
         template_helper.add_javascript("/task_editorial/static/task_editorial.min.js")
     else:
         template_helper.add_javascript("/task_editorial/static/task_editorial.js")

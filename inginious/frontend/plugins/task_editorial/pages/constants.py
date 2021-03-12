@@ -12,6 +12,6 @@ def set_use_minified(use_minified):
     _use_minified = use_minified
 
 
-def use_minify():
+def use_minified():
     """ return a boolean to define if use minified files """
     return _use_minified
