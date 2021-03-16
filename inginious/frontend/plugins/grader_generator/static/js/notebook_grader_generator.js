@@ -134,6 +134,7 @@ function _notebook_grader_get_test_element(test_id, test_data, test_cases) {
     template_element.find(`#notebook_grader_test_${test_id}_show_debug_info`).prop('checked', show_debug_info);
 
     $.each(test_cases, (_, test_case) => {
+        _deleteCodeMirror(test_case);
         template_element.find(`#notebook_grader_test_${test_id}_cases_container`).append(test_case);
     });
     return template_element;
@@ -166,7 +167,6 @@ function notebook_grader_add_test_from_form() {
     if (first_row) {
         $('#notebook_grader_tests_header').show();
     }
-
     $('#notebook_grader_tests_container').append(new_test);
     modal_element.modal('hide');
 }
@@ -325,7 +325,6 @@ function notebook_grader_update_test() {
 }
 
 function _clear_modal() {
-    let notebook_grader_tests_cases_count = {};
 
     $('#notebook_grader_test_form_modal input').val("");
     $('#notebook_grader_test_form_modal textarea').val("");
@@ -345,8 +344,12 @@ function _deleteCodeMirror(testCase) {
 
 $(".notebook_grader_submit_test_form").click((e) => {
     e.preventDefault();
-    if (editing_test_id !== null) notebook_grader_update_test();
-    else notebook_grader_add_test_from_form();
+    if (editing_test_id !== null) {
+        notebook_grader_update_test();
+    } else {
+        notebook_grader_add_test_from_form();
+        updateMainShowDiffsCheckbox();
+    }
 });
 
 modal_element.on("hidden.bs.modal", () => {

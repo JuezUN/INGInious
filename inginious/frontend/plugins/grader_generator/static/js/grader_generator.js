@@ -9,6 +9,7 @@ function studio_add_test_case_from_form() {
         "input_file": $("#grader_test_case_in").val(),
         "output_file": $("#grader_test_case_out").val()
     });
+    updateMainShowDiffsCheckbox();
 }
 
 function studio_add_test_case(test_case) {
