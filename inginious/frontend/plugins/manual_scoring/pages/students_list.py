@@ -46,7 +46,7 @@ class StudentsListPage(INGIniousAdminPage):
     def get_students_list_and_max_score(self, course, task_id):
         """ do request to db to get the data about users respect a task
             EXAMPLE:
-                [{_id: Objectid(''), 'username':['student1'], 'realname':'pablo', 'taskid': 'pow', 'grade': 100.0},
+                [{_id: Objectid(''), 'username':['student1'], 'realname':['pablo'], 'taskid': 'pow', 'grade': 100.0},
                 {...}, ...
                 ]
         """

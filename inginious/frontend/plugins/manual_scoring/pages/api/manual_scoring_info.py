@@ -18,9 +18,9 @@ class ManualScoringInfoApi(AdminApi):
     def get_manual_scoring_results(self, course):
         """ it does a request to db to get the data about all course's manual scoring
             EXAMPLE:
-                [{_id: Objectid(''), 'username':['user'], 'realname':'pepe',
+                [{_id: Objectid(''), 'username':['user'], 'realname':['pepe'],
                  'taskid': 'pow', 'submitted_on': datetime.datetime(),
-                 'custom.custom_summary_result': '["1-1","2-2"]', 'grade': '100.0',
+                 'custom_summary_result': '["1-1","2-2"]', 'grade': '100.0',
                  manual_scoring: {'comment': 'text', 'grade': '4.6', 'rubric_status': '["0-2","1-4", "2-4"]'} },
                 {...}, ...
                 ] """
