@@ -114,7 +114,7 @@ To activate your account, please click on the following link :
 You can check the data policy here:
 """)
                                  + web.ctx.home + "/data_policy")
-                    msg = _("You are succesfully registered. An email has been sent to you for activation.")
+                    msg = _("You are successfully registered. An email has been sent to you for activation.")
                 except:
                     error = True
                     msg = _("Something went wrong while sending you activation email. Please contact the administrator.")

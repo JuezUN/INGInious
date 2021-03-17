@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-16 17:15-0500\n"
+"POT-Creation-Date: 2021-03-11 23:33-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -174,7 +174,7 @@ msgstr ""
 
 #: inginious/frontend/pages/register.py:117
 msgid ""
-"You are succesfully registered. An email has been sent to you for "
+"You are successfully registered. An email has been sent to you for "
 "activation."
 msgstr ""
 "Você foi registrado com sucesso. Um e-mail foi enviado para você para a "
@@ -542,7 +542,7 @@ msgid "Your browser returned an invalid form ({})"
 msgstr "Seu navegador retornou um formulário inválido ({})"
 
 #: inginious/frontend/pages/course_admin/task_edit.py:288
-msgid "Error while reading course's informations"
+msgid "Error while reading course's information"
 msgstr "Erro ao ler as informações do curso"
 
 #: inginious/frontend/pages/course_admin/task_edit.py:312
@@ -721,13 +721,14 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:23
 msgid ""
-"The data processing policy establishes the terms in which UNCode use and "
-"save the user provisioned information when using the software system. "
+"The data processing policy establishes the terms in which UNCode uses and"
+" saves the user provisioned information when using the software system. "
 "UNCode is committed to the users data security. We ensure that all the "
-"data that the owner provide us, will only be used according to the "
-"stablished terms in this document, and with the law 1581 of 2012. "
+"data that the owner provides to, will only be used according to the "
+"established terms in this document, and with the law 1581 of 2012. "
 "However, we suggest checking frequently the page to make sure you agree "
-"to the possible changes that may be made on the policy in the future."
+"with the eventual changes that may be made to the data policy in the "
+"future."
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:25
@@ -749,7 +750,7 @@ msgstr "código"
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:31
 msgid ""
-"The policy applies for the personal data registered in the UNcode "
+"The policy applies for the personal data registered in the UNCode "
 "databases, who acts as the responsible of the personal data processing."
 msgstr ""
 
@@ -767,7 +768,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:39
 msgid ""
-"UNCode is a proyect developed by PLaS, a research group of the "
+"UNCode is a project developed by PLaS, a research group of the "
 "Universidad Nacional de Colombia, Bogotá headquarters."
 msgstr ""
 
@@ -782,7 +783,7 @@ msgid ""
 "information as name, career, contact data as e-mail, and demographic "
 "information. Also the system collects information about each solution "
 "provided on problem as attempt state, errors type, code or notebook "
-"provided, date of sumbimission, etc."
+"provided, date of submission, among others."
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:47
@@ -858,13 +859,13 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:95
-msgid "Procedure for the exercise of the Hábeas Data right"
+msgid "Procedure for the exercise of the Habeas Data right"
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:97
 msgid ""
 "For the protection of personal data, UNCode presents the following steps "
-"and minimun requirements for the exercise of your rights."
+"and minimum requirements for the exercise of your rights."
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:100
@@ -874,9 +875,8 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:104
-#, fuzzy
-msgid "Complete name and lastname."
-msgstr "Nome completo:"
+msgid "Complete name and last name."
+msgstr "Nome completo."
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:107
 #, fuzzy
@@ -915,7 +915,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:120
 msgid ""
-"The present policy for personal data processing applies from Obtober 23, "
+"The present policy for personal data processing applies from October 23, "
 "2020."
 msgstr ""
 
@@ -2295,7 +2295,7 @@ msgid "Task to check"
 msgstr ""
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:58
-msgid "Basecode file"
+msgid "Base code file"
 msgstr ""
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:63
@@ -4164,7 +4164,7 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/submission.html:40
-msgid "Click here to hide/display context informations"
+msgid "Click here to hide/display context information"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/submission.html:46
@@ -4557,7 +4557,7 @@ msgid "\"title for this task\""
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:22
-msgid "Filetype"
+msgid "File type"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:42
