@@ -2,7 +2,7 @@ import os
 
 from inginious.common.tasks_problems import CodeProblem
 from inginious.frontend.task_problems import DisplayableCodeProblem
-from .constants import get_linter_url, get_python_tutor_url, get_show_tools
+from .constants import get_linter_url, get_python_tutor_url, get_show_tools, add_static_files
 from .languages import get_all_available_languages
 from collections import OrderedDict
 
@@ -35,6 +35,7 @@ class DisplayableCodeMultipleLanguagesProblem(CodeMultipleLanguagesProblem, Disp
     @classmethod
     def show_editbox(cls, template_helper, key):
         renderer = DisplayableCodeMultipleLanguagesProblem.get_renderer(template_helper)
+        add_static_files(template_helper)
         return renderer.multilang_edit(key, get_all_available_languages())
 
     def show_input(self, template_helper, language, seed):
@@ -60,5 +61,6 @@ class DisplayableCodeMultipleLanguagesProblem(CodeMultipleLanguagesProblem, Disp
             tools_render = str(
                 renderer.tools(self.get_id(), "plain", custom_input_id, self.get_type(), get_python_tutor_url(),
                                get_linter_url(), course_id=self.get_task().get_course_id()))
+        add_static_files(template_helper)
 
         return multiple_language_render + standard_code_problem_render + tools_render

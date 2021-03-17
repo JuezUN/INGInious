@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-11 11:58-0500\n"
+"POT-Creation-Date: 2021-03-11 21:45-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -944,7 +944,7 @@ msgstr ""
 #: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:16
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:36
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:105
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:62
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
 #: inginious/frontend/templates/course_admin/danger_zone.html:81
 #: inginious/frontend/templates/course_admin/danger_zone.html:160
@@ -1416,7 +1416,7 @@ msgid ""
 "{task} !"
 msgstr ""
 
-#: inginious/frontend/plugins/code_preview/pages/code_preview.py:11
+#: inginious/frontend/plugins/code_preview/pages/code_preview.py:12
 msgid "Code template"
 msgstr ""
 
@@ -1925,12 +1925,30 @@ msgstr ""
 msgid "Code multiple languages"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:75
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:65
+msgid "Custom test job not found. Try running the custom tests again."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:77
+msgid "Custom tests are still running."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:99
 msgid "Please select at least 1 and up to 3 tests."
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:90
-msgid "An error occurred while running the notebook. Please run the tests again."
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:106
+msgid "Custom tests are running."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_test_manager.py:48
+msgid "An user must be logged in to run custom tests"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_test_manager.py:67
+msgid ""
+"A custom test is already pending for this task. Wait for a while to run "
+"the tests."
 msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/notebook_file_problem.py:36
@@ -2431,40 +2449,41 @@ msgstr ""
 msgid "Code and learn!"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:10
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:64
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:5
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:15
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:69
 msgid "Register students"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:18
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:23
 msgid "Select a file to upload"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:22
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:27
 msgid "Email language:"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:43
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:48
 msgid "About the file"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:45
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:50
 msgid ""
 "The uploaded file must be a <strong>CSV</strong> file. Make sure it is "
 "separated by commas."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:47
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:52
 msgid ""
 "This file must contain the <strong>name,last name,username,email</strong>"
 " of each student you want to register."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:50
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:55
 msgid "Here you have an example of a parsed file with the students' information"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:57
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:62
 msgid ""
 "All the students are going to be registered on UNCode and the course. If "
 "the students does not exists it will be registered using a provisional "
@@ -2535,7 +2554,7 @@ msgstr ""
 msgid "Student's Tools"
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/task_editorial.py:16
+#: inginious/frontend/plugins/task_editorial/pages/task_editorial.py:17
 msgid "Task editorial"
 msgstr ""
 
@@ -4962,59 +4981,4 @@ msgstr "Taille fichier max.:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensions autorisées:"
-
-#~ msgid ""
-#~ "The process finished. {0!s} students "
-#~ "were registered on the course and \n"
-#~ ""
-#~ "            {1!s} students were registered "
-#~ "on UNCode out of {2!s} students "
-#~ "listed in the file."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The process finished. {0!s} students "
-#~ "were registered on the course and  "
-#~ "{1!s} students were registered \n"
-#~ "            on UNCode out of {2!s} "
-#~ "students listed in the file. The "
-#~ "emails for the new students are "
-#~ "being sent in the \n"
-#~ "            background, wait a while and"
-#~ " check again that all the students"
-#~ " were registered."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "<br><br>The next students were not "
-#~ "registered because of an unexpected "
-#~ "error, check that the user \n"
-#~ "                is not already registered "
-#~ "with another username or the username"
-#~ " is already used with another email:"
-#~ "\n"
-#~ "                {}"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The process finished. {0!s} students "
-#~ "were registered on the course and "
-#~ "{1!s} students were registered \n"
-#~ "            on UNCode out of {2!s} "
-#~ "students listed in the file. The "
-#~ "emails for the new students are "
-#~ "being sent in the \n"
-#~ "            background, wait a while and"
-#~ " check again that all the students"
-#~ " were registered."
-#~ msgstr ""
-
-#~ msgid "\"Use rst format to write the comment\""
-#~ msgstr ""
-
-#~ msgid "Use rst format to write the comment"
-#~ msgstr ""
-
-#~ msgid "\"Check Use rst format to write the comment\""
-#~ msgstr ""
 
