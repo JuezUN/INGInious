@@ -12,7 +12,6 @@ const _GRADER_GENERATOR_PLUGIN_PATH = `${_BASE_PATH}/grader_generator/static`;
 const _CODE_PREVIEW_PLUGIN_PATH = `${_BASE_PATH}/code_preview/static`;
 const _ANALYTICS_PLUGIN_PATH = `${_BASE_PATH}/analytics/static`;
 const _PLAGIARISM_PLUGIN_PATH = `${_BASE_PATH}/plagiarism/static`;
-const _MANUAL_SCORING_PATH = `${_BASE_PATH}/manual_scoring/static`;
 const _TASK_EDITORIAL_PATH = `${_BASE_PATH}/task_editorial/static`;
 const _CONTACT_PAGE_PLUGIN_PATH = `${_BASE_PATH}/contact_page/static`;
 const _MANUAL_SCORING_PATH = `${_BASE_PATH}/manual_scoring/static`;

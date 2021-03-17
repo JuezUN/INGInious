@@ -27,18 +27,18 @@ class CourseTaskListPage(INGIniousAdminPage):
 
     def render_page(self, course):
         """ Get all data and display the page """
-        num_students = len(self.user_manager.get_course_registered_users(course, False))
-        data = self.get_task_information(course)
+        total_students = len(self.user_manager.get_course_registered_users(course, False))
+        tasks_data = self.get_tasks_data(course)
 
         self.add_css_and_js_file()
 
         return self.template_helper.get_custom_renderer(base_renderer_path) \
             .course_task_list(course, tasks_data, total_students)
 
-    def get_task_information(self, course):
+    def get_tasks_data(self, course):
         """ cross the task data and return the result """
-        attempted_succeeded_per_task = self.get_tasks_and_its_num_of_attempted_and_succeeded(course)
-        tasks = self.get_task_in_order_dict(course)
+        attempted_succeeded_per_task = self.get_total_attempted_and_succeeded_per_task(course)
+        tasks = self.get_ordered_course_tasks(course)
         task_dict = OrderedDict()
 
         for task in attempted_succeeded_per_task:
@@ -79,7 +79,7 @@ class CourseTaskListPage(INGIniousAdminPage):
 
         return data
 
-    def get_task_in_order_dict(self, course):
+    def get_ordered_course_tasks(self, course):
         """ get all the tasks in a course.
         it is necessary because no name is found on db """
         task_array = self.task_factory.get_all_tasks(course)
