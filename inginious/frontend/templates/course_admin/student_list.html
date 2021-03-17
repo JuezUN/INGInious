@@ -46,6 +46,7 @@ $var Navbar: $:NavbarF()
                         </div>
                     </form>
                 </div>
+            $:template_helper.call("register_students")
         </div>
         <div role="tabpanel" class="tab-pane" id="tab_staff">
             $:include.course_admin.student_list_table(course,user_data[0:len(course.get_staff())], True)

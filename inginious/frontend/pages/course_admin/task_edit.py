@@ -285,7 +285,7 @@ class CourseEditTask(INGIniousAdminPage):
         try:
             course = self.course_factory.get_course(courseid)
         except:
-            return json.dumps({"status": "error", "message": _("Error while reading course's informations")})
+            return json.dumps({"status": "error", "message": _("Error while reading course's information")})
 
         # Get original data
         try:

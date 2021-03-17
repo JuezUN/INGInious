@@ -11,6 +11,7 @@ from .pages.plagiarism import PlagiarismPage
 from .pages.plagiarism_create import PlagiarismCreate
 from .pages.plagiarism_check_summary import PlagiarismCheckSummary
 from .pages.plagiarism_check_download import PlagiarismCheckDownload
+from .constants import set_use_minified
 
 _STATIC_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "static")
 
@@ -25,16 +26,12 @@ def init(plugin_manager, _, __, plugin_config):
             - storage_path: 'path/to/storage/results'
     """
 
-    use_minified = plugin_config.get("use_minified", True)
+    set_use_minified(plugin_config.get("use_minified", True))
 
     def add_admin_menu(course):  # pylint: disable=unused-argument
         """ Add a menu for the plagiarism checker in the administration """
         if not plugin_manager.get_user_manager().has_admin_rights_on_course(course):
             return None
-        if use_minified:
-            plugin_manager.add_hook("css", lambda: "/plagiarism/static/css/plagiarism.css")
-        else:
-            plugin_manager.add_hook("css", lambda: "/plagiarism/static/css/plagiarism.min.css")
         return "plagiarism", "<i class='fa fa-check-circle-o fa-fw'></i>&nbsp; Plagiarism"
 
     plugin_manager.add_page(r'/plagiarism/static/(.*)', create_static_resource_page(_STATIC_FOLDER_PATH))

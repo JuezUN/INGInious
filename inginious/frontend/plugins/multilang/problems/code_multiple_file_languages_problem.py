@@ -4,7 +4,7 @@ from collections import OrderedDict
 from inginious.common.tasks_problems import FileProblem
 from inginious.frontend.task_problems import DisplayableFileProblem
 from .languages import get_all_available_languages
-from .constants import get_show_tools
+from .constants import get_show_tools, add_static_files
 
 path_to_plugin = os.path.abspath(os.path.dirname(__file__))
 
@@ -38,6 +38,7 @@ class DisplayableCodeFileMultipleLanguagesProblem(CodeFileMultipleLanguagesProbl
 
     @classmethod
     def show_editbox(cls, template_helper, key):
+        add_static_files(template_helper)
         renderer = DisplayableCodeFileMultipleLanguagesProblem.get_renderer(template_helper)
         return renderer.file_multilang_edit(key, get_all_available_languages())
 
@@ -64,4 +65,5 @@ class DisplayableCodeFileMultipleLanguagesProblem(CodeFileMultipleLanguagesProbl
                 renderer.tools(self.get_id(), "plain", custom_input_id, self.get_type(), None, None,
                                course_id=self.get_task().get_course_id()))
 
+        add_static_files(template_helper)
         return multiple_language_render + standard_code_problem_render + tools_render

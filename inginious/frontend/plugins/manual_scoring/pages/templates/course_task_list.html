@@ -14,40 +14,57 @@ $ is_admin = user_manager.has_admin_rights_on_course(course)
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
-            <i class="fa fa-user-secret"></i></a></li>
+            </a></li>
         <li class="active"><a href="#"><i class="fa fa-table mr-1"></i>$:_("Manual Scoring")<span class="sr-only">(current)</span></a></li>
     </ol>
 $var Navbar: $:NavbarF()
 
-<form method="post">
-<h2>$:_("Manual Scoring"): $:_("Tasks List")</h2>
-<div class="row justify-conte py-2">
-    <div class="col-md-9 col-md-offset-1">
-<table class="table sorted_table table-striped">
-    <thead>
-        <tr>
-            <th><h4>$:_("Task Name")</h4></th>
-            <th><h4># $:_("Students succeeded")</h4></th>
-            <th><h4># $:_("Students attempted")</h4></th>
-        </tr>
-    </thead>
-    <tbody>
-    $for taskid in data:
-    	<tr>
-    		<td>
-    			<a href="$get_homepath()/admin/${course.get_id()}/manual_scoring/task/$taskid" class="font_size">
-                    $if data[taskid]["name"] == "":
-                        $taskid
-                    $else:
-                        $data[taskid]["name"]
-                </a>
-                <input type="hidden" name="task" value="$taskid">
-    		</td>
-            <td class="text-center font_size">$data[taskid]["succeeded"]/$num_students</td>
-            <td class="text-center font_size">$data[taskid]["attempted"]/$num_students</td>
-    	</tr>
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-md-10">
+    <h2>$:_("Manual Scoring"): $:_("Tasks List")</h2>
     </div>
+    <div class="col-md-1 ">
+        <a type="button" class="btn btn-info" id="download_csv">
+                <i class="fa fa-table"></i> $:_("Download CSV")
+        </a>
+    </div>
+    <div class="col-md-12 py-1" id="information_area"></div>
+</div>
+
+<form method="post">
+    <div class="row py-2">
+        <div class="col-md-9 col-md-offset-1">
+            <table class="table sorted_table table-striped">
+                <thead>
+                    <tr>
+                        <th><h4>$:_("Task Name")</h4></th>
+                        <th><h4># $:_("Students succeeded")</h4></th>
+                        <th><h4># $:_("Students attempted")</h4></th>
+                    </tr>
+                </thead>
+            <tbody>
+            $for taskid in data:
+                <tr>
+                    <td>
+                        <a href="$get_homepath()/admin/${course.get_id()}/manual_scoring/task/$taskid" class="font_size">
+                            $if data[taskid]["name"] == "":
+                                $taskid
+                            $else:
+                                $data[taskid]["name"]
+                        </a>
+                        <input type="hidden" name="task" value="$taskid">
+                    </td>
+                    <td class="text-center font_size">$data[taskid]["succeeded"]/$num_students</td>
+                    <td class="text-center font_size">$data[taskid]["attempted"]/$num_students</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
     </div>
 </form>
+
+<script>
+    const getCourseId = function (){
+        return "$course.get_id()";
+    }
+</script>

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-11 18:35-0500\n"
+"POT-Creation-Date: 2021-03-17 17:38-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -172,7 +172,7 @@ msgstr ""
 
 #: inginious/frontend/pages/register.py:117
 msgid ""
-"You are succesfully registered. An email has been sent to you for "
+"You are successfully registered. An email has been sent to you for "
 "activation."
 msgstr ""
 "Votre compte a été créé. Un email vous a été envoyé afin de l'activer "
@@ -547,7 +547,7 @@ msgid "Your browser returned an invalid form ({})"
 msgstr "Votre navigateur a renvoyé un formaulaire invalide ({})"
 
 #: inginious/frontend/pages/course_admin/task_edit.py:288
-msgid "Error while reading course's informations"
+msgid "Error while reading course's information"
 msgstr "Une erreur s'est produite lors de la lecture des informations du cours"
 
 #: inginious/frontend/pages/course_admin/task_edit.py:312
@@ -728,13 +728,14 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:23
 msgid ""
-"The data processing policy establishes the terms in which UNCode use and "
-"save the user provisioned information when using the software system. "
+"The data processing policy establishes the terms in which UNCode uses and"
+" saves the user provisioned information when using the software system. "
 "UNCode is committed to the users data security. We ensure that all the "
-"data that the owner provide us, will only be used according to the "
-"stablished terms in this document, and with the law 1581 of 2012. "
+"data that the owner provides to, will only be used according to the "
+"established terms in this document, and with the law 1581 of 2012. "
 "However, we suggest checking frequently the page to make sure you agree "
-"to the possible changes that may be made on the policy in the future."
+"with the eventual changes that may be made to the data policy in the "
+"future."
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:25
@@ -756,7 +757,7 @@ msgstr "code"
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:31
 msgid ""
-"The policy applies for the personal data registered in the UNcode "
+"The policy applies for the personal data registered in the UNCode "
 "databases, who acts as the responsible of the personal data processing."
 msgstr ""
 
@@ -774,7 +775,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:39
 msgid ""
-"UNCode is a proyect developed by PLaS, a research group of the "
+"UNCode is a project developed by PLaS, a research group of the "
 "Universidad Nacional de Colombia, Bogotá headquarters."
 msgstr ""
 
@@ -789,7 +790,7 @@ msgid ""
 "information as name, career, contact data as e-mail, and demographic "
 "information. Also the system collects information about each solution "
 "provided on problem as attempt state, errors type, code or notebook "
-"provided, date of sumbimission, etc."
+"provided, date of submission, among others."
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:47
@@ -865,13 +866,13 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:95
-msgid "Procedure for the exercise of the Hábeas Data right"
+msgid "Procedure for the exercise of the Habeas Data right"
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:97
 msgid ""
 "For the protection of personal data, UNCode presents the following steps "
-"and minimun requirements for the exercise of your rights."
+"and minimum requirements for the exercise of your rights."
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:100
@@ -881,9 +882,8 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:104
-#, fuzzy
-msgid "Complete name and lastname."
-msgstr "Nom complet :"
+msgid "Complete name and last name."
+msgstr "Nom complet."
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:107
 #, fuzzy
@@ -922,7 +922,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:120
 msgid ""
-"The present policy for personal data processing applies from Obtober 23, "
+"The present policy for personal data processing applies from October 23, "
 "2020."
 msgstr ""
 
@@ -945,7 +945,7 @@ msgstr ""
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:36
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:67
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:105
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:62
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
 #: inginious/frontend/templates/course_admin/danger_zone.html:81
 #: inginious/frontend/templates/course_admin/danger_zone.html:160
@@ -1416,7 +1416,7 @@ msgid ""
 "{task} !"
 msgstr ""
 
-#: inginious/frontend/plugins/code_preview/pages/code_preview.py:11
+#: inginious/frontend/plugins/code_preview/pages/code_preview.py:12
 msgid "Code template"
 msgstr ""
 
@@ -1782,7 +1782,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:11
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:106
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:129
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:143
 msgid "Save"
 msgstr ""
 
@@ -1814,28 +1814,93 @@ msgstr ""
 msgid "Expected output"
 msgstr ""
 
+#: inginious/frontend/plugins/manual_scoring/pages/constants.py:14
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:18
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:23
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:24
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:16
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:18
 msgid "Manual Scoring"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:23
+#: inginious/frontend/plugins/manual_scoring/pages/constants.py:20
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:16
+msgid "Feedback"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:15
+#: inginious/frontend/plugins/manual_scoring/pages/student_submissions.py:18
+msgid "No grade"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:24
 msgid "Tasks List"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:29
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:28
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:55
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:66
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:75
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:89
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:30
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:40
+msgid "Download CSV"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:40
 msgid "Task Name"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:30
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:41
 msgid "Students succeeded"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:31
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:42
 msgid "Students attempted"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:14
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:16
+msgid "Feedback List"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:22
+msgid "Feedback for:"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:54
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:57
+#: inginious/frontend/templates/task.html:14
+msgid "Information"
+msgstr "Informations"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:57
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:60
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:34
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:28
+#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:46
+#: inginious/frontend/templates/course_admin/subproblems/code.html:16
+msgid "Language"
+msgstr "Langage"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:59
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:62
+msgid "Summary"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:73
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:124
+msgid "Comments"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:81
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:19
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:77
+msgid "Rubric"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:84
+msgid "Manual grade: "
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:17
@@ -1853,30 +1918,8 @@ msgstr "Exercice"
 msgid "Student"
 msgstr "Etudiant"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:19
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:77
-msgid "Rubric"
-msgstr ""
-
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:26
 msgid "Manual scoring for:"
-msgstr ""
-
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:57
-#: inginious/frontend/templates/task.html:14
-msgid "Information"
-msgstr "Informations"
-
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:60
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:34
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:28
-#: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:46
-#: inginious/frontend/templates/course_admin/subproblems/code.html:16
-msgid "Language"
-msgstr "Langage"
-
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:62
-msgid "Summary"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:78
@@ -1891,30 +1934,55 @@ msgstr ""
 msgid "Current Score: "
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:123
-msgid "Comments"
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:125
+msgid "\"Use RST format to write the comment\""
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:27
-#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:26
-msgid "Manual scoring for Task:"
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:131
+msgid "Write"
 msgstr ""
 
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:132
+msgid "Preview"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:25
+msgid "Feedback for the course: "
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:39
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:47
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:35
 msgid "Date"
 msgstr ""
 
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:40
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:48
 msgid "Result Summary"
 msgstr ""
 
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:41
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:49
 msgid "Score"
 msgstr ""
 
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:42
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:50
 msgid "Manual scoring"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:43
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:51
+msgid "See submission"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:68
+msgid "There is no Feedback yet"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:27
+#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:26
+msgid "Manual scoring for Task:"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:39
@@ -1938,12 +2006,30 @@ msgstr ""
 msgid "Code multiple languages"
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:75
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:65
+msgid "Custom test job not found. Try running the custom tests again."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:77
+msgid "Custom tests are still running."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:99
 msgid "Please select at least 1 and up to 3 tests."
 msgstr ""
 
-#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:90
-msgid "An error occurred while running the notebook. Please run the tests again."
+#: inginious/frontend/plugins/multilang/problems/custom_input_notebook.py:106
+msgid "Custom tests are running."
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_test_manager.py:48
+msgid "An user must be logged in to run custom tests"
+msgstr ""
+
+#: inginious/frontend/plugins/multilang/problems/custom_test_manager.py:67
+msgid ""
+"A custom test is already pending for this task. Wait for a while to run "
+"the tests."
 msgstr ""
 
 #: inginious/frontend/plugins/multilang/problems/notebook_file_problem.py:36
@@ -2296,7 +2382,7 @@ msgid "Task to check"
 msgstr ""
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:58
-msgid "Basecode file"
+msgid "Base code file"
 msgstr ""
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:63
@@ -2444,40 +2530,41 @@ msgstr ""
 msgid "Code and learn!"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:10
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:64
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:5
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:15
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:69
 msgid "Register students"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:18
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:23
 msgid "Select a file to upload"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:22
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:27
 msgid "Email language:"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:43
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:48
 msgid "About the file"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:45
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:50
 msgid ""
 "The uploaded file must be a <strong>CSV</strong> file. Make sure it is "
 "separated by commas."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:47
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:52
 msgid ""
 "This file must contain the <strong>name,last name,username,email</strong>"
 " of each student you want to register."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:50
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:55
 msgid "Here you have an example of a parsed file with the students' information"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/register_students_modal.html:57
+#: inginious/frontend/plugins/register_students/static/register_students_modal.html:62
 msgid ""
 "All the students are going to be registered on UNCode and the course. If "
 "the students does not exists it will be registered using a provisional "
@@ -2486,7 +2573,6 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:3
-#: inginious/frontend/plugins/statistics/pages/user_statistics.py:27
 #: inginious/frontend/templates/course_admin/submissions.html:210
 msgid "Statistics"
 msgstr "Statistiques"
@@ -2519,15 +2605,6 @@ msgstr ""
 msgid "Submissions by grade"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:55
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:66
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:75
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:89
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:30
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:40
-msgid "Download CSV"
-msgstr ""
-
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:63
 msgid "Final grade distribution"
 msgstr ""
@@ -2554,7 +2631,11 @@ msgstr ""
 msgid "Bar Submissions Per Tasks"
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/task_editorial.py:16
+#: inginious/frontend/plugins/statistics/pages/user_statistics.py:27
+msgid "Student's Tools"
+msgstr ""
+
+#: inginious/frontend/plugins/task_editorial/pages/task_editorial.py:17
 msgid "Task editorial"
 msgstr ""
 
@@ -4186,7 +4267,7 @@ msgstr ""
 "soumission."
 
 #: inginious/frontend/templates/course_admin/submission.html:40
-msgid "Click here to hide/display context informations"
+msgid "Click here to hide/display context information"
 msgstr "Cliquez ici pour masquer/afficher l'énoncé général de l'exercice"
 
 #: inginious/frontend/templates/course_admin/submission.html:46
@@ -4579,7 +4660,7 @@ msgid "\"title for this task\""
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:22
-msgid "Filetype"
+msgid "File type"
 msgstr "Type de fichier"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:42
@@ -4973,65 +5054,4 @@ msgstr "Taille fichier max.:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensions autorisées:"
-
-#~ msgid ""
-#~ "The process finished. {0!s} students "
-#~ "were registered on the course and \n"
-#~ ""
-#~ "            {1!s} students were registered "
-#~ "on UNCode out of {2!s} students "
-#~ "listed in the file."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The process finished. {0!s} students "
-#~ "were registered on the course and  "
-#~ "{1!s} students were registered \n"
-#~ "            on UNCode out of {2!s} "
-#~ "students listed in the file. The "
-#~ "emails for the new students are "
-#~ "being sent in the \n"
-#~ "            background, wait a while and"
-#~ " check again that all the students"
-#~ " were registered."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "<br><br>The next students were not "
-#~ "registered because of an unexpected "
-#~ "error, check that the user \n"
-#~ "                is not already registered "
-#~ "with another username or the username"
-#~ " is already used with another email:"
-#~ "\n"
-#~ "                {}"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The process finished. {0!s} students "
-#~ "were registered on the course and "
-#~ "{1!s} students were registered \n"
-#~ "            on UNCode out of {2!s} "
-#~ "students listed in the file. The "
-#~ "emails for the new students are "
-#~ "being sent in the \n"
-#~ "            background, wait a while and"
-#~ " check again that all the students"
-#~ " were registered."
-#~ msgstr ""
-
-#~ msgid "'New course id'"
-#~ msgstr ""
-
-#~ msgid "Create new course"
-#~ msgstr "Créer un nouveau cours"
-
-#~ msgid "The selected course to clone tasks from does not exist."
-#~ msgstr ""
-
-#~ msgid "An internal error occurred while cloning tasks."
-#~ msgstr ""
-
-#~ msgid "Create a course"
-#~ msgstr ""
 

@@ -24,13 +24,13 @@ class UserStatisticsPage(INGIniousAuthPage):
 
 
 def statistics_course_menu_hook(course, template_helper):
-    statistics_str = _("Statistics")
+    student_tools_str = _("Student's Tools")
     my_statistics_str = _("My statistics")
     return """
-            <h3>{statistics_str}</h3>
+            <h3>{student_tools_str}</h3>
             <a class="list-group-item list-group-item-info"
                 href="/user_statistics/{course_id}">
-                <i class="fa fa-group fa-fw"></i>
+                <i class="fa fa-line-chart"></i>
                 {my_statistics_str}
-            </a>""".format(course_id=course.get_id(), statistics_str=statistics_str,
+            </a>""".format(course_id=course.get_id(), student_tools_str=student_tools_str,
                            my_statistics_str=my_statistics_str)
