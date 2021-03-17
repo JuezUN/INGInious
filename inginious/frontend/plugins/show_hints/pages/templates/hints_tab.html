@@ -1,0 +1,42 @@
+$def with ()
+
+<div class="alert alert-warning">
+    <i class="fa fa-info-circle"/>
+    </i>
+    $:_("This is used to add hints to the task that can be accessed before the task ends")
+</div>
+
+<div class="jumbotron">
+    <div class="row form-group">
+        <h3>$:_("Set of hints")</h3>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-12">
+            <table id="task_hints_table" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="col-sm-7">
+                            $:_("Hint title")
+                        </th>
+                        <th class="col-sm-2">
+                            $:_("Penalty per hint")
+                        </th>
+                        <th class="col-sm-3">
+                            $:_("Hint options")
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-success"
+                    data-toggle="modal"
+                    data-target="#hints_edit_modal">Add hint</button>
+        </div>
+    </div>
+
+</div>
