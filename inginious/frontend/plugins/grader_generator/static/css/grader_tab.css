@@ -1,0 +1,37 @@
+#remove_btn {
+  margin-right: 0.3em;
+}
+
+#notebook_grader_form .CodeMirror-scroll {
+  max-height: 150px;
+}
+
+.py-1{
+  padding-top: 1em;
+}
+
+.panel-placeholder {
+  border: 1px dotted black;
+  border-radius: 4px;
+  margin: 0 15px 20px 15px;
+  padding: 0;
+  height: 50px;
+}
+.item-cursor-move {
+  color: #919193;
+  padding-top: 0.5rem;
+  margin-left: 0.5em;
+}
+.item-cursor-move:hover {
+  color: #000000;
+  cursor: move;
+}
+
+.pb-0 {
+  padding-bottom: 0 !important;
+}
+
+.all-diffs {
+  margin-right: 0.3em !important;
+  margin-bottom: 4px!important;
+}

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-11 21:45-0500\n"
+"POT-Creation-Date: 2021-03-17 18:48-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -172,7 +172,7 @@ msgstr ""
 
 #: inginious/frontend/pages/register.py:117
 msgid ""
-"You are succesfully registered. An email has been sent to you for "
+"You are successfully registered. An email has been sent to you for "
 "activation."
 msgstr ""
 "Votre compte a été créé. Un email vous a été envoyé afin de l'activer "
@@ -547,7 +547,7 @@ msgid "Your browser returned an invalid form ({})"
 msgstr "Votre navigateur a renvoyé un formaulaire invalide ({})"
 
 #: inginious/frontend/pages/course_admin/task_edit.py:288
-msgid "Error while reading course's informations"
+msgid "Error while reading course's information"
 msgstr "Une erreur s'est produite lors de la lecture des informations du cours"
 
 #: inginious/frontend/pages/course_admin/task_edit.py:312
@@ -728,13 +728,14 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:23
 msgid ""
-"The data processing policy establishes the terms in which UNCode use and "
-"save the user provisioned information when using the software system. "
+"The data processing policy establishes the terms in which UNCode uses and"
+" saves the user provisioned information when using the software system. "
 "UNCode is committed to the users data security. We ensure that all the "
-"data that the owner provide us, will only be used according to the "
-"stablished terms in this document, and with the law 1581 of 2012. "
+"data that the owner provides to, will only be used according to the "
+"established terms in this document, and with the law 1581 of 2012. "
 "However, we suggest checking frequently the page to make sure you agree "
-"to the possible changes that may be made on the policy in the future."
+"with the eventual changes that may be made to the data policy in the "
+"future."
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:25
@@ -756,7 +757,7 @@ msgstr "code"
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:31
 msgid ""
-"The policy applies for the personal data registered in the UNcode "
+"The policy applies for the personal data registered in the UNCode "
 "databases, who acts as the responsible of the personal data processing."
 msgstr ""
 
@@ -774,7 +775,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:39
 msgid ""
-"UNCode is a proyect developed by PLaS, a research group of the "
+"UNCode is a project developed by PLaS, a research group of the "
 "Universidad Nacional de Colombia, Bogotá headquarters."
 msgstr ""
 
@@ -789,7 +790,7 @@ msgid ""
 "information as name, career, contact data as e-mail, and demographic "
 "information. Also the system collects information about each solution "
 "provided on problem as attempt state, errors type, code or notebook "
-"provided, date of sumbimission, etc."
+"provided, date of submission, among others."
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:47
@@ -865,13 +866,13 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:95
-msgid "Procedure for the exercise of the Hábeas Data right"
+msgid "Procedure for the exercise of the Habeas Data right"
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:97
 msgid ""
 "For the protection of personal data, UNCode presents the following steps "
-"and minimun requirements for the exercise of your rights."
+"and minimum requirements for the exercise of your rights."
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:100
@@ -881,9 +882,8 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:104
-#, fuzzy
-msgid "Complete name and lastname."
-msgstr "Nom complet :"
+msgid "Complete name and last name."
+msgstr "Nom complet."
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:107
 #, fuzzy
@@ -922,7 +922,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:120
 msgid ""
-"The present policy for personal data processing applies from Obtober 23, "
+"The present policy for personal data processing applies from October 23, "
 "2020."
 msgstr ""
 
@@ -1475,7 +1475,7 @@ msgid "Email"
 msgstr ""
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:57
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:263
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:269
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:38
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:9
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
@@ -1552,7 +1552,7 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:76
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:216
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:217
 msgid "Time limit test cases (s)"
 msgstr ""
 
@@ -1561,7 +1561,7 @@ msgid "\"Time limit for each test case in seconds. (Max. 30s)\""
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:86
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:226
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:227
 msgid "Memory limit test cases (MB)"
 msgstr ""
 
@@ -1583,6 +1583,7 @@ msgid "Test cases"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:111
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:256
 msgid "All diffs"
 msgstr ""
 
@@ -1590,63 +1591,63 @@ msgstr ""
 msgid "Remove all tests"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:121
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:139
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:122
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:140
 msgid "Input file"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:122
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:144
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:123
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:145
 msgid "Output file"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:123
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:264
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:124
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:270
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:27
 msgid "Weight"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:124
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:125
 msgid "Show differences"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:127
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:128
 msgid "\"Custom feedback to show to the students\""
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:128
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:129
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:35
 msgid "Custom feedback"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:129
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:274
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:130
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:280
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:97
 msgid "Options"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:150
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:151
 #: inginious/frontend/templates/course_admin/edit_tabs/subproblems.html:24
 msgid "Add"
 msgstr "Ajouter"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:162
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:163
 msgid "Entity (only on VHDL)"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:173
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:174
 msgid "Testbench"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:178
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:179
 msgid "Golden Model"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:190
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:191
 msgid "Dataset URL"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:192
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:193
 msgid ""
 "\"Dataset URL to download file before running grading code. This is "
 "helpful when dataset is too long and cannot be uploaded in the files tab."
@@ -1654,29 +1655,29 @@ msgid ""
 "'Container setup' tab. Also, set a filename in the field below.\""
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:202
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:203
 msgid "Dataset filename"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:204
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:205
 msgid ""
 "\"Filename with extension for downloaded dataset (i.e. data.csv). This "
 "filename is the one used to load the dataset in the code.\""
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:217
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:218
 msgid "\"Time limit for each test case in seconds. (Max. 30 s)\""
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:227
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:228
 msgid "\"Memory limit for each test case in MBs. (Max 600 MBs)\""
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:242
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:243
 msgid "Setup code for all tests"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:244
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:245
 msgid ""
 "\"Python code executed before all tests. Useful to setup, for example, "
 "initial data and variables to be used in all tests. This code must be "
@@ -1684,16 +1685,16 @@ msgid ""
 "the shell.\""
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:257
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:262
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:8
 msgid "Add a test"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:267
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:273
 msgid "Show debug info"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:269
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:275
 msgid ""
 "\"Check to show more info the student like output difference and runtime "
 "errors\""
@@ -2301,7 +2302,7 @@ msgid "Task to check"
 msgstr ""
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:58
-msgid "Basecode file"
+msgid "Base code file"
 msgstr ""
 
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:63
@@ -4194,7 +4195,7 @@ msgstr ""
 "soumission."
 
 #: inginious/frontend/templates/course_admin/submission.html:40
-msgid "Click here to hide/display context informations"
+msgid "Click here to hide/display context information"
 msgstr "Cliquez ici pour masquer/afficher l'énoncé général de l'exercice"
 
 #: inginious/frontend/templates/course_admin/submission.html:46
@@ -4587,7 +4588,7 @@ msgid "\"title for this task\""
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:22
-msgid "Filetype"
+msgid "File type"
 msgstr "Type de fichier"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:42
