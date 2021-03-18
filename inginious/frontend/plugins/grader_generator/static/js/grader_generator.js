@@ -1,13 +1,15 @@
-let studio_grader_test_case_sequence = 0;
+const multiLangTestCaseParameters = ["input_file", "output_file", "weight", "custom_feedback", "diff_shown"];
+const multiLangButtons = [new Button("delete_btn", "studio_remove_test_case")];
+
 let grader_test_cases_count = 0;
 let test_cases_input = [];
-let ids_test_cases_input = [];
 
 function studio_add_test_case_from_form() {
     studio_add_test_case({
         "input_file": $("#grader_test_case_in").val(),
         "output_file": $("#grader_test_case_out").val()
     });
+    updateMainShowDiffsCheckbox();
 }
 
 function studio_add_test_case(test_case) {
@@ -19,7 +21,7 @@ function studio_add_test_case(test_case) {
         "diff_shown": false
     }, test_case);
 
-    const test_id = studio_grader_test_case_sequence;
+    const test_id = grader_test_cases_count;
 
     const inputFile = test_case["input_file"];
     const outputFile = test_case["output_file"];
@@ -31,48 +33,66 @@ function studio_add_test_case(test_case) {
     const template = $("#test_case_template").html().replace(/TID/g, test_id);
 
     const templateElement = $(template);
-    templateElement.find("#grader_test_cases_" + test_id + "_input_file").val(inputFile);
-    templateElement.find("#grader_test_cases_" + test_id + "_output_file").val(outputFile);
-    templateElement.find("#grader_test_cases_" + test_id + "_weight").val(
-        test_case["weight"]);
-    templateElement.find("#grader_test_cases_" + test_id + "_custom_feedback").val(
-        test_case["custom_feedback"]);
-    templateElement.find("#grader_test_cases_" + test_id + "_diff_shown").prop('checked',
-        test_case["diff_shown"]);
 
-    studio_grader_test_case_sequence++;
+    insertDataContent(templateElement, test_case);
+
     grader_test_cases_count++;
     test_cases_input.push(inputFile);
-    ids_test_cases_input.push(test_id);
 
-    const first_row = (grader_test_cases_count === 1);
-
-    if (first_row) {
-        $('#grader_test_cases_header').show();
-    }
+    hideOrShowHeader();
 
     $('#grader_test_cases_container').append(templateElement);
 }
 
-function studio_load_grader_test_cases(test_cases) {
-    if ($("#environment").val() === "Notebook") {
-        notebook_grader_load_all_tests(test_cases)
-    } else {
-        $.each(test_cases, function (_, test_case) {
-            studio_add_test_case(test_case);
-        });
-    }
+function insertDataContent(templateElement, test_data) {
+    const baseId = templateElement.attr("id");
+    const subArrayParameters = multiLangTestCaseParameters.slice(0, -1);
+
+    $.each(subArrayParameters, (_, parameterId) => {
+            templateElement.find(`#${baseId}_${parameterId}`).val(test_data[parameterId]);
+        }
+    );
+
+    templateElement.find(`#${baseId}_diff_shown`).prop('checked', test_data["diff_shown"]);
+}
+
+
+function getIdNum(id) {
+    const baseIdPrefixLen = "grader_test_cases_".length;
+    return id.substr(baseIdPrefixLen);
+}
+
+function multiLangLoadAllTests(testCases) {
+    $.each(testCases, function (_, testCase) {
+        studio_add_test_case(testCase);
+    });
 }
 
 function studio_remove_test_case(id) {
-    $("#grader_test_cases_" + id).remove();
+    const baseId = `grader_test_cases_${id}`;
+    const inputFileName = $(`#${baseId}_input_file`).val();
+    const indexToDelete = test_cases_input.indexOf(inputFileName);
+
+    $(`#${baseId}`).remove();
+    correctIds(id);
     grader_test_cases_count--;
+
+    hideOrShowHeader();
+    test_cases_input.splice(indexToDelete, 1);
+}
+
+function hideOrShowHeader() {
     if (grader_test_cases_count === 0) {
         $('#grader_test_cases_header').hide();
+    } else {
+        $('#grader_test_cases_header').show();
     }
-    let ind_of_test_case = ids_test_cases_input.findIndex(el => el === id);
-    test_cases_input.splice(ind_of_test_case, 1);
-    ids_test_cases_input.splice(ind_of_test_case, 1);
+}
+
+function correctIds(idDeleted) {
+    for (let i = idDeleted + 1; i < grader_test_cases_count; i++) {
+        updateTestInternalIds(i, i - 1);
+    }
 }
 
 function studio_update_grader_problems() {
@@ -258,22 +278,13 @@ function read_files_and_match() {
  * Remove all: Removes all the test cases
  */
 
-function toggle_selection_tests_cases() {
-    const option = !($("#toggle_select_test_cases")[0].checked);
-    // Activate in case of button press and not checkbox
-    $("#toggle_select_test_cases").prop("checked", option);
-
-    ids_test_cases_input.forEach((item, _) => {
-        $("#grader_test_cases_" + item + "_diff_shown").prop("checked", option);
-    })
-
-}
 
 function remove_all_test_cases() {
-    const to_delete = ids_test_cases_input.slice();
-    to_delete.forEach((item, _) => {
-        studio_remove_test_case(item);
-    });
+    for (let i = 0; i < grader_test_cases_count; i++) {
+        studio_remove_test_case(i);
+    }
+    grader_test_cases_count = 0;
+
 }
 
 function expand_text_area(elem, rows = 6) {
