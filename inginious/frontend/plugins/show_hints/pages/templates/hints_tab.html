@@ -1,4 +1,4 @@
-$def with ()
+$def with (task_hints)
 
 <div class="alert alert-warning">
     <i class="fa fa-info-circle"/>
@@ -27,6 +27,14 @@ $def with ()
                     </tr>
                 </thead>
                 <tbody>
+                    <tr id="hint_id" hidden>
+                        <td id="hint_title" name="task_hints[hint_id][title]" value=""></td>
+                        <td id="hint_penalty" name="task_hints[hint_id][penalty]" value=""></td>
+                        <td id="hint_content" name="task_hints[hint_id][content]">
+                            <button class="col-sm-6 btn btn-info"><i class="fa fa-edit"></i></button>
+                            <button class="col-sm-6 btn btn-danger"><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -40,3 +48,11 @@ $def with ()
     </div>
 
 </div>
+
+<script>
+
+    function taskHints(){
+        return "$task_hints";
+    }
+
+</script>

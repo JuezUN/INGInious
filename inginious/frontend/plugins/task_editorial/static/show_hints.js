@@ -10,20 +10,28 @@ function onAddHintClick(){
         "content": content
     };
 
-    addHintInTable(new_hint);
+    createHintOnTable(new_hint);
 }
 
-function addHintInTable(hint){
+function createHintOnTable(hint){
 
-    let new_hint_row = '<tr><td>' + hint["title"] + '</td>' +
-                       '<td>' + hint["penalty"] + '</td>' +
-                       '<td> <button type="button" class="btn btn-info">Edit</button> <button type="button" class="btn btn-danger">Delete</button></td></tr>';
+    let new_hint_row = $("#hint_id").clone();
 
-    $("#task_hints_table tbody").append(new_hint_row);
+    new_hint_row.attr("id",1);
+
+    new_hint_row.find("hint_title").attr("value",hint.title);
+    new_hint_row.find("hint_penalty").attr("value",hint.penalty);
+
+    console.log(hint.title);
+
+    new_hint_row.show();
+
+    $("#task_hints_table").find('tbody').append(new_hint_row);
+
 }
 
 $(function(){
-    $("#hint_content_container").show();
+    $("#hint_id");
 })
 
 $("#hints_edit_modal").on("shown.bs.modal", function () {
