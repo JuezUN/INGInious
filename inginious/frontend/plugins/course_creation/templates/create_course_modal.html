@@ -34,14 +34,15 @@ $def with (courses)
                                 <label class="control-label" for="course_year">
                                     <strong>$:_("Year"):</strong>
                                 </label>
-                                <input type="text" id="course_year" class="form-control" placeholder='$:_("Year")'>
+                                <input type="text" id="course_year" data-date-format="YYYY"
+                                       autocomplete="off" class="form-control date" placeholder='$:_("Year")'>
                             </div>
                             <div class="col-xs-4">
-                                <label class="control-label" for="course_semester">
-                                    <strong>$:_("Semester"):</strong>
+                                <label class="control-label" for="course_period">
+                                    <strong>$:_("Period"):</strong>
                                 </label>
-                                <input type="text" id="course_semester" class="form-control"
-                                       placeholder='$:_("Semester")'>
+                                <input type="text" id="course_period" class="form-control"
+                                       placeholder='$:_("Period")'>
                             </div>
                         </div>
                     </div>

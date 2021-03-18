@@ -19,7 +19,7 @@ class CreateCourseAPI(api.APIAuthenticatedPage):
 
         course_name = get_mandatory_parameter(request_params, "course_name")
         course_year = get_mandatory_parameter(request_params, "course_year")
-        course_semester = get_mandatory_parameter(request_params, "course_semester")
+        course_period = get_mandatory_parameter(request_params, "course_period")
 
         course_group = request_params.get("course_group", None)
         course_to_copy_id = request_params.get("course_to_copy_id", None)
@@ -33,16 +33,10 @@ class CreateCourseAPI(api.APIAuthenticatedPage):
         if not course_year.isnumeric():
             raise api.APIError(400, _("The year must be a number."))
 
-        if not course_semester:
-            raise api.APIError(400, _("The semester field cannot be empty."))
+        if not course_period:
+            raise api.APIError(400, _("The period field cannot be empty."))
 
-        if not course_semester.isnumeric():
-            raise api.APIError(400, _("The semester must be a number."))
-
-        if course_group and not course_group.isnumeric():
-            raise api.APIError(400, _("The group must be a number."))
-
-        data = {"name": course_name, "group": course_group, "year": course_year, "semester": course_semester}
+        data = {"name": course_name, "group": course_group, "year": course_year, "period": course_period}
 
         all_courses = set(self.course_factory.get_all_courses().keys())
         if course_to_copy_id and course_to_copy_id != "-1":
@@ -68,6 +62,15 @@ class CreateCourseAPI(api.APIAuthenticatedPage):
                 copied_tasks_target_course.add(new_task_id)
             except:
                 return True
+
+        target_course = self.course_factory.get_course(target_course_id)
+        target_tasks = self.task_factory.get_all_tasks(target_course)
+
+        # Set all tasks as not accessible
+        for task_id, task in target_tasks.items():
+            task._data["accessible"] = False
+            self.task_factory.update_task_descriptor_content(target_course_id, task_id, task._data)
+
         return False
 
     def API_POST(self):
@@ -80,7 +83,7 @@ class CreateCourseAPI(api.APIAuthenticatedPage):
         if self.user_manager.user_is_superadmin():
             try:
                 course_id, course_final_name = _generate_course_id_and_name(data["name"], data["group"], data["year"],
-                                                                            data["semester"])
+                                                                            data["period"])
 
                 self.course_factory.create_course(course_id, {"name": course_final_name, "accessible": False})
 
@@ -110,7 +113,7 @@ class CreateCourseAPI(api.APIAuthenticatedPage):
                 return 400, {"status": "error", "text": _("An error occurred while creating the course")}
 
 
-def _generate_course_id_and_name(name, group, year, semester):
+def _generate_course_id_and_name(name, group, year, period):
     """ Generate the new course id and name taking into account the inserted data. """
     name_words = name.strip().split(" ")
 
@@ -128,8 +131,8 @@ def _generate_course_id_and_name(name, group, year, semester):
         new_course_id += "-Group{}".format(group)
         new_course_name += " | Grupo {}".format(group)
 
-    new_course_id += "-{year}-{semester}".format(year=year, semester=semester)
-    new_course_name += " | {year} - {semester}".format(year=year, semester=semester)
+    new_course_id += "-{year}-{period}".format(year=year, period=period)
+    new_course_name += " | {year} - {period}".format(year=year, period=period)
 
     return new_course_id, new_course_name
 

@@ -61,7 +61,7 @@ function onSubmitCourseCreation() {
         "course_name": $("#course_name").val(),
         "course_group": $("#course_group").val(),
         "course_year": $("#course_year").val(),
-        "course_semester": $("#course_semester").val(),
+        "course_period": $("#course_period").val(),
         "course_to_copy_id": $("#list_copy_courses").val(),
     };
     $.ajax({
@@ -103,4 +103,7 @@ jQuery(document).ready(function () {
     $("#create_course_form").submit(function (e) {
         e.preventDefault();
     });
+
+    $("#course_year").val(new Date().getFullYear());
+    $("#course_year").datetimepicker();
 });
