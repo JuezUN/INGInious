@@ -1,5 +1,9 @@
+const notebookTestCaseParameterIds = ["name", "weight", "setup_code", "custom_feedback", "show_debug_info"];
+const notebookButtons = [new Button("edit_btn", "notebook_grader_on_edit_test"),
+    new Button("delete_btn", "notebook_grader_remove_test")];
+const notebookModalParameterIds = ["code", "expected_output"];
+const notebookModalButtonIds = [new Button("delete_btn", "notebook_grader_remove_test_case")];
 let notebook_grader_tests_sequence = 0;
-let notebook_grader_tests_cases_count = {};
 let editing_test_id = null;
 
 const modal_element = $("#notebook_grader_test_form_modal");
@@ -11,16 +15,28 @@ function toggle_test_case_form_alert(show, message) {
     else alert.hide();
 }
 
+function getContainerNumTestCases(containerId) {
+    return $(`#${containerId} div[class="row test-case"]`).length;
+}
+
+function getCurrentNumTestCases(testId) {
+    return getContainerNumTestCases(`notebook_grader_test_${testId}_cases_container`);
+}
+
+function getNumTestCasesOnModal() {
+    return getContainerNumTestCases("notebook_grader_test_cases_container");
+}
+
 function notebook_grader_add_test_case_from_form() {
-    const test_id = notebook_grader_tests_sequence;
+    const currentNumOfCases = getNumTestCasesOnModal();
     const new_test_case = notebook_grader_create_test_case({
         "code": $("#notebook_grader_test_case_code").val(),
         "expected_output": $("#notebook_grader_test_case_expected_output").val(),
-    });
+    }, currentNumOfCases);
 
     if (!new_test_case) return;
 
-    const first_row = (notebook_grader_tests_cases_count[test_id] === 1);
+    const first_row = (currentNumOfCases === 1);
     if (first_row) {
         $('#notebook_grader_test_cases_header').show();
     }
@@ -33,7 +49,7 @@ function notebook_grader_add_test_case_from_form() {
     });
 }
 
-function notebook_grader_create_test_case(test_case_data) {
+function notebook_grader_create_test_case(test_case_data, caseCount) {
     test_case_data = $.extend({
         "code": null,
         "expected_output": null
@@ -49,22 +65,19 @@ function notebook_grader_create_test_case(test_case_data) {
 
     const test_id = editing_test_id !== null ? editing_test_id : notebook_grader_tests_sequence;
 
-    if (!notebook_grader_tests_cases_count[test_id]) {
-        notebook_grader_tests_cases_count[test_id] = 0;
-    }
-
-    const case_id = notebook_grader_tests_cases_count[test_id],
+    const case_id = caseCount,
         inputCode = test_case_data["code"],
         outputCode = test_case_data["expected_output"];
 
     if (!inputCode || !outputCode) return;
-    notebook_grader_tests_cases_count[test_id]++;
+
     return _notebook_grader_get_test_case_element(test_id, case_id, inputCode, outputCode);
 }
 
 function notebook_grader_remove_test_case(test_id, case_id) {
-    const new_test_cases = _notebook_grader_shift_test_cases(test_id, case_id, "notebook_grader_test_cases_container");
-    const container_element = $("#notebook_grader_test_cases_container");
+    const containerName = "notebook_grader_test_cases_container";
+    const new_test_cases = _notebook_grader_shift_test_cases(test_id, case_id, containerName);
+    const container_element = $(`#${containerName}`);
     container_element.html("");
     $.each(new_test_cases, (_, test_case) => {
         container_element.append(test_case);
@@ -72,8 +85,8 @@ function notebook_grader_remove_test_case(test_id, case_id) {
         registerCodeEditor(case_code_element, $(case_code_element).attr('data-x-language'), $(case_code_element).attr('data-x-lines'));
     });
 
-    notebook_grader_tests_cases_count[test_id]--;
-    if (notebook_grader_tests_cases_count[test_id] === 0) {
+
+    if (getNumTestCasesOnModal() === 0) {
         $('#notebook_grader_test_cases_header').hide();
     }
 }
@@ -83,7 +96,7 @@ function notebook_grader_remove_test_case(test_id, case_id) {
  * This is to update the HTML ids and names to have a better counting.
  */
 function _notebook_grader_shift_test_cases(test_id, case_id_to_remove) {
-    const amount_cases = notebook_grader_tests_cases_count[test_id];
+    const amount_cases = getNumTestCasesOnModal();
     const test_cases = [];
     let case_id = 0;
     for (let index = 0; index < amount_cases; index++) {
@@ -121,13 +134,14 @@ function _notebook_grader_get_test_element(test_id, test_data, test_cases) {
     template_element.find(`#notebook_grader_test_${test_id}_show_debug_info`).prop('checked', show_debug_info);
 
     $.each(test_cases, (_, test_case) => {
+        _deleteCodeMirror(test_case);
         template_element.find(`#notebook_grader_test_${test_id}_cases_container`).append(test_case);
     });
     return template_element;
 }
 
 function _notebook_grader_get_test_cases_from_container(test_id, container_id) {
-    const amount_cases = notebook_grader_tests_cases_count[test_id];
+    const amount_cases = getContainerNumTestCases(container_id);
     const test_cases_element = $(`#${container_id}`);
     const test_cases = [];
     for (let case_id = 0; case_id < amount_cases; case_id++) {
@@ -153,7 +167,6 @@ function notebook_grader_add_test_from_form() {
     if (first_row) {
         $('#notebook_grader_tests_header').show();
     }
-
     $('#notebook_grader_tests_container').append(new_test);
     modal_element.modal('hide');
 }
@@ -179,10 +192,6 @@ function notebook_grader_create_test(test_data, test_cases) {
     const test_id = notebook_grader_tests_sequence, test_name = test_data["name"],
         test_weight = test_data["weight"];
 
-    if (!notebook_grader_tests_cases_count[test_id]) {
-        notebook_grader_tests_cases_count[test_id] = 0;
-    }
-
     if (!test_name || !test_weight || !test_cases.length) return;
     notebook_grader_tests_sequence++;
     return _notebook_grader_get_test_element(test_id, test_data, test_cases);
@@ -191,9 +200,11 @@ function notebook_grader_create_test(test_data, test_cases) {
 function notebook_grader_load_all_tests(tests) {
     $.each(tests, function (test_id, test) {
         const test_cases = [];
+        let i = 0;
         $.each(test["cases"], (case_id, test_case) => {
-            const new_test_case = notebook_grader_create_test_case(test_case);
+            const new_test_case = notebook_grader_create_test_case(test_case, i);
             test_cases.push(new_test_case);
+            i++;
         });
         const new_test = notebook_grader_create_test(test, test_cases);
         $(`#notebook_grader_tests_header`).show();
@@ -225,7 +236,7 @@ function _notebook_grader_update_tests_ids(test_id_to_remove) {
     for (; test_index < amount_tests; test_index++) {
         if (test_index === test_id_to_remove) continue;
         const test_cases = [];
-        const test_cases_amount = notebook_grader_tests_cases_count[test_index];
+        const test_cases_amount = getCurrentNumTestCases(test_index);
         for (let case_index = 0; case_index < test_cases_amount; case_index++) {
             const case_code = $(`#notebook_grader_test_${test_index}_cases_${case_index}_code`).val();
             const expected_output = $(`#notebook_grader_test_${test_index}_cases_${case_index}_expected_output`).val();
@@ -239,8 +250,6 @@ function _notebook_grader_update_tests_ids(test_id_to_remove) {
             "show_debug_info": $(`#notebook_grader_test_${test_index}_show_debug_info`).prop("checked"),
         };
         tests.push(_notebook_grader_get_test_element(new_test_id, test, test_cases));
-        delete notebook_grader_tests_cases_count[test_index];
-        notebook_grader_tests_cases_count[new_test_id] = test_cases_amount;
         new_test_id++;
     }
     return tests;
@@ -250,8 +259,7 @@ function _notebook_grader_load_test_case_in_modal(test_case_element) {
     modal_element.find("#notebook_grader_test_cases_container").append(test_case_element);
     $("#notebook_grader_test_cases_header").show();
     $(`#${test_case_element.attr('id')} .notebook_code`).each(function (index, elem) {
-        if (!codeEditors[elem.name])
-            registerCodeEditor(elem, $(elem).attr('data-x-language'), $(elem).attr('data-x-lines'));
+        registerCodeEditor(elem, $(elem).attr('data-x-language'), $(elem).attr('data-x-lines'));
     });
 }
 
@@ -307,7 +315,9 @@ function notebook_grader_update_test() {
 
     test_to_update.find(`#notebook_grader_test_${test_id}_cases_container`).html("");
     $.each(test_cases, (_, test_case) => {
-        test_to_update.find(`#notebook_grader_test_${test_id}_cases_container`).append(test_case);
+        let currentTestCase = test_to_update.find(`#notebook_grader_test_${test_id}_cases_container`);
+        _deleteCodeMirror(test_case);
+        currentTestCase.append(test_case);
     });
 
     modal_element.modal('hide');
@@ -315,6 +325,7 @@ function notebook_grader_update_test() {
 }
 
 function _clear_modal() {
+
     $('#notebook_grader_test_form_modal input').val("");
     $('#notebook_grader_test_form_modal textarea').val("");
     $('#notebook_grader_test_cases_header').hide();
@@ -325,10 +336,20 @@ function _clear_modal() {
     });
 }
 
+function _deleteCodeMirror(testCase) {
+    const textAreaId = testCase.attr("id");
+    testCase.find(".CodeMirror").remove();
+    delete codeEditors[$(`#${textAreaId}_code`).attr("name")];
+}
+
 $(".notebook_grader_submit_test_form").click((e) => {
     e.preventDefault();
-    if (editing_test_id !== null) notebook_grader_update_test();
-    else notebook_grader_add_test_from_form();
+    if (editing_test_id !== null) {
+        notebook_grader_update_test();
+    } else {
+        notebook_grader_add_test_from_form();
+        updateMainShowDiffsCheckbox();
+    }
 });
 
 modal_element.on("hidden.bs.modal", () => {
