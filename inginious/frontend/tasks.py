@@ -126,7 +126,7 @@ class WebAppTask(Task):
     def get_evaluate(self):
         """ Indicates the default download for the task """
         return self._evaluate
-
+    
     def get_tags(self):
         """ Get the tuple of list of the task """
         return self._tags
