@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-18 18:47-0500\n"
+"POT-Creation-Date: 2021-03-19 08:42-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -351,23 +351,23 @@ msgstr "Los equipos fueron actualizados."
 msgid "An error occurred while parsing the data."
 msgstr "Un error ha ocurrido durante la validación de la sintaxis."
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:64
+#: inginious/frontend/pages/course_admin/aggregation_list.py:63
 msgid "New classroom created."
 msgstr "Un nuevo grupo fue creado."
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:70
+#: inginious/frontend/pages/course_admin/aggregation_list.py:69
 msgid "Default classroom changed."
 msgstr "El grupo inicial (creado por defecto) ha cambiado."
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:72
+#: inginious/frontend/pages/course_admin/aggregation_list.py:71
 msgid "Invalid classroom selected."
 msgstr "El grupo seleccionado es inválido."
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:74
+#: inginious/frontend/pages/course_admin/aggregation_list.py:73
 msgid "You have no rights to add/change classrooms"
 msgstr "No tienes los privilegios suficientes para cambiar o agregar grupos"
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:77
+#: inginious/frontend/pages/course_admin/aggregation_list.py:76
 #: inginious/frontend/pages/course_admin/settings.py:95
 msgid "User returned an invalid form."
 msgstr "El usuario generó un formato inválido."

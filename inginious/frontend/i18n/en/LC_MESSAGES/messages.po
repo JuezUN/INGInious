@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-18 18:47-0500\n"
+"POT-Creation-Date: 2021-03-19 08:42-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -318,23 +318,23 @@ msgstr ""
 msgid "An error occurred while parsing the data."
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:64
+#: inginious/frontend/pages/course_admin/aggregation_list.py:63
 msgid "New classroom created."
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:70
+#: inginious/frontend/pages/course_admin/aggregation_list.py:69
 msgid "Default classroom changed."
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:72
+#: inginious/frontend/pages/course_admin/aggregation_list.py:71
 msgid "Invalid classroom selected."
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:74
+#: inginious/frontend/pages/course_admin/aggregation_list.py:73
 msgid "You have no rights to add/change classrooms"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:77
+#: inginious/frontend/pages/course_admin/aggregation_list.py:76
 #: inginious/frontend/pages/course_admin/settings.py:95
 msgid "User returned an invalid form."
 msgstr ""
