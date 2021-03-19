@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-17 18:48-0500\n"
+"POT-Creation-Date: 2021-03-18 18:47-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -346,23 +346,23 @@ msgstr "Équipes mises à jour."
 msgid "An error occurred while parsing the data."
 msgstr "Une erreur s'est produite lors du traitement des données."
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:63
+#: inginious/frontend/pages/course_admin/aggregation_list.py:64
 msgid "New classroom created."
 msgstr "Nouvelle classe créée."
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:69
+#: inginious/frontend/pages/course_admin/aggregation_list.py:70
 msgid "Default classroom changed."
 msgstr "Classe par défaut modifiée."
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:71
+#: inginious/frontend/pages/course_admin/aggregation_list.py:72
 msgid "Invalid classroom selected."
 msgstr "Classe invalide sélectionnée."
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:73
+#: inginious/frontend/pages/course_admin/aggregation_list.py:74
 msgid "You have no rights to add/change classrooms"
 msgstr "Vous n'avez pas les droits d'ajouter/modifier les classes"
 
-#: inginious/frontend/pages/course_admin/aggregation_list.py:76
+#: inginious/frontend/pages/course_admin/aggregation_list.py:77
 #: inginious/frontend/pages/course_admin/settings.py:95
 msgid "User returned an invalid form."
 msgstr "L'utilisateur a soumis un formulaire invalide."
