@@ -1,33 +1,37 @@
 function onAddHintClick(){
 
-    let title = $("#hint_name")[0].value;
-    let penalty = $("#hint_penalty")[0].value;
-    let content = $("#hint_content")[0].value;
+    var title = $("#hint_name")[0].value;
+    var penalty = $("#hint_penalty")[0].value;
+    var content = $("#hint_content")[0].value;
 
-    let new_hint = {
+    var new_hint = {
         "title": title,
         "penalty": penalty,
         "content": content
     };
 
     createHintOnTable(new_hint);
+
 }
 
 function createHintOnTable(hint){
 
-    let new_hint_row = $("#hint_id").clone();
+    let new_hint_index = 10;
+    let new_hint_id = "hint_" + new_hint_index;
 
-    new_hint_row.attr("id",1);
+    var new_hint_row = $("#hint_id").clone().html();
 
-    new_hint_row.find("hint_title").attr("value",hint.title);
-    new_hint_row.find("hint_penalty").attr("value",hint.penalty);
+    new_hint_row = new_hint_row.replace(/hint_id/g, new_hint_index);
 
-    console.log(hint.title);
-
-    new_hint_row.show();
+    new_hint_row = '<tr id='+new_hint_id+'>'+ new_hint_row +'</tr>';
 
     $("#task_hints_table").find('tbody').append(new_hint_row);
 
+    $("#"+new_hint_id).find("#hint_info_title input").val(456);
+
+    $("#"+new_hint_id).find("#hint_info_penalty input").val(123);
+
+    $("#hints_edit_modal").modal('hide');
 }
 
 $(function(){
