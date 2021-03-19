@@ -131,9 +131,7 @@ class CourseAggregationListPage(INGIniousAdminPage):
                 value["task_name"] = self._get_task_name(course, value["_id"])
             return make_csv(data)
 
-        return self.template_helper.get_renderer().course_admin.aggregation_list(course,
-                                                                                 [my_aggregations, other_aggregations],
-                                                                                 msg, error)
+        return self.template_helper.get_renderer().course_admin.aggregation_list(course, [my_aggregations, other_aggregations], msg, error)
 
     def _get_task_name(self, course, task_id):
         """ Return the name of a task if it isn't empty, else keeps the id """
