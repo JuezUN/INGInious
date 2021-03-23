@@ -1,3 +1,72 @@
-<div>
+$def with (task_hints)
 
+<h6>$:_("Hints")</h6>
+
+<div class="tab-pane fade in active" id="hint_tab">
+    <div class="list-group">
+        <a class="list-group-item list-group-item-info"
+           data-toggle="modal"
+           data-target="#hints_modal"
+           style="cursor:pointer"
+        >
+            <i class="fa fa-question"></i>&nbsp;
+            $:_("Hints")
+         </a>
+    </div>
 </div>
+
+<div  class="modal fade" id="hints_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>$:_("Task hints")</h2>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-4" id="hints_navigation_menu" style="border-right: 1px solid #e5e5e5">
+                        <h4>$:_("Hints")</h4>
+                        <div id="hints_list">
+                            <div class="list-group col-sm-10" style="margin-top: 20px">
+                                $for key, hint in task_hints.items():
+
+                                    $ title = hint["title"]
+                                    $ penalty = hint["penalty"]
+                                    $ content = hint["content"]
+
+                                    <a id="hint-$key" class="list-group-item list-group-item-success disabled" style="cursor:pointer"
+                                        onclick="changeHint($key)"
+                                    >
+                                        <label>$title</label>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="hint-container">
+                            $for key, hint in task_hints.items():
+                                $ title = hint["title"]
+                                $ penalty = hint["penalty"]
+                                $ content = hint["content"]
+                                <div class="hintte" id="hint_$key" hidden>
+                                    <div id="hint_title">
+                                        <h3>$title</h3>
+                                    </div>
+                                    <div id="hint-content">
+                                        $content
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+
+</script>
