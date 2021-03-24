@@ -310,7 +310,7 @@ function blockUnusedLimitInputs() {
     const environmentWhichUsesLimits = "HDL";
     const isUsingLimits = selectedEnvironmentVal === environmentWhichUsesLimits;
     $.each(limitsToBlockIds, (_, id) => {
-        $(`#${id}`).enable(isUsingLimits);
+        $(`#${id}`).prop('readonly', !isUsingLimits);
     });
 
 }
