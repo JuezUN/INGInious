@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-19 10:20-0500\n"
+"POT-Creation-Date: 2021-03-18 13:24-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -1725,12 +1725,12 @@ msgstr ""
 msgid "Manual Scoring"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/constants.py:20
+#: inginious/frontend/plugins/manual_scoring/pages/constants.py:21
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:16
 msgid "Feedback"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:15
+#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:16
 #: inginious/frontend/plugins/manual_scoring/pages/student_submissions.py:18
 msgid "No grade"
 msgstr ""
