@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-24 15:45-0500\n"
+"POT-Creation-Date: 2021-03-18 13:24-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1917,12 +1917,12 @@ msgstr "Salida esperada"
 msgid "Manual Scoring"
 msgstr "Calificación manual"
 
-#: inginious/frontend/plugins/manual_scoring/pages/constants.py:20
+#: inginious/frontend/plugins/manual_scoring/pages/constants.py:21
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:16
 msgid "Feedback"
 msgstr "Retroalimentación"
 
-#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:15
+#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:16
 #: inginious/frontend/plugins/manual_scoring/pages/student_submissions.py:18
 msgid "No grade"
 msgstr "Sin calificar"

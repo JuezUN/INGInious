@@ -15,7 +15,8 @@ from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from inginious.frontend.plugins.manual_scoring.pages.constants import get_use_minify, get_render_path
 from inginious.frontend.plugins.manual_scoring.pages.manual_scoring_error import ManualScoringError
 from inginious.frontend.plugins.utils import get_mandatory_parameter
-from .rubric import get_manual_scoring_data, get_submission_result_text, get_rubric_content
+from .rubric import get_manual_scoring_data, get_submission_result_text, get_rubric_content, \
+    add_static_files_to_render_notebook
 
 base_renderer_path = get_render_path()
 
@@ -97,6 +98,7 @@ class ManualScoringPage(INGIniousAdminPage):
     def GET_AUTH(self, course_id, task_id, submission_id):
         """ Get request """
         course, task = self.get_course_and_check_rights(course_id, task_id)
+        add_static_files_to_render_notebook(self.template_helper)
         self.add_css_and_js_file()
         return self.render_page(course, task, submission_id)
 
