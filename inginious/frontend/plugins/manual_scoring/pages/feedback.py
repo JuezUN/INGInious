@@ -7,7 +7,8 @@ from inginious.frontend.pages.api._api_page import APIError
 from inginious.frontend.pages.utils import INGIniousAuthPage
 from inginious.frontend.parsable_text import ParsableText
 from inginious.frontend.plugins.manual_scoring.pages.constants import get_render_path, get_use_minify
-from .rubric import get_manual_scoring_data, get_submission_result_text, get_rubric_content
+from .rubric import get_manual_scoring_data, get_submission_result_text, get_rubric_content, \
+    add_static_files_to_render_notebook
 
 base_renderer_path = get_render_path()
 
@@ -17,6 +18,8 @@ class FeedbackPage(INGIniousAuthPage):
         """ Get request """
         course = self.course_factory.get_course(course_id)
         submission = self.submission_manager.get_input_from_submission(self.get_submission(submission_id))
+        add_static_files_to_render_notebook(self.template_helper)
+        self.add_css_and_js_file()
         return self.render_page(course, submission)
 
     def render_page(self, course, submission):
@@ -43,7 +46,6 @@ class FeedbackPage(INGIniousAuthPage):
             "rubric_status": rubric_status
         }
 
-        self.add_css_and_js_file()
         return self.template_helper.get_custom_renderer(base_renderer_path).feedback(course, rubric_content, data, task)
 
     def get_submission(self, submission_id):
