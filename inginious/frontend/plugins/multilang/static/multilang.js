@@ -288,12 +288,70 @@ function showCorrectLanguagesEnvironment(uncheckBoxes = true) {
     }
 }
 
-jQuery(document).ready(function () {
+function setupGradingEnvironmentView() {
     const environmentSelectElement = $("#environment");
     if (environmentSelectElement.length) {
-        environmentSelectElement.on('change', showCorrectLanguagesEnvironment);
+        environmentSelectElement.on('change', function () {
+            configEnvironmentView()
+        });
     }
-    showCorrectLanguagesEnvironment(false);
+    configEnvironmentView(false);
+}
+
+function configEnvironmentView(uncheckBoxes = true) {
+    showCorrectLanguagesEnvironment(uncheckBoxes);
+    blockUnusedLimitInputs();
+    showCorrectSubProblemsTypes();
+}
+
+function blockUnusedLimitInputs() {
+    const selectedEnvironmentVal = $("#environment").val();
+    const limitsToBlockIds = ["limit-time", "limit-hard-time", "limit-memory", "limit-output"];
+    const environmentWhichUsesLimits = "HDL";
+    const isUsingLimits = selectedEnvironmentVal === environmentWhichUsesLimits;
+    $.each(limitsToBlockIds, (_, id) => {
+        $(`#${id}`).enable(isUsingLimits);
+    });
+
+}
+
+function showCorrectSubProblemsTypes() {
+    const selectedEnvironmentVal = $("#environment").val();
+    const notebookTypeValue = ["subproblem_notebook_file"];
+    const multipleLangTypeValue = ["subproblem_code_multiple_languages", "subproblem_code_file_multiple_languages"];
+
+    function blockOrUnlockOptions(types, block = false) {
+        $.each(types, (_, type) => {
+            $(`#new_subproblem_type option[value=${type}]`).enable(block);
+        });
+    }
+
+    function selectOption(selection) {
+        $(`#new_subproblem_type option`).each(function (index, element) {
+            element.selected = false;
+        });
+        $(`#new_subproblem_type option[value=${selection}]`).attr("selected", true);
+    }
+
+    if (selectedEnvironmentVal === "Notebook") {
+        blockOrUnlockOptions(notebookTypeValue, true);
+        blockOrUnlockOptions(multipleLangTypeValue);
+        selectOption(notebookTypeValue[0]);
+    } else {
+        blockOrUnlockOptions(multipleLangTypeValue, true);
+        blockOrUnlockOptions(notebookTypeValue);
+        selectOption(multipleLangTypeValue[0]);
+    }
+}
+
+function hideRandomInputForm() {
+    $("#randomInputForm").hide();
+    $("#accessibleDivForm").css({"padding-bottom": "1rem"});
+}
+
+jQuery(document).ready(function () {
+    hideRandomInputForm();
+    setupGradingEnvironmentView();
     toggle_display_new_subproblem_option();
     notebook_start_renderer();
     sendSubmissionAnalytics();
