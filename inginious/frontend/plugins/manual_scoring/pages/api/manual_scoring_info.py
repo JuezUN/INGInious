@@ -18,9 +18,9 @@ class ManualScoringInfoApi(AdminApi):
     def get_manual_scoring_results(self, course):
         """ it does a request to db to get the data about all course's manual scoring
             EXAMPLE:
-                [{_id: Objectid(''), 'username':['user'], 'realname':'pepe',
+                [{_id: Objectid(''), 'username':['user'], 'realname':['pepe'],
                  'taskid': 'pow', 'submitted_on': datetime.datetime(),
-                 'custom.custom_summary_result': '["1-1","2-2"]', 'grade': '100.0',
+                 'custom_summary_result': '["1-1","2-2"]', 'grade': '100.0',
                  manual_scoring: {'comment': 'text', 'grade': '4.6', 'rubric_status': '["0-2","1-4", "2-4"]'} },
                 {...}, ...
                 ] """
@@ -46,17 +46,14 @@ class ManualScoringInfoApi(AdminApi):
                         }
                 },
                 {
-                    "$replaceRoot": {"newRoot": {"$mergeObjects": [{"$arrayElemAt": ["$user_info", 0]}, "$$ROOT"]}}
-                },
-                {
                     "$project": {
                         "taskid": 1,
                         "username": 1,
-                        "realname": 1,
+                        "realname": "$user_info.realname",
                         "grade": 1,
                         "manual_scoring": 1,
                         "submitted_on": 1,
-                        "custom.custom_summary_result": 1
+                        "custom_summary_result": "$custom.custom_summary_result"
                     }
                 }
 
@@ -73,13 +70,13 @@ class ManualScoringInfoApi(AdminApi):
             submission_info = {
                 "_id": str(submission["_id"]),
                 "username": submission["username"][0],
-                "real_name": submission["realname"],
+                "real_name": submission["realname"][0],
                 "task_id": submission["taskid"],
                 "task_name": course.get_task(submission["taskid"]).get_name(self.user_manager.session_language()),
                 "grade": submission["grade"],
                 "manual_grade": submission["manual_scoring"]["grade"],
                 "date": submission["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S"),
-                "result": submission["custom"]["custom_summary_result"]
+                "result": submission["custom_summary_result"]
             }
             data.append(submission_info)
         return data
