@@ -38,34 +38,34 @@ class MultilangForm(GraderForm):
             try:
                 test_case["weight"] = float(test_case.get("weight", 1.0))
             except (ValueError, TypeError):
-                raise InvalidGraderError("The weight for grader test cases must be a float")
+                raise InvalidGraderError(_("The weight for grader test cases must be a float"))
 
             test_case["diff_shown"] = "diff_shown" in test_case
             test_case["custom_feedback"] = test_case.get("custom_feedback", "")
 
             # Validate
             if not test_case.get("input_file", None):
-                raise InvalidGraderError("Invalid input file in grader test case")
+                raise InvalidGraderError(_("Invalid input file in grader test case"))
 
             if not test_case.get("output_file", None):
-                raise InvalidGraderError("Invalid output file in grader test case")
+                raise InvalidGraderError(_("Invalid output file in grader test case"))
 
             if not self.task_fs.exists(test_case["input_file"]):
-                raise InvalidGraderError("Grader input file does not exist: " + test_case["input_file"])
+                raise InvalidGraderError(_("Grader input file does not exist: ") + test_case["input_file"])
 
             if not self.task_fs.exists(test_case["output_file"]):
-                raise InvalidGraderError("Grader output file does not exist: " + test_case["output_file"])
+                raise InvalidGraderError(_("Grader output file does not exist: ") + test_case["output_file"])
 
             test_cases.append(test_case)
 
         if not test_cases:
-            raise InvalidGraderError("You must provide test cases to autogenerate the grader")
+            raise InvalidGraderError(_("You must provide test cases to generate the grader"))
 
         input_files_are_unique = (len(set(test_case["input_file"] for test_case in test_cases)) ==
                                   len(test_cases))
 
         if not input_files_are_unique:
-            raise InvalidGraderError("Duplicated input files in grader")
+            raise InvalidGraderError(_("Duplicated input files in grader"))
 
         total_weights = sum([test_case["weight"] for test_case in test_cases])
         if total_weights <= 1e-3:
@@ -95,13 +95,13 @@ class MultilangForm(GraderForm):
         super(MultilangForm, self).validate()
 
         if self.task_data['memory_limit_test_case'] > 500:
-            raise InvalidGraderError("Grader: Memory limit exceeds the maximum allowed (500 MBs).")
+            raise InvalidGraderError(_("Grader: Memory limit exceeds the maximum allowed (500 MBs)."))
 
         if self.task_data['time_limit_test_case'] > 30:
-            raise InvalidGraderError("Grader: Time limit exceeds the maximum allowed (30 s).")
+            raise InvalidGraderError(_("Grader: Time limit exceeds the maximum allowed (30 s)."))
 
         if self.task_data['output_limit_test_case'] > 30:
-            raise InvalidGraderError("Grader: Output limit exceeds the maximum allowed (30 MBs).")
+            raise InvalidGraderError(_("Grader: Output limit exceeds the maximum allowed (30 MBs)."))
 
     def generate_grader(self):
         """ This method generates a grader through the form data """
