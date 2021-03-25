@@ -45,7 +45,7 @@ function blurCourseCreationModal() {
     $("#submit_create_course").prop("disabled", true);
 }
 
-function unblurCourseCreationModal() {
+function focusCourseCreationModal() {
     $("#create_course_modal input").prop("disabled", false);
     $("#list_copy_courses").prop("disabled", false);
     $("#submit_create_course").prop("disabled", false);
@@ -75,7 +75,7 @@ function onSubmitCourseCreation() {
             displayCourseCreationLoadingAlert();
         },
         success: (data) => {
-            unblurCourseCreationModal();
+            focusCourseCreationModal();
             makeCourseCreationModalClosable();
             displayCourseCreationSuccessAlert(data);
             redirectToCoursePage(data);
@@ -83,7 +83,7 @@ function onSubmitCourseCreation() {
         error: (data) => {
             const response = data.responseJSON || {};
             makeCourseCreationModalClosable();
-            unblurCourseCreationModal();
+            focusCourseCreationModal();
             displayCourseCreationAlertError(response);
         }
     });
@@ -100,10 +100,11 @@ function onCloseModal() {
 
 jQuery(document).ready(function () {
     onCloseModal();
-    $("#create_course_form").submit(function (e) {
+    $("#create_course_form").on("submit", function (e) {
         e.preventDefault();
     });
 
-    $("#course_year").val(new Date().getFullYear());
-    $("#course_year").datetimepicker();
+    const courseYearElement = $("#course_year");
+    courseYearElement.val(new Date().getFullYear());
+    courseYearElement.datetimepicker();
 });

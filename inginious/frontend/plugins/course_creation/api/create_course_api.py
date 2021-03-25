@@ -39,7 +39,8 @@ class CreateCourseAPI(api.APIAuthenticatedPage):
         data = {"name": course_name, "group": course_group, "year": course_year, "period": course_period}
 
         all_courses = set(self.course_factory.get_all_courses().keys())
-        if course_to_copy_id and course_to_copy_id != "-1":
+        course_to_copy_default_value = "-1"
+        if course_to_copy_id and course_to_copy_id != course_to_copy_default_value:
             if course_to_copy_id not in all_courses:
                 raise api.APIError(400, _("The selected course to copy tasks from does not exist."))
 

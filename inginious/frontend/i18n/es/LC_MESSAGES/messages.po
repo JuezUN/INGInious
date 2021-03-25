@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-24 23:18-0500\n"
+"POT-Creation-Date: 2021-03-24 23:30-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1690,19 +1690,19 @@ msgstr "El año debe der un número."
 msgid "The period field cannot be empty."
 msgstr "El campo periodo no puede estar vacío."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:44
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:45
 msgid "The selected course to copy tasks from does not exist."
 msgstr "El curso del que se copiarán las tareas no existe."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:95
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:96
 msgid "An internal error occurred while copying tasks."
 msgstr "Un error interno ocurrió mientras las tareas eran copiadas."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:101
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:102
 msgid "The course was successfully created."
 msgstr "El curso fue creado satisfactoriamente."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:105
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:106
 msgid ""
 "The text may contain an invalid character. Only alphanumeric characters, "
 "in addition to '_' and '-' are accepted."
@@ -1710,11 +1710,11 @@ msgstr ""
 "El texto puede contener un carácter inválido. Solamente caracteres "
 "alfanuméricos, junto con '_' y '-' son aceptados."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:110
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:111
 msgid "A course with the id {} already exists."
 msgstr "Un curso con el id {} ya existe."
 
-#: inginious/frontend/plugins/course_creation/api/create_course_api.py:113
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:114
 msgid "An error occurred while creating the course"
 msgstr "Un error ocurrió mientras el curso era creado."
 
