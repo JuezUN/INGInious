@@ -34,5 +34,6 @@ def on_task_submit(course, taskid, task_data, task_fs):
 
     task_data["task_hints"] = CourseEditTask.dict_from_prefix("task_hints",task_data)
 
-    if "hint_id" in task_data["task_hints"].keys():
-        del task_data["task_hints"]["hint_id"]
+    if "hid" in task_data["task_hints"].keys():
+        del task_data["task_hints"]["hid"]
+

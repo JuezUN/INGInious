@@ -29,19 +29,19 @@ $def with (task_hints)
                 <tbody>
 
                     <!--To create new hints an set them on the table body-->
-                    <tr id="hint_id" style="display:none">
+                    <tr id="hint_hid" style="display:none">
                         <td id="hint_info_title">
-                            <input type=text class="form-control" name="task_hints[hint_id][title]" value="" readonly/>
+                            <input type=text class="form-control" name="task_hints[hid][title]" value="" readonly/>
                         </td>
-                        <td id="hint_info_penalty">
-                            <input type=text class="form-control" name="task_hints[hint_id][penalty]" value="" readonly/>
+                        <td id="hint_info_penalty_hid">
+                            <input type=text class="form-control" name="task_hints[hid][penalty]" value="" readonly/>
                         </td>
-                        <td id="hint_options">
-                            <button class="col-sm-6 btn btn-info" type="button" onclick="editHints(hint_id)"><i class="fa fa-edit"></i></button>
-                            <button class="col-sm-6 btn btn-danger" type="button" onclick="deleteHints(hint_id)"><i class="fa fa-trash"></i></button>
+                        <td id="hint_options_hid">
+                            <button class="col-sm-6 btn btn-info" type="button" onclick="onEditHintClick(hid)"><i class="fa fa-edit"></i></button>
+                            <button class="col-sm-6 btn btn-danger" type="button" onclick="deleteHints(hid)"><i class="fa fa-trash"></i></button>
                         </td>
-                        <td id="hint_info_content" style="display:none">
-                            <input type=text class="form-control" name="task_hints[hint_id][content]" value="" readonly/>
+                        <td id="hint_info_content_hid" style="display:none">
+                            <input type=text class="form-control" name="task_hints[hid][content]" value="" readonly/>
                         </td>
                     </tr>
 
@@ -51,17 +51,17 @@ $def with (task_hints)
                         $ penalty = hint["penalty"]
                         $ content = hint["content"]
                         <tr id="hint_$key">
-                        <td>
+                        <td id="hint_info_title_$key">
                             <input type=text class="form-control" name="task_hints[$key][title]" value="$title" readonly/>
                         </td>
-                        <td>
+                        <td id="hint_info_penalty_$key">
                             <input type=text class="form-control" name="task_hints[$key][penalty]" value="$penalty" readonly/>
                         </td>
-                        <td>
-                            <button class="col-sm-6 btn btn-info" type="button" onclick="editHints($key)"><i class="fa fa-edit"></i></button>
+                        <td id="hint_options_$key">
+                            <button class="col-sm-6 btn btn-info" type="button" onclick="onEditHintClick($key)"><i class="fa fa-edit"></i></button>
                             <button class="col-sm-6 btn btn-danger" type="button" onclick="deleteHints($key)"><i class="fa fa-trash"></i></button>
                         </td>
-                        <td style="display:none">
+                        <td id="hint_info_content_$key" style="display:none">
                             <input type=text class="form-control" name="task_hints[$key][content]" value="$content" readonly/>
                         </td>
                         </tr>
