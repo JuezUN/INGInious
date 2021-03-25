@@ -438,7 +438,8 @@ class UserManager:
             username = result["_id"]
             visible_tasks = student_visible_taskids if username not in course_staff else taskids
             result["task_succeeded"] = len(set(result["task_succeeded"]).intersection(visible_tasks))
-            result["task_grades"] = {dg["taskid"]: dg["grade"] for dg in result["task_grades"] if dg["taskid"] in visible_tasks}
+            result["task_grades"] = {self._get_task_name_or_id(course, dg["taskid"]): dg["grade"] for dg in
+                                     result["task_grades"] if dg["taskid"] in visible_tasks}
 
             total_weight = 0
             grade = 0
@@ -450,6 +451,10 @@ class UserManager:
             retval[username] = result
 
         return retval
+
+    def _get_task_name_or_id(self, course, task_id):
+        """ Return the name of a task if it isn't empty, else keeps the id  """
+        return course.get_task(task_id).get_name_or_id(self.session_language())
 
     def get_task_cache(self, username, courseid, taskid):
         """
