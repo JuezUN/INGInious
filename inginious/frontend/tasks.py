@@ -51,10 +51,10 @@ class WebAppTask(Task):
 
         # Submission limits
         self._submission_limit = self._data.get("submission_limit", {"amount": -1, "period": -1})
-        
+
         # Input random
         self._input_random = int(self._data.get("input_random", 0))
-        
+
         # Regenerate input random
         self._regenerate_input_random = bool(self._data.get("regenerate_input_random", False))
 
@@ -95,6 +95,13 @@ class WebAppTask(Task):
         """ Returns the name of this task """
         return self.gettext(language, self._name) if self._name else ""
 
+    def get_name_or_id(self, language=None):
+        """ Return the name or id  this task """
+        name_or_id = self.get_name(language)
+        if name_or_id == "":
+            name_or_id = self.get_id()
+        return name_or_id
+
     def get_context(self, language):
         """ Get the context(description) of this task """
         context = self.gettext(language, self._context) if self._context else ""
@@ -119,11 +126,11 @@ class WebAppTask(Task):
     def get_evaluate(self):
         """ Indicates the default download for the task """
         return self._evaluate
-    
+
     def get_tags(self):
         """ Get the tuple of list of the task """
         return self._tags
-        
+
     def get_number_input_random(self):
         """ Return the number of random inputs """
         return self._input_random
