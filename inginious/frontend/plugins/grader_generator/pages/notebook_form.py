@@ -70,6 +70,10 @@ class NotebookForm(GraderForm):
         if not notebook_tests:
             raise InvalidGraderError("You must provide tests to autogenerate the grader")
 
+        total_weights = sum([test_case["weight"] for test_case in notebook_tests])
+        if total_weights <= 1e-3:
+            raise InvalidGraderError(_("The sum of all weights must be grater than zero"))
+
         return notebook_tests
 
     def parse(self):

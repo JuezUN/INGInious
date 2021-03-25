@@ -33,7 +33,7 @@ class MultilangForm(GraderForm):
     def parse_and_validate_test_cases(self):
         """ This method parses all the test cases. """
         test_cases = []
-        for _, test_case in self.tests_to_dict().items():
+        for _1, test_case in self.tests_to_dict().items():
             # Parsing
             try:
                 test_case["weight"] = float(test_case.get("weight", 1.0))
@@ -66,6 +66,10 @@ class MultilangForm(GraderForm):
 
         if not input_files_are_unique:
             raise InvalidGraderError("Duplicated input files in grader")
+
+        total_weights = sum([test_case["weight"] for test_case in test_cases])
+        if total_weights <= 1e-3:
+            raise InvalidGraderError(_("The sum of all weights must be grater than zero"))
 
         return test_cases
 
