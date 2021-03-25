@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-17 22:48-0500\n"
+"POT-Creation-Date: 2021-03-24 23:18-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -1773,12 +1773,12 @@ msgstr ""
 msgid "Manual Scoring"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/constants.py:20
+#: inginious/frontend/plugins/manual_scoring/pages/constants.py:21
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:16
 msgid "Feedback"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:15
+#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:16
 #: inginious/frontend/plugins/manual_scoring/pages/student_submissions.py:18
 msgid "No grade"
 msgstr ""

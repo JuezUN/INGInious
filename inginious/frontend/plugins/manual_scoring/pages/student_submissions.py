@@ -73,19 +73,6 @@ class StudentSubmissionsPage(INGIniousAdminPage):
                         }
                 },
                 {
-                    "$lookup":
-                        {
-                            "from": "users",
-                            "localField": "username",
-                            "foreignField": "username",
-                            "as": "user_info"
-                        }
-                },
-                {
-                    "$replaceRoot": {"newRoot": {"$mergeObjects": [{"$arrayElemAt": ["$user_info", 0]}, "$$ROOT"]}}
-                },
-
-                {
                     "$project": {
                         "submitted_on": 1,
                         "custom": 1,

@@ -17,7 +17,7 @@ def create_student_dict(user_list):
     data = OrderedDict()
     for user in user_list:
         data[user["username"][0]] = {"username": user["username"][0],
-                                     "realname": user["realname"], "grade": user["grade"]}
+                                     "realname": user["realname"][0], "grade": user["grade"]}
     return data
 
 
@@ -46,7 +46,7 @@ class StudentsListPage(INGIniousAdminPage):
     def get_students_list_and_max_score(self, course, task_id):
         """ do request to db to get the data about users respect a task
             EXAMPLE:
-                [{_id: Objectid(''), 'username':['student1'], 'realname':'pablo', 'taskid': 'pow', 'grade': 100.0},
+                [{_id: Objectid(''), 'username':['student1'], 'realname':['pablo'], 'taskid': 'pow', 'grade': 100.0},
                 {...}, ...
                 ]
         """
@@ -72,14 +72,10 @@ class StudentsListPage(INGIniousAdminPage):
                         }
                 },
                 {
-                    "$replaceRoot": {"newRoot": {"$mergeObjects": [{"$arrayElemAt": ["$user_info", 0]}, "$$ROOT"]}}
-                },
-
-                {
                     "$project": {
                         "taskid": 1,
                         "username": 1,
-                        "realname": 1,
+                        "realname": "$user_info.realname",
                         "grade": {"$max": "$grade"}
                     }
                 }

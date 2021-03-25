@@ -6,6 +6,7 @@
 import os
 
 from inginious.frontend.parsable_text import ParsableText
+from inginious.frontend.plugins.contact_page.pages.constants import get_use_minify
 from inginious.frontend.plugins.utils import read_json_file
 
 
@@ -41,3 +42,18 @@ def get_rubric_content(user_manager):
     path = os.path.join(path, language_file[current_language])
 
     return read_json_file(path)
+
+
+def add_static_files_to_render_notebook(template_helper):
+    """ it adds js files to be able to render notebooks. Theses files are from multilang plugin  """
+    template_helper.add_javascript(
+        "https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-core.min.js")
+    template_helper.add_css("https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css")
+
+    if get_use_minify():
+        template_helper.add_javascript("/multilang/static/notebook_renderer.min.js")
+        template_helper.add_javascript("/multilang/static/multilang.min.js")
+    else:
+        template_helper.add_javascript("/multilang/static/notebook_renderer.js")
+        template_helper.add_javascript("/multilang/static/multilang.js")
+        template_helper.add_javascript("/multilang/static/grader.js")
