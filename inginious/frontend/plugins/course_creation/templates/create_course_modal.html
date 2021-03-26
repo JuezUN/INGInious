@@ -1,0 +1,75 @@
+$def with (courses)
+
+<div id="create_course_modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title"><i class="fa fa-plus-circle"> $:_("Create course")</i></h3>
+            </div>
+            <div class="modal-body text-justify text-center">
+                <div class="alert" role="alert" id="create_course_alert" hidden></div>
+                <form id="create_course_form" onsubmit="onSubmitCourseCreation();">
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <div class="col-xs-12">
+                                <label class="control-label" for="course_name">
+                                    <strong>$:_("Course name"):</strong>
+                                </label>
+                                <input type="text" id="course_name" class="form-control" placeholder='$:_("Name")'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <div class="col-xs-4">
+                                <label class="control-label" for="course_group">
+                                    <strong>$:_("Group"):</strong>
+                                </label>
+                                <input type="text" id="course_group" class="form-control" placeholder='$:_("Group")'>
+                            </div>
+                            <div class="col-xs-4">
+                                <label class="control-label" for="course_year">
+                                    <strong>$:_("Year"):</strong>
+                                </label>
+                                <input type="text" id="course_year" data-date-format="YYYY"
+                                       autocomplete="off" class="form-control date" placeholder='$:_("Year")'>
+                            </div>
+                            <div class="col-xs-4">
+                                <label class="control-label" for="course_period">
+                                    <strong>$:_("Period"):</strong>
+                                </label>
+                                <input type="text" id="course_period" class="form-control"
+                                       placeholder='$:_("Period")'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <div class="col-xs-12">
+                                <label class="control-label" for="list_copy_courses">
+                                    <strong>$:_("Copy tasks from"):</strong>
+                                    <i class="fa fa-question-circle"
+                                       title="All the tasks from this course will be copied."></i>
+                                </label>
+                                <select class="btn dropdown-toggle form-control" id="list_copy_courses">
+                                    <option value="-1" selected>$:_("Select a course to copy tasks")</option>
+                                    $for course_id, course_name in courses:
+                                    <option value="$course_id">$course_name</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">$:_("Cancel")</button>
+                <button class="btn btn-primary" form="create_course_form" id="submit_create_course" type="submit">
+                    $:_("Create course")
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
