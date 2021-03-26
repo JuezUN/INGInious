@@ -1,4 +1,4 @@
-$def with (task_hints)
+$def with (course_id, task_id)
 
 <h6>$:_("Hints")</h6>
 
@@ -26,35 +26,16 @@ $def with (task_hints)
                     <div class="col-sm-4" id="hints_navigation_menu" style="border-right: 1px solid #e5e5e5">
                         <h4>$:_("Hints")</h4>
                         <div id="hints_list">
-                            <div class="list-group col-sm-10" style="margin-top: 20px">
-                                $for key, hint in task_hints.items():
+                            <!--
 
-                                    $ title = hint["title"]
-                                    $ penalty = hint["penalty"]
-                                    $ content = hint["content"]
-
-                                    <a id="hint-$key" class="list-group-item list-group-item-success disabled" style="cursor:pointer"
-                                        onclick="changeHint($key)"
-                                    >
-                                        <label>$title</label>
-                                    </a>
-                            </div>
+                            -->
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div id="hint-container">
-                            $for key, hint in task_hints.items():
-                                $ title = hint["title"]
-                                $ penalty = hint["penalty"]
-                                $ content = hint["content"]
-                                <div class="hintte" id="hint_$key" hidden>
-                                    <div id="hint_title">
-                                        <h3>$title</h3>
-                                    </div>
-                                    <div id="hint-content">
-                                        $content
-                                    </div>
-                                </div>
+                            <!--
+
+                                -->
                         </div>
                     </div>
                 </div>
@@ -68,5 +49,12 @@ $def with (task_hints)
 
 <script>
 
+    function getCourseId(){
+        return "$course_id";
+    }
+
+    function getTaskId(){
+        return "$task_id";
+    }
 
 </script>

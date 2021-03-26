@@ -10,22 +10,6 @@ function displayAlert(message, duration){
     }, duration);
 }
 
-/*Check if the entries are allowed on the hint*/
-function validateHintEntries(hint){
-
-    if(!hint["title"] || !hint["content"]){
-        const message = "You need to complete mandatory fields";
-        displayAlert(message, 5000);
-        return false;
-    }
-    if(typeof hint["penalty"] != "number"){
-        const message = "Hint penalty need to be a number";
-        displayAlert(message, 5000);
-        return false;
-    }
-    return true;
-}
-
 /*Load code editor for the hint content on modal*/
 function loadHintContentCodeEditor(){
     $("#hint_content_container").show();
@@ -46,19 +30,26 @@ function onAddHintClick(){
         "content" : $("#hint_content")[0].value
     });
 
+    /*Check if the entries are allowed on the hint*/
+
     if(!hint["title"] || !hint["content"]){
         const message = "You need to complete mandatory fields";
-        displayAlert(message, 5000);
+        displayAlert(message, 10000);
         return ;
     }
-    /*
-    if(typeof hint["penalty"] != "number"){
-        const message = "Hint penalty need to be a number";
-        displayAlert(message, 5000);
+    if(isNaN(hint["penalty"])){
+        const message = "Hint penalty needs to be a number";
+        displayAlert(message, 10000);
+        return ;
+    } else if (0 > hint["penalty"] && hint["penalty"] < 5){
+        const message = "Hint penalty must be between 0 and 5";
+        displayAlert(message, 10000);
         return ;
     }
-    */
-    let new_hint_index = $("#task_hints_table").find('tbody tr').length;
+
+    /*Update the table with the new/modified hint*/
+
+    let new_hint_index = $("#task_hints_table tbody tr").length;
 
     if(!update_hint_id){
         addHintOnTable(hint, new_hint_index);
@@ -66,7 +57,7 @@ function onAddHintClick(){
         updateHintOnTable(hint, update_hint_id);
         update_hint_id = null;
     }
-    $("#hints_edit_modal").modal('hide');
+    $("#hints_edit_modal").modal("hide");
 }
 
 /*Set the hint on table*/
@@ -79,10 +70,10 @@ function addHintOnTable(new_hint, id){
     new_hint_row_template = new_hint_row_template.replace(/hid/g, id);
     new_hint_row_template = '<tr id='+new_hint_id+'>'+ new_hint_row_template +'</tr>';
 
-    $("#task_hints_table").find('tbody').append(new_hint_row_template);
-    $("#"+new_hint_id).find("#hint_info_title input").val(new_hint.title);
-    $("#"+new_hint_id).find("#hint_info_penalty input").val(new_hint.penalty);
-    $("#"+new_hint_id).find("#hint_info_content input").val(new_hint.content);
+    $("#task_hints_table tbody").append(new_hint_row_template);
+    $("#hint_info_title input").val(new_hint.title);
+    $("#hint_info_penalty input").val(new_hint.penalty);
+    $("#hint_info_content input").val(new_hint.content);
 }
 
 /*Update the hint on table*/
@@ -118,26 +109,33 @@ function onEditHintClick(hintKey){
     $("#hint_title").val(hint["title"]);
     $("#hint_penalty").val(hint["penalty"]);
     codeEditors["task_hints_content"].getDoc().setValue(hint["content"]);
-    $("#hints_edit_modal").modal('show');
+    $("#hints_edit_modal").modal("show");
 
 }
 
 function deleteHints(hintKey){
-
-    $("#hint_"+hintKey).remove();
-
+    let hints = $("#task_hints_table tbody tr");
+    let hint_row = null;
+    $.each(hints,function(index, hint){
+        if(hintKey == index){
+            hint_row = $("#hint_"+index)[0];
+        };
+    });
+    if(hint_row){
+        hint_row.remove();
+    }
 }
 
-$(function(){
-    $("#hint_id");
-})
+function eraseModalInputs(){
+    $("#hint_title").val("");
+    $("#hint_penalty").val(0);
+    codeEditors["task_hints_content"].getDoc().setValue("");
+};
 
 $("#hints_edit_modal").on("shown.bs.modal", function () {
     loadHintContentCodeEditor();
 });
 
 $("#hints_edit_modal").on("hidden.bs.modal", function () {
-    $("#hint_title").val("");
-    $("#hint_penalty").val(0);
-    codeEditors["task_hints_content"].getDoc().setValue("");
+    eraseModalInputs();
 });

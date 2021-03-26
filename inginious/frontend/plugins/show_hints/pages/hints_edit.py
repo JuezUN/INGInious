@@ -27,13 +27,37 @@ def hints_modal(course, taskid, task_data, template_helper):
 
 
 def add_static_files(template_helper):
-
-    template_helper.add_javascript("/task_editorial/static/hints_edit.js")
+    template_helper.add_javascript("/show_hints/static/hints_edit.js")
 
 def on_task_submit(course, taskid, task_data, task_fs):
 
     task_data["task_hints"] = CourseEditTask.dict_from_prefix("task_hints",task_data)
 
+    #Delete key for hint template if it exists
     if "hid" in task_data["task_hints"].keys():
         del task_data["task_hints"]["hid"]
 
+    #Delete duplicate items if they exists
+
+    fields_to_delete = []
+
+    for key in task_data:
+        if "task_hints[" in key:
+            fields_to_delete.append(key)
+
+    for key in fields_to_delete:
+        del task_data[key]
+
+    hints_to_delete = []
+
+    #Delete items that have empty mandatory fields
+
+    for hint_id in task_data["task_hints"]:
+        if task_data["task_hints"][hint_id] and task_data["task_hints"][hint_id]["content"] is None:
+            hints_to_delete.append(hint_id)
+
+        if task_data["task_hints"][hint_id] and task_data["task_hints"][hint_id]["title"] is None:
+            hints_to_delete.append(hint_id)
+
+    for hint_id in hints_to_delete:
+        del task_data["task_hints"][hint_id]

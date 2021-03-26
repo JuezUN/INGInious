@@ -1,5 +1,9 @@
 function loadHintsOnModal(){
-
+    $.get("/api/hints_api/", {
+        course_id: getCourseId(),
+        task_id: getTaskId(),
+    }).done(function(result){
+    })
 }
 
 function changeHint(hintKey){
@@ -13,6 +17,3 @@ function changeHint(hintKey){
     })
 }
 
-$(function(){
-
-})

@@ -8,12 +8,13 @@ def show_hints(course, task, template_helper):
 
     add_static_files(template_helper)
 
-    task_hints = task._data.get('task_hints', {})
+    course_id = course.get_id()
+    task_id = task.get_id()
 
-    content = template_helper.get_custom_renderer(_SHOW_HINTS_TEMPLATES_PATH, layout=False).hints_view(task_hints)
+    content = template_helper.get_custom_renderer(_SHOW_HINTS_TEMPLATES_PATH, layout=False).hints_view(course_id, task_id)
 
     return str(content)
 
 def add_static_files(template_helper):
 
-    template_helper.add_javascript("/task_editorial/static/show_hints.js")
+    template_helper.add_javascript("/show_hints/static/show_hints.js")
