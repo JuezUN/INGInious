@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-24 21:56-0500\n"
+"POT-Creation-Date: 2021-03-24 23:30-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -1025,6 +1025,7 @@ msgstr "¿Está seguro de borrar todos los archivos?"
 
 #: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:16
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:36
+#: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:68
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:105
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
@@ -1501,8 +1502,7 @@ msgid "Username"
 msgstr "Nombre de usuario"
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:50
-#: inginious/frontend/templates/mycourses.html:66
-#: inginious/frontend/templates/mycourses.html:87
+#: inginious/frontend/templates/mycourses.html:78
 msgid "Course"
 msgstr "Curso"
 
@@ -1541,7 +1541,7 @@ msgstr "Calendario de visitas"
 #: inginious/frontend/plugins/auth/custom_auth_form.html:32
 #: inginious/frontend/plugins/register_students/static/email_template.html:13
 #: inginious/frontend/templates/auth.html:26
-#: inginious/frontend/templates/mycourses.html:98
+#: inginious/frontend/templates/mycourses.html:89
 #: inginious/frontend/templates/register_button.html:31
 msgid "Password"
 msgstr "Contraseña"
@@ -1667,6 +1667,81 @@ msgstr "Describe y justifica el curso que deseas crear"
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:89
 msgid "Send"
 msgstr "Enviar"
+
+#: inginious/frontend/plugins/course_creation/constants.py:43
+#: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:10
+#: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:70
+msgid "Create course"
+msgstr "Crear curso"
+
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:28
+msgid "The course name cannot be empty."
+msgstr "El nombre del curso no puede estar vacío."
+
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:31
+msgid "The year field cannot be empty."
+msgstr "El campo año no puede estar vacío."
+
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:34
+msgid "The year must be a number."
+msgstr "El año debe der un número."
+
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:37
+msgid "The period field cannot be empty."
+msgstr "El campo periodo no puede estar vacío."
+
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:45
+msgid "The selected course to copy tasks from does not exist."
+msgstr "El curso del que se copiarán las tareas no existe."
+
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:96
+msgid "An internal error occurred while copying tasks."
+msgstr "Un error interno ocurrió mientras las tareas eran copiadas."
+
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:102
+msgid "The course was successfully created."
+msgstr "El curso fue creado satisfactoriamente."
+
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:106
+msgid ""
+"The text may contain an invalid character. Only alphanumeric characters, "
+"in addition to '_' and '-' are accepted."
+msgstr ""
+"El texto puede contener un carácter inválido. Solamente caracteres "
+"alfanuméricos, junto con '_' y '-' son aceptados."
+
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:111
+msgid "A course with the id {} already exists."
+msgstr "Un curso con el id {} ya existe."
+
+#: inginious/frontend/plugins/course_creation/api/create_course_api.py:114
+msgid "An error occurred while creating the course"
+msgstr "Un error ocurrió mientras el curso era creado."
+
+#: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:19
+msgid "Course name"
+msgstr "Nombre del curso"
+
+#: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:29
+#: inginious/frontend/templates/task.html:133
+msgid "Group"
+msgstr "Grupo"
+
+#: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:35
+msgid "Year"
+msgstr "Año"
+
+#: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:42
+msgid "Period"
+msgstr "Periodo"
+
+#: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:53
+msgid "Copy tasks from"
+msgstr "Copiar tareas de"
+
+#: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:58
+msgid "Select a course to copy tasks"
+msgstr "Seleccione un curso para copiar tareas"
 
 #: inginious/frontend/plugins/grader_generator/pages/grader.py:46
 msgid "Grader"
@@ -2008,7 +2083,7 @@ msgstr "Tarea"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:20
 #: inginious/frontend/templates/course_admin/task_info.html:42
-#: inginious/frontend/templates/mycourses.html:139
+#: inginious/frontend/templates/mycourses.html:130
 msgid "Student"
 msgstr "Estudiante"
 
@@ -2905,6 +2980,10 @@ msgstr ""
 msgid "No language"
 msgstr "Sin lenguaje"
 
+#: inginious/frontend/plugins/utils/__init__.py:19
+msgid " is mandatory"
+msgstr " es obligatorio"
+
 #: inginious/frontend/templates/auth.html:8
 msgid "Welcome"
 msgstr "Bienvenido"
@@ -3155,7 +3234,7 @@ msgid "English"
 msgstr "Español"
 
 #: inginious/frontend/templates/layout.html:142
-#: inginious/frontend/templates/mycourses.html:101
+#: inginious/frontend/templates/mycourses.html:92
 #: inginious/frontend/templates/register.html:8
 msgid "Register"
 msgstr "Registrarse"
@@ -3282,55 +3361,47 @@ msgstr ""
 "especificado contiene un carácter inválido (solamente alfanumérico y  '_'"
 " y '-' son aceptados)."
 
-#: inginious/frontend/templates/mycourses.html:67
-msgid "'New course id'"
-msgstr "ID del curso nuevo."
-
-#: inginious/frontend/templates/mycourses.html:70
-msgid "Create new course"
-msgstr "Crear un curso"
-
-#: inginious/frontend/templates/mycourses.html:74
+#: inginious/frontend/templates/mycourses.html:65
 msgid "Register for a course"
 msgstr "Registrarse a un curso"
 
-#: inginious/frontend/templates/mycourses.html:78
+#: inginious/frontend/templates/mycourses.html:69
 msgid "Registration complete."
 msgstr "Registro completo."
 
-#: inginious/frontend/templates/mycourses.html:83
+#: inginious/frontend/templates/mycourses.html:74
 msgid "Registration failed. Please check that you properly typed the password."
 msgstr "El nuevo registro ha fallado. Verifique su contraseña."
 
-#: inginious/frontend/templates/mycourses.html:89
+#: inginious/frontend/templates/mycourses.html:80
 msgid "Select a course"
 msgstr "Seleccione un curso"
 
-#: inginious/frontend/templates/mycourses.html:108
+#: inginious/frontend/templates/mycourses.html:99
 msgid "'Search course'"
 msgstr "'Buscar curso'"
 
-#: inginious/frontend/templates/mycourses.html:112
+#: inginious/frontend/templates/mycourses.html:103
 msgid "Search"
 msgstr "Buscar"
 
-#: inginious/frontend/templates/mycourses.html:130
+#: inginious/frontend/templates/mycourses.html:121
 msgid "LTI course"
 msgstr "Curso LTI"
 
-#: inginious/frontend/templates/mycourses.html:132
+#: inginious/frontend/templates/mycourses.html:123
 msgid "Hidden course"
 msgstr "Curso oculto"
 
-#: inginious/frontend/templates/mycourses.html:135
+#: inginious/frontend/templates/mycourses.html:126
 msgid "Administrator"
 msgstr "Administrador"
 
-#: inginious/frontend/templates/mycourses.html:137
+#: inginious/frontend/templates/mycourses.html:128
 msgid "Tutor"
 msgstr "Tutor"
 
-#: inginious/frontend/templates/mycourses.html:144
+#: inginious/frontend/templates/mycourses.html:135
 msgid "You are not registered to any course"
 msgstr "No estás registrado a ningún curso"
 
@@ -3573,10 +3644,6 @@ msgstr "Bitácora"
 #: inginious/frontend/templates/task.html:129
 msgid "Submitting as"
 msgstr "Enviado como"
-
-#: inginious/frontend/templates/task.html:133
-msgid "Group"
-msgstr "Grupo"
 
 #: inginious/frontend/templates/course_admin/aggregation_list.html:74
 #: inginious/frontend/templates/course_admin/task_info.html:107

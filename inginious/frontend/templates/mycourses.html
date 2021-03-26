@@ -61,15 +61,6 @@ $if user_manager.user_is_superadmin():
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             $:_("Failed to create the course. It might either already exist or contain an invalid character (only alphanumeric in addition to '_' and '-' are accepted).")
         </div>
-    <form class="form row" role="form" method="post">
-        <div class="form-group col-sm-8">
-            <label class="sr-only" for="new_courseid">$:_("Course")</label>
-            <input name="new_courseid" type="text" class="form-control" id="new_courseid" placeholder=$:_("'New course id'")>
-        </div>
-        <div class="form-group col-sm-4">
-            <button type="submit" class="btn btn-block btn-primary">$:_("Create new course")</button>
-        </div>
-    </form>
 $else:
     <h3>$:_("Register for a course")</h3>
     $if success == True:

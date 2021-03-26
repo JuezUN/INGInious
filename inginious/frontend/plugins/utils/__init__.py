@@ -16,7 +16,7 @@ def read_file(file_path, file_name):
 
 def get_mandatory_parameter(parameters, parameter_name):
     if parameter_name not in parameters:
-        raise api.APIError(400, {"error": parameter_name + " is mandatory"})
+        raise api.APIError(400, {"error": parameter_name + _(" is mandatory")})
 
     return parameters[parameter_name]
 
