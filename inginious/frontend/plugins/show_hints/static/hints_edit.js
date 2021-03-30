@@ -41,8 +41,8 @@ function onAddHintClick(){
         const message = "Hint penalty needs to be a number";
         displayAlert(message, 10000);
         return ;
-    } else if (0 > hint["penalty"] && hint["penalty"] < 5){
-        const message = "Hint penalty must be between 0 and 5";
+    } else if (0 > hint["penalty"] || hint["penalty"] > 100){
+        const message = "Hint penalty must be between 0.0% and 100.0%";
         displayAlert(message, 10000);
         return ;
     }

@@ -36,6 +36,7 @@ class UserHintsAPI(APIAuthenticatedPage):
         course_id = get_mandatory_parameter(input_data, 'course_id')
         task_id = get_mandatory_parameter(input_data, 'task_id')
         username = self.user_manager.session_username()
+        hint = get_mandatory_parameter(input_data, 'task_id')
 
         try:
             course = self.course_factory.get_course(course_id)
@@ -54,26 +55,36 @@ class UserHintsAPI(APIAuthenticatedPage):
 
     def get_task_hints(self, task):
 
-        hints = task._data
+        hints = task._data.get("task_hints")
+        return hints
 
     def check_locked_hint_status(self, hints, task_id, username):
 
-        data = self.database.hints.findOne({"taskid": task_id,
-                                                    "username": username})
+        data = self.database.hints.find_one({"taskid": task_id,
+                                            "username": username})
+        if data is None:
+            data = self.create_hint_list_for_user(task_id, username)
 
-        to_show_hints_content = []
+        to_show_hints = []
         allowedHints = data["allowedHints"]
-        for hint in allowedHints:
-            to_show_hint = {
-                "title": 1,
-                "penalty": 2,
+        for key in hints:
+            to_show_hint_content = {
+                "title": hints[key]["title"],
                 "content": None,
-                "allowed": False,
-                "key": None
+                "penalty": hints[key]["penalty"],
+                "allowed_to_see": False,
             }
-            if hint["key"] in hints:
-                to_show_hint["content"]
-                to_show_hint["allowed"]
-                to_show_hints_content.append(to_show_hint)
+            if key is allowedHints[0]:
+                to_show_hint_content["content"] =  hints[key]["content"]
+                to_show_hint_content["allowed_to_see"] = True
 
-        return hints
+            to_show_hints.append(to_show_hint_content)
+
+        return to_show_hints
+
+    def create_hint_list_for_user(self, task_id, username):
+
+        self.database.hints.insert({"taskid": task_id, "username": username, "allowedHints": {}, "penalty": 0})
+
+
+
