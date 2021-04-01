@@ -1,6 +1,6 @@
 var update_hint_id = null;
 
-/*Show a message into an alert*/
+/* Show a message into an alert */
 function displayAlert(message, duration){
     let alert = $("#hint_edit_alert");
     alert.text(message);
@@ -10,7 +10,7 @@ function displayAlert(message, duration){
     }, duration);
 }
 
-/*Load code editor for the hint content on modal*/
+/* Load code editor for the hint content on modal */
 function loadHintContentCodeEditor(){
     $("#hint_content_container").show();
 
@@ -30,7 +30,7 @@ function onAddHintClick(){
         "content" : $("#hint_content")[0].value
     });
 
-    /*Check if the entries are allowed on the hint*/
+    /* Check if the entries are allowed on the hint */
 
     if(!hint["title"] || !hint["content"]){
         const message = "You need to complete mandatory fields";
@@ -47,11 +47,11 @@ function onAddHintClick(){
         return ;
     }
 
-    /*Update the table with the new/modified hint*/
+    /* Update the table with the new/modified hint */
 
     let new_hint_index = $("#task_hints_table tbody tr").length;
 
-    if(!update_hint_id){
+    if(!update_hint_id && update_hint_id !== 0){
         addHintOnTable(hint, new_hint_index);
     }else{
         updateHintOnTable(hint, update_hint_id);
@@ -60,23 +60,23 @@ function onAddHintClick(){
     $("#hints_edit_modal").modal("hide");
 }
 
-/*Set the hint on table*/
-function addHintOnTable(new_hint, id){
+/* Set the hint on table */
+function addHintOnTable(new_hint, hint_id){
 
     var new_hint_row_template = $("#hint_hid").clone().html();
-    let new_hint_id = "hint_" + id;
+    let new_hint_id = "hint_" + hint_id;
 
-  /*Replace "hid" by the hint id*/
-    new_hint_row_template = new_hint_row_template.replace(/hid/g, id);
+  /* Replace "hid" by the hint id */
+    new_hint_row_template = new_hint_row_template.replace(/hid/g, hint_id);
     new_hint_row_template = '<tr id='+new_hint_id+'>'+ new_hint_row_template +'</tr>';
 
     $("#task_hints_table tbody").append(new_hint_row_template);
-    $("#hint_info_title input").val(new_hint.title);
-    $("#hint_info_penalty input").val(new_hint.penalty);
-    $("#hint_info_content input").val(new_hint.content);
+    $("#hint_info_title_"+hint_id).find("input").val(new_hint.title);
+    $("#hint_info_penalty_"+hint_id).find("input").val(new_hint.penalty);
+    $("#hint_info_content_"+hint_id).find("input").val(new_hint.content);
 }
 
-/*Update the hint on table*/
+/* Update the hint on table */
 
 function updateHintOnTable(hint, hintKey){
 
@@ -88,7 +88,7 @@ function updateHintOnTable(hint, hintKey){
 
 }
 
-/*Get the saved hint in the table*/
+/* Get the saved hint in the table */
 function loadSavedHintFromTable(hintKey){
 
     const hint = {
@@ -100,6 +100,7 @@ function loadSavedHintFromTable(hintKey){
     return hint;
 }
 
+/* Set the hint data on modal to edit it */
 function onEditHintClick(hintKey){
 
     update_hint_id = hintKey;
@@ -113,17 +114,36 @@ function onEditHintClick(hintKey){
 
 }
 
+/* Search and delete a hint from table */
 function deleteHints(hintKey){
     let hints = $("#task_hints_table tbody tr");
     let hint_row = null;
     $.each(hints,function(index, hint){
-        if(hintKey == index){
+        if(hintKey === index){
             hint_row = $("#hint_"+index)[0];
         };
     });
     if(hint_row){
         hint_row.remove();
     }
+    update_hints_keys(hintKey);
+}
+
+function update_hints_keys(hint_key){
+
+    let table_hints = $("#task_hints_table tbody tr");
+    const table_hints_number = $("#task_hints_table tbody tr").length;
+    let to_update_hints = [];
+    for(let i = 0; i < table_hints_number; i++){
+        if(i !== hint_key){
+            to_update_hints.push(loadSavedHintFromTable(i));
+        }
+    }
+    $("#task_hints_table tbody").html("");
+    $.each(to_update_hints, function(index,hint) {
+        console.log(index+"->"+hint);
+        addHintOnTable(hint,index);
+    })
 }
 
 function eraseModalInputs(){

@@ -6,6 +6,7 @@ function loadHintsOnModal(){
         task_id: getTaskId()
     }).done(function(result){
         to_show_hints = result;
+        console.log(to_show_hints);
         setHintsOnMenu(to_show_hints);
         setHintsOnContainer(to_show_hints);
     })
@@ -81,12 +82,18 @@ function changeHint(hintKey){
     })
 }
 
-function setHintAsAllowed(){
-    $.get("/api/hints_api/", {
-        course_id: getCourseId(),
-        task_id: getTaskId()
+function setHintAsAllowed(selected_hint_id){
+    $.ajax({
+        url: "/api/hints_api/",
+        method: "POST",
+        data: {
+            course_id: getCourseId(),
+            task_id: getTaskId(),
+            hint_id: selected_hint_id
+        }
     }).done(function(result){
         to_show_hints = result;
+
     })
 }
 

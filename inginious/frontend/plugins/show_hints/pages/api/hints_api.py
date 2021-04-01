@@ -7,7 +7,7 @@ from inginious.common.course_factory import InvalidNameException, CourseNotFound
 
 class UserHintsAPI(APIAuthenticatedPage):
 
-    #Get the content for a hint
+    # Get the content for a hint
     def API_GET(self):
 
         input_data = web.input()
@@ -21,7 +21,7 @@ class UserHintsAPI(APIAuthenticatedPage):
             raise APIError(400, {"error": "The course does not exists or the user does not have permissions"})
 
         try:
-            task = course.get_task(task_id)
+            task = self.task_factory.get_task(course, task_id)
         except Exception:
             raise APIError(400, {"error": "The course does not exists or the user does not have permissions"})
 
@@ -30,13 +30,14 @@ class UserHintsAPI(APIAuthenticatedPage):
 
         return 200, self.check_locked_hint_status(self.get_task_hints(task), task_id, username)
 
+    # Set a hint to a user in database to "unlock" it
     def API_POST(self):
 
         input_data = web.input()
         course_id = get_mandatory_parameter(input_data, 'course_id')
         task_id = get_mandatory_parameter(input_data, 'task_id')
         username = self.user_manager.session_username()
-        hint = get_mandatory_parameter(input_data, 'task_id')
+        hint_id = get_mandatory_parameter(input_data, 'hint_id')
 
         try:
             course = self.course_factory.get_course(course_id)
@@ -44,18 +45,20 @@ class UserHintsAPI(APIAuthenticatedPage):
             raise APIError(400, {"error": "The course does not exists or the user does not have permissions"})
 
         try:
-            task = course.get_task(task_id)
+            task = self.task_factory.get_task(course, task_id)
         except Exception:
             raise APIError(400, {"error": "The course does not exists or the user does not have permissions"})
 
         if not self.user_manager.course_is_user_registered(course,username):
             raise APIError(400,{"error":"The course does not exists"})
 
-        return 200
+        task_hits = self.get_task_hints(task)
+
+        return 200, self.add_hint_on_allowed(hint_id, task_id, username)
 
     def get_task_hints(self, task):
 
-        hints = task._data.get("task_hints")
+        hints = task._data.get("task_hints", [])
         return hints
 
     def check_locked_hint_status(self, hints, task_id, username):
@@ -63,7 +66,8 @@ class UserHintsAPI(APIAuthenticatedPage):
         data = self.database.hints.find_one({"taskid": task_id,
                                             "username": username})
         if data is None:
-            data = self.create_hint_list_for_user(task_id, username)
+             # data = self.create_hint_list_for_user(task_id, username)
+            return 200, ""
 
         to_show_hints = []
         allowedHints = data["allowedHints"]
@@ -74,7 +78,7 @@ class UserHintsAPI(APIAuthenticatedPage):
                 "penalty": hints[key]["penalty"],
                 "allowed_to_see": False,
             }
-            if key is allowedHints[0]:
+            if key in allowedHints:
                 to_show_hint_content["content"] =  hints[key]["content"]
                 to_show_hint_content["allowed_to_see"] = True
 
@@ -84,7 +88,24 @@ class UserHintsAPI(APIAuthenticatedPage):
 
     def create_hint_list_for_user(self, task_id, username):
 
-        self.database.hints.insert({"taskid": task_id, "username": username, "allowedHints": {}, "penalty": 0})
+        data = self.database.hints.insert({"taskid": task_id, "username": username, "allowedHints": [], "penalty": 0})
+        return data
 
+    def check_allowed_hint_in_database(self, hint_id, task_id, username):
 
+        data = self.database.hints.find_one({"taskid": task_id, "username": username})
+        allowed_hints = data["allowedHints"]
 
+        if hint_id in allowed_hints:
+            return True
+
+        return False
+
+    def add_hint_on_allowed(self, hint_id, task_id, username):
+
+        if not self.check_allowed_hint_in_database(hint_id, task_id, username):
+
+            data = self.database.hints.find_one_and_update({"taskid": task_id, "username": username},{
+                                                                "$push": {"allowedHints":hint_id}
+                                                            })
+            return 200, ""

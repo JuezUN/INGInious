@@ -1,5 +1,5 @@
 import os
-
+from collections import OrderedDict
 from inginious.frontend.pages.course_admin.task_edit import CourseEditTask
 
 _SHOW_HINTS_TEMPLATES_PATH = os.path.join(os.path.dirname(__file__),'templates')
@@ -61,3 +61,13 @@ def on_task_submit(course, taskid, task_data, task_fs):
 
     for hint_id in hints_to_delete:
         del task_data["task_hints"][hint_id]
+
+    task_data["task_hints"] = OrderedDict(sorted(task_data["task_hints"].items()))
+
+def update_ordered_hints(hints):
+
+    new_hint_list = {}
+    for hint in hints:
+        new_hint_list.append(hint)
+
+    return new_hint_list
