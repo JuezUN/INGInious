@@ -1,4 +1,5 @@
 from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAuthPage
+from ..analytics_collection_manager import AnalyticsCollectionManagerSingleton
 from ..services_collection_manager import ServicesCollectionManagerSingleton
 from ..utils import use_minified
 
@@ -29,10 +30,11 @@ class AnalyticsPage(SuperadminAuthPage):
         )
 
     def get_all_courses(self):
-        all_courses = self.course_factory.get_all_courses()
+        analytics_manager = AnalyticsCollectionManagerSingleton.get_instance()
+        courses = analytics_manager.get_course_list()
         available_courses = sorted([{
             'id': course_id,
-            'name': course.get_name(self.user_manager.session_language())
-        } for course_id, course in all_courses.items()], key=lambda x: x['name'])
+            'name': self.course_factory.get_course(course_id).get_name(self.user_manager.session_language())
+        } for course_id in courses], key=lambda x: x['name'])
 
         return available_courses

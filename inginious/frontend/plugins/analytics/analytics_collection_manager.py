@@ -37,3 +37,6 @@ class AnalyticsCollectionManagerSingleton:
 
     def _reset_records(self):
         self.db.analytics.drop()
+
+    def get_course_list(self):
+        return self.db.analytics.distinct("course_id")
