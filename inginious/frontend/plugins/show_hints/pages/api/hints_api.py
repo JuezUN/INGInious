@@ -4,6 +4,7 @@ import web
 from inginious.frontend.pages.api._api_page import APIAuthenticatedPage, APIError
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from inginious.common.course_factory import InvalidNameException, CourseNotFoundException
+from inginious.frontend.parsable_text import ParsableText
 
 class UserHintsAPI(APIAuthenticatedPage):
 
@@ -79,7 +80,9 @@ class UserHintsAPI(APIAuthenticatedPage):
                 "allowed_to_see": False,
             }
             if key in allowedHints:
-                to_show_hint_content["content"] =  hints[key]["content"]
+
+                parse_content = self.parse_rst_content(hints[key]["content"])
+                to_show_hint_content["content"] = parse_content
                 to_show_hint_content["allowed_to_see"] = True
 
             to_show_hints.append(to_show_hint_content)
@@ -109,3 +112,10 @@ class UserHintsAPI(APIAuthenticatedPage):
                                                                 "$push": {"allowedHints":hint_id}
                                                             })
             return 200, ""
+
+    def parse_rst_content(self, content):
+
+        if content is None:
+            return content
+        parse_content = ParsableText(content,"rst").parse()
+        return parse_content

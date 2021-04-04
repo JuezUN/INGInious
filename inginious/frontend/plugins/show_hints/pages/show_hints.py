@@ -1,6 +1,7 @@
 import os
 
 from inginious.frontend.pages.course_admin.task_edit import CourseEditTask
+from inginious.frontend.parsable_text import ParsableText
 
 _SHOW_HINTS_TEMPLATES_PATH = os.path.join(os.path.dirname(__file__),'templates')
 

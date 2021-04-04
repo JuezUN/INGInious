@@ -55,7 +55,6 @@ function onAddHintClick(){
         addHintOnTable(hint, new_hint_index);
     }else{
         updateHintOnTable(hint, update_hint_id);
-        update_hint_id = null;
     }
     $("#hints_edit_modal").modal("hide");
 }
@@ -71,41 +70,41 @@ function addHintOnTable(new_hint, hint_id){
     new_hint_row_template = '<tr id='+new_hint_id+'>'+ new_hint_row_template +'</tr>';
 
     $("#task_hints_table tbody").append(new_hint_row_template);
-    $("#hint_info_title_"+hint_id).find("input").val(new_hint.title);
-    $("#hint_info_penalty_"+hint_id).find("input").val(new_hint.penalty);
-    $("#hint_info_content_"+hint_id).find("input").val(new_hint.content);
+    $("#hint_info_title_"+hint_id).val(new_hint.title);
+    $("#hint_info_penalty_"+hint_id).val(new_hint.penalty);
+    $("#hint_info_content_"+hint_id).text(new_hint.content);
 }
 
 /* Update the hint on table */
 
-function updateHintOnTable(hint, hintKey){
+function updateHintOnTable(hint, hint_key){
 
-     let hint_id = "hint_" + hintKey;
+     let hint_id = "hint_" + hint_key;
 
-     $("#hint_info_title_"+hintKey).find("input").val(hint.title);
-     $("#hint_info_penalty_"+hintKey).find("input").val(hint.penalty);
-     $("#hint_info_content_"+hintKey).find("input").val(hint.content);
+     $("#hint_info_title_"+hint_key).val(hint.title);
+     $("#hint_info_penalty_"+hint_key).val(hint.penalty);
+     $("#hint_info_content_"+hint_key).text(hint.content);
 
 }
 
 /* Get the saved hint in the table */
-function loadSavedHintFromTable(hintKey){
+function loadSavedHintFromTable(hint_key){
 
     const hint = {
-        "title": $("#hint_info_title_"+hintKey).find("input").val(),
-        "penalty": $("#hint_info_penalty_"+hintKey).find("input").val(),
-        "content": $("#hint_info_content_"+hintKey).find("input").val()
+        "title": $("#hint_info_title_"+hint_key).val(),
+        "penalty": $("#hint_info_penalty_"+hint_key).val(),
+        "content": $("#hint_info_content_"+hint_key).val()
     }
 
     return hint;
 }
 
 /* Set the hint data on modal to edit it */
-function onEditHintClick(hintKey){
+function onEditHintClick(hint_key){
 
-    update_hint_id = hintKey;
+    update_hint_id = hint_key;
 
-    const hint = loadSavedHintFromTable(hintKey);
+    const hint = loadSavedHintFromTable(hint_key);
 
     $("#hint_title").val(hint["title"]);
     $("#hint_penalty").val(hint["penalty"]);
@@ -114,25 +113,10 @@ function onEditHintClick(hintKey){
 
 }
 
-/* Search and delete a hint from table */
-function deleteHints(hintKey){
-    let hints = $("#task_hints_table tbody tr");
-    let hint_row = null;
-    $.each(hints,function(index, hint){
-        if(hintKey === index){
-            hint_row = $("#hint_"+index)[0];
-        };
-    });
-    if(hint_row){
-        hint_row.remove();
-    }
-    update_hints_keys(hintKey);
-}
-
-function update_hints_keys(hint_key){
-
+/* Delete a hint from table and change the key for the other hints*/
+function deleteHints(hint_key){
     let table_hints = $("#task_hints_table tbody tr");
-    const table_hints_number = $("#task_hints_table tbody tr").length;
+    const table_hints_number = table_hints.length;
     let to_update_hints = [];
     for(let i = 0; i < table_hints_number; i++){
         if(i !== hint_key){
@@ -141,7 +125,6 @@ function update_hints_keys(hint_key){
     }
     $("#task_hints_table tbody").html("");
     $.each(to_update_hints, function(index,hint) {
-        console.log(index+"->"+hint);
         addHintOnTable(hint,index);
     })
 }
@@ -158,4 +141,5 @@ $("#hints_edit_modal").on("shown.bs.modal", function () {
 
 $("#hints_edit_modal").on("hidden.bs.modal", function () {
     eraseModalInputs();
+    update_hint_id = null;
 });

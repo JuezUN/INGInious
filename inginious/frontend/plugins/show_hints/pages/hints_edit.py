@@ -17,7 +17,9 @@ def edit_hints_tab(course, taskid, task_data, template_helper):
     if task_data.get("task_hints") is None:
         task_hints = {}
 
-    template = template_helper.get_custom_renderer(_SHOW_HINTS_TEMPLATES_PATH, layout=False).hints_tab(task_hints)
+    render = template_helper.get_custom_renderer(_SHOW_HINTS_TEMPLATES_PATH, layout=False)
+
+    template = str(render.hints_tab(task_hints)) + str(render.hints_row_table())
 
     return tab_id, link, template
 
