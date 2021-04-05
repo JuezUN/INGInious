@@ -10,7 +10,8 @@ class AnalyticsPage(SuperadminAuthPage):
 
         self.template_helper.add_javascript("https://d3js.org/d3.v3.min.js", position="header")
         self.template_helper.add_javascript("https://cdn.plot.ly/plotly-latest.min.js", position="header")
-
+        self.template_helper.add_javascript("https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js")
+        self.template_helper.add_css("https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.css")
         if use_minified():
             self.template_helper.add_javascript("/analytics/static/js/analytics.min.js")
             self.template_helper.add_css("/analytics/static/css/analytics.min.css")

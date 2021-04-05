@@ -74,5 +74,6 @@ $(function () {
     $('#analytics_date_filter').datetimepicker({locale: 'en', sideBySide: true, maxDate: moment(), format:'YYYY-MM-DD'});
 
     $("#analytics_date").val(`${new Date().getFullYear()}-01-02`);
-    $("#analytics_service").val("");
+    $("#analytics_course").multipleSelect({maxHeight: 140});
+    $("#analytics_service").multipleSelect({maxHeight: 140});
 });

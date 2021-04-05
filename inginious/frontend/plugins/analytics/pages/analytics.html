@@ -27,14 +27,18 @@ $var Navbar: $:NavbarF()
                     </div>
                 </div>
                 <div class="col-xs-6">
-                    <label for="analytics_service" class="control-label">
-                        $:_("Service"):
-                    </label>
-                    <select id="analytics_service" name="analytics_service" class="form-control">
-                        <option name="all" value="" selected>$:_("All services")</option>
-                        $for (key, value) in services:
-                            <option name="$key" value="$key">$value</option>
-                    </select>
+                    <div class="row">
+                        <label for="analytics_service" class="col-sm-3 control-label">
+                            $:_("Service"):
+                        </label>
+                        <div class="col-sm-12">
+                            <select id="analytics_service" name="analytics_service" multiple="multiple"
+                                    placeholder=$:_("\"All services\"") data-width="100%" >
+                                $for (key, value) in services:
+                                    <option name="$key" value="$key">$value</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group col-xs-12">
@@ -46,14 +50,18 @@ $var Navbar: $:NavbarF()
                            class="form-control">
                 </div>
                 <div class="col-xs-6">
-                    <label for="analytics_course" class="control-label">
-                        $:_("Course"):
-                    </label>
-                    <select class="dropdown-toggle form-control" name="analytics_course" id="analytics_course">
-                        <option value="">$:_("All courses")</option>
-                        $for course in all_courses:
-                            <option value="$course['id']">$course['name']</option>
-                    </select>
+                    <div class="row">
+                        <label for="analytics_course" class="col-sm-3 control-label">
+                            $:_("Course"):
+                        </label>
+                        <div class="col-sm-12">
+                            <select id="analytics_course" class="select" name="analytics_course" multiple="multiple"
+                                   placeholder=$:_("\"All courses\"") data-width="100%">
+                                $for course in all_courses:
+                                    <option name="$course['name']" value="$course['id']">$course['name']</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-xs-12 text-center">

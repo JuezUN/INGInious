@@ -23,11 +23,16 @@ def get_api_query_parameters(input_dict):
     if username:
         query_parameters['username'] = username
     if service:
-        query_parameters['service'] = service
+        query_parameters['service'] = _generate_query_for_list(service)
     if course_id:
-        query_parameters['course_id'] = course_id
+        query_parameters['course_id'] = _generate_query_for_list(course_id)
     if start_date:
         start_date = datetime.datetime(*map(int, start_date.split('-')))
         query_parameters['date'] = {'$gte': start_date}
 
     return query_parameters
+
+
+def _generate_query_for_list(names):
+    name_list = names.split(",")
+    return {"$in": name_list}
