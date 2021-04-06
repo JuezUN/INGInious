@@ -1,4 +1,4 @@
-$def with (course_id, task_id)
+$def with (course_id, task_id, hints_data)
 
 <h6>$:_("Hints")</h6>
 
@@ -27,37 +27,42 @@ $def with (course_id, task_id)
                         <h4>$:_("Hints")</h4>
                         <div id="hints_list">
                             <!-- Hint menu item template -->
-                            <div id="hint_key_menu">
-                                <a id="hint_key_item" class="list-group-item list-group-item-success disabled" style="cursor:pointer"
-                                   onclick="changeHint(key)" hidden>
-                                    <label>hint_tile</label>
-                                </a>
-                            </div>
+                        $for key, hint in hints_data.items()
+                                <div id="hint_menu_$key">
+                                    <a class="list-group-item list-group-item-success disabled" style="cursor:pointer"
+                                       onclick="changeHint($key)">
+                                        <label>$hints_data[key]["title"]</label>
+                                    </a>
+                                </div>
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <!-- Template for unlocked hints -->
+
                         <div id="hint_container">
-                            <div class="task_hints" id="hint_key" hidden>
-                                <div id="hint_key_title">
-                                    <h3>hint_title</h3>
+
+                        $for key, hint in hints_data.items()
+                            <div class="task_hints" id="hint_$key" hidden>
+                                <div class="hint_title">
+                                    <h3>$hints_data[key]["title"]</h3>
                                 </div>
-                                <div id="hint_key_content">
-                                    <p>hint_content</p>
+                                <div class="hint_content">
                                 </div>
                             </div>
+
                         </div>
+
                         <!-- Template for locked hints -->
                         <div style="margin-top:20px" id="hints_unlock_forms_list">
-                            <div class="hint_unlock_form" id="hint_form_key" hidden>
+                            <div class="hint_unlock_form" hidden>
                                 <div class="alert alert-info">
                                     <div>
                                         You have not unlocked this hint yet. <b>When you unlock the hint, a
                                         penalty will be applied on your task submission score</b>. Do you want to unlock it?
                                     </div>
                                 </div>
-                                <div id="hint_unlock_key_penalty">
-                                    <p>This will reduce a <b>hint_penalty%</b> of your total submission score.
+                                <div class="hint_unlock_penalty">
+                                    <p>This will reduce a <b class="hint_penalty"></b> of your total submission score.
                                 </div>
                                 <button style="float:right" class="btn btn-success" onclick="setHintAsAllowed(key)">Get Hint</button>
                             </div>
@@ -84,6 +89,10 @@ $def with (course_id, task_id)
 
     function getTaskId(){
         return "$task_id";
+    }
+
+    function testS(){
+        return "$hints_data";
     }
 
 </script>

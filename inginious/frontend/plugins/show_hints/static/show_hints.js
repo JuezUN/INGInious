@@ -6,8 +6,7 @@ function loadHintsOnModal(){
         task_id: getTaskId()
     }).done(function(result){
         to_show_hints = result;
-        console.log(to_show_hints);
-        setHintsOnMenu(to_show_hints);
+        //setHintsOnMenu(to_show_hints);
         setHintsOnContainer(to_show_hints);
     })
 }
@@ -29,39 +28,37 @@ function setHintsOnMenu(to_show_hints){
 function setHintUnlockedStatus(index,hint){
     let hint_status = hint["allowed_to_see"];
     if(hint_status){
-        $("#hint_"+index+"_item").attr('class', 'list-group-item list-group-item-success');
+        $("#hint_menu_" + index).find("a").attr('class', 'list-group-item list-group-item-success');
     }
 }
 
 function setHintsOnContainer(to_show_hints){
     let hint_status;
-    $.each(to_show_hints, function(index, element){
-        hint_status = element["allowed_to_see"];
+    $.each(to_show_hints, function(index, hint){
+        hint_status = hint["allowed_to_see"];
 
-        let new_hint = $("#hint_container").clone().html();
-        new_hint = new_hint.replace(/key/g, index);
+        let hint_container = $("#hint_"+index);
 
-        new_hint_title = element["title"];
-        new_hint = new_hint.replace("hint_title",new_hint_title);
+        console.log(hint_status);
 
         if(hint_status){
 
-            new_hint_content = element["content"];
-            new_hint = new_hint.replace("hint_content", new_hint_content);
+            new_hint_content = hint["content"];
+            hint_container.find(".hint_content").html(new_hint_content);
 
         }else{
 
             let new_hint = $("#hints_unlock_forms_list").clone().html();
             new_hint = new_hint.replace(/key/g, index);
 
-            new_hint_penalty = element["penalty"];
-            new_hint = new_hint.replace("hint_penalty", new_hint_penalty);
+            hint_container.find(".hint_content").append(new_hint);
+            hint_container.find(".hint_content .hint_unlock_form").show();
 
-            $("#hints_unlock_forms_list").append(new_hint);
+            new_hint_penalty = hint["penalty"];
+            hint_container.find(".hint_content .hint_unlock_form .hint_penalty").html(new_hint_penalty + "%");
         }
 
-        $("#hint_container").append(new_hint);
-        setHintUnlockedStatus(index,element);
+        setHintUnlockedStatus(index,hint);
     })
 }
 
