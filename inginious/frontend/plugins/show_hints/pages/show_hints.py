@@ -1,6 +1,6 @@
 import os
 from collections import OrderedDict
-from inginious.frontend.parsable_text import ParsableText
+from .constants import use_minified
 
 _SHOW_HINTS_TEMPLATES_PATH = os.path.join(os.path.dirname(__file__),'templates')
 
@@ -32,4 +32,8 @@ def get_task_hints_basic_data(task):
 
 def add_static_files(template_helper):
 
-    template_helper.add_javascript("/show_hints/static/show_hints.js")
+    if use_minified():
+        template_helper.add_javascript("/show_hints/static/js/show_hints.min.js")
+    else:
+        template_helper.add_javascript("/show_hints/static/js/show_hints.js")
+        template_helper.add_css("/show_hints/static/css/show_hints.css")

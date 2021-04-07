@@ -6,8 +6,15 @@ function displayAlert(message, duration){
     alert.text(message);
     alert.show();
     setTimeout(function(){
-        alert.hide();
+        clearAlert();
     }, duration);
+}
+
+/* Clear and hide modal alert*/
+function clearAlert(){
+    let alert = $("#hint_edit_alert");
+    alert.text("");
+    alert.hide();
 }
 
 /* Load code editor for the hint content on modal */
@@ -142,4 +149,5 @@ $("#hints_edit_modal").on("shown.bs.modal", function () {
 $("#hints_edit_modal").on("hidden.bs.modal", function () {
     eraseModalInputs();
     update_hint_id = null;
+    clearAlert();
 });

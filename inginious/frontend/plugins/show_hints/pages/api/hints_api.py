@@ -64,10 +64,10 @@ class UserHintsAPI(APIAuthenticatedPage):
 
     def check_locked_hint_status(self, hints, task_id, username):
 
-        data = self.database.hints.find_one({"taskid": task_id,
+        data = self.database.user_hints.find_one({"taskid": task_id,
                                             "username": username})
         if data is None:
-             # data = self.create_hint_list_for_user(task_id, username)
+            data = self.create_hint_list_for_user(task_id, username)
             return 200, ""
 
         to_show_hints = []
@@ -91,12 +91,12 @@ class UserHintsAPI(APIAuthenticatedPage):
 
     def create_hint_list_for_user(self, task_id, username):
 
-        data = self.database.hints.insert({"taskid": task_id, "username": username, "allowedHints": [], "penalty": 0})
+        data = self.database.user_hints.insert({"taskid": task_id, "username": username, "allowedHints": [], "penalty": 0})
         return data
 
     def check_allowed_hint_in_database(self, hint_id, task_id, username):
 
-        data = self.database.hints.find_one({"taskid": task_id, "username": username})
+        data = self.database.user_hints.find_one({"taskid": task_id, "username": username})
         allowed_hints = data["allowedHints"]
 
         if hint_id in allowed_hints:
@@ -108,7 +108,7 @@ class UserHintsAPI(APIAuthenticatedPage):
 
         if not self.check_allowed_hint_in_database(hint_id, task_id, username):
 
-            data = self.database.hints.find_one_and_update({"taskid": task_id, "username": username},{
+            data = self.database.user_hints.find_one_and_update({"taskid": task_id, "username": username},{
                                                                 "$push": {"allowedHints":hint_id}
                                                             })
             return 200, ""

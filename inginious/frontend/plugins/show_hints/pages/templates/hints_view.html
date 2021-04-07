@@ -7,7 +7,6 @@ $def with (course_id, task_id, hints_data)
         <a class="list-group-item list-group-item-info"
            data-toggle="modal"
            data-target="#hints_modal"
-           style="cursor:pointer"
         >
             <i class="fa fa-question"></i>&nbsp;
             $:_("Hints")
@@ -23,15 +22,21 @@ $def with (course_id, task_id, hints_data)
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-sm-4" id="hints_navigation_menu" style="border-right: 1px solid #e5e5e5">
-                        <h4>$:_("Hints")</h4>
+                    <alert id="hint_modal_alert" hidden></alert>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4" id="hints_navigation_menu">
+                        <h4>$:_("Hints List")</h4>
                         <div id="hints_list">
                             <!-- Hint menu item template -->
                         $for key, hint in hints_data.items()
                                 <div id="hint_menu_$key">
-                                    <a class="list-group-item list-group-item-success disabled" style="cursor:pointer"
+                                    <a class="list-group-item list-group-item"
                                        onclick="changeHint($key)">
                                         <label>$hints_data[key]["title"]</label>
+                                        <div class="hint_penalty">
+                                            $:_("Penalty"): <b>$hints_data[key]["penalty"]</b>%
+                                        </div>
                                     </a>
                                 </div>
                         </div>
@@ -53,33 +58,27 @@ $def with (course_id, task_id, hints_data)
                         </div>
 
                         <!-- Template for locked hints -->
-                        <div style="margin-top:20px" id="hints_unlock_forms_list">
-                            <div class="hint_unlock_form" hidden>
-                                <div class="alert alert-info">
-                                    <div>
-                                        You have not unlocked this hint yet. <b>When you unlock the hint, a
-                                        penalty will be applied on your task submission score</b>. Do you want to unlock it?
-                                    </div>
+                        <div id="hints_unlock_forms_list" hidden>
+                            <div class="hint_unlock_form">
+                                <div class="form-group alert alert-info">
+                                   $:_("You have not unlocked this hint yet. <b>When you unlock the hint, a penalty will be applied on your task submission score</b>. Do you want to unlock it?")
                                 </div>
-                                <div class="hint_unlock_penalty">
-                                    <p>This will reduce a <b class="hint_penalty"></b> of your total submission score.
+                                <div class="form-group hint_unlock_penalty">
+                                    <p>$:_("This will reduce a <b></b> of your total submission score").</p>
                                 </div>
-                                <button style="float:right" class="btn btn-success" onclick="setHintAsAllowed(key)">Get Hint</button>
+                                <button class="form-group btn btn-success" onclick="setHintAsAllowed(key)">$:_("Get Hint")</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">$:_("Close")</button>
             </div>
         </div>
     </div>
 </div>
 
-<div id="unlock_hint_form">
-
-</div>
 
 <script>
 
@@ -89,10 +88,6 @@ $def with (course_id, task_id, hints_data)
 
     function getTaskId(){
         return "$task_id";
-    }
-
-    function testS(){
-        return "$hints_data";
     }
 
 </script>

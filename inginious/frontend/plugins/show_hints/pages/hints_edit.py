@@ -1,6 +1,7 @@
 import os
 from collections import OrderedDict
 from inginious.frontend.pages.course_admin.task_edit import CourseEditTask
+from .constants import use_minified
 
 _SHOW_HINTS_TEMPLATES_PATH = os.path.join(os.path.dirname(__file__),'templates')
 
@@ -29,7 +30,11 @@ def hints_modal(course, taskid, task_data, template_helper):
 
 
 def add_static_files(template_helper):
-    template_helper.add_javascript("/show_hints/static/hints_edit.js")
+
+    if use_minified():
+        template_helper.add_javascript("/show_hints/static/js/hints_edit.min.js")
+    else:
+        template_helper.add_javascript("/show_hints/static/js/hints_edit.js")
 
 def on_task_submit(course, taskid, task_data, task_fs):
 

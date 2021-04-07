@@ -1,3 +1,25 @@
+function showHintAlert(message, status){
+    let alert = $("#hint_modal_alert");
+    if(status == "success"){
+        alert.attr("class","alert-success");
+    }
+    if(status == "error"){
+        alert.attr("class","alert-danger");
+    }
+    alert.text(message);
+    alert.show();
+    setTimeout(function(){
+        hideHintAlert(alert);
+    },10000);
+}
+
+function hideHintAlert(alert){
+    alert.attr("class","");
+    alert.text();
+    alert.hide();
+}
+
+/* Get the left hint content for the allowed hints*/
 function loadHintsOnModal(){
     let to_show_hints = {};
 
@@ -6,40 +28,30 @@ function loadHintsOnModal(){
         task_id: getTaskId()
     }).done(function(result){
         to_show_hints = result;
-        //setHintsOnMenu(to_show_hints);
         setHintsOnContainer(to_show_hints);
     })
 }
 
-function setHintsOnMenu(to_show_hints){
-    $.each(to_show_hints, function(index, element){
-        let new_hint_menu_item = $("#hint_key_menu").clone().html();
-        new_hint_menu_item = new_hint_menu_item.replace(/key/g, index);
-        new_hint_menu_item = new_hint_menu_item.replace("hidden", "");
-
-        new_hint_title = element["title"];
-        new_hint_menu_item = new_hint_menu_item.replace("hint_tile",new_hint_title);
-
-        $("#hints_list").append(new_hint_menu_item);
-        setHintUnlockedStatus(index,element);
-    })
-}
-
+/* Set message on the menu element for the hint*/
 function setHintUnlockedStatus(index,hint){
     let hint_status = hint["allowed_to_see"];
+    hint_option = $("#hint_menu_" + index).find("a");
     if(hint_status){
-        $("#hint_menu_" + index).find("a").attr('class', 'list-group-item list-group-item-success');
+        hint_option.attr('class', 'list-group-item list-group-item-success');
+    }else{
+        hint_option.attr('class', 'list-group-item list-group-item-success disabled');
+        let message = hint_option.find("label").html();
+        hint_option.find("label").html();
     }
 }
 
+/* Set the elements to show in the hint content */
 function setHintsOnContainer(to_show_hints){
     let hint_status;
     $.each(to_show_hints, function(index, hint){
         hint_status = hint["allowed_to_see"];
 
         let hint_container = $("#hint_"+index);
-
-        console.log(hint_status);
 
         if(hint_status){
 
@@ -54,14 +66,23 @@ function setHintsOnContainer(to_show_hints){
             hint_container.find(".hint_content").append(new_hint);
             hint_container.find(".hint_content .hint_unlock_form").show();
 
-            new_hint_penalty = hint["penalty"];
-            hint_container.find(".hint_content .hint_unlock_form .hint_penalty").html(new_hint_penalty + "%");
+            hint_penalty = hint["penalty"];
+
+            /* Check if penalty exists to change the message */
+
+            if(hint_penalty && hint_penalty != 0){
+                hint_container.find(".hint_content .hint_unlock_penalty b").html(hint_penalty + "%");
+            }else{
+                let message = 'You can get this hint with no penalty.'
+                hint_container.find(".hint_content .hint_unlock_penalty").html(message);
+            }
         }
 
         setHintUnlockedStatus(index,hint);
     })
 }
 
+/* Show or hide the hints by clicking the menu items*/
 function changeHint(hintKey){
     $(".task_hints").each(function(index, element){
         if(element.id.includes(hintKey)){
@@ -70,15 +91,9 @@ function changeHint(hintKey){
             $("#" + element.id).hide();
         }
     })
-    $(".hint_unlock_form").each(function(index, element){
-        if(element.id.includes(hintKey)){
-            $("#" + element.id).show(200);
-        }else{
-            $("#" + element.id).hide();
-        }
-    })
 }
 
+/* Add the hint on the student allowed hints list*/
 function setHintAsAllowed(selected_hint_id){
     $.ajax({
         url: "/api/hints_api/",
@@ -89,8 +104,8 @@ function setHintAsAllowed(selected_hint_id){
             hint_id: selected_hint_id
         }
     }).done(function(result){
-        to_show_hints = result;
-
+        showHintAlert(result["message"],result["status"]);
+        console.log(123);
     })
 }
 

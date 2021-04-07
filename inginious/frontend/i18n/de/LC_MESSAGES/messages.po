@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-24 23:30-0500\n"
+"POT-Creation-Date: 2021-04-06 23:02-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -928,6 +928,7 @@ msgstr ""
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:68
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:105
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_edit_modal.html:38
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
 #: inginious/frontend/templates/course_admin/danger_zone.html:81
 #: inginious/frontend/templates/course_admin/danger_zone.html:160
@@ -1053,6 +1054,7 @@ msgstr ""
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:195
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:82
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:76
 #: inginious/frontend/templates/auth.html:16
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
 #: inginious/frontend/templates/lti_login.html:30
@@ -1758,6 +1760,7 @@ msgstr ""
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:11
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:106
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:143
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_edit_modal.html:37
 msgid "Save"
 msgstr ""
 
@@ -2544,6 +2547,82 @@ msgid ""
 "the students does not exists it will be registered using a provisional "
 "password and will receive an email asking them to confirm the account and"
 " after that, the student can change the password."
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/hints_edit.py:11
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:3
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:12
+msgid "Hints"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_edit_modal.html:5
+msgid "Create new hint"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_edit_modal.html:11
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:19
+msgid "Hint title"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_edit_modal.html:15
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:38
+msgid "Penalty"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_edit_modal.html:17
+#, python-format
+msgid ""
+"\"Grade penalty by using the hint. You can set a penalty from 0.0% to "
+"100.0% for the student grade, if he chose to see the hint.\""
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_edit_modal.html:25
+msgid "Hint content"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:6
+msgid ""
+"This is used to add hints to the task that can be accessed before the "
+"task ends"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:11
+msgid "Set of hints"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:22
+msgid "Penalty per hint (%)"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:25
+msgid "Hint options"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:61
+msgid "Add hint"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:21
+msgid "Task hints"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:29
+msgid "Hints List"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:64
+msgid ""
+"You have not unlocked this hint yet. <b>When you unlock the hint, a "
+"penalty will be applied on your task submission score</b>. Do you want to"
+" unlock it?"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:67
+msgid "This will reduce a <b></b> of your total submission score"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:69
+msgid "Get Hint"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:3
