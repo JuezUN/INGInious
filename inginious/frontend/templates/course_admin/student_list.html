@@ -23,7 +23,6 @@ $def NavbarF():
 $var Navbar: $:NavbarF()
 
 <h2>$:_("Students")</h2>
-
 <div role="tabpanel">
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#tab_students" aria-controls="students" role="tab" data-toggle="tab">
@@ -36,6 +35,8 @@ $var Navbar: $:NavbarF()
     </ul>
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="tab_students">
+            <h4>$:_("Number of registered students:") $(len(user_data)-len(course.get_staff()))</h4>
+            <h4>$:_("Total number of registered users:") $len(user_data)</h4>
             $:include.course_admin.student_list_table(course,user_data[len(course.get_staff()):len(user_data)], False)
             $if user_manager.has_admin_rights_on_course(course):
                 <div class="row">
@@ -49,6 +50,8 @@ $var Navbar: $:NavbarF()
             $:template_helper.call("register_students")
         </div>
         <div role="tabpanel" class="tab-pane" id="tab_staff">
+            <h4>$:_("Number of registered staff:") $len(course.get_staff())</h4>
+            <h4>$:_("Total number of registered users:") $len(user_data)</h4>
             $:include.course_admin.student_list_table(course,user_data[0:len(course.get_staff())], True)
         </div>
     </div>

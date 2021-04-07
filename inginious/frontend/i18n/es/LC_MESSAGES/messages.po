@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-26 08:19-0500\n"
+"POT-Creation-Date: 2021-04-07 17:50-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -600,7 +600,7 @@ msgstr "Configuración del curso"
 #: inginious/frontend/templates/course_admin/classroom_edit.html:102
 #: inginious/frontend/templates/course_admin/student_list.html:19
 #: inginious/frontend/templates/course_admin/student_list.html:25
-#: inginious/frontend/templates/course_admin/student_list.html:30
+#: inginious/frontend/templates/course_admin/student_list.html:29
 #: inginious/frontend/templates/course_admin/teams_edit.html:189
 #: inginious/frontend/templates/team.html:80
 #: inginious/frontend/templates/team.html:153
@@ -4491,9 +4491,18 @@ msgstr "\"Ver la evaluación de la tarea\""
 msgid "\"View all submissions\""
 msgstr "\"Ver todas las tareas enviadas\""
 
-#: inginious/frontend/templates/course_admin/student_list.html:33
+#: inginious/frontend/templates/course_admin/student_list.html:32
 msgid "Teaching staff"
 msgstr "Tutores"
+
+#: inginious/frontend/templates/course_admin/student_list.html:38
+#, fuzzy
+msgid "Number of registered students:"
+msgstr "Número de estudiantes registrados:"
+
+#: inginious/frontend/templates/course_admin/student_list.html:39
+msgid "Total number of registered users:"
+msgstr "Número total de usuarios registrados"
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:15
 msgid "member"
