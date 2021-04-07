@@ -65,6 +65,31 @@ const AnalyticsDiagram = (function () {
     return AnalyticsDiagram;
 })();
 
+function getAllAnalytics(course_id) {
+    const contentDanger = "Error getting the information. Try later";
+    const apiPath = "/api/analytics/";
+    return $.get(generate_get_url_plot(apiPath), function (result) {
+        exportCSVFile(result, "analytics");
+    }, "json").fail(function () {
+
+    });
+}
+function exportCSVFile(items, fileTitle) {
+    const filename = `${fileTitle}.csv`;
+    const csv = 'data:text/csv;charset=utf-8,' + Papa.unparse(items);
+    const data = encodeURI(csv);
+    const link = document.createElement('a');
+
+    link.setAttribute('href', data);
+    link.setAttribute('download', filename);
+
+    // Append link to the body in order to make it work on Firefox.
+    document.body.appendChild(link);
+
+    link.click();
+    link.remove();
+}
+
 $(function () {
 
     const tabToAnalyticsPlot = {

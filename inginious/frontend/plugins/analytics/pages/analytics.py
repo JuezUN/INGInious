@@ -8,6 +8,8 @@ class AnalyticsPage(SuperadminAuthPage):
     def GET_AUTH(self):
         self.check_superadmin_rights()
 
+        self.template_helper.add_javascript(
+            "https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.6/papaparse.min.js")
         self.template_helper.add_javascript("https://d3js.org/d3.v3.min.js", position="header")
         self.template_helper.add_javascript("https://cdn.plot.ly/plotly-latest.min.js", position="header")
         self.template_helper.add_javascript("https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js")
