@@ -8,6 +8,16 @@ function get_services_names(services = []) {
     });
 }
 
+function getCourseNameByKey(key){
+    return all_courses[key]
+}
+
+function getCoursesNames(services = []) {
+    return services.map(value => {
+        return getCourseNameByKey(value);
+    });
+}
+
 function generate_get_url_plot(path) {
     const request = [path];
     const parameters = [];
@@ -61,7 +71,8 @@ $(function () {
         "heat-map-tab": new HeatMap(),
         "plot-visits-per-day-tab": new VisitsPerDayChart(),
         "box-plot-tab": new BoxPlot(),
-        "radar-plot-tab": new RadarPlot()
+        "radar-plot-tab": new RadarPlot(),
+        "bar-plot-tab": new StackedBarPlot()
     };
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         const analytics_plot = tabToAnalyticsPlot[e.target.id];

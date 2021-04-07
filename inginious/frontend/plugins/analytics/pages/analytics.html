@@ -76,6 +76,7 @@ $var Navbar: $:NavbarF()
     <li><a id="plot-visits-per-day-tab" data-toggle="tab" href="#plot-visits-per-day-tab-content">$:_("Visits per day")</a></li>
     <li><a id="box-plot-tab" data-toggle="tab" href="#box-plot-tab-content">$:_("Box plot")</a></li>
     <li><a id="radar-plot-tab" data-toggle="tab" href="#radar-plot-tab-content">$:_("Radar plot")</a></li>
+    <li><a id="bar-plot-tab" data-toggle="tab" href="#analyticsPerCourseContent">$:_("Analytics per course")</a></li>
 </ul>
 
 <div class="tab-content">
@@ -93,7 +94,21 @@ $var Navbar: $:NavbarF()
         <h3 class="text-center">$:_("Radar plot")</h3>
         <div id="analytics_radar_plot" class="statistics-plot"><!-- Chart will be drawn inside this DIV --></div>
     </div>
+    <div id="analyticsPerCourseContent" class="tab-pane fade in">
+        <h3 class="text-center">$:_("Analytics per course")</h3>
+        <div id="analyticsPerCoursePlot" class="statistics-plot"></div>
+    </div>
 </div>
 <script type="text/javascript">
-    const all_services = $:{dict(services)};
+    function getCoursesDict(){
+        const courses = $:all_courses;
+        const coursesDict = {};
+        $$.each(courses,(_,course)=> {
+            coursesDict[course["id"]] = course["name"];
+        });
+        return coursesDict;
+    }
+    const all_services = $:{dict(services)}
+    const all_courses = getCoursesDict();
+
 </script>

@@ -21,6 +21,7 @@ class AnalyticsPage(SuperadminAuthPage):
             self.template_helper.add_javascript("/analytics/static/js/time_series.js")
             self.template_helper.add_javascript("/analytics/static/js/box_plot.js")
             self.template_helper.add_javascript("/analytics/static/js/radar.js")
+            self.template_helper.add_javascript("/analytics/static/js/stacked_bar_plot.js")
             self.template_helper.add_css("/analytics/static/css/analytics.css")
 
         all_services = ServicesCollectionManagerSingleton.get_instance().get_all_services()
