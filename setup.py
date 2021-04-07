@@ -15,7 +15,7 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 install_requires = [
     "docker>=2.5.0",
-    "docutils>=0.14",
+    "docutils==0.16",
     "pymongo>=3.2.2",
     "PyYAML>=3.11",
     "web.py==0.40",
@@ -81,5 +81,5 @@ setup(
     author_email="inginious@info.ucl.ac.be",
     license="AGPL 3",
     url="https://github.com/JuezUN/INGInious",
-    # long_description=open(os.path.join(os.path.dirname(__file__), 'README.md'), encoding='utf8').read()
+    long_description=open(os.path.join(os.path.dirname(__file__), 'README.md'), encoding='utf8').read()
 )
