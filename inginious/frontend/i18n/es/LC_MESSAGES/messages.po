@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-24 22:18-0500\n"
+"POT-Creation-Date: 2021-04-07 14:47-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1749,7 +1749,7 @@ msgstr "Calificador"
 
 #: inginious/frontend/plugins/grader_generator/pages/grader_form.py:25
 msgid "'Maximum diff lines' must be an integer"
-msgstr "'Máximo líneas de diferencia' debe ser entero"
+msgstr "'Número máximo de líneas de diferencia' debe ser entero"
 
 #: inginious/frontend/plugins/grader_generator/pages/grader_form.py:31
 msgid "'Diff context lines' must be an integer"
@@ -1773,7 +1773,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/grader_form.py:54
 msgid "'Maximum diff lines' must be positive"
-msgstr "'Máximo líneas de diferencia' debe ser positivo."
+msgstr "'Número máximo de líneas de diferencia' debe ser positivo."
 
 #: inginious/frontend/plugins/grader_generator/pages/grader_form.py:57
 msgid "'Diff context lines' must be positive"
@@ -1922,7 +1922,7 @@ msgstr "\"Id del Problema\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:34
 msgid "Maximum diff lines"
-msgstr "Máximo líneas de diferencia"
+msgstr "Número máximo de líneas de diferencia"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:36
 msgid "\"The maximum number of lines that the diff tool should show\""
