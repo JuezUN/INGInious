@@ -72,12 +72,26 @@ class StudentsListPage(INGIniousAdminPage):
                         }
                 },
                 {
-                    "$project": {
-                        "taskid": 1,
-                        "username": 1,
-                        "realname": "$user_info.realname",
+                    "$group": {
+                        "_id": {
+                            "taskid": "$taskid",
+                            "username": "$username",
+                            "realname": "$user_info.realname"
+                        },
                         "grade": {"$max": "$grade"}
                     }
+                },
+                {
+                    "$project": {
+                        "_id": 0,
+                        "taskid": "$_id.taskid",
+                        "username": "$_id.username",
+                        "realname": "$_id.realname",
+                        "grade": 1
+                    }
+                },
+                {
+                    "$sort": {"username": 1}
                 }
 
             ]))

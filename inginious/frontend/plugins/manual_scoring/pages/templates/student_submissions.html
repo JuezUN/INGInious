@@ -57,7 +57,17 @@ $var Navbar: $:NavbarF()
             <td><a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/submission/$submission"
                 class="font_size-m">
                 $data[submission]["date"]</a></td>
-            <td class="font_size-m">$data[submission]["result"]</td>
+            <td class="font_size-m">
+                $if data[submission]["result"] == _("Not available"):
+                    <div style="color: red">
+                        $data[submission]["result"]
+                        <i class="fa fa-question-circle" style="color: black" data-toggle="tooltip"
+                           aria-hidden="true" data-placement="right"
+                           title=$:_("\"It is possible that the grader could not finish its process with this submission.\"")></i>
+                    </div>
+                $else:
+                   $data[submission]["result"]
+            </td>
             <td class="font_size-m">$data[submission]["grade"]</td>
             <td class="font_size-m">$data[submission]["manual_grade"]</td>
             <td class="font_size-m">

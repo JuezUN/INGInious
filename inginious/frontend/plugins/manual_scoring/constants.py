@@ -48,3 +48,34 @@ def get_render_path():
 
 def get_static_folder_path():
     return _static_folder_path
+
+
+def get_element_of_dict(dictionary, key):
+    if key in dictionary:
+        return dictionary[key], ""
+    else:
+        return None, key
+
+
+def get_element_of_dict_double_key(dictionary, key_1, key_2):
+    internal_dict, error = get_element_of_dict(dictionary, key_1)
+    if internal_dict:
+        return get_element_of_dict(internal_dict, key_2)
+    if not error:
+        error = key_1 + ": internal_dict is empty"
+    return internal_dict, error
+
+
+def add_error_to_list(error_list, new_error):
+    if new_error != "":
+        error_list.append(new_error)
+
+
+def get_dict_value(dictionary, key_1, key_2=None, error_list=None):
+    if key_2:
+        value, error = get_element_of_dict_double_key(dictionary, key_1, key_2)
+    else:
+        value, error = get_element_of_dict(dictionary, key_1)
+    if error_list:
+        add_error_to_list(error_list, error)
+    return value if value else _("Not available")

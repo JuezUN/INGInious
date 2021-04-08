@@ -6,7 +6,7 @@
 from collections import defaultdict
 
 from inginious.frontend.pages.utils import INGIniousAuthPage
-from inginious.frontend.plugins.manual_scoring.constants import get_render_path, get_use_minify
+from inginious.frontend.plugins.manual_scoring.constants import get_render_path, get_use_minify, get_dict_value
 
 base_renderer_path = get_render_path()
 
@@ -93,7 +93,7 @@ class StudentFeedbackListPage(INGIniousAuthPage):
                 "_id": feedback["_id"],
                 "date": feedback["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S"),
                 "grade": feedback["grade"],
-                "result": feedback["custom"]["custom_summary_result"],
+                "result": get_dict_value(feedback, "custom", "custom_summary_result"),
                 "manual_grade": feedback["manual_scoring"]["grade"],
                 "task_name": course.get_task(feedback["taskid"]).get_name(self.user_manager.session_language()),
                 "task_id": feedback["taskid"]
