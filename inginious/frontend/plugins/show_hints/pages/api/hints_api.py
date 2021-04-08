@@ -53,17 +53,23 @@ class UserHintsAPI(APIAuthenticatedPage):
         if not self.user_manager.course_is_user_registered(course,username):
             raise APIError(400,{"error":"The course does not exists"})
 
-        task_hits = self.get_task_hints(task)
+        task_hints = self.get_task_hints(task)
 
-        return 200, self.add_hint_on_allowed(hint_id, task_id, username)
+        self.add_hint_on_allowed(hint_id, task_id, username, task_hints)
+
+        return 200, {"status":"success","message":"Unlocked list updated successfully (Penalty was applied)"}
 
     def get_task_hints(self, task):
 
+        """ Method to get the task hints """
         hints = task._data.get("task_hints", [])
         return hints
 
     def check_locked_hint_status(self, hints, task_id, username):
 
+        """ Method to check each hint status, and return the content
+            if it is allowed
+        """
         data = self.database.user_hints.find_one({"taskid": task_id,
                                             "username": username})
         if data is None:
@@ -96,6 +102,7 @@ class UserHintsAPI(APIAuthenticatedPage):
 
     def check_allowed_hint_in_database(self, hint_id, task_id, username):
 
+        """ Method needed to check if the hint is already in the user hints """
         data = self.database.user_hints.find_one({"taskid": task_id, "username": username})
         allowed_hints = data["allowedHints"]
 
@@ -104,14 +111,41 @@ class UserHintsAPI(APIAuthenticatedPage):
 
         return False
 
-    def add_hint_on_allowed(self, hint_id, task_id, username):
+    def add_hint_on_allowed(self, hint_id, task_id, username, task_hints):
 
+        """ Method to add the new unlocked hint in the user allowed hints """
         if not self.check_allowed_hint_in_database(hint_id, task_id, username):
 
             data = self.database.user_hints.find_one_and_update({"taskid": task_id, "username": username},{
-                                                                "$push": {"allowedHints":hint_id}
+                                                                "$push": {
+                                                                    "allowedHints":hint_id
+                                                                }
                                                             })
+            self.update_total_penalty(data, task_hints)
+
             return 200, ""
+
+    def update_total_penalty(self, data, task_hints):
+
+        """ Method needed to compare the saved hints per student, and the task hints
+            to change penalty to the student
+        """
+        new_penalty = 0;
+        allowed_hints = data["allowedHints"]
+
+        for key, hint in task_hints.items():
+            if key in allowed_hints:
+                new_penalty += float(hint["penalty"])
+
+        if new_penalty > 100:
+
+            new_penalty = 100
+
+        self.database.user_hints.update({"taskid": data["taskid"], "username": data["username"]},
+                                         {"$set" :
+                                              {"penalty": new_penalty}
+                                        })
+
 
     def parse_rst_content(self, content):
 

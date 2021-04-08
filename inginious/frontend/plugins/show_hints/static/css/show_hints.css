@@ -8,18 +8,11 @@
 
 #hints_list{
     margin-top: 20px;
+    padding: 5px 10px;
     height: 200px;
     overflow: scroll;
     overflow-x: hidden;
-
-    background-color: #fcfcfc;
-  border: 1px solid #ddd;
-  border-radius: 4px 0 4px 0;
-  color: #3b3c3e;
-  font-size: 12px;
-  font-weight: bold;
-  left: -1px;
-  padding: 10px 7px 5px;
+    border: 1px solid #e5e5e5;
 }
 
 #hints_list a{

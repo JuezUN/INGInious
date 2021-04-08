@@ -22,20 +22,25 @@ $def with (course_id, task_id, hints_data)
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <alert id="hint_modal_alert" hidden></alert>
+                    <div>
+                        <div id="hint_modal_alert" hidden></div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4" id="hints_navigation_menu">
                         <h4>$:_("Hints List")</h4>
                         <div id="hints_list">
                             <!-- Hint menu item template -->
-                        $for key, hint in hints_data.items()
+                            $for key, hint in hints_data.items():
                                 <div id="hint_menu_$key">
                                     <a class="list-group-item list-group-item"
                                        onclick="changeHint($key)">
                                         <label>$hints_data[key]["title"]</label>
                                         <div class="hint_penalty">
+                                        $if float(hints_data[key]["penalty"]):
                                             $:_("Penalty"): <b>$hints_data[key]["penalty"]</b>%
+                                        $else:
+                                            $:_("No penalty")
                                         </div>
                                     </a>
                                 </div>

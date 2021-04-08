@@ -1,10 +1,10 @@
 function showHintAlert(message, status){
     let alert = $("#hint_modal_alert");
     if(status == "success"){
-        alert.attr("class","alert-success");
+        alert.attr("class","alert alert-success");
     }
     if(status == "error"){
-        alert.attr("class","alert-danger");
+        alert.attr("class","alert alert-danger");
     }
     alert.text(message);
     alert.show();
@@ -15,7 +15,7 @@ function showHintAlert(message, status){
 
 function hideHintAlert(alert){
     alert.attr("class","");
-    alert.text();
+    alert.text("");
     alert.hide();
 }
 
@@ -37,9 +37,9 @@ function setHintUnlockedStatus(index,hint){
     let hint_status = hint["allowed_to_see"];
     hint_option = $("#hint_menu_" + index).find("a");
     if(hint_status){
-        hint_option.attr('class', 'list-group-item list-group-item-success');
+        hint_option.attr("class", "list-group-item list-group-item-success");
     }else{
-        hint_option.attr('class', 'list-group-item list-group-item-success disabled');
+        hint_option.attr("class", "list-group-item list-group-item-success disabled");
         let message = hint_option.find("label").html();
         hint_option.find("label").html();
     }
@@ -105,7 +105,7 @@ function setHintAsAllowed(selected_hint_id){
         }
     }).done(function(result){
         showHintAlert(result["message"],result["status"]);
-        console.log(123);
+        loadHintsOnModal();
     })
 }
 
