@@ -4,9 +4,11 @@
 # more information about the licensing of this file.
 
 """ General data for all manual scoring pages """
+import os
 
 _render_path = 'frontend/plugins/manual_scoring/pages/templates'
 _use_minified = True
+_static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
 
 def get_manual_scoring_link_code(course):
@@ -42,3 +44,7 @@ def get_use_minify():
 def get_render_path():
     """ getter for render path """
     return _render_path
+
+
+def get_static_folder_path():
+    return _static_folder_path

@@ -6,7 +6,7 @@
 from inginious.frontend.pages.api._api_page import APIError
 from inginious.frontend.pages.utils import INGIniousAuthPage
 from inginious.frontend.parsable_text import ParsableText
-from inginious.frontend.plugins.manual_scoring.pages.constants import get_render_path, get_use_minify
+from inginious.frontend.plugins.manual_scoring.constants import get_render_path, get_use_minify
 from .rubric import get_manual_scoring_data, get_submission_result_text, get_rubric_content, \
     add_static_files_to_render_notebook
 

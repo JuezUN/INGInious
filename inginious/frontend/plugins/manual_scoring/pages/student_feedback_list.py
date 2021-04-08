@@ -3,10 +3,10 @@
 # This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
 # more information about the licensing of this file.
 """ The list of feedbacks for a student """
-from collections import OrderedDict, defaultdict
+from collections import defaultdict
 
 from inginious.frontend.pages.utils import INGIniousAuthPage
-from inginious.frontend.plugins.manual_scoring.pages.constants import get_render_path, get_use_minify
+from inginious.frontend.plugins.manual_scoring.constants import get_render_path, get_use_minify
 
 base_renderer_path = get_render_path()
 
