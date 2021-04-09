@@ -77,10 +77,12 @@ def add_error_to_list(error_list, new_error):
 
 def get_dict_value(dictionary, key_1, key_2=None, error_list=None):
     """ return a value from a dictionary """
+    admissible_value = 0
     if key_2:
         value, error = get_element_of_dict_double_key(dictionary, key_1, key_2)
     else:
         value, error = get_element_of_dict(dictionary, key_1)
     if error_list:
         add_error_to_list(error_list, error)
-    return value if value else _("Not available")
+
+    return value if value or value == admissible_value else _("Not available")

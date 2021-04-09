@@ -92,7 +92,7 @@ class StudentFeedbackListPage(INGIniousAuthPage):
             submission = {
                 "_id": feedback["_id"],
                 "date": feedback["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S"),
-                "grade": feedback["grade"],
+                "grade": get_dict_value(feedback, "grade"),
                 "result": get_dict_value(feedback, "custom", "custom_summary_result"),
                 "manual_grade": feedback["manual_scoring"]["grade"],
                 "task_name": course.get_task(feedback["taskid"]).get_name(self.user_manager.session_language()),
