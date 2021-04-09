@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-08 18:55-0500\n"
+"POT-Creation-Date: 2021-04-08 19:08-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -2172,9 +2172,7 @@ msgstr "No disponible"
 msgid ""
 "It is possible that the grader could not finish its process with this "
 "submission."
-msgstr ""
-"Es posible que el grader no pudiera terminar su proceso con este"
-"envio."
+msgstr "Es posible que el grader no pudiera terminar su proceso con esteenvio."
 
 #: inginious/frontend/plugins/manual_scoring/pages/rubric.py:17
 #: inginious/frontend/plugins/manual_scoring/pages/student_submissions.py:18
