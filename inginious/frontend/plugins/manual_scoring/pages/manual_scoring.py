@@ -12,8 +12,7 @@ from ast import literal_eval
 
 from inginious.frontend.pages.api._api_page import APIError
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from ..constants import get_use_minify, get_render_path, get_element_of_dict, \
-    get_dict_value
+from ..constants import get_use_minify, get_render_path, get_dict_value
 from ..pages.manual_scoring_error import ManualScoringError
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from .rubric import get_manual_scoring_data, get_submission_result_text, get_rubric_content, \
