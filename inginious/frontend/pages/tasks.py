@@ -209,6 +209,14 @@ class BaseTaskPage(object):
                     problem.get_id(): problem.input_type()()
                     for problem in task.get_problems() if problem.input_type() in [dict, list]
                 }
+
+                # Use the user penalty by using task hints
+                user_hints_penalty = self.plugin_manager.call_hook('show_hints', taskid=taskid, username=username, database=self.database)
+                if user_hints_penalty is None:
+                    userinput['penalty'] = 0
+                else:
+                    userinput['penalty'] = user_hints_penalty
+
                 userinput = task.adapt_input_for_backend(web.input(**init_var))
 
                 if not task.input_is_consistent(userinput, self.default_allowed_file_extensions, self.default_max_file_size):
@@ -228,7 +236,7 @@ class BaseTaskPage(object):
                 try:
                     submissionid, oldsubids = self.submission_manager.add_job(task, userinput, debug)
                     web.header('Content-Type', 'application/json')
-                    return json.dumps({"status": "ok", "submissionid": str(submissionid), "remove": oldsubids, "text": _("<b>Your submission has been sent...</b>")})
+                    return json.dumps({"status": "ok", "submissionid": str(submissionid), "remove": oldsubids, "text": _("<b>Your submission has been sent...</b>"), "test": user_hints_penalty })
                 except Exception as ex:
                     web.header('Content-Type', 'application/json')
                     return json.dumps({"status": "error", "text": str(ex)})

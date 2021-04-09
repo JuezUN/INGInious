@@ -30,6 +30,13 @@ def get_task_hints_basic_data(task):
 
     return all_hints_basic_data
 
+def get_user_total_penalty(taskid, username, database):
+
+    data = database.user_hints.find_one({"taskid": taskid, "username": username});
+    penalty = data["penalty"]
+
+    return penalty
+
 def add_static_files(template_helper):
 
     if use_minified():
