@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-08 19:08-0500\n"
+"POT-Creation-Date: 2021-04-08 19:39-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -1958,7 +1958,9 @@ msgstr ""
 #: inginious/frontend/plugins/manual_scoring/pages/feedback.py:42
 #: inginious/frontend/plugins/manual_scoring/pages/manual_scoring.py:153
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:51
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:53
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:61
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:63
 msgid "Not available"
 msgstr ""
 
@@ -2117,8 +2119,8 @@ msgstr ""
 msgid "See submission"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:56
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:66
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:55
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:65
 msgid ""
 "\"It is possible that the grader could not finish its process with this "
 "submission.\""
