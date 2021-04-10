@@ -53,7 +53,7 @@ class AdminApi(api.APIAuthenticatedPage):
                 element["task_id"] = task.get_id()
 
             if include_task_name:
-                element["task_name"] = task.get_name(self.user_manager.session_language())
+                element["task_name"] = task.get_name_or_id(self.user_manager.session_language())
 
             element[key_name] = task_dict[task.get_id()]
 

@@ -5,7 +5,7 @@ $# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
 $# more information about the licensing of this file.
 $#
 
-$var title: $:task.get_name(user_manager.session_language()) - $:course.get_name(user_manager.session_language())
+$var title: $:task.get_name_or_id(user_manager.session_language()) - $:course.get_name(user_manager.session_language())
 
 $ registered = user_manager.course_is_user_registered(course)
 $ staff = user_manager.has_staff_rights_on_course(course)
@@ -235,14 +235,14 @@ $def NavbarF():
         $else:
             <li><a href="$get_homepath()/courselist" title=$:_('"Course list"') data-toggle="tooltip" data-placement="bottom"><i class="fa fa-th-list"></i></a></li>
         <li><a href="$get_homepath()/course/$task.get_course().get_id()">$course.get_name(user_manager.session_language())</a></li>
-        <li class="active"><a href="#">$task.get_name(user_manager.session_language()) <span class="sr-only">$:_("(current)")</span></a></li>
+        <li class="active"><a href="#">$task.get_name_or_id(user_manager.session_language()) <span class="sr-only">$:_("(current)")</span></a></li>
     </ol>
 $var Navbar: $:NavbarF()
 
 $# Start content
 <h2>
     <div class="row">
-    <div class="col-md-10">$task.get_name(user_manager.session_language())</div>
+    <div class="col-md-10">$task.get_name_or_id(user_manager.session_language())</div>
     <div class="col-md-2">
         $if not is_lti():
             <div class="pull-right">
