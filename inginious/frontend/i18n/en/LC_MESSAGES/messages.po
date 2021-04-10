@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-09 10:06-0500\n"
+"POT-Creation-Date: 2021-04-10 14:59-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -4249,10 +4249,6 @@ msgstr ""
 msgid "Number of registered students:"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/student_list.html:39
-msgid "Total number of registered users:"
-msgstr ""
-
 #: inginious/frontend/templates/course_admin/student_list_table.html:15
 msgid "member"
 msgstr ""
@@ -5087,5 +5083,14 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Semester"
+#~ msgstr ""
+
+#~ msgid "Total number of registered users:"
+#~ msgstr ""
+
+#~ msgid "Number of registered students:"
+#~ msgstr ""
+
+#~ msgid "Number of registered staff:"
 #~ msgstr ""
 
