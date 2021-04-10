@@ -134,5 +134,5 @@ class CourseAggregationListPage(INGIniousAdminPage):
         return self.template_helper.get_renderer().course_admin.aggregation_list(course, [my_aggregations, other_aggregations], msg, error)
 
     def _get_task_name(self, course, task_id):
-        """ Return the name of a task if it isn't empty, else keeps the id """
+        """ Return the name of a task """
         return course.get_task(task_id).get_name(self.user_manager.session_language())
