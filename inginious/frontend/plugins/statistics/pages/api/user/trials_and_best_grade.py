@@ -72,7 +72,7 @@ class TrialsAndBestGradeApi(UserApi):
             except TaskNotFoundException:
                 continue
 
-            sub['task_name'] = task.get_name(self.user_manager.session_language())
+            sub['task_name'] = task.get_name_or_id(self.user_manager.session_language())
             best_submissions_with_name.append(sub)
 
         return 200, list(best_submissions_with_name)
