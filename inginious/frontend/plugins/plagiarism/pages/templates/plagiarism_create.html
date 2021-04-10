@@ -38,7 +38,7 @@ $if errors is not None:
                 </label>
                 <select class="form-control" id="plagiarism-task-id" name="taskid">
                     $for task in tasks:
-                        <option value="${task.get_id()}">${task.get_name(language)}</option>
+                        <option value="${task.get_id()}">${task.get_name_or_id(language)}</option>
                 </select>
             </div>
             <div class="form-group">
