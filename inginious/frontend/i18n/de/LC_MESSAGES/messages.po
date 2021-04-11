@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-10 17:12-0500\n"
+"POT-Creation-Date: 2021-04-10 19:52-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -1610,7 +1610,7 @@ msgid "No expected output was selected for testing"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:44
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:48
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:49
 msgid "The weight for grader test cases must be a float"
 msgstr ""
 
@@ -1639,7 +1639,7 @@ msgid "Duplicated input files in grader"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:75
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:75
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:76
 msgid "The sum of all weights must be grater than zero"
 msgstr ""
 
@@ -1655,69 +1655,69 @@ msgstr ""
 msgid "Grader: Output limit exceeds the maximum allowed (30 MBs)."
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:53
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:54
 msgid "The name for grader tests must be a string"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:58
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:59
 msgid "The setup code for grader tests must be a string"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:71
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:72
 msgid "You must provide tests to autogenerate the grader"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:109
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:110
 msgid "Grader: Syntax error in setup code for all tests"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:123
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:124
 msgid "Grader: Dataset url is not a valid URL."
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:125
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:126
 msgid "Grader: To download a dataset, you must also set the dataset filename."
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:129
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:130
 msgid "Grader: Dataset filename is not a valid name."
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:131
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:132
 msgid "Grader: To download a dataset, you must also set the dataset URL."
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:134
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:135
 msgid "Grader: Time limit for test cases must be positive and integer."
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:137
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:138
 msgid "Grader: Time limit exceeds the maximum allowed (30 s.)."
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:140
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:141
 msgid "Grader: Memory limit for test cases must be positive and integer"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:143
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:144
 msgid "Grader: Memory limit exceeds the maximum allowed (600 MBs)."
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:147
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:148
 #, python-format
 msgid "Grader: Syntax error in setup code of '%s' test"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:150
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:151
 msgid "Grader: The weight must be a positive number"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:154
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:155
 #, python-format
 msgid "Grader: You must provide test cases for test '%s' to generate the grader"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:159
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:160
 #, python-format
 msgid "Grader: Syntax error in code on test '%s', case %s"
 msgstr ""
