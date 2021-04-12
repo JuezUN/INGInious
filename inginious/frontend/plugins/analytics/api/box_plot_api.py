@@ -18,7 +18,8 @@ class BoxPlotAPI(SuperadminAPI):
                 services[val['service']][date['date']] = date['visits']
 
         all_dates = list(self.get_all_dates(query_parameters))
-        all_dates = sorted(all_dates[-1]["all_dates"])
+        if all_dates:
+            all_dates = sorted(all_dates[-1]["all_dates"])
 
         services_names = services.keys()
         y_data = []
