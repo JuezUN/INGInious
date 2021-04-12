@@ -4337,14 +4337,12 @@ msgid "Teaching staff"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list.html:38
-#, fuzzy
 msgid "Number of registered staff:"
-msgstr "Estudante registrado"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list.html:43
-#, fuzzy
 msgid "Number of registered students:"
-msgstr "Estudante registrado"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:15
 msgid "member"
@@ -5184,9 +5182,5 @@ msgstr ""
 #~ msgid "Semester"
 #~ msgstr ""
 
-#~ msgid "Total number of registered users:"
-#~ msgstr ""
 
-#~ msgid "Number of registered staff:"
-#~ msgstr "Estudante registrado"
 

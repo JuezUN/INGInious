@@ -5115,12 +5115,4 @@ msgstr ""
 #~ msgid "Semester"
 #~ msgstr ""
 
-#~ msgid "Total number of registered users:"
-#~ msgstr ""
-
-#~ msgid "Number of registered students:"
-#~ msgstr ""
-
-#~ msgid "Number of registered staff:"
-#~ msgstr ""
 
