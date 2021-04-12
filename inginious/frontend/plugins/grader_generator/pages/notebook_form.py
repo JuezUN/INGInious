@@ -29,6 +29,7 @@ class NotebookForm(GraderForm):
         for key in keys_to_remove:
             del self.task_data[key]
 
+        # Convert the key to int to get a correct sort process
         grader_test_cases = {int(key): val for key, val in grader_test_cases.items()}
 
         grader_test_cases = OrderedDict(sorted(grader_test_cases.items()))
