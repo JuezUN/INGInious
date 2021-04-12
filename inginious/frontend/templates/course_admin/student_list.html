@@ -34,6 +34,11 @@ $var Navbar: $:NavbarF()
 
     </ul>
     <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" id="tab_staff">
+            <h4>$:_("Number of registered staff:") $len(course.get_staff())</h4>
+
+            $:include.course_admin.student_list_table(course,user_data[0:len(course.get_staff())], True)
+        </div>
         <div role="tabpanel" class="tab-pane active" id="tab_students">
             <h4>$:_("Number of registered students:") $(len(user_data)-len(course.get_staff()))</h4>
             $:include.course_admin.student_list_table(course,user_data[len(course.get_staff()):len(user_data)], False)
@@ -47,11 +52,6 @@ $var Navbar: $:NavbarF()
                     </form>
                 </div>
             $:template_helper.call("register_students")
-        </div>
-        <div role="tabpanel" class="tab-pane" id="tab_staff">
-            <h4>$:_("Number of registered staff:") $len(course.get_staff())</h4>
-
-            $:include.course_admin.student_list_table(course,user_data[0:len(course.get_staff())], True)
         </div>
     </div>
 </div>
