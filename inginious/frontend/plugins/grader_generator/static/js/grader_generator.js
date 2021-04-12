@@ -280,11 +280,11 @@ function read_files_and_match() {
 
 
 function remove_all_test_cases() {
-    for (let i = 0; i < grader_test_cases_count; i++) {
-        studio_remove_test_case(i);
+    const currentNumOfTestCases = grader_test_cases_count;
+    const currentTaskInTop = 0;
+    for (let i = 0; i < currentNumOfTestCases; i++) {
+        studio_remove_test_case(currentTaskInTop);
     }
-    grader_test_cases_count = 0;
-
 }
 
 function expand_text_area(elem, rows = 6) {
