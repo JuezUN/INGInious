@@ -63,9 +63,17 @@ const StackedBarPlot = (function () {
             }
         }
 
+        function transpose(matrix) {
+            if (matrix.length !== 0) {
+                return matrix[0].map((_, colIndex) => matrix.map(row => row[colIndex]));
+            }else {
+                return [];
+            }
+        }
+
         Plotly.d3.json(generate_get_url_plot(_this.request_url), function (error, data) {
             const xData = getCoursesNames(data["x_data"]);
-            const yData = data["y_data"][0].map((_, colIndex) => data["y_data"].map(row => row[colIndex]));
+            const yData = transpose(data["y_data"]);
             const services = get_services_names(data["services"]);
             const traces = _this._generate_traces(xData, yData, services);
             const annotation = createAnnotationArray(xData, data["y_data"]);

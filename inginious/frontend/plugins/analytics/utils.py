@@ -16,6 +16,7 @@ def get_api_query_parameters(input_dict):
     username = input_dict.get('username', None)
     service = input_dict.get('service', None)
     start_date = input_dict.get('start_date', None)
+    end_date = input_dict.get('end_date', None)
     course_id = input_dict.get('course_id', None)
 
     # Generate query
@@ -26,9 +27,13 @@ def get_api_query_parameters(input_dict):
         query_parameters['service'] = _generate_query_for_list(service)
     if course_id:
         query_parameters['course_id'] = _generate_query_for_list(course_id)
-    if start_date:
-        start_date = datetime.datetime(*map(int, start_date.split('-')))
-        query_parameters['date'] = {'$gte': start_date}
+
+    if start_date or end_date:
+        query_parameters['date'] = {}
+        if start_date:
+            query_parameters['date']['$gte'] = _convert_string_to_date(start_date)
+        if end_date:
+            query_parameters['date']['$lte'] = _convert_string_to_date(end_date)
 
     return query_parameters
 
@@ -36,3 +41,7 @@ def get_api_query_parameters(input_dict):
 def _generate_query_for_list(names):
     name_list = names.split(",")
     return {"$in": name_list}
+
+
+def _convert_string_to_date(string_date):
+    return datetime.datetime(*map(int, string_date.split('-')))

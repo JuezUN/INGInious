@@ -16,14 +16,24 @@ $var Navbar: $:NavbarF()
         <div class="panel-heading">$:_("Apply filters")</div>
         <div class="panel-body">
             <div class="form-group col-xs-12">
-                <div class="col-xs-6">
-                    <label for="analytics_date_filter" class="control-label">
+                <div class="col-xs-3">
+                    <label for="analytics_from_date_filter" class="control-label">
                         $:_("Analytics since"):
                     </label>
-                    <div class='input-group date' id='analytics_date_filter'>
+                    <div class='input-group date' id="analytics_from_date_filter">
                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input id="analytics_date" name="analytics_date" data-date-format="YYYY-MM-DD"
+                        <input id="analytics_from_date" name="analytics_from_date" data-date-format="YYYY-MM-DD"
                                placeholder="2020-01-01" type='text' class="form-control"/>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <label for="analytics_from_date_filter" class="control-label">
+                        $:_("Analytics until"):
+                    </label>
+                    <div class='input-group date' id="analytics_to_date_filter">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input id="analytics_to_date" name="analytics_to_date" data-date-format="YYYY-MM-DD"
+                               type='text' class="form-control"/>
                     </div>
                 </div>
                 <div class="col-xs-6">
