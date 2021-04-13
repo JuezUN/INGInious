@@ -29,6 +29,7 @@ class NotebookForm(GraderForm):
         for key in keys_to_remove:
             del self.task_data[key]
 
+        # Convert the key to int to get a correct sort process
         grader_test_cases = {int(key): val for key, val in grader_test_cases.items()}
 
         grader_test_cases = OrderedDict(sorted(grader_test_cases.items()))
@@ -45,17 +46,17 @@ class NotebookForm(GraderForm):
             try:
                 test["weight"] = float(test.get("weight", 1.0))
             except (ValueError, TypeError):
-                raise InvalidGraderError("The weight for grader test cases must be a float")
+                raise InvalidGraderError(_("The weight for grader test cases must be a float"))
 
             try:
                 test["name"] = str(test.get("name", "q" + str(index)))
             except (ValueError, TypeError):
-                raise InvalidGraderError("The name for grader tests must be a string")
+                raise InvalidGraderError(_("The name for grader tests must be a string"))
 
             try:
                 test["setup_code"] = str(test.get("setup_code", "")).strip()
             except (ValueError, TypeError):
-                raise InvalidGraderError("The setup code for grader tests must be a string")
+                raise InvalidGraderError(_("The setup code for grader tests must be a string"))
 
             test["show_debug_info"] = "show_debug_info" in test
             test["custom_feedback"] = test.get("custom_feedback", "")
@@ -68,7 +69,11 @@ class NotebookForm(GraderForm):
             notebook_tests.append(test)
 
         if not notebook_tests:
-            raise InvalidGraderError("You must provide tests to autogenerate the grader")
+            raise InvalidGraderError(_("You must provide tests to autogenerate the grader"))
+
+        total_weights = sum([test_case["weight"] for test_case in notebook_tests])
+        if total_weights <= 1e-3:
+            raise InvalidGraderError(_("The sum of all weights must be grater than zero"))
 
         return notebook_tests
 
@@ -102,7 +107,7 @@ class NotebookForm(GraderForm):
     def validate(self):
         super(NotebookForm, self).validate()
         if not _is_python_syntax_code_right(self.task_data["notebook_setup_code_all_tests"]):
-            raise InvalidGraderError("Grader: Syntax error in setup code for all tests")
+            raise InvalidGraderError(_("Grader: Syntax error in setup code for all tests"))
 
         url_pattern = re.compile(
             r'^(?:http)s?://'  # http:// or https://
@@ -116,43 +121,43 @@ class NotebookForm(GraderForm):
 
         if self.task_data["notebook_data_set_url"]:
             if not re.match(url_pattern, self.task_data["notebook_data_set_url"]):
-                raise InvalidGraderError("Grader: Dataset url is not a valid URL.")
+                raise InvalidGraderError(_("Grader: Dataset url is not a valid URL."))
             if not self.task_data["notebook_data_set_name"]:
-                raise InvalidGraderError("Grader: To download a dataset, you must also set the dataset filename.")
+                raise InvalidGraderError(_("Grader: To download a dataset, you must also set the dataset filename."))
 
         if self.task_data["notebook_data_set_name"]:
             if not re.match(filename_pattern, self.task_data["notebook_data_set_name"]):
-                raise InvalidGraderError("Grader: Dataset filename is not a valid name.")
+                raise InvalidGraderError(_("Grader: Dataset filename is not a valid name."))
             if not self.task_data["notebook_data_set_url"]:
-                raise InvalidGraderError("Grader: To download a dataset, you must also set the dataset URL.")
+                raise InvalidGraderError(_("Grader: To download a dataset, you must also set the dataset URL."))
 
         if self.task_data["notebook_time_limit_test_case"] < 1:
-            raise InvalidGraderError("Grader: Time limit for test cases must be positive and integer.")
+            raise InvalidGraderError(_("Grader: Time limit for test cases must be positive and integer."))
 
         if self.task_data["notebook_time_limit_test_case"] > 30:
-            raise InvalidGraderError("Grader: Time limit exceeds the maximum allowed (30 s.).")
+            raise InvalidGraderError(_("Grader: Time limit exceeds the maximum allowed (30 s.)."))
 
         if self.task_data["notebook_memory_limit_test_case"] < 1:
-            raise InvalidGraderError("Grader: Memory limit for test cases must be positive and integer")
+            raise InvalidGraderError(_("Grader: Memory limit for test cases must be positive and integer"))
 
         if self.task_data["notebook_memory_limit_test_case"] > 600:
-            raise InvalidGraderError("Grader: Memory limit exceeds the maximum allowed (600 MBs).")
+            raise InvalidGraderError(_("Grader: Memory limit exceeds the maximum allowed (600 MBs)."))
 
         for test_index, test in enumerate(self.task_data["grader_test_cases"]):
             if not _is_python_syntax_code_right(test["setup_code"]):
-                raise InvalidGraderError("Grader: Syntax error in setup code of '%s' test" % test["name"])
+                raise InvalidGraderError(_("Grader: Syntax error in setup code of '%s' test") % test["name"])
 
             if test["weight"] <= 0:
-                raise InvalidGraderError("Grader: The weight must be a positive number")
+                raise InvalidGraderError(_("Grader: The weight must be a positive number"))
 
             if not test.get("cases", None):
                 raise InvalidGraderError(
-                    "Grader: You must provide test cases for test '%s' to autogenerate the grader" % test["name"])
+                    _("Grader: You must provide test cases for test '%s' to generate the grader") % test["name"])
 
             for case_index, case in test["cases"].items():
                 if not _is_python_syntax_code_right(case["code"]):
                     raise InvalidGraderError(
-                        "Grader: Syntax error in code on test '%s', case %s" % (test["name"], int(case_index) + 1))
+                        _("Grader: Syntax error in code on test '%s', case %s") % (test["name"], int(case_index) + 1))
 
     def generate_grader(self):
         """ This method generates a grader through the form data """

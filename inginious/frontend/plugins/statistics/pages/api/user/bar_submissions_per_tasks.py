@@ -64,7 +64,7 @@ class BarSubmissionsPerTasksApi(UserApi):
             for verdict in verdicts:
                 submissions_per_task.append({
                     "task_id": _id,
-                    "task_name": task.get_name(self.user_manager.session_language()),
+                    "task_name": task.get_name_or_id(self.user_manager.session_language()),
                     "summary_result": verdict["summary_result"],
                     "count": verdict["count"]
                 })

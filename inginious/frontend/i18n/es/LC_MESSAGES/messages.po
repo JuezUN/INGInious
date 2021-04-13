@@ -1749,6 +1749,167 @@ msgstr "Seleccione un curso para copiar tareas"
 msgid "Grader"
 msgstr "Calificador"
 
+#: inginious/frontend/plugins/grader_generator/pages/grader_form.py:25
+msgid "'Maximum diff lines' must be an integer"
+msgstr "'Número máximo de líneas de diferencia' debe ser entero"
+
+#: inginious/frontend/plugins/grader_generator/pages/grader_form.py:31
+msgid "'Diff context lines' must be an integer"
+msgstr "'Líneas de diferencia de contexto' debe ser un entero"
+
+#: inginious/frontend/plugins/grader_generator/pages/grader_form.py:39
+msgid "Grader: the problem was not specified"
+msgstr "Calificador: el problema no fue especificado"
+
+#: inginious/frontend/plugins/grader_generator/pages/grader_form.py:43
+msgid "Grader: problem does not exist"
+msgstr "Calificador: el problema no existe"
+
+#: inginious/frontend/plugins/grader_generator/pages/grader_form.py:50
+msgid ""
+"Grader: only 'Code Multiple Language', 'Code File Multiple Language' and "
+"'Notebook' problems are supported"
+msgstr ""
+"Calificador: Solo 'Code Multiple Language', 'Code File Multiple Language'"
+" y 'Notebook' son soportados."
+
+#: inginious/frontend/plugins/grader_generator/pages/grader_form.py:54
+msgid "'Maximum diff lines' must be positive"
+msgstr "'Número máximo de líneas de diferencia' debe ser positivo."
+
+#: inginious/frontend/plugins/grader_generator/pages/grader_form.py:57
+msgid "'Diff context lines' must be positive"
+msgstr "'Líneas de diferencia de contexto' debe ser positivo"
+
+#: inginious/frontend/plugins/grader_generator/pages/hdl_form.py:18
+msgid "No testbench was selected for testing"
+msgstr "Ningún testbench fué seleccionado."
+
+#: inginious/frontend/plugins/grader_generator/pages/hdl_form.py:21
+msgid "No expected output was selected for testing"
+msgstr "Ninguna salida esperada fue seleccionada."
+
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:44
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:49
+msgid "The weight for grader test cases must be a float"
+msgstr "El peso para los casos de prueba deber ser un número decimal."
+
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:51
+msgid "Invalid input file in grader test case"
+msgstr "Archivo de entrada inválido para el caso de prueba"
+
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:54
+msgid "Invalid output file in grader test case"
+msgstr "Archivo de salida inválido para el caso de prueba"
+
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:57
+msgid "Grader input file does not exist: "
+msgstr "El archivo de entrada no existe: "
+
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:60
+msgid "Grader output file does not exist: "
+msgstr "El archivo de salida no existe: "
+
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:65
+msgid "You must provide test cases to generate the grader"
+msgstr "Debe proveer casos de prueba para generar el calificador."
+
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:71
+msgid "Duplicated input files in grader"
+msgstr "Archivos de entrada están duplicados."
+
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:75
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:76
+msgid "The sum of all weights must be grater than zero"
+msgstr "La suma de todos los pesos debe ser mayor a cero."
+
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:101
+msgid "Grader: Memory limit exceeds the maximum allowed (500 MBs)."
+msgstr "Calificador: Límite de memoria excede el máximo permitido (500 MBs)."
+
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:104
+msgid "Grader: Time limit exceeds the maximum allowed (30 s)."
+msgstr "Calificador: Límite de tiempo excede el máximo permitido (30 s)."
+
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:107
+msgid "Grader: Output limit exceeds the maximum allowed (30 MBs)."
+msgstr ""
+"Calificador: Límite de salida estándar excede el máximo permitido (30 "
+"MBs)."
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:54
+msgid "The name for grader tests must be a string"
+msgstr "El nombre de la prueba debe ser texto."
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:59
+msgid "The setup code for grader tests must be a string"
+msgstr "El código de configuración debe ser texto."
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:72
+msgid "You must provide tests to autogenerate the grader"
+msgstr "Debe proveer pruebas para auto generar el calificador."
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:110
+msgid "Grader: Syntax error in setup code for all tests"
+msgstr ""
+"Calificador: Error de sintaxis el código de configuración de todas las "
+"pruebas."
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:124
+msgid "Grader: Dataset url is not a valid URL."
+msgstr "Calificador: URL del dataset no es válida."
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:126
+msgid "Grader: To download a dataset, you must also set the dataset filename."
+msgstr "Calificador: Para descargar el dataset, debe proveer un nombre de archivo."
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:130
+msgid "Grader: Dataset filename is not a valid name."
+msgstr "Calificador: El nombre del dataset no es válido."
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:132
+msgid "Grader: To download a dataset, you must also set the dataset URL."
+msgstr "Calificador: Para descargar un dataset, también debe proveer la URL."
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:135
+msgid "Grader: Time limit for test cases must be positive and integer."
+msgstr ""
+"Calificador: El límite de tiempo de los casos de prueba debe ser entero "
+"positivo."
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:138
+msgid "Grader: Time limit exceeds the maximum allowed (30 s.)."
+msgstr "Calificador: El tiempo límite excede el máximo permitido (30 s.)."
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:141
+msgid "Grader: Memory limit for test cases must be positive and integer"
+msgstr ""
+"Calificador: El límite de memoria para los casos de prueba debe der un "
+"entero positivo."
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:144
+msgid "Grader: Memory limit exceeds the maximum allowed (600 MBs)."
+msgstr "Calificador: El límite de memoria excede el máximo permitido (600 MBs)."
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:148
+#, python-format
+msgid "Grader: Syntax error in setup code of '%s' test"
+msgstr "Calificador: Error de sintaxis en el código de configuración del test '%s'"
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:151
+msgid "Grader: The weight must be a positive number"
+msgstr "Calificador: El peso debe ser un número positivo."
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:155
+#, python-format
+msgid "Grader: You must provide test cases for test '%s' to generate the grader"
+msgstr "Calificador: Debe proveer casos de prueba para el test '%s'"
+
+#: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:160
+#, python-format
+msgid "Grader: Syntax error in code on test '%s', case %s"
+msgstr "Calificador: Error de sintaxis en el código de la prueba '%s', caso '%s'"
+
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:9
 msgid "Generate grader automatically"
 msgstr "Generar calificador automáticamente"
@@ -1763,7 +1924,7 @@ msgstr "\"Id del Problema\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:34
 msgid "Maximum diff lines"
-msgstr "Máximo líneas de diferencia"
+msgstr "Número máximo de líneas de diferencia"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:36
 msgid "\"The maximum number of lines that the diff tool should show\""
@@ -5465,4 +5626,3 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
-
