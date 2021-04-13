@@ -16,7 +16,6 @@ function showHintAlert(message, status){
 function hideHintAlert(alert){
     alert.attr("class","");
     alert.text("");
-    alert.hide();
 }
 
 /* Get the left hint content for the allowed hints*/
@@ -59,22 +58,23 @@ function setHintsOnContainer(to_show_hints){
             hint_container.find(".hint_content").html(new_hint_content);
 
         }else{
+            if(!existsUnlockFormContent(index)){
+                let new_hint = $("#hints_unlock_forms_list").clone().html();
+                new_hint = new_hint.replace(/key/g, index);
 
-            let new_hint = $("#hints_unlock_forms_list").clone().html();
-            new_hint = new_hint.replace(/key/g, index);
+                hint_container.find(".hint_content").append(new_hint);
+                hint_container.find(".hint_content .hint_unlock_form").show();
 
-            hint_container.find(".hint_content").append(new_hint);
-            hint_container.find(".hint_content .hint_unlock_form").show();
+                hint_penalty = hint["penalty"];
 
-            hint_penalty = hint["penalty"];
+                /* Check if penalty exists to change the message */
 
-            /* Check if penalty exists to change the message */
-
-            if(hint_penalty && hint_penalty != 0){
-                hint_container.find(".hint_content .hint_unlock_penalty b").html(hint_penalty + "%");
-            }else{
-                let message = 'You can get this hint with no penalty.'
-                hint_container.find(".hint_content .hint_unlock_penalty").html(message);
+                if(hint_penalty && hint_penalty != 0){
+                    hint_container.find(".hint_content .hint_unlock_penalty b").html(hint_penalty + "%");
+                }else{
+                    let message = 'You can get this hint with no penalty.'
+                    hint_container.find(".hint_content .hint_unlock_penalty").html(message);
+                }
             }
         }
 
@@ -82,11 +82,21 @@ function setHintsOnContainer(to_show_hints){
     })
 }
 
+/* To check if the unlock form for the hint already exists */
+function existsUnlockFormContent(index){
+    let content = $("#hint_"+index).find(".hint_content .hint_unlock_form").html();
+    return content;
+}
+
 /* Show or hide the hints by clicking the menu items*/
 function changeHint(hintKey){
+
+    $("#hint_info").hide();
+    $("#hint_container").show();
+
     $(".task_hints").each(function(index, element){
         if(element.id.includes(hintKey)){
-            $("#" + element.id).show(200);
+            $("#" + element.id).show();
         }else{
             $("#" + element.id).hide();
         }
@@ -106,7 +116,13 @@ function setHintAsAllowed(selected_hint_id){
     }).done(function(result){
         showHintAlert(result["message"],result["status"]);
         loadHintsOnModal();
+        showHelp();
     })
+}
+
+function showHelp(){
+    $("#hint_info").show();
+    $("#hint_container").hide();
 }
 
 $(function(){

@@ -39,7 +39,9 @@ function onAddHintClick(){
 
     /* Check if the entries are allowed on the hint */
 
-    if(!hint["title"] || !hint["content"]){
+    let contentBlankEntry = hint["content"].match(/^\s*$/)
+
+    if(!hint["title"] || contentBlankEntry){
         const message = "You need to complete mandatory fields";
         displayAlert(message, 10000);
         return ;

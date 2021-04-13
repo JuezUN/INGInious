@@ -62,28 +62,25 @@ class UserHint(object):
         """ Method to add the new unlocked hint in the user allowed hints """
         if not self.check_allowed_hint_in_database(hint_id):
 
-            data = self._database.user_hints.find_one_and_update({"taskid": self._task_id, "username": self._username},{
+            self._database.user_hints.find_one_and_update({"taskid": self._task_id, "username": self._username},{
                                                                 "$push": {
                                                                     "allowedHints":hint_id
                                                                 }
                                                             })
-            self.update_total_penalty(data, task_hints)
+            try:
+                self.update_total_penalty(task_hints)
+            except Exception:
+                raise Exception
 
-            return 200, ""
+        return 200, ""
 
-    def get_total_penalty(self):
-
-        data = self._database.user_hints.find_one({"taskid": self._task_id, "username": self._username});
-        penalty = data["penalty"]
-
-        return penalty
-
-    def update_total_penalty(self, data, task_hints):
+    def update_total_penalty(self, task_hints):
 
         """ Method needed to compare the saved hints per student, and the task hints
             to change penalty to the student
         """
         new_penalty = 0;
+        data = self._database.user_hints.find_one({"taskid": self._task_id, "username": self._username})
         allowed_hints = data["allowedHints"]
 
         for key, hint in task_hints.items():
@@ -93,9 +90,11 @@ class UserHint(object):
         if new_penalty > 100:
             new_penalty = 100
 
-        self._database.user_hints.update({"taskid": data["taskid"], "username": data["username"]},
+        self._database.user_hints.update({"taskid": self._task_id, "username": self._username},
                                          {"$set" : {"penalty": new_penalty}
                                         })
+
+        return allowed_hints
 
     def parse_rst_content(self, content):
 

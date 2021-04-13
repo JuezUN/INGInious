@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-06 23:02-0500\n"
+"POT-Creation-Date: 2021-04-12 22:54-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -240,7 +240,7 @@ msgstr "Usted no esta autorizado para enviar esta tarea."
 msgid "Your task has been regenerated. This current task is outdated."
 msgstr "Esta tarea ha sido reinicializada y no está disponible."
 
-#: inginious/frontend/pages/tasks.py:216
+#: inginious/frontend/pages/tasks.py:224
 msgid ""
 "Please answer to all the questions and verify the extensions of the files"
 " you want to upload. Your responses were not tested."
@@ -249,22 +249,22 @@ msgstr ""
 "archivos enviados sean correctas. Estas respuestas no han sido "
 "verificadas."
 
-#: inginious/frontend/pages/tasks.py:231 inginious/frontend/pages/tasks.py:339
+#: inginious/frontend/pages/tasks.py:239 inginious/frontend/pages/tasks.py:347
 msgid "<b>Your submission has been sent...</b>"
 msgstr "<b>Su petición ha sido enviada...</b>"
 
 #: inginious/frontend/pages/course_admin/task_edit_file.py:202
 #: inginious/frontend/pages/course_admin/task_edit_file.py:223
 #: inginious/frontend/pages/course_admin/task_edit_file.py:227
-#: inginious/frontend/pages/tasks.py:240 inginious/frontend/pages/tasks.py:256
+#: inginious/frontend/pages/tasks.py:248 inginious/frontend/pages/tasks.py:264
 msgid "Internal error"
 msgstr "Error interno"
 
-#: inginious/frontend/pages/tasks.py:308
+#: inginious/frontend/pages/tasks.py:316
 msgid "<b>UNCode is currently grading your answers.<b/> (almost done)"
 msgstr "<b>UNCode está evaluando tus respuestas.<b/> (finalizando)"
 
-#: inginious/frontend/pages/tasks.py:310
+#: inginious/frontend/pages/tasks.py:318
 msgid ""
 "<b>UNCode is currently grading your answers.<b/> (Approx. wait time: {} "
 "seconds)"
@@ -272,41 +272,41 @@ msgstr ""
 "<b>UNCode está evaluando tus respuestas.<b/> (Tiempo aproximado: {} "
 "segundos)"
 
-#: inginious/frontend/pages/tasks.py:313
+#: inginious/frontend/pages/tasks.py:321
 msgid "<b>You are next in the waiting queue!</b>"
 msgstr "<b>¡Eres el siguiente en la lista de espera!</b>"
 
-#: inginious/frontend/pages/tasks.py:315
+#: inginious/frontend/pages/tasks.py:323
 msgid "<b>There is one task in front of you in the waiting queue.</b>"
 msgstr "<b>Hay una tarea más en la lista de espera.</b>"
 
-#: inginious/frontend/pages/tasks.py:317
+#: inginious/frontend/pages/tasks.py:325
 msgid "<b>There are {} tasks in front of you in the waiting queue.</b>"
 msgstr "<b>Hay {} tareas más en la lista de espera.</b>"
 
-#: inginious/frontend/pages/tasks.py:341
+#: inginious/frontend/pages/tasks.py:349
 msgid "There are some errors in your answer. Your score is {score}%."
 msgstr "Tu respuesta contiene algunos errores. Tu calificación actual es {score}%."
 
-#: inginious/frontend/pages/tasks.py:343
+#: inginious/frontend/pages/tasks.py:351
 msgid "Your answer passed the tests! Your score is {score}%."
 msgstr "¡Tu respuesta es exitosa! Tu calificación es {score}%."
 
-#: inginious/frontend/pages/tasks.py:345
+#: inginious/frontend/pages/tasks.py:353
 msgid "Your submission timed out. Your score is {score}%."
 msgstr "El tiempo de tu petición se ha terminado. Tu calificación es {score}%."
 
-#: inginious/frontend/pages/tasks.py:347
+#: inginious/frontend/pages/tasks.py:355
 msgid "Your submission made an overflow. Your score is {score}%."
 msgstr ""
 "Tu respuesta ha generado un \"overflow\" (desbordamiento) en memoria. Tu "
 "calificación es {score}%."
 
-#: inginious/frontend/pages/tasks.py:349
+#: inginious/frontend/pages/tasks.py:357
 msgid "Your submission was killed."
 msgstr "Tu envío ha sido terminado."
 
-#: inginious/frontend/pages/tasks.py:351
+#: inginious/frontend/pages/tasks.py:359
 msgid ""
 "An internal error occurred. Please retry later. If the error persists, "
 "send an email to the course administrator."
@@ -314,7 +314,7 @@ msgstr ""
 "Ha ocurrido un error interno, intenta más tarde. Si el error persiste, "
 "envía un correo electrónico al administrador del curso."
 
-#: inginious/frontend/pages/tasks.py:354
+#: inginious/frontend/pages/tasks.py:362
 msgid "[Submission #{submissionid}]"
 msgstr "[Envío #{submissionid}]"
 
@@ -1162,7 +1162,7 @@ msgstr ""
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:195
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:82
-#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:76
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:103
 #: inginious/frontend/templates/auth.html:16
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
 #: inginious/frontend/templates/lti_login.html:30
@@ -2835,23 +2835,21 @@ msgstr ""
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:3
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:12
 msgid "Hints"
-msgstr ""
+msgstr "Sugerencias"
 
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_edit_modal.html:5
-#, fuzzy
 msgid "Create new hint"
-msgstr "Crear nueva tarea"
+msgstr "Crear una nueva sugerencia"
 
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_edit_modal.html:11
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:19
-#, fuzzy
 msgid "Hint title"
-msgstr "Archivo de entrada"
+msgstr "Nombre de la sugerencia"
 
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_edit_modal.html:15
-#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:38
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:50
 msgid "Penalty"
-msgstr ""
+msgstr "Penalización"
 
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_edit_modal.html:17
 #, python-format
@@ -2859,59 +2857,115 @@ msgid ""
 "\"Grade penalty by using the hint. You can set a penalty from 0.0% to "
 "100.0% for the student grade, if he chose to see the hint.\""
 msgstr ""
+"\"Penalización que se aplica en la nota del estudiante cuando se utiliza "
+"la sugerencia. La nota puede tener una penalización de 0.0% a 100%, en "
+"caso de que el estudiante desee visualizarla\""
 
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_edit_modal.html:25
-#, fuzzy
 msgid "Hint content"
-msgstr "Contenido"
+msgstr "Contenido de la sugerencia"
 
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:6
-msgid ""
-"This is used to add hints to the task that can be accessed before the "
-"task ends"
+msgid "Add hints to the task that can be accessed before the task ends"
 msgstr ""
+"Establecer sugerencias a las cuales el estudiante puede acceder antes de "
+"finalizar la tarea"
 
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:11
-msgid "Set of hints"
-msgstr ""
+msgid "Hints list"
+msgstr "Sugerencias de la tarea"
 
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:22
 msgid "Penalty per hint (%)"
-msgstr ""
+msgstr "Penalización por sugerencia"
 
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:25
-#, fuzzy
 msgid "Hint options"
-msgstr "Otras opciones"
+msgstr "Opciones de la sugerencia"
 
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:61
 msgid "Add hint"
+msgstr "Añadir"
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:22
+msgid "Task hints"
+msgstr "Sugerencias de la tarea"
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:33
+msgid "Hints List"
+msgstr "Sugerencias de la tarea"
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:37
+msgid "Help"
 msgstr ""
 
-#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:21
-#, fuzzy
-msgid "Task hints"
-msgstr "id de la Tarea"
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:52
+msgid "No penalty"
+msgstr "Sin penalización"
 
-#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:29
-#, fuzzy
-msgid "Hints List"
-msgstr "Lista de archivos"
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:61
+msgid "Hints help"
+msgstr "Ayuda sobre las sugerencias"
 
-#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:64
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:63
+msgid ""
+"Task hints offers you the opportunity to get additional information about"
+" the steps to solve the task."
+msgstr ""
+"Las sugerencias de la tarea te permiten obtener información "
+"adicionalsobre cómo solucionar la tarea."
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:65
+msgid ""
+"Each hint is like a small help or suggestion with information that you "
+"can use to reach the solution more easily, as code tips, task concepts, "
+"or processes to solve the problem, it means that you don't need to unlock"
+" hints to solve the task, since it already has all the necessary "
+"information."
+msgstr ""
+"Cada sugerencia te da una pequeña ayuda o comentario con información para"
+" solucionar el problemamás fácilmente, como tips sobre el código, "
+"términos o conceptos adicionales, o procedimientospara obtener la "
+"solución. La tarea te brinda toda la información que requieres, de modo "
+"que nonecesitas desbloquear sugerencias para solucionarla."
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:67
+msgid ""
+"You can unlock them by going to the hint, and click the <b>Get hint</b> "
+"button. However, some hints could have a penalty that will be applied on "
+"your final submission score, so be carefully if you want tou unlock "
+"them!."
+msgstr ""
+"Puedes desbloquear una sugerencia al oprimir el botón "
+"<b>Desbloquear</b>.Sin embargo, algunas sugerencias pueden aplicar una "
+"penalización en tucalificación final, por lo tanto, ¡ten cuidado al "
+"desbloquearlas!."
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:70
+msgid ""
+"<b>Note:</b> All the hints penalty will we applied as a percentage of the"
+" total submission score."
+msgstr ""
+"<b>Nota:</b> Todas las penalizaciones se aplican como porcentajes a la "
+"calificación final."
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:91
 msgid ""
 "You have not unlocked this hint yet. <b>When you unlock the hint, a "
 "penalty will be applied on your task submission score</b>. Do you want to"
 " unlock it?"
 msgstr ""
+"Aun no has desbloqueado esta sugerencia. <b>Si desbloqueas la "
+"sugerencia, se aplicará una penalización en tu nota final</b>. ¿Estás "
+"seguro de que quieredes bloquearla?"
 
-#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:67
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:94
 msgid "This will reduce a <b></b> of your total submission score"
-msgstr ""
+msgstr "Esta sugerencia tiene una penalización de <b></b>"
 
-#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:69
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:96
 msgid "Get Hint"
-msgstr ""
+msgstr "Desbloquear"
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:3
 #: inginious/frontend/templates/course_admin/submissions.html:210

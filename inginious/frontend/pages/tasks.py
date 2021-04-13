@@ -236,7 +236,7 @@ class BaseTaskPage(object):
                 try:
                     submissionid, oldsubids = self.submission_manager.add_job(task, userinput, debug)
                     web.header('Content-Type', 'application/json')
-                    return json.dumps({"status": "ok", "submissionid": str(submissionid), "remove": oldsubids, "text": _("<b>Your submission has been sent...</b>"), "test": user_hints_penalty })
+                    return json.dumps({"status": "ok", "submissionid": str(submissionid), "remove": oldsubids, "text": _("<b>Your submission has been sent...</b>")})
                 except Exception as ex:
                     web.header('Content-Type', 'application/json')
                     return json.dumps({"status": "error", "text": str(ex)})

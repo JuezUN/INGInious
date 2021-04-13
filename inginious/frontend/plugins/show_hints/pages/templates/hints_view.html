@@ -18,22 +18,31 @@ $def with (course_id, task_id, hints_data)
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>$:_("Task hints")</h2>
+                <div class="">
+                    <h2>$:_("Task hints")</h2>
+                </div>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div>
+                    <div class="col-sm-10 col-sm-offset-1">
                         <div id="hint_modal_alert" hidden></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4" id="hints_navigation_menu">
                         <h4>$:_("Hints List")</h4>
+                        <div id="hint_help">
+                            <a href="#" type="button" onclick="showHelp()">
+                                <h5>
+                                   $:_("Help")
+                                </h5>
+                            </a>
+                        </div>
                         <div id="hints_list">
                             <!-- Hint menu item template -->
                             $for key, hint in hints_data.items():
                                 <div id="hint_menu_$key">
-                                    <a class="list-group-item list-group-item"
+                                    <a class="list-group-item"
                                        onclick="changeHint($key)">
                                         <label>$hints_data[key]["title"]</label>
                                         <div class="hint_penalty">
@@ -47,9 +56,22 @@ $def with (course_id, task_id, hints_data)
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <!-- Template for unlocked hints -->
 
-                        <div id="hint_container">
+                        <div id="hint_info">
+                            <h3>$:_("Hints help")</h3>
+                            </br>
+                            <div class="col-sm-auto">$:_("Task hints offers you the opportunity to get additional information about the steps to solve the task.")
+                                <br/><br/>
+                                $:_("Each hint is like a small help or suggestion with information that you can use to reach the solution more easily, as code tips, task concepts, or processes to solve the problem, it means that you don't need to unlock hints to solve the task, since it already has all the necessary information.")
+                                <br/><br/>
+                                $:_("You can unlock them by going to the hint, and click the <b>Get hint</b> button. However, some hints could have a penalty that will be applied on your final submission score, so be carefully if you want tou unlock them!.")
+                            </div>
+                            <br/>
+                            $:_("<b>Note:</b> All the hints penalty will we applied as a percentage of the total submission score.").
+                        </div>
+
+                        <!-- Template for unlocked hints -->
+                        <div id="hint_container" >
 
                         $for key, hint in hints_data.items()
                             <div class="task_hints" id="hint_$key" hidden>
