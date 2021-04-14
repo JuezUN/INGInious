@@ -39,4 +39,5 @@ class AnalyticsCollectionManagerSingleton:
         self.db.analytics.drop()
 
     def get_course_list(self):
+        """ return a list of the courses registered in analytics """
         return self.db.analytics.distinct("course_id")

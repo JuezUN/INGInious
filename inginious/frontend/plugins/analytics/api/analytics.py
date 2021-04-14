@@ -10,6 +10,7 @@ from ..utils import get_api_query_parameters
 
 class AnalyticsAPI(SuperadminAPI):
     def API_GET(self):
+        """ Get request. return analytics data """
         self.check_superadmin_rights()
         input_dict = web.input()
         try:
@@ -40,6 +41,7 @@ class AnalyticsAPI(SuperadminAPI):
             return 400, "Bad Request."
 
     def get_analytics_data(self, filters):
+        """ get data from db """
         results = self.database.analytics.aggregate([
             {
                 "$match": filters
@@ -56,6 +58,7 @@ class AnalyticsAPI(SuperadminAPI):
         return results
 
     def get_data_to_send(self, filters):
+        """ organize the data to send in a list of dict """
         analytics_data = self.get_analytics_data(filters)
         data = []
         all_services = dict(ServicesCollectionManagerSingleton.get_instance().get_all_services())

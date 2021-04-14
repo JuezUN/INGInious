@@ -40,11 +40,13 @@ def get_api_query_parameters(input_dict):
 
 
 def _generate_query_for_list(names):
+    """ return a dict to be used to filter data by a list of names """
     name_list = names.split(",")
     return {"$in": name_list}
 
 
 def _convert_string_to_date(string_date):
+    """ Convert a string in datetime object """
     try:
         return datetime.datetime(*map(int, string_date.split('-')))
     except (ValueError, TypeError):

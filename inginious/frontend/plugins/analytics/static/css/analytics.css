@@ -60,13 +60,13 @@
 /* classes related with Multiple Select library */
 
 .ms-choice {
-    height: 2.9rem;
+  height: 2.9rem;
 }
 
 .ms-choice > span {
-    position: static;
+  position: static;
 }
 
 .ms-drop input[type="checkbox"] {
-    margin-top: 0;
+  margin-top: 0;
 }

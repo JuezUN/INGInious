@@ -5,15 +5,18 @@ from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
 from ..utils import get_api_query_parameters
 
 
-def get_course_names(data):
+def get_course_ids(data):
+    """" Return a list of course ids """
     return list(map(lambda course: course["course"], data))
 
 
 def create_y_data_list(num_courses, num_services):
+    """ create zero list to represent y data """
     return [[0] * num_services for i in range(num_courses)]
 
 
 def get_visit_values(data, num_course, service_names):
+    """ return the y axis data  """
     y_data_list = create_y_data_list(num_course, len(service_names))
     for i in range(len(data)):
         course = data[i]
@@ -24,7 +27,9 @@ def get_visit_values(data, num_course, service_names):
 
 
 class StackedBarPlotAPI(SuperadminAPI):
+    """ API to get a data to plot the stacked bar """
     def API_GET(self):
+        """ Get request """
         self.check_superadmin_rights()
         input_dict = web.input()
 
@@ -35,7 +40,7 @@ class StackedBarPlotAPI(SuperadminAPI):
 
         data = list(self.get_visits_data(query_parameters))
 
-        course_names = get_course_names(data)
+        course_names = get_course_ids(data)
         service_names = self.get_service_names(query_parameters)
 
         visits = get_visit_values(data, len(course_names), service_names)
@@ -45,6 +50,9 @@ class StackedBarPlotAPI(SuperadminAPI):
         return 200, results
 
     def get_visits_data(self, filters):
+        """ return the data from db
+            [{'course': 'test1', 'data': [{'service': 'manual_scoring_creation', 'visits':10}, {...}...]}, {...}, ...]
+        """
         results = self.database.analytics.aggregate([
             {
                 "$match": filters
@@ -88,6 +96,7 @@ class StackedBarPlotAPI(SuperadminAPI):
         return results
 
     def get_service_names(self, filters):
+        """ return a list with the service ids who pass the filter """
         results = self.database.analytics.aggregate([
             {
                 "$match": filters
