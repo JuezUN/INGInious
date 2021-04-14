@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-12 16:55-0500\n"
+"POT-Creation-Date: 2021-04-14 17:21-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -4657,12 +4657,12 @@ msgid "Teaching staff"
 msgstr "Tutores"
 
 #: inginious/frontend/templates/course_admin/student_list.html:38
-msgid "Number of registered staff:"
-msgstr "Número de tutores registrados:"
+msgid "Registered staff"
+msgstr "Personal registrado"
 
 #: inginious/frontend/templates/course_admin/student_list.html:43
-msgid "Number of registered students:"
-msgstr "Número de estudiantes inscritos:"
+msgid "Registered students"
+msgstr "Estudiantes inscritos"
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:15
 msgid "member"
@@ -5495,4 +5495,7 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
+
+#~ msgid "Registered staff"
+#~ msgstr "Personal registrado"
 

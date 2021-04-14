@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-12 16:55-0500\n"
+"POT-Creation-Date: 2021-04-14 17:21-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -4272,11 +4272,11 @@ msgid "Teaching staff"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list.html:38
-msgid "Number of registered staff:"
+msgid "Registered staff"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list.html:43
-msgid "Number of registered students:"
+msgid "Registered students"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:15
@@ -5113,5 +5113,14 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Semester"
+#~ msgstr ""
+
+#~ msgid "Number of registered staff:"
+#~ msgstr ""
+
+#~ msgid "Number of registered students:"
+#~ msgstr ""
+
+#~ msgid "Registered staff"
 #~ msgstr ""
 
