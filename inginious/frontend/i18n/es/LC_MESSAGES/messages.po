@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-10 20:33-0500\n"
+"POT-Creation-Date: 2021-04-14 16:25-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -2173,7 +2173,7 @@ msgstr "No disponible"
 msgid ""
 "It is possible that the grader could not finish its process with this "
 "submission."
-msgstr "Es posible que el grader no pudiera terminar su proceso con este envío."
+msgstr "Es posible que el grader no terminó su proceso con este envío."
 
 #: inginious/frontend/plugins/manual_scoring/pages/rubric.py:17
 #: inginious/frontend/plugins/manual_scoring/pages/student_submissions.py:18
