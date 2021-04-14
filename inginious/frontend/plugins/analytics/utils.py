@@ -1,4 +1,5 @@
 import datetime
+import inginious.frontend.pages.api._api_page as api
 
 _use_minfied = True
 
@@ -44,4 +45,7 @@ def _generate_query_for_list(names):
 
 
 def _convert_string_to_date(string_date):
-    return datetime.datetime(*map(int, string_date.split('-')))
+    try:
+        return datetime.datetime(*map(int, string_date.split('-')))
+    except (ValueError, TypeError):
+        raise api.APIError(400, "Invalid date format")
