@@ -1,20 +1,20 @@
 <!--To create new hints an set them on the table body-->
 <table style="display:none">
-    <tr id="hint_hid">
+    <tr id="hint_HID">
         <td>
-            <input id="hint_info_title_hid" type="text" class="form-control" name="task_hints[hid][title]" value="" readonly/>
+            <input id="hint_info_title_HID" type="text" class="form-control" name="task_hints[HID][title]" value="New hint title" readonly/>
         </td>
         <td>
-            <input id="hint_info_penalty_hid" type="text" class="form-control" name="task_hints[hid][penalty]" value="" readonly/>
+            <input id="hint_info_penalty_HID" type="text" class="form-control" name="task_hints[HID][penalty]" value="0" readonly/>
         </td>
         <td>
-            <div id="hint_options_hid">
-                <button class="col-sm-6 btn btn-info" type="button" onclick="onEditHintClick(hid)"><i class="fa fa-edit"></i></button>
-                <button class="col-sm-6 btn btn-danger" type="button" onclick="deleteHints(hid)"><i class="fa fa-trash"></i></button>
+            <div id="hint_options_HID">
+                <button class="col-sm-6 btn btn-info" type="button" onclick="onEditHintClick('HID')"><i class="fa fa-edit"></i></button>
+                <button class="col-sm-6 btn btn-danger" type="button" onclick="deleteHints('HID')"><i class="fa fa-trash"></i></button>
             </div>
         </td>
         <td style="display:none">
-            <textarea id="hint_info_content_hid" class="code-editor form-control" data-x-language="rst" data-x-lines="0" name="task_hints[hid][content]"></textarea>
+            <textarea id="hint_info_content_HID" class="code-editor form-control" data-x-language="rst" data-x-lines="0" name="task_hints[HID][content]">Hint description</textarea>
         </td>
     </tr>
 </table>

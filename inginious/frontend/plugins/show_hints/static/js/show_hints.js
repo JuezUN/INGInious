@@ -26,7 +26,7 @@ function loadHintsOnModal(){
         course_id: getCourseId(),
         task_id: getTaskId()
     }).done(function(result){
-        to_show_hints = result;
+        to_show_hints = result.data;
         setHintsOnContainer(to_show_hints);
     })
 }
@@ -89,14 +89,15 @@ function existsUnlockFormContent(index){
 }
 
 /* Show or hide the hints by clicking the menu items*/
-function changeHint(hintKey){
+function changeHint(key){
+    let hint_key = "hint_" + key;
 
     $("#hint_info").hide();
     $("#hint_container").show();
 
     $(".task_hints").each(function(index, element){
-        if(element.id.includes(hintKey)){
-            $("#" + element.id).show();
+        if(element.id == hint_key){
+            $("#" + element.id).show(500);
         }else{
             $("#" + element.id).hide();
         }
@@ -121,7 +122,7 @@ function setHintAsAllowed(selected_hint_id){
 }
 
 function showHelp(){
-    $("#hint_info").show();
+    $("#hint_info").show(500);
     $("#hint_container").hide();
 }
 

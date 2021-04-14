@@ -31,8 +31,8 @@ $def with (course_id, task_id, hints_data)
                 <div class="row">
                     <div class="col-sm-4" id="hints_navigation_menu">
                         <h4>$:_("Hints List")</h4>
-                        <div id="hint_help">
-                            <a href="#" type="button" onclick="showHelp()">
+                        <div id="user_hints_help">
+                            <a type="button" onclick="showHelp()">
                                 <h5>
                                    $:_("Help")
                                 </h5>
@@ -43,7 +43,7 @@ $def with (course_id, task_id, hints_data)
                             $for key, hint in hints_data.items():
                                 <div id="hint_menu_$key">
                                     <a class="list-group-item"
-                                       onclick="changeHint($key)">
+                                       onclick="changeHint('$key')">
                                         <label>$hints_data[key]["title"]</label>
                                         <div class="hint_penalty">
                                         $if float(hints_data[key]["penalty"]):
@@ -64,7 +64,7 @@ $def with (course_id, task_id, hints_data)
                                 <br/><br/>
                                 $:_("Each hint is like a small help or suggestion with information that you can use to reach the solution more easily, as code tips, task concepts, or processes to solve the problem, it means that you don't need to unlock hints to solve the task, since it already has all the necessary information.")
                                 <br/><br/>
-                                $:_("You can unlock them by going to the hint, and click the <b>Get hint</b> button. However, some hints could have a penalty that will be applied on your final submission score, so be carefully if you want tou unlock them!.")
+                                $:_("You can unlock them by going to the hint, and click the <b>Get hint</b> button. However, some hints may have a penalty that will be applied on your final submission score, so be carefully if you want tou unlock them!.")
                             </div>
                             <br/>
                             $:_("<b>Note:</b> All the hints penalty will we applied as a percentage of the total submission score.").
@@ -93,7 +93,7 @@ $def with (course_id, task_id, hints_data)
                                 <div class="form-group hint_unlock_penalty">
                                     <p>$:_("This will reduce a <b></b> of your total submission score").</p>
                                 </div>
-                                <button class="form-group btn btn-success" onclick="setHintAsAllowed(key)">$:_("Get Hint")</button>
+                                <button class="form-group btn btn-success" onclick="setHintAsAllowed('key')">$:_("Get Hint")</button>
                             </div>
                         </div>
                     </div>

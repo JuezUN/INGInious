@@ -16,14 +16,16 @@ class UserHint(object):
         """ Method to check each hint status, and return the content
             if it is allowed
         """
-        data = self._database.user_hints.find_one({"taskid":  self._task_id,
+        user_hints = self._database.user_hints.find_one({"taskid":  self._task_id,
                                             "username":  self._username})
-        if data is None:
-            data = self.create_hint_list_for_user()
+        if user_hints is None:
+            user_hints = self.create_hint_list_for_user()
             return 200, ""
 
-        to_show_hints = []
-        allowedHints = data["allowedHints"]
+        self.update_allowed_hints_list(user_hints, hints)
+
+        to_show_hints = {}
+        allowedHints = user_hints["allowedHints"]
         for key in hints:
             to_show_hint_content = {
                 "title": hints[key]["title"],
@@ -37,55 +39,74 @@ class UserHint(object):
                 to_show_hint_content["content"] = parse_content
                 to_show_hint_content["allowed_to_see"] = True
 
-            to_show_hints.append(to_show_hint_content)
+            to_show_hints[key] = to_show_hint_content
 
         return to_show_hints
 
+    def update_allowed_hints_list(self, user_hints, hints):
+
+        """ Method to compare the user hints with the task hints, and update them"""
+        allowedHints = user_hints["allowedHints"]
+        for hint_id in allowedHints.keys():
+            if not hint_id in hints.keys():
+                self.delete_hint_from_allowed(hint_id)
+
+        self.update_total_penalty()
+
     def create_hint_list_for_user(self):
 
-        data = self._database.user_hints.insert({"taskid": self._task_id, "username": self._username, "allowedHints": [], "penalty": 0})
-        return data
+        user_hints = self._database.user_hints.insert({"taskid": self._task_id, "username": self._username, "allowedHints": {}, "penalty": 0})
+        return user_hints
 
     def check_allowed_hint_in_database(self, hint_id):
 
         """ Method to check if the hint is already in the user hints """
-        data = self._database.user_hints.find_one({"taskid": self._task_id, "username": self._username})
-        allowed_hints = data["allowedHints"]
+        user_hints = self._database.user_hints.find_one({"taskid": self._task_id, "username": self._username})
+        allowed_hints = user_hints["allowedHints"]
 
         if hint_id in allowed_hints:
             return True
 
         return False
 
+    def delete_hint_from_allowed(self, hint_id):
+
+        """ Method to delete a hint from the user allowed hints"""
+        self._database.user_hints.find_one_and_update(
+            {"taskid": self._task_id, "username": self._username},
+            {"$pull": {
+                "allowedHints": hint_id
+            }
+        })
+
     def add_hint_on_allowed(self, hint_id, task_hints):
 
         """ Method to add the new unlocked hint in the user allowed hints """
         if not self.check_allowed_hint_in_database(hint_id):
-
-            self._database.user_hints.find_one_and_update({"taskid": self._task_id, "username": self._username},{
-                                                                "$push": {
-                                                                    "allowedHints":hint_id
+            try:
+                self._database.user_hints.find_one_and_update({"taskid": self._task_id, "username": self._username},
+                                                                { "$set": { "allowedHints."+hint_id: {
+                                                                    "penalty":task_hints[hint_id]["penalty"]
+                                                                    }
                                                                 }
                                                             })
-            try:
-                self.update_total_penalty(task_hints)
+                self.update_total_penalty()
             except Exception:
                 raise Exception
 
         return 200, ""
 
-    def update_total_penalty(self, task_hints):
+    def update_total_penalty(self):
 
         """ Method needed to compare the saved hints per student, and the task hints
             to change penalty to the student
         """
         new_penalty = 0;
-        data = self._database.user_hints.find_one({"taskid": self._task_id, "username": self._username})
-        allowed_hints = data["allowedHints"]
+        user_hints = self._database.user_hints.find_one({"taskid": self._task_id, "username": self._username})
+        allowed_hints = user_hints["allowedHints"]
 
-        for key, hint in task_hints.items():
-            if key in allowed_hints:
-                new_penalty += float(hint["penalty"])
+        for key in allowed_hints.keys():
+           new_penalty += float(allowed_hints[key]["penalty"])
 
         if new_penalty > 100:
             new_penalty = 100
@@ -93,8 +114,6 @@ class UserHint(object):
         self._database.user_hints.update({"taskid": self._task_id, "username": self._username},
                                          {"$set" : {"penalty": new_penalty}
                                         })
-
-        return allowed_hints
 
     def parse_rst_content(self, content):
 

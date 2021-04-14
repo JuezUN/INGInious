@@ -29,8 +29,16 @@ class UserHintsAPI(APIAuthenticatedPage):
         if not self.user_manager.course_is_user_registered(course,username):
             raise APIError(400,{"error":"The course does not exists"})
 
-        userhint = UserHint(username, task_id, self.database)
-        return 200, userhint.check_locked_hint_status(self.get_task_hints(task))
+        allowed_hints_list = {}
+
+        try:
+            userhint = UserHint(username, task_id, self.database)
+            allowed_hints_list = userhint.check_locked_hint_status(self.get_task_hints(task))
+        except Exception:
+            raise  APIError(400,{"message":"An error ocurred when get the user hints data"})
+
+        return 200, {"status": "success","data": allowed_hints_list}
+
 
     # Set a hint to a user in database to "unlock" it
     def API_POST(self):

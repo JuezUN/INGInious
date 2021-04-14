@@ -2,8 +2,9 @@
     border-right: 1px solid #e5e5e5;
 }
 
-#hint_help a{
+#user_hints_help a{
     float:right;
+    cursor: pointer;
 }
 
 #hints_list{

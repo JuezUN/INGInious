@@ -41,6 +41,7 @@ def add_static_files(template_helper):
 
     if use_minified():
         template_helper.add_javascript("/show_hints/static/js/show_hints.min.js")
+        template_helper.add_css("/show_hints/static/css/show_hints.min.css")
     else:
         template_helper.add_javascript("/show_hints/static/js/show_hints.js")
         template_helper.add_css("/show_hints/static/css/show_hints.css")

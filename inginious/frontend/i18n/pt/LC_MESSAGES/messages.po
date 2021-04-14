@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-12 22:54-0500\n"
+"POT-Creation-Date: 2021-04-14 02:28-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -2722,7 +2722,7 @@ msgid "Create new hint"
 msgstr ""
 
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_edit_modal.html:11
-#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:19
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:30
 msgid "Hint title"
 msgstr ""
 
@@ -2746,20 +2746,24 @@ msgstr ""
 msgid "Add hints to the task that can be accessed before the task ends"
 msgstr ""
 
-#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:11
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:12
+msgid "Hint id"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:18
+msgid "Add hint"
+msgstr ""
+
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:22
 msgid "Hints list"
 msgstr "Lista de tutores"
 
-#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:22
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:33
 msgid "Penalty per hint (%)"
 msgstr ""
 
-#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:25
+#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:36
 msgid "Hint options"
-msgstr ""
-
-#: inginious/frontend/plugins/show_hints/pages/templates/hints_tab.html:61
-msgid "Add hint"
 msgstr ""
 
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:22
@@ -2800,7 +2804,7 @@ msgstr ""
 #: inginious/frontend/plugins/show_hints/pages/templates/hints_view.html:67
 msgid ""
 "You can unlock them by going to the hint, and click the <b>Get hint</b> "
-"button. However, some hints could have a penalty that will be applied on "
+"button. However, some hints may have a penalty that will be applied on "
 "your final submission score, so be carefully if you want tou unlock "
 "them!."
 msgstr ""
@@ -5291,3 +5295,4 @@ msgstr ""
 
 #~ msgid "Semester"
 #~ msgstr ""
+

@@ -41,8 +41,8 @@ def on_task_submit(course, taskid, task_data, task_fs):
     task_data["task_hints"] = CourseEditTask.dict_from_prefix("task_hints",task_data)
 
     #Delete key for hint template if it exists
-    if "hid" in task_data["task_hints"].keys():
-        del task_data["task_hints"]["hid"]
+    if "HID" in task_data["task_hints"].keys():
+        del task_data["task_hints"]["HID"]
 
     #Delete duplicate items if they exists
 
