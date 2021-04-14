@@ -9,7 +9,7 @@ function get_services_names(services = []) {
 }
 
 function getCourseNameByKey(key) {
-    return all_courses[key]
+    return all_courses[key];
 }
 
 function getCoursesNames(services = []) {
@@ -29,8 +29,9 @@ function generate_get_url_plot(path) {
     const analytics_course_filter = $("#analytics_course").val();
 
     if (analytics_username_filter || analytics_start_date_filter || analytics_end_date_filter
-        || analytics_service_filter || analytics_course_filter)
+        || analytics_service_filter || analytics_course_filter) {
         request.push("?");
+    }
     if (analytics_username_filter)
         parameters.push('username=' + analytics_username_filter);
     if (analytics_service_filter)
