@@ -47,7 +47,7 @@ function generate_get_url_plot(path) {
 }
 
 function updateDataFilters() {
-    $('.active > a[data-toggle="tab"]').trigger('shown.bs.tab');
+    $(".active > a[data-toggle=\"tab\"]").trigger("shown.bs.tab");
 }
 
 function parse_str_to_date(str_date) {
@@ -101,19 +101,19 @@ function turnStringNumberToTwoDigitFormat(date) {
 }
 
 function setupDatetimePicker() {
-    const fromDateFilter = $('#analytics_from_date_filter');
-    const toDateFilter = $('#analytics_to_date_filter');
+    const fromDateFilter = $("#analytics_from_date_filter");
+    const toDateFilter = $("#analytics_to_date_filter");
     fromDateFilter.datetimepicker({
-        locale: 'en',
+        locale: "en",
         sideBySide: true,
         maxDate: moment(),
-        format: 'YYYY-MM-DD'
+        format: "YYYY-MM-DD"
     });
     toDateFilter.datetimepicker({
-        locale: 'en',
+        locale: "en",
         sideBySide: true,
         maxDate: moment(),
-        format: 'YYYY-MM-DD'
+        format: "YYYY-MM-DD"
     });
 
     fromDateFilter.on("dp.change", function () {
@@ -143,7 +143,7 @@ function setupTabs() {
         "radar-plot-tab": new RadarPlot(),
         "bar-plot-tab": new StackedBarPlot()
     };
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    $("a[data-toggle=\"tab\"]").on("shown.bs.tab", function (e) {
         const analytics_plot = tabToAnalyticsPlot[e.target.id];
         if (analytics_plot) {
             analytics_plot.plot();
