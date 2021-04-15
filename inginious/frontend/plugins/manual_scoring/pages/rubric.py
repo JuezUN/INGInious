@@ -7,6 +7,7 @@ import os
 
 from inginious.frontend.parsable_text import ParsableText
 from inginious.frontend.plugins.contact_page.pages.constants import get_use_minify
+from inginious.frontend.plugins.manual_scoring.constants import get_static_folder_path
 from inginious.frontend.plugins.utils import read_json_file
 
 
@@ -35,7 +36,7 @@ def get_submission_result_text(submission_input):
 
 def get_rubric_content(user_manager):
     """ return the content of the rubric depending of the language """
-    path = 'inginious/frontend/plugins/manual_scoring/static/json/'
+    path = os.path.join(get_static_folder_path(), 'json')
     language_file = {'es': 'rubric_es.json', 'en': 'rubric.json', 'de': 'rubric.json', 'fr': 'rubric.json',
                      'pt': 'rubric.json'}
     current_language = user_manager.session_language()

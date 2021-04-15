@@ -7,7 +7,7 @@
 
 from collections import OrderedDict
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.frontend.plugins.manual_scoring.pages.constants import get_use_minify, get_render_path
+from inginious.frontend.plugins.manual_scoring.constants import get_use_minify, get_render_path, get_dict_value
 
 base_renderer_path = get_render_path()
 
@@ -20,8 +20,8 @@ def create_submissions_dict(submissions_list):
         data[submission["_id"]] = {
             "_id": submission["_id"],
             "date": submission["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S"),
-            "grade": submission["grade"],
-            "result": submission["custom"]["custom_summary_result"],
+            "grade": get_dict_value(submission, "grade"),
+            "result": get_dict_value(submission, "custom", "custom_summary_result"),
         }
         if "manual_scoring" in submission:
             data[submission["_id"]]["manual_grade"] = submission["manual_scoring"]["grade"]
@@ -69,7 +69,6 @@ class StudentSubmissionsPage(INGIniousAdminPage):
                             "courseid": course_id,
                             "taskid": task_id,
                             "username": username
-
                         }
                 },
                 {

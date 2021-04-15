@@ -12,8 +12,8 @@ from ast import literal_eval
 
 from inginious.frontend.pages.api._api_page import APIError
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.frontend.plugins.manual_scoring.pages.constants import get_use_minify, get_render_path
-from inginious.frontend.plugins.manual_scoring.pages.manual_scoring_error import ManualScoringError
+from ..constants import get_use_minify, get_render_path, get_dict_value
+from ..pages.manual_scoring_error import ManualScoringError
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from .rubric import get_manual_scoring_data, get_submission_result_text, get_rubric_content, \
     add_static_files_to_render_notebook
@@ -136,19 +136,24 @@ class ManualScoringPage(INGIniousAdminPage):
         submission_input = self.submission_manager.get_input_from_submission(submission)
         comment, score, rubric_status = get_manual_scoring_data(submission)
 
+        feedback = get_submission_result_text(submission_input)
+        error = []
+        name = get_dict_value(submission_input, "username", error)
+
         data = {
             "url": 'manual_scoring',
-            "summary": submission_input['custom']['custom_summary_result'],
+            "summary": get_dict_value(submission_input, "custom", "custom_summary_result"),
             "grade": score,
-            "language": submission_input['input'][problem_id + '/language'],
+            "language": get_dict_value(submission_input, "input", problem_id + '/language'),
             "comment": comment,
-            "score": submission_input['grade'],
+            "score": get_dict_value(submission_input, "grade"),
             "task_name": course.get_task(submission_input['taskid']).get_name(self.user_manager.session_language()),
-            "result": submission_input['result'],
-            "feedback_result_text": get_submission_result_text(submission_input),
-            "problem": submission_input['input'][problem_id],
-            "username": submission_input['username'][0],
-            "name": self.user_manager.get_user_realname(submission_input['username'][0]),
+            "result": get_dict_value(submission_input, "result"),
+            "feedback_result_text": feedback if feedback else _("Not available") + ": " + _(
+                "It is possible that the grader could not finish its process with this submission."),
+            "problem": get_dict_value(submission_input, "input", problem_id),
+            "username": name[0],
+            "name": self.user_manager.get_user_realname(name[0]) if "username" not in error else name[0],
             "environment_type": task.get_environment(),
             "question_id": problem_id,
             "submission_id": submission_id,
