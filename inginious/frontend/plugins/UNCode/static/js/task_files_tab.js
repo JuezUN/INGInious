@@ -204,9 +204,11 @@ jQuery(document).ready(function () {
         const data = {"action": "delete", "path": path};
         jQuery.ajax({
             beforeSend: function () {
-                $("#tab_file_list").html('Loading');
+                $("#tab_file_list").html("<h4 style='color: #e99002'>Loading...</h4>");
+                $("#delete_all_files_confirm_modal").modal("hide");
             },
             method: 'GET',
+            async: false,
             data: data,
             url: location.pathname + "/files"
         });
