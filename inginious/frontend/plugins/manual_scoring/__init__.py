@@ -4,22 +4,20 @@
 # more information about the licensing of this file.
 
 """ A manual scoring plugin for students submissions  """
-import os
 
 from inginious.frontend.plugins.utils import create_static_resource_page
 
 from inginious.frontend.plugins.manual_scoring.pages import students_list, student_submissions, manual_scoring, \
     course_task_list, student_feedback_list, feedback
-from .pages.constants import set_use_minified, get_manual_scoring_link_code, get_feedback_link_code
+from inginious.frontend.plugins.manual_scoring.constants import set_use_minified, get_manual_scoring_link_code, get_feedback_link_code, \
+    get_static_folder_path
 from .pages.api.rst_parser import RstParserAPI
 from .pages.api.manual_scoring_info import ManualScoringInfoApi
-
-_static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
 
 def init(plugin_manager, _, __, plugin_config):
     """ Init the plugin """
-    plugin_manager.add_page(r'/manual_scoring/static/(.*)', create_static_resource_page(_static_folder_path))
+    plugin_manager.add_page(r'/manual_scoring/static/(.*)', create_static_resource_page(get_static_folder_path()))
 
     use_minified = plugin_config.get("use_minified", True)
 

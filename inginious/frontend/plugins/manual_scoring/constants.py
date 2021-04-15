@@ -4,9 +4,11 @@
 # more information about the licensing of this file.
 
 """ General data for all manual scoring pages """
+import os
 
 _render_path = 'frontend/plugins/manual_scoring/pages/templates'
 _use_minified = True
+_static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
 
 def get_manual_scoring_link_code(course):
@@ -42,3 +44,45 @@ def get_use_minify():
 def get_render_path():
     """ getter for render path """
     return _render_path
+
+
+def get_static_folder_path():
+    """ Return the path of the static folder """
+    return _static_folder_path
+
+
+def get_element_of_dict(dictionary, key):
+    """ handles the error that a key does not exist  """
+    if key in dictionary:
+        return dictionary[key], ""
+    else:
+        return None, key
+
+
+def get_element_of_dict_double_key(dictionary, key_1, key_2):
+    """ handles the error that a key does not exist when there are two keys  """
+    internal_dict, error = get_element_of_dict(dictionary, key_1)
+    if internal_dict:
+        return get_element_of_dict(internal_dict, key_2)
+    if not error:
+        error = key_1 + ": internal_dict is empty"
+    return internal_dict, error
+
+
+def add_error_to_list(error_list, new_error):
+    """" add a string representing a missed key to a list """
+    if new_error != "":
+        error_list.append(new_error)
+
+
+def get_dict_value(dictionary, key_1, key_2=None, error_list=None):
+    """ return a value from a dictionary """
+    admissible_value = 0
+    if key_2:
+        value, error = get_element_of_dict_double_key(dictionary, key_1, key_2)
+    else:
+        value, error = get_element_of_dict(dictionary, key_1)
+    if error_list:
+        add_error_to_list(error_list, error)
+
+    return value if value or value == admissible_value else _("Not available")
