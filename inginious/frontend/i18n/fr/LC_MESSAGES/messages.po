@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-14 16:25-0500\n"
+"POT-Creation-Date: 2021-04-14 17:21-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -595,7 +595,7 @@ msgstr "Paramètres du cours"
 #: inginious/frontend/templates/course_admin/classroom_edit.html:102
 #: inginious/frontend/templates/course_admin/student_list.html:19
 #: inginious/frontend/templates/course_admin/student_list.html:25
-#: inginious/frontend/templates/course_admin/student_list.html:30
+#: inginious/frontend/templates/course_admin/student_list.html:29
 #: inginious/frontend/templates/course_admin/teams_edit.html:189
 #: inginious/frontend/templates/team.html:80
 #: inginious/frontend/templates/team.html:153
@@ -4386,9 +4386,19 @@ msgstr ""
 msgid "\"View all submissions\""
 msgstr "\"Voir toutes les soumissions\""
 
-#: inginious/frontend/templates/course_admin/student_list.html:33
+#: inginious/frontend/templates/course_admin/student_list.html:32
 msgid "Teaching staff"
 msgstr "Équipe enseignante"
+
+#: inginious/frontend/templates/course_admin/student_list.html:38
+#, fuzzy
+msgid "Registered staff"
+msgstr "Etudiant enregistré"
+
+#: inginious/frontend/templates/course_admin/student_list.html:43
+#, fuzzy
+msgid "Registered students"
+msgstr "Etudiant enregistré"
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:15
 msgid "member"
@@ -5236,9 +5246,12 @@ msgstr "Extensions autorisées:"
 #~ msgid "Semester"
 #~ msgstr ""
 
-#~ msgid ""
-#~ "\"It is possible that the grader "
-#~ "could not finish its process with "
-#~ "this submission\""
+#~ msgid "Number of registered staff:"
 #~ msgstr ""
+
+#~ msgid "Number of registered students:"
+#~ msgstr ""
+
+#~ msgid "Registered staff"
+#~ msgstr "Etudiant enregistré"
 
