@@ -25,21 +25,25 @@ def get_api_query_parameters(input_dict):
     if username:
         query_parameters['username'] = username
     if service:
-        query_parameters['service'] = _generate_query_for_list(service)
+        query_parameters['service'] = _parse_list_for_query(service)
     if course_id:
-        query_parameters['course_id'] = _generate_query_for_list(course_id)
+        query_parameters['course_id'] = _parse_list_for_query(course_id)
 
     if start_date or end_date:
         query_parameters['date'] = {}
         if start_date:
-            query_parameters['date']['$gte'] = _convert_string_to_date(start_date)
+            start_date = _convert_string_to_date(start_date)
+            query_parameters['date']['$gte'] = start_date
         if end_date:
-            query_parameters['date']['$lte'] = _convert_string_to_date(end_date)
+            end_date = _convert_string_to_date(end_date)
+            query_parameters['date']['$lte'] = end_date
+        if start_date and end_date and (end_date < start_date):
+            raise api.APIError(400, _("start date must be greater than end date"))
 
     return query_parameters
 
 
-def _generate_query_for_list(names):
+def _parse_list_for_query(names):
     """ return a dict to be used to filter data by a list of names """
     name_list = names.split(",")
     return {"$in": name_list}
@@ -50,4 +54,4 @@ def _convert_string_to_date(string_date):
     try:
         return datetime.datetime(*map(int, string_date.split('-')))
     except (ValueError, TypeError):
-        raise api.APIError(400, "Invalid date format")
+        raise api.APIError(400, _("Invalid date format"))

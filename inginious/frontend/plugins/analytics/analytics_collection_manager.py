@@ -41,3 +41,20 @@ class AnalyticsCollectionManagerSingleton:
     def get_course_list(self):
         """ return a list of the courses registered in analytics """
         return self.db.analytics.distinct("course_id")
+
+    def filter_analytics_data(self, filters):
+        """ get data from DB according the filters """
+        results = self.db.analytics.aggregate([
+            {
+                "$match": filters
+            },
+            {
+                "$project": {
+                    "username": 1,
+                    "service": 1,
+                    "date": 1,
+                    "course_id": 1
+                }
+            }
+        ])
+        return results

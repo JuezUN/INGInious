@@ -7,7 +7,7 @@ from ..utils import get_api_query_parameters
 
 def get_course_ids(data):
     """" Return a list of course ids """
-    return list(map(lambda course: course["course"], data))
+    return list(map(lambda course: course["course_id"], data))
 
 
 def create_y_data_list(num_courses, num_services):
@@ -40,12 +40,12 @@ class StackedBarPlotAPI(SuperadminAPI):
 
         data = list(self.get_visits_data(query_parameters))
 
-        course_names = get_course_ids(data)
+        course_ids = get_course_ids(data)
         service_names = self.get_service_names(query_parameters)
 
-        visits = get_visit_values(data, len(course_names), service_names)
+        visits = get_visit_values(data, len(course_ids), service_names)
 
-        results = {"x_data": course_names, "y_data": visits, "services": service_names}
+        results = {"x_data": course_ids, "y_data": visits, "services": service_names}
 
         return 200, results
 
@@ -82,14 +82,14 @@ class StackedBarPlotAPI(SuperadminAPI):
             },
             {
                 "$project": {
-                    "course": "$_id",
+                    "course_id": "$_id",
                     "data": 1,
                     "_id": 0
                 }
             },
             {
                 "$sort": {
-                    "course": 1
+                    "course_id": 1
                 }
             }
         ])

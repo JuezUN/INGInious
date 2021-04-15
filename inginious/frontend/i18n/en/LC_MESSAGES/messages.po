@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-14 15:14-0500\n"
+"POT-Creation-Date: 2021-04-15 14:18-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -1277,6 +1277,14 @@ msgid ""
 "            <i class='fa fa-bar-chart fa-fw'></i> Analytics</a></li>"
 msgstr ""
 
+#: inginious/frontend/plugins/analytics/utils.py:41
+msgid "start date must be greater than end date"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/utils.py:57
+msgid "Invalid date format"
+msgstr ""
+
 #: inginious/frontend/plugins/analytics/pages/analytics.html:13
 msgid "Analytics"
 msgstr ""
@@ -1355,7 +1363,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:92
 #: inginious/frontend/plugins/analytics/pages/analytics.html:111
-msgid "Services per course"
+msgid "Analytics per course"
 msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:97
@@ -5089,5 +5097,11 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Semester"
+#~ msgstr ""
+
+#~ msgid "Services per course"
+#~ msgstr ""
+
+#~ msgid "start date must be greater end date"
 #~ msgstr ""
 

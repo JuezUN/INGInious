@@ -30,8 +30,8 @@ const StackedBarPlot = (function () {
         let dataToPlot = [];
         const colorScale = d3.scale.linear().domain([0, 0.5, 1]).range(["red", "yellow", "green"]);
         $.each(services, function (index, serviceName) {
-            let color = colorScale(index * (1.0 / services.length));
-            let trace = generateTrace(xData, yData[index], serviceName, color);
+            const color = colorScale(index * (1.0 / services.length));
+            const trace = generateTrace(xData, yData[index], serviceName, color);
             dataToPlot.push(trace);
         });
         return dataToPlot;

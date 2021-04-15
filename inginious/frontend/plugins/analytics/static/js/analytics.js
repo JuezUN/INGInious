@@ -46,7 +46,7 @@ function generate_get_url_plot(path) {
     return request.join('');
 }
 
-function on_search() {
+function updateDataFilters() {
     $('.active > a[data-toggle="tab"]').trigger('shown.bs.tab');
 }
 
@@ -70,8 +70,7 @@ const AnalyticsDiagram = (function () {
     return AnalyticsDiagram;
 })();
 
-function getAllAnalytics(course_id) {
-    const contentDanger = "Error getting the information. Try later";
+function getAllAnalytics() {
     const apiPath = "/api/analytics/";
     return $.get(generate_get_url_plot(apiPath), function (result) {
         exportCSVFile(result, "analytics");
@@ -82,12 +81,12 @@ function getAllAnalytics(course_id) {
 
 function exportCSVFile(items, fileTitle) {
     const filename = `${fileTitle}.csv`;
-    const csv = 'data:text/csv;charset=utf-8,' + Papa.unparse(items);
+    const csv = "data:text/csv;charset=utf-8," + Papa.unparse(items);
     const data = encodeURI(csv);
-    const link = document.createElement('a');
+    const link = document.createElement("a");
 
-    link.setAttribute('href', data);
-    link.setAttribute('download', filename);
+    link.setAttribute("href", data);
+    link.setAttribute("download", filename);
 
     // Append link to the body in order to make it work on Firefox.
     document.body.appendChild(link);
@@ -96,12 +95,47 @@ function exportCSVFile(items, fileTitle) {
     link.remove();
 }
 
-function date_two_digit_format(date) {
+function turnStringNumberToTwoDigitFormat(date) {
+    // turn 1 to 01 for example, but 10 is still 10
     return date.toString().padStart(2, "0");
 }
 
-$(function () {
+function setupDatetimePicker() {
+    const fromDateFilter = $('#analytics_from_date_filter');
+    const toDateFilter = $('#analytics_to_date_filter');
+    fromDateFilter.datetimepicker({
+        locale: 'en',
+        sideBySide: true,
+        maxDate: moment(),
+        format: 'YYYY-MM-DD'
+    });
+    toDateFilter.datetimepicker({
+        locale: 'en',
+        sideBySide: true,
+        maxDate: moment(),
+        format: 'YYYY-MM-DD'
+    });
 
+    fromDateFilter.on("dp.change", function () {
+        const minDate = $("#analytics_from_date").val();
+        toDateFilter.data("DateTimePicker").minDate(minDate);
+    });
+    updateDate()
+}
+
+function updateDate() {
+    const date = new Date()
+    $("#analytics_from_date").val(`${date.getFullYear()}-01-02`);
+    $("#analytics_to_date")
+        .val(`${date.getFullYear()}-${turnStringNumberToTwoDigitFormat((date.getMonth() + 1))}-${turnStringNumberToTwoDigitFormat(date.getDate())}`);
+}
+
+function setupServiceAndCourseFilter() {
+    $("#analytics_course").multipleSelect({maxHeight: 140});
+    $("#analytics_service").multipleSelect({maxHeight: 140});
+}
+
+function setupTabs() {
     const tabToAnalyticsPlot = {
         "heat-map-tab": new HeatMap(),
         "plot-visits-per-day-tab": new VisitsPerDayChart(),
@@ -109,31 +143,17 @@ $(function () {
         "radar-plot-tab": new RadarPlot(),
         "bar-plot-tab": new StackedBarPlot()
     };
-    const date = new Date()
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         const analytics_plot = tabToAnalyticsPlot[e.target.id];
         if (analytics_plot) {
             analytics_plot.plot();
         }
     });
-    $('.active > a[data-toggle="tab"]').trigger('shown.bs.tab');
+}
 
-    $('#analytics_from_date_filter').datetimepicker({
-        locale: 'en',
-        sideBySide: true,
-        maxDate: moment(),
-        format: 'YYYY-MM-DD'
-    });
-    $('#analytics_to_date_filter').datetimepicker({
-        locale: 'en',
-        sideBySide: true,
-        maxDate: moment(),
-        format: 'YYYY-MM-DD'
-    });
-
-    $("#analytics_from_date").val(`${date.getFullYear()}-01-02`);
-    $("#analytics_to_date")
-        .val(`${date.getFullYear()}-${date_two_digit_format((date.getMonth() + 1))}-${date_two_digit_format(date.getDate())}`);
-    $("#analytics_course").multipleSelect({maxHeight: 140});
-    $("#analytics_service").multipleSelect({maxHeight: 140});
+$(function () {
+    setupTabs();
+    setupDatetimePicker();
+    setupServiceAndCourseFilter();
+    updateDataFilters()
 });

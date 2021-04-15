@@ -10,14 +10,16 @@ from ..utils import get_api_query_parameters
 
 class AnalyticsAPI(SuperadminAPI):
     def API_GET(self):
-        """ Get request. return analytics data """
+        """ Get request. It returns data stored in analytics, according to the filters.
+        It is  mainly used to generate CSV files.
+        """
         self.check_superadmin_rights()
         input_dict = web.input()
         try:
             query_parameters = get_api_query_parameters(input_dict)
         except APIError as error:
             return error.status_code, {"error": error.return_value}
-        data_to_send = self.get_data_to_send(query_parameters)
+        data_to_send = self.get_analytics_data(query_parameters)
         return 200, data_to_send
 
     def API_POST(self):
@@ -41,25 +43,9 @@ class AnalyticsAPI(SuperadminAPI):
             return 400, "Bad Request."
 
     def get_analytics_data(self, filters):
-        """ get data from db """
-        results = self.database.analytics.aggregate([
-            {
-                "$match": filters
-            },
-            {
-                "$project": {
-                    "username": 1,
-                    "service": 1,
-                    "date": 1,
-                    "course_id": 1
-                }
-            }
-        ])
-        return results
-
-    def get_data_to_send(self, filters):
         """ organize the data to send in a list of dict """
-        analytics_data = self.get_analytics_data(filters)
+        analytics_manager = AnalyticsCollectionManagerSingleton.get_instance()
+        analytics_data = analytics_manager.filter_analytics_data(filters)
         data = []
         all_services = dict(ServicesCollectionManagerSingleton.get_instance().get_all_services())
 

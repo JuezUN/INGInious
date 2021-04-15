@@ -27,7 +27,7 @@ $var Navbar: $:NavbarF()
                     </div>
                 </div>
                 <div class="col-xs-3">
-                    <label for="analytics_from_date_filter" class="control-label">
+                    <label for="analytics_to_date_filter" class="control-label">
                         $:_("Analytics until"):
                     </label>
                     <div class='input-group date' id="analytics_to_date_filter">
@@ -75,7 +75,7 @@ $var Navbar: $:NavbarF()
                 </div>
             </div>
             <div class="col-xs-12 text-right">
-                <button onclick="on_search();" class="btn btn-success">$:_("Update")</button>
+                <button onclick="updateDataFilters();" class="btn btn-success">$:_("Update")</button>
                 <button onclick="getAllAnalytics()" class="btn btn-primary">
                    <i class="fa fa-table" aria-hidden="true"></i> $:_("Download CSV")
                 </button>
@@ -89,7 +89,7 @@ $var Navbar: $:NavbarF()
     <li><a id="plot-visits-per-day-tab" data-toggle="tab" href="#plot-visits-per-day-tab-content">$:_("Visits per day")</a></li>
     <li><a id="box-plot-tab" data-toggle="tab" href="#box-plot-tab-content">$:_("Box plot")</a></li>
     <li><a id="radar-plot-tab" data-toggle="tab" href="#radar-plot-tab-content">$:_("Radar plot")</a></li>
-    <li><a id="bar-plot-tab" data-toggle="tab" href="#analyticsPerCourseContent">$:_("Services per course")</a></li>
+    <li><a id="bar-plot-tab" data-toggle="tab" href="#analytics-per-course-content">$:_("Analytics per course")</a></li>
 </ul>
 
 <div class="tab-content">
@@ -107,8 +107,8 @@ $var Navbar: $:NavbarF()
         <h3 class="text-center">$:_("Radar plot")</h3>
         <div id="analytics_radar_plot" class="statistics-plot"><!-- Chart will be drawn inside this DIV --></div>
     </div>
-    <div id="analyticsPerCourseContent" class="tab-pane fade in">
-        <h3 class="text-center">$:_("Services per course")</h3>
+    <div id="analytics-per-course-content" class="tab-pane fade in">
+        <h3 class="text-center">$:_("Analytics per course")</h3>
         <div id="analyticsPerCoursePlot" class="statistics-plot"></div>
     </div>
 </div>

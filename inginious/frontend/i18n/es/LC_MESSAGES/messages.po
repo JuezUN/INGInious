@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-14 15:14-0500\n"
+"POT-Creation-Date: 2021-04-15 14:18-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1473,6 +1473,14 @@ msgstr ""
 "\"<li><a href='/analytics/' class='navbar-link'>\n"
 "            <i class='fa fa-bar-chart fa-fw'></i> Analítica</a></li>"
 
+#: inginious/frontend/plugins/analytics/utils.py:41
+msgid "start date must be greater than end date"
+msgstr "fecha inicial debe ser mayor que fecha final"
+
+#: inginious/frontend/plugins/analytics/utils.py:57
+msgid "Invalid date format"
+msgstr "El formato de fecha es inválido."
+
 #: inginious/frontend/plugins/analytics/pages/analytics.html:13
 msgid "Analytics"
 msgstr "Analítica"
@@ -1551,8 +1559,8 @@ msgstr "Diagrama de radar"
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:92
 #: inginious/frontend/plugins/analytics/pages/analytics.html:111
-msgid "Services per course"
-msgstr "Servicios por curso"
+msgid "Analytics per course"
+msgstr "Analíticas por curso"
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:97
 msgid "Calendar visits"
