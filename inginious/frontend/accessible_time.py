@@ -54,6 +54,9 @@ class AccessibleTime(object):
             else:
                 self._val = [parse_date(values[0].strip(), datetime.min), parse_date(values[1].strip(), datetime.max)]
 
+        if self._val[0] > self._val[1]:
+            raise Exception("The accessibility end date must be greater than the start date.")
+
     def before_start(self, when=None):
         """ Returns True if the task/course is not yet accessible """
         if when is None:
