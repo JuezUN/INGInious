@@ -600,7 +600,7 @@ msgstr "Configuración del curso"
 #: inginious/frontend/templates/course_admin/classroom_edit.html:102
 #: inginious/frontend/templates/course_admin/student_list.html:19
 #: inginious/frontend/templates/course_admin/student_list.html:25
-#: inginious/frontend/templates/course_admin/student_list.html:30
+#: inginious/frontend/templates/course_admin/student_list.html:29
 #: inginious/frontend/templates/course_admin/teams_edit.html:189
 #: inginious/frontend/templates/team.html:80
 #: inginious/frontend/templates/team.html:153
@@ -4670,9 +4670,17 @@ msgstr "\"Ver la evaluación de la tarea\""
 msgid "\"View all submissions\""
 msgstr "\"Ver todas las tareas enviadas\""
 
-#: inginious/frontend/templates/course_admin/student_list.html:33
+#: inginious/frontend/templates/course_admin/student_list.html:32
 msgid "Teaching staff"
 msgstr "Tutores"
+
+#: inginious/frontend/templates/course_admin/student_list.html:38
+msgid "Registered staff"
+msgstr "Personal registrado"
+
+#: inginious/frontend/templates/course_admin/student_list.html:43
+msgid "Registered students"
+msgstr "Estudiantes inscritos"
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:15
 msgid "member"
@@ -5505,4 +5513,7 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
+
+#~ msgid "Registered staff"
+#~ msgstr "Personal registrado"
 

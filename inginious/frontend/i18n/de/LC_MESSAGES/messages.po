@@ -581,7 +581,7 @@ msgstr ""
 #: inginious/frontend/templates/course_admin/classroom_edit.html:102
 #: inginious/frontend/templates/course_admin/student_list.html:19
 #: inginious/frontend/templates/course_admin/student_list.html:25
-#: inginious/frontend/templates/course_admin/student_list.html:30
+#: inginious/frontend/templates/course_admin/student_list.html:29
 #: inginious/frontend/templates/course_admin/teams_edit.html:189
 #: inginious/frontend/templates/team.html:80
 #: inginious/frontend/templates/team.html:153
@@ -4286,8 +4286,16 @@ msgstr ""
 msgid "\"View all submissions\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/student_list.html:33
+#: inginious/frontend/templates/course_admin/student_list.html:32
 msgid "Teaching staff"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/student_list.html:38
+msgid "Registered staff"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/student_list.html:43
+msgid "Registered students"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:15

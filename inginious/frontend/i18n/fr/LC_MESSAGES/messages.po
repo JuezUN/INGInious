@@ -595,7 +595,7 @@ msgstr "Paramètres du cours"
 #: inginious/frontend/templates/course_admin/classroom_edit.html:102
 #: inginious/frontend/templates/course_admin/student_list.html:19
 #: inginious/frontend/templates/course_admin/student_list.html:25
-#: inginious/frontend/templates/course_admin/student_list.html:30
+#: inginious/frontend/templates/course_admin/student_list.html:29
 #: inginious/frontend/templates/course_admin/teams_edit.html:189
 #: inginious/frontend/templates/team.html:80
 #: inginious/frontend/templates/team.html:153
@@ -4381,9 +4381,19 @@ msgstr ""
 msgid "\"View all submissions\""
 msgstr "\"Voir toutes les soumissions\""
 
-#: inginious/frontend/templates/course_admin/student_list.html:33
+#: inginious/frontend/templates/course_admin/student_list.html:32
 msgid "Teaching staff"
 msgstr "Équipe enseignante"
+
+#: inginious/frontend/templates/course_admin/student_list.html:38
+#, fuzzy
+msgid "Registered staff"
+msgstr "Etudiant enregistré"
+
+#: inginious/frontend/templates/course_admin/student_list.html:43
+#, fuzzy
+msgid "Registered students"
+msgstr "Etudiant enregistré"
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:15
 msgid "member"
