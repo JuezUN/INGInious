@@ -138,3 +138,6 @@ class WebAppTask(Task):
     def regenerate_input_random(self):
         """ Indicates if random inputs should be regenerated """
         return self._regenerate_input_random
+
+    def can_submit_after_deadline(self):
+        return self._data.get("allow_later_submission", False) and not self._accessible.is_open()

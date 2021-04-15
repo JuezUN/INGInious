@@ -507,6 +507,12 @@ class UserManager:
         self.user_saw_task(username, submission["courseid"], submission["taskid"])
 
         if newsub:
+            # If this is a submission after deadline, do not affect the final grade.
+            course = task.get_course()
+            if self.course_is_open_to_user(course, username) and \
+                    not self.has_staff_rights_on_course(course, username) and task.can_submit_after_deadline():
+                return
+
             old_submission = self._database.user_tasks.find_one_and_update(
                 {"username": username, "courseid": submission["courseid"], "taskid": submission["taskid"]}, {"$inc": {"tried": 1, "tokens.amount": 1}})
 
@@ -568,6 +574,8 @@ class UserManager:
         course_registered = self.course_is_open_to_user(task.get_course(), username, lti)
         # Check if task accessible to user
         task_accessible = task.get_accessible_time().is_open()
+        # Check if submissions after deadline are allowed
+        submit_after_deadline = task.can_submit_after_deadline() and course_registered
         # User has staff rights ?
         staff_right = self.has_staff_rights_on_course(task.get_course(), username)
 
@@ -582,7 +590,6 @@ class UserManager:
             group_filter = True
 
         students = aggregation["groups"][0]["students"] if (aggregation is not None and task.is_group_task()) else [self.session_username()]
-
 
         # Check for token availability
         enough_tokens = True
@@ -616,7 +623,8 @@ class UserManager:
 
                 enough_tokens = reduce(lambda old,user_task: old and check_tokens_for_user_task(user_task), user_tasks, True)
 
-        return (course_registered and task_accessible and group_filter and enough_tokens) or staff_right
+        return (course_registered and task_accessible and
+                group_filter and enough_tokens) or staff_right or submit_after_deadline
 
     def get_course_aggregations(self, course):
         """ Returns a list of the course aggregations"""
