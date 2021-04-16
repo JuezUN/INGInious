@@ -36,7 +36,7 @@ def get_api_query_parameters(input_dict):
             query_parameters['date']['$gte'] = start_date
         if end_date:
             end_date = _convert_string_to_date(end_date)
-            query_parameters['date']['$lte'] = end_date
+            query_parameters['date']['$lte'] = end_date.replace(hour=23, minute=59, second=59)
         if start_date and end_date and (end_date < start_date):
             raise api.APIError(400, _("start date must be greater than end date"))
 
@@ -55,3 +55,10 @@ def _convert_string_to_date(string_date):
         return datetime.datetime(*map(int, string_date.split('-')))
     except (ValueError, TypeError):
         raise api.APIError(400, _("Invalid date format"))
+
+
+def get_dictionary_value(dictionary, key):
+    if key in dictionary:
+        return dictionary[key]
+    else:
+        return None

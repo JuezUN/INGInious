@@ -131,8 +131,50 @@ function updateDate() {
 }
 
 function setupServiceAndCourseFilter() {
-    $("#analytics_course").multipleSelect({maxHeight: 140});
-    $("#analytics_service").multipleSelect({maxHeight: 140});
+    const course = $("#analytics_course");
+    const service = $("#analytics_service");
+
+    function changeSpan(id, value) {
+        $(`#${id} [class="ms-select-all"] span`).html(`[${value}]`);
+    }
+
+    course.multipleSelect(
+        {
+            maxHeight: 140,
+            onClick: function (view) {
+                if (!view.selected) {
+                    changeSpan("courseCol", "Select all");
+                }
+            },
+            onCheckAll: function () {
+                changeSpan("courseCol", "Deselect all");
+            },
+            onUncheckAll: function () {
+                changeSpan("courseCol", "Select all");
+            },
+            onAfterCreate: function () {
+                course.multipleSelect("uncheckAll")
+            }
+        });
+    service.multipleSelect(
+        {
+            maxHeight: 140,
+            onClick: function (view) {
+                if (!view.selected) {
+                    changeSpan("serviceCol", "Select all");
+                }
+            },
+            onCheckAll: function () {
+                changeSpan("serviceCol", "Deselect all");
+
+            },
+            onUncheckAll: function () {
+                changeSpan("serviceCol", "Select all");
+            },
+            onAfterCreate: function () {
+                service.multipleSelect("uncheckAll");
+            }
+        });
 }
 
 function setupTabs() {

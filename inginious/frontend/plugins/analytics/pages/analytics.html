@@ -41,7 +41,7 @@ $var Navbar: $:NavbarF()
                         <label for="analytics_service" class="col-sm-3 control-label">
                             $:_("Service"):
                         </label>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" id="serviceCol">
                             <select id="analytics_service" name="analytics_service" multiple="multiple"
                                     placeholder=$:_("\"All services\"") data-width="100%" >
                                 $for (key, value) in services:
@@ -64,7 +64,7 @@ $var Navbar: $:NavbarF()
                         <label for="analytics_course" class="col-sm-3 control-label">
                             $:_("Course"):
                         </label>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" id="courseCol">
                             <select id="analytics_course" class="select" name="analytics_course" multiple="multiple"
                                    placeholder=$:_("\"All courses\"") data-width="100%">
                                 $for course in all_courses:

@@ -7,7 +7,7 @@ from ..utils import get_api_query_parameters
 
 def get_course_ids(data):
     """" Return a list of course ids """
-    return list(map(lambda course: course["course_id"], data))
+    return list(map(lambda course: course["course_id"] if course["course_id"] else "no_course", data))
 
 
 def create_y_data_list(num_courses, num_services):

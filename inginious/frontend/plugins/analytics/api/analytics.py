@@ -5,7 +5,7 @@ from inginious.frontend.pages.api._api_page import APIError
 from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
 from ..analytics_collection_manager import AnalyticsCollectionManagerSingleton
 from ..services_collection_manager import ServicesCollectionManagerSingleton
-from ..utils import get_api_query_parameters
+from ..utils import get_api_query_parameters, get_dictionary_value
 
 
 class AnalyticsAPI(SuperadminAPI):
@@ -45,16 +45,16 @@ class AnalyticsAPI(SuperadminAPI):
     def get_analytics_data(self, filters):
         """ organize the data to send in a list of dict """
         analytics_manager = AnalyticsCollectionManagerSingleton.get_instance()
-        analytics_data = analytics_manager.filter_analytics_data(filters)
+        analytics_data = list(analytics_manager.filter_analytics_data(filters))
         data = []
         all_services = dict(ServicesCollectionManagerSingleton.get_instance().get_all_services())
 
         for analytic in analytics_data:
             analytic_info = {
                 "_id": str(analytic["_id"]),
-                "course_id": analytic["course_id"],
+                "course_id": get_dictionary_value(analytic, "course_id"),
                 "course": self.course_factory.get_course(analytic["course_id"]).get_name(
-                    self.user_manager.session_language()),
+                    self.user_manager.session_language()) if get_dictionary_value(analytic, "course_id") else None,
                 "service_id": analytic["service"],
                 "service": all_services[analytic["service"]],
                 "username": analytic["username"],
