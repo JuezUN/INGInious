@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-15 16:47-0500\n"
+"POT-Creation-Date: 2021-04-15 19:05-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -542,23 +542,23 @@ msgstr "Le nombre de soumissions sauvegardées doit être positif"
 msgid "Invalid submission limit!"
 msgstr "Limite de soumission invalide!"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:282
+#: inginious/frontend/pages/course_admin/task_edit.py:289
 msgid "Your browser returned an invalid form ({})"
 msgstr "Votre navigateur a renvoyé un formaulaire invalide ({})"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:288
+#: inginious/frontend/pages/course_admin/task_edit.py:295
 msgid "Error while reading course's information"
 msgstr "Une erreur s'est produite lors de la lecture des informations du cours"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:312
+#: inginious/frontend/pages/course_admin/task_edit.py:319
 msgid "Invalid data: {}"
 msgstr "Données invalides : {}"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:318
+#: inginious/frontend/pages/course_admin/task_edit.py:325
 msgid "Cannot read zip file. Files were not modified"
 msgstr "Impossible de lire le fichier ZIP. Les fichiers n'ont pas été modifiés"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:325
+#: inginious/frontend/pages/course_admin/task_edit.py:332
 msgid ""
 "There was a problem while extracting the zip archive. Some files may have"
 " been modified"
@@ -3628,7 +3628,7 @@ msgid "Please enroll in the course to submit."
 msgstr "Veuillez vous inscrire au cours pour soumettre."
 
 #: inginious/frontend/templates/task.html:352
-#: inginious/frontend/templates/task.html:362
+#: inginious/frontend/templates/task.html:366
 msgid "Submit"
 msgstr "Soumettre"
 
@@ -3636,39 +3636,43 @@ msgstr "Soumettre"
 msgid "\"Start remote SSH console with this input\""
 msgstr "\"Démarrer une console SSH avec ces réponses\""
 
-#: inginious/frontend/templates/task.html:364
+#: inginious/frontend/templates/task.html:363
+msgid "Submit (After deadline)"
+msgstr ""
+
+#: inginious/frontend/templates/task.html:368
 msgid "The deadline is over, you cannot submit anymore"
 msgstr "La date limite est dépassée, vous ne pouvez plus soumettre"
 
-#: inginious/frontend/templates/task.html:366
+#: inginious/frontend/templates/task.html:370
 msgid "Please register in a group"
 msgstr "Veuillez vous inscrire dans un groupe"
 
-#: inginious/frontend/templates/task.html:366
+#: inginious/frontend/templates/task.html:370
 msgid "Please register in a team"
 msgstr "Veuillez vous inscrire dans une équipe"
 
-#: inginious/frontend/templates/task.html:369
+#: inginious/frontend/templates/task.html:373
 msgid "You have reached the submission limit."
 msgstr "Vous avez atteint la limite de soumission."
 
-#: inginious/frontend/templates/task.html:369
+#: inginious/frontend/templates/task.html:373
 msgid "Your group have reached the submission limit."
 msgstr "Votre groupe a atteint la limite de soumission."
 
-#: inginious/frontend/templates/task.html:369
+#: inginious/frontend/templates/task.html:373
 msgid "Your team have reached the submission limit."
 msgstr "Votre équipe a atteint la limite de soumission."
 
-#: inginious/frontend/templates/task.html:371
+#: inginious/frontend/templates/task.html:375
 msgid "It will be refilled within the next {} hour(s)"
 msgstr "Elle sera réinitialisée dans les {} prochaine(s) heure(s)"
 
-#: inginious/frontend/templates/task.html:374
+#: inginious/frontend/templates/task.html:378
 msgid "You are not allowed to submit"
 msgstr "Vous n'êtes pas autorisé à soumettre"
 
-#: inginious/frontend/templates/task.html:385
+#: inginious/frontend/templates/task.html:389
 msgid "Share my result on: "
 msgstr "Partager mon résultat sur:"
 
@@ -4901,27 +4905,37 @@ msgstr "Soumission pour évaluation"
 msgid "Student choice"
 msgstr "Choisie par l'étudiant"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:159
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:160
+msgid "Allow later submission"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:162
+msgid ""
+"\"If checked, the students will be able to do submissions after the "
+"deadline is reached. These submissions won't affect the grade.\""
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:174
 msgid "Accessible"
 msgstr "Accessible"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:165
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:180
 msgid "Never"
 msgstr "Jamais"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:171
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:186
 msgid "Always"
 msgstr "Toujours"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:180
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:195
 msgid "Custom, from: {} to: {}"
 msgstr "Personnalisé, de: {} jusqu'à: {}"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:208
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:223
 msgid "Random inputs"
 msgstr "Paramètres aléatoires"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:219
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:234
 msgid "Regenerate random input"
 msgstr "Paramètres aléatoires"
 
@@ -5254,4 +5268,11 @@ msgstr "Extensions autorisées:"
 
 #~ msgid "Registered staff"
 #~ msgstr "Etudiant enregistré"
+
+#~ msgid ""
+#~ "'If checked, the students will be "
+#~ "able to do submissions after the "
+#~ "deadline is reached. These submissions "
+#~ "will not affect the grade.'"
+#~ msgstr ""
 
