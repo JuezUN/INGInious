@@ -444,9 +444,9 @@ class UserManager:
             total_weight = 0
             grade = 0
             for task_id in visible_tasks:
+                task_name_or_id = tasks[task_id].get_name_or_id(self.session_language())
                 total_weight += tasks[task_id].get_grading_weight()
-                grade += result["task_grades"].get(task_id, 0.0) * tasks[task_id].get_grading_weight()
-
+                grade += result["task_grades"].get(task_name_or_id, 0.0) * tasks[task_id].get_grading_weight()
             result["grade"] = round(grade / total_weight) if total_weight > 0 else 0
             retval[username] = result
 
@@ -507,14 +507,14 @@ class UserManager:
         self.user_saw_task(username, submission["courseid"], submission["taskid"])
 
         if newsub:
+            old_submission = self._database.user_tasks.find_one_and_update(
+                {"username": username, "courseid": submission["courseid"], "taskid": submission["taskid"]}, {"$inc": {"tried": 1, "tokens.amount": 1}})
+
             # If this is a submission after deadline, do not affect the final grade.
             course = task.get_course()
             if self.course_is_open_to_user(course, username) and \
                     not self.has_staff_rights_on_course(course, username) and task.can_submit_after_deadline():
                 return
-
-            old_submission = self._database.user_tasks.find_one_and_update(
-                {"username": username, "courseid": submission["courseid"], "taskid": submission["taskid"]}, {"$inc": {"tried": 1, "tokens.amount": 1}})
 
             # Check if the submission is the default download
             set_default = task.get_evaluate() == 'last' or \
