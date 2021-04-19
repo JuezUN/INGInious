@@ -124,8 +124,10 @@ function setupDatetimePicker() {
 }
 
 function updateDate() {
-    const date = new Date()
-    $("#analytics_from_date").val(`${date.getFullYear()}-01-02`);
+    const date = new Date();
+    const fromDate = $("#analytics_from_date");
+    fromDate.val(`${date.getFullYear()}-01-02`);
+    fromDate.trigger("dp.change");
     $("#analytics_to_date")
         .val(`${date.getFullYear()}-${turnStringNumberToTwoDigitFormat((date.getMonth() + 1))}-${turnStringNumberToTwoDigitFormat(date.getDate())}`);
 }
