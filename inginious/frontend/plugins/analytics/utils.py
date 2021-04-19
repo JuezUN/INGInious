@@ -38,7 +38,7 @@ def get_api_query_parameters(input_dict):
             end_date = _convert_string_to_date(end_date)
             query_parameters['date']['$lte'] = end_date.replace(hour=23, minute=59, second=59)
         if start_date and end_date and (end_date < start_date):
-            raise api.APIError(400, _("start date must be greater than end date"))
+            raise api.APIError(400, _("The start date must be greater than end date."))
 
     return query_parameters
 

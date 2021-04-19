@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-15 16:47-0500\n"
+"POT-Creation-Date: 2021-04-19 16:19-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1474,10 +1474,10 @@ msgstr ""
 "            <i class='fa fa-bar-chart fa-fw'></i> Analítica</a></li>"
 
 #: inginious/frontend/plugins/analytics/utils.py:41
-msgid "start date must be greater than end date"
-msgstr "fecha inicial debe ser mayor que fecha final"
+msgid "The start date must be greater than end date."
+msgstr "La fecha inicial debe ser mayor que la fecha final."
 
-#: inginious/frontend/plugins/analytics/utils.py:57
+#: inginious/frontend/plugins/analytics/utils.py:59
 msgid "Invalid date format"
 msgstr "El formato de fecha es inválido."
 
