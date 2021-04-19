@@ -46,6 +46,8 @@ def get_api_query_parameters(input_dict):
 def _parse_list_for_query(names):
     """ return a dict to be used to filter data by a list of names """
     name_list = names.split(",")
+    if "none" in name_list:
+        name_list[name_list.index("none")] = None
     return {"$in": name_list}
 
 

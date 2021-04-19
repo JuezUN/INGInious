@@ -37,7 +37,7 @@ class AnalyticsPage(SuperadminAuthPage):
         analytics_manager = AnalyticsCollectionManagerSingleton.get_instance()
         courses = analytics_manager.get_course_list()
         available_courses = sorted([{
-            'id': course_id if course_id else "no_course",
+            'id': course_id if course_id else "none",
             'name': self.course_factory.get_course(course_id).get_name(
                 self.user_manager.session_language()) if course_id else "No course"
         } for course_id in courses], key=lambda x: x['name'])
