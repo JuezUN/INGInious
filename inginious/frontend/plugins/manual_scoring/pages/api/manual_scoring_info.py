@@ -3,12 +3,13 @@
 # This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
 # more information about the licensing of this file.
 """ It contents the API who returns manual scoring data """
-
+from inginious.frontend.plugins.manual_scoring.constants import get_dict_value
 from inginious.frontend.plugins.utils.admin_api import AdminApi
 
 
 class ManualScoringInfoApi(AdminApi):
     """ API to get the manual scoring data resume """
+
     def API_GET(self, course_id):
         """ GET request """
         course = self.get_course_and_check_rights(course_id)
@@ -65,7 +66,6 @@ class ManualScoringInfoApi(AdminApi):
         """ returns an array of dictionaries with the students information """
         manual_scoring_data = self.get_manual_scoring_results(course)
         data = []
-
         for submission in manual_scoring_data:
             submission_info = {
                 "_id": str(submission["_id"]),
@@ -73,10 +73,10 @@ class ManualScoringInfoApi(AdminApi):
                 "real_name": submission["realname"][0],
                 "task_id": submission["taskid"],
                 "task_name": course.get_task(submission["taskid"]).get_name(self.user_manager.session_language()),
+                "result": get_dict_value(submission, "custom_summary_result"),
                 "grade": submission["grade"],
                 "manual_grade": submission["manual_scoring"]["grade"],
-                "date": submission["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S"),
-                "result": submission["custom_summary_result"]
+                "date": submission["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S")
             }
             data.append(submission_info)
         return data

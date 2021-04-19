@@ -47,7 +47,17 @@ $ course_name = course.get_name(user_manager.session_language())
                             $for submission in data[task_id]:
                                 <tr>
                                     <td>$submission["date"]</td>
-                                    <td class="font_size-m">$submission["result"]</td>
+                                    <td class="font_size-m">
+                                        $if submission["result"] == _("Not available"):
+                                            <div style="color: red">
+                                                $:_("Not available")
+                                                <i data-toggle="tooltip" data-placement="right" style="color: black"
+                                                      title=$:_("\"It is possible that the grader could not finish its process with this submission.\"")}
+                                                      class="fa fa-question-circle" aria-hidden="true"></i>
+                                            </div>
+                                        $else:
+                                           $submission["result"]
+                                    </td>
                                     <td class="font_size-m">$submission["grade"]</td>
                                     <td class="font_size-m">$submission["manual_grade"]</td>
                                     <td class="font_size-m">
