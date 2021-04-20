@@ -69,13 +69,16 @@ def grader_generator_tab(course, taskid, task_data, template_helper):
 
 def check_file_existence(course, task_id, task_data):
     task_list = CourseTaskFiles.get_task_filelist(course._task_factory, course.get_id(), task_id)
-    file_name_index = 2
+    file_full_name_index = 3
+    task_to_remove = []
     for task in task_data:
-        exist_input_file = any(file_name[file_name_index] == task["input_file"] for file_name in task_list)
-        exist_output_file = any(file_name[file_name_index] == task["output_file"] for file_name in task_list)
+        exist_input_file = any(file_name[file_full_name_index] == ("/" + task["input_file"]) for file_name in task_list)
+        exist_output_file = any(
+            file_name[file_full_name_index] == ("/" + task["output_file"]) for file_name in task_list)
         if not (exist_output_file and exist_input_file):
-            task_data.remove(task)
-    print(task_data)
+            task_to_remove.append(task)
+    for task in task_to_remove:
+        task_data.remove(task)
 
 
 def grader_footer(course, taskid, task_data, template_helper):
