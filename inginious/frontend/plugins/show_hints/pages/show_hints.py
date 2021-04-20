@@ -25,7 +25,8 @@ def get_task_hints_basic_data(task):
 
     all_hints_basic_data = OrderedDict([(index, {
             "penalty" : hint["penalty"],
-            "title" : hint["title"]
+            "title" : hint["title"],
+            "id" : hint["id"]
         }) for index, hint in all_hints.items()])
 
     return all_hints_basic_data
@@ -39,7 +40,7 @@ def get_user_total_penalty(taskid, username, database):
 
 def add_static_files(template_helper):
 
-    if use_minified():
+    if not use_minified():
         template_helper.add_javascript("/show_hints/static/js/show_hints.min.js")
         template_helper.add_css("/show_hints/static/css/show_hints.min.css")
     else:

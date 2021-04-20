@@ -57,6 +57,10 @@ function setHintsOnContainer(to_show_hints){
             new_hint_content = hint["content"];
             hint_container.find(".hint_content").html(new_hint_content);
 
+            let applied_penalty = hint_container.find(".hint_applied_penalty");
+            applied_penalty.show();
+            applied_penalty.find("em").text(hint["penalty"]+"%");
+
         }else{
             if(!existsUnlockFormContent(index)){
                 let new_hint = $("#hints_unlock_forms_list").clone().html();
@@ -115,7 +119,7 @@ function setHintAsAllowed(selected_hint_id){
             hint_id: selected_hint_id
         }
     }).done(function(result){
-        showHintAlert(result["message"],result["status"]);
+        showHintAlert(result.message,result.status);
         loadHintsOnModal();
         showHelp();
     })

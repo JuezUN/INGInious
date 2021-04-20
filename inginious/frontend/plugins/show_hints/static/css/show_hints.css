@@ -17,6 +17,17 @@
     border: 1px solid #e5e5e5;
 }
 
+.hint_content{
+    height: 300px;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.hint_applied_penalty em{
+    color: red;
+}
+
 #hint_tab a, #hints_list a{
     cursor: pointer;
 }

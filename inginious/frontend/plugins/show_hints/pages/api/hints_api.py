@@ -31,11 +31,9 @@ class UserHintsAPI(APIAuthenticatedPage):
 
         allowed_hints_list = {}
 
-        try:
-            userhint = UserHint(username, task_id, self.database)
-            allowed_hints_list = userhint.check_locked_hint_status(self.get_task_hints(task))
-        except Exception:
-            raise  APIError(400,{"message":"An error ocurred when get the user hints data"})
+
+        userhint = UserHint(username, task_id, self.database)
+        allowed_hints_list = userhint.check_locked_hint_status(self.get_task_hints(task))
 
         return 200, {"status": "success","data": allowed_hints_list}
 
@@ -66,11 +64,11 @@ class UserHintsAPI(APIAuthenticatedPage):
 
         try:
             userhint = UserHint(username, task_id, self.database)
-            userhint.add_hint_on_allowed(hint_id, task_hints)
+            total_penalty = userhint.add_hint_on_allowed(hint_id, task_hints)
         except Exception:
             return 200, {"status":"error","message":"An error ocurred when update hint status"}
 
-        return 200, {"status":"success","message":"Unlocked list updated successfully (Penalty was applied)"}
+        return 200, {"status":"success","message":"Unlocked list updated successfully (Penalty was applied)", "data":total_penalty}
 
     def get_task_hints(self, task):
 

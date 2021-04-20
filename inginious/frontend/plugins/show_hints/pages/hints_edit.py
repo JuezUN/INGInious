@@ -1,4 +1,6 @@
 import os
+import uuid
+
 from collections import OrderedDict
 from inginious.frontend.pages.course_admin.task_edit import CourseEditTask
 from .constants import use_minified
@@ -31,7 +33,7 @@ def hints_modal(course, taskid, task_data, template_helper):
 
 def add_static_files(template_helper):
 
-    if use_minified():
+    if not use_minified():
         template_helper.add_javascript("/show_hints/static/js/hints_edit.min.js")
     else:
         template_helper.add_javascript("/show_hints/static/js/hints_edit.js")
@@ -41,8 +43,8 @@ def on_task_submit(course, taskid, task_data, task_fs):
     task_data["task_hints"] = CourseEditTask.dict_from_prefix("task_hints",task_data)
 
     #Delete key for hint template if it exists
-    if "HID" in task_data["task_hints"].keys():
-        del task_data["task_hints"]["HID"]
+    if "KEY" in task_data["task_hints"].keys():
+        del task_data["task_hints"]["KEY"]
 
     #Delete duplicate items if they exists
 
@@ -69,7 +71,17 @@ def on_task_submit(course, taskid, task_data, task_fs):
     for hint_id in hints_to_delete:
         del task_data["task_hints"][hint_id]
 
+    # Add id for hints
+    task_data["task_hints"] = set_hints_id(task_data["task_hints"])
     task_data["task_hints"] = OrderedDict(sorted(task_data["task_hints"].items()))
+
+def set_hints_id(task_hints):
+
+    for key in task_hints:
+        if task_hints[key]["id"] is None or task_hints[key]["id"] == "":
+            task_hints[key]["id"] = str(uuid.uuid4())
+    return task_hints
+
 
 def update_ordered_hints(hints):
 

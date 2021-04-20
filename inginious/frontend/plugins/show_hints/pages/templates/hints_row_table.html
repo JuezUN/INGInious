@@ -1,20 +1,23 @@
 <!--To create new hints an set them on the table body-->
 <table style="display:none">
-    <tr id="hint_HID">
-        <td>
-            <input id="hint_info_title_HID" type="text" class="form-control" name="task_hints[HID][title]" value="New hint title" readonly/>
+    <tr id="hint_KEY">
+        <td hidden>
+            <input id="hint_info_id_KEY" class="form-control" name="task_hints[KEY][id]">
         </td>
         <td>
-            <input id="hint_info_penalty_HID" type="text" class="form-control" name="task_hints[HID][penalty]" value="0" readonly/>
+            <input id="hint_info_title_KEY" type="text" class="form-control" name="task_hints[KEY][title]" readonly/>
         </td>
         <td>
-            <div id="hint_options_HID">
-                <button class="col-sm-6 btn btn-info" type="button" onclick="onEditHintClick('HID')"><i class="fa fa-edit"></i></button>
-                <button class="col-sm-6 btn btn-danger" type="button" onclick="deleteHints('HID')"><i class="fa fa-trash"></i></button>
+            <input id="hint_info_penalty_KEY" type="text" class="form-control" name="task_hints[KEY][penalty]" value="0" readonly/>
+        </td>
+        <td>
+            <div id="hint_options_KEY">
+                <button class="col-sm-6 btn btn-info" type="button" onclick="onEditHintClick(KEY)"><i class="fa fa-edit"></i></button>
+                <button class="col-sm-6 btn btn-danger" type="button" onclick="deleteHints(KEY)"><i class="fa fa-trash"></i></button>
             </div>
         </td>
         <td style="display:none">
-            <textarea id="hint_info_content_HID" class="code-editor form-control" data-x-language="rst" data-x-lines="0" name="task_hints[HID][content]">Hint description</textarea>
+            <textarea id="hint_info_content_KEY" class="code-editor form-control" data-x-language="rst" data-x-lines="0" name="task_hints[KEY][content]"></textarea>
         </td>
     </tr>
 </table>

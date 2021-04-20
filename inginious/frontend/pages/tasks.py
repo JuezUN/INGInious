@@ -210,14 +210,14 @@ class BaseTaskPage(object):
                     for problem in task.get_problems() if problem.input_type() in [dict, list]
                 }
 
+                userinput = task.adapt_input_for_backend(web.input(**init_var))
+
                 # Use the user penalty by using task hints
                 user_hints_penalty = self.plugin_manager.call_hook('show_hints', taskid=taskid, username=username, database=self.database)
                 if user_hints_penalty is None:
                     userinput['penalty'] = 0
                 else:
                     userinput['penalty'] = user_hints_penalty
-
-                userinput = task.adapt_input_for_backend(web.input(**init_var))
 
                 if not task.input_is_consistent(userinput, self.default_allowed_file_extensions, self.default_max_file_size):
                     web.header('Content-Type', 'application/json')

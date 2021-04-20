@@ -7,17 +7,6 @@ $def with (task_hints)
 </div>
 
 <div class="jumbotron">
-    <div id="hint_tab_alert" class="alert alert-danger" hidden></div>
-    <div class="row form-group">
-        <label class="col-sm-3 control-label">$:_("Hint id")</label>
-        <div class="col-sm-6">
-            <input id="hint_id" class="form-control">
-        </div>
-        <div class="col-sm-3">
-            <button type="button" class="btn btn-success"
-                    onclick="addHintOnTable()">$:_("Add hint")</button>
-        </div>
-    </div>
     <div class="row form-group">
         <h3>$:_("Hints list")</h3>
     </div>
@@ -44,25 +33,37 @@ $def with (task_hints)
                         $ title = hint["title"]
                         $ penalty = hint["penalty"]
                         $ content = hint["content"]
+                        $ id = hint["id"]
+
                         <tr id="hint_$key">
-                        <td>
-                            <input id="hint_info_title_$key" type="text" class="form-control" name="task_hints[$key][title]" value="$title" readonly/>
-                        </td>
-                        <td>
-                            <input id="hint_info_penalty_$key" type="text" class="form-control" name="task_hints[$key][penalty]" value="$penalty" readonly/>
-                        </td>
-                        <td>
-                            <div id="hint_options_$key">
-                                <button class="col-sm-6 btn btn-info" type="button" onclick="onEditHintClick('$key')"><i class="fa fa-edit"></i></button>
-                                <button class="col-sm-6 btn btn-danger" type="button" onclick="deleteHints('$key')"><i class="fa fa-trash"></i></button>
-                            </div>
-                        </td>
-                        <td style="display:none">
-                            <textarea id="hint_info_content_$key" class="code-editor form-control" data-x-language="rst" data-x-lines="0" name="task_hints[$key][content]">$content</textarea>
-                        </td>
+                            <td hidden>
+                                <input id="hint_info_id_$key" class="form-control" name="task_hints[$key][id]" value="$id">
+                            </td>
+                            <td>
+                                <input id="hint_info_title_$key" type="text" class="form-control" name="task_hints[$key][title]" value="$title" readonly/>
+                            </td>
+                            <td>
+                                <input id="hint_info_penalty_$key" type="text" class="form-control" name="task_hints[$key][penalty]" value="$penalty" readonly/>
+                            </td>
+                            <td>
+                                <div id="hint_options_$key">
+                                    <button class="col-sm-6 btn btn-info" type="button" onclick="onEditHintClick($key)"><i class="fa fa-edit"></i></button>
+                                    <button class="col-sm-6 btn btn-danger" type="button" onclick="deleteHints($key)"><i class="fa fa-trash"></i></button>
+                                </div>
+                            </td>
+                            <td style="display:none">
+                                <textarea id="hint_info_content_$key" class="code-editor form-control" data-x-language="rst" data-x-lines="0" name="task_hints[$key][content]">$content</textarea>
+                            </td>
                         </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-success"
+                    data-toggle="modal"
+                    data-target="#hints_edit_modal">$:_("Add hint")</button>
         </div>
     </div>
 </div>
