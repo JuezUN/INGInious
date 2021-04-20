@@ -1,5 +1,7 @@
 import json
 
+from inginious.common.task_factory import TaskFactory
+from inginious.frontend.pages.course_admin.task_edit_file import CourseTaskFiles
 from .multilang_form import MultilangForm
 from .hdl_form import HDLForm
 from .notebook_form import NotebookForm
@@ -44,7 +46,10 @@ def on_task_editor_submit(course, taskid, task_data, task_fs):
 def grader_generator_tab(course, taskid, task_data, template_helper):
     tab_id = 'tab_grader'
     link = '<i class="fa fa-check-circle fa-fw"></i>&nbsp; ' + _("Grader")
-    grader_test_cases_dump = json.dumps(task_data.get('grader_test_cases', []))
+    task_data_list = task_data.get('grader_test_cases', [])
+
+    check_file_existence(course, taskid, task_data_list)
+    grader_test_cases_dump = json.dumps(task_data_list)
     content = template_helper.get_custom_renderer(BASE_TEMPLATE_FOLDER, layout=False).grader(task_data,
                                                                                              grader_test_cases_dump,
                                                                                              course, taskid)
@@ -60,6 +65,17 @@ def grader_generator_tab(course, taskid, task_data, template_helper):
         template_helper.add_css('/grader_generator/static/css/grader_tab.css')
 
     return tab_id, link, content
+
+
+def check_file_existence(course, task_id, task_data):
+    task_list = CourseTaskFiles.get_task_filelist(course._task_factory, course.get_id(), task_id)
+    file_name_index = 2
+    for task in task_data:
+        exist_input_file = any(file_name[file_name_index] == task["input_file"] for file_name in task_list)
+        exist_output_file = any(file_name[file_name_index] == task["output_file"] for file_name in task_list)
+        if not (exist_output_file and exist_input_file):
+            task_data.remove(task)
+    print(task_data)
 
 
 def grader_footer(course, taskid, task_data, template_helper):
