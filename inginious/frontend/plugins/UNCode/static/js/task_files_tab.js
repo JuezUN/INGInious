@@ -1,5 +1,10 @@
 const _this = this;
 
+function isRoot(path) {
+    const rootFilenameFormat = /^\/[a-z0-9 _%\-]+\.[a-z0-9_]+$/i;
+    return rootFilenameFormat.test(path);
+}
+
 jQuery(document).ready(function () {
     /**
      * Monkey-patch the studio_update_file_tabs function to know when the table is replaced with
@@ -31,6 +36,16 @@ jQuery(document).ready(function () {
             },
             url: location.pathname + "/files"
         });
+    };
+
+    _this.studio_task_file_delete = (path) => {
+        if (!confirm("Are you sure you want to delete this?") || !studio_task_file_delete_tab(path))
+            return;
+        studio_update_file_tabs({"action": "delete", "path": path});
+        if ((isMultiLang || isDataScience) && isRoot(path)) {
+            const filename = path.substr(1);
+            removeTestByFilename(filename);
+        }
     };
 
     function _getAllFiles(data, method, callbackOnSuccess) {
