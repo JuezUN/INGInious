@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-14 17:21-0500\n"
+"POT-Creation-Date: 2021-04-22 15:38-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -1567,7 +1567,7 @@ msgstr ""
 msgid "Select a course to copy tasks"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/grader.py:46
+#: inginious/frontend/plugins/grader_generator/pages/grader.py:48
 msgid "Grader"
 msgstr ""
 

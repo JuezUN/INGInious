@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-14 17:21-0500\n"
+"POT-Creation-Date: 2021-04-22 15:38-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1743,7 +1743,7 @@ msgstr "Copiar tareas de"
 msgid "Select a course to copy tasks"
 msgstr "Seleccione un curso para copiar tareas"
 
-#: inginious/frontend/plugins/grader_generator/pages/grader.py:46
+#: inginious/frontend/plugins/grader_generator/pages/grader.py:48
 msgid "Grader"
 msgstr "Calificador"
 

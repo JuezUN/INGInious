@@ -38,6 +38,10 @@ jQuery(document).ready(function () {
         });
     };
 
+    /**
+     * Patch studio_task_file_delete to detect when a root file related to test is removed and remove that test too.
+     * Remove test is only applied if the environment is multiLang or data science
+     */
     _this.studio_task_file_delete = (path) => {
         if (!confirm("Are you sure you want to delete this?") || !studio_task_file_delete_tab(path))
             return;
