@@ -15,7 +15,7 @@ const _PLAGIARISM_PLUGIN_PATH = `${_BASE_PATH}/plagiarism/static`;
 const _TASK_EDITORIAL_PATH = `${_BASE_PATH}/task_editorial/static`;
 const _CONTACT_PAGE_PLUGIN_PATH = `${_BASE_PATH}/contact_page/static`;
 const _MANUAL_SCORING_PATH = `${_BASE_PATH}/manual_scoring/static`;
-const _SHOW_HINTS_PATH = `${_BASE_PATH}/show_hints/static`;
+const _TASK_HINTS_PATH = `${_BASE_PATH}/task_hints/static`;
 const _COURSE_CREATION_PATH = `${_BASE_PATH}/course_creation/static`;
 
 /**
@@ -318,11 +318,11 @@ function minifyContactPagePlugin() {
     minifyJSFiles(jsFiles, jsFilesPath, "contact_page");
 }
 
-function minifyShowHintsPlugin() {
-    const jsFilesPath = _SHOW_HINTS_PATH + "/js/";
-    const cssFilesPath = _SHOW_HINTS_PATH + "/css/";
+function minifyTaskHintsPlugin() {
+    const jsFilesPath = _TASK_HINTS_PATH + "/js/";
+    const cssFilesPath = _TASK_HINTS_PATH + "/css/";
 
-    console.log("Minify 'show hints' static files.");
+    console.log("Minify 'task_hints' static files.");
 
     let jsFiles = ["show_hints"].map((name) => {
         return getJSFilePath(jsFilesPath, name);
@@ -363,5 +363,5 @@ minifyPlagiarismPlugin();
 minifyManualScoringPlugin();
 minifyTaskEditorialPlugin();
 minifyContactPagePlugin();
-minifyShowHintsPlugin();
+minifyTaskHintsPlugin();
 minifyCourseCreationPlugin();

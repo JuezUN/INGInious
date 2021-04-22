@@ -33,10 +33,10 @@ def hints_modal(course, taskid, task_data, template_helper):
 
 def add_static_files(template_helper):
 
-    if not use_minified():
-        template_helper.add_javascript("/show_hints/static/js/hints_edit.min.js")
+    if use_minified():
+        template_helper.add_javascript("/task_hints/static/js/hints_edit.min.js")
     else:
-        template_helper.add_javascript("/show_hints/static/js/hints_edit.js")
+        template_helper.add_javascript("/task_hints/static/js/hints_edit.js")
 
 def on_task_submit(course, taskid, task_data, task_fs):
 

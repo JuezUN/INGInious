@@ -2,7 +2,7 @@ import os
 from collections import OrderedDict
 from .constants import use_minified
 
-_SHOW_HINTS_TEMPLATES_PATH = os.path.join(os.path.dirname(__file__),'templates')
+_TASK_HINTS_TEMPLATES_PATH = os.path.join(os.path.dirname(__file__),'templates')
 
 def show_hints(course, task, template_helper):
 
@@ -13,7 +13,7 @@ def show_hints(course, task, template_helper):
 
     basic_hints_data = get_task_hints_basic_data(task)
 
-    content = template_helper.get_custom_renderer(_SHOW_HINTS_TEMPLATES_PATH, layout=False).hints_view(course_id, task_id, basic_hints_data)
+    content = template_helper.get_custom_renderer(_TASK_HINTS_TEMPLATES_PATH, layout=False).hints_view(course_id, task_id, basic_hints_data)
 
     return str(content)
 
@@ -40,9 +40,9 @@ def get_user_total_penalty(taskid, username, database):
 
 def add_static_files(template_helper):
 
-    if not use_minified():
-        template_helper.add_javascript("/show_hints/static/js/show_hints.min.js")
-        template_helper.add_css("/show_hints/static/css/show_hints.min.css")
+    if use_minified():
+        template_helper.add_javascript("/task_hints/static/js/show_hints.min.js")
+        template_helper.add_css("/task_hints/static/css/show_hints.min.css")
     else:
-        template_helper.add_javascript("/show_hints/static/js/show_hints.js")
-        template_helper.add_css("/show_hints/static/css/show_hints.css")
+        template_helper.add_javascript("/task_hints/static/js/show_hints.js")
+        template_helper.add_css("/task_hints/static/css/show_hints.css")
