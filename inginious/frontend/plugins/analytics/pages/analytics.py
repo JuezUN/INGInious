@@ -34,12 +34,19 @@ class AnalyticsPage(SuperadminAuthPage):
         )
 
     def get_all_courses(self):
+        def get_course_name(_self, course_id):
+            if course_id:
+                name = _self.course_factory.get_course(course_id).get_name(
+                    _self.user_manager.session_language())
+                return name if name else course_id
+            else:
+                return "No course"
+
         analytics_manager = AnalyticsCollectionManagerSingleton.get_instance()
         courses = analytics_manager.get_course_list()
         available_courses = sorted([{
             'id': course_id if course_id else "none",
-            'name': self.course_factory.get_course(course_id).get_name(
-                self.user_manager.session_language()) if course_id else "No course"
+            'name': get_course_name(self, course_id)
         } for course_id in courses], key=lambda x: x['name'])
 
         return available_courses
