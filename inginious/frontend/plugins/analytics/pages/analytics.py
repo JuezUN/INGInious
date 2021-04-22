@@ -1,3 +1,4 @@
+from inginious.common.course_factory import CourseFactory
 from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAuthPage
 from ..analytics_collection_manager import AnalyticsCollectionManagerSingleton
 from ..services_collection_manager import ServicesCollectionManagerSingleton
@@ -34,10 +35,10 @@ class AnalyticsPage(SuperadminAuthPage):
         )
 
     def get_all_courses(self):
-        def get_course_name(_self, course_id):
+        def get_course_name(course_id):
             if course_id:
-                name = _self.course_factory.get_course(course_id).get_name(
-                    _self.user_manager.session_language())
+                name = self.course_factory.get_course(course_id).get_name(
+                    self.user_manager.session_language())
                 return name if name else course_id
             else:
                 return "No course"
@@ -46,7 +47,7 @@ class AnalyticsPage(SuperadminAuthPage):
         courses = analytics_manager.get_course_list()
         available_courses = sorted([{
             'id': course_id if course_id else "none",
-            'name': get_course_name(self, course_id)
+            'name': get_course_name(course_id)
         } for course_id in courses], key=lambda x: x['name'])
 
         return available_courses
