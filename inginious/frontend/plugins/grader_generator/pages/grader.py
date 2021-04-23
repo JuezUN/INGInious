@@ -74,19 +74,19 @@ def check_file_existence_for_multi_lang(course, task_id, task_data):
         # It only check for multi lang grader format
         return
 
-    task_file_list = CourseTaskFiles.get_task_filelist(course._task_factory, course.get_id(), task_id).copy()
+    test_file_list = CourseTaskFiles.get_task_filelist(course._task_factory, course.get_id(), task_id).copy()
 
-    remove_test_without_file(task_file_list, task_data)
+    remove_test_without_file(test_file_list, task_data)
 
 
-def remove_test_without_file(task_file_list, task_data):
+def remove_test_without_file(test_file_list, task_data):
     file_name_index = 2
     # To reduce the number of comparisons
-    remove_public_files(task_file_list)
+    remove_public_files(test_file_list)
     task_to_remove = []
     for task in task_data:
-        exist_input_file = any(file_data[file_name_index] == (task["input_file"]) for file_data in task_file_list)
-        exist_output_file = any(file_data[file_name_index] == (task["output_file"]) for file_data in task_file_list)
+        exist_input_file = any(file_data[file_name_index] == (task["input_file"]) for file_data in test_file_list)
+        exist_output_file = any(file_data[file_name_index] == (task["output_file"]) for file_data in test_file_list)
         if not (exist_output_file and exist_input_file):
             task_to_remove.append(task)
     for task in task_to_remove:
