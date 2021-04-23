@@ -80,14 +80,13 @@ def check_file_existence_for_multi_lang(course, task_id, task_data):
 
 
 def remove_test_without_file(task_file_list, task_data):
-    file_full_name_index = 3
-    remove_public_files(task_file_list) # To reduce the number of comparations
+    file_name_index = 2
+    # To reduce the number of comparisons
+    remove_public_files(task_file_list)
     task_to_remove = []
     for task in task_data:
-        exist_input_file = any(
-            file_name[file_full_name_index] == ("/" + task["input_file"]) for file_name in task_file_list)
-        exist_output_file = any(
-            file_name[file_full_name_index] == ("/" + task["output_file"]) for file_name in task_file_list)
+        exist_input_file = any(file_data[file_name_index] == (task["input_file"]) for file_data in task_file_list)
+        exist_output_file = any(file_data[file_name_index] == (task["output_file"]) for file_data in task_file_list)
         if not (exist_output_file and exist_input_file):
             task_to_remove.append(task)
     for task in task_to_remove:
@@ -99,7 +98,7 @@ def remove_public_files(task_file_list):
     file_full_name_index = 3
     substring = "/public/"
     for path in task_file_list:
-        if path[file_full_name_index].find(substring) < 0:
+        if path[file_full_name_index].find(substring) != -1:
             task_path_to_remove.append(path)
     for path_to_remove in task_path_to_remove:
         task_file_list.remove(path_to_remove)
