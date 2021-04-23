@@ -1,0 +1,13 @@
+$def with()
+
+$var title: User Management
+
+$def NavbarF():
+    <ol class="nav navbar-nav nav-breadcrumb">
+      <a href="$get_homepath()"></a>
+      <li class="active"><a href="/user_management">$:_("User Management")</a></li>
+    </ol>
+
+$var Navbar: $:NavbarF()
+
+<h2>UNCode $:_("User Management")</h2>
