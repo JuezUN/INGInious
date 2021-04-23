@@ -1,4 +1,4 @@
-var update_hint_id = null;
+let update_hint_id = null;
 
 /* Show a message into an alert */
 function displayAlert(alert_container_id, message, duration){
@@ -41,7 +41,7 @@ function onSaveHintClick(){
 
     /* Check if the entries are allowed on the hint */
 
-    let contentBlankEntry = hint["content"].match(/^\s*$/)
+    const contentBlankEntry = hint["content"].match(/^\s*$/)
 
     if(!hint["title"] || contentBlankEntry){
         const message = "You need to complete mandatory fields";
@@ -62,7 +62,6 @@ function onSaveHintClick(){
     }
 
     /* Update the table with the new/modified hint */
-
     let new_hint_index = $("#task_hints_table tbody tr").length;
     if(update_hint_id !== 0 && !update_hint_id){
         addHintOnTable(hint, new_hint_index);

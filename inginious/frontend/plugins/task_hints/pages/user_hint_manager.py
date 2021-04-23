@@ -1,9 +1,14 @@
 
 from inginious.frontend.parsable_text import ParsableText
 
-class UserHint(object):
+class UserHintManager(object):
 
-    """ Manage the user hints information """
+    """
+        Manage the user hints information in database, as the hints
+        that was unlocked, it's individual penalty, and cumulative
+        penalty, to be applied in the student's final grade for the
+        respective task.
+    """
 
     def __init__(self, username, task_id, database):
 

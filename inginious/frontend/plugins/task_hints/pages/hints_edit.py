@@ -15,18 +15,15 @@ def edit_hints_tab(course, taskid, task_data, template_helper):
     add_static_files(template_helper)
 
     #Get task data
-    task_hints = task_data.get("task_hints")
-
-    if task_data.get("task_hints") is None:
-        task_hints = {}
+    task_hints = task_data.get("task_hints", {})
 
     render = template_helper.get_custom_renderer(_SHOW_HINTS_TEMPLATES_PATH, layout=False)
 
-    template = str(render.hints_tab(task_hints)) + str(render.hints_row_table())
+    template = str(render.hints_tab(task_hints)) + str(render.hint_row_table_template())
 
     return tab_id, link, template
 
-def hints_modal(course, taskid, task_data, template_helper):
+def get_hints_edit_modal_template(course, taskid, task_data, template_helper):
 
     return template_helper.get_custom_renderer(_SHOW_HINTS_TEMPLATES_PATH, layout=False).hints_edit_modal()
 

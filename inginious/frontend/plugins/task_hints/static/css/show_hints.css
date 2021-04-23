@@ -40,10 +40,6 @@
     float:right;
 }
 
-.hint_penalty br{
-    color: #f04124;
-}
-
 #hint_modal_alert{
     margin-bottom:15px;
 }

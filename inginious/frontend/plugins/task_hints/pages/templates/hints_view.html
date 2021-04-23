@@ -1,123 +1,126 @@
-$def with (course_id, task_id, hints_data)
+$def with (course, task, hints_data)
 
-<h6>$:_("Hints")</h6>
+$ registered_user = user_manager.course_is_user_registered(course)
 
-<div class="tab-pane fade in active" id="hint_tab">
-    <div class="list-group">
-        <a class="list-group-item list-group-item-info"
-           data-toggle="modal"
-           data-target="#hints_modal"
-        >
-            <i class="fa fa-question"></i>&nbsp;
-            $:_("Hints")
-         </a>
+$if registered_user:
+    <h6>$:_("Hints")</h6>
+
+    <div class="tab-pane fade in active" id="hint_tab">
+        <div class="list-group">
+            <a class="list-group-item list-group-item-info"
+               data-toggle="modal"
+               data-target="#hints_modal"
+            >
+                <i class="fa fa-question"></i>&nbsp;
+                $:_("Hints")
+             </a>
+        </div>
     </div>
-</div>
 
-<div  class="modal fade" id="hints_modal">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="">
-                    <h2>$:_("Task hints")</h2>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-10 col-sm-offset-1">
-                        <div id="hint_modal_alert" hidden></div>
+    <div  class="modal fade" id="hints_modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="">
+                        <h2>$:_("Task hints")</h2>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-4" id="hints_navigation_menu">
-                        <h4>$:_("Hints List")</h4>
-                        <div id="user_hints_help">
-                            <a type="button" onclick="showHelp()">
-                                <h5>
-                                   $:_("Help")
-                                </h5>
-                            </a>
-                        </div>
-                        <div id="hints_list">
-                            <!-- Hint menu item template -->
-                            $for key, hint in hints_data.items():
-                                <div id="hint_menu_$key">
-                                    <a class="list-group-item"
-                                       onclick="changeHint('$key')">
-                                        <label>$hints_data[key]["title"]</label>
-                                        <div class="hint_penalty">
-                                        $if float(hints_data[key]["penalty"]):
-                                            $:_("Penalty"): <b>$hints_data[key]["penalty"]</b>%
-                                        $else:
-                                            $:_("No penalty")
-                                        </div>
-                                    </a>
-                                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-offset-1">
+                            <div id="hint_modal_alert" hidden></div>
                         </div>
                     </div>
-                    <div class="col-sm-8">
-
-                        <div id="hint_info">
-                            <h3>$:_("Hints help")</h3>
-                            </br>
-                            <div class="col-sm-auto">$:_("Task hints offers you the opportunity to get additional information about the steps to solve the task.")
-                                <br/><br/>
-                                $:_("Each hint is like a small help or suggestion with information that you can use to reach the solution more easily, as code tips, task concepts, or processes to solve the problem, it means that you don't need to unlock hints to solve the task, since it already has all the necessary information.")
-                                <br/><br/>
-                                $:_("You can unlock them by going to the hint, and click the <b>Get hint</b> button. However, some hints may have a penalty that will be applied on your final submission score, so be carefully if you want tou unlock them!.")
+                    <div class="row">
+                        <div class="col-sm-4" id="hints_navigation_menu">
+                            <h4>$:_("Hints List")</h4>
+                            <div id="user_hints_help">
+                                <a type="button" onclick="showHelp()">
+                                    <h5>
+                                       $:_("Help")
+                                    </h5>
+                                </a>
                             </div>
-                            <br/>
-                            $:_("<b>Note:</b> All the hints penalty will we applied as a percentage of the total submission score.").
+                            <div id="hints_list">
+                                <!-- Hint menu item template -->
+                                $for key, hint in hints_data.items():
+                                    <div id="hint_menu_$key">
+                                        <a class="list-group-item"
+                                           onclick="changeHint('$key')">
+                                            <label>$hints_data[key]["title"]</label>
+                                            <div>
+                                            $if float(hints_data[key]["penalty"]):
+                                                $:_("Penalty"): <b class="hint_penalty">$hints_data[key]["penalty"]</b>%
+                                            $else:
+                                                $:_("No penalty")
+                                            </div>
+                                        </a>
+                                    </div>
+                            </div>
                         </div>
+                        <div class="col-sm-8">
 
-                        <!-- Template for unlocked hints -->
-                        <div id="hint_container" >
-
-                        $for key, hint in hints_data.items()
-                            <div class="task_hints" id="hint_$key" hidden>
-                                <div class="hint_title">
-                                    <h3>$hints_data[key]["title"]</h3>
+                            <div id="hint_info">
+                                <h3>$:_("Hints help")</h3>
+                                </br>
+                                <div class="col-sm-auto">$:_("Task's hints offer you the opportunity to get additional information about how to address the problem and get a solution.")
+                                    <br/><br/>
+                                    $:_("Each hint is like a small help or suggestion with information that you can use to reach the solution more easily, this includes some code tips, theory, or processes that might help you to solve the problem. Try to solve the problem without unlocking the hints as they might reduce your task's final grade task.")
+                                    <br/><br/>
+                                    $:_("To unlock a hint, select it and click on the <b>Get hint</b> button. However, some hints may have a penalty that will be applied on your final submission score, so be careful if you want to unlock them!.")
                                 </div>
-                                <div class="hint_content">
-                                </div>
-                                <div class="hint_applied_penalty" hidden>
-                                    <b>$:_("Applied penalty"):</b> <em></em>
-                                </div>
+                                <br/>
+                                $:_("<b>Note:</b> The sum of the hints penalties will we applied as a percentage of the total submission score.").
                             </div>
 
-                        </div>
+                            <!-- Template for unlocked hints -->
+                            <div id="hint_container" >
 
-                        <!-- Template for locked hints -->
-                        <div id="hints_unlock_forms_list" hidden>
-                            <div class="hint_unlock_form">
-                                <div class="form-group alert alert-info">
-                                   $:_("You have not unlocked this hint yet. <b>When you unlock the hint, a penalty will be applied on your task submission score</b>. Do you want to unlock it?")
+                            $for key, hint in hints_data.items()
+                                <div class="task_hints" id="hint_$key" hidden>
+                                    <div class="hint_title">
+                                        <h3>$hints_data[key]["title"]</h3>
+                                    </div>
+                                    <div class="hint_content">
+                                    </div>
+                                    <div class="hint_applied_penalty" hidden>
+                                        <b>$:_("Applied penalty"):</b> <em></em>
+                                    </div>
                                 </div>
-                                <div class="form-group hint_unlock_penalty">
-                                    <p>$:_("This will reduce a <b></b> of your total submission score").</p>
+
+                            </div>
+
+                            <!-- Template for locked hints -->
+                            <div id="hints_unlock_forms_list" hidden>
+                                <div class="hint_unlock_form">
+                                    <div class="form-group alert alert-info">
+                                       $:_("You have not unlocked this hint yet. <b>When you unlock the hint, a penalty will be applied on your task submission score</b>. Do you want to unlock it?")
+                                    </div>
+                                    <div class="form-group hint_unlock_penalty">
+                                        <p>$:_("This will reduce a <b></b> of your total submission score").</p>
+                                    </div>
+                                    <button class="form-group btn btn-success" onclick="setHintAsAllowed('key')">$:_("Get Hint")</button>
                                 </div>
-                                <button class="form-group btn btn-success" onclick="setHintAsAllowed('key')">$:_("Get Hint")</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">$:_("Close")</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">$:_("Close")</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 <script>
 
     function getCourseId(){
-        return "$course_id";
+        return "$course.get_id()";
     }
 
     function getTaskId(){
-        return "$task_id";
+        return "$task.get_id()";
     }
 
 </script>

@@ -37,6 +37,8 @@ function setHintUnlockedStatus(index,hint){
     hint_option = $("#hint_menu_" + index).find("a");
     if(hint_status){
         hint_option.attr("class", "list-group-item list-group-item-success");
+        hint_penalty = hint["penalty"];
+        hint_option.find(".hint_penalty").text(hint_penalty);
     }else{
         hint_option.attr("class", "list-group-item list-group-item-success disabled");
         let message = hint_option.find("label").html();
