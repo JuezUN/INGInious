@@ -2144,7 +2144,7 @@ msgstr "Código"
 msgid "Expected output"
 msgstr "Salida esperada"
 
-#: inginious/frontend/plugins/manual_scoring/pages/constants.py:14
+#: inginious/frontend/plugins/manual_scoring/constants.py:16
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:24
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:16
@@ -2153,12 +2153,29 @@ msgstr "Salida esperada"
 msgid "Manual Scoring"
 msgstr "Calificación manual"
 
-#: inginious/frontend/plugins/manual_scoring/pages/constants.py:21
+#: inginious/frontend/plugins/manual_scoring/constants.py:23
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:16
 msgid "Feedback"
 msgstr "Retroalimentación"
 
-#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:16
+#: inginious/frontend/plugins/manual_scoring/constants.py:88
+#: inginious/frontend/plugins/manual_scoring/pages/feedback.py:42
+#: inginious/frontend/plugins/manual_scoring/pages/manual_scoring.py:152
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:51
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:53
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:61
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:63
+msgid "Not available"
+msgstr "No disponible"
+
+#: inginious/frontend/plugins/manual_scoring/pages/feedback.py:42
+#: inginious/frontend/plugins/manual_scoring/pages/manual_scoring.py:152
+msgid ""
+"It is possible that the grader could not finish its process with this "
+"submission."
+msgstr "Es posible que el grader no terminó su proceso con este envío."
+
+#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:17
 #: inginious/frontend/plugins/manual_scoring/pages/student_submissions.py:18
 msgid "No grade"
 msgstr "Sin calificar"
@@ -2306,7 +2323,16 @@ msgstr "Calificación manual"
 msgid "See submission"
 msgstr "Ver envío"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:68
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:55
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:65
+msgid ""
+"\"It is possible that the grader could not finish its process with this "
+"submission.\""
+msgstr ""
+"\"Es posible que el grader no pudiera terminar su proceso con este "
+"envío.\""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:78
 msgid "There is no Feedback yet"
 msgstr "Aún no hay retroalimentación"
 
