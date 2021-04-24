@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-15 16:47-0500\n"
+"POT-Creation-Date: 2021-04-19 16:19-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -1314,10 +1314,19 @@ msgid ""
 "and reload the page, and try submitting again."
 msgstr ""
 
-#: inginious/frontend/plugins/analytics/__init__.py:30
+#: inginious/frontend/plugins/analytics/__init__.py:32
 msgid ""
 "\"<li><a href='/analytics/' class='navbar-link'>\n"
 "            <i class='fa fa-bar-chart fa-fw'></i> Analytics</a></li>"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/utils.py:41
+msgid "The start date must be greater than end date."
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/utils.py:59
+#, fuzzy
+msgid "Invalid date format"
 msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:13
@@ -1333,14 +1342,18 @@ msgid "Analytics since"
 msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:31
+msgid "Analytics until"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:42
 msgid "Service"
 msgstr ""
 
-#: inginious/frontend/plugins/analytics/pages/analytics.html:34
-msgid "All services"
+#: inginious/frontend/plugins/analytics/pages/analytics.html:46
+msgid "\"All services\""
 msgstr ""
 
-#: inginious/frontend/plugins/analytics/pages/analytics.html:43
+#: inginious/frontend/plugins/analytics/pages/analytics.html:57
 #: inginious/frontend/plugins/auth/custom_auth_form.html:29
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:37
 #: inginious/frontend/plugins/register_students/static/email_template.html:12
@@ -1348,40 +1361,57 @@ msgstr ""
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: inginious/frontend/plugins/analytics/pages/analytics.html:50
+#: inginious/frontend/plugins/analytics/pages/analytics.html:65
 #: inginious/frontend/templates/mycourses.html:78
 msgid "Course"
 msgstr "Cours"
 
-#: inginious/frontend/plugins/analytics/pages/analytics.html:53
-msgid "All courses"
-msgstr ""
+#: inginious/frontend/plugins/analytics/pages/analytics.html:69
+#, fuzzy
+msgid "\"All courses\""
+msgstr "\"Mes cours\""
 
-#: inginious/frontend/plugins/analytics/pages/analytics.html:60
+#: inginious/frontend/plugins/analytics/pages/analytics.html:78
 #: inginious/frontend/templates/course_admin/classroom_edit.html:161
 #: inginious/frontend/templates/course_admin/classroom_edit.html:254
 #: inginious/frontend/templates/course_admin/teams_edit.html:226
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: inginious/frontend/plugins/analytics/pages/analytics.html:67
+#: inginious/frontend/plugins/analytics/pages/analytics.html:80
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:28
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:55
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:66
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:75
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:89
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:30
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:40
+msgid "Download CSV"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:88
 msgid "Heat map"
 msgstr ""
 
-#: inginious/frontend/plugins/analytics/pages/analytics.html:68
+#: inginious/frontend/plugins/analytics/pages/analytics.html:89
 msgid "Visits per day"
 msgstr ""
 
-#: inginious/frontend/plugins/analytics/pages/analytics.html:69
+#: inginious/frontend/plugins/analytics/pages/analytics.html:90
 msgid "Box plot"
 msgstr ""
 
-#: inginious/frontend/plugins/analytics/pages/analytics.html:70
-#: inginious/frontend/plugins/analytics/pages/analytics.html:85
+#: inginious/frontend/plugins/analytics/pages/analytics.html:91
+#: inginious/frontend/plugins/analytics/pages/analytics.html:107
 msgid "Radar plot"
 msgstr ""
 
-#: inginious/frontend/plugins/analytics/pages/analytics.html:75
+#: inginious/frontend/plugins/analytics/pages/analytics.html:92
+#: inginious/frontend/plugins/analytics/pages/analytics.html:111
+msgid "Analytics per course"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.html:97
 msgid "Calendar visits"
 msgstr ""
 
@@ -1997,16 +2027,6 @@ msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:24
 msgid "Tasks List"
-msgstr ""
-
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:28
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:55
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:66
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:75
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:89
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:30
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:40
-msgid "Download CSV"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:40
@@ -5246,12 +5266,12 @@ msgstr "Extensions autorisées:"
 #~ msgid "Semester"
 #~ msgstr ""
 
-#~ msgid "Number of registered staff:"
+#~ msgid "Services per course"
 #~ msgstr ""
 
-#~ msgid "Number of registered students:"
+#~ msgid "start date must be greater end date"
 #~ msgstr ""
 
-#~ msgid "Registered staff"
-#~ msgstr "Etudiant enregistré"
+#~ msgid "start date must be greater than end date"
+#~ msgstr ""
 

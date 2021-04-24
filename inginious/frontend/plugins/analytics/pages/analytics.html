@@ -16,25 +16,39 @@ $var Navbar: $:NavbarF()
         <div class="panel-heading">$:_("Apply filters")</div>
         <div class="panel-body">
             <div class="form-group col-xs-12">
-                <div class="col-xs-6">
-                    <label for="analytics_date_filter" class="control-label">
+                <div class="col-xs-3">
+                    <label for="analytics_from_date_filter" class="control-label">
                         $:_("Analytics since"):
                     </label>
-                    <div class='input-group date' id='analytics_date_filter'>
+                    <div class='input-group date' id="analytics_from_date_filter">
                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input id="analytics_date" name="analytics_date" data-date-format="YYYY-MM-DD"
+                        <input id="analytics_from_date" name="analytics_from_date" data-date-format="YYYY-MM-DD"
                                placeholder="2020-01-01" type='text' class="form-control"/>
                     </div>
                 </div>
-                <div class="col-xs-6">
-                    <label for="analytics_service" class="control-label">
-                        $:_("Service"):
+                <div class="col-xs-3">
+                    <label for="analytics_to_date_filter" class="control-label">
+                        $:_("Analytics until"):
                     </label>
-                    <select id="analytics_service" name="analytics_service" class="form-control">
-                        <option name="all" value="" selected>$:_("All services")</option>
-                        $for (key, value) in services:
-                            <option name="$key" value="$key">$value</option>
-                    </select>
+                    <div class='input-group date' id="analytics_to_date_filter">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input id="analytics_to_date" name="analytics_to_date" data-date-format="YYYY-MM-DD"
+                               type='text' class="form-control"/>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <label for="analytics_service" class="col-sm-3 control-label">
+                            $:_("Service"):
+                        </label>
+                        <div class="col-sm-12" id="serviceCol">
+                            <select id="analytics_service" name="analytics_service" multiple="multiple"
+                                    placeholder=$:_("\"All services\"") data-width="100%" >
+                                $for (key, value) in services:
+                                    <option name="$key" value="$key">$value</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group col-xs-12">
@@ -46,18 +60,25 @@ $var Navbar: $:NavbarF()
                            class="form-control">
                 </div>
                 <div class="col-xs-6">
-                    <label for="analytics_course" class="control-label">
-                        $:_("Course"):
-                    </label>
-                    <select class="dropdown-toggle form-control" name="analytics_course" id="analytics_course">
-                        <option value="">$:_("All courses")</option>
-                        $for course in all_courses:
-                            <option value="$course['id']">$course['name']</option>
-                    </select>
+                    <div class="row">
+                        <label for="analytics_course" class="col-sm-3 control-label">
+                            $:_("Course"):
+                        </label>
+                        <div class="col-sm-12" id="courseCol">
+                            <select id="analytics_course" class="select" name="analytics_course" multiple="multiple"
+                                   placeholder=$:_("\"All courses\"") data-width="100%">
+                                $for course in all_courses:
+                                    <option name="$course['name']" value="$course['id']">$course['name']</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-xs-12 text-center">
-                <button onclick="on_search();" class="btn btn-success">$:_("Update")</button>
+            <div class="col-xs-12 text-right">
+                <button onclick="updateDataFilters();" class="btn btn-success">$:_("Update")</button>
+                <button onclick="getAllAnalytics()" class="btn btn-primary">
+                   <i class="fa fa-table" aria-hidden="true"></i> $:_("Download CSV")
+                </button>
             </div>
         </div>
     </div>
@@ -68,6 +89,7 @@ $var Navbar: $:NavbarF()
     <li><a id="plot-visits-per-day-tab" data-toggle="tab" href="#plot-visits-per-day-tab-content">$:_("Visits per day")</a></li>
     <li><a id="box-plot-tab" data-toggle="tab" href="#box-plot-tab-content">$:_("Box plot")</a></li>
     <li><a id="radar-plot-tab" data-toggle="tab" href="#radar-plot-tab-content">$:_("Radar plot")</a></li>
+    <li><a id="bar-plot-tab" data-toggle="tab" href="#analytics-per-course-content">$:_("Analytics per course")</a></li>
 </ul>
 
 <div class="tab-content">
@@ -85,7 +107,21 @@ $var Navbar: $:NavbarF()
         <h3 class="text-center">$:_("Radar plot")</h3>
         <div id="analytics_radar_plot" class="statistics-plot"><!-- Chart will be drawn inside this DIV --></div>
     </div>
+    <div id="analytics-per-course-content" class="tab-pane fade in">
+        <h3 class="text-center">$:_("Analytics per course")</h3>
+        <div id="analyticsPerCoursePlot" class="statistics-plot"></div>
+    </div>
 </div>
 <script type="text/javascript">
-    const all_services = $:{dict(services)};
+    function getCoursesDict(){
+        const courses = $:all_courses;
+        const coursesDict = {};
+        $$.each(courses,(_,course)=> {
+            coursesDict[course["id"]] = course["name"];
+        });
+        return coursesDict;
+    }
+    const all_services = $:{dict(services)}
+    const all_courses = getCoursesDict();
+
 </script>
