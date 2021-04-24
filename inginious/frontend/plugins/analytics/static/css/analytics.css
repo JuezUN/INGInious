@@ -56,3 +56,17 @@
 .RdYlGn .q10-11 {
     fill: rgb(0, 104, 55)
 }
+
+/* classes related with Multiple Select library */
+
+.ms-choice {
+  height: 2.9rem;
+}
+
+.ms-choice > span {
+  position: static;
+}
+
+.ms-drop input[type="checkbox"] {
+  margin-top: 0;
+}

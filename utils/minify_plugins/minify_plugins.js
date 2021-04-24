@@ -230,7 +230,7 @@ function minifyCodePreviewPlugin() {
 function minifyAnalyticsPlugin() {
     const jsFilesPath = _ANALYTICS_PLUGIN_PATH + "/js/";
     const cssFilesPath = _ANALYTICS_PLUGIN_PATH + "/css/";
-    const jsFiles = ["analytics", "box_plot", "calendar_view", "radar", "time_series"].map((name) => {
+    const jsFiles = ["analytics", "box_plot", "calendar_view", "radar", "time_series", "stacked_bar_plot"].map((name) => {
         return getJSFilePath(jsFilesPath, name);
     });
 

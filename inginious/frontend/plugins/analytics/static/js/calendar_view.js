@@ -15,14 +15,19 @@ const HeatMap = (function () {
         this.format = d3.time.format("%Y%m%d");
 
         this.start_year = (new Date).getFullYear();
+        this.end_year = (new Date).getFullYear();
     }
 
     HeatMap.prototype = Object.create(AnalyticsDiagram.prototype);
 
-    HeatMap.prototype.update_year = function(){
-        this.start_year = Number(parse_str_to_date($('#analytics_date').val()).getFullYear()) - 1;
-        if (!this.start_year){
+    HeatMap.prototype.update_year = function () {
+        this.start_year = Number(parse_str_to_date($('#analytics_from_date').val()).getFullYear()) - 1;
+        this.end_year = Number(parse_str_to_date($('#analytics_to_date').val()).getFullYear());
+        if (!this.start_year) {
             this.start_year = (new Date).getFullYear() - 1;
+        }
+        if (!this.end_year) {
+            this.end_year = (new Date).getFullYear();
         }
     };
 
@@ -41,7 +46,7 @@ const HeatMap = (function () {
         }
 
         const svg = d3.select("#" + this.div_id).selectAll("svg")
-            .data(d3.range((new Date).getFullYear(), this.start_year, -1))
+            .data(d3.range(this.end_year, this.start_year, -1))
             .enter().append("svg")
             .attr("width", '100%')
             .attr("data-height", '0.5678')
