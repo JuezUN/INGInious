@@ -228,6 +228,7 @@ class CourseTaskFiles(INGIniousAdminPage):
 
         try:
             self.task_factory.get_task_fs(courseid, taskid).delete(wanted_path)
+            self.plugin_manager.call_hook("file_deleted", val=path)
             return self.show_tab_file(courseid, taskid)
         except:
             return self.show_tab_file(courseid, taskid, _("An error occurred while deleting the files"))

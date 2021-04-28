@@ -107,3 +107,7 @@ def remove_public_files(task_file_list):
 def grader_footer(course, taskid, task_data, template_helper):
     renderer = template_helper.get_custom_renderer(BASE_TEMPLATE_FOLDER, layout=False)
     return str(renderer.grader_templates()) + str(renderer.notebook_grader_test_form_modal())
+
+
+def on_file_deleted(val):
+    print(val)
