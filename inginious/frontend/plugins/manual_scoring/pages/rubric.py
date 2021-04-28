@@ -9,6 +9,7 @@ from inginious.frontend.parsable_text import ParsableText
 from inginious.frontend.plugins.contact_page.pages.constants import get_use_minify
 from inginious.frontend.plugins.manual_scoring.constants import get_static_folder_path
 from inginious.frontend.plugins.utils import read_json_file
+from collections import OrderedDict
 
 
 def get_manual_scoring_data(submission):
@@ -41,8 +42,7 @@ def get_rubric_content(user_manager):
                      'pt': 'rubric.json'}
     current_language = user_manager.session_language()
     path = os.path.join(path, language_file[current_language])
-
-    return read_json_file(path)
+    return OrderedDict(sorted(read_json_file(path).items()))
 
 
 def add_static_files_to_render_notebook(template_helper):
