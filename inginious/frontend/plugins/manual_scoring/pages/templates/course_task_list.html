@@ -47,10 +47,7 @@ $var Navbar: $:NavbarF()
                 <tr>
                     <td>
                         <a href="$get_homepath()/admin/${course.get_id()}/manual_scoring/task/$taskid" class="font_size">
-                            $if data[taskid]["name"] == "":
-                                $taskid
-                            $else:
-                                $data[taskid]["name"]
+                            $data[taskid]["name"]
                         </a>
                         <input type="hidden" name="task" value="$taskid">
                     </td>

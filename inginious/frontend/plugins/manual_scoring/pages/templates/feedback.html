@@ -19,21 +19,14 @@ $def NavbarF():
 $var Navbar: $:NavbarF()
 
 <h1 class="py-1">
-    $:_("Feedback for:")
-    $if data['task_name'] == "":
-        $task.get_id()
-    $else:
-        $data['task_name']
+    $:_("Feedback for:") $data['task_name']
 </h1>
 
 <!-- Code view -->
 <section class="py-1">
     <div class="py-1">
     <h2 id="taskName" class="py-1" style="cursor: pointer">
-        $if data['task_name'] == "":
-            $task.get_id()
-        $else:
-            $data['task_name']
+        $data['task_name']
         <i class="fa fa-sort-desc" aria-hidden="true"></i>
     </h2>
         <div id="taskDescription" hidden>

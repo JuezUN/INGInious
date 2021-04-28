@@ -41,7 +41,7 @@ class StudentSubmissionsPage(INGIniousAdminPage):
     def render_page(self, course, task_id, task, username):
         """ get submissions for a user and display page """
         url = 'manual_scoring'
-        task_name = course.get_task(task_id).get_name(self.user_manager.session_language())
+        task_name = course.get_task(task_id).get_name_or_id(self.user_manager.session_language())
         name = self.user_manager.get_user_realname(username)
         result = self.get_student_submissions(course.get_id(), task_id, username)
         data = create_submissions_dict(result)

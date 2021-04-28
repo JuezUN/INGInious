@@ -147,7 +147,8 @@ class ManualScoringPage(INGIniousAdminPage):
             "language": get_dict_value(submission_input, "input", problem_id + '/language'),
             "comment": comment,
             "score": get_dict_value(submission_input, "grade"),
-            "task_name": course.get_task(submission_input['taskid']).get_name(self.user_manager.session_language()),
+            "task_name": course.get_task(submission_input['taskid']).get_name_or_id(
+                self.user_manager.session_language()),
             "result": get_dict_value(submission_input, "result"),
             "feedback_result_text": feedback if feedback else _("Not available") + ": " + _(
                 "It is possible that the grader could not finish its process with this submission."),

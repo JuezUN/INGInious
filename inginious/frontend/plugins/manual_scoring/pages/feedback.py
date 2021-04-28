@@ -37,7 +37,7 @@ class FeedbackPage(INGIniousAuthPage):
             "language":  get_dict_value(submission, "input", problem_id + '/language'),
             "comment": ParsableText(comment),
             "score": get_dict_value(submission, "grade"),
-            "task_name": task.get_name(self.user_manager.session_language()),
+            "task_name": task.get_name_or_id(self.user_manager.session_language()),
             "result": submission['result'],
             "feedback_result_text": feedback if feedback else _("Not available") + ": " + _(
                 "It is possible that the grader could not finish its process with this submission."),
