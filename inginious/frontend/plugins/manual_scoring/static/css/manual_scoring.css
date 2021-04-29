@@ -85,3 +85,9 @@ td.box1 {
 #nav-tabs {
   margin: 0 0 -1.1em -1.2em ;
 }
+
+#taskAlert .alert-danger {
+    background-color: #f2dede;
+    color: #f04124;
+    border: 1px solid #dddddd;
+}
