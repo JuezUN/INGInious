@@ -511,9 +511,7 @@ class UserManager:
                 {"username": username, "courseid": submission["courseid"], "taskid": submission["taskid"]}, {"$inc": {"tried": 1, "tokens.amount": 1}})
 
             # If this is a submission after deadline, do not affect the final grade.
-            course = task.get_course()
-            if self.course_is_open_to_user(course, username) and \
-                    not self.has_staff_rights_on_course(course, username) and task.can_submit_after_deadline():
+            if submission.get("is_later_submission", False):
                 return
 
             # Check if the submission is the default download
@@ -526,6 +524,9 @@ class UserManager:
                     {"username": username, "courseid": submission["courseid"], "taskid": submission["taskid"]},
                     {"$set": {"succeeded": result_str == "success", "grade": grade, "submissionid": submission['_id']}})
         else:
+            if submission.get("is_later_submission", False):
+                return
+
             old_submission = self._database.user_tasks.find_one(
                 {"username": username, "courseid": submission["courseid"], "taskid": submission["taskid"]})
 

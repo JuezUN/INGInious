@@ -215,6 +215,14 @@ $def ColumnF():
                                 <span id="txt">$submission["submitted_on"].strftime("%d/%m/%Y %H:%M:%S") - $submission["grade"]%</span>
                             $else:
                                 <span id="txt">$submission["submitted_on"].strftime("%d/%m/%Y %H:%M:%S")</span>
+
+                            $if submission.get("is_later_submission", False):
+                                <span class="badge alert-warning" id="is_later_submission"
+                                      title=$:_('"Later submission: it does not affect the grade."')
+                                      data-toggle="tooltip" data-placement="bottom">
+                                    <i class="fa fa-clock-o"></i>
+                                </span>
+
                         </li>
                         
                 $else:
