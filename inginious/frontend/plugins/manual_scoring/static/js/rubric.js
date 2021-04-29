@@ -23,7 +23,6 @@ class Rubric {
             for (let j = 0; j < this.matrixLength; j++) {
                 let matrixField = new MatrixField(i, j);
                 this.addSelectFunction(matrixField);
-                this.addDeselectFunction(matrixField);
                 this.changeCursorToPointerWhenIsOver(matrixField);
                 this.changeCursorToDefaultWhenIsOut(matrixField);
             }
@@ -33,18 +32,21 @@ class Rubric {
     addSelectFunction(matrixField) {
         const self = this;
         this.matrix[matrixField.iIndex][matrixField.jIndex].addEventListener("click", function () {
+            const isSelected = self.isSelected(matrixField);
             self.removeSelectionOnRow(matrixField.iIndex);
-            self.addMarkerClass(matrixField.fieldId);
-            self.updateScore(matrixField.jIndex);
+            if (!isSelected) {
+                self.addMarkerClass(matrixField.fieldId);
+                self.updateScore(matrixField.jIndex);
+            }
         });
     }
 
-    addDeselectFunction(matrixField) {
-        const self = this;
-        this.matrix[matrixField.iIndex][matrixField.jIndex].addEventListener("dblclick", function () {
-            self.removeMarkerClass(matrixField.fieldId);
-            self.updateScore(matrixField.jIndex, false);
-        });
+    isSelected(matrixField) {
+        const fieldSelected = this.getSelectionOnRow(matrixField.iIndex);
+        if (!fieldSelected) {
+            return false;
+        }
+        return fieldSelected.fieldId === matrixField.fieldId;
     }
 
     changeCursorToPointerWhenIsOver(matrixField) {
