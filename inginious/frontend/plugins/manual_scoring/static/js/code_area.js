@@ -11,27 +11,39 @@ const LANGUAGES = {
     "rst": "rst"
 };
 
+const environmentTypes = {
+    NOTEBOOK: "notebook_file",
+    FILE_MULTI_LANG: "code_file_multiple_languages",
+    MULTI_LANG: "code_multiple_languages"
+}
+
 class CodeArea {
 
-    constructor(multiLangCodeDivId, notebookDivId = null, environmentType = "") {
-        this.environmentType = environmentType
-        this.multilangCodeArea = $(`#${multiLangCodeDivId}`);
+    constructor(environmentType) {
+        this.environmentType = environmentType;
+        this.multilangCodeArea = $(`#${CODE_AREA_ID}`);
+        this.notebookDiv = $(`#${NOTEBOOK_CODE_AREA_ID}`);
+        this.fileDownloadArea = $(`#${FILE_MULTI_LANG_ID}`);
         this.codeMirror = null;
-        if (notebookDivId)
-            this.notebookDiv = $(`#${notebookDivId}`);
     }
 
     displayCodeArea() {
-        if (this.isNotebook()) {
-            this.getNotebookCodeDataAndRender();
-        } else {
-            this.showMultiLangCodeArea();
-            this.disabledCodeMirrorEdit();
+        switch (this.environmentType) {
+            case environmentTypes.NOTEBOOK:
+                this.getNotebookCodeDataAndRender();
+                break;
+            case environmentTypes.FILE_MULTI_LANG:
+                this.showDownloadArea();
+                break
+            case environmentTypes.MULTI_LANG:
+                this.showMultiLangCodeArea();
+                this.disabledCodeMirrorEdit();
+                break;
+            default:
+                this.multilangCodeArea = $(`#${this.environmentType}`);
+                this.showMultiLangCodeArea();
+                break;
         }
-    }
-
-    isNotebook() {
-        return this.environmentType === "Notebook";
     }
 
     getNotebookCodeDataAndRender() {
@@ -54,6 +66,11 @@ class CodeArea {
 
     disabledCodeMirrorEdit() {
         this.codeMirror.setOption("readOnly", "nocursor");
+    }
+
+    showDownloadArea() {
+        this.fileDownloadArea.parent().parent().show();
+        this.fileDownloadArea.attr("href",getURLSubmissionCode());
     }
 
 }

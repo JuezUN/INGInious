@@ -42,7 +42,7 @@ class FeedbackPage(INGIniousAuthPage):
             "feedback_result_text": feedback if feedback else _("Not available") + ": " + _(
                 "It is possible that the grader could not finish its process with this submission."),
             "problem": submission['input'][problem_id],
-            "environment_type": task.get_environment(),
+            "environment_type": get_dict_value(submission, "input", problem_id + '/type'),
             "question_id": problem_id,
             "submission_id": submission['_id'],
             "rubric_status": rubric_status

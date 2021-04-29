@@ -155,7 +155,7 @@ class ManualScoringPage(INGIniousAdminPage):
             "problem": get_dict_value(submission_input, "input", problem_id),
             "username": name[0],
             "name": self.user_manager.get_user_realname(name[0]) if "username" not in error else name[0],
-            "environment_type": task.get_environment(),
+            "environment_type": get_dict_value(submission_input, "input", problem_id + '/type'),
             "question_id": problem_id,
             "submission_id": submission_id,
             "rubric_status": rubric_status
