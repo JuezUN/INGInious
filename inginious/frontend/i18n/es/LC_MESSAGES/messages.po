@@ -5234,8 +5234,8 @@ msgid ""
 "\"If checked, the students will be able to do submissions after the "
 "deadline is reached. These submissions won't affect the grade.\""
 msgstr ""
-"Si está seleccionado, los estudiantes podrán hacer envíos después de la "
-"fecha límite. Sin embargo, estos envíos no afectarán la nota."
+"\"Si está seleccionado, los estudiantes podrán hacer envíos después de la "
+"fecha límite. Sin embargo, estos envíos no afectarán la nota.\""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:174
 msgid "Accessible"
