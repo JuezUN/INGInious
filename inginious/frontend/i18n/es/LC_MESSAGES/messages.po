@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-23 20:03-0500\n"
+"POT-Creation-Date: 2021-04-29 23:09-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1565,6 +1565,10 @@ msgstr "Analíticas por curso"
 #: inginious/frontend/plugins/analytics/pages/analytics.html:97
 msgid "Calendar visits"
 msgstr "Calendario de visitas"
+
+#: inginious/frontend/plugins/analytics/pages/analytics.py:45
+msgid "Course deleted"
+msgstr "Curso borrado"
 
 #: inginious/frontend/plugins/auth/custom_auth_form.html:32
 #: inginious/frontend/plugins/register_students/static/email_template.html:13
