@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-30 00:34-0500\n"
+"POT-Creation-Date: 2021-04-30 00:36-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -1427,6 +1427,10 @@ msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:97
 msgid "Calendar visits"
+msgstr ""
+
+#: inginious/frontend/plugins/analytics/pages/analytics.py:45
+msgid "Course deleted"
 msgstr ""
 
 #: inginious/frontend/plugins/auth/custom_auth_form.html:32
