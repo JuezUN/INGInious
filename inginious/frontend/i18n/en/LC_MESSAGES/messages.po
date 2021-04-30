@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-29 23:09-0500\n"
+"POT-Creation-Date: 2021-04-30 01:27-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -903,7 +903,7 @@ msgstr ""
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:68
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:105
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:38
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:39
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
 #: inginious/frontend/templates/course_admin/danger_zone.html:81
 #: inginious/frontend/templates/course_admin/danger_zone.html:160
@@ -1918,7 +1918,7 @@ msgstr ""
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:11
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:106
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:143
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:37
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:38
 msgid "Save"
 msgstr ""
 
@@ -2864,36 +2864,50 @@ msgstr ""
 msgid "No language"
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:13
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:14
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:6
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:15
 msgid "Hints"
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:23
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:56
-msgid "The course does not exist or the user does not have access."
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:61
+msgid "Some hints in task have empty content fields."
+msgstr ""
+
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:64
+msgid "Some hints in task have empty title fields."
+msgstr ""
+
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:68
+msgid "Penalty for hints must be between 0.0% and 100.0%."
 msgstr ""
 
 #: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:28
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:61
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:64
+msgid "The course does not exist or the user does not have access."
+msgstr ""
+
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:33
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:69
 msgid "The task does not exist in the course."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:31
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:64
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:36
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:72
 msgid "The user is not registered in this course."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:39
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:44
 msgid "An error occurred while getting the user's hints."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:72
-msgid "An error occurred while updating status of the hint."
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:80
+msgid ""
+"An error occurred while updating status of the hint. The hint does not "
+"exist in the database."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:74
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:83
 msgid "Hint unlocked successfully."
 msgstr ""
 
@@ -5289,5 +5303,3 @@ msgstr ""
 #~ msgid "start date must be greater than end date"
 #~ msgstr ""
 
-#~ msgid "Hints List"
-#~ msgstr ""

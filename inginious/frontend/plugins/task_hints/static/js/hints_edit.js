@@ -37,7 +37,7 @@ $("#save_hint_button").on('click', function(event){
         "content" : ""
     },{
         "title" : $("#hint_title")[0].value,
-        "penalty" : parseFloat($("#hint_penalty")[0].value),
+        "penalty" : parseFloat($("#hint_penalty")[0].value).toFixed(1),
         "content" : $("#hint_content")[0].value
     });
 

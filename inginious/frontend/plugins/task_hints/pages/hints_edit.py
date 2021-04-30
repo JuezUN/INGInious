@@ -58,17 +58,20 @@ def on_task_submit(course, taskid, task_data, task_fs):
 
     for hint_id in task_data["task_hints"]:
         if not task_data["task_hints"][hint_id]["content"]:
-            return json.dumps({"status": "error", "message": _("Some hints in task have empty content fields")})
+            return json.dumps({"status": "error", "message": _("Some hints in task have empty content fields.")})
 
         if not task_data["task_hints"][hint_id]["title"]:
-            return json.dumps({"status": "error", "message": _("Some hints in task have empty title fields")})
+            return json.dumps({"status": "error", "message": _("Some hints in task have empty title fields.")})
 
         penalty = task_data["task_hints"][hint_id]["penalty"]
         if penalty and (float(penalty) < 0 or 100 < float(penalty)):
-            return json.dumps({"status": "error", "message": _("Penalty for hints must be between 0.0% and 100.0%")})
+            return json.dumps({"status": "error", "message": _("Penalty for hints must be between 0.0% and 100.0%.")})
 
         elif not penalty:
             task_data["task_hints"][hint_id]["penalty"] = '0.0'
+
+        else:
+            task_data["task_hints"][hint_id]["penalty"] = round(float(penalty),1)
 
     # Add id for hints
     task_data["task_hints"] = set_hints_id(task_data["task_hints"])

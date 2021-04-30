@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-29 23:09-0500\n"
+"POT-Creation-Date: 2021-04-30 01:27-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -1028,7 +1028,7 @@ msgstr "¿Está seguro de borrar todos los archivos?"
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:68
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:105
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:38
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:39
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
 #: inginious/frontend/templates/course_admin/danger_zone.html:81
 #: inginious/frontend/templates/course_admin/danger_zone.html:160
@@ -2147,7 +2147,7 @@ msgstr ""
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:11
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:106
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:143
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:37
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:38
 msgid "Save"
 msgstr "Guardar"
 
@@ -3192,36 +3192,52 @@ msgstr ""
 msgid "No language"
 msgstr "Sin lenguaje"
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:13
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:14
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:6
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:15
 msgid "Hints"
 msgstr "Pistas"
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:23
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:56
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:61
+msgid "Some hints in task have empty content fields."
+msgstr "Hay pistas sin contenido en la tarea."
+
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:64
+msgid "Some hints in task have empty title fields."
+msgstr "Hay pistas sin títulos en la tarea."
+
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:68
+msgid "Penalty for hints must be between 0.0% and 100.0%."
+msgstr "La penalización de las pistas debe estar entre 0.0% y 100%."
+
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:28
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:64
 msgid "The course does not exist or the user does not have access."
 msgstr "El curso no existe o el usuario no tiene permisos."
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:28
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:61
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:33
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:69
 msgid "The task does not exist in the course."
 msgstr "Esta tarea no existe en el curso"
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:31
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:64
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:36
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:72
 msgid "The user is not registered in this course."
 msgstr "El usuario no está registrado a este curso."
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:39
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:44
 msgid "An error occurred while getting the user's hints."
 msgstr "Un error ha ocurrido al obtener las pistas del usuario."
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:72
-msgid "An error occurred while updating status of the hint."
-msgstr "Un error ha ocurrido durante la validación de la sintaxis."
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:80
+msgid ""
+"An error occurred while updating status of the hint. The hint does not "
+"exist in the database."
+msgstr ""
+"Un error ha ocurrido al actualizar la pista. La pista no existe en la "
+"base de datos."
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:74
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:83
 msgid "Hint unlocked successfully."
 msgstr "La pista fue desbloqueada exitosamente"
 
@@ -5711,3 +5727,4 @@ msgstr "Extensiones permitidas"
 
 #~ msgid "Registered staff"
 #~ msgstr "Personal registrado"
+
