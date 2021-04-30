@@ -88,11 +88,12 @@ class MultilangForm(GraderForm):
         # Additional time to calculate submission feedback.
         _additional_time_limit = 15
         # Additional memory to calculate submission feedback.
-        _additional_memory_limit = 70
+        _additional_memory_limit = 150
         # Update the grading container time and memory limit depending on amount of tests.
         self.task_data['limits']['time'] = total_cases * self.task_data['time_limit_test_case'] + _additional_time_limit
-        self.task_data['limits']['memory'] = total_cases * self.task_data['output_limit_test_case'] + \
-                                             _additional_memory_limit
+
+        main_container_memory = total_cases * self.task_data['output_limit_test_case'] + _additional_memory_limit
+        self.task_data['limits']['memory'] = max(self.task_data['memory_limit_test_case'], main_container_memory)
 
     def validate(self):
         super(MultilangForm, self).validate()
