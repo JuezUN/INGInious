@@ -6,8 +6,8 @@ from .pages.api.hints_api import UserHintsAPI
 
 _SHOW_HINT_STATIC_FILES = os.path.join(os.path.dirname(__file__), "static")
 
-def init(plugin_manager, course_factory, client, config):
 
+def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_page(r'/task_hints/static/(.*)',
                             create_static_resource_page(_SHOW_HINT_STATIC_FILES))
     plugin_manager.add_page('/api/hints_api/', UserHintsAPI)

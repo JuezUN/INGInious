@@ -1,20 +1,21 @@
 import os
 import uuid
+import json
 
 from collections import OrderedDict
 from inginious.frontend.pages.course_admin.task_edit import CourseEditTask
 from .constants import use_minified
 
-_SHOW_HINTS_TEMPLATES_PATH = os.path.join(os.path.dirname(__file__),'templates')
+_SHOW_HINTS_TEMPLATES_PATH = os.path.join(os.path.dirname(__file__), 'templates')
+
 
 def edit_hints_tab(course, taskid, task_data, template_helper):
-
     tab_id = 'hints'
     link = '<i class="fa fa-question"></i>&nbsp; ' + _('Hints')
 
     add_static_files(template_helper)
 
-    #Get task data
+    # Get task data
     task_hints = task_data.get("task_hints", {})
 
     render = template_helper.get_custom_renderer(_SHOW_HINTS_TEMPLATES_PATH, layout=False)
@@ -23,27 +24,26 @@ def edit_hints_tab(course, taskid, task_data, template_helper):
 
     return tab_id, link, template
 
-def get_hints_edit_modal_template(course, taskid, task_data, template_helper):
 
+def get_hints_edit_modal_template(course, taskid, task_data, template_helper):
     return template_helper.get_custom_renderer(_SHOW_HINTS_TEMPLATES_PATH, layout=False).hints_edit_modal()
 
 
 def add_static_files(template_helper):
-
     if use_minified():
         template_helper.add_javascript("/task_hints/static/js/hints_edit.min.js")
     else:
         template_helper.add_javascript("/task_hints/static/js/hints_edit.js")
 
+
 def on_task_submit(course, taskid, task_data, task_fs):
+    task_data["task_hints"] = CourseEditTask.dict_from_prefix("task_hints", task_data)
 
-    task_data["task_hints"] = CourseEditTask.dict_from_prefix("task_hints",task_data)
-
-    #Delete key for hint template if it exists
+    # Delete key for hint template if it exists
     if "KEY" in task_data["task_hints"].keys():
         del task_data["task_hints"]["KEY"]
 
-    #Delete duplicate items if they exists
+    # Delete duplicate items if they exists
 
     fields_to_delete = []
 
@@ -54,36 +54,29 @@ def on_task_submit(course, taskid, task_data, task_fs):
     for key in fields_to_delete:
         del task_data[key]
 
-    hints_to_delete = []
-
-    #Delete items that have empty mandatory fields
+    # Check the fields for each hint in task
 
     for hint_id in task_data["task_hints"]:
-        if task_data["task_hints"][hint_id] and task_data["task_hints"][hint_id]["content"] is None:
-            hints_to_delete.append(hint_id)
+        if not task_data["task_hints"][hint_id]["content"]:
+            return json.dumps({"status": "error", "message": _("Some hints in task have empty content fields")})
 
-        if task_data["task_hints"][hint_id] and task_data["task_hints"][hint_id]["title"] is None:
-            hints_to_delete.append(hint_id)
+        if not task_data["task_hints"][hint_id]["title"]:
+            return json.dumps({"status": "error", "message": _("Some hints in task have empty title fields")})
 
-    for hint_id in hints_to_delete:
-        del task_data["task_hints"][hint_id]
+        penalty = task_data["task_hints"][hint_id]["penalty"]
+        if penalty and (float(penalty) < 0 or 100 < float(penalty)):
+            return json.dumps({"status": "error", "message": _("Penalty for hints must be between 0.0% and 100.0%")})
+
+        elif not penalty:
+            task_data["task_hints"][hint_id]["penalty"] = '0.0'
 
     # Add id for hints
     task_data["task_hints"] = set_hints_id(task_data["task_hints"])
     task_data["task_hints"] = OrderedDict(sorted(task_data["task_hints"].items()))
 
-def set_hints_id(task_hints):
 
+def set_hints_id(task_hints):
     for key in task_hints:
-        if task_hints[key]["id"] is None or task_hints[key]["id"] == "":
+        if not task_hints[key]["id"]:
             task_hints[key]["id"] = str(uuid.uuid4())
     return task_hints
-
-
-def update_ordered_hints(hints):
-
-    new_hint_list = {}
-    for hint in hints:
-        new_hint_list.append(hint)
-
-    return new_hint_list

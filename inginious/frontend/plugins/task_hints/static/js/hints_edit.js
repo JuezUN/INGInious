@@ -27,8 +27,10 @@ function loadHintContentCodeEditor(){
     hints_editor.refresh();
 }
 
-function onSaveHintClick(){
+/* Save the new/modified hint in table */
+$("#save_hint_button").on('click', function(event){
 
+    event.preventDefault();
     let hint = $.extend({
         "title" : "",
         "penalty" : 0.0,
@@ -69,12 +71,12 @@ function onSaveHintClick(){
         updateHintOnTable(hint, update_hint_id);
     }
     $("#hints_edit_modal").modal("hide");
-}
+});
 
 /* Set the hint on table */
 function addHintOnTable(new_hint, hint_id){
 
-  var new_hint_row_template = $("#hint_KEY").clone().html();
+  let new_hint_row_template = $("#hint_KEY").clone().html();
   let new_hint_id = "hint_" + hint_id;
 
   /* Replace "KEY" by the hint id */

@@ -18,7 +18,7 @@ function hideHintAlert(alert){
     alert.text("");
 }
 
-/* Get the left hint content for the allowed hints*/
+/* Get the left hint content for the unlocked hints*/
 function loadHintsOnModal(){
     let to_show_hints = {};
 
@@ -33,7 +33,7 @@ function loadHintsOnModal(){
 
 /* Set message on the menu element for the hint*/
 function setHintUnlockedStatus(index,hint){
-    let hint_status = hint["allowed_to_see"];
+    let hint_status = hint["unlocked"];
     hint_option = $("#hint_menu_" + index).find("a");
     if(hint_status){
         hint_option.attr("class", "list-group-item list-group-item-success");
@@ -50,7 +50,7 @@ function setHintUnlockedStatus(index,hint){
 function setHintsOnContainer(to_show_hints){
     let hint_status;
     $.each(to_show_hints, function(index, hint){
-        hint_status = hint["allowed_to_see"];
+        hint_status = hint["unlocked"];
 
         let hint_container = $("#hint_"+index);
 
@@ -110,8 +110,8 @@ function changeHint(key){
     })
 }
 
-/* Add the hint on the student allowed hints list*/
-function setHintAsAllowed(selected_hint_id){
+/* Add the hint on the student unlocked hints list*/
+function unlockNewHint(selected_hint_id){
     $.ajax({
         url: "/api/hints_api/",
         method: "POST",
