@@ -533,8 +533,8 @@ class UserManager:
             if task.get_evaluate() == 'best':  # if best, update cache consequently (with best submission)
                 def_sub = list(self._database.submissions.find({
                     "username": username, "courseid": task.get_course_id(),
-                    "taskid": task.get_id(), "status": "done"}
-                ).sort([("grade", pymongo.DESCENDING), ("submitted_on", pymongo.DESCENDING)]).limit(1))
+                    "taskid": task.get_id(), "status": "done", "is_later_submission": {"$in": [False, None]}
+                }).sort([("grade", pymongo.DESCENDING), ("submitted_on", pymongo.DESCENDING)]).limit(1))
 
                 if len(def_sub) > 0:
                     self._database.user_tasks.find_one_and_update(
