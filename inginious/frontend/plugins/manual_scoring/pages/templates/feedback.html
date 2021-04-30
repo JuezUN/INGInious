@@ -128,21 +128,22 @@ $var Navbar: $:NavbarF()
         return alert_type;
     }
 
-    function getHtmlCodeForFeedback() {
-        let content = "$data['feedback_result_text']";
-        let parser = new DOMParser();
-        let doc = parser.parseFromString(content, 'text/html');
-
-        return doc.body.innerText;
-    }
-
-
     const environmentType = function () {
         return "$data['environment_type']"
     }
 
     const getURLSubmissionCode = function () {
         return "$get_homepath()/course/$course.get_id()/$task.get_id()" + "?submissionid=" + "$data['submission_id']" + "&questionid=" + "$data['question_id']";
+    }
+
+    const getURLSubmissionInput = function () {
+        return "$get_homepath()/course/$course.get_id()/$task.get_id()";
+    }
+    const getCurrentSubmissionId = function () {
+        return "$data['submission_id']";
+    }
+    function getTaskId(){
+        return "$task.get_id()";
     }
 
     const rubricStatus = function () {

@@ -15,8 +15,7 @@ from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 from ..constants import get_use_minify, get_render_path, get_dict_value
 from ..pages.manual_scoring_error import ManualScoringError
 from inginious.frontend.plugins.utils import get_mandatory_parameter
-from .rubric import get_manual_scoring_data, get_submission_result_text, get_rubric_content, \
-    add_static_files_to_render_notebook
+from .rubric import get_manual_scoring_data, get_rubric_content, add_static_files_to_render_notebook
 
 base_renderer_path = get_render_path()
 
@@ -136,7 +135,6 @@ class ManualScoringPage(INGIniousAdminPage):
         submission_input = self.submission_manager.get_input_from_submission(submission)
         comment, score, rubric_status = get_manual_scoring_data(submission)
 
-        feedback = get_submission_result_text(submission_input)
         error = []
         name = get_dict_value(submission_input, "username", error)
 
@@ -150,8 +148,6 @@ class ManualScoringPage(INGIniousAdminPage):
             "task_name": course.get_task(submission_input['taskid']).get_name_or_id(
                 self.user_manager.session_language()),
             "result": get_dict_value(submission_input, "result"),
-            "feedback_result_text": feedback if feedback else _("Not available") + ": " + _(
-                "It is possible that the grader could not finish its process with this submission."),
             "problem": get_dict_value(submission_input, "input", problem_id),
             "username": name[0],
             "name": self.user_manager.get_user_realname(name[0]) if "username" not in error else name[0],

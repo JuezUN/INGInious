@@ -7,8 +7,7 @@ from inginious.frontend.pages.api._api_page import APIError
 from inginious.frontend.pages.utils import INGIniousAuthPage
 from inginious.frontend.parsable_text import ParsableText
 from inginious.frontend.plugins.manual_scoring.constants import get_render_path, get_use_minify, get_dict_value
-from .rubric import get_manual_scoring_data, get_submission_result_text, get_rubric_content, \
-    add_static_files_to_render_notebook
+from .rubric import get_manual_scoring_data, get_rubric_content, add_static_files_to_render_notebook
 
 base_renderer_path = get_render_path()
 
@@ -29,18 +28,15 @@ class FeedbackPage(INGIniousAuthPage):
         task_id = submission['taskid']
         task = self.get_task(course, task_id)
         problem_id = task.get_problems()[0].get_id()
-        feedback = get_submission_result_text(submission)
 
         data = {
             "summary": get_dict_value(submission, "custom", "custom_summary_result"),
             "grade": score,
-            "language":  get_dict_value(submission, "input", problem_id + '/language'),
+            "language": get_dict_value(submission, "input", problem_id + '/language'),
             "comment": ParsableText(comment),
             "score": get_dict_value(submission, "grade"),
             "task_name": task.get_name_or_id(self.user_manager.session_language()),
             "result": submission['result'],
-            "feedback_result_text": feedback if feedback else _("Not available") + ": " + _(
-                "It is possible that the grader could not finish its process with this submission."),
             "problem": submission['input'][problem_id],
             "environment_type": get_dict_value(submission, "input", problem_id + '/type'),
             "question_id": problem_id,
