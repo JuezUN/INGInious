@@ -257,9 +257,6 @@ class BaseTaskPage(object):
                     })
 
                     default_submissionid = user_task.get('submissionid', None)
-                    if default_submissionid is None:
-                        # This should never happen, as user_manager.update_user_stats is called whenever a submission is done.
-                        return json.dumps({'status': "error", "text": _("Internal error")})
 
                     return self.submission_to_json(task, result, is_admin, False, default_submissionid == result['_id'], tags=task.get_tags())
                 else:
