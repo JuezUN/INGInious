@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-29 23:09-0500\n"
+"POT-Creation-Date: 2021-04-30 09:53-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -475,7 +475,7 @@ msgid "Submitted on"
 msgstr "Soumis le"
 
 #: inginious/frontend/pages/course_admin/submissions.py:24
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:34
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:30
 msgid "User"
 msgstr "Utilisateur"
 
@@ -1355,7 +1355,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:57
 #: inginious/frontend/plugins/auth/custom_auth_form.html:29
-#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:37
+#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:33
 #: inginious/frontend/plugins/register_students/static/email_template.html:12
 #: inginious/frontend/templates/auth.html:23
 msgid "Username"
@@ -1510,7 +1510,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:57
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:269
-#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:38
+#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:34
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:9
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
@@ -1960,7 +1960,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:11
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:106
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:143
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:149
 msgid "Save"
 msgstr ""
 
@@ -2007,26 +2007,21 @@ msgid "Feedback"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/constants.py:88
-#: inginious/frontend/plugins/manual_scoring/pages/feedback.py:42
-#: inginious/frontend/plugins/manual_scoring/pages/manual_scoring.py:152
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:51
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:53
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:61
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:63
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:55
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:57
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:59
 #, fuzzy
 msgid "Not available"
 msgstr "Exercice non disponible"
 
-#: inginious/frontend/plugins/manual_scoring/pages/feedback.py:42
-#: inginious/frontend/plugins/manual_scoring/pages/manual_scoring.py:152
-msgid ""
-"It is possible that the grader could not finish its process with this "
-"submission."
-msgstr ""
-
 #: inginious/frontend/plugins/manual_scoring/pages/rubric.py:17
 #: inginious/frontend/plugins/manual_scoring/pages/student_submissions.py:18
 msgid "No grade"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/api/manual_scoring_info.py:78
+msgid "The task was deleted"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:24
@@ -2054,14 +2049,14 @@ msgstr ""
 msgid "Feedback for:"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:54
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:57
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:47
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:63
 #: inginious/frontend/templates/task.html:14
 msgid "Information"
 msgstr "Informations"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:57
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:60
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:50
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:66
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:34
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:28
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_create.html:46
@@ -2069,23 +2064,23 @@ msgstr "Informations"
 msgid "Language"
 msgstr "Langage"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:59
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:62
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:52
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:68
 msgid "Summary"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:73
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:124
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:66
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:130
 msgid "Comments"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:81
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:74
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:19
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:77
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:83
 msgid "Rubric"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:84
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:77
 msgid "Manual grade: "
 msgstr ""
 
@@ -2108,68 +2103,75 @@ msgstr "Etudiant"
 msgid "Manual scoring for:"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:78
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:55
+#: inginious/frontend/templates/course_admin/download.html:70
+#: inginious/frontend/templates/course_admin/edit_tabs/files.html:16
+#: inginious/frontend/templates/course_admin/submissions.html:256
+msgid "Download"
+msgstr "Télécharger"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:84
 msgid "Select the best description to grade the student's code"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:79
-msgid "Click to select and double click to deselect"
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:85
+msgid "Click to select and deselect"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:116
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:122
 msgid "Current Score: "
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:125
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:131
 msgid "\"Use RST format to write the comment\""
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:131
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:137
 msgid "Write"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:132
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:138
 msgid "Preview"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:25
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:24
 msgid "Feedback for the course: "
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:39
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:47
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:38
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:43
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:35
 msgid "Date"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:40
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:48
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:39
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:44
 msgid "Result Summary"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:41
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:49
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:40
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:45
 msgid "Score"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:42
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:50
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:41
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:46
 msgid "Manual scoring"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:43
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:51
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:42
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:47
 msgid "See submission"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:55
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:65
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:57
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:61
 msgid ""
 "\"It is possible that the grader could not finish its process with this "
 "submission.\""
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:78
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:80
 msgid "There is no Feedback yet"
 msgstr ""
 
@@ -2178,15 +2180,15 @@ msgstr ""
 msgid "Manual scoring for Task:"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:39
+#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:35
 msgid "Best score"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:54
+#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:50
 msgid "Unknown"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:63
+#: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:59
 msgid "No Students Yet"
 msgstr ""
 
@@ -4161,12 +4163,6 @@ msgstr ""
 msgid "Download all the submissions"
 msgstr "Télécharger toutes les soumissions"
 
-#: inginious/frontend/templates/course_admin/download.html:70
-#: inginious/frontend/templates/course_admin/edit_tabs/files.html:16
-#: inginious/frontend/templates/course_admin/submissions.html:256
-msgid "Download"
-msgstr "Télécharger"
-
 #: inginious/frontend/templates/course_admin/menu.html:20
 msgid "How to create a task?"
 msgstr "Comment créer un exercice?"
@@ -5277,5 +5273,14 @@ msgstr "Extensions autorisées:"
 #~ msgstr ""
 
 #~ msgid "start date must be greater than end date"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "It is possible that the grader "
+#~ "could not finish its process with "
+#~ "this submission."
+#~ msgstr ""
+
+#~ msgid "Click to select and double click to deselect"
 #~ msgstr ""
 
