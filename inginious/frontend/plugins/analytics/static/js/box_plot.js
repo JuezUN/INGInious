@@ -6,7 +6,7 @@ const BoxPlot = (function () {
 
     BoxPlot.prototype = Object.create(AnalyticsDiagram.prototype);
 
-    BoxPlot.prototype._generate_plot_layout = function () {
+    BoxPlot.prototype._generatePlotLayout = function () {
         return {
             title: 'Box plot of used services',
             yaxis: {
@@ -56,7 +56,7 @@ const BoxPlot = (function () {
                 plot_data.push(result);
             }
 
-            const layout = _this._generate_plot_layout();
+            const layout = _this._generatePlotLayout();
             Plotly.newPlot(_this.div_id, plot_data, layout, {showSendToCloud: true});
         });
     };
