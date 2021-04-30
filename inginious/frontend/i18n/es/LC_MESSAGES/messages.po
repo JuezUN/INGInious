@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-30 09:53-0500\n"
+"POT-Creation-Date: 2021-04-30 12:08-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -2232,13 +2232,21 @@ msgstr "Lista de Retroalimentación"
 msgid "Feedback for:"
 msgstr "Retroalimentación para:"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:47
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:48
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:55
+#: inginious/frontend/templates/course_admin/download.html:70
+#: inginious/frontend/templates/course_admin/edit_tabs/files.html:16
+#: inginious/frontend/templates/course_admin/submissions.html:256
+msgid "Download"
+msgstr "Descargar"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:56
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:63
 #: inginious/frontend/templates/task.html:14
 msgid "Information"
 msgstr "Información"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:50
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:59
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:66
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:34
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:28
@@ -2247,23 +2255,23 @@ msgstr "Información"
 msgid "Language"
 msgstr "Lenguaje"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:52
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:61
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:68
 msgid "Summary"
 msgstr "Resumen"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:66
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:75
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:130
 msgid "Comments"
 msgstr "Comentarios"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:74
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:83
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:19
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:83
 msgid "Rubric"
 msgstr "Rubrica"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:77
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:86
 msgid "Manual grade: "
 msgstr "Calificación: "
 
@@ -2285,13 +2293,6 @@ msgstr "Estudiante"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:26
 msgid "Manual scoring for:"
 msgstr "Calificación manual para:"
-
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:55
-#: inginious/frontend/templates/course_admin/download.html:70
-#: inginious/frontend/templates/course_admin/edit_tabs/files.html:16
-#: inginious/frontend/templates/course_admin/submissions.html:256
-msgid "Download"
-msgstr "Descargar"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:84
 msgid "Select the best description to grade the student's code"
