@@ -218,9 +218,9 @@ $def ColumnF():
 
                             $if submission.get("is_later_submission", False):
                                 <span class="badge alert-warning" id="is_later_submission"
-                                      title=$:_('"Later submission: it does not affect the grade."')
-                                      data-toggle="tooltip" data-placement="bottom">
-                                    <i class="fa fa-clock-o"></i>
+                                      data-toggle="tooltip" data-placement="bottom" style="margin-right: 2px;"
+                                      title=$:_('"Later submission: it does not affect the grade."')>
+                                    <i class="fa fa-clock-o" style="font-size: 10px;"></i>
                                 </span>
 
                         </li>
