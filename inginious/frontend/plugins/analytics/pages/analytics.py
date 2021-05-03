@@ -1,5 +1,5 @@
-from inginious.common.course_factory import CourseFactory
 from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAuthPage
+from inginious.common.exceptions import CourseNotFoundException
 from ..analytics_collection_manager import AnalyticsCollectionManagerSingleton
 from ..services_collection_manager import ServicesCollectionManagerSingleton
 from ..utils import use_minified
@@ -37,9 +37,12 @@ class AnalyticsPage(SuperadminAuthPage):
     def get_all_courses(self):
         def get_course_name(course_id):
             if course_id:
-                name = self.course_factory.get_course(course_id).get_name(
-                    self.user_manager.session_language())
-                return name if name else course_id
+                try:
+                    name = self.course_factory.get_course(course_id).get_name(
+                        self.user_manager.session_language())
+                    return name if name else course_id
+                except CourseNotFoundException:
+                    return "{id} ({message})".format(id=course_id, message=_("Course deleted"))
             else:
                 return "No course"
 

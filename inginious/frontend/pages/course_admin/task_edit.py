@@ -261,7 +261,14 @@ class CourseEditTask(INGIniousAdminPage):
                 del data["submission_limit_soft_0"]
                 del data["submission_limit_soft_1"]
                 data["submission_limit"] = result
-                                
+
+            # Allow later submission
+            allow_later_submission = data.get("allow_later_submission", False)
+            if allow_later_submission:
+                data["allow_later_submission"] = True
+            else:
+                data["allow_later_submission"] = False
+
             # Accessible
             if data["accessible"] == "custom":
                 data["accessible"] = "{}/{}".format(data["accessible_start"], data["accessible_end"])

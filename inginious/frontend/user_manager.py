@@ -444,9 +444,9 @@ class UserManager:
             total_weight = 0
             grade = 0
             for task_id in visible_tasks:
+                task_name_or_id = tasks[task_id].get_name_or_id(self.session_language())
                 total_weight += tasks[task_id].get_grading_weight()
-                grade += result["task_grades"].get(task_id, 0.0) * tasks[task_id].get_grading_weight()
-
+                grade += result["task_grades"].get(task_name_or_id, 0.0) * tasks[task_id].get_grading_weight()
             result["grade"] = round(grade / total_weight) if total_weight > 0 else 0
             retval[username] = result
 
@@ -510,6 +510,10 @@ class UserManager:
             old_submission = self._database.user_tasks.find_one_and_update(
                 {"username": username, "courseid": submission["courseid"], "taskid": submission["taskid"]}, {"$inc": {"tried": 1, "tokens.amount": 1}})
 
+            # If this is a submission after deadline, do not affect the final grade.
+            if submission.get("is_later_submission", False):
+                return
+
             # Check if the submission is the default download
             set_default = task.get_evaluate() == 'last' or \
                           (task.get_evaluate() == 'student' and old_submission is None) or \
@@ -520,14 +524,17 @@ class UserManager:
                     {"username": username, "courseid": submission["courseid"], "taskid": submission["taskid"]},
                     {"$set": {"succeeded": result_str == "success", "grade": grade, "submissionid": submission['_id']}})
         else:
+            if submission.get("is_later_submission", False):
+                return
+
             old_submission = self._database.user_tasks.find_one(
                 {"username": username, "courseid": submission["courseid"], "taskid": submission["taskid"]})
 
             if task.get_evaluate() == 'best':  # if best, update cache consequently (with best submission)
                 def_sub = list(self._database.submissions.find({
                     "username": username, "courseid": task.get_course_id(),
-                    "taskid": task.get_id(), "status": "done"}
-                ).sort([("grade", pymongo.DESCENDING), ("submitted_on", pymongo.DESCENDING)]).limit(1))
+                    "taskid": task.get_id(), "status": "done", "is_later_submission": {"$in": [False, None]}
+                }).sort([("grade", pymongo.DESCENDING), ("submitted_on", pymongo.DESCENDING)]).limit(1))
 
                 if len(def_sub) > 0:
                     self._database.user_tasks.find_one_and_update(
@@ -568,6 +575,8 @@ class UserManager:
         course_registered = self.course_is_open_to_user(task.get_course(), username, lti)
         # Check if task accessible to user
         task_accessible = task.get_accessible_time().is_open()
+        # Check if submissions after deadline are allowed
+        submit_after_deadline = task.can_submit_after_deadline() and course_registered
         # User has staff rights ?
         staff_right = self.has_staff_rights_on_course(task.get_course(), username)
 
@@ -582,7 +591,6 @@ class UserManager:
             group_filter = True
 
         students = aggregation["groups"][0]["students"] if (aggregation is not None and task.is_group_task()) else [self.session_username()]
-
 
         # Check for token availability
         enough_tokens = True
@@ -616,7 +624,8 @@ class UserManager:
 
                 enough_tokens = reduce(lambda old,user_task: old and check_tokens_for_user_task(user_task), user_tasks, True)
 
-        return (course_registered and task_accessible and group_filter and enough_tokens) or staff_right
+        return (course_registered and task_accessible and
+                group_filter and enough_tokens) or staff_right or submit_after_deadline
 
     def get_course_aggregations(self, course):
         """ Returns a list of the course aggregations"""
