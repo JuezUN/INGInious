@@ -45,9 +45,7 @@ def on_task_editor_submit(course, taskid, task_data, task_fs):
 def grader_generator_tab(course, taskid, task_data, template_helper):
     tab_id = 'tab_grader'
     link = '<i class="fa fa-check-circle fa-fw"></i>&nbsp; ' + _("Grader")
-    task_data_list = task_data.get('grader_test_cases', [])
-
-    grader_test_cases_dump = json.dumps(task_data_list)
+    grader_test_cases_dump = json.dumps(task_data.get('grader_test_cases', []))
     content = template_helper.get_custom_renderer(BASE_TEMPLATE_FOLDER, layout=False).grader(task_data,
                                                                                              grader_test_cases_dump,
                                                                                              course, taskid)
