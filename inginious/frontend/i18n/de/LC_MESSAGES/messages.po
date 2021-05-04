@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-30 17:44-0500\n"
+"POT-Creation-Date: 2021-05-04 17:31-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 
 #: inginious/frontend/accessible_time.py:58
 msgid "The accessibility end date must be greater than the start date."
@@ -580,7 +580,7 @@ msgstr ""
 msgid "An error occurred while moving the files"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:233
+#: inginious/frontend/pages/course_admin/task_edit_file.py:235
 msgid "An error occurred while deleting the files"
 msgstr ""
 
@@ -1614,7 +1614,7 @@ msgstr ""
 msgid "Select a course to copy tasks"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/grader.py:48
+#: inginious/frontend/plugins/grader_generator/pages/grader.py:47
 msgid "Grader"
 msgstr ""
 
