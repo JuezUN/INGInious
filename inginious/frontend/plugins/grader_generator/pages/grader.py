@@ -1,6 +1,6 @@
 import json
 
-from inginious.common.task_factory import TaskFactory
+import re
 from inginious.frontend.pages.course_admin.task_edit_file import CourseTaskFiles
 from .multilang_form import MultilangForm
 from .hdl_form import HDLForm
@@ -68,15 +68,21 @@ def grader_generator_tab(course, taskid, task_data, template_helper):
 
 
 def check_file_existence_for_multi_lang(course, task_id, task_data):
+    test_file_list = get_test_file_list_for_multi_lang(course, task_id)
+    if not test_file_list:
+        return
+
+    remove_test_without_file(test_file_list, task_data)
+
+
+def get_test_file_list_for_multi_lang(course, task_id):
     environment_types_to_check = ["multiple_languages", "Data Science"]
     environment = course.get_task(task_id).get_environment()
     if environment not in environment_types_to_check:
-        # It only check for multi lang grader format
+        # Only for multi lang grader format
         return
 
-    test_file_list = CourseTaskFiles.get_task_filelist(course._task_factory, course.get_id(), task_id).copy()
-
-    remove_test_without_file(test_file_list, task_data)
+    return CourseTaskFiles.get_task_filelist(course._task_factory, course.get_id(), task_id).copy()
 
 
 def remove_test_without_file(test_file_list, task_data):
@@ -109,5 +115,25 @@ def grader_footer(course, taskid, task_data, template_helper):
     return str(renderer.grader_templates()) + str(renderer.notebook_grader_test_form_modal())
 
 
-def on_file_deleted(val):
-    print(val)
+def on_file_deleted(course, task_id, path, task_factory):
+    file_name = get_file_name_from_path(path)
+    if file_name:
+        task_data = task_factory.get_task_descriptor_content(course.get_id(), task_id)
+        one_test_was_removed = remove_test_by_path_file(file_name, task_data)
+        if one_test_was_removed:
+            task_factory.update_task_descriptor_content(course.get_id(), task_id, task_data, "yaml")
+
+
+def get_file_name_from_path(path):
+    regular_exp = re.compile(r'^/[a-z0-9 _%\-]+\.[a-z0-9_]+$', flags=re.IGNORECASE)
+    if regular_exp.match(path):
+        return path[1:]
+
+
+def remove_test_by_path_file(file_name, task_data):
+    for test in task_data["grader_test_cases"]:
+        test_that_uses_file = test['input_file'] == file_name or test['output_file'] == file_name
+        if test_that_uses_file:
+            task_data["grader_test_cases"].remove(test)
+            return True
+    return False
