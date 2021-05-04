@@ -77,12 +77,9 @@ function getIdByFilename(fileName) {
 function getIdNum(id) {
     const baseIdPrefixLen = "grader_test_cases_".length;
     const idString = id.substr(baseIdPrefixLen);
-    const nextUnderscoreIndex = idString.indexOf("_");
-    if (nextUnderscoreIndex < 0) {
-        return idString;
-    } else {
-        return idString.substr(0, nextUnderscoreIndex);
-    }
+    /*parseInt returns a number from a string if the number is at the beginning of the string.
+    It doesn't matter if the string has more characters*/
+    return parseInt(idString, 10);
 }
 
 function multiLangLoadAllTests(testCases) {
