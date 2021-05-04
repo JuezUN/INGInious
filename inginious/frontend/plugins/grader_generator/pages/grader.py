@@ -97,7 +97,7 @@ def get_file_name_from_path(path):
     * root file -> /text.text
     * public file -> /public/text.text
     """
-    regular_exp = re.compile(r'^/[a-z0-9 _%\-]+\.[a-z0-9_]+$', flags=re.IGNORECASE)
+    regular_exp = re.compile(r'^/[^.\n/]+\.[a-z0-9_]+$', flags=re.IGNORECASE)
     if regular_exp.match(path):
         return path[1:]
 
