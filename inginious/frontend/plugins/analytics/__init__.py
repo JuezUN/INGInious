@@ -1,6 +1,7 @@
 import os
 
 from inginious.frontend.plugins.utils import create_static_resource_page
+from .api.stacked_bar_plot_api import StackedBarPlotAPI
 from .pages.analytics import AnalyticsPage
 from .api.analytics import AnalyticsAPI
 from .api.calendar_plot_api import CalendarPlotAPI
@@ -22,6 +23,7 @@ def init(plugin_manager, course_factory, client, plugin_config):
     plugin_manager.add_page('/api/time_series_plot_analytics/', TimeSeriesPlotAPI)
     plugin_manager.add_page('/api/box_plot_analytics/', BoxPlotAPI)
     plugin_manager.add_page('/api/radar_plot_analytics/', RadarPlotAPI)
+    plugin_manager.add_page('/api/stacked_bar_plot_analytics/', StackedBarPlotAPI)
 
     set_use_minified(plugin_config.get("use_minified", True))
 

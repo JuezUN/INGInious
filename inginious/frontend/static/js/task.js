@@ -94,7 +94,7 @@ function updateTaskStatus(newStatus, grade)
 }
 
 //Creates a new submission (left column)
-function displayNewSubmission(id)
+function displayNewSubmission(id, is_later_submission=false)
 {
     var submissions = $('#submissions');
     submissions.find('.submission-empty').remove();
@@ -120,6 +120,12 @@ function displayNewSubmission(id)
     //If there exists tags, we add a badge with '0' in the new submission.
     if($('span', $('#main_tag_group')).length > 0){
         submission_link.append('<span class="badge alert-info" id="tag_counter" >0</span>');
+    }
+
+    if (is_later_submission) {
+        submission_link.append("<span class=\"badge alert-warning\" id=\"is_later_submission\" " +
+            "title=\"Later submission: it does not affect the grade.\" data-toggle=\"tooltip\" " +
+            "data-placement=\"bottom\"> <i class=\"fa fa-clock-o\"></i> </span>");
     }
 
     submissions.prepend(submission_link);
@@ -347,7 +353,7 @@ function submitTask(with_ssh)
                           {
                               displayTaskLoadingAlert(data, data["submissionid"]);
                               incrementTries();
-                              displayNewSubmission(data['submissionid']);
+                              displayNewSubmission(data['submissionid'], data["is_later_submission"]);
                               waitForSubmission(data['submissionid']);
                           }
                           else if("status" in data && data['status'] == "error" && "text" in data)
