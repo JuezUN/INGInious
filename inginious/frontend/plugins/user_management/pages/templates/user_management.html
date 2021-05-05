@@ -4,10 +4,54 @@ $var title: User Management
 
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
-      <a href="$get_homepath()"></a>
-      <li class="active"><a href="/user_management">$:_("User Management")</a></li>
+        <a href="$get_homepath()"></a>
+        <li class="active"><a href="/user_management">$:_("User Management")</a></li>
     </ol>
 
 $var Navbar: $:NavbarF()
 
-<h2>UNCode $:_("User Management")</h2>
+<h2>$:_("User Management")</h2>
+<div class="container">
+    <div class="row">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="usernameInput" class=""></label>
+                <input type="text" class="form-control" id="usernameInput" placeholder="Username" size="50">
+            </div>
+            <a type="submit" class="btn btn-info">Check</a>
+        </form>
+    </div>
+    <div id="userControl">
+        <div class="row">
+            <h3>$:_("User information")</h3>
+            <div class="col-md-3">
+                <table class="table table-striped" id="userInformation">
+                    <tr>
+                        <td><b>Username</b></td>
+                        <td>Student1</td>
+                    </tr>
+                    <tr>
+                        <td><b>Username</b></td>
+                        <td>Student1</td>
+                    </tr>
+                    <tr>
+                        <td><b>Username</b></td>
+                        <td>Student1</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <h3>$:_("User control")</h3>
+            <div id="userDataManagement">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="newUsernameInput"></label>
+                        <input type="text" id="newUsernameInput" class="form-control" size="50" placeholder="New Username">
+                    </div>
+                    <a type="submit" class="btn btn-info">$:_("Update")</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
