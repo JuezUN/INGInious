@@ -91,3 +91,30 @@ td.box1 {
     color: #f04124;
     border: 1px solid #dddddd;
 }
+
+.diff-missing-output {
+    background-color: #f2dede;
+}
+
+.diff-additional-output {
+    background-color: #f3e28d;
+}
+
+.diff-common {
+    background-color: #dff0d8;
+}
+.diff-position-control {
+    background-color: #d9edf7;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.diff-common, .diff-missing-output, .diff-additional-output {
+    display: inline-block;
+
+    /* Make sure the background is shown even if the line is empty. */
+    min-height: 1em;
+    min-width: 4px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
