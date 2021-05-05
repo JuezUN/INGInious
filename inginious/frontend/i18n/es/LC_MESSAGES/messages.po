@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-30 12:08-0500\n"
+"POT-Creation-Date: 2021-04-30 17:44-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -18,6 +18,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
+
+#: inginious/frontend/accessible_time.py:58
+msgid "The accessibility end date must be greater than the start date."
+msgstr "La fecha límite de acceso debe ser mayor a la fecha de inicio."
 
 #: inginious/frontend/parsable_text.py:47
 msgid "The feedback below will be hidden to the students until {}."
@@ -232,15 +236,15 @@ msgstr "El cambio del hash es inválido."
 msgid "Your password has been successfully changed."
 msgstr "La contraseña ha sido actualizada con éxito."
 
-#: inginious/frontend/pages/tasks.py:197
+#: inginious/frontend/pages/tasks.py:199
 msgid "You are not allowed to submit for this task."
 msgstr "Usted no esta autorizado para enviar esta tarea."
 
-#: inginious/frontend/pages/tasks.py:205
+#: inginious/frontend/pages/tasks.py:207
 msgid "Your task has been regenerated. This current task is outdated."
 msgstr "Esta tarea ha sido reinicializada y no está disponible."
 
-#: inginious/frontend/pages/tasks.py:216
+#: inginious/frontend/pages/tasks.py:218
 msgid ""
 "Please answer to all the questions and verify the extensions of the files"
 " you want to upload. Your responses were not tested."
@@ -249,22 +253,22 @@ msgstr ""
 "archivos enviados sean correctas. Estas respuestas no han sido "
 "verificadas."
 
-#: inginious/frontend/pages/tasks.py:231 inginious/frontend/pages/tasks.py:339
+#: inginious/frontend/pages/tasks.py:236 inginious/frontend/pages/tasks.py:342
 msgid "<b>Your submission has been sent...</b>"
 msgstr "<b>Su petición ha sido enviada...</b>"
 
 #: inginious/frontend/pages/course_admin/task_edit_file.py:202
 #: inginious/frontend/pages/course_admin/task_edit_file.py:223
 #: inginious/frontend/pages/course_admin/task_edit_file.py:227
-#: inginious/frontend/pages/tasks.py:240 inginious/frontend/pages/tasks.py:256
+#: inginious/frontend/pages/tasks.py:246
 msgid "Internal error"
 msgstr "Error interno"
 
-#: inginious/frontend/pages/tasks.py:308
+#: inginious/frontend/pages/tasks.py:311
 msgid "<b>UNCode is currently grading your answers.<b/> (almost done)"
 msgstr "<b>UNCode está evaluando tus respuestas.<b/> (finalizando)"
 
-#: inginious/frontend/pages/tasks.py:310
+#: inginious/frontend/pages/tasks.py:313
 msgid ""
 "<b>UNCode is currently grading your answers.<b/> (Approx. wait time: {} "
 "seconds)"
@@ -272,41 +276,41 @@ msgstr ""
 "<b>UNCode está evaluando tus respuestas.<b/> (Tiempo aproximado: {} "
 "segundos)"
 
-#: inginious/frontend/pages/tasks.py:313
+#: inginious/frontend/pages/tasks.py:316
 msgid "<b>You are next in the waiting queue!</b>"
 msgstr "<b>¡Eres el siguiente en la lista de espera!</b>"
 
-#: inginious/frontend/pages/tasks.py:315
+#: inginious/frontend/pages/tasks.py:318
 msgid "<b>There is one task in front of you in the waiting queue.</b>"
 msgstr "<b>Hay una tarea más en la lista de espera.</b>"
 
-#: inginious/frontend/pages/tasks.py:317
+#: inginious/frontend/pages/tasks.py:320
 msgid "<b>There are {} tasks in front of you in the waiting queue.</b>"
 msgstr "<b>Hay {} tareas más en la lista de espera.</b>"
 
-#: inginious/frontend/pages/tasks.py:341
+#: inginious/frontend/pages/tasks.py:344
 msgid "There are some errors in your answer. Your score is {score}%."
 msgstr "Tu respuesta contiene algunos errores. Tu calificación actual es {score}%."
 
-#: inginious/frontend/pages/tasks.py:343
+#: inginious/frontend/pages/tasks.py:346
 msgid "Your answer passed the tests! Your score is {score}%."
 msgstr "¡Tu respuesta es exitosa! Tu calificación es {score}%."
 
-#: inginious/frontend/pages/tasks.py:345
+#: inginious/frontend/pages/tasks.py:348
 msgid "Your submission timed out. Your score is {score}%."
 msgstr "El tiempo de tu petición se ha terminado. Tu calificación es {score}%."
 
-#: inginious/frontend/pages/tasks.py:347
+#: inginious/frontend/pages/tasks.py:350
 msgid "Your submission made an overflow. Your score is {score}%."
 msgstr ""
 "Tu respuesta ha generado un \"overflow\" (desbordamiento) en memoria. Tu "
 "calificación es {score}%."
 
-#: inginious/frontend/pages/tasks.py:349
+#: inginious/frontend/pages/tasks.py:352
 msgid "Your submission was killed."
 msgstr "Tu envío ha sido terminado."
 
-#: inginious/frontend/pages/tasks.py:351
+#: inginious/frontend/pages/tasks.py:354
 msgid ""
 "An internal error occurred. Please retry later. If the error persists, "
 "send an email to the course administrator."
@@ -314,7 +318,17 @@ msgstr ""
 "Ha ocurrido un error interno, intenta más tarde. Si el error persiste, "
 "envía un correo electrónico al administrador del curso."
 
-#: inginious/frontend/pages/tasks.py:354
+#: inginious/frontend/pages/tasks.py:358
+#: inginious/frontend/templates/course_admin/submissions.html:369
+#: inginious/frontend/templates/task.html:222
+msgid "\"Later submission: it does not affect the grade.\""
+msgstr "\"Envío después de la fecha límite: no afecta la calificación.\""
+
+#: inginious/frontend/pages/tasks.py:363
+msgid "Later submission"
+msgstr "Envío posterior"
+
+#: inginious/frontend/pages/tasks.py:365
 msgid "[Submission #{submissionid}]"
 msgstr "[Envío #{submissionid}]"
 
@@ -545,25 +559,25 @@ msgstr "¡El número de tareas almacenadas de ser positivo!"
 msgid "Invalid submission limit!"
 msgstr "¡El límite de tareas es inválido!"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:282
+#: inginious/frontend/pages/course_admin/task_edit.py:289
 msgid "Your browser returned an invalid form ({})"
 msgstr "Tu navegador web muestra una forma inválida ({})"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:288
+#: inginious/frontend/pages/course_admin/task_edit.py:295
 msgid "Error while reading course's information"
 msgstr "Error durante la consulta de información del curso"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:312
+#: inginious/frontend/pages/course_admin/task_edit.py:319
 msgid "Invalid data: {}"
 msgstr "Información inválida: {}"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:318
+#: inginious/frontend/pages/course_admin/task_edit.py:325
 msgid "Cannot read zip file. Files were not modified"
 msgstr ""
 "El archivo comprimido (zip) no se puede leer. Los archivos no fueron "
 "alterados"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:325
+#: inginious/frontend/pages/course_admin/task_edit.py:332
 msgid ""
 "There was a problem while extracting the zip archive. Some files may have"
 " been modified"
@@ -3244,7 +3258,7 @@ msgstr "No hay tareas enviadas"
 #: inginious/frontend/templates/preferences/bindings.html:17
 #: inginious/frontend/templates/preferences/profile.html:17
 #: inginious/frontend/templates/queue.html:14
-#: inginious/frontend/templates/task.html:238
+#: inginious/frontend/templates/task.html:246
 #: inginious/frontend/templates/team.html:57
 msgid "(current)"
 msgstr "(actual)"
@@ -3348,12 +3362,12 @@ msgid "Teams management"
 msgstr "Administración de equipos"
 
 #: inginious/frontend/templates/course.html:76
-#: inginious/frontend/templates/task.html:234
+#: inginious/frontend/templates/task.html:242
 msgid "\"My courses\""
 msgstr "“Mis cursos”"
 
 #: inginious/frontend/templates/course.html:78
-#: inginious/frontend/templates/task.html:236
+#: inginious/frontend/templates/task.html:244
 msgid "\"Course list\""
 msgstr "\"Lista de cursos\""
 
@@ -3774,7 +3788,7 @@ msgstr "La tarea no se ha intentado"
 
 #: inginious/frontend/templates/course_admin/aggregation_info.html:66
 #: inginious/frontend/templates/course_admin/student_info.html:66
-#: inginious/frontend/templates/course_admin/submissions.html:385
+#: inginious/frontend/templates/course_admin/submissions.html:388
 #: inginious/frontend/templates/course_admin/task_info.html:81
 #: inginious/frontend/templates/course_admin/task_info.html:150
 #: inginious/frontend/templates/task.html:35
@@ -3787,7 +3801,7 @@ msgstr "Esperando la verificación"
 
 #: inginious/frontend/templates/course_admin/aggregation_info.html:68
 #: inginious/frontend/templates/course_admin/student_info.html:69
-#: inginious/frontend/templates/course_admin/submissions.html:389
+#: inginious/frontend/templates/course_admin/submissions.html:392
 #: inginious/frontend/templates/course_admin/task_info.html:83
 #: inginious/frontend/templates/course_admin/task_info.html:152
 #: inginious/frontend/templates/task.html:45
@@ -3850,7 +3864,7 @@ msgid "Edit task"
 msgstr "Editar tarea"
 
 #: inginious/frontend/templates/task.html:125
-#: inginious/frontend/templates/task.html:297
+#: inginious/frontend/templates/task.html:305
 msgid "Debug information"
 msgstr "Bitácora"
 
@@ -3883,7 +3897,7 @@ msgid "Selected submission"
 msgstr "Tareas seleccionadas"
 
 #: inginious/frontend/templates/task.html:167
-#: inginious/frontend/templates/task.html:221
+#: inginious/frontend/templates/task.html:229
 msgid "No submission"
 msgstr "No hay envíos"
 
@@ -3895,33 +3909,33 @@ msgstr "Compartir mis resultados"
 msgid "Submission history"
 msgstr "Historial de envíos"
 
-#: inginious/frontend/templates/task.html:251
+#: inginious/frontend/templates/task.html:259
 msgid "\"Previous task\""
 msgstr "\"Tarea previa\""
 
-#: inginious/frontend/templates/task.html:253
+#: inginious/frontend/templates/task.html:261
 msgid "\"Next task\""
 msgstr "\"Siguiente tarea\""
 
-#: inginious/frontend/templates/task.html:277
+#: inginious/frontend/templates/task.html:285
 msgid "Alternatively, you can also paste this command into your terminal:"
 msgstr ""
 "Opcionalmente, puedes copiar el siguiente comando y pegarlo en tu "
 "terminal:"
 
-#: inginious/frontend/templates/task.html:279
+#: inginious/frontend/templates/task.html:287
 msgid "Paste this command into your terminal:"
 msgstr "Copia este comando en tu terminal:"
 
-#: inginious/frontend/templates/task.html:282
+#: inginious/frontend/templates/task.html:290
 msgid "The password to connect is {}"
 msgstr "La contraseña correcta es {}"
 
-#: inginious/frontend/templates/task.html:285
+#: inginious/frontend/templates/task.html:293
 msgid "Please answer to all the questions."
 msgstr "Responda a todas las preguntas."
 
-#: inginious/frontend/templates/task.html:300
+#: inginious/frontend/templates/task.html:308
 msgid ""
 "The raw data from the container will be displayed here, helping you to "
 "debug the task.<br/> This box is only displayed because you are an "
@@ -3931,56 +3945,60 @@ msgstr ""
 "a corregir la tarea. <br/> Este mensaje solo se muestra a los "
 "administradores y no será visto por los estudiantes."
 
-#: inginious/frontend/templates/task.html:333
+#: inginious/frontend/templates/task.html:341
 msgid "Question {}"
 msgstr "Pregunta {}"
 
-#: inginious/frontend/templates/task.html:346
+#: inginious/frontend/templates/task.html:354
 msgid "Please enroll in the course to submit."
 msgstr "Regístrese a este curso para enviar tareas."
 
-#: inginious/frontend/templates/task.html:352
-#: inginious/frontend/templates/task.html:362
+#: inginious/frontend/templates/task.html:360
+#: inginious/frontend/templates/task.html:374
 msgid "Submit"
 msgstr "Enviar tarea"
 
-#: inginious/frontend/templates/task.html:356
+#: inginious/frontend/templates/task.html:364
 msgid "\"Start remote SSH console with this input\""
 msgstr "\"Iniciar una conexión segura (vía SSH) con esta entrada\""
 
-#: inginious/frontend/templates/task.html:364
+#: inginious/frontend/templates/task.html:371
+msgid "Submit (After deadline)"
+msgstr "Enviar (Después de fecha límite)"
+
+#: inginious/frontend/templates/task.html:376
 msgid "The deadline is over, you cannot submit anymore"
 msgstr "La fecha de entrega ha expirado, no puedes enviar esta tarea"
 
-#: inginious/frontend/templates/task.html:366
+#: inginious/frontend/templates/task.html:378
 msgid "Please register in a group"
 msgstr "Regístrese a un grupo"
 
-#: inginious/frontend/templates/task.html:366
+#: inginious/frontend/templates/task.html:378
 msgid "Please register in a team"
 msgstr "Regístrese a un equipo"
 
-#: inginious/frontend/templates/task.html:369
+#: inginious/frontend/templates/task.html:381
 msgid "You have reached the submission limit."
 msgstr "La fecha de entrega ha expirado."
 
-#: inginious/frontend/templates/task.html:369
+#: inginious/frontend/templates/task.html:381
 msgid "Your group have reached the submission limit."
 msgstr "Tu grupo a alcanzado el número máximo de envíos."
 
-#: inginious/frontend/templates/task.html:369
+#: inginious/frontend/templates/task.html:381
 msgid "Your team have reached the submission limit."
 msgstr "Tu equipo a alcanzado el número máximo de tareas enviadas."
 
-#: inginious/frontend/templates/task.html:371
+#: inginious/frontend/templates/task.html:383
 msgid "It will be refilled within the next {} hour(s)"
 msgstr "La operación se efectuará en la (s) siguiente (s) {} hora (s)"
 
-#: inginious/frontend/templates/task.html:374
+#: inginious/frontend/templates/task.html:386
 msgid "You are not allowed to submit"
 msgstr "No estás autorizado a enviar tareas"
 
-#: inginious/frontend/templates/task.html:385
+#: inginious/frontend/templates/task.html:397
 msgid "Share my result on: "
 msgstr "Compartir mis resultados con: "
 
@@ -4969,23 +4987,23 @@ msgstr "\"Descargar actual selección\""
 msgid "\"Replay current selection\""
 msgstr "\"Reenviar actual selección\""
 
-#: inginious/frontend/templates/course_admin/submissions.html:387
+#: inginious/frontend/templates/course_admin/submissions.html:390
 msgid "Waiting"
 msgstr "Esperando"
 
-#: inginious/frontend/templates/course_admin/submissions.html:424
+#: inginious/frontend/templates/course_admin/submissions.html:427
 msgid "\"View submission\""
 msgstr "Ver submission"
 
-#: inginious/frontend/templates/course_admin/submissions.html:426
+#: inginious/frontend/templates/course_admin/submissions.html:429
 msgid "\"Download submission\""
 msgstr "\"Descargar submission\""
 
-#: inginious/frontend/templates/course_admin/submissions.html:429
+#: inginious/frontend/templates/course_admin/submissions.html:432
 msgid "\"Replay submission\""
 msgstr "\"Reenviar submission\""
 
-#: inginious/frontend/templates/course_admin/submissions.html:448
+#: inginious/frontend/templates/course_admin/submissions.html:451
 msgid "\"Waiting\""
 msgstr "\"Esperando\""
 
@@ -5209,27 +5227,39 @@ msgstr "Evaluación de submission"
 msgid "Student choice"
 msgstr "Elección del estudiante"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:159
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:160
+msgid "Allow later submission"
+msgstr "Permitir envío después de fecha límite"
+
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:162
+msgid ""
+"\"If checked, the students will be able to do submissions after the "
+"deadline is reached. These submissions won't affect the grade.\""
+msgstr ""
+"\"Si está seleccionado, los estudiantes podrán hacer envíos después de la"
+" fecha límite. Sin embargo, estos envíos no afectarán la calificación.\""
+
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:174
 msgid "Accessible"
 msgstr "Acceso"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:165
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:180
 msgid "Never"
 msgstr "Nunca"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:171
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:186
 msgid "Always"
 msgstr "Siempre"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:180
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:195
 msgid "Custom, from: {} to: {}"
 msgstr "Personalizado, desde: {} hasta: {}"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:208
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:223
 msgid "Random inputs"
 msgstr "Entradas aleatorias"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:219
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:234
 msgid "Regenerate random input"
 msgstr "Regenerar entradas aleatorias"
 
@@ -5541,13 +5571,4 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
-
-#~ msgid "Registered staff"
-#~ msgstr "Personal registrado"
-
-#~ msgid ""
-#~ "It is possible that the grader "
-#~ "could not finish its process with "
-#~ "this submission."
-#~ msgstr "Es posible que el grader no terminó su proceso con este envío."
 
