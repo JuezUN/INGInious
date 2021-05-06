@@ -121,11 +121,11 @@ class Rubric {
     }
 
     loadSelectedFields(fieldIds) {
-        const self = this;
+        const _this = this;
         const jIndex = 2;
         fieldIds.forEach(function (id) {
-                self.addMarkerClass(id);
-                self.updateScore(parseInt(id[jIndex], 10));
+                _this.addMarkerClass(id);
+                _this.updateScore(parseInt(id[jIndex], 10));
             }
         );
     }

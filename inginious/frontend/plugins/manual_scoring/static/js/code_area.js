@@ -47,13 +47,13 @@ class CodeArea {
     }
 
     getNotebookCodeDataAndRender() {
-        const self = this;
+        const _this = this;
         $.ajax({
             url: getURLSubmissionCode(),
             method: "GET",
             dataType: "json",
             success: function (data) {
-                render_notebook(data, self.notebookDiv); //Use a external .js file, it's property of multilang plugin
+                render_notebook(data, _this.notebookDiv); //Use a external .js file, it's property of multilang plugin
             }
         });
     }

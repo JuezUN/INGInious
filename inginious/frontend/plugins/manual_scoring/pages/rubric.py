@@ -37,8 +37,9 @@ def get_rubric_content(user_manager):
 
 def add_static_files_to_render_notebook(template_helper):
     """ it adds js files to be able to render notebooks. Theses files are from multilang plugin  """
-    template_helper.add_javascript(
-        "https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-core.min.js")
+    template_helper.add_javascript("https://cdn.jsdelivr.net/npm/marked/marked.min.js")
+    template_helper.add_javascript("https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-core.min.js")
+    template_helper.add_javascript("https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-python.min.js")
     template_helper.add_css("https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css")
     if get_use_minify():
         template_helper.add_javascript("/multilang/static/notebook_renderer.min.js")
@@ -46,4 +47,3 @@ def add_static_files_to_render_notebook(template_helper):
     else:
         template_helper.add_javascript("/multilang/static/notebook_renderer.js")
         template_helper.add_javascript("/multilang/static/multilang.js")
-        template_helper.add_javascript("/multilang/static/grader.js")
