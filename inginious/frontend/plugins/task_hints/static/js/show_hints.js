@@ -143,7 +143,3 @@ function showHelp(){
     $("#hint_info").show(500);
     $("#hint_container").hide();
 }
-
-$(function(){
-    loadHintsOnModal()
-})
