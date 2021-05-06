@@ -18,7 +18,7 @@ class MyCoursesPage(INGIniousAuthPage):
     def GET_AUTH(self):  # pylint: disable=arguments-differ
         """ Display main course list page """
         user_input = web.input()
-        page = int(user_input.get("page", 1)) - 1
+        page = int(user_input.get("page", 1) or 1) - 1
         query = user_input.get("query", "")
         return self.show_page(None, page, query)
 
