@@ -367,7 +367,7 @@ $else:
                 </div>
             </div>
         $elif not user_manager.has_staff_rights_on_course(course) and task.can_submit_after_deadline():
-            <button type="submit" class="btn btn-default btn-lg btn-block center-block" id="task-submit">
+            <button type="submit" class="btn btn-default btn-lg btn-block center-block" later-submission id="task-submit">
                 $:_("Submit (After deadline)")
             </button>
         $else:

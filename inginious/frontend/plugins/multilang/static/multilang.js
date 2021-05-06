@@ -221,6 +221,15 @@ function sendSubmissionAnalytics() {
         if (!taskFormValid())
             return;
 
+        // The button related to later submissions has the attribute `later-submission`. In case it is a later
+        // submission, modify the key and name for the service adding at the end `later`.
+        const laterSubmission = $(this).attr("later-submission");
+        let laterSubmissionData = {key: "", name: ""};
+        if (typeof laterSubmission !== "undefined" && laterSubmission !== false) {
+            laterSubmissionData["key"] = "_later";
+            laterSubmissionData["name"] = " - Later";
+        }
+
         const environments = new Set(['multiple_languages', 'Data Science', 'Notebook', 'HDL']);
         if (!environments.has(getTaskEnvironment()))
             return;
@@ -237,8 +246,8 @@ function sendSubmissionAnalytics() {
 
         $.post('/api/analytics/', {
             service: {
-                key: services[`${getTaskEnvironment()}_${getProblemType()}`][0],
-                name: services[`${getTaskEnvironment()}_${getProblemType()}`][1]
+                key: services[`${getTaskEnvironment()}_${getProblemType()}`][0] + laterSubmissionData["key"],
+                name: services[`${getTaskEnvironment()}_${getProblemType()}`][1] + laterSubmissionData["name"]
             }, course_id: getCourseId(),
         });
     });
