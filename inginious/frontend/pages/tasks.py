@@ -217,7 +217,7 @@ class BaseTaskPage(object):
                 if user_hints_penalty is None:
                     userinput['penalty'] = 0
                 else:
-                    userinput['penalty'] = user_hints_penalty
+                    userinput['penalty'] = user_hints_penalty[0]
 
                 if not task.input_is_consistent(userinput, self.default_allowed_file_extensions, self.default_max_file_size):
                     web.header('Content-Type', 'application/json')

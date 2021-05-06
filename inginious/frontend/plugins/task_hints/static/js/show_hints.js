@@ -124,6 +124,18 @@ function unlockNewHint(selected_hint_id){
         showHintAlert(result.message,result.status);
         loadHintsOnModal();
         showHelp();
+        sendUseTaskHintsAnalytics();
+    })
+}
+
+/* Send analytics when a user unlock a hint */
+function sendUseTaskHintsAnalytics(){
+    $.post("/api/analytics/", {
+        service: {
+            key: "task_hints_unlock",
+            name: "Task hints - Unlocked by students"
+        },
+        course_id: getCourseId()
     })
 }
 
