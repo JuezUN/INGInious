@@ -2,6 +2,7 @@ import web
 
 from .user_api import UserApi
 
+
 class BarSubmissionsPerTasksApi(UserApi):
     def statistics(self):
         username = self.user_manager.session_username()

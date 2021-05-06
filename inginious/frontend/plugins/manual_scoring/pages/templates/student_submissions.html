@@ -52,13 +52,12 @@ $var Navbar: $:NavbarF()
         </tr>
     </thead>
     <tbody>
-    $for submission in data:
+    $for submission_id, submission in data.items():
         <tr>
-            <td><a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/submission/$submission"
-                class="font_size-m">
-                $data[submission]["date"]</a></td>
+            <td><a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/submission/$submission_id"
+                class="font_size-m">$submission["date"]</a></td>
             <td class="font_size-m">
-                $if data[submission]["result"] == _("Not available"):
+                $if submission["result"] == _("Not available"):
                     <div style="color: red">
                         $:_("Not available")
                         <i data-toggle="tooltip" data-placement="right" style="color: black"
@@ -66,12 +65,20 @@ $var Navbar: $:NavbarF()
                               class="fa fa-question-circle" aria-hidden="true"></i>
                     </div>
                 $else:
-                   $data[submission]["result"]
+                    <div>
+                    $if submission["is_later_submission"]:
+                        <span class="badge alert-warning" id="is_later_submission"
+                              data-toggle="tooltip" data-placement="bottom"
+                              title=$:_('"Later submission: it does not affect the grade."')>
+                             <i class="fa fa-clock-o" style="font-size: 10px;"></i>
+                        </span>
+                    $submission["result"]
+                    </div>
             </td>
-            <td class="font_size-m">$data[submission]["grade"]</td>
-            <td class="font_size-m">$data[submission]["manual_grade"]</td>
+            <td class="font_size-m">$submission["grade"]</td>
+            <td class="font_size-m">$submission["manual_grade"]</td>
             <td class="font_size-m">
-                <a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/submission/$submission"
+                <a href="$get_homepath()/admin/${course.get_id()}/$url/task/$task.get_id()/submission/$submission_id"
                    class="font_size-m"><i class="fa fa-eye fa-lg" aria-hidden="true"></i>
                 </a>
             </td>

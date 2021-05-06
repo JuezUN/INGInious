@@ -25,4 +25,5 @@ class CourseAdminStatisticsPage(INGIniousAdminPage):
 
 def statistics_course_admin_menu_hook(course):
     course_statistics_str = _("Course statistics")
-    return "statistics", '<i class="fa fa-bar-chart" aria-hidden="true"></i> {}'.format(course_statistics_str)
+    return "statistics", '<i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i>&nbsp; {}'.format(
+        course_statistics_str)

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-30 17:44-0500\n"
+"POT-Creation-Date: 2021-05-06 00:23-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -310,6 +310,7 @@ msgstr ""
 "an den Kursverwalter."
 
 #: inginious/frontend/pages/tasks.py:358
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:72
 #: inginious/frontend/templates/course_admin/submissions.html:369
 #: inginious/frontend/templates/task.html:222
 msgid "\"Later submission: it does not affect the grade.\""
@@ -1375,10 +1376,11 @@ msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:80
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:28
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:55
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:66
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:75
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:89
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:60
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:71
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:80
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:94
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:108
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:30
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:40
 msgid "Download CSV"
@@ -2006,8 +2008,8 @@ msgstr ""
 #: inginious/frontend/plugins/manual_scoring/pages/manual_scoring.py:152
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:51
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:53
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:61
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:63
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:60
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:62
 msgid "Not available"
 msgstr ""
 
@@ -2157,7 +2159,7 @@ msgid "See submission"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:55
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:65
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:64
 msgid ""
 "\"It is possible that the grader could not finish its process with this "
 "submission.\""
@@ -2778,25 +2780,31 @@ msgid "Grade distribution"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:39
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:72
-msgid "Submissions Verdict (ALL)"
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:77
+msgid "Submissions Verdict (NOT LATER)"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:44
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:86
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:91
+msgid "Submissions Verdict (LATER)"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:49
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:105
 msgid "Submissions Verdict (BEST)"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:52
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:57
 msgid "Submissions by grade"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:63
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:68
 msgid "Final grade distribution"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:81
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:95
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:86
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:100
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:114
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:37
 msgid "Toggle normalize"
 msgstr ""
@@ -5207,5 +5215,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "\"Later submission, it does not affect the grade\""
+#~ msgstr ""
+
+#~ msgid "Submissions Verdict (ALL)"
 #~ msgstr ""
 

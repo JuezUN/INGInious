@@ -22,6 +22,7 @@ def create_submissions_dict(submissions_list):
             "date": submission["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S"),
             "grade": get_dict_value(submission, "grade"),
             "result": get_dict_value(submission, "custom", "custom_summary_result"),
+            "is_later_submission": submission.get("is_later_submission", False),
         }
         if "manual_scoring" in submission:
             data[submission["_id"]]["manual_grade"] = submission["manual_scoring"]["grade"]
@@ -76,7 +77,8 @@ class StudentSubmissionsPage(INGIniousAdminPage):
                         "submitted_on": 1,
                         "custom": 1,
                         "grade": 1,
-                        "manual_scoring": 1
+                        "manual_scoring": 1,
+                        "is_later_submission": 1
                     }
                 },
                 {

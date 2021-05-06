@@ -5,9 +5,13 @@ from .admin_api import AdminApi
 
 class SubmissionsByVerdictApi(AdminApi):
 
-    def get_statistics_by_verdict(self, course):
+    def get_statistics_by_verdict(self, course, later_submissions=False):
         course_id = course.get_id()
         admins = list(set(course.get_staff() + self.user_manager._superadmins))
+
+        later_submissions_filter = True
+        if not later_submissions:
+            later_submissions_filter = {"$in": [False, None]}
 
         statistics_by_verdict = self.database.submissions.aggregate([
             {
@@ -15,6 +19,7 @@ class SubmissionsByVerdictApi(AdminApi):
                     "courseid": course_id,
                     "custom.custom_summary_result": {"$ne": None},
                     "username": {"$nin": admins},
+                    "is_later_submission": later_submissions_filter
                 }
             },
             {
@@ -44,7 +49,9 @@ class SubmissionsByVerdictApi(AdminApi):
         course_id = self.get_mandatory_parameter(parameters, "course_id")
         course = self.get_course_and_check_rights(course_id)
 
-        statistics_by_verdict = self.get_statistics_by_verdict(course)
+        later_submissions = self.get_mandatory_parameter(parameters, "later_submissions")
+
+        statistics_by_verdict = self.get_statistics_by_verdict(course, later_submissions.lower() == "true")
         course_tasks = course.get_tasks()
         sorted_tasks = sorted(course_tasks.values(),
                               key=lambda task: os.path.getctime(task.get_fs().prefix + 'task.yaml'))
