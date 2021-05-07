@@ -47,6 +47,7 @@ class CourseTaskListPage(INGIniousAdminPage):
 
         # Remove tasks that have no attempts
         task_dict = OrderedDict({key: val for key, val in task_dict.items() if val["attempted"] > 0})
+        task_dict = OrderedDict(sorted(task_dict.items(), key=lambda x: x[1]["name"]))
         return task_dict
 
     def get_total_attempted_and_succeeded_per_task(self, course):
@@ -88,7 +89,6 @@ class CourseTaskListPage(INGIniousAdminPage):
         for task_id, task in tasks.items():
             task_dict[task_id] = {"name": task.get_name_or_id(self.user_manager.session_language()),
                                   "attempted": 0, "succeeded": 0}
-        task_dict = OrderedDict(sorted(task_dict.items(), key=lambda x: x[1]["name"]))
         return task_dict
 
     def add_css_and_js_file(self):

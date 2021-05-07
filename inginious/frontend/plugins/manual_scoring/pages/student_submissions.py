@@ -27,6 +27,7 @@ def create_submissions_dict(submissions_list):
             data[submission["_id"]]["manual_grade"] = submission["manual_scoring"]["grade"]
         else:
             data[submission["_id"]]["manual_grade"] = default_grade
+    data = OrderedDict(sorted(data.items(), key=lambda x: x[1]["grade"], reverse=True))
     return data
 
 
@@ -82,7 +83,7 @@ class StudentSubmissionsPage(INGIniousAdminPage):
                 {
                     "$sort":
                         {
-                            "grade": -1, "submitted_on": -1
+                            "submitted_on": -1
                         }
                 }
 

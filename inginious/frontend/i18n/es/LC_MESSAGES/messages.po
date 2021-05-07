@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-30 17:44-0500\n"
+"POT-Creation-Date: 2021-05-07 09:55-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -2236,6 +2236,11 @@ msgstr "Estudiantes que tuvieron éxito"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:42
 msgid "Students attempted"
 msgstr "Estudiantes que lo han intentado"
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:61
+#, fuzzy
+msgid "No Tasks with attempts Yet"
+msgstr "La tarea no se ha intentado"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:14
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:16

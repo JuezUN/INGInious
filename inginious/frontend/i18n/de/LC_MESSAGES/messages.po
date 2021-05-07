@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-30 17:44-0500\n"
+"POT-Creation-Date: 2021-05-07 09:55-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -2032,6 +2032,10 @@ msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:42
 msgid "Students attempted"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:61
+msgid "No Tasks with attempts Yet"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:14
