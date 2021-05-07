@@ -47,3 +47,4 @@ def add_static_files_to_render_notebook(template_helper):
     else:
         template_helper.add_javascript("/multilang/static/notebook_renderer.js")
         template_helper.add_javascript("/multilang/static/multilang.js")
+        template_helper.add_javascript("/multilang/static/grader.js")
