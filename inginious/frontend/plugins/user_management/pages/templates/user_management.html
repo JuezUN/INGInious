@@ -47,10 +47,43 @@ $var Navbar: $:NavbarF()
                 <form class="form-inline">
                     <div class="form-group">
                         <label for="newUsernameInput"></label>
-                        <input type="text" id="newUsernameInput" class="form-control" size="50" placeholder="New Username">
+                        <input type="text" id="newUsernameInput" class="form-control" size="50"
+                               placeholder="New Username">
                     </div>
-                    <a type="submit" class="btn btn-info">$:_("Update")</a>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#uploadModal">
+                        $:_("Update")
+                    </button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="uploadModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title">$:_("Update User Data")</h3>
+            </div>
+            <div class="modal-body text-justify">
+                <h4>
+                    $:_("Are you sure you want to make this change?")
+                </h4>
+                <h5>$:_("Type the username"): <b id="usernameToConfirm">Student1</b></h5>
+                <form class="">
+                    <div class="form-group">
+                        <label for="usernameInputConfirmation" class=""></label>
+                        <input type="text" class="form-control" id="usernameInputConfirmation" placeholder="Username">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">$:_("Cancel")</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id='updateDataConfirmBtn'>
+                    $:_("Confirm")
+                </button>
             </div>
         </div>
     </div>
