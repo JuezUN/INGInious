@@ -43,16 +43,23 @@ $var Navbar: $:NavbarF()
                     </tr>
                 </thead>
             <tbody>
-            $for taskid in data:
+            $if len(data) > 0:
+                $for taskid in data:
+                    <tr>
+                        <td>
+                            <a href="$get_homepath()/admin/${course.get_id()}/manual_scoring/task/$taskid" class="font_size">
+                                $data[taskid]["name"]
+                            </a>
+                            <input type="hidden" name="task" value="$taskid">
+                        </td>
+                        <td class="text-center font_size">$data[taskid]["succeeded"]/$num_students</td>
+                        <td class="text-center font_size">$data[taskid]["attempted"]/$num_students</td>
+                    </tr>
+            $else:
                 <tr>
-                    <td>
-                        <a href="$get_homepath()/admin/${course.get_id()}/manual_scoring/task/$taskid" class="font_size">
-                            $data[taskid]["name"]
-                        </a>
-                        <input type="hidden" name="task" value="$taskid">
+                    <td colspan="3" class="text-center">
+                        <h4>$:_("No Tasks with attempts Yet")</h4>
                     </td>
-                    <td class="text-center font_size">$data[taskid]["succeeded"]/$num_students</td>
-                    <td class="text-center font_size">$data[taskid]["attempted"]/$num_students</td>
                 </tr>
             </tbody>
             </table>
