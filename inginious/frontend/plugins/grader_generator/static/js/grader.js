@@ -1,7 +1,5 @@
 const environment =  $("#environment");
 const isNotebook = environment.val() === "Notebook";
-const isMultiLang = environment.val() === "multiple_languages";
-const isDataScience = environment.val() === "Data Science";
 
 class Button {
     constructor(buttonId, functionName) {

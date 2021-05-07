@@ -73,7 +73,7 @@ def on_file_deleted(course, task_id, path, task_factory):
     This function removes The test related with the file that was deleted if the file was a root file
     in a multi lang environment
      """
-    if not is_multi_lang(course, task_id):
+    if not _is_multi_lang(course, task_id):
         return
     file_name = get_file_name_from_path(path)
     if file_name:
@@ -83,9 +83,9 @@ def on_file_deleted(course, task_id, path, task_factory):
             task_factory.update_task_descriptor_content(course.get_id(), task_id, task_data, "yaml")
 
 
-def is_multi_lang(course, task_id):
+def _is_multi_lang(course, task_id):
     """ Indicates whether the task uses multi lang environment """
-    environment_types_to_check = ["multiple_languages", "Data Science"]
+    environment_types_to_check = {"multiple_languages", "Data Science"}
     environment = course.get_task(task_id).get_environment()
     return environment in environment_types_to_check
 
