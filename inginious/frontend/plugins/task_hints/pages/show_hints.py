@@ -12,10 +12,10 @@ def show_hints(course, task, template_helper):
     """
 
     add_static_files(template_helper)
-    basic_hints_data = get_task_hints_basic_data(task)
+    hints_basic_data = get_task_hints_basic_data(task)
 
     content = template_helper.get_custom_renderer(_TASK_HINTS_TEMPLATES_PATH, layout=False).hints_view(course, task,
-                                                                                                       basic_hints_data)
+                                                                                                       hints_basic_data)
 
     return str(content)
 
@@ -38,9 +38,9 @@ def get_task_hints_basic_data(task):
 
 def get_user_total_penalty(taskid, username, database):
     """
-    This is a method called by the 'show_hints' hook to get the total penalty from
-    the 'user_hints' collection in database. This value is used to calculate the student grade
-    when a submission is send.
+    This is a method called by the `show_hints` hook to get the total penalty from
+    the `user_hints` collection in database. This value is later used to calculate the student grade
+    when a submission is sent.
 
     :param taskid: ID of the task
     :param username: Username of the student that made the submission

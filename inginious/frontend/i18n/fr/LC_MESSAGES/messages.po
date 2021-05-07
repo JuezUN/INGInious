@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-30 17:44-0500\n"
+"POT-Creation-Date: 2021-05-06 21:10-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -239,7 +239,7 @@ msgstr "Vous n'êtes pas autorisé à soumettre pour cet exercice."
 msgid "Your task has been regenerated. This current task is outdated."
 msgstr "Votre exercice a été regénéré. La version consultée est périmée."
 
-#: inginious/frontend/pages/tasks.py:218
+#: inginious/frontend/pages/tasks.py:226
 msgid ""
 "Please answer to all the questions and verify the extensions of the files"
 " you want to upload. Your responses were not tested."
@@ -248,64 +248,64 @@ msgstr ""
 "fichiers que vous souhaitez télécharger. Votre réponse n'a pas été "
 "soumise pour correction."
 
-#: inginious/frontend/pages/tasks.py:236 inginious/frontend/pages/tasks.py:342
+#: inginious/frontend/pages/tasks.py:244 inginious/frontend/pages/tasks.py:350
 msgid "<b>Your submission has been sent...</b>"
 msgstr "<b>Votre soumission a bien été envoyée...</b>"
 
 #: inginious/frontend/pages/course_admin/task_edit_file.py:202
 #: inginious/frontend/pages/course_admin/task_edit_file.py:223
 #: inginious/frontend/pages/course_admin/task_edit_file.py:227
-#: inginious/frontend/pages/tasks.py:246
+#: inginious/frontend/pages/tasks.py:254
 msgid "Internal error"
 msgstr "Erreur interne"
 
-#: inginious/frontend/pages/tasks.py:311
+#: inginious/frontend/pages/tasks.py:319
 msgid "<b>UNCode is currently grading your answers.<b/> (almost done)"
 msgstr "<b>UNCode corrige votre réponse.</b> (bientôt terminé)"
 
-#: inginious/frontend/pages/tasks.py:313
+#: inginious/frontend/pages/tasks.py:321
 msgid ""
 "<b>UNCode is currently grading your answers.<b/> (Approx. wait time: {} "
 "seconds)"
 msgstr "<b>UNCode corrige votre réponse.</b> (Temps restant approx.: {} secondes)"
 
-#: inginious/frontend/pages/tasks.py:316
+#: inginious/frontend/pages/tasks.py:324
 msgid "<b>You are next in the waiting queue!</b>"
 msgstr "<b>Votre soumission est la suivante dans la file d'attente!</b>"
 
-#: inginious/frontend/pages/tasks.py:318
+#: inginious/frontend/pages/tasks.py:326
 msgid "<b>There is one task in front of you in the waiting queue.</b>"
 msgstr "<b>Il y a une tâche devant vous dans la file d'attente.</b>"
 
-#: inginious/frontend/pages/tasks.py:320
+#: inginious/frontend/pages/tasks.py:328
 msgid "<b>There are {} tasks in front of you in the waiting queue.</b>"
 msgstr "<b>Il y a {} tâches devant vous dans la file d'attente.</b>"
 
-#: inginious/frontend/pages/tasks.py:344
+#: inginious/frontend/pages/tasks.py:352
 msgid "There are some errors in your answer. Your score is {score}%."
 msgstr "Il y a des erreurs dans votre réponse. Votre note est de {score}%."
 
-#: inginious/frontend/pages/tasks.py:346
+#: inginious/frontend/pages/tasks.py:354
 msgid "Your answer passed the tests! Your score is {score}%."
 msgstr "Votre réponse a passé les tests ! Votre note est de {score}%."
 
-#: inginious/frontend/pages/tasks.py:348
+#: inginious/frontend/pages/tasks.py:356
 msgid "Your submission timed out. Your score is {score}%."
 msgstr ""
 "Votre soumission a pris trop de temps à exécuter. Votre note est de "
 "{score}%."
 
-#: inginious/frontend/pages/tasks.py:350
+#: inginious/frontend/pages/tasks.py:358
 msgid "Your submission made an overflow. Your score is {score}%."
 msgstr ""
 "Votre soumission a nécessité l'allocation de trop de mémoire. Votre note "
 "est de {score}%."
 
-#: inginious/frontend/pages/tasks.py:352
+#: inginious/frontend/pages/tasks.py:360
 msgid "Your submission was killed."
 msgstr "Votre soumission a été annulée."
 
-#: inginious/frontend/pages/tasks.py:354
+#: inginious/frontend/pages/tasks.py:362
 msgid ""
 "An internal error occurred. Please retry later. If the error persists, "
 "send an email to the course administrator."
@@ -313,17 +313,17 @@ msgstr ""
 "Une erreur interne s'est produite. Veuillez réessayer plus tard. Si "
 "l'erreur persiste, contactez l'administrateur du cours."
 
-#: inginious/frontend/pages/tasks.py:358
+#: inginious/frontend/pages/tasks.py:366
 #: inginious/frontend/templates/course_admin/submissions.html:369
 #: inginious/frontend/templates/task.html:222
 msgid "\"Later submission: it does not affect the grade.\""
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:363
+#: inginious/frontend/pages/tasks.py:371
 msgid "Later submission"
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:365
+#: inginious/frontend/pages/tasks.py:373
 msgid "[Submission #{submissionid}]"
 msgstr "[Soumission #{submissionid}]"
 
@@ -2857,8 +2857,8 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:11
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:21
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:60
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:22
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:61
 msgid "Task tutorial"
 msgstr ""
 
@@ -2871,15 +2871,15 @@ msgid "\"Description in RST format. See task context help for more information\"
 msgstr ""
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:26
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:36
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:50
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:76
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:104
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:37
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:51
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:77
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:105
 msgid "Task solution"
 msgstr ""
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:33
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:82
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:83
 msgid "Solution language"
 msgstr ""
 
@@ -2896,7 +2896,7 @@ msgid "Select language"
 msgstr ""
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:61
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:110
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:111
 msgid "Solution notebook"
 msgstr ""
 
@@ -2908,20 +2908,20 @@ msgstr ""
 msgid "Solution notebook name"
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:6
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:7
 msgid "Editorial"
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:18
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:19
 msgid "\"Task tutorial not available until the task deadline is over\""
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:33
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:47
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:34
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:48
 msgid "\"Task solution not available until the task deadline is over\""
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:84
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:85
 #, fuzzy
 msgid "No language"
 msgstr ""
@@ -2940,8 +2940,12 @@ msgstr ""
 msgid "Some hints in task have empty title fields."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:68
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:70
 msgid "Penalty for hints must be between 0.0% and 100.0%."
+msgstr ""
+
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:74
+msgid "Each hint penalty must be a float."
 msgstr ""
 
 #: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:28
@@ -5475,3 +5479,4 @@ msgstr "Extensions autorisées:"
 
 #~ msgid "\"Later submission, it does not affect the grade\""
 #~ msgstr ""
+

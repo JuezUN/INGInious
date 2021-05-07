@@ -1,21 +1,25 @@
 let update_hint_id = null;
+let timer;
 
 /* Show a message into an alert */
 function displayAlert(alert_container_id, message, duration){
-    alert = $("#"+alert_container_id);
-    alert.text(message);
-    alert.show();
-    setTimeout(function(){
-        clearAlert(alert_container_id);
-    }, duration);
+    let alert = $("#"+alert_container_id);
+    if(!alert.text()){
+        alert.text(message);
+        alert.show();
+        timer = setTimeout(function(){
+            clearAlert(alert_container_id);
+        }, duration);
+    }
 }
 
 /* Clear and hide modal alert*/
 function clearAlert(alert_id){
     let alert = $("#"+alert_id);
     alert.fadeTo(100, 1).slideUp(250, () => {
-        alert.slideUp(250);
+        alert.hide();
         alert.text("");
+        clearTimeout(timer);
     });
 }
 
@@ -43,22 +47,20 @@ $("#save_hint_button").on('click', function(event){
 
     /* Check if the entries are allowed on the hint */
 
-    const contentBlankEntry = hint["content"].match(/^\s*$/)
+    const contentEmpty = hint["content"].match(/^\s*$/)
+    let editAlert = "hint_edit_alert";
 
-    if(!hint["title"] || contentBlankEntry){
+    if(!hint["title"] || contentEmpty){
         const message = "You need to complete mandatory fields";
-        let editAlert = "hint_edit_alert";
         displayAlert(editAlert, message, 10000);
         return ;
     }
     if(isNaN(hint["penalty"])){
         const message = "Hint penalty needs to be a number";
-        let editAlert = "hint_edit_alert";
         displayAlert(editAlert, message, 10000);
         return ;
     } else if (0 > hint["penalty"] || hint["penalty"] > 100){
         const message = "Hint penalty must be between 0.0% and 100.0%";
-        let editAlert = "hint_edit_alert";
         displayAlert(editAlert, message, 10000);
         return ;
     }

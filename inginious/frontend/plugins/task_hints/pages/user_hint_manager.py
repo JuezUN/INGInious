@@ -23,40 +23,48 @@ class UserHintManager(object):
             attribute for the unlocked hints to show their additional data
             in the modal hints in the task.
         """
-        user_hints = self._database.user_hints.find_one({"taskid": self._task_id,
-                                                         "username": self._username})
-        if user_hints is None:
-            user_hints = self.insert_default_user_hints()
-            return 200, ""
+        user_hints = self.get_user_hints()
 
-        self.update_unlocked_user_hints(user_hints, hints)
+        if user_hints is None:
+            self.insert_default_user_hints()
+        else:
+            self.update_unlocked_user_hints(user_hints, hints)
+
+        user_hints = self.get_user_hints()
+        unlocked_hints = user_hints["unlocked_hints"]
 
         hints_to_show = {}
-        unlocked_hints = user_hints["unlocked_hints"]
-        unlocked_hints_data = {}
+        unlocked_hints_penalties = {}
         for hint in unlocked_hints:
-            unlocked_hints_data[hint["id"]] = hint["penalty"]
+            unlocked_hints_penalties[hint["id"]] = hint["penalty"]
 
         for key, hint in hints.items():
-            unlocked_hints_content = {
+            unlocked_hints_data = {
                 "title": hint["title"],
                 "content": None,
                 "penalty": hint["penalty"],
                 "unlocked": False,
             }
-            if hint["id"] in unlocked_hints_data.keys():
+            if hint["id"] in unlocked_hints_penalties.keys():
                 parsed_hint_content = self.parse_rst_content(hint["content"])
-                unlocked_hints_content["content"] = parsed_hint_content
-                unlocked_hints_content["unlocked"] = True
-                unlocked_hints_content["penalty"] = unlocked_hints_data[hint["id"]]
+                unlocked_hints_data["content"] = parsed_hint_content
+                unlocked_hints_data["unlocked"] = True
+                unlocked_hints_data["penalty"] = unlocked_hints_penalties[hint["id"]]
 
-            hints_to_show[key] = unlocked_hints_content
+            hints_to_show[key] = unlocked_hints_data
 
         return hints_to_show
 
+    def get_user_hints(self):
+        return self._database.user_hints.find_one({"taskid": self._task_id,
+                                                         "username": self._username})
+
     def update_unlocked_user_hints(self, user_hints, hints):
 
-        """ Method to compare the user hints with the task hints, and update them"""
+        """
+            Method to delete hints that were removed from the task. These
+            hints are removed in the unlocked user's hints.
+        """
         unlocked_hints = user_hints["unlocked_hints"]
         hints_ids = [hint["id"] for hint in hints.values()]
         for hint in unlocked_hints:
@@ -67,18 +75,17 @@ class UserHintManager(object):
 
     def insert_default_user_hints(self):
 
-        user_hints = self._database.user_hints.insert(
+        self._database.user_hints.insert(
             {"taskid": self._task_id, "username": self._username, "unlocked_hints": [], "penalty": 0})
-        return user_hints
 
     def is_hint_unlocked(self, hint_id):
 
         """ Method to check if the hint is already in the user hints """
-        user_hints = self._database.user_hints.find_one({"taskid": self._task_id, "username": self._username})
+        user_hints = self.get_user_hints()
         unlocked_hints = user_hints["unlocked_hints"]
 
         for hint in unlocked_hints:
-            if hint_id is hint["id"]:
+            if hint_id == hint["id"]:
                 return True
 
         return False
@@ -115,7 +122,7 @@ class UserHintManager(object):
             to change penalty to the student
         """
         new_penalty = 0;
-        user_hints = self._database.user_hints.find_one({"taskid": self._task_id, "username": self._username})
+        user_hints = self.get_user_hints()
         unlocked_hints = user_hints["unlocked_hints"]
 
         for hint in unlocked_hints:
