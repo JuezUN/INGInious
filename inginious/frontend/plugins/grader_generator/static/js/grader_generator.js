@@ -53,13 +53,33 @@ function insertDataContent(templateElement, test_data) {
         }
     );
 
+    templateElement.find(`#${baseId}_input_file`).attr("value", test_data["input_file"]);
+    templateElement.find(`#${baseId}_output_file`).attr("value", test_data["output_file"]);
+
     templateElement.find(`#${baseId}_diff_shown`).prop('checked', test_data["diff_shown"]);
+}
+
+function removeTestByFilename(filename) {
+    const testId = getIdByFilename(filename);
+    if (testId !== undefined) {
+        studio_remove_test_case(testId);
+    }
+}
+
+function getIdByFilename(fileName) {
+    const inputId = $(`input[value='${fileName}']`).attr("id");
+    if (inputId !== undefined) {
+        return getIdNum(inputId);
+    }
 }
 
 
 function getIdNum(id) {
     const baseIdPrefixLen = "grader_test_cases_".length;
-    return id.substr(baseIdPrefixLen);
+    const idString = id.substr(baseIdPrefixLen);
+    /*parseInt returns a number from a string if the number is at the beginning of the string.
+    It doesn't matter if the string has more characters*/
+    return parseInt(idString, 10);
 }
 
 function multiLangLoadAllTests(testCases) {

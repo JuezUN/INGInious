@@ -1,4 +1,5 @@
-const isNotebook = $("#environment").val() === "Notebook";
+const environment =  $("#environment");
+const isNotebook = environment.val() === "Notebook";
 
 class Button {
     constructor(buttonId, functionName) {
