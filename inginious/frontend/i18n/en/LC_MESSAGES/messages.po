@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-07 09:55-0500\n"
+"POT-Creation-Date: 2021-05-08 22:10-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -556,7 +556,7 @@ msgstr ""
 msgid "An error occurred while moving the files"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:233
+#: inginious/frontend/pages/course_admin/task_edit_file.py:235
 msgid "An error occurred while deleting the files"
 msgstr ""
 
@@ -1588,7 +1588,7 @@ msgstr ""
 msgid "Select a course to copy tasks"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/grader.py:46
+#: inginious/frontend/plugins/grader_generator/pages/grader.py:47
 msgid "Grader"
 msgstr ""
 
