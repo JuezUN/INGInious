@@ -10,50 +10,83 @@ $def NavbarF():
 
 $var Navbar: $:NavbarF()
 
-<h2>$:_("User Management")</h2>
+
 <div class="container">
     <div class="row">
-        <form class="form-inline">
-            <div class="form-group">
-                <label for="usernameInput" class=""></label>
-                <input type="text" class="form-control" id="usernameInput" placeholder="Username" size="50">
-            </div>
-            <a type="submit" class="btn btn-info">Check</a>
-        </form>
+        <div class="col-xs-8 col-centered">
+            <h2>$:_("User Management")</h2>
+            <form>
+                <div class="input-group">
+                    <label for="usernameInput" class=""></label>
+                    <input type="text" class="form-control" id="usernameInput" placeholder="Username/Email">
+                    <span class="input-group-btn px-1">
+                        <a type="button" class="btn btn-info">Check</a>
+                    </span>
+                </div>
+            </form>
+        </div>
     </div>
     <div id="userControl">
         <div class="row">
+            <div class="col-xs-8 col-centered">
             <h3>$:_("User information")</h3>
-            <div class="col-md-3">
-                <table class="table table-striped" id="userInformation">
-                    <tr>
-                        <td><b>Username</b></td>
-                        <td>Student1</td>
-                    </tr>
-                    <tr>
-                        <td><b>Username</b></td>
-                        <td>Student1</td>
-                    </tr>
-                    <tr>
-                        <td><b>Username</b></td>
-                        <td>Student1</td>
-                    </tr>
-                </table>
+                <div class="col-md-10 col-centered">
+                    <table class="table table-striped" id="userInformation">
+                        <tr>
+                            <td><b>Username</b></td>
+                            <td>Student1</td>
+                        </tr>
+                        <tr>
+                            <td><b>Username</b></td>
+                            <td>Student1</td>
+                        </tr>
+                        <tr>
+                            <td><b>Username</b></td>
+                            <td>Student1</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="row">
-            <h3>$:_("User control")</h3>
-            <div id="userDataManagement">
-                <form class="form-inline">
-                    <div class="form-group">
-                        <label for="newUsernameInput"></label>
-                        <input type="text" id="newUsernameInput" class="form-control" size="50"
-                               placeholder="New Username">
-                    </div>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#uploadModal">
-                        $:_("Update")
-                    </button>
-                </form>
+            <div class="col-xs-8 col-centered">
+                <div id="userDataManagement">
+                    <form>
+                        <div class="form-group">
+                            <h3>$:_("User settings")</h3>
+                            <table class="table">
+                                <tbody class="center-table">
+                                    <tr>
+                                        <td><h4>$:_("Username")</h4></td>
+                                        <td><input type="text" id="newUsernameInput" class="form-control input-sm"
+                                       placeholder="New Username" readonly></td>
+                                        <td><a class="edit" data-action="#newUsernameInput">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h4>$:_("Complete name")</h4></td>
+                                        <td><input type="text" id="newNameInput" class="form-control input-sm"
+                                       placeholder="New Name" readonly></td>
+                                        <td><a class="edit" data-action="#newNameInput">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h4>$:_("Email")</h4></td>
+                                        <td><input type="text" id="newEmailInput" class="form-control input-sm"
+                                       placeholder="New Email" readonly></td>
+                                        <td><a class="edit" data-action="#newEmailInput">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-offset-11">
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#uploadModal">
+                                $:_("Update")
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

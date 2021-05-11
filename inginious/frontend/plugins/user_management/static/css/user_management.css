@@ -1,0 +1,42 @@
+.px-1 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.px-2 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.mx-1 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+input[readonly] {
+    background-color: transparent !important;
+    border: transparent;
+    font-size: 1em;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.center-table tr>td{
+    vertical-align: middle !important;
+}
+.edit {
+    font-size: 1.5em;
+    text-decoration: none !important;
+}
+.edit i{
+    padding-right: 0.2rem;
+    visibility: hidden;
+}
+.edit:hover i{
+    visibility: visible;
+}
