@@ -4,10 +4,15 @@ import web
 from inginious.frontend.pages.api._api_page import APIAuthenticatedPage, APIError
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from inginious.common.course_factory import InvalidNameException, CourseNotFoundException
-from ..user_hint_manager import UserHintManager
+from ..user_hint_manager import UserHintManagerSingleton
 
 
 class UserHintsAPI(APIAuthenticatedPage):
+
+    @property
+    def user_hint_manager(self) -> UserHintManagerSingleton:
+        """ Returns user hint manager singleton """
+        return UserHintManagerSingleton.get_instance()
 
     def API_GET(self):
 
@@ -38,8 +43,7 @@ class UserHintsAPI(APIAuthenticatedPage):
         hints_to_show = {}
 
         try:
-            user_hint_manager = UserHintManager(username, task_id, self.database)
-            hints_to_show = user_hint_manager.get_hint_content_by_status(self.get_task_hints(task))
+            hints_to_show = self.user_hint_manager.get_hint_content_by_status(task_id,username,self.get_task_hints(task))
         except Exception:
             raise APIError(400, {"message": _("An error occurred while getting the user's hints.")})
 
@@ -74,8 +78,7 @@ class UserHintsAPI(APIAuthenticatedPage):
         task_hints = self.get_task_hints(task)
 
         try:
-            user_hint_manager = UserHintManager(username, task_id, self.database)
-            total_penalty = user_hint_manager.unlock_hint(hint_id, task_hints)
+            total_penalty = self.user_hint_manager.unlock_hint(task_id, username, hint_id, task_hints)
         except Exception:
             return 200, {"status": "error", "message": _(
                 "An error occurred while updating status of the hint. The hint does not exist in the database.")}

@@ -1,7 +1,6 @@
 from inginious.frontend.parsable_text import ParsableText
 
-
-class UserHintManager(object):
+class UserHintManagerSingleton(object):
     """
         Manage the user's hints data in database. This includes the hints
         that were unlocked, the individual penalty, and cumulative
@@ -9,13 +8,24 @@ class UserHintManager(object):
         respective task.
     """
 
-    def __init__(self, username, task_id, database):
+    _instance = None
 
-        self._username = username
-        self._task_id = task_id
-        self._database = database
+    @staticmethod
+    def get_instance(database=None):
 
-    def get_hint_content_by_status(self, hints):
+        if not UserHintManagerSingleton._instance:
+            UserHintManagerSingleton(database)
+        return UserHintManagerSingleton._instance
+
+    def __init__(self, database):
+
+        if UserHintManagerSingleton._instance:
+            raise Exception("")
+        else:
+            self._database = database
+            UserHintManagerSingleton._instance = self
+
+    def get_hint_content_by_status(self, task_id, username, hints):
 
         """
             This is a method to check each hint unlocked status, and return the left content
@@ -23,21 +33,19 @@ class UserHintManager(object):
             attribute for the unlocked hints to show their additional data
             in the modal hints in the task.
         """
-        user_hints = self.get_user_hints()
+        user_hints = self.get_user_hints(task_id, username)
+        unlocked_hints_penalties = {}
 
         if user_hints is None:
-            self.insert_default_user_hints()
+            self.insert_default_user_hints(task_id, username)
         else:
-            self.update_unlocked_user_hints(user_hints, hints)
+            user_hints = self.update_unlocked_user_hints(task_id, username, user_hints, hints)
+            unlocked_hints = user_hints["unlocked_hints"]
 
-        user_hints = self.get_user_hints()
-        unlocked_hints = user_hints["unlocked_hints"]
+            for hint in unlocked_hints:
+                unlocked_hints_penalties[hint["id"]] = hint["penalty"]
 
         hints_to_show = {}
-        unlocked_hints_penalties = {}
-        for hint in unlocked_hints:
-            unlocked_hints_penalties[hint["id"]] = hint["penalty"]
-
         for key, hint in hints.items():
             unlocked_hints_data = {
                 "title": hint["title"],
@@ -55,33 +63,38 @@ class UserHintManager(object):
 
         return hints_to_show
 
-    def get_user_hints(self):
-        return self._database.user_hints.find_one({"taskid": self._task_id,
-                                                         "username": self._username})
+    def get_user_hints(self, task_id, username):
+        return self._database.user_hints.find_one({"taskid": task_id,
+                                                         "username": username})
 
-    def update_unlocked_user_hints(self, user_hints, hints):
+    def update_unlocked_user_hints(self, task_id, username, user_hints, hints):
 
         """
-            Method to delete hints that were removed from the task. These
+            Method to check and delete hints that were removed from the task. These
             hints are removed in the unlocked user's hints.
         """
         unlocked_hints = user_hints["unlocked_hints"]
         hints_ids = [hint["id"] for hint in hints.values()]
+        hints_to_remove = []
         for hint in unlocked_hints:
             if not hint["id"] in hints_ids:
-                self.remove_unlocked_hint(hint)
+                hints_to_remove.append(hint["id"])
 
-        self.update_total_penalty()
+        if hints_to_remove:
+            self.remove_deleted_hints(task_id, username, hints_to_remove)
+            self.update_total_penalty(task_id, username)
 
-    def insert_default_user_hints(self):
+        return self.get_user_hints(task_id, username)
+
+    def insert_default_user_hints(self, task_id, username):
 
         self._database.user_hints.insert(
-            {"taskid": self._task_id, "username": self._username, "unlocked_hints": [], "penalty": 0})
+            {"taskid": task_id, "username": username, "unlocked_hints": [], "penalty": 0})
 
-    def is_hint_unlocked(self, hint_id):
+    def is_hint_unlocked(self, task_id, username, hint_id):
 
         """ Method to check if the hint is already in the user hints """
-        user_hints = self.get_user_hints()
+        user_hints = self.get_user_hints(task_id, username)
         unlocked_hints = user_hints["unlocked_hints"]
 
         for hint in unlocked_hints:
@@ -90,21 +103,25 @@ class UserHintManager(object):
 
         return False
 
-    def remove_unlocked_hint(self, hint_id):
+    def remove_deleted_hints(self, task_id, username, hints_to_remove):
 
-        """ Method to delete a hint from the user unlocked hints"""
+        """ Method to delete hints from the user unlocked hints"""
         self._database.user_hints.find_one_and_update(
-            {"taskid": self._task_id, "username": self._username},
+            {"taskid": task_id, "username": username},
             {"$pull": {
-                "unlocked_hints": hint_id
+                "unlocked_hints": {
+                    "id": {
+                        "$in":hints_to_remove
+                    }
+                }
             }
-            })
+        })
 
-    def unlock_hint(self, hint_id, task_hints):
+    def unlock_hint(self, task_id, username, hint_id, task_hints):
 
         """ Method to add the new unlocked hint in the user unlocked hints """
-        if not self.is_hint_unlocked(hint_id):
-            self._database.user_hints.find_one_and_update({"taskid": self._task_id, "username": self._username},
+        if not self.is_hint_unlocked(task_id, username, hint_id):
+            self._database.user_hints.find_one_and_update({"taskid": task_id, "username": username},
                                                           {"$push": {
                                                               "unlocked_hints": {
                                                                   "penalty": task_hints[hint_id]["penalty"],
@@ -112,17 +129,17 @@ class UserHintManager(object):
                                                               }
                                                           }
                                                           })
-            self.update_total_penalty()
+            self.update_total_penalty(task_id, username)
 
         return 200, ""
 
-    def update_total_penalty(self):
+    def update_total_penalty(self, task_id, username):
 
         """ Method needed to compare the saved hints per student, and the task hints
             to change penalty to the student
         """
-        new_penalty = 0;
-        user_hints = self.get_user_hints()
+        new_penalty = 0
+        user_hints = self.get_user_hints(task_id, username)
         unlocked_hints = user_hints["unlocked_hints"]
 
         for hint in unlocked_hints:
@@ -130,7 +147,7 @@ class UserHintManager(object):
 
         new_penalty = min(new_penalty, 100.0)
 
-        self._database.user_hints.update({"taskid": self._task_id, "username": self._username},
+        self._database.user_hints.find_one_and_update({"taskid": task_id, "username": username},
                                          {"$set": {"penalty": new_penalty}
                                           })
 
