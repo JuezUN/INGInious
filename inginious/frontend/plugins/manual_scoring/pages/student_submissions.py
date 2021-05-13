@@ -28,6 +28,7 @@ def create_submissions_dict(submissions_list):
             data[submission["_id"]]["manual_grade"] = submission["manual_scoring"]["grade"]
         else:
             data[submission["_id"]]["manual_grade"] = default_grade
+    data = OrderedDict(sorted(data.items(), key=lambda x: x[1]["grade"], reverse=True))
     return data
 
 
@@ -42,7 +43,7 @@ class StudentSubmissionsPage(INGIniousAdminPage):
     def render_page(self, course, task_id, task, username):
         """ get submissions for a user and display page """
         url = 'manual_scoring'
-        task_name = course.get_task(task_id).get_name(self.user_manager.session_language())
+        task_name = course.get_task(task_id).get_name_or_id(self.user_manager.session_language())
         name = self.user_manager.get_user_realname(username)
         result = self.get_student_submissions(course.get_id(), task_id, username)
         data = create_submissions_dict(result)
@@ -84,7 +85,7 @@ class StudentSubmissionsPage(INGIniousAdminPage):
                 {
                     "$sort":
                         {
-                            "grade": -1, "submitted_on": -1
+                            "submitted_on": -1
                         }
                 }
 

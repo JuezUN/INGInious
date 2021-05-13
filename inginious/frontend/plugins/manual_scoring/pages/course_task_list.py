@@ -38,14 +38,16 @@ class CourseTaskListPage(INGIniousAdminPage):
     def get_tasks_data(self, course):
         """ cross the task data and return the result """
         attempted_succeeded_per_task = self.get_total_attempted_and_succeeded_per_task(course)
-        tasks = self.get_ordered_course_tasks(course)
-        task_dict = OrderedDict()
-
+        task_dict = self.get_ordered_course_tasks(course)
         for task in attempted_succeeded_per_task:
             task_id = task["_id"]
-            task_dict[task_id] = {"name": tasks[task_id].get_name(self.user_manager.session_language()),
-                                  "attempted": task["attempted"], "succeeded": task["succeeded"]}
+            if task_id in task_dict:
+                task_dict[task_id]["attempted"] = task["attempted"]
+                task_dict[task_id]["succeeded"] = task["succeeded"]
 
+        # Remove tasks that have no attempts
+        task_dict = OrderedDict({key: val for key, val in task_dict.items() if val["attempted"] > 0})
+        task_dict = OrderedDict(sorted(task_dict.items(), key=lambda x: x[1]["name"]))
         return task_dict
 
     def get_total_attempted_and_succeeded_per_task(self, course):
@@ -82,8 +84,12 @@ class CourseTaskListPage(INGIniousAdminPage):
     def get_ordered_course_tasks(self, course):
         """ get all the tasks in a course.
         it is necessary because no name is found on db """
-        task_array = self.task_factory.get_all_tasks(course)
-        return OrderedDict(sorted(list(task_array.items()), key=lambda t: (t[1].get_order(), t[1].get_id())))
+        tasks = self.task_factory.get_all_tasks(course)
+        task_dict = OrderedDict()
+        for task_id, task in tasks.items():
+            task_dict[task_id] = {"name": task.get_name_or_id(self.user_manager.session_language()),
+                                  "attempted": 0, "succeeded": 0}
+        return task_dict
 
     def add_css_and_js_file(self):
         """ add the css styles and js files"""

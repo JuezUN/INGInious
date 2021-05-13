@@ -33,10 +33,7 @@ $var Navbar: $:NavbarF()
 <section class="py-1">
     <div class="py-1">
     <h2 id="taskName" class="py-1" style="cursor: pointer">
-        $if data['task_name'] == "":
-            $task.get_id()
-        $else:
-            $data['task_name']
+        $data['task_name']
         <i class="fa fa-sort-desc" aria-hidden="true"></i>
     </h2>
         <div id="taskDescription" hidden>
@@ -48,6 +45,15 @@ $var Navbar: $:NavbarF()
     <label for="codemirrorTextArea"></label>
     <div class="box" hidden>
         <textarea class="single " id="codemirrorTextArea" data-language="$data['language']">$data['problem']</textarea>
+    </div>
+    <div class="row" hidden>
+        <div class="col-md-3">
+            <h3>Submission:</h3>
+        </div>
+        <div class="col-md-5">
+        <a id="downloadMultiLang" class="btn btn-info btn-block"><i class="fa fa-download" aria-hidden="true"></i>
+            $:_("Download")</a>
+        </div>
     </div>
     <div id="taskAlert" class="py-1"></div>
 </section>
@@ -76,7 +82,7 @@ $var Navbar: $:NavbarF()
     <div class="py-1">
         <h3 class="my-1">$:_("Rubric")</h3>
         <p>$:_("Select the best description to grade the student's code")</p>
-        <p>$:_("Click to select and double click to deselect")</p>
+        <p>$:_("Click to select and deselect")</p>
     </div>
     <div>
     <table class="table sorted_table table-bordered">
@@ -158,15 +164,6 @@ $var Navbar: $:NavbarF()
         return alert_type;
     }
 
-    function getHtmlCodeForFeedback() {
-        let content = "$data['feedback_result_text']";
-        let parser = new DOMParser();
-        let doc = parser.parseFromString(content, 'text/html');
-
-        return doc.body.innerText;
-    }
-
-
     const environmentType = function () {
         return "$data['environment_type']"
     }
@@ -175,6 +172,15 @@ $var Navbar: $:NavbarF()
         return "$get_homepath()/course/$course.get_id()/$task.get_id()" + "?submissionid=" + "$data['submission_id']" + "&questionid=" + "$data['question_id']";
     }
 
+    const getURLSubmissionInput = function () {
+        return "$get_homepath()/course/$course.get_id()/$task.get_id()";
+    }
+    const getCurrentSubmissionId = function () {
+        return "$data['submission_id']";
+    }
+    function getTaskId(){
+        return "$task.get_id()";
+    }
     const rubricStatus = function () {
         return "$data['rubric_status']"
     }

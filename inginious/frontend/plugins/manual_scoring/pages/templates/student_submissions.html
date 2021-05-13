@@ -24,11 +24,7 @@ $def NavbarF():
 $var Navbar: $:NavbarF()
 
 <h2>
-    $:_("Manual scoring for Task:")
-    $if task_name == "":
-        "$task.get_id()"
-    $else:
-        "$task_name"
+    $:_("Manual scoring for Task:") "$task_name"
 </h2>
 <h3 class="py-2">
     $:_("User"):

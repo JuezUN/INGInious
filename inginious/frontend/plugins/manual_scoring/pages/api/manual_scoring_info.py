@@ -66,13 +66,16 @@ class ManualScoringInfoApi(AdminApi):
         """ returns an array of dictionaries with the students information """
         manual_scoring_data = self.get_manual_scoring_results(course)
         data = []
+        task_list = course.get_tasks()
         for submission in manual_scoring_data:
+            task_exists = submission["taskid"] in task_list
             submission_info = {
                 "_id": str(submission["_id"]),
                 "username": submission["username"][0],
                 "real_name": submission["realname"][0],
                 "task_id": submission["taskid"],
-                "task_name": course.get_task(submission["taskid"]).get_name(self.user_manager.session_language()),
+                "task_name": course.get_task(submission["taskid"]).get_name(
+                    self.user_manager.session_language()) if task_exists else _("The task was deleted"),
                 "result": get_dict_value(submission, "custom_summary_result"),
                 "grade": submission["grade"],
                 "manual_grade": submission["manual_scoring"]["grade"],
