@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-12 21:27-0500\n"
+"POT-Creation-Date: 2021-05-12 22:28-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -1388,13 +1388,14 @@ msgstr "Atualizar"
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:80
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:28
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:60
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:71
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:80
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:94
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:108
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:30
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:40
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:61
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:72
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:81
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:97
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:111
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:36
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:46
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:58
 msgid "Download CSV"
 msgstr ""
 
@@ -2787,7 +2788,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:15
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:22
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.py:27
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.py:35
 msgid "Course statistics"
 msgstr ""
 
@@ -2800,52 +2801,58 @@ msgid "Grade distribution"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:39
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:77
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:78
 msgid "Submissions Verdict"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:44
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:91
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:45
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:93
 msgid "Submissions Verdict (LATE)"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:49
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:105
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:50
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:108
 msgid "Submissions Verdict (BEST)"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:57
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:58
 msgid "Submissions by grade"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:68
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:69
 msgid "Final grade distribution"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:86
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:100
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:114
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:37
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:87
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:103
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:117
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:43
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:55
 msgid "Toggle normalize"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:3
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:8
-#: inginious/frontend/plugins/statistics/pages/user_statistics.py:28
+#: inginious/frontend/plugins/statistics/pages/user_statistics.py:38
 msgid "My statistics"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:16
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:28
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:34
 msgid "Trials and Best Grade"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:21
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:33
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:39
 msgid "Bar Submissions Per Tasks"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/user_statistics.py:27
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:27
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:50
+msgid "Bar Submissions Per Tasks (LATE)"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/user_statistics.py:37
 msgid "Student's Tools"
 msgstr ""
 

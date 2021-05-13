@@ -91,17 +91,21 @@ const UserTrialsAndBestGradeStatistic = (function () {
 })();
 
 const BarSubmissionsPerTasks = (function () {
-    function BarSubmissionsPerTasks(course_id, id_div) {
+    function BarSubmissionsPerTasks(course_id, id_div, include_late_submissions = false) {
         this.course_id = course_id;
         this.id_div = id_div || "submissions_per_task";
         this.RESOURCE_URL = "/api/stats/student/bar_submissions_per_tasks";
         this.normalize = false;
+        this.include_late_submissions = include_late_submissions;
     }
 
     BarSubmissionsPerTasks.prototype = Object.create(Statistic.prototype);
 
     BarSubmissionsPerTasks.prototype._fetchData = function () {
-        return $.getJSON(this.RESOURCE_URL, {course_id: this.course_id});
+        return $.getJSON(this.RESOURCE_URL, {
+            course_id: this.course_id,
+            late_submissions: this.include_late_submissions
+        });
     };
 
     BarSubmissionsPerTasks.prototype.toggleNormalize = function () {
@@ -197,10 +201,12 @@ $(function () {
     UserStatistics.course_id = getCourseId();
     UserStatistics.trialsAndBestGradeStatistic = new UserTrialsAndBestGradeStatistic(UserStatistics.course_id);
     UserStatistics.barSubmissionsPerTasks = new BarSubmissionsPerTasks(UserStatistics.course_id);
+    UserStatistics.barLateSubmissionsPerTasks = new BarSubmissionsPerTasks(UserStatistics.course_id, "late_submissions_per_task", true);
 
     const tabToStatistic = {
         "trials-circle-tab": UserStatistics.trialsAndBestGradeStatistic,
-        "bar-submissions-per-tasks-tab": UserStatistics.barSubmissionsPerTasks
+        "bar-submissions-per-tasks-tab": UserStatistics.barSubmissionsPerTasks,
+        "bar-late-submissions-per-tasks-tab": UserStatistics.barLateSubmissionsPerTasks
     };
 
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {

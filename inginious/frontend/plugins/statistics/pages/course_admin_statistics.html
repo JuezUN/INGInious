@@ -1,4 +1,4 @@
-$def with (course)
+$def with (course, contains_late_submissions)
 
 $var title: $:course.get_name(user_manager.session_language()) - $:_("Statistics")
 
@@ -39,11 +39,12 @@ $var Navbar: $:NavbarF()
                 $:_("Submissions Verdict")
             </a>
         </li>
-        <li role="presentation">
-            <a href="#lateSubmissionsVerdict" aria-controls="lateSubmissionsVerdict" role="tab" data-toggle="tab">
-                $:_("Submissions Verdict (LATE)")
-            </a>
-        </li>
+        $if contains_late_submissions:
+            <li role="presentation">
+                <a href="#lateSubmissionsVerdict" aria-controls="lateSubmissionsVerdict" role="tab" data-toggle="tab">
+                    $:_("Submissions Verdict (LATE)")
+                </a>
+            </li>
         <li role="presentation">
             <a href="#bestSubmissionsVerdict" aria-controls="bestSubmissionsVerdict" role="tab" data-toggle="tab">
                 $:_("Submissions Verdict (BEST)")
@@ -87,20 +88,22 @@ $var Navbar: $:NavbarF()
             </button>
             <table class="table table-hover" id="submissionsVerdictTable"></table>
         </div>
-        <div role="tabpanel" class="tab-pane" id="lateSubmissionsVerdict">
-            <h4>$:_("Submissions Verdict (LATE)")</h4>
-            <br/>
-            <button type="button" class="btn btn-info" onclick="tabToStatistic['lateSubmissionsVerdict'].downloadCsvAsync()">
-                <i class="fa fa-table"></i> $:_("Download CSV")
-            </button>
-            <div id="lateSubmissionsVerdictDiv" class="statistics-grade"></div>
+        $if contains_late_submissions:
+            <div role="tabpanel" class="tab-pane" id="lateSubmissionsVerdict">
+                <h4>$:_("Submissions Verdict (LATE)")</h4>
+                <br/>
+                <button type="button" class="btn btn-info"
+                        onclick="tabToStatistic['lateSubmissionsVerdict'].downloadCsvAsync()">
+                    <i class="fa fa-table"></i> $:_("Download CSV")
+                </button>
+                <div id="lateSubmissionsVerdictDiv" class="statistics-grade"></div>
 
-            <button class="button-normalize"
-                    onclick="tabToStatistic.lateSubmissionsVerdict.toggleNormalize()">
+                <button class="button-normalize"
+                        onclick="tabToStatistic.lateSubmissionsVerdict.toggleNormalize()">
                     $:_("Toggle normalize")
-            </button>
-            <table class="table table-hover" id="lateSubmissionsVerdictTable"></table>
-        </div>
+                </button>
+                <table class="table table-hover" id="lateSubmissionsVerdictTable"></table>
+            </div>
         <div role="tabpanel" class="tab-pane" id="bestSubmissionsVerdict">
             <h4>$:_("Submissions Verdict (BEST)")</h4>
             <br/>

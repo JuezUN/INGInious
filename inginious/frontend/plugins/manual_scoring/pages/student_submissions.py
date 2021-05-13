@@ -28,7 +28,7 @@ def create_submissions_dict(submissions_list):
             data[submission["_id"]]["manual_grade"] = submission["manual_scoring"]["grade"]
         else:
             data[submission["_id"]]["manual_grade"] = default_grade
-    data = OrderedDict(sorted(data.items(), key=lambda x: x[1]["grade"], reverse=True))
+    data = OrderedDict(sorted(data.items(), key=lambda x: float(x[1]["grade"]), reverse=True))
     return data
 
 
