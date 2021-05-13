@@ -214,13 +214,6 @@ class BaseTaskPage(object):
 
                 userinput = task.adapt_input_for_backend(web.input(**init_var))
 
-                # Use the user penalty by using task hints
-                user_hints_penalty = self.plugin_manager.call_hook('show_hints', taskid=taskid, username=username, database=self.database)
-                if user_hints_penalty is None:
-                    userinput['penalty'] = 0
-                else:
-                    userinput['penalty'] = user_hints_penalty[0]
-
                 if not task.input_is_consistent(userinput, self.default_allowed_file_extensions, self.default_max_file_size):
                     web.header('Content-Type', 'application/json')
                     return json.dumps({"status": "error", "text": _("Please answer to all the questions and verify the extensions of the files "
@@ -370,8 +363,13 @@ class BaseTaskPage(object):
                                     <i class="fa fa-clock-o fa-fw"></i> {title}
                                 </span>""".format(tooltip_message=later_submission_message, title=_("Later submission"))
 
+        penalty_message = ""
+        user_grade_penalty = data.get("penalty",0.0)
+        if user_grade_penalty:
+            penalty_message = "<br><p>A penalty of <b>{penalty}%</b> was applied to this submission.</p>".format(penalty=user_grade_penalty)
+
         tojson["text"] = "<b>" + tojson["text"] + " " + _("[Submission #{submissionid}]").format(
-            submissionid=data["_id"]) + "</b>" + later_submission_html + data.get("text", "")
+            submissionid=data["_id"]) + "</b>" + later_submission_html + "<br>" + penalty_message + data.get("text", "")
         tojson["text"] = self.plugin_manager.call_hook_recursive("feedback_text", task=task, submission=data, text=tojson["text"])["text"]
 
         if reloading:

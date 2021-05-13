@@ -48,7 +48,8 @@ def get_user_total_penalty(taskid, username, database):
     :return: 'penalty' to be applied on the final grade of the submission
     """
     data = database.user_hints.find_one({"taskid": taskid, "username": username});
-    penalty = data["penalty"]
+    if data:
+        penalty = data["penalty"]
 
     return penalty
 

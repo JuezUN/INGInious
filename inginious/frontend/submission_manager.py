@@ -49,11 +49,18 @@ class WebAppSubmissionManager:
         submission = self.get_submission(submissionid, False)
         submission = self.get_input_from_submission(submission)
 
+        # Get user penalty stored in 'user_hints' collection to apply in grade of submission
+
+        username = submission["username"][0]
+        if username:
+            penalty = self._hook_manager.call_hook('show_hints', taskid=task.get_id(), username=username, database=self._database)[0]
+
         data = {
             "status": ("done" if result[0] == "success" or result[0] == "failed" else "error"),
              # error only if error was made by INGInious
             "result": result[0],
-            "grade": grade,
+            "grade": max(0.0, round(grade-penalty,2)),
+            "penalty": penalty,
             "text": result[1],
             "tests": tests,
             "problems": problems,
