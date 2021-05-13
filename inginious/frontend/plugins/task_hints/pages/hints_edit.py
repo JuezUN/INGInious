@@ -80,6 +80,10 @@ def on_task_submit(course, taskid, task_data, task_fs):
     task_data["task_hints"] = set_hints_id(task_data["task_hints"])
     task_data["task_hints"] = OrderedDict(sorted(task_data["task_hints"].items()))
 
+    if task_data["task_hints"]:
+        # If task is a group task type, hints couldn't be created
+        if task_data["groups"]:
+            return json.dumps({"status": "error", "message": _("Hints cannot be added for group tasks mode")})
 
 def set_hints_id(task_hints):
     for key in task_hints:

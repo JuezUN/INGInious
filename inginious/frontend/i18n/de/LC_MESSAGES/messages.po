@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-06 21:10-0500\n"
+"POT-Creation-Date: 2021-05-13 17:54-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -241,66 +241,66 @@ msgstr "Sie sind nicht berechtigt etwas für diese Aufgabe abzugeben."
 msgid "Your task has been regenerated. This current task is outdated."
 msgstr "Ihre Aufgabe wurde neu erstellt. Die aktuelle Aufgabe ist  veraltet."
 
-#: inginious/frontend/pages/tasks.py:226
+#: inginious/frontend/pages/tasks.py:219
 msgid ""
 "Please answer to all the questions and verify the extensions of the files"
 " you want to upload. Your responses were not tested."
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:244 inginious/frontend/pages/tasks.py:350
+#: inginious/frontend/pages/tasks.py:237 inginious/frontend/pages/tasks.py:343
 msgid "<b>Your submission has been sent...</b>"
 msgstr ""
 
 #: inginious/frontend/pages/course_admin/task_edit_file.py:202
 #: inginious/frontend/pages/course_admin/task_edit_file.py:223
 #: inginious/frontend/pages/course_admin/task_edit_file.py:227
-#: inginious/frontend/pages/tasks.py:254
+#: inginious/frontend/pages/tasks.py:247
 msgid "Internal error"
 msgstr "Interner Fehler"
 
-#: inginious/frontend/pages/tasks.py:319
+#: inginious/frontend/pages/tasks.py:312
 msgid "<b>UNCode is currently grading your answers.<b/> (almost done)"
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:321
+#: inginious/frontend/pages/tasks.py:314
 msgid ""
 "<b>UNCode is currently grading your answers.<b/> (Approx. wait time: {} "
 "seconds)"
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:324
+#: inginious/frontend/pages/tasks.py:317
 msgid "<b>You are next in the waiting queue!</b>"
 msgstr "<b>Sie sind der nächste in der Warteschlange</b>"
 
-#: inginious/frontend/pages/tasks.py:326
+#: inginious/frontend/pages/tasks.py:319
 msgid "<b>There is one task in front of you in the waiting queue.</b>"
 msgstr "<b>Es befindet sich eine Aufgabe vor Ihren in der Warteschlange.</b>"
 
-#: inginious/frontend/pages/tasks.py:328
+#: inginious/frontend/pages/tasks.py:321
 msgid "<b>There are {} tasks in front of you in the waiting queue.</b>"
 msgstr "<b>Es befinden sich {} Aufgaben vor Ihnen in der Warteschlange.</b>"
 
-#: inginious/frontend/pages/tasks.py:352
+#: inginious/frontend/pages/tasks.py:345
 msgid "There are some errors in your answer. Your score is {score}%."
 msgstr "Es sind Fehler in Ihrer Abgabe. Ihre Punktzahl ist {score}%."
 
-#: inginious/frontend/pages/tasks.py:354
+#: inginious/frontend/pages/tasks.py:347
 msgid "Your answer passed the tests! Your score is {score}%."
 msgstr "Ihre Abgabe hat bestanden! Ihre Punktzahl ist {score}%."
 
-#: inginious/frontend/pages/tasks.py:356
+#: inginious/frontend/pages/tasks.py:349
 msgid "Your submission timed out. Your score is {score}%."
 msgstr "Die Zeit Ihrer Abgabe wurde überschritten. Ihre Punktzahl ist {score}%."
 
-#: inginious/frontend/pages/tasks.py:358
+#: inginious/frontend/pages/tasks.py:351
 msgid "Your submission made an overflow. Your score is {score}%."
 msgstr "Ihre Abgabe hat einen Überlauf erzeugt. Ihre Punktzahl ist {score}&."
 
-#: inginious/frontend/pages/tasks.py:360
+#: inginious/frontend/pages/tasks.py:353
 msgid "Your submission was killed."
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:362
+#: inginious/frontend/pages/tasks.py:355
 msgid ""
 "An internal error occurred. Please retry later. If the error persists, "
 "send an email to the course administrator."
@@ -309,17 +309,17 @@ msgstr ""
 "einmal. Wenn dieser Fehler erneut auftritt, senden Sie bitte eine E-Mail "
 "an den Kursverwalter."
 
-#: inginious/frontend/pages/tasks.py:366
+#: inginious/frontend/pages/tasks.py:359
 #: inginious/frontend/templates/course_admin/submissions.html:369
 #: inginious/frontend/templates/task.html:222
 msgid "\"Later submission: it does not affect the grade.\""
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:371
+#: inginious/frontend/pages/tasks.py:364
 msgid "Later submission"
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:373
+#: inginious/frontend/pages/tasks.py:371
 msgid "[Submission #{submissionid}]"
 msgstr "[Abgabe #{submissionid}]"
 
@@ -2926,32 +2926,36 @@ msgstr ""
 msgid "Each hint penalty must be a float."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:28
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:64
-msgid "The course does not exist or the user does not have access."
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:86
+msgid "Hints cannot be added for group tasks mode"
 msgstr ""
 
 #: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:33
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:69
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:68
+msgid "The course does not exist or the user does not have access."
+msgstr ""
+
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:38
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:73
 msgid "The task does not exist in the course."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:36
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:72
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:41
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:76
 msgid "The user is not registered in this course."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:44
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:48
 msgid "An error occurred while getting the user's hints."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:80
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:83
 msgid ""
 "An error occurred while updating status of the hint. The hint does not "
 "exist in the database."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:83
+#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:86
 msgid "Hint unlocked successfully."
 msgstr ""
 
@@ -2981,7 +2985,9 @@ msgid "Hint content"
 msgstr ""
 
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_tab.html:6
-msgid "Add hints to the task that can be accessed before the task ends"
+msgid ""
+"Add hints to the task that can be accessed before the task "
+"ends.<br><b>Note:</b>You can only add hints for individual tasks"
 msgstr ""
 
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_tab.html:11

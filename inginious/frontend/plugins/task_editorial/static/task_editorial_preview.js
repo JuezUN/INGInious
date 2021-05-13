@@ -13,7 +13,7 @@ function setTaskSolutionCode(){
         solutionPreviewEditor.setValue(solutionCode);
         solutionPreviewEditor.setOption("readOnly", "nocursor");
     }
-    sendSeeTaskSolution();
+    sendAnalyticsTaskSolution();
 }
 
 //Get and render the notebook file
@@ -26,15 +26,15 @@ function setSolutionNotebook(){
         const notebookContent = JSON.parse(result);
         const solutionNotebookContainer = $("#solution_notebook");
         render_notebook(notebookContent, solutionNotebookContainer);
-        sendSeeTaskSolution();
+        sendAnalyticsTaskSolution();
     });
 }
 
 //Send analytics when a user see the task editorial - tutorial just one time by load data in modal
-function sendSeeTaskTutorial(){
+function sendAnalyticsTaskTutorial(){
     $.post("/api/analytics/", {
         service: {
-            key: "see_task_tutorial",
+            key: "task_tutorial",
             name: "Task editorial - Tutorial"
         },
         course_id: getCourseId()
@@ -42,10 +42,10 @@ function sendSeeTaskTutorial(){
 }
 
 //Send analytics when a user see the task editorial - solution everytime he enter the task for the first time
-function sendSeeTaskSolution(){
+function sendAnalyticsTaskSolution(){
     $.post("/api/analytics/", {
         service: {
-            key: "see_task_solution",
+            key: "task_solution",
             name: "Task editorial - Solution"
         },
         course_id: getCourseId()
@@ -53,7 +53,7 @@ function sendSeeTaskSolution(){
 }
 
 $("#task_tutorial_modal").one("shown.bs.modal", function () {
-    sendSeeTaskTutorial();
+    sendAnalyticsTaskTutorial();
 });
 
 //Load solution editor/notebook after the solution modal
