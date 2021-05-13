@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-12 21:07-0500\n"
+"POT-Creation-Date: 2021-05-12 21:27-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -318,11 +318,11 @@ msgstr ""
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:68
 #: inginious/frontend/templates/course_admin/submissions.html:369
 #: inginious/frontend/templates/task.html:222
-msgid "\"Later submission: it does not affect the grade.\""
+msgid "\"Late submission: it does not affect the grade.\""
 msgstr ""
 
 #: inginious/frontend/pages/tasks.py:363
-msgid "Later submission"
+msgid "Late submission"
 msgstr ""
 
 #: inginious/frontend/pages/tasks.py:365
@@ -2801,12 +2801,12 @@ msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:39
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:77
-msgid "Submissions Verdict (NOT LATER)"
+msgid "Submissions Verdict"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:44
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:91
-msgid "Submissions Verdict (LATER)"
+msgid "Submissions Verdict (LATE)"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:49
@@ -4920,7 +4920,7 @@ msgid "Student choice"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:160
-msgid "Allow later submission"
+msgid "Allow late submission"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:162
@@ -5290,5 +5290,20 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Submissions Verdict (ALL)"
+#~ msgstr ""
+
+#~ msgid "\"Later submission: it does not affect the grade.\""
+#~ msgstr ""
+
+#~ msgid "Later submission"
+#~ msgstr ""
+
+#~ msgid "Submissions Verdict (NOT LATER)"
+#~ msgstr ""
+
+#~ msgid "Submissions Verdict (LATER)"
+#~ msgstr ""
+
+#~ msgid "Allow later submission"
 #~ msgstr ""
 

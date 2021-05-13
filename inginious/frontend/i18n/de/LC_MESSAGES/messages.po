@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-12 21:07-0500\n"
+"POT-Creation-Date: 2021-05-12 21:27-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -313,11 +313,11 @@ msgstr ""
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:68
 #: inginious/frontend/templates/course_admin/submissions.html:369
 #: inginious/frontend/templates/task.html:222
-msgid "\"Later submission: it does not affect the grade.\""
+msgid "\"Late submission: it does not affect the grade.\""
 msgstr ""
 
 #: inginious/frontend/pages/tasks.py:363
-msgid "Later submission"
+msgid "Late submission"
 msgstr ""
 
 #: inginious/frontend/pages/tasks.py:365
@@ -2788,12 +2788,12 @@ msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:39
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:77
-msgid "Submissions Verdict (NOT LATER)"
+msgid "Submissions Verdict"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:44
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:91
-msgid "Submissions Verdict (LATER)"
+msgid "Submissions Verdict (LATE)"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:49
@@ -4849,7 +4849,7 @@ msgid "Student choice"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:160
-msgid "Allow later submission"
+msgid "Allow late submission"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:162

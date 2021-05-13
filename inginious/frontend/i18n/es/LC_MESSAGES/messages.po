@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-12 21:07-0500\n"
+"POT-Creation-Date: 2021-05-12 21:27-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -322,11 +322,11 @@ msgstr ""
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:68
 #: inginious/frontend/templates/course_admin/submissions.html:369
 #: inginious/frontend/templates/task.html:222
-msgid "\"Later submission: it does not affect the grade.\""
+msgid "\"Late submission: it does not affect the grade.\""
 msgstr "\"Envío después de la fecha límite: no afecta la calificación.\""
 
 #: inginious/frontend/pages/tasks.py:363
-msgid "Later submission"
+msgid "Late submission"
 msgstr "Envío posterior"
 
 #: inginious/frontend/pages/tasks.py:365
@@ -3083,12 +3083,12 @@ msgstr "Distribución notas"
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:39
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:77
-msgid "Submissions Verdict (NOT LATER)"
-msgstr "Veredicto envíos (NO POSTERIOR)"
+msgid "Submissions Verdict"
+msgstr "Veredicto envíos"
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:44
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:91
-msgid "Submissions Verdict (LATER)"
+msgid "Submissions Verdict (LATE)"
 msgstr "Veredicto envíos (POSTERIOR)"
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:49
@@ -5241,7 +5241,7 @@ msgid "Student choice"
 msgstr "Elección del estudiante"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:160
-msgid "Allow later submission"
+msgid "Allow late submission"
 msgstr "Permitir envío después de fecha límite"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:162
