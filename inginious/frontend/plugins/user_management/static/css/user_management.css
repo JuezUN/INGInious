@@ -26,17 +26,26 @@ input[readonly] {
     -webkit-box-shadow: none;
 }
 
-.center-table tr>td{
+.center-table tr > td {
     vertical-align: middle !important;
 }
+
 .edit {
     font-size: 1.5em;
     text-decoration: none !important;
+    cursor: pointer;
+
 }
-.edit i{
+
+.edit i {
     padding-right: 0.2rem;
     visibility: hidden;
 }
-.edit:hover i{
+
+.edit:hover i {
     visibility: visible;
+}
+
+.form-control {
+    color: #181818;
 }

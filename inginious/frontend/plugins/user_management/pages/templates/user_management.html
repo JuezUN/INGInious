@@ -17,33 +17,28 @@ $var Navbar: $:NavbarF()
             <h2>$:_("User Management")</h2>
             <form>
                 <div class="input-group">
-                    <label for="usernameInput" class=""></label>
-                    <input type="text" class="form-control" id="usernameInput" placeholder="Username/Email">
+                    <label for="usernameOrEmailInput" class=""></label>
+                    <input type="text" class="form-control" id="usernameOrEmailInput" placeholder="Username/Email">
                     <span class="input-group-btn px-1">
-                        <a type="button" class="btn btn-info">Check</a>
+                        <a type="button" class="btn btn-info" id="checkBtn">Check</a>
                     </span>
                 </div>
             </form>
         </div>
     </div>
-    <div id="userControl">
+    <div id="userSettings" hidden>
         <div class="row">
             <div class="col-xs-8 col-centered">
-            <h3>$:_("User information")</h3>
+            <h3 id="userInfoTitle">$:_("User information"):</h3>
                 <div class="col-md-10 col-centered">
-                    <table class="table table-striped" id="userInformation">
-                        <tr>
-                            <td><b>Username</b></td>
-                            <td>Student1</td>
-                        </tr>
-                        <tr>
-                            <td><b>Username</b></td>
-                            <td>Student1</td>
-                        </tr>
-                        <tr>
-                            <td><b>Username</b></td>
-                            <td>Student1</td>
-                        </tr>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th><h4>$:_("Collection's name")</h4></th>
+                                <th><h4># $:_("Occurrences")</h4></th>
+                            </tr>
+                        </thead>
+                        <tbody id="userInformation"></tbody>
                     </table>
                 </div>
             </div>

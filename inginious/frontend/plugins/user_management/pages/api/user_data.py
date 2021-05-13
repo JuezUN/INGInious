@@ -7,8 +7,28 @@ from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
 class UserDataAPI(SuperadminAPI):
     def API_GET(self):
         self.check_superadmin_rights()
-        username = get_mandatory_parameter(web.input(), "username")
-
+        username_or_email = get_mandatory_parameter(web.input(), "username_or_email")
+        return self.get_user_data(username_or_email)
 
     def API_POST(self):
         pass
+
+    def get_user_data(self, username_or_email):
+        user_basic_data = self.get_basic_user_data(username_or_email)
+        if user_basic_data:
+            data = {"username": user_basic_data["username"],
+                    "name": user_basic_data["realname"],
+                    "email": user_basic_data["email"],
+                    "count": self.get_count_username_occurrences(user_basic_data["username"])}
+            return 200, data
+        else:
+            return 200, {"message": _("User no found")}
+
+    def get_basic_user_data(self, username_or_email):
+        data = self.database.users.find_one({'username': username_or_email})
+        if data:
+            return data
+        return self.database.users.find_one({'email': username_or_email})
+
+    def get_count_username_occurrences(self, username):
+        return {"test1": 1, "test2": 7}
