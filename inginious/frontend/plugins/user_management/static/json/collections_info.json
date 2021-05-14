@@ -1,0 +1,15 @@
+{
+  "aggregations": [{"path": "students"}],
+  "analytics": [{"path": "username"}],
+  "custom_tests": [{"path": "username"}],
+  "fs.chunks": [{"path": "none"}],
+  "fs.files": [{"path": "none"}],
+  "plagiarism_checks": [{"path": "none"}],
+  "problem_banks": [{"path": "none"}],
+  "services": [{"path": "none"}],
+  "sessions": [{"path": "none"}],
+  "submissions":[{"path": "username"}],
+  "tasks_cache": [{"path": "none"}],
+  "user_tasks":[{"path": "username"}],
+  "users": [{"path": "username"}]
+}
