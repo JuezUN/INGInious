@@ -14,7 +14,7 @@ def _create_occurrences_dict(collection_names):
 
 def _create_aggregation_to_count(username, information):
     query = [
-        _create_match_aggregation(username, information),
+        _create_match_pipeline(username, information),
         {
             "$count": "num_appearances"
         }
@@ -22,16 +22,15 @@ def _create_aggregation_to_count(username, information):
     return query
 
 
-def _create_match_aggregation(username, information):
+def _create_match_pipeline(username, information):
     key_name_in_json = "path"
-    match_content = {}
+    match_content = []
     for info in information:
-        # TODO: Be or, at the moment is and
-        path = info[key_name_in_json]
-        match_content[path] = username
+        dictionary = {info[key_name_in_json]: username}
+        match_content.append(dictionary)
 
     match = {
-        "$match": match_content
+        "$match": {"$or": match_content}
     }
     return match
 

@@ -1,5 +1,5 @@
 {
-  "aggregations": [{"path": "students"}],
+  "aggregations": [{"path": "students"},{"path": "tutors"}, {"path": "groups.students"}],
   "analytics": [{"path": "username"}],
   "custom_tests": [{"path": "username"}],
   "fs.chunks": [{"path": "none"}],
