@@ -24,7 +24,7 @@ class CourseAdminStatisticsPage(INGIniousAdminPage):
 
     def _contains_late_submissions(self, course_id):
         """
-        This checks whether the course contains late submissions. In case the user does not have the, statistics tab
+        This checks whether the course contains late submissions. In case the course does not have, the statistics tab
         for late submissions is not shown.
         """
         data = list(self.database.submissions.find({"courseid": course_id, "is_late_submission": True}))
