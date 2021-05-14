@@ -33,29 +33,36 @@ $if registered_user:
                     </div>
                     <div class="row">
                         <div class="col-sm-4" id="hints_navigation_menu">
-                            <h4>$:_("Hints list")</h4>
-                            <div id="user_hints_help">
-                                <a type="button" onclick="showHelp()">
-                                    <h5>
-                                       $:_("Help")
-                                    </h5>
-                                </a>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <h4>$:_("Hints list")</h4>
+                                </div>
+                                <div class="col-sm-3" id="user_hints_help">
+                                    <a type="button" onclick="showHelp()">
+                                        <h5>
+                                           $:_("Help")
+                                        </h5>
+                                    </a>
+                                </div>
                             </div>
                             <div id="hints_list">
-                                <!-- Hint menu item template -->
-                                $for key, hint in hints_data.items():
-                                    <div id="hint_menu_$key">
-                                        <a class="list-group-item"
-                                           onclick="changeHint('$key')">
-                                            <label>$hints_data[key]["title"]</label>
-                                            <div>
-                                            $if float(hints_data[key]["penalty"]):
-                                                $:_("Penalty"): <b class="hint_penalty">$hints_data[key]["penalty"]</b>%
-                                            $else:
-                                                $:_("No penalty")
-                                            </div>
-                                        </a>
-                                    </div>
+                                $if hints_data:
+                                    <!-- Hint menu item template -->
+                                    $for key, hint in hints_data.items():
+                                        <div id="hint_menu_$key">
+                                            <a class="list-group-item"
+                                                onclick="changeHint('$key')">
+                                                <label>$hints_data[key]["title"]</label>
+                                                <div>
+                                                $if float(hints_data[key]["penalty"]):
+                                                    $:_("Penalty"): <b class="hint_penalty">$hints_data[key]["penalty"]</b>%
+                                                $else:
+                                                    $:_("No penalty")
+                                                </div>
+                                            </a>
+                                        </div>
+                                $else:
+                                    $:_("This task doesn't have hints to show")
                             </div>
                         </div>
                         <div class="col-sm-8">
@@ -122,5 +129,9 @@ $if registered_user:
     function getTaskId(){
         return "$task.get_id()";
     }
+
+    $$(document).ready(function(){
+        loadHintsOnModal()
+    })
 
 </script>
