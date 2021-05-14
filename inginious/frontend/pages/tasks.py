@@ -366,10 +366,10 @@ class BaseTaskPage(object):
         penalty_message = ""
         user_grade_penalty = data.get("penalty",0.0)
         if user_grade_penalty:
-            penalty_message = "<br><p>A penalty of <b>{penalty}%</b> was applied to this submission.</p>".format(penalty=user_grade_penalty)
+            penalty_message = _("<p>A penalty of <b>{penalty}%</b> was applied to this submission.</p>").format(penalty=user_grade_penalty)
 
         tojson["text"] = "<b>" + tojson["text"] + " " + _("[Submission #{submissionid}]").format(
-            submissionid=data["_id"]) + "</b>" + later_submission_html + "<br>" + penalty_message + data.get("text", "")
+            submissionid=data["_id"]) + "</b>" + later_submission_html + "<br><br>" + penalty_message + data.get("text", "")
         tojson["text"] = self.plugin_manager.call_hook_recursive("feedback_text", task=task, submission=data, text=tojson["text"])["text"]
 
         if reloading:

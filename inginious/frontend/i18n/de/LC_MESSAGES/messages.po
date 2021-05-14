@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-13 19:20-0500\n"
+"POT-Creation-Date: 2021-05-13 22:12-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -317,6 +317,10 @@ msgstr ""
 
 #: inginious/frontend/pages/tasks.py:364
 msgid "Later submission"
+msgstr ""
+
+#: inginious/frontend/pages/tasks.py:369
+msgid "<p>A penalty of <b>{penalty}%</b> was applied to this submission.</p>"
 msgstr ""
 
 #: inginious/frontend/pages/tasks.py:371

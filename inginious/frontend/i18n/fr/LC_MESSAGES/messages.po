@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-13 19:20-0500\n"
+"POT-Creation-Date: 2021-05-13 22:12-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -321,6 +321,10 @@ msgstr ""
 
 #: inginious/frontend/pages/tasks.py:364
 msgid "Later submission"
+msgstr ""
+
+#: inginious/frontend/pages/tasks.py:369
+msgid "<p>A penalty of <b>{penalty}%</b> was applied to this submission.</p>"
 msgstr ""
 
 #: inginious/frontend/pages/tasks.py:371
