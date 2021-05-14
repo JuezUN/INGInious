@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-13 19:00-0500\n"
+"POT-Creation-Date: 2021-05-13 19:20-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -2160,8 +2160,8 @@ msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:11
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:106
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:38
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:149
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:38
 msgid "Save"
 msgstr "Guardar"
 
@@ -5772,3 +5772,4 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
+
