@@ -88,15 +88,17 @@ class StudentFeedbackListPage(INGIniousAuthPage):
     def create_feedback_dict(self, feedback_list, course):
         """ Sort the information on a dictionary, classifying it by task id  """
         data = defaultdict(list)
+        task_list = course.get_tasks()
         for feedback in feedback_list:
-            submission = {
-                "_id": feedback["_id"],
-                "date": feedback["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S"),
-                "grade": get_dict_value(feedback, "grade"),
-                "result": get_dict_value(feedback, "custom", "custom_summary_result"),
-                "manual_grade": feedback["manual_scoring"]["grade"],
-                "task_name": course.get_task(feedback["taskid"]).get_name(self.user_manager.session_language()),
-                "task_id": feedback["taskid"]
-            }
-            data[feedback["taskid"]].append(submission)
+            if feedback["taskid"] in task_list:
+                submission = {
+                    "_id": feedback["_id"],
+                    "date": feedback["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S"),
+                    "grade": get_dict_value(feedback, "grade"),
+                    "result": get_dict_value(feedback, "custom", "custom_summary_result"),
+                    "manual_grade": feedback["manual_scoring"]["grade"],
+                    "task_name": course.get_task(feedback["taskid"]).get_name(self.user_manager.session_language()),
+                    "task_id": feedback["taskid"]
+                }
+                data[feedback["taskid"]].append(submission)
         return data

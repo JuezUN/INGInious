@@ -70,7 +70,7 @@ function sendManualScoringAnalytics() {
 }
 
 jQuery(document).ready(function () {
-    const codeField = new CodeArea(CODE_AREA_ID, NOTEBOOK_CODE_AREA_ID, environmentType());
+    const codeField = new CodeArea(environmentType());
     const rubric = new Rubric();
     const comment = new CodeArea(COMMENTS_TEXT_AREA_ID);
     const currentGrade = $(`#${GRADE_ID}`).data("grade");
@@ -89,7 +89,7 @@ jQuery(document).ready(function () {
 
     addSaveFunctionToSaveButton(rubric);
 
-    comment.showMultiLangCodeArea();
+    comment.displayCodeArea();
     previewCode();
 
     grade.changeColor();

@@ -1,4 +1,12 @@
 const _this = this;
+const environmentName = $("#environment");
+const isMultiLang = environmentName.val() === "multiple_languages";
+const isDataScience = environmentName.val() === "Data Science";
+
+function isRoot(path) {
+    const rootFilenameFormat = /^\/[^.\n\/]+\.[a-z0-9_]+$/i;
+    return rootFilenameFormat.test(path);
+}
 
 jQuery(document).ready(function () {
     /**
@@ -32,6 +40,41 @@ jQuery(document).ready(function () {
             url: location.pathname + "/files"
         });
     };
+
+    /**
+     * Patch studio_task_file_delete to detect when a root file related to test is removed and remove that test too.
+     * Remove test is only applied if the environment is multiLang or data science
+     */
+    _this.studio_task_file_delete = (path) => {
+        if (!confirm("Are you sure you want to delete this?") || !studio_task_file_delete_tab(path))
+            return;
+        if ((isMultiLang || isDataScience) && isRoot(path)) {
+            const filename = path.substr(1);
+            removeTestByFilename(filename);
+            _removePublicFileFromRootFile(path)
+        }
+        studio_update_file_tabs({"action": "delete", "path": path});
+    };
+
+    function _removePublicFileFromRootFile(rootFilePath) {
+        const publicPath = `/public${rootFilePath}`
+        const pathList = getListOfFilePaths();
+        if (pathList.includes(publicPath)) {
+            studio_update_file_tabs({"action": "delete", "path": publicPath});
+        }
+    }
+
+    function getListOfFilePaths() {
+        const fileRows = $("#tab_file_list > table > tbody tr").filter((_, tableRow) => {
+            return tableRow.hasAttributes() && tableRow.attributes['data-x-path'];
+        });
+        const pathList = []
+        fileRows.each(function (_, fileRow) {
+            const v = fileRow.attributes['data-x-path'].value;
+            pathList.push(v);
+        })
+        return pathList;
+    }
 
     function _getAllFiles(data, method, callbackOnSuccess) {
         jQuery.ajax({
@@ -204,9 +247,11 @@ jQuery(document).ready(function () {
         const data = {"action": "delete", "path": path};
         jQuery.ajax({
             beforeSend: function () {
-                $("#tab_file_list").html('Loading');
+                $("#tab_file_list").html("<h4 style='color: #e99002'>Loading...</h4>");
+                $("#delete_all_files_confirm_modal").modal("hide");
             },
             method: 'GET',
+            async: false,
             data: data,
             url: location.pathname + "/files"
         });

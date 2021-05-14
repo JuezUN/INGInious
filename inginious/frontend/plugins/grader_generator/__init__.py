@@ -3,7 +3,7 @@ import os
 from inginious.frontend.plugins.utils import create_static_resource_page
 from .pages.api.task_test_cases_files_api import TaskTestCasesFilesApi
 
-from .pages.grader import on_task_editor_submit
+from .pages.grader import on_task_editor_submit, on_file_deleted
 from .pages.grader import grader_footer
 from .pages.grader import grader_generator_tab
 
@@ -23,3 +23,4 @@ def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_hook('task_editor_tab', grader_generator_tab)
     plugin_manager.add_hook('task_editor_footer', grader_footer)
     plugin_manager.add_hook('task_editor_submit', on_task_editor_submit)
+    plugin_manager.add_hook('file_deleted', on_file_deleted)
