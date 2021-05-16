@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-08 22:10-0500\n"
+"POT-Creation-Date: 2021-05-12 22:28-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 #: inginious/frontend/accessible_time.py:58
 msgid "The accessibility end date must be greater than the start date."
@@ -286,13 +286,14 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/pages/tasks.py:358
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:68
 #: inginious/frontend/templates/course_admin/submissions.html:369
 #: inginious/frontend/templates/task.html:222
-msgid "\"Later submission: it does not affect the grade.\""
+msgid "\"Late submission: it does not affect the grade.\""
 msgstr ""
 
 #: inginious/frontend/pages/tasks.py:363
-msgid "Later submission"
+msgid "Late submission"
 msgstr ""
 
 #: inginious/frontend/pages/tasks.py:365
@@ -1349,12 +1350,14 @@ msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:80
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:28
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:55
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:66
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:75
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:89
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:30
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:40
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:61
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:72
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:81
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:97
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:111
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:36
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:46
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:58
 msgid "Download CSV"
 msgstr ""
 
@@ -1978,8 +1981,8 @@ msgstr ""
 #: inginious/frontend/plugins/manual_scoring/constants.py:88
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:53
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:55
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:57
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:59
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:56
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:58
 msgid "Not available"
 msgstr ""
 
@@ -2138,7 +2141,7 @@ msgid "See submission"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:57
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:61
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:60
 msgid ""
 "\"It is possible that the grader could not finish its process with this "
 "submission.\""
@@ -2746,7 +2749,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:15
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:22
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.py:27
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.py:35
 msgid "Course statistics"
 msgstr ""
 
@@ -2759,46 +2762,58 @@ msgid "Grade distribution"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:39
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:72
-msgid "Submissions Verdict (ALL)"
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:78
+msgid "Submissions Verdict"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:44
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:86
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:45
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:93
+msgid "Submissions Verdict (LATE)"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:50
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:108
 msgid "Submissions Verdict (BEST)"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:52
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:58
 msgid "Submissions by grade"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:63
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:69
 msgid "Final grade distribution"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:81
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:95
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:37
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:87
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:103
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:117
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:43
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:55
 msgid "Toggle normalize"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:3
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:8
-#: inginious/frontend/plugins/statistics/pages/user_statistics.py:28
+#: inginious/frontend/plugins/statistics/pages/user_statistics.py:38
 msgid "My statistics"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:16
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:28
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:34
 msgid "Trials and Best Grade"
 msgstr ""
 
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:21
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:33
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:39
 msgid "Bar Submissions Per Tasks"
 msgstr ""
 
-#: inginious/frontend/plugins/statistics/pages/user_statistics.py:27
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:27
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:50
+msgid "Bar Submissions Per Tasks (LATE)"
+msgstr ""
+
+#: inginious/frontend/plugins/statistics/pages/user_statistics.py:37
 msgid "Student's Tools"
 msgstr ""
 
@@ -4814,7 +4829,7 @@ msgid "Student choice"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:160
-msgid "Allow later submission"
+msgid "Allow late submission"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:162
@@ -5181,5 +5196,23 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "\"Later submission, it does not affect the grade\""
+#~ msgstr ""
+
+#~ msgid "Submissions Verdict (ALL)"
+#~ msgstr ""
+
+#~ msgid "\"Later submission: it does not affect the grade.\""
+#~ msgstr ""
+
+#~ msgid "Later submission"
+#~ msgstr ""
+
+#~ msgid "Submissions Verdict (NOT LATER)"
+#~ msgstr ""
+
+#~ msgid "Submissions Verdict (LATER)"
+#~ msgstr ""
+
+#~ msgid "Allow later submission"
 #~ msgstr ""
 

@@ -1,4 +1,4 @@
-$def with(course)
+$def with(course, has_late_submissions)
 
 $var title: $:_("My statistics")
 
@@ -21,6 +21,12 @@ $var Navbar: $:NavbarF()
             $:_("Bar Submissions Per Tasks")
         </a>
     </li>
+    $if has_late_submissions:
+        <li>
+            <a id="bar-late-submissions-per-tasks-tab" data-toggle="tab" href="#bar-late-submissions-per-tasks">
+                $:_("Bar Submissions Per Tasks (LATE)")
+            </a>
+        </li>
 </ul>
 
 <div class="tab-content">
@@ -39,6 +45,18 @@ $var Navbar: $:NavbarF()
         </div>
         <a href='#' onclick='UserStatistics.barSubmissionsPerTasks.downloadCsvAsync();'>$:_("Download CSV")</a>
     </div>
+    $if has_late_submissions:
+        <div id="bar-late-submissions-per-tasks" class="tab-pane fade">
+            <h3>$:_("Bar Submissions Per Tasks (LATE)")</h3>
+            <div id="late_submissions_per_task" class="statistics-plot">
+                <!-- Plotly chart will be drawn inside this DIV --></div>
+            <div id="normalize_late_submissions_per_task" class="normalize">
+                <button class="toggle_button" onclick="UserStatistics.barLateSubmissionsPerTasks.toggleNormalize()">
+                    $:_("Toggle normalize")
+                </button>
+            </div>
+            <a href='#' onclick='UserStatistics.barLateSubmissionsPerTasks.downloadCsvAsync();'>$:_("Download CSV")</a>
+        </div>
 </div>
 
 <script>

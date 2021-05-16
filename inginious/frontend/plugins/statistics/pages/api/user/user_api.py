@@ -4,6 +4,7 @@ import inginious.frontend.pages.api._api_page as api
 from inginious.frontend.pages.api._api_page import APIAuthenticatedPage
 from inginious.common.course_factory import CourseNotFoundException, CourseUnreadableException, InvalidNameException
 
+
 class UserApi(APIAuthenticatedPage):
     def API_GET(self):
         self.validate_parameters()
