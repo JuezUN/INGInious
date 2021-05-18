@@ -78,12 +78,12 @@ class UserHintsAPI(APIAuthenticatedPage):
         task_hints = self.get_task_hints(task)
 
         try:
-            total_penalty = self.user_hint_manager.unlock_hint(task_id, username, hint_id, task_hints)
+            self.user_hint_manager.unlock_hint(task_id, username, hint_id, task_hints)
         except Exception:
             return 200, {"status": "error", "message": _(
                 "An error occurred while updating status of the hint. The hint does not exist in the database.")}
 
-        return 200, {"status": "success", "message": _("Hint unlocked successfully."), "data": total_penalty}
+        return 200, {"status": "success", "message": _("Hint unlocked successfully.")}
 
     def get_task_hints(self, task):
 

@@ -122,8 +122,7 @@ function unlockNewHint(selected_hint_id){
         }
     }).done(function(result){
         showHintAlert(result.message,result.status);
-        loadHintsOnModal();
-        showHelp();
+        updateHintsModalData();
         sendUseTaskHintsAnalytics();
     })
 }
@@ -139,7 +138,8 @@ function sendUseTaskHintsAnalytics(){
     })
 }
 
-function showHelp(){
-    $("#hint_info").show(500);
-    $("#hint_container").hide();
+function updateHintsModalData(){
+    setTimeout(function(){
+        loadHintsOnModal()
+    }, 500)
 }

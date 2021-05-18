@@ -3,7 +3,7 @@ $def with (course, task, hints_data)
 $ registered_user = user_manager.course_is_user_registered(course)
 
 $if registered_user:
-    <h6>$:_("Hints")</h6>
+    <h3>$:_("Hints")</h3>
 
     <div class="tab-pane fade in active" id="hint_tab">
         <div class="list-group">
