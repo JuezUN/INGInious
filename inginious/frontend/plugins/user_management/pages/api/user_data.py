@@ -1,66 +1,9 @@
 import web
-from collections import OrderedDict
 
+from inginious.frontend.plugins.user_management.aggregation_generator import get_count_username_occurrences
 from inginious.frontend.plugins.user_management.collections_manager import CollectionsManagerSingleton
-from inginious.frontend.plugins.user_management.utils import get_collection_document
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
-
-
-def _create_occurrences_dict(collection_names):
-    collection_names = sorted(collection_names)
-    return OrderedDict.fromkeys(collection_names, 0)
-
-
-def _create_aggregation_to_count(username, information):
-    query = [
-        _create_match_pipeline(username, information),
-        {
-            "$count": "num_appearances"
-        }
-    ]
-    return query
-
-
-def _create_match_pipeline(username, information):
-    key_name_in_json = "path"
-    match_content = []
-    for info in information:
-        dictionary = {info[key_name_in_json]: username}
-        match_content.append(dictionary)
-
-    match = {
-        "$match": {"$or": match_content}
-    }
-    return match
-
-
-def has_username_key(collection_keys):
-    return "username" in collection_keys
-
-
-def get_count_username_occurrences(username, collection_manager):
-    collection_name_list = collection_manager.get_collections_names()
-    dictionary = _create_occurrences_dict(collection_name_list)
-    collection_information = get_collection_document()
-
-    def get_aggregation_result(name, query):
-        ans = collection_manager.make_aggregation(name, query)
-        return ans[0]["num_appearances"] if ans else 0
-
-    for collection_name in collection_name_list:
-        if collection_name in collection_information:
-            collection_info = collection_information[collection_name]
-            if collection_info[0]["path"] != "none":
-                aggregation = _create_aggregation_to_count(username, collection_info)
-                dictionary[collection_name] = get_aggregation_result(collection_name, aggregation)
-        else:
-            has_username = has_username_key(collection_manager.get_all_key_names(collection_name))
-            if has_username:
-                aggregation = _create_aggregation_to_count(username, [{"path": "username"}])
-                dictionary[collection_name] = get_aggregation_result(collection_name, aggregation)
-
-    return dictionary
 
 
 class UserDataAPI(SuperadminAPI):
