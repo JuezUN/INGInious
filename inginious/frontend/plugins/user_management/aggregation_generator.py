@@ -130,12 +130,12 @@ def _reduce_mongo_array(parameter, num_dimensions):
     reduce_dict = {
         "input": "$" + parameter,
         "initialValue": [],
-        "in": _recursive_concat(num_dimensions)
+        "in": _multi_concat_array(num_dimensions)
     }
     return {"$reduce": reduce_dict}
 
 
-def _recursive_concat(num_dimensions):
+def _multi_concat_array(num_dimensions):
     if num_dimensions < 2:
         return {"$concatArrays": ["$$value", "$$this"]}
     else:
