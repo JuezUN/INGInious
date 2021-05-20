@@ -1,4 +1,5 @@
 from inginious.frontend.parsable_text import ParsableText
+from pymongo import ReturnDocument
 
 class UserHintManagerSingleton(object):
     """
@@ -35,13 +36,13 @@ class UserHintManagerSingleton(object):
         """
         user_hints = self.get_user_hints(task_id, username)
         unlocked_hints_penalties = {}
+        data = {}
 
         if user_hints is None:
             self.insert_default_user_hints(task_id, username)
         else:
-            user_hints = self.update_unlocked_user_hints(task_id, username, user_hints, hints)
             unlocked_hints = user_hints["unlocked_hints"]
-
+            data["total_penalty"] = user_hints["total_penalty"]
             for hint in unlocked_hints:
                 unlocked_hints_penalties[hint["id"]] = hint["penalty"]
 
@@ -61,35 +62,45 @@ class UserHintManagerSingleton(object):
 
             hints_to_show[key] = unlocked_hints_data
 
-        return hints_to_show
+        data["hint_to_show"] = hints_to_show
+
+        return data
+
+    def get_task_users_hints(self, task_id):
+        return self._database.user_hints.find({"taskid": task_id})
 
     def get_user_hints(self, task_id, username):
         return self._database.user_hints.find_one({"taskid": task_id,
                                                          "username": username})
 
-    def update_unlocked_user_hints(self, task_id, username, user_hints, hints):
+    def update_unlocked_users_hints(self, task_id, task_hints):
 
         """
             Method to check and delete hints that were removed from the task. These
-            hints are removed in the unlocked user's hints.
+            hints are removed from unlocked hints for all users in task.
         """
-        unlocked_hints = user_hints["unlocked_hints"]
-        hints_ids = [hint["id"] for hint in hints.values()]
-        hints_to_remove = []
-        for hint in unlocked_hints:
-            if not hint["id"] in hints_ids:
-                hints_to_remove.append(hint["id"])
+        task_hints_ids = [hint["id"] for hint in task_hints.values()]
 
-        if hints_to_remove:
-            self.remove_deleted_hints(task_id, username, hints_to_remove)
-            self.update_total_penalty(task_id, username)
+        # Find the documents that need to be updated
+        task_users_hints = list(self._database.user_hints.find(
+            {"taskid": task_id,
+             "unlocked_hints": {
+                 "$elemMatch":{
+                    "id": {
+                        "$nin": task_hints_ids
+                    }
+                 }
+             }}))
 
-        return self.get_user_hints(task_id, username)
+        for user_hints in task_users_hints:
+            username = user_hints["username"]
+            self.remove_deleted_hints(task_id, username, task_hints_ids)
+
 
     def insert_default_user_hints(self, task_id, username):
 
         self._database.user_hints.insert(
-            {"taskid": task_id, "username": username, "unlocked_hints": [], "penalty": 0})
+            {"taskid": task_id, "username": username, "unlocked_hints": [], "total_penalty": 0})
 
     def is_hint_unlocked(self, task_id, username, hint_id):
 
@@ -103,7 +114,7 @@ class UserHintManagerSingleton(object):
 
         return False
 
-    def remove_deleted_hints(self, task_id, username, hints_to_remove):
+    def remove_deleted_hints(self, task_id, username, hints_ids):
 
         """ Method to delete hints from the user unlocked hints"""
         self._database.user_hints.find_one_and_update(
@@ -111,11 +122,13 @@ class UserHintManagerSingleton(object):
             {"$pull": {
                 "unlocked_hints": {
                     "id": {
-                        "$in":hints_to_remove
+                        "$nin": hints_ids
                     }
                 }
             }
-        })
+            }
+        )
+        self.update_total_penalty(task_id, username)
 
     def unlock_hint(self, task_id, username, hint_id, task_hints):
 
@@ -148,7 +161,7 @@ class UserHintManagerSingleton(object):
         new_penalty = min(new_penalty, 100.0)
 
         self._database.user_hints.find_one_and_update({"taskid": task_id, "username": username},
-                                         {"$set": {"penalty": new_penalty}
+                                         {"$set": {"total_penalty": new_penalty}
                                           })
 
     def parse_rst_content(self, content):

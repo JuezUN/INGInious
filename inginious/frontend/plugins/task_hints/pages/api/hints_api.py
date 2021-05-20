@@ -40,14 +40,14 @@ class UserHintsAPI(APIAuthenticatedPage):
         if not self.user_manager.course_is_user_registered(course, username):
             raise APIError(400, {"error": _("The user is not registered in this course.")})
 
-        hints_to_show = {}
+        hints_data = {}
 
         try:
-            hints_to_show = self.user_hint_manager.get_hint_content_by_status(task_id,username,self.get_task_hints(task))
+            hints_data = self.user_hint_manager.get_hint_content_by_status(task_id,username,self.get_task_hints(task))
         except Exception:
             raise APIError(400, {"message": _("An error occurred while getting the user's hints.")})
 
-        return 200, {"status": "success", "data": hints_to_show}
+        return 200, {"status": "success", "data": hints_data}
 
     def API_POST(self):
 

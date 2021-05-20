@@ -51,7 +51,7 @@ def get_user_total_penalty(taskid, username, database):
     if username and taskid:
         data = database.user_hints.find_one({"taskid": taskid, "username": username});
         if data:
-            penalty = data["penalty"]
+            penalty = data["total_penalty"]
 
     return penalty
 

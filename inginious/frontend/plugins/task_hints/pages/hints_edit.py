@@ -4,10 +4,14 @@ import json
 
 from collections import OrderedDict
 from inginious.frontend.pages.course_admin.task_edit import CourseEditTask
+from .user_hint_manager import UserHintManagerSingleton
 from .constants import use_minified
 
 _SHOW_HINTS_TEMPLATES_PATH = os.path.join(os.path.dirname(__file__), 'templates')
 
+def user_hint_manager() -> UserHintManagerSingleton:
+    """ Returns user hint manager singleton """
+    return UserHintManagerSingleton.get_instance()
 
 def edit_hints_tab(course, taskid, task_data, template_helper):
     tab_id = 'hints'
@@ -84,6 +88,9 @@ def on_task_submit(course, taskid, task_data, task_fs):
         # If task is a group task type, hints couldn't be created
         if task_data["groups"]:
             return json.dumps({"status": "error", "message": _("Hints cannot be added for group tasks mode")})
+
+    # Update users hints in task when saved
+    user_hint_manager().update_unlocked_users_hints(taskid,task_data["task_hints"])
 
 def set_hints_id(task_hints):
     for key in task_hints:

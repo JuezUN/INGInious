@@ -64,6 +64,10 @@ $if registered_user:
                                 $else:
                                     $:_("This task doesn't have hints to show")
                             </div>
+                            <div id="hints_total_penalty">
+                                <b>$:_("Total penalty to be applied: ")</b>
+                                <label>0.0%</label>
+                            </div>
                         </div>
                         <div class="col-sm-8">
 
@@ -77,7 +81,7 @@ $if registered_user:
                                     $:_("To unlock a hint, select it and click on the <b>Get hint</b> button. However, some hints may have a penalty that will be applied on your final submission score, so be careful if you want to unlock them!.")
                                 </div>
                                 <br/>
-                                $:_("<b>Note:</b> The sum of the hints penalties will we applied as a percentage of the total submission score.").
+                                $:_("<b>Note:</b> The sum of the hints penalties will we applied as a percentage of the total submission score.")
                             </div>
 
                             <!-- Template for unlocked hints -->
@@ -119,19 +123,18 @@ $if registered_user:
         </div>
     </div>
 
+    <script>
 
-<script>
+        function getCourseId(){
+            return "$course.get_id()";
+        }
 
-    function getCourseId(){
-        return "$course.get_id()";
-    }
+        function getTaskId(){
+            return "$task.get_id()";
+        }
 
-    function getTaskId(){
-        return "$task.get_id()";
-    }
+        $$(document).ready(function(){
+            loadHintsOnModal()
+        })
 
-    $$(document).ready(function(){
-        loadHintsOnModal()
-    })
-
-</script>
+    </script>

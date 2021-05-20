@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-17 23:13-0500\n"
+"POT-Creation-Date: 2021-05-19 20:22-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1180,7 +1180,7 @@ msgstr ""
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:195
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:82
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:116
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:120
 #: inginious/frontend/templates/auth.html:16
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
 #: inginious/frontend/templates/lti_login.html:30
@@ -3219,29 +3219,29 @@ msgstr ""
 msgid "No language"
 msgstr "Sin lenguaje"
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:14
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:18
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:6
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:15
 msgid "Hints"
 msgstr "Pistas"
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:61
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:65
 msgid "Some hints in task have empty content fields."
 msgstr "Hay pistas sin contenido en la tarea."
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:64
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:68
 msgid "Some hints in task have empty title fields."
 msgstr "Hay pistas sin títulos en la tarea."
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:70
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:74
 msgid "Penalty for hints must be between 0.0% and 100.0%."
 msgstr "La penalización de las pistas debe estar entre 0.0% y 100%."
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:74
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:78
 msgid "Each hint penalty must be a float."
 msgstr "La penalización de las pistas debe ser un número decimal."
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:86
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:90
 msgid "Hints cannot be added for group tasks mode"
 msgstr "No se pueden agregar pistas para tareas grupales"
 
@@ -3346,11 +3346,15 @@ msgstr "Sin penalización"
 msgid "This task doesn't have hints to show"
 msgstr "No hay pistas para esta tarea"
 
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:71
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:68
+msgid "Total penalty to be applied: "
+msgstr "Penalización total a aplicar: "
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:75
 msgid "Hints help"
 msgstr "Ayuda sobre las pistas"
 
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:73
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:77
 msgid ""
 "Task's hints offer you the opportunity to get additional information "
 "about how to address the problem and get a solution."
@@ -3358,7 +3362,7 @@ msgstr ""
 "Las pistas de la tarea te permiten obtener información adicional sobre "
 "cómo resolver el problema."
 
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:75
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:79
 msgid ""
 "Each hint is like a small help or suggestion with information that you "
 "can use to reach the solution more easily, this includes some code tips, "
@@ -3372,7 +3376,7 @@ msgstr ""
 "Intenta resolver el problema sin desbloquear las pistas, ya que estas "
 "podrían reducir tu nota final de la tarea."
 
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:77
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:81
 msgid ""
 "To unlock a hint, select it and click on the <b>Get hint</b> button. "
 "However, some hints may have a penalty that will be applied on your final"
@@ -3382,7 +3386,7 @@ msgstr ""
 "en cuenta que algunas pistas pueden aplicar una penalización en tu "
 "calificación final, por lo tanto, ¡ten cuidado al desbloquearlas!."
 
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:80
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:84
 msgid ""
 "<b>Note:</b> The sum of the hints penalties will we applied as a "
 "percentage of the total submission score."
@@ -3390,11 +3394,11 @@ msgstr ""
 "<b>Nota:</b> Todas las penalizaciones se aplican como porcentajes a la "
 "calificación final."
 
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:94
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:98
 msgid "Applied penalty"
 msgstr "Penalización aplicada"
 
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:104
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:108
 msgid ""
 "You have not unlocked this hint yet. <b>When you unlock the hint, a "
 "penalty will be applied on your task submission score</b>. Do you want to"
@@ -3404,11 +3408,11 @@ msgstr ""
 "aplicará una penalización en tu nota final</b>. ¿Estás seguro de que "
 "quieres desbloquearla?"
 
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:107
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:111
 msgid "This will reduce a <b></b> of your total submission score"
 msgstr "Esta pista tiene una penalización de <b></b>"
 
-#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:109
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:113
 msgid "Get Hint"
 msgstr "Desbloquear"
 

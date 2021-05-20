@@ -17,6 +17,10 @@
     border: 1px solid #e5e5e5;
 }
 
+#hints_total_penalty{
+    margin: 10px 0;
+}
+
 .hint_content{
     height: 300px;
     overflow: scroll;
@@ -24,7 +28,7 @@
     overflow-y: auto;
 }
 
-.hint_applied_penalty em{
+.hint_applied_penalty em, #hints_total_penalty label{
     color: red;
 }
 

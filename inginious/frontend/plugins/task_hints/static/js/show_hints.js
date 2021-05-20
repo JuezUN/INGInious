@@ -26,8 +26,9 @@ function loadHintsOnModal(){
         course_id: getCourseId(),
         task_id: getTaskId()
     }).done(function(result){
-        to_show_hints = result.data;
-        setHintsOnContainer(to_show_hints);
+        hints_data = result.data;
+        setHintsOnContainer(hints_data.hint_to_show);
+        setTotalPenalty(hints_data.total_penalty);
     })
 }
 
@@ -88,6 +89,13 @@ function setHintsOnContainer(to_show_hints){
     })
 }
 
+/* Set the hints total penalty of the user*/
+function setTotalPenalty(user_total_penalty){
+    if(user_total_penalty){
+        $("#hints_total_penalty label").html(user_total_penalty + "%")
+    }
+}
+
 /* To check if the unlock form for the hint already exists */
 function existsUnlockFormContent(index){
     let content = $("#hint_"+index).find(".hint_content .hint_unlock_form").html();
@@ -138,8 +146,13 @@ function sendUseTaskHintsAnalytics(){
     })
 }
 
+function showHelp(){
+    $("#hint_info").show(500);
+    $("#hint_container").hide();
+}
+
 function updateHintsModalData(){
-    setTimeout(function(){
-        loadHintsOnModal()
-    }, 500)
+    $("#hint_container").hide();
+    loadHintsOnModal();
+    $("#hint_container").show(500);
 }
