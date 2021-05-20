@@ -221,6 +221,15 @@ function sendSubmissionAnalytics() {
         if (!taskFormValid())
             return;
 
+        // The button related to late submissions has the attribute `late-submission`. In case it is a late
+        // submission, modify the key and name for the service adding at the end `late`.
+        const lateSubmission = $(this).attr("late-submission");
+        let lateSubmissionData = {key: "", name: ""};
+        if (typeof lateSubmission !== "undefined" && lateSubmission !== false) {
+            lateSubmissionData["key"] = "_late";
+            lateSubmissionData["name"] = " - Late";
+        }
+
         const environments = new Set(['multiple_languages', 'Data Science', 'Notebook', 'HDL']);
         if (!environments.has(getTaskEnvironment()))
             return;
@@ -237,8 +246,8 @@ function sendSubmissionAnalytics() {
 
         $.post('/api/analytics/', {
             service: {
-                key: services[`${getTaskEnvironment()}_${getProblemType()}`][0],
-                name: services[`${getTaskEnvironment()}_${getProblemType()}`][1]
+                key: services[`${getTaskEnvironment()}_${getProblemType()}`][0] + lateSubmissionData["key"],
+                name: services[`${getTaskEnvironment()}_${getProblemType()}`][1] + lateSubmissionData["name"]
             }, course_id: getCourseId(),
         });
     });

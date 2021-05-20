@@ -2,10 +2,16 @@ import web
 
 from .user_api import UserApi
 
+
 class BarSubmissionsPerTasksApi(UserApi):
     def statistics(self):
         username = self.user_manager.session_username()
         course_id = web.input().course_id
+        late_submissions = web.input().get("late_submissions", False) == "true"
+
+        late_submissions_filter = True
+        if not late_submissions:
+            late_submissions_filter = {"$in": [False, None]}
 
         submissions_per_task = self.database.submissions.aggregate([
             {
@@ -13,7 +19,8 @@ class BarSubmissionsPerTasksApi(UserApi):
                     {
                         "username": [username],
                         "courseid": course_id,
-                        "custom.custom_summary_result": {"$ne": None}
+                        "custom.custom_summary_result": {"$ne": None},
+                        "is_late_submission": late_submissions_filter
                     }
             },
             {

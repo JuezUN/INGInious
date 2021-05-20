@@ -140,4 +140,4 @@ class WebAppTask(Task):
         return self._regenerate_input_random
 
     def can_submit_after_deadline(self):
-        return self._data.get("allow_later_submission", False) and self._accessible.after_deadline()
+        return self._data.get("allow_late_submission", False) and self._accessible.after_deadline()

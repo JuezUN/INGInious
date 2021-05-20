@@ -36,7 +36,7 @@ function createObjectToPlotData(data, data_count_obj, tasks_ids, verdict, color_
     return plotData;
 }
 
-function plotVerdictStatisticsChart(id_div, data, statistic_title, normalized, api_url, generateTable) {
+function plotVerdictStatisticsChart(id_div, data, statistic_title, normalized, api_url, late_submissions = false, generateTable) {
     const data_count_obj = {};
     const tasks_ids = {};
     const tasks_names = {};
@@ -110,7 +110,8 @@ function plotVerdictStatisticsChart(id_div, data, statistic_title, normalized, a
         $.get(api_url, {
             course_id: adminStatistics.courseId,
             task_id: taskId,
-            summary_result: summaryResult
+            summary_result: summaryResult,
+            late_submissions
         }, generateTable, "json").fail(function () {
             errorContainer.html(createAlertHtml("alert-danger",
                 "Something went wrong while fetching the submission list. Try again later."));
@@ -208,19 +209,22 @@ const SubmissionsVerdictStatistic = (function () {
     SubmissionsVerdictStatistic.prototype = Object.create(Statistic.prototype);
 
     SubmissionsVerdictStatistic.prototype._plotData = function (data) {
-        const title = "Submissions Vs Verdicts (ALL)";
+        const title = "Submissions Vs Verdicts";
         const api_url = "/api/stats/admin/submissions_verdict_details";
         const tableGenerator = generateVerdictSubmissionTable;
         const table_id = "submissionsVerdictTable";
 
         plotVerdictStatisticsChart(this.containerId, data, title,
-            this.toggle_normalize_submissions_per_tasks, api_url, function (result) {
+            this.toggle_normalize_submissions_per_tasks, api_url, false, function (result) {
                 tableGenerator(table_id, result);
             });
     };
 
     SubmissionsVerdictStatistic.prototype._fetchData = function () {
-        return $.get('/api/stats/admin/submissions_verdict', {course_id: adminStatistics.courseId}, null, "json");
+        return $.get('/api/stats/admin/submissions_verdict', {
+            course_id: adminStatistics.courseId,
+            late_submissions: false
+        }, null, "json");
     };
 
     SubmissionsVerdictStatistic.prototype.toggleNormalize = function () {
@@ -229,6 +233,42 @@ const SubmissionsVerdictStatistic = (function () {
     };
 
     return SubmissionsVerdictStatistic;
+})();
+
+const LateSubmissionsVerdictStatistic = (function () {
+    function LateSubmissionsVerdictStatistic(containerId) {
+        Statistic.call(this);
+        this.toggle_normalize_submissions_per_tasks = false;
+        this.containerId = containerId;
+    }
+
+    LateSubmissionsVerdictStatistic.prototype = Object.create(Statistic.prototype);
+
+    LateSubmissionsVerdictStatistic.prototype._plotData = function (data) {
+        const title = "Submissions Vs Verdicts (LATE)";
+        const api_url = "/api/stats/admin/submissions_verdict_details";
+        const tableGenerator = generateVerdictSubmissionTable;
+        const table_id = "lateSubmissionsVerdictTable";
+
+        plotVerdictStatisticsChart(this.containerId, data, title,
+            this.toggle_normalize_submissions_per_tasks, api_url, true, function (result) {
+                tableGenerator(table_id, result);
+            });
+    };
+
+    LateSubmissionsVerdictStatistic.prototype._fetchData = function () {
+        return $.get('/api/stats/admin/submissions_verdict', {
+            course_id: adminStatistics.courseId,
+            late_submissions: true
+        }, null, "json");
+    };
+
+    LateSubmissionsVerdictStatistic.prototype.toggleNormalize = function () {
+        this.toggle_normalize_submissions_per_tasks = !this.toggle_normalize_submissions_per_tasks;
+        this.plotAsync();
+    };
+
+    return LateSubmissionsVerdictStatistic;
 })();
 
 const BestSubmissionsVerdictStatistic = (function () {
@@ -247,7 +287,7 @@ const BestSubmissionsVerdictStatistic = (function () {
         const table_id = "bestSubmissionsVerdictTable";
 
         plotVerdictStatisticsChart(this.containerId, data, title,
-            this.toggle_normalize_best_submissions_per_tasks, api_url, function (result) {
+            this.toggle_normalize_best_submissions_per_tasks, api_url, false, function (result) {
                 tableGenerator(table_id, result);
             });
     };
@@ -363,6 +403,7 @@ const tabToStatistic = {
     "gradeCount": new GradeCountStatistic("statisticsGradeDiv"),
     "gradeDistribution": new GradeDistributionStatistic("statisticsGradeDistributionDiv"),
     "submissionsVerdict": new SubmissionsVerdictStatistic("submissionsVerdictDiv"),
+    "lateSubmissionsVerdict": new LateSubmissionsVerdictStatistic("lateSubmissionsVerdictDiv"),
     "bestSubmissionsVerdict": new BestSubmissionsVerdictStatistic("bestSubmissionsVerdictDiv"),
 };
 

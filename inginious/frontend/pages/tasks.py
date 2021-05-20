@@ -118,7 +118,7 @@ class BaseTaskPage(object):
         self.user_manager.user_saw_task(username, courseid, taskid)
 
         is_staff = self.user_manager.has_staff_rights_on_course(course, username)
-        
+
         # Generate random inputs and save it into db
         random_input_list = []
         random.seed(str(username if username is not None else "") + taskid + courseid + str(time.time() if task.regenerate_input_random() else ""))
@@ -197,7 +197,7 @@ class BaseTaskPage(object):
                 # Verify rights
                 if not self.user_manager.task_can_user_submit(task, username, isLTI):
                     return json.dumps({"status": "error", "text": _("You are not allowed to submit for this task.")})
-                    
+
                 # Retrieve input random and check still valid
                 random_input = self.database.user_tasks.find_one({"courseid": task.get_course_id(), "taskid": task.get_id(), "username": username}, { "random": 1 })
                 random_input = random_input["random"] if "random" in random_input else []
@@ -230,12 +230,12 @@ class BaseTaskPage(object):
                 # Start the submission
                 try:
                     submissionid, oldsubids = self.submission_manager.add_job(task, userinput, debug)
-                    is_later_submission = self.submission_manager.get_submission(submissionid).get(
-                        "is_later_submission", False)
+                    is_late_submission = self.submission_manager.get_submission(submissionid).get(
+                        "is_late_submission", False)
                     web.header('Content-Type', 'application/json')
                     return json.dumps({"status": "ok", "submissionid": str(submissionid), "remove": oldsubids,
                                        "text": _("<b>Your submission has been sent...</b>"),
-                                       "is_later_submission": is_later_submission})
+                                       "is_late_submission": is_late_submission})
                 except Exception as ex:
                     web.header('Content-Type', 'application/json')
                     return json.dumps({"status": "error", "text": str(ex)})
@@ -271,9 +271,9 @@ class BaseTaskPage(object):
                 if not submission:
                     raise web.notfound()
                 web.header('Content-Type', 'application/json')
-                
+
                 return self.submission_to_json(task, submission, is_admin, True, tags=task.get_tags())
-                
+
             elif "@action" in userinput and userinput["@action"] == "kill" and "submissionid" in userinput:
                 self.submission_manager.kill_running_submission(userinput["submissionid"])  # ignore return value
                 web.header('Content-Type', 'application/json')
@@ -355,13 +355,13 @@ class BaseTaskPage(object):
             tojson["text"] = _("An internal error occurred. Please retry later. "
                                "If the error persists, send an email to the course administrator.")
 
-        later_submission_html = ""
-        later_submission_message = _("\"Later submission: it does not affect the grade.\"")
-        if data.get("is_later_submission", False):
-            later_submission_html = """  <span class="badge alert-info" id="is_later_submission" title={tooltip_message} 
+        late_submission_html = ""
+        late_submission_message = _("\"Late submission: it does not affect the grade.\"")
+        if data.get("is_late_submission", False):
+            late_submission_html = """  <span class="badge alert-info" id="is_late_submission" title={tooltip_message}
                                                 data-toggle="tooltip" data-placement="bottom">
                                     <i class="fa fa-clock-o fa-fw"></i> {title}
-                                </span>""".format(tooltip_message=later_submission_message, title=_("Later submission"))
+                                </span>""".format(tooltip_message=late_submission_message, title=_("Late submission"))
 
         penalty_message = ""
         user_grade_penalty = data.get("penalty",0.0)
@@ -369,7 +369,7 @@ class BaseTaskPage(object):
             penalty_message = _("<p>A penalty of <b>{penalty}%</b> was applied to this submission.</p>").format(penalty=user_grade_penalty)
 
         tojson["text"] = "<b>" + tojson["text"] + " " + _("[Submission #{submissionid}]").format(
-            submissionid=data["_id"]) + "</b>" + later_submission_html + "<br><br>" + penalty_message + data.get("text", "")
+            submissionid=data["_id"]) + "</b>" + late_submission_html + "<br><br>" + penalty_message + data.get("text", "")
         tojson["text"] = self.plugin_manager.call_hook_recursive("feedback_text", task=task, submission=data, text=tojson["text"])["text"]
 
         if reloading:

@@ -14,7 +14,7 @@ _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 def get_manual_scoring_link_code(course):
     """ Add new Manual scoring item to side bar """
     manual_scoring_str = _("Manual Scoring")
-    return "manual_scoring", '<i class="fa fa-table" aria-hidden="true"></i> {manual_scoring_str}'.format(
+    return "manual_scoring", '<i class="fa fa-table fa-fw" aria-hidden="true"></i>&nbsp; {manual_scoring_str}'.format(
         manual_scoring_str=manual_scoring_str)
 
 

@@ -27,7 +27,7 @@ def init(plugin_manager, course_factory, client, config):
         if not plugin_manager.get_user_manager().has_admin_rights_on_course(course):
             return None
         else:
-            return "problem_bank", "<i class='fa fa-database' aria-hidden='true'></i>" + _(" Problem bank")
+            return "problem_bank", "<i class='fa fa-database fa-fw' aria-hidden='true'></i>&nbsp;" + _(" Problem bank")
 
     if "problem_banks" not in plugin_manager.get_database().collection_names():
         # This exception is handle as the web server main lunch several processes and run this line at the same time.

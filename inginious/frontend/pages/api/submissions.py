@@ -52,7 +52,7 @@ def _get_submissions(course_factory, submission_manager, user_manager, translati
             "id": str(submission["_id"]),
             "submitted_on": str(submission["submitted_on"]),
             "status": submission["status"],
-            "is_later_submission": submission.get("is_later_submission", False)
+            "is_late_submission": submission.get("is_late_submission", False)
         }
 
         if with_input:
