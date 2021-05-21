@@ -50,3 +50,11 @@ class CollectionsManagerSingleton:
     def make_aggregation(self, collection_name, query):
         collection = getattr(self.db, collection_name)
         return list(collection.aggregate(query))
+
+    def make_update(self, collection_name, filters, update, settings):
+        collection = getattr(self.db, collection_name)
+        return collection.update(filters, update, settings)
+
+    def make_update_many(self, collection_name, filters, update, settings):
+        collection = getattr(self.db, collection_name)
+        return collection.updateMany(filters, update, settings)

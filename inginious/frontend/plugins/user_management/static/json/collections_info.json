@@ -11,5 +11,6 @@
   "submissions":[{"path": "username", "array_dimension": 1}],
   "tasks_cache": [{"path": "none"}],
   "user_tasks":[{"path": "username", "array_dimension": 0}],
-  "users": [{"path": "username", "array_dimension": 0}]
+  "users": [{"path": "username", "array_dimension": 0}],
+  "users_changes" : [{"path": "none"}]
 }

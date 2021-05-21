@@ -10,7 +10,12 @@ $def NavbarF():
 
 $var Navbar: $:NavbarF()
 
-
+$ input_len_error = _("not large enough")
+$ input_email_error = _("An email is requested")
+$ email = _("Email")
+$ name = _("Name")
+$ username = _("Username")
+$ username_confirmation_error = _("Username does not match")
 <div class="container">
     <div class="row">
         <div class="col-xs-8 col-centered">
@@ -76,7 +81,7 @@ $var Navbar: $:NavbarF()
                             </table>
                         </div>
                         <div class="col-md-offset-11">
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#uploadModal">
+                            <button type="button" class="btn btn-info" id="updateBtn">
                                 $:_("Update")
                             </button>
                         </div>
@@ -99,6 +104,7 @@ $var Navbar: $:NavbarF()
                 <h4>
                     $:_("Are you sure you want to make this change?")
                 </h4>
+                <ul id="listParametersChanged"></ul>
                 <h5>$:_("Type the username"): <b id="usernameToConfirm">Student1</b></h5>
                 <form class="">
                     <div class="form-group">
@@ -109,10 +115,18 @@ $var Navbar: $:NavbarF()
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">$:_("Cancel")</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" id='updateDataConfirmBtn'>
+                <button type="button" class="btn btn-danger" id='updateDataConfirmBtn'>
                     $:_("Confirm")
                 </button>
             </div>
         </div>
     </div>
 </div>
+<script>
+    const inputLenError = "$:input_len_error";
+    const emailFormatError = "$:input_email_error";
+    const usernameText = "$:username";
+    const emailText = "$:email";
+    const nameText = "$:name";
+    const usernameMatchError = "$:username_confirmation_error";
+</script>

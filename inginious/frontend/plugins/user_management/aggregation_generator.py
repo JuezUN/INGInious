@@ -168,3 +168,43 @@ def _filter_array_by_username(username, parameter):
 def _project_sum(parameter_names):
     parameter_names = ["$" + parameter for parameter in parameter_names]
     return {"$project": {"num_appearances": {"$sum": parameter_names}}}
+
+
+def _make_user_changes_register(user_initial_info, user_final_info):
+    register = {
+
+    }
+
+
+def change_name(username, param, collections_manager):
+    user_filter = {
+        "username": username
+    }
+    new_name = {
+        "$set": {
+            "realname": param
+        }
+    }
+    settings = {
+        "upsert": False
+    }
+    collections_manager.make_update("users", user_filter, new_name, settings)
+
+
+def change_email(username, param, collections_manager):
+    user_filter_users = {
+        "username": username
+    }
+    new_email_users = {
+        "$set": {
+            "email": param
+        }
+    }
+    settings = {
+        "upsert": False
+    }
+    collections_manager.make_update("users", user_filter_users, new_email_users, settings)
+
+
+def change_username(username, param, collections_manager):
+    pass
