@@ -16,9 +16,8 @@ function addListenerUpdateBtn() {
         if (!dictionaryIsEmpty(requestToUpdate)) {
             configModal();
             confirmListener();
-            cleanList();
-        }else {
-            //TODO: Message
+        } else {
+            new MessageBox(NOTIFICATIONS_ID, "No modification has been made", "danger", false);
         }
     });
 }
@@ -32,8 +31,9 @@ function confirmListener() {
     $(`#${UPDATE_CONFIRM_ID}`).on("click", function () {
         requestToUpdate["username"] = currentUsername;
         if (checkConfirmationInput()) {
-            $.post("/api/user_management",requestToUpdate,function (){
-
+            $.post("/api/user_management", requestToUpdate, function () {
+                $(`#${MODAL_ID}`).modal("hide");
+                new MessageBox(NOTIFICATIONS_ID, "OK", "success", false);
             });
         }
     });
@@ -51,7 +51,7 @@ function checkConfirmationInput() {
 }
 
 function createListElement(text) {
-    return `<li>${text}</li>`;
+    return `<li><b>${text}</b></li>`;
 }
 
 function addListElement(liElement) {
@@ -60,21 +60,22 @@ function addListElement(liElement) {
 
 function validateInputs() {
     requestToUpdate = {};
+    cleanList();
     if (checkUsername()) {
         requestToUpdate["new_username"] = getInputValue(NEW_USERNAME_INPUT_ID);
         addListElement(createListElement(usernameText));
-    }
-    if (checkEmailInput()) {
-        requestToUpdate["email"] = getInputValue(NEW_EMAIL_INPUT_ID);
-        addListElement(createListElement(emailText));
     }
     if (checkName()) {
         requestToUpdate["name"] = getInputValue(NEW_NAME_INPUT_ID);
         addListElement(createListElement(nameText));
     }
+    if (checkEmailInput()) {
+        requestToUpdate["email"] = getInputValue(NEW_EMAIL_INPUT_ID);
+        addListElement(createListElement(emailText));
+    }
     return requestToUpdate;
 }
 
-function cleanList(){
+function cleanList() {
     $(`#${PARAMETERS_LIST_ID}`).empty();
 }

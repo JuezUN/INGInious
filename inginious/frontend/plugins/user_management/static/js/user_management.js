@@ -5,6 +5,7 @@ const NEW_EMAIL_INPUT_ID = "newEmailInput";
 const USERNAME_OR_EMAIL_INPUT_ID = "usernameOrEmailInput";
 const USER_SETTINGS_ID = "userSettings";
 const CHECK_BTN_ID = "checkBtn";
+const NOTIFICATIONS_ID = "notificationsDiv";
 
 let currentEmail = "";
 let currentName = "";

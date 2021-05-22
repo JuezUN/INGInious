@@ -181,12 +181,11 @@ def change_name(username, param, collections_manager):
         "username": username
     }
     new_name = {
-        "$set": {
-            "realname": param
-        }
+        "$set": {"realname": param}
     }
     settings = {
-        "upsert": False
+        "upsert": False,
+        "multi": False
     }
     collections_manager.make_update("users", user_filter, new_name, settings)
 
@@ -196,15 +195,30 @@ def change_email(username, param, collections_manager):
         "username": username
     }
     new_email_users = {
-        "$set": {
-            "email": param
-        }
+        "$set": {"email": param}
     }
     settings = {
-        "upsert": False
+        "upsert": False,
+        "multi": False
     }
     collections_manager.make_update("users", user_filter_users, new_email_users, settings)
 
 
 def change_username(username, param, collections_manager):
     pass
+
+
+def _array_filter(username, path):
+    return {path: {"$in": [username]}}
+
+
+def _normal_update_filter(username, path):
+    return {path: username}
+
+
+def _push_array(username, new_username, path, array_of_objects_levels=None):
+    if array_of_objects_levels is None:
+        array_of_objects_levels = []
+    if array_of_objects_levels:
+        pass  # TODO: add .$
+    return {path: ""}

@@ -17,3 +17,4 @@ class UserManagementPage(SuperadminAuthPage):
             self.template_helper.add_javascript("/user_management/static/js/user_management.js")
             self.template_helper.add_javascript("/user_management/static/js/user_data.js")
             self.template_helper.add_javascript("/user_management/static/js/confirmation_modal.js")
+            self.template_helper.add_javascript("/contact_page/static/js/message_box.js")

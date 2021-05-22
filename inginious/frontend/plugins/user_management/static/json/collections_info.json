@@ -1,16 +1,88 @@
 {
-  "aggregations": [{"path": "students", "array_dimension": 1},{"path": "tutors", "array_dimension": 1}, {"path": "groups.students", "array_dimension": 2}],
-  "analytics": [{"path": "username", "array_dimension": 0}],
-  "custom_tests": [{"path": "username", "array_dimension": 0}],
-  "fs.chunks": [{"path": "none"}],
-  "fs.files": [{"path": "none"}],
-  "plagiarism_checks": [{"path": "none"}],
-  "problem_banks": [{"path": "none"}],
-  "services": [{"path": "none"}],
-  "sessions": [{"path": "data.username", "array_dimension": 0}],
-  "submissions":[{"path": "username", "array_dimension": 1}],
-  "tasks_cache": [{"path": "none"}],
-  "user_tasks":[{"path": "username", "array_dimension": 0}],
-  "users": [{"path": "username", "array_dimension": 0}],
-  "users_changes" : [{"path": "none"}]
+  "aggregations": [
+    {
+      "path": "students",
+      "array_dimension": 1
+    },
+    {
+      "path": "tutors",
+      "array_dimension": 1
+    },
+    {
+      "path": "groups.students",
+      "array_dimension": 2,
+      "array_objects_levels": [1]
+    }
+  ],
+  "analytics": [
+    {
+      "path": "username",
+      "array_dimension": 0
+    }
+  ],
+  "custom_tests": [
+    {
+      "path": "username",
+      "array_dimension": 0
+    }
+  ],
+  "fs.chunks": [
+    {
+      "path": "none"
+    }
+  ],
+  "fs.files": [
+    {
+      "path": "none"
+    }
+  ],
+  "plagiarism_checks": [
+    {
+      "path": "none"
+    }
+  ],
+  "problem_banks": [
+    {
+      "path": "none"
+    }
+  ],
+  "services": [
+    {
+      "path": "none"
+    }
+  ],
+  "sessions": [
+    {
+      "path": "data.username",
+      "array_dimension": 0
+    }
+  ],
+  "submissions": [
+    {
+      "path": "username",
+      "array_dimension": 1
+    }
+  ],
+  "tasks_cache": [
+    {
+      "path": "none"
+    }
+  ],
+  "user_tasks": [
+    {
+      "path": "username",
+      "array_dimension": 0
+    }
+  ],
+  "users": [
+    {
+      "path": "username",
+      "array_dimension": 0
+    }
+  ],
+  "users_changes": [
+    {
+      "path": "none"
+    }
+  ]
 }

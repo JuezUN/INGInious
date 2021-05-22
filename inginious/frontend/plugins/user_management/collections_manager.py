@@ -53,7 +53,7 @@ class CollectionsManagerSingleton:
 
     def make_update(self, collection_name, filters, update, settings):
         collection = getattr(self.db, collection_name)
-        return collection.update(filters, update, settings)
+        return collection.update(filters, update, upsert=settings["upsert"], multi=settings["multi"])
 
     def make_update_many(self, collection_name, filters, update, settings):
         collection = getattr(self.db, collection_name)

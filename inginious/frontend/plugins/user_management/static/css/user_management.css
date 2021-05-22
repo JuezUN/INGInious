@@ -13,6 +13,10 @@
     margin-right: auto;
 }
 
+.py-1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
 .col-centered {
     float: none;
     margin: 0 auto;
