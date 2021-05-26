@@ -22,7 +22,7 @@ function hideHintAlert(alert){
 function loadHintsOnModal(){
     let to_show_hints = {};
 
-    $.get("/api/hints_api/", {
+    $.get("/api/user_hints_api/", {
         course_id: getCourseId(),
         task_id: getTaskId()
     }).done(function(result){
@@ -121,7 +121,7 @@ function changeHint(key){
 /* Add the hint on the student unlocked hints list*/
 function unlockNewHint(selected_hint_id){
     $.ajax({
-        url: "/api/hints_api/",
+        url: "/api/user_hints_api/",
         method: "POST",
         data: {
             course_id: getCourseId(),

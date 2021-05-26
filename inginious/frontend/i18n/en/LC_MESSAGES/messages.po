@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-19 21:55-0500\n"
+"POT-Creation-Date: 2021-05-25 23:30-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -2930,32 +2930,32 @@ msgstr ""
 msgid "Hints cannot be added for group tasks mode"
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:33
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:68
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:33
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:68
 msgid "The course does not exist or the user does not have access."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:38
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:73
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:38
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:73
 msgid "The task does not exist in the course."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:41
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:76
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:41
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:76
 msgid "The user is not registered in this course."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:48
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:48
 msgid "An error occurred while getting the user's hints."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:83
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:83
 msgid ""
 "An error occurred while updating status of the hint. The hint does not "
 "exist in the database."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_api.py:86
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:86
 msgid "Hint unlocked successfully."
 msgstr ""
 

@@ -154,6 +154,39 @@ function eraseModalInputs(){
     codeEditors["task_hints_content"].getDoc().setValue("");
 };
 
+/** 
+  * Monkey-patch the function `studio_submit` from studio to save the task, including
+  * task hints, to get the ids for new hints and set them in table
+*/
+
+const original_studio_submit = studio_submit;
+studio_submit = () =>{
+    original_studio_submit();
+    getTaskHintsId();
+}
+
+function getTaskHintsId(){
+    $.get("/api/edit_hints_api/",{
+        course_id : getCourseId(),
+        task_id : getTaskId()
+    }).done(function(result){
+        task_hints=result.data;
+        setIdOnNewHints(task_hints);
+    })
+}
+
+/* Set the ids for new hints, when task is saved */
+function setIdOnNewHints(task_hints){
+    let hint_id;
+    $.each(task_hints,function(index, hint){
+        hint_id = $("#hint_info_id_"+index).val();
+        //Check if hint doesn't has it's respective id, and set them in table
+        if(!hint_id){
+            $("#hint_info_id_"+index).val(hint.id);
+        }
+    })
+}
+
 $("#hints_edit_modal").on("shown.bs.modal", function () {
     loadHintContentCodeEditor();
 });
