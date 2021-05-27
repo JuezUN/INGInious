@@ -4,7 +4,6 @@
 # more information about the licensing of this file.
 
 
-
 import datetime
 import glob
 import hashlib
@@ -22,18 +21,24 @@ from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 class CourseDangerZonePage(INGIniousAdminPage):
     """ Course administration page: list of classrooms """
     _logger = logging.getLogger("inginious.webapp.danger_zone")
+    _COLLECTIONS = {"aggregations", "user_tasks", "submissions", "plagiarism_checks", "tasks_cache", "problem_banks"}
 
-    def wipe_course(self, courseid):
+    def _wipe_course(self, courseid):
         submissions = self.database.submissions.find({"courseid": courseid})
+
+        gridfs = self.submission_manager.get_gridfs()
         for submission in submissions:
             for key in ["input", "archive"]:
-                gridfs = self.submission_manager.get_gridfs()
-                if key in submission and type(submission[key]) == bson.objectid.ObjectId and gridfs.exists(submission[key]):
+                if key in submission and type(submission[key]) == bson.objectid.ObjectId and gridfs.exists(
+                        submission[key]):
                     gridfs.delete(submission[key])
 
-        self.database.aggregations.remove({"courseid": courseid})
-        self.database.user_tasks.remove({"courseid": courseid})
-        self.database.submissions.remove({"courseid": courseid})
+        for collection_name in self._COLLECTIONS:
+            collection = self.database[collection_name]
+            if collection.find_one({"courseid": courseid}):
+                collection.remove({"courseid": courseid})
+            else:
+                collection.remove({"course_id": courseid})
 
         self._logger.info("Course %s wiped.", courseid)
 
@@ -45,63 +50,73 @@ class CourseDangerZonePage(INGIniousAdminPage):
             os.makedirs(os.path.dirname(filepath))
 
         with zipfile.ZipFile(filepath, "w", allowZip64=True) as zipf:
-            aggregations = self.database.aggregations.find({"courseid": courseid})
-            zipf.writestr("aggregations.json", bson.json_util.dumps(aggregations), zipfile.ZIP_DEFLATED)
-
-            user_tasks = self.database.user_tasks.find({"courseid": courseid})
-            zipf.writestr("user_tasks.json", bson.json_util.dumps(user_tasks), zipfile.ZIP_DEFLATED)
-
-            submissions = self.database.submissions.find({"courseid": courseid})
-            erroneous_subs = set()
-
-            for submission in submissions:
-                for key in ["input", "archive"]:
-                    gridfs = self.submission_manager.get_gridfs()
-                    if key in submission and type(submission[key]) == bson.objectid.ObjectId:
-                        if gridfs.exists(submission[key]):
-                            infile = gridfs.get(submission[key])
-                            zipf.writestr(key + "/" + str(submission[key]) + ".data", infile.read(), zipfile.ZIP_DEFLATED)
-                        else:
-                            self._logger.error("Missing {} in grifs, skipping submission {}".format(str(submission[key]), str(submission["_id"])))
-                            erroneous_subs.add(submission["_id"])
-
-            submissions.rewind()
-            submissions = [submission for submission in submissions if submission["_id"] not in erroneous_subs]
-            zipf.writestr("submissions.json", bson.json_util.dumps(submissions), zipfile.ZIP_DEFLATED)
+            for collection_name in self._COLLECTIONS:
+                collection = self.database[collection_name]
+                if collection_name == "submissions":
+                    data = self._dump_submissions(zipf, courseid)
+                elif collection.find_one({"courseid": courseid}):
+                    data = collection.find({"courseid": courseid})
+                else:
+                    data = collection.find({"course_id": courseid})
+                zipf.writestr("{}.json".format(collection_name), bson.json_util.dumps(data), zipfile.ZIP_DEFLATED)
 
         self._logger.info("Course %s dumped to backup directory.", courseid)
-        self.wipe_course(courseid)
+        self._wipe_course(courseid)
+
+    def _dump_submissions(self, zipf, courseid):
+        submissions = self.database.submissions.find({"courseid": courseid})
+        erroneous_subs = set()
+
+        gridfs = self.submission_manager.get_gridfs()
+        for submission in submissions:
+            for key in ["input", "archive"]:
+                if key in submission and type(submission[key]) == bson.objectid.ObjectId:
+                    if gridfs.exists(submission[key]):
+                        infile = gridfs.get(submission[key])
+                        zipf.writestr(key + "/" + str(submission[key]) + ".data", infile.read(),
+                                      zipfile.ZIP_DEFLATED)
+                    else:
+                        self._logger.error(
+                            "Missing {} in grifs, skipping submission {}".format(str(submission[key]),
+                                                                                 str(submission["_id"])))
+                        erroneous_subs.add(submission["_id"])
+
+        submissions.rewind()
+        return [submission for submission in submissions if submission["_id"] not in erroneous_subs]
 
     def restore_course(self, courseid, backup):
         """ Restores a course of given courseid to a date specified in backup (format : YYYYMMDD.HHMMSS) """
-        self.wipe_course(courseid)
+        self._wipe_course(courseid)
 
         filepath = os.path.join(self.backup_dir, courseid, backup + ".zip")
         with zipfile.ZipFile(filepath, "r") as zipf:
 
-            aggregations = bson.json_util.loads(zipf.read("aggregations.json").decode("utf-8"))
-            if len(aggregations) > 0:
-                self.database.aggregations.insert(aggregations)
+            for collection_name in self._COLLECTIONS:
+                if collection_name == "submissions":
+                    data = self._restore_submissions(zipf)
+                else:
+                    data = bson.json_util.loads(zipf.read("{}.json".format(collection_name)).decode("utf-8"))
 
-            user_tasks = bson.json_util.loads(zipf.read("user_tasks.json").decode("utf-8"))
-            if len(user_tasks) > 0:
-                self.database.user_tasks.insert(user_tasks)
-
-            submissions = bson.json_util.loads(zipf.read("submissions.json").decode("utf-8"))
-            for submission in submissions:
-                for key in ["input", "archive"]:
-                    if key in submission and type(submission[key]) == bson.objectid.ObjectId:
-                        submission[key] = self.submission_manager.get_gridfs().put(zipf.read(key + "/" + str(submission[key]) + ".data"))
-
-            if len(submissions) > 0:
-                self.database.submissions.insert(submissions)
+                if len(data) > 0:
+                    self.database[collection_name].insert(data)
 
         self._logger.info("Course %s restored from backup directory.", courseid)
+
+    def _restore_submissions(self, zipf):
+        submissions = bson.json_util.loads(zipf.read("submissions.json").decode("utf-8"))
+
+        gridfs = self.submission_manager.get_gridfs()
+        for submission in submissions:
+            for key in ["input", "archive"]:
+                if key in submission and type(submission[key]) == bson.objectid.ObjectId:
+                    submission[key] = gridfs.put(zipf.read(key + "/" + str(submission[key]) + ".data"))
+
+        return submissions
 
     def delete_course(self, courseid):
         """ Erase all course data """
         # Wipes the course (delete database)
-        self.wipe_course(courseid)
+        self._wipe_course(courseid)
 
         # Deletes the course from the factory (entire folder)
         self.course_factory.delete_course(courseid)
