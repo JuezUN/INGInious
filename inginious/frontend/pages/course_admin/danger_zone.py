@@ -21,7 +21,7 @@ from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
 class CourseDangerZonePage(INGIniousAdminPage):
     """ Course administration page: list of classrooms """
     _logger = logging.getLogger("inginious.webapp.danger_zone")
-    _COLLECTIONS = {"aggregations", "user_tasks", "submissions", "plagiarism_checks", "tasks_cache", "problem_banks"}
+    _COLLECTIONS = {"aggregations", "user_tasks", "submissions", "plagiarism_checks"}
 
     def _wipe_course(self, courseid):
         submissions = self.database.submissions.find({"courseid": courseid})
