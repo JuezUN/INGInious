@@ -9,9 +9,11 @@ from .constants import use_minified
 
 _SHOW_HINTS_TEMPLATES_PATH = os.path.join(os.path.dirname(__file__), 'templates')
 
+
 def user_hint_manager() -> UserHintManagerSingleton:
     """ Returns user hint manager singleton """
     return UserHintManagerSingleton.get_instance()
+
 
 def edit_hints_tab(course, taskid, task_data, template_helper):
     tab_id = 'hints'
@@ -71,14 +73,15 @@ def on_task_submit(course, taskid, task_data, task_fs):
 
         try:
             if penalty and (float(penalty) < 0 or 100 < float(penalty)):
-                return json.dumps({"status": "error", "message": _("Penalty for hints must be between 0.0% and 100.0%.")})
+                return json.dumps(
+                    {"status": "error", "message": _("Penalty for hints must be between 0.0% and 100.0%.")})
             elif not penalty:
                 task_data["task_hints"][hint_id]["penalty"] = 0.0
         except (ValueError, TypeError):
             return json.dumps({"status": "error", "message": _("Each hint penalty must be a float.")})
 
         else:
-            task_data["task_hints"][hint_id]["penalty"] = round(float(penalty),1)
+            task_data["task_hints"][hint_id]["penalty"] = round(float(penalty), 1)
 
     # Add id for hints
     task_data["task_hints"] = set_hints_id(task_data["task_hints"])
@@ -90,7 +93,8 @@ def on_task_submit(course, taskid, task_data, task_fs):
             return json.dumps({"status": "error", "message": _("Hints cannot be added for group tasks mode")})
 
     # Update users hints in task when saved
-    user_hint_manager().update_unlocked_users_hints(taskid,task_data["task_hints"])
+    user_hint_manager().update_unlocked_users_hints(taskid, task_data["task_hints"])
+
 
 def set_hints_id(task_hints):
     for key in task_hints:

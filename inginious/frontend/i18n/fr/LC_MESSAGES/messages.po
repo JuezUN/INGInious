@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-25 23:30-0500\n"
+"POT-Creation-Date: 2021-05-26 18:46-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -2952,29 +2952,29 @@ msgstr ""
 msgid "No language"
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:18
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:20
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:6
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:15
 msgid "Hints"
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:65
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:67
 msgid "Some hints in task have empty content fields."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:68
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:70
 msgid "Some hints in task have empty title fields."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:74
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:77
 msgid "Penalty for hints must be between 0.0% and 100.0%."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:78
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:81
 msgid "Each hint penalty must be a float."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:90
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:93
 msgid "Hints cannot be added for group tasks mode"
 msgstr ""
 

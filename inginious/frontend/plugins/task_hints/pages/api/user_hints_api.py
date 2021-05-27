@@ -43,7 +43,7 @@ class UserHintsAPI(APIAuthenticatedPage):
         hints_data = {}
 
         try:
-            hints_data = self.user_hint_manager.get_hint_content_by_status(task_id,username,self.get_task_hints(task))
+            hints_data = self.user_hint_manager.get_hint_content_by_status(task_id, username, self.get_task_hints(task))
         except Exception:
             raise APIError(400, {"message": _("An error occurred while getting the user's hints.")})
 

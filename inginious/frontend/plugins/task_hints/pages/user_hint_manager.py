@@ -1,6 +1,7 @@
 from inginious.frontend.parsable_text import ParsableText
 from pymongo import ReturnDocument
 
+
 class UserHintManagerSingleton(object):
     """
         Manage the user's hints data in database. This includes the hints
@@ -71,7 +72,7 @@ class UserHintManagerSingleton(object):
 
     def get_user_hints(self, task_id, username):
         return self._database.user_hints.find_one({"taskid": task_id,
-                                                         "username": username})
+                                                   "username": username})
 
     def update_unlocked_users_hints(self, task_id, task_hints):
 
@@ -85,17 +86,16 @@ class UserHintManagerSingleton(object):
         task_users_hints = list(self._database.user_hints.find(
             {"taskid": task_id,
              "unlocked_hints": {
-                 "$elemMatch":{
-                    "id": {
-                        "$nin": task_hints_ids
-                    }
+                 "$elemMatch": {
+                     "id": {
+                         "$nin": task_hints_ids
+                     }
                  }
              }}))
 
         for user_hints in task_users_hints:
             username = user_hints["username"]
             self.remove_deleted_hints(task_id, username, task_hints_ids)
-
 
     def insert_default_user_hints(self, task_id, username):
 
@@ -161,8 +161,8 @@ class UserHintManagerSingleton(object):
         new_penalty = min(new_penalty, 100.0)
 
         self._database.user_hints.find_one_and_update({"taskid": task_id, "username": username},
-                                         {"$set": {"total_penalty": new_penalty}
-                                          })
+                                                      {"$set": {"total_penalty": new_penalty}
+                                                       })
 
     def parse_rst_content(self, content):
 
