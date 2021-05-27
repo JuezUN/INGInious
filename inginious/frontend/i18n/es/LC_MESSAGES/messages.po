@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-26 18:46-0500\n"
+"POT-Creation-Date: 2021-05-26 20:02-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -3260,26 +3260,26 @@ msgstr "La penalización de las pistas debe ser un número decimal."
 msgid "Hints cannot be added for group tasks mode"
 msgstr "No se pueden agregar pistas para tareas grupales"
 
-#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:33
-#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:68
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:32
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:67
 msgid "The course does not exist or the user does not have access."
 msgstr "El curso no existe o el usuario no tiene permisos."
 
-#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:38
-#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:73
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:37
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:72
 msgid "The task does not exist in the course."
 msgstr "Esta tarea no existe en el curso"
 
-#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:41
-#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:76
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:40
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:75
 msgid "The user is not registered in this course."
 msgstr "El usuario no está registrado a este curso."
 
-#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:48
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:47
 msgid "An error occurred while getting the user's hints."
 msgstr "Un error ha ocurrido al obtener las pistas del usuario."
 
-#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:83
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:82
 msgid ""
 "An error occurred while updating status of the hint. The hint does not "
 "exist in the database."
@@ -3287,7 +3287,7 @@ msgstr ""
 "Un error ha ocurrido al actualizar la pista. La pista no existe en la "
 "base de datos."
 
-#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:86
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:85
 msgid "Hint unlocked successfully."
 msgstr "La pista fue desbloqueada exitosamente"
 

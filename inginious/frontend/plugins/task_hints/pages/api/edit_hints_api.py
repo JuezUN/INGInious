@@ -1,13 +1,11 @@
-import json
-import os
 import web
 
-from inginious.frontend.pages.api._api_page import APIAuthenticatedPage, APIError
+from inginious.frontend.pages.api._api_page import APIError
+from inginious.frontend.plugins.utils.admin_api import AdminApi
 from inginious.frontend.plugins.utils import get_mandatory_parameter
-from inginious.common.course_factory import InvalidNameException, CourseNotFoundException
 
 
-class EditHintsAPI(APIAuthenticatedPage):
+class EditHintsAPI(AdminApi):
 
     def API_GET(self):
 
@@ -20,10 +18,7 @@ class EditHintsAPI(APIAuthenticatedPage):
         course_id = get_mandatory_parameter(input_data, 'course_id')
         task_id = get_mandatory_parameter(input_data, 'task_id')
 
-        try:
-            course = self.course_factory.get_course(course_id)
-        except (InvalidNameException, CourseNotFoundException):
-            raise APIError(400, {"error": "The course does not exist or the user does not have permissions"})
+        course = self.get_course_and_check_rights(course_id)
 
         try:
             task = self.task_factory.get_task(course, task_id)

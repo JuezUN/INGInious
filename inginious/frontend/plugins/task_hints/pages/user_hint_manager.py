@@ -1,5 +1,4 @@
 from inginious.frontend.parsable_text import ParsableText
-from pymongo import ReturnDocument
 
 
 class UserHintManagerSingleton(object):

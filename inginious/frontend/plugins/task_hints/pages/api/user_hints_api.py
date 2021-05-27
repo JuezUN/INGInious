@@ -1,4 +1,3 @@
-import os
 import web
 
 from inginious.frontend.pages.api._api_page import APIAuthenticatedPage, APIError
