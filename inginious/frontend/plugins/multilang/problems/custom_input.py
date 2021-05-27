@@ -21,6 +21,9 @@ def custom_input_manager_multilang(client):
 
         def add_unsaved_job(self, task, inputdata):
             temp_client = ClientSync(self._client)
+
+            # Send the session language to the container to do the corresponding translations.
+            inputdata["@lang"] = self.user_manager.session_language()
             return temp_client.new_job(task, inputdata, "Custom input - " + self.user_manager.session_username())
 
         def API_POST(self):
