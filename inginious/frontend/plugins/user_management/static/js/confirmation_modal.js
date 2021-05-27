@@ -63,6 +63,7 @@ function validateInputs() {
     cleanList();
     if (checkUsername()) {
         requestToUpdate["new_username"] = getInputValue(NEW_USERNAME_INPUT_ID);
+        requestToUpdate["collection_list"] = JSON.stringify(currentCollectionList);
         addListElement(createListElement(usernameText));
     }
     if (checkName()) {

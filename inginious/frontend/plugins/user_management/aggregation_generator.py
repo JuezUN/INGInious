@@ -22,6 +22,7 @@ def get_count_username_occurrences(username, collection_manager):
             else:
                 to_remove.append(collection_name)
         else:
+            # TODO: message to indicate that there is not info about the collection
             has_username = has_username_key(collection_manager.get_all_key_names(collection_name))
             if has_username:
                 aggregation = _create_aggregation_to_count(username, [{"path": "username"}])
@@ -110,12 +111,12 @@ def _push_parameter_to_mongo_array(parameter):
 
 def _reduce_all_mongo_array(parameter_names_dict, information):
     project_dict = {}
-    type_name_in_json_file = "array_dimension"
+    type_name_in_json_file = "index_array"
     key_name_in_json = "path"
     value_to_keep_parameter = 1
 
     for info in information:
-        num_dimensions = info[type_name_in_json_file]
+        num_dimensions = len(info[type_name_in_json_file])
         path = info[key_name_in_json]
         parameter = parameter_names_dict[path]
         if num_dimensions > 0:
@@ -170,55 +171,4 @@ def _project_sum(parameter_names):
     return {"$project": {"num_appearances": {"$sum": parameter_names}}}
 
 
-def _make_user_changes_register(user_initial_info, user_final_info):
-    register = {
 
-    }
-
-
-def change_name(username, param, collections_manager):
-    user_filter = {
-        "username": username
-    }
-    new_name = {
-        "$set": {"realname": param}
-    }
-    settings = {
-        "upsert": False,
-        "multi": False
-    }
-    collections_manager.make_update("users", user_filter, new_name, settings)
-
-
-def change_email(username, param, collections_manager):
-    user_filter_users = {
-        "username": username
-    }
-    new_email_users = {
-        "$set": {"email": param}
-    }
-    settings = {
-        "upsert": False,
-        "multi": False
-    }
-    collections_manager.make_update("users", user_filter_users, new_email_users, settings)
-
-
-def change_username(username, param, collections_manager):
-    pass
-
-
-def _array_filter(username, path):
-    return {path: {"$in": [username]}}
-
-
-def _normal_update_filter(username, path):
-    return {path: username}
-
-
-def _push_array(username, new_username, path, array_of_objects_levels=None):
-    if array_of_objects_levels is None:
-        array_of_objects_levels = []
-    if array_of_objects_levels:
-        pass  # TODO: add .$
-    return {path: ""}

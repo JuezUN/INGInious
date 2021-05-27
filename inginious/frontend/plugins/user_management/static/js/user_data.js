@@ -14,9 +14,7 @@ function addCheckBtnListener() {
                 return;
             }
             configElements();
-            currentEmail = data["email"];
-            currentName = data["name"];
-            currentUsername = data["username"];
+            getCurrentValues(data);
 
             $(`#${USER_SETTINGS_ID}`).show();
             fillInput(NEW_USERNAME_INPUT_ID, currentUsername);
@@ -25,6 +23,13 @@ function addCheckBtnListener() {
             fillUserTable(data["count"]);
         })
     });
+}
+
+function getCurrentValues(data) {
+    currentEmail = data["email"];
+    currentName = data["name"];
+    currentUsername = data["username"];
+    currentCollectionList = Object.keys(Object.fromEntries(Object.entries(data["count"]).filter(([k, v]) => v > 0)));
 }
 
 function checkSearchParameter() {

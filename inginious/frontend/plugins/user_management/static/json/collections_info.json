@@ -2,28 +2,27 @@
   "aggregations": [
     {
       "path": "students",
-      "array_dimension": 1
+      "index_array": [0]
     },
     {
       "path": "tutors",
-      "array_dimension": 1
+      "index_array": [0]
     },
     {
       "path": "groups.students",
-      "array_dimension": 2,
-      "array_objects_levels": [1]
+      "index_array": [0,1]
     }
   ],
   "analytics": [
     {
       "path": "username",
-      "array_dimension": 0
+      "index_array": []
     }
   ],
   "custom_tests": [
     {
       "path": "username",
-      "array_dimension": 0
+      "index_array": []
     }
   ],
   "fs.chunks": [
@@ -54,13 +53,13 @@
   "sessions": [
     {
       "path": "data.username",
-      "array_dimension": 0
+      "index_array": []
     }
   ],
   "submissions": [
     {
       "path": "username",
-      "array_dimension": 1
+      "index_array": []
     }
   ],
   "tasks_cache": [
@@ -71,13 +70,13 @@
   "user_tasks": [
     {
       "path": "username",
-      "array_dimension": 0
+      "index_array": []
     }
   ],
   "users": [
     {
       "path": "username",
-      "array_dimension": 0
+      "index_array": []
     }
   ],
   "users_changes": [

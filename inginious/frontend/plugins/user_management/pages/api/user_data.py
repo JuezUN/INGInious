@@ -1,7 +1,7 @@
 import web
-
-from inginious.frontend.plugins.user_management.aggregation_generator import get_count_username_occurrences, \
-    change_username, change_email, change_name
+import json
+from inginious.frontend.plugins.user_management.aggregation_generator import get_count_username_occurrences
+from inginious.frontend.plugins.user_management.update_generator import change_username, change_email, change_name
 from inginious.frontend.plugins.user_management.collections_manager import CollectionsManagerSingleton
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
@@ -22,7 +22,8 @@ class UserDataAPI(SuperadminAPI):
 
         if "new_username" in web.input():
             flag = True
-            change_username(username, user_data["new_username"], collections_manager)
+            collection_name_list = json.loads(get_mandatory_parameter(user_data, "collection_list"))
+            change_username(username, user_data["new_username"], collections_manager, collection_name_list)
         if "email" in web.input():
             flag = True
             change_email(username, user_data["email"], collections_manager)

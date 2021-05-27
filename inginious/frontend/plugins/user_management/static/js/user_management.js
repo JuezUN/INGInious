@@ -10,6 +10,7 @@ const NOTIFICATIONS_ID = "notificationsDiv";
 let currentEmail = "";
 let currentName = "";
 let currentUsername = "";
+let currentCollectionList = [];
 
 function addEvents() {
     allowEdit();
@@ -30,11 +31,16 @@ function configElements() {
 
     userInfoTable.empty();
     $(`#${USER_SETTINGS_ID}`).hide();
+    cleanCurrentValues();
+
+}
+
+function cleanCurrentValues() {
     currentEmail = "";
     currentName = "";
     currentUsername = "";
+    currentCollectionList = [];
 }
-
 
 $(function () {
     configElements()
