@@ -53,11 +53,11 @@ class CollectionsManagerSingleton:
 
     def make_update(self, collection_name, filters, update, settings):
         collection = getattr(self.db, collection_name)
-        return collection.make_update_many(filters, update, upsert=settings["upsert"])
+        return collection.update_one(filters, update, upsert=settings["upsert"])
 
     def make_update_many(self, collection_name, filters, update, settings):
         collection = getattr(self.db, collection_name)
-        if "array_filters" in settings:
-            return collection.update_many(filters, update, upsert=settings["upsert"],
-                                          array_filters=settings["array_filters"])
         return collection.update_many(filters, update, upsert=settings["upsert"])
+
+    def insert_register_user_change(self, register):
+        return self.db.users_changes.insert(register)

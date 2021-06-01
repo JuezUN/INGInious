@@ -16,6 +16,19 @@ function addEvents() {
     allowEdit();
     addCheckBtnListener();
     addListenerUpdateBtn();
+    ajaxSetup();
+}
+
+function ajaxSetup() {
+    $.ajaxSetup({
+        beforeSend: function () {
+            new MessageBox(NOTIFICATIONS_ID, "Loading...", "info", false);
+        }
+    });
+}
+
+function cleanNot() {
+    $(`#${NOTIFICATIONS_ID}`).empty();
 }
 
 function configElements() {

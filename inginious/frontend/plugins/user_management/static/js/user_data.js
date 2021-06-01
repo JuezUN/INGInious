@@ -13,9 +13,9 @@ function addCheckBtnListener() {
                 //TODO: display message
                 return;
             }
+            cleanNot()
             configElements();
             getCurrentValues(data);
-
             $(`#${USER_SETTINGS_ID}`).show();
             fillInput(NEW_USERNAME_INPUT_ID, currentUsername);
             fillInput(NEW_NAME_INPUT_ID, currentName);
@@ -81,7 +81,7 @@ function checkEmailInput() {
         if (checkEmailFormat(email.val())) {
             return true;
         } else {
-            addErrorStyle(email, inputLenError);
+            addErrorStyle(email, emailFormatError);
             return false;
         }
     }

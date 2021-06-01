@@ -16,6 +16,10 @@ $ email = _("Email")
 $ name = _("Name")
 $ username = _("Username")
 $ username_confirmation_error = _("Username does not match")
+$ success = _("Success")
+$ error = _("something went wrong")
+$ input_errors = _("Some inputs need to be modified or no modification has been made")
+
 <div class="container">
     <div class="row">
         <div class="col-xs-8 col-centered">
@@ -126,8 +130,13 @@ $ username_confirmation_error = _("Username does not match")
 <script>
     const inputLenError = "$:input_len_error";
     const emailFormatError = "$:input_email_error";
-    const usernameText = "$:username";
-    const emailText = "$:email";
-    const nameText = "$:name";
     const usernameMatchError = "$:username_confirmation_error";
+    const successMessage = "$:success";
+    const inputGeneralError = "$:input_errors";
+    const wordsDictionary = {
+        "username": "$:username",
+        "email": "$:email",
+        "name": "$:name"
+    }
+    const errorText = "$:error";
 </script>
