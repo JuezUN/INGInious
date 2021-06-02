@@ -61,3 +61,7 @@ class CollectionsManagerSingleton:
 
     def insert_register_user_change(self, register):
         return self.db.users_changes.insert(register)
+
+    def make_find_request(self, collection_name, query=None, projection=None):
+        collection = getattr(self.db, collection_name)
+        return collection.find(filter=query, projection=projection)

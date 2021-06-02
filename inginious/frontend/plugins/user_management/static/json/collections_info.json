@@ -21,8 +21,7 @@
   ],
   "custom_tests": [
     {
-      "path": "username",
-      "index_array": []
+      "path": "none"
     }
   ],
   "fs.chunks": [
@@ -52,8 +51,7 @@
   ],
   "sessions": [
     {
-      "path": "data.username",
-      "index_array": []
+      "path": "none"
     }
   ],
   "submissions": [
