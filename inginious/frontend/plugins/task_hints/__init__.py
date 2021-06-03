@@ -15,7 +15,7 @@ def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_page(r'/task_hints/static/(.*)',
                             create_static_resource_page(_SHOW_HINT_STATIC_FILES))
     plugin_manager.add_page('/api/user_hints_api/', UserHintsAPI)
-    plugin_manager.add_page('/api/edit_hints_api/',EditHintsAPI)
+    plugin_manager.add_page('/api/edit_hints_api/', EditHintsAPI)
 
     plugin_manager.add_hook('task_editor_tab', edit_hints_tab)
     plugin_manager.add_hook('task_editor_footer', get_hints_edit_modal_template)

@@ -53,8 +53,10 @@ class WebAppSubmissionManager:
         # TODO: should be done for submissions in group tasks mode
         penalty = 0.0
         if grade:
-            penalty = self._hook_manager.call_hook('show_hints', taskid=task.get_id(), username=submission["username"][0], database=self._database)[0]
-            grade =  max(0.0, round(grade-penalty,2))
+            penalty = \
+                self._hook_manager.call_hook('show_hints', taskid=task.get_id(), username=submission["username"][0],
+                                             database=self._database)[0]
+            grade = max(0.0, round(grade - penalty, 2))
 
         data = {
             "status": ("done" if result[0] == "success" or result[0] == "failed" else "error"),

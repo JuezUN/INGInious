@@ -2,12 +2,12 @@
     border-right: 1px solid #e5e5e5;
 }
 
-#user_hints_help a{
-    float:right;
+#user_hints_help a {
+    float: right;
     cursor: pointer;
 }
 
-#hints_list{
+#hints_list {
     margin-top: 20px;
     padding: 5px 10px;
     height: 300px;
@@ -17,33 +17,33 @@
     border: 1px solid #e5e5e5;
 }
 
-#hints_total_penalty{
+#hints_total_penalty {
     margin: 10px 0;
 }
 
-.hint_content{
+.hint_content {
     height: 300px;
     overflow: scroll;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-.hint_applied_penalty em, #hints_total_penalty label{
+.hint_applied_penalty em, #hints_total_penalty label {
     color: red;
 }
 
-#hint_tab a, #hints_list a{
+#hint_tab a, #hints_list a {
     cursor: pointer;
 }
 
-.hint_content{
+.hint_content {
     margin-top: 15px;
 }
 
-.hint_unlock_form button{
-    float:right;
+.hint_unlock_form button {
+    float: right;
 }
 
-#hint_modal_alert{
-    margin-bottom:15px;
+#hint_modal_alert {
+    margin-bottom: 15px;
 }
