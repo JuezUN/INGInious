@@ -43,7 +43,6 @@ function confirmListener() {
         if (checkConfirmationInput()) {
             $.post("/api/user_management", requestToUpdate, function (data) {
                 $(`#${MODAL_ID}`).modal("hide");
-                cleanNot();
                 configElements();
                 const message = `<b>${successMessage}:</b> ${dataToString(data)}`;
                 new MessageBox(NOTIFICATIONS_ID, message, "success", false);

@@ -19,6 +19,7 @@ $ username_confirmation_error = _("Username does not match")
 $ success = _("Success")
 $ error = _("something went wrong")
 $ input_errors = _("Some inputs need to be modified or no modification has been made")
+$ no_submissions = _("There is not submissions running")
 
 <div class="container">
     <div class="row">
@@ -35,22 +36,44 @@ $ input_errors = _("Some inputs need to be modified or no modification has been 
             </form>
         </div>
     </div>
-    <div class="row py-1"><div class="col-xs-8 col-centered"><div id="notificationsDiv"></div></div></div>
+    <div class="row py-1">
+        <div class="col-xs-8 col-centered">
+            <div id="notificationsDiv"></div>
+        </div>
+    </div>
     <div id="userSettings" hidden>
         <div class="row">
             <div class="col-xs-8 col-centered">
-            <h3 id="userInfoTitle">$:_("User information"):</h3>
+                <h3>$:_("User information"):</h3>
                 <div class="col-md-8 col-centered">
                     <table class="table table-striped">
                         <thead>
-                            <tr>
-                                <th><h4>$:_("Collection's name")</h4></th>
-                                <th><h4># $:_("Occurrences")</h4></th>
-                            </tr>
+                        <tr>
+                            <th><h4>$:_("Collection's name")</h4></th>
+                            <th><h4># $:_("Occurrences")</h4></th>
+                        </tr>
                         </thead>
                         <tbody id="userInformation"></tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+        <div class="row py-1">
+            <div class="col-xs-8 col-centered">
+                <h3>$:_("User Status"): <span id="userConnection"
+                                              class="label label-danger badge-pill"> </span></h3>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th><h4>$:_("Type")</h4></th>
+                        <th><h4>$:_("Course")</h4></th>
+                        <th><h4>$:_("Task")</h4></th>
+                        <th><h4>$:_("Date")</h4></th>
+                    </tr>
+                    </thead>
+                    <tbody id="userSubmissions"></tbody>
+                </table>
             </div>
         </div>
         <div class="row">
@@ -61,27 +84,27 @@ $ input_errors = _("Some inputs need to be modified or no modification has been 
                             <h3>$:_("User settings")</h3>
                             <table class="table">
                                 <tbody class="center-table">
-                                    <tr>
-                                        <td><h4>$:_("Username")</h4></td>
-                                        <td><input type="text" id="newUsernameInput" class="form-control input-sm"
-                                       placeholder="New Username" readonly></td>
-                                        <td><a class="edit" data-action="#newUsernameInput">
-                                            <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><h4>$:_("Complete name")</h4></td>
-                                        <td><input type="text" id="newNameInput" class="form-control input-sm"
-                                       placeholder="New Name" readonly></td>
-                                        <td><a class="edit" data-action="#newNameInput">
-                                            <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><h4>$:_("Email")</h4></td>
-                                        <td><input type="text" id="newEmailInput" class="form-control input-sm"
-                                       placeholder="New Email" readonly></td>
-                                        <td><a class="edit" data-action="#newEmailInput">
-                                            <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
-                                    </tr>
+                                <tr>
+                                    <td><h4>$:_("Username")</h4></td>
+                                    <td><input type="text" id="newUsernameInput" class="form-control input-sm"
+                                               placeholder="New Username" readonly></td>
+                                    <td><a class="edit" data-action="#newUsernameInput">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
+                                </tr>
+                                <tr>
+                                    <td><h4>$:_("Complete name")</h4></td>
+                                    <td><input type="text" id="newNameInput" class="form-control input-sm"
+                                               placeholder="New Name" readonly></td>
+                                    <td><a class="edit" data-action="#newNameInput">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
+                                </tr>
+                                <tr>
+                                    <td><h4>$:_("Email")</h4></td>
+                                    <td><input type="text" id="newEmailInput" class="form-control input-sm"
+                                               placeholder="New Email" readonly></td>
+                                    <td><a class="edit" data-action="#newEmailInput">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -139,4 +162,5 @@ $ input_errors = _("Some inputs need to be modified or no modification has been 
         "name": "$:name"
     }
     const errorText = "$:error";
+    const noSubmissions = "$:no_submissions";
 </script>

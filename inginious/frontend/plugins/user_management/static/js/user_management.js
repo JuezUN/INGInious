@@ -11,6 +11,7 @@ let currentEmail = "";
 let currentName = "";
 let currentUsername = "";
 let currentCollectionList = [];
+let timeInterval;
 
 function addEvents() {
     allowEdit();
@@ -27,7 +28,7 @@ function ajaxSetup() {
     });
 }
 
-function cleanNot() {
+function cleanNotifications() {
     $(`#${NOTIFICATIONS_ID}`).empty();
 }
 
@@ -45,7 +46,8 @@ function configElements() {
     userInfoTable.empty();
     $(`#${USER_SETTINGS_ID}`).hide();
     cleanCurrentValues();
-
+    closeInterval();
+    cleanNotifications();
 }
 
 function cleanCurrentValues() {

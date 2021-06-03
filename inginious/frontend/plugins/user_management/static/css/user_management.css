@@ -17,6 +17,7 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+
 .col-centered {
     float: none;
     margin: 0 auto;
@@ -52,4 +53,10 @@ input[readonly] {
 
 .form-control {
     color: #181818;
+}
+
+.label.badge-pill {
+    border-radius: 1rem;
+    margin: 0 0.25rem;
+    padding: 0.3rem 1.1rem;
 }

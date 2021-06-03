@@ -37,4 +37,9 @@ class UserStatusAPI(SuperadminAPI):
                                                                 submission["taskid"]). \
                 get_name_or_id(lang)
             submission["courseid"] = course_name if course_name else submission["courseid"]
-            submission["submitted_on"] = submission["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S")
+
+            if "submitted_on" in submission:
+                submission["submitted_on"] = submission["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S")
+            else:
+                submission["submitted_on"] = submission["sent_on"].strftime("%d/%m/%Y, %H:%M:%S")
+                del submission["sent_on"]

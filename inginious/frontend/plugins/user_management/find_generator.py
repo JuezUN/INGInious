@@ -35,4 +35,4 @@ def _create_filter_for_submissions(username):
 
 
 def _create_projection_for_submissions():
-    return {"_id": 1, "courseid": 1, "status": 1, "taskid": 1, "submitted_on": 1}
+    return {"_id": 1, "courseid": 1, "status": 1, "taskid": 1, "submitted_on": 1, "sent_on": 1}

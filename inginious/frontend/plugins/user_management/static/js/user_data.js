@@ -13,14 +13,16 @@ function addCheckBtnListener() {
                 //TODO: display message
                 return;
             }
-            cleanNot()
             configElements();
             getCurrentValues(data);
+            updateSubmissionStatus();
+            timeInterval = openTimeInterval();
             $(`#${USER_SETTINGS_ID}`).show();
             fillInput(NEW_USERNAME_INPUT_ID, currentUsername);
             fillInput(NEW_NAME_INPUT_ID, currentName);
             fillInput(NEW_EMAIL_INPUT_ID, currentEmail);
             fillUserTable(data["count"]);
+
         })
     });
 }
