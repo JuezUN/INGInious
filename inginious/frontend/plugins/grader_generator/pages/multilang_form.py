@@ -1,11 +1,12 @@
 import os
 import tempfile
+from collections import OrderedDict
+
+from inginious.frontend.pages.course_admin.task_edit import CourseEditTask
 from math import ceil
 
-from collections import OrderedDict
-from .grader_form import GraderForm, InvalidGraderError
-from inginious.frontend.pages.course_admin.task_edit import CourseEditTask
 from .constants import BASE_TEMPLATE_FOLDER
+from .grader_form import GraderForm, InvalidGraderError
 
 _MULTILANG_FILE_TEMPLATE_PATH = os.path.join(BASE_TEMPLATE_FOLDER, 'run_file_template.txt')
 
@@ -85,6 +86,8 @@ class MultilangForm(GraderForm):
         self.task_data['memory_limit_test_case'] = int(ceil(float(self.task_data.get("memory_limit_test_case", 50))))
         self.task_data['output_limit_test_case'] = int(ceil(float(self.task_data.get("output_limit_test_case", 2))))
 
+        self.task_data["ignore_presentation_error"] = "ignore_presentation_error" in self.task_data
+
         # Additional time to calculate submission feedback.
         _additional_time_limit = 15
         # Additional memory to calculate submission feedback.
@@ -131,7 +134,8 @@ class MultilangForm(GraderForm):
             "time_limit": time,
             "hard_time_limit": time,
             "output_limit": output_limit,
-            "memory_limit": self.task_data["memory_limit_test_case"]
+            "memory_limit": self.task_data["memory_limit_test_case"],
+            "ignore_presentation_error": self.task_data["ignore_presentation_error"]
         }
 
         with open(_MULTILANG_FILE_TEMPLATE_PATH, "r") as template, tempfile.TemporaryDirectory() as temporary:
