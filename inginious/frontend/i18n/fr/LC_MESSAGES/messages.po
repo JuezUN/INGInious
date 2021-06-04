@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-12 22:28-0500\n"
+"POT-Creation-Date: 2021-05-26 22:37-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -4168,7 +4168,7 @@ msgstr ""
 "sûr ?</p>"
 
 #: inginious/frontend/templates/course_admin/download.html:31
-#: inginious/frontend/templates/course_admin/replay.html:46
+#: inginious/frontend/templates/course_admin/replay.html:41
 msgid "Other options"
 msgstr "Autres options"
 
@@ -4209,22 +4209,18 @@ msgstr "Comment créer un exercice?"
 msgid "Documentation"
 msgstr "Documentation"
 
-#: inginious/frontend/templates/course_admin/replay.html:27
-msgid "This feature is under testing and is not made for production use."
-msgstr "Cette fonctionnalité n'est pas prête pour une utilisation en production."
-
-#: inginious/frontend/templates/course_admin/replay.html:50
-#: inginious/frontend/templates/course_admin/replay.html:73
+#: inginious/frontend/templates/course_admin/replay.html:45
+#: inginious/frontend/templates/course_admin/replay.html:68
 msgid "Replay"
 msgstr "Rejouer"
 
-#: inginious/frontend/templates/course_admin/replay.html:57
+#: inginious/frontend/templates/course_admin/replay.html:52
 msgid "Only the evaluation submission (Warning: the best submission may change)"
 msgstr ""
 "Uniquement la soumission pour évaluation (Attention: la meilleure "
 "soumission est susceptible de changer)"
 
-#: inginious/frontend/templates/course_admin/replay.html:63
+#: inginious/frontend/templates/course_admin/replay.html:58
 msgid "All the submissions"
 msgstr "Toutes les soumissions"
 
@@ -5350,4 +5346,9 @@ msgstr "Extensions autorisées:"
 
 #~ msgid "Allow later submission"
 #~ msgstr ""
+
+#~ msgid "This feature is under testing and is not made for production use."
+#~ msgstr ""
+#~ "Cette fonctionnalité n'est pas prête "
+#~ "pour une utilisation en production."
 
