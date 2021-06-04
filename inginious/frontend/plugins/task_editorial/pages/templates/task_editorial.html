@@ -6,7 +6,7 @@ $def with (task_data)
     $:_("Describe a possible solution to the problem through a tutorial that helps students to guide themselves in developing of that solution and its corresponding code, which can be accessed when the deadline ends.")
 </div>
 
-<div class="jumbotron">
+<div id="task_editorial_form" class="jumbotron">
     <div class="form-group">
         <h3>$:_("Task tutorial")</h3>
     </div>
@@ -70,6 +70,18 @@ $def with (task_data)
         </div>
     </div>
 </div>
+
+<style>
+    #task_editorial_form .CodeMirror-scroll{
+        overflow: auto;
+        max-height: 300px;
+    }
+
+    #multiple_languages_task_solution .CodeMirror-scroll{
+        overflow: auto;
+        max-height: 500px;
+    }
+</style>
 
 <script>
 

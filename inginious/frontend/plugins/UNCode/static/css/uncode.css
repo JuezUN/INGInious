@@ -18,3 +18,8 @@ em {
     background-color: #f2dede;
     color: #f04124;
 }
+
+#task .CodeMirror-scroll{
+    overflow: auto;
+    max-height: 500px;
+}
