@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-27 18:10-0500\n"
+"POT-Creation-Date: 2021-06-03 23:11-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -4454,7 +4454,7 @@ msgstr ""
 "seguro de realizar esta acción?</p>"
 
 #: inginious/frontend/templates/course_admin/download.html:31
-#: inginious/frontend/templates/course_admin/replay.html:46
+#: inginious/frontend/templates/course_admin/replay.html:41
 msgid "Other options"
 msgstr "Otras opciones"
 
@@ -4493,24 +4493,18 @@ msgstr "¿Como crear una tarea?"
 msgid "Documentation"
 msgstr "Documentación"
 
-#: inginious/frontend/templates/course_admin/replay.html:27
-msgid "This feature is under testing and is not made for production use."
-msgstr ""
-"Esta característica está bajo pruebas y no está hecha para uso en "
-"producción."
-
-#: inginious/frontend/templates/course_admin/replay.html:50
-#: inginious/frontend/templates/course_admin/replay.html:73
+#: inginious/frontend/templates/course_admin/replay.html:45
+#: inginious/frontend/templates/course_admin/replay.html:68
 msgid "Replay"
 msgstr "Responder"
 
-#: inginious/frontend/templates/course_admin/replay.html:57
+#: inginious/frontend/templates/course_admin/replay.html:52
 msgid "Only the evaluation submission (Warning: the best submission may change)"
 msgstr ""
 "Solo la evaluación de las tareas (precaución, solo se elegirán las "
 "mejores evaluaciones)"
 
-#: inginious/frontend/templates/course_admin/replay.html:63
+#: inginious/frontend/templates/course_admin/replay.html:58
 msgid "All the submissions"
 msgstr "Todas las tareas"
 
@@ -5592,19 +5586,4 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
-
-#~ msgid ""
-#~ "<p>This will reset and backup all "
-#~ "course data (submissions, classrooms/teams, "
-#~ "user statistics) from the database.</p><p>To"
-#~ " confirm your will, please type the"
-#~ " course id below :</p>"
-#~ msgstr ""
-#~ "<p>Esta acción reinicializará y hará un"
-#~ " respaldo de la información de todos"
-#~ " los cursos (tareas enviadas, grupos, "
-#~ "equipos, estadísticas de usuarios) de "
-#~ "esta base de datos.</p><p>Para confirmar "
-#~ "dicha acción, escriba el identificador "
-#~ "del curso:</p>"
 
