@@ -24,7 +24,6 @@ install:
 before_script:
   - "sudo HOST_IP=\"$HOST_IP\" SLIRP_PORTS=\"$SLIRP_PORTS\" sekexe/run 'mount -t tmpfs -o size=8g tmpfs /var/lib/docker && docker -d --log-level=error -H tcp://0.0.0.0:2375' &"
   - "while ! docker info; do echo 'retrying to connect to docker...'; sleep 1; done"
-  - docker pull ingi/inginious-c-default
 script:
   - python setup.py test
 
