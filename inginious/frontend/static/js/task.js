@@ -117,10 +117,6 @@ function displayNewSubmission(id, is_late_submission=false)
 
     jQuery('<span id="txt"/>', {}).text(getDateTime()).appendTo(submission_link);
     
-    //If there exists tags, we add a badge with '0' in the new submission.
-    if($('span', $('#main_tag_group')).length > 0){
-        submission_link.append('<span class="badge alert-info" id="tag_counter" >0</span>');
-    }
 
     if (is_late_submission) {
         submission_link.append("<span class=\"badge alert-warning\" id=\"is_late_submission\" " +
@@ -163,8 +159,6 @@ function updateSubmission(id, result, grade, tags)
             var date = $(this).find("span[id='txt']");
             date.text(date.text() + " - " + grade + "%");
             
-            //update the badge
-            updateTagsToNewSubmission($(this), tags);  
         }
     });
 }
@@ -843,39 +837,5 @@ function updateMainTags(data){
                 }
             }
         }
-    }
-}
-
-/*
- * Update color of tags presents in 'elem' node. 
- * 'data' is a dictionnary that should contains tag values in data["tests"][tag] = True/False
- */
-function updateTagsToNewSubmission(elem, data){
-
-    var n_ok = 0;   // number of tag equals true
-    var tags_ok = [];
-    var n_tot = 0;  // total number of tags
-    var badge = elem.find('span[id="tag_counter"]');
-    
-    //Get all tags listed in main tag section
-    $('span', $('#main_tag_group')).each(function() {
-        var id = $(this).attr("id");
-        var color = $(this).attr("class");
-        //Only consider normal tag (we do not consider misconception
-        if(color != "badge alert-danger"){
-            if(id in data && data[id]){
-                n_ok++;
-                tags_ok.push($(this).text());
-            }
-            n_tot++;
-        }
-    });
-    badge.text(n_ok);
-    if(n_tot == n_ok){
-        badge.attr("class", "badge alert-success");
-    }else if(n_ok > 0){
-        badge.attr("data-toggle", "tooltip");
-        badge.attr("data-placement", "left");
-        badge.attr('data-original-title', tags_ok.join(", "));
     }
 }
