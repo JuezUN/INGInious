@@ -3,7 +3,22 @@ from inginious.frontend.plugins.user_management.utils import get_collection_docu
 import re
 
 
-def change_name(username, param, collections_manager):
+def make_user_changes_register(user_original_info, user_final_info, collections_manager):
+    date = datetime.datetime.now()
+    register = {
+        "date": date
+    }
+    keys = list(user_original_info.keys())
+    keys.remove("count")
+
+    for key in keys:
+        register["original_" + key] = user_original_info[key]
+        register["final_" + key] = user_final_info[key]
+
+    collections_manager.insert_register_user_change(register)
+
+
+def change_name(username, param, collection_manager):
     user_filter = {
         "username": username
     }
@@ -13,7 +28,7 @@ def change_name(username, param, collections_manager):
     settings = {
         "upsert": False,
     }
-    ans = collections_manager.make_update("users", user_filter, new_name, settings)
+    ans = collection_manager.make_update("users", user_filter, new_name, settings)
     return ans.modified_count
 
 
@@ -43,6 +58,47 @@ def change_username(username, new_username, collection_manager, collection_name_
         count += _crete_update_to_change_username_collection(username, new_username, collection_name, information,
                                                              collection_manager)
     return count
+
+
+def close_user_sessions(username, collection_manager):
+    update_filter = {
+        "data.username": username
+    }
+    close_sessions = {
+        "$set": {
+            "data.loggedin": False
+        }
+    }
+    settings = {
+        "upsert": False
+    }
+    return collection_manager.make_update_many("sessions", update_filter, close_sessions, settings)
+
+
+def add_block_user(username, collection_manager):
+    user_filter = {
+        "username": username
+    }
+    new_name = {
+        "$set": {"block": True}
+    }
+    settings = {
+        "upsert": False,
+    }
+    return collection_manager.make_update("users", user_filter, new_name, settings)
+
+
+def remove_block_user(username, collection_manager):
+    user_filter = {
+        "username": username
+    }
+    new_name = {
+        "$unset": {"block": ""}
+    }
+    settings = {
+        "upsert": False,
+    }
+    return collection_manager.make_update("users", user_filter, new_name, settings)
 
 
 def _crete_update_to_change_username_collection(username, new_username, coll_name, collection_info, collection_manager):
@@ -139,18 +195,3 @@ def _add_positional_operator(string, index):
 
 def _add_element_to_string(string, element, index):
     return string[:index] + element + string[index:]
-
-
-def make_user_changes_register(user_original_info, user_final_info, collection_manager):
-    date = datetime.datetime.now()
-    register = {
-        "date": date
-    }
-    keys = list(user_original_info.keys())
-    keys.remove("count")
-
-    for key in keys:
-        register["original_" + key] = user_original_info[key]
-        register["final_" + key] = user_final_info[key]
-
-    collection_manager.insert_register_user_change(register)

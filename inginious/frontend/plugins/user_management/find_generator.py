@@ -6,7 +6,7 @@ def get_num_open_user_sessions(username, collection_manager):
 
 
 def _create_filter_for_sessions(username):
-    return {"data.username": username}
+    return {"data.username": username, "data.loggedin": True}
 
 
 def _create_projection_for_sessions():

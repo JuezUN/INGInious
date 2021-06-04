@@ -57,7 +57,7 @@
   "submissions": [
     {
       "path": "username",
-      "index_array": []
+      "index_array": [0]
     }
   ],
   "tasks_cache": [

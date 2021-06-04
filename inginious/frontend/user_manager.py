@@ -80,7 +80,7 @@ class AuthMethod(object, metaclass=ABCMeta):
 
 
 class UserManager:
-    def __init__(self, session_dict, database, superadmins):
+    def __init__(self, session_dict, database, superadmins, hook_manager):
         """
         :type session_dict: web.session.Session
         :type database: pymongo.database.Database
@@ -92,6 +92,7 @@ class UserManager:
         self._superadmins = superadmins
         self._auth_methods = OrderedDict()
         self._logger = logging.getLogger("inginious.webapp.users")
+        self._hook_manager = hook_manager
 
     ##############################################
     #           User session management          #
@@ -278,12 +279,13 @@ class UserManager:
         :param realname: User real name
         :param email: User email
         """
-
-        self._database.users.update_one({"email": email}, {"$set": {"realname": realname, "username": username, "language": language}},
-                                        upsert=True)
-        self._logger.info("User %s connected - %s - %s - %s", username, realname, email, web.ctx.ip)
-        self._set_session(username, realname, email, language)
-        return True
+        is_block = self._hook_manager.call_hook("open_session", username=username)
+        if not is_block[0]:
+            self._database.users.update_one({"email": email}, {"$set": {"realname": realname, "username": username, "language": language}},
+                                            upsert=True)
+            self._logger.info("User %s connected - %s - %s - %s", username, realname, email, web.ctx.ip)
+            self._set_session(username, realname, email, language)
+            return True
 
     def disconnect_user(self):
         """

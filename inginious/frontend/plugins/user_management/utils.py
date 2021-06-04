@@ -1,6 +1,6 @@
 import os
 from collections import OrderedDict
-
+from .collections_manager import CollectionsManagerSingleton
 from inginious.frontend.plugins.utils import read_json_file
 
 _BASE_RENDERER_PATH = os.path.dirname(__file__)
@@ -28,3 +28,10 @@ def get_collection_document():
     file_path = os.path.join(_static_folder_path, 'json/collections_info.json')
     return OrderedDict(sorted(read_json_file(file_path).items()))
 
+
+def on_user_sign_in(username):
+    collections_manager = CollectionsManagerSingleton.get_instance()
+    user = list(collections_manager.make_find_request("users", {"username": username}, {"block": 1}))
+    if user:
+        return user[0]["block"] if "block" in user[0] else False
+    return True

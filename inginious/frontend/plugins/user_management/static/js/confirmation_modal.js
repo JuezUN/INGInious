@@ -46,7 +46,8 @@ function confirmListener() {
                 configElements();
                 const message = `<b>${successMessage}:</b> ${dataToString(data)}`;
                 new MessageBox(NOTIFICATIONS_ID, message, "success", false);
-            }).fail(function () {
+            }).fail((xhr, status, error) => {
+                const response = JSON.parse(xhr.responseText);
                 new MessageBox(NOTIFICATIONS_ID, errorText, "danger", false);
             });
         }
