@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-06-03 23:14-0500\n"
+"POT-Creation-Date: 2021-06-09 17:31-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -391,34 +391,34 @@ msgstr "El usuario generó un formato inválido."
 msgid "Classroom not found."
 msgstr "El grupo no fue encontrado."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:146
+#: inginious/frontend/pages/course_admin/danger_zone.py:161
 msgid "Operation aborted due to invalid token."
 msgstr "La operación se ha interrumpido debido a que el \"token\" es inválido."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:150
-#: inginious/frontend/pages/course_admin/danger_zone.py:173
+#: inginious/frontend/pages/course_admin/danger_zone.py:165
+#: inginious/frontend/pages/course_admin/danger_zone.py:188
 msgid "Wrong course id."
 msgstr "El identificador del curso es incorrecto."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:155
+#: inginious/frontend/pages/course_admin/danger_zone.py:170
 msgid "All course data have been deleted."
 msgstr "La información de los cursos ha sido suprimida."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:157
+#: inginious/frontend/pages/course_admin/danger_zone.py:172
 msgid "An error occurred while dumping course from database."
 msgstr ""
 "Un error ha ocurrido durante el intento de suprimir el curso de la base "
 "de datos."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:167
+#: inginious/frontend/pages/course_admin/danger_zone.py:182
 msgid "Course restored to date : {}."
 msgstr "El curso será restaurado en la siguiente fecha: {}."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:169
+#: inginious/frontend/pages/course_admin/danger_zone.py:184
 msgid "An error occurred while restoring backup."
 msgstr "Un error ha ocurrido durante la restauración de tus datos."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:180
+#: inginious/frontend/pages/course_admin/danger_zone.py:195
 msgid "An error occurred while deleting the course data."
 msgstr "Un error ha ocurrido durante la supresión de datos del curso."
 
@@ -4420,12 +4420,13 @@ msgstr "Archivar los datos del curso"
 #: inginious/frontend/templates/course_admin/danger_zone.html:51
 msgid ""
 "<p>This will reset and backup all course data (submissions, "
-"classrooms/teams, user statistics) from the database.</p><p>To confirm "
-"your will, please type the course id below :</p>"
+"classrooms/teams, user statistics, among others) from the "
+"database.</p><p>To confirm your will, please type the course id "
+"below:</p>"
 msgstr ""
 "<p>Esta acción reinicializará y hará un respaldo de la información de "
-"todos los cursos (tareas enviadas, grupos, equipos, estadísticas de "
-"usuarios) de esta base de datos.</p><p>Para confirmar dicha acción, "
+"todo el curso (tareas enviadas, grupos, equipos, estadísticas de "
+"usuarios, entre otros) de esta base de datos.</p><p>Para confirmar, "
 "escriba el identificador del curso:</p>"
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:56
@@ -5615,10 +5616,4 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
-
-#~ msgid "This feature is under testing and is not made for production use."
-#~ msgstr ""
-#~ "Esta característica está bajo pruebas y"
-#~ " no está hecha para uso en "
-#~ "producción."
 

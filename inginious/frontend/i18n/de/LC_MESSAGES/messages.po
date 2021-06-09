@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-06-03 23:14-0500\n"
+"POT-Creation-Date: 2021-06-09 17:31-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -382,32 +382,32 @@ msgstr ""
 msgid "Classroom not found."
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:146
+#: inginious/frontend/pages/course_admin/danger_zone.py:161
 msgid "Operation aborted due to invalid token."
 msgstr "Operation wegen eines ungültigen Tokens abgebrochen."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:150
-#: inginious/frontend/pages/course_admin/danger_zone.py:173
+#: inginious/frontend/pages/course_admin/danger_zone.py:165
+#: inginious/frontend/pages/course_admin/danger_zone.py:188
 msgid "Wrong course id."
 msgstr "Falsche Kurs-ID."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:155
+#: inginious/frontend/pages/course_admin/danger_zone.py:170
 msgid "All course data have been deleted."
 msgstr "Alle Kursdaten wurden gelöscht."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:157
+#: inginious/frontend/pages/course_admin/danger_zone.py:172
 msgid "An error occurred while dumping course from database."
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:167
+#: inginious/frontend/pages/course_admin/danger_zone.py:182
 msgid "Course restored to date : {}."
 msgstr "Kurs zurückgesetzt auf Datum: {}."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:169
+#: inginious/frontend/pages/course_admin/danger_zone.py:184
 msgid "An error occurred while restoring backup."
 msgstr "Beim Zurückspielen der Sicherung ist ein Fehler aufgetreten."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:180
+#: inginious/frontend/pages/course_admin/danger_zone.py:195
 msgid "An error occurred while deleting the course data."
 msgstr "Beim Löschen der Kursdaten ist ein Fehler aufgetreten."
 
@@ -4057,8 +4057,9 @@ msgstr ""
 #: inginious/frontend/templates/course_admin/danger_zone.html:51
 msgid ""
 "<p>This will reset and backup all course data (submissions, "
-"classrooms/teams, user statistics) from the database.</p><p>To confirm "
-"your will, please type the course id below :</p>"
+"classrooms/teams, user statistics, among others) from the "
+"database.</p><p>To confirm your will, please type the course id "
+"below:</p>"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:56
@@ -5212,41 +5213,4 @@ msgstr ""
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr ""
-
-#~ msgid "The semester field cannot be empty."
-#~ msgstr ""
-
-#~ msgid "The semester must be a number."
-#~ msgstr ""
-
-#~ msgid "The group must be a number."
-#~ msgstr ""
-
-#~ msgid "Semester"
-#~ msgstr ""
-
-#~ msgid "Services per course"
-#~ msgstr ""
-
-#~ msgid "start date must be greater end date"
-#~ msgstr ""
-
-#~ msgid "start date must be greater than end date"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "'If checked, the students will be "
-#~ "able to do submissions after the "
-#~ "deadline is reached. These submissions "
-#~ "will not affect the grade.'"
-#~ msgstr ""
-
-#~ msgid "\"Later submission, it does not affect the grade\""
-#~ msgstr ""
-
-#~ msgid "Submissions Verdict (ALL)"
-#~ msgstr ""
-
-#~ msgid "This feature is under testing and is not made for production use."
-#~ msgstr ""
 
