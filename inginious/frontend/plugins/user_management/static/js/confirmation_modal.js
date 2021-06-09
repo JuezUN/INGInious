@@ -34,21 +34,21 @@ function confirmListener() {
         for (const [key, value] of Object.entries(data)) {
             string += `<li><b>${wordsDictionary[key]}:</b> ${value}</li>`;
         }
-        return `<ul>${string}</ul>`;
+        return `<ul class="normalList">${string}</ul>`;
     }
 
     $(`#${UPDATE_CONFIRM_ID}`).off('click').on("click", function () {
-        console.log("wat");
         requestToUpdate["username"] = currentUsername;
         if (checkConfirmationInput()) {
+            hideModal();
+            configElements();
             $.post("/api/user_management", requestToUpdate, function (data) {
-                $(`#${MODAL_ID}`).modal("hide");
-                configElements();
-                const message = `<b>${successMessage}:</b> ${dataToString(data)}`;
+                const message = `<strong>${successMessage}:</strong> ${dataToString(data)}`;
                 new MessageBox(NOTIFICATIONS_ID, message, "success", false);
             }).fail((xhr, status, error) => {
                 const response = JSON.parse(xhr.responseText);
-                new MessageBox(NOTIFICATIONS_ID, errorText, "danger", false);
+                const message = `<strong>${errorText}:</strong> ${dataToString(response)}`;
+                new MessageBox(NOTIFICATIONS_ID, message, "danger", false);
             });
         }
     });
@@ -94,4 +94,8 @@ function validateInputs() {
 
 function cleanList() {
     $(`#${PARAMETERS_LIST_ID}`).empty();
+}
+
+function hideModal() {
+    $(`#${MODAL_ID}`).modal("hide");
 }

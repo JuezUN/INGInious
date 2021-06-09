@@ -74,3 +74,13 @@ input[readonly] {
     overflow: auto;
     overflow-x: hidden;
 }
+
+.alert-warning.information{
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+ul.normalList {
+    list-style: disc;
+}

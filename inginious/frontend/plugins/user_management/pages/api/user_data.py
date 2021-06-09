@@ -26,6 +26,30 @@ def block_user(username, collection_manager):
     add_block_user(username, collection_manager)
 
 
+def inform_user_changes(user_original_info, user_final_info):
+    def get_changes():
+        text = ""
+        key_dict = {"username": _("Username"), "email": _("Email"), "name": _("Name")}
+        keys = list(user_original_info.keys())
+        keys.remove("count")
+        for key in keys:
+            if user_original_info[key] != user_final_info[key]:
+                text += """    - """ + key_dict[key] + ": " + user_original_info[key] + " -> " + user_final_info[
+                    key] + "\n"
+        return text
+
+    user_email = user_final_info["email"]
+    subject = _("Changes in your user account")
+    message = _("""Some changes have been made to your account:
+""") + get_changes() + _(""" To keep in mind:
+    """) + _("""- Also, if at some point you had authentication problems, it may be due to the change process.
+    """) + _("""- If you think any change is wrong, please contact the administrator.""")
+    try:
+        web.sendmail(web.config.smtp_sendername, user_email, subject, message)
+    except (ValueError, TypeError):
+        raise api.APIError(500, _("Something went  wrong when we sent the information email to the user"))
+
+
 class UserDataAPI(SuperadminAPI):
     def API_GET(self):
         self.check_superadmin_rights()
@@ -67,7 +91,11 @@ class UserDataAPI(SuperadminAPI):
 
         remove_block_user(new_username, collections_manager)
 
-        self.inform_user_changes(user_original_info, user_final_info)
+        try:
+            inform_user_changes(user_original_info, user_final_info)
+        except api.APIError as error:
+            return error.status_code, {"username": username_count, "email": email_count, "name": name_count,
+                                       "error": error.return_value}
 
         return 200, {"username": username_count, "email": email_count, "name": name_count}
 
@@ -88,6 +116,3 @@ class UserDataAPI(SuperadminAPI):
         if data:
             return data
         return self.database.users.find_one({'email': username_or_email})
-
-    def inform_user_changes(self, user_original_info, user_final_info):
-        pass

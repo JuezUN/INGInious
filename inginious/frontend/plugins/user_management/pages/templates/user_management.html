@@ -25,6 +25,24 @@ $ no_user = _("No user found")
 <div class="container">
     <div class="row">
         <div class="col-xs-8 col-centered">
+            <div class="alert alert-warning information">
+                <h3><strong>$:_("To keep in mind")</strong></h3>
+                <ul class="normalList">
+                    <li>$:_("The change process disconnect and block the user account to prevent new user processes running while changes are being made.")</li>
+                    <li>$:_("The search is executed with Mongodb's regular expressions, therefore you must use the partner string like this"):
+                        <strong>(?i)student.</strong><br>
+                        <strong>(?i)</strong> turns the pattern to case insensitivity
+                        <a href="https://docs.mongodb.com/v3.4/reference/operator/query/regex/#op._S_options" target="_blank">Click here to see the options</a>.
+                        Also, you do not need to be formal with the regular expression:
+                        with "student" as parameter, for example, it returns results that include the parameter
+                        like student1 or something_student_something.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-8 col-centered">
             <h2>$:_("User Management")</h2>
             <div class="col-xs-3 col-withoutPadding-left">
             <select id="fieldOption" class="form-control">
@@ -161,7 +179,7 @@ $ no_user = _("No user found")
                 <h4>
                     $:_("Are you sure you want to make this change?")
                 </h4>
-                <ul id="listParametersChanged"></ul>
+                <ul id="listParametersChanged" class="normalList"></ul>
                 <h5>$:_("Type the username"): <b id="usernameToConfirm">Student1</b></h5>
                 <form class="">
                     <div class="form-group">
@@ -188,7 +206,8 @@ $ no_user = _("No user found")
     const wordsDictionary = {
         "username": "$:username",
         "email": "$:email",
-        "name": "$:name"
+        "name": "$:name",
+        "error": "error"
     }
     const errorText = "$:error";
     const noSubmissions = "$:no_submissions";
