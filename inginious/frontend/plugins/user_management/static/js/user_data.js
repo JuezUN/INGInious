@@ -1,30 +1,35 @@
-function addCheckBtnListener() {
+const USER_INFORMATION_TABLE_ID = "userInformation";
+
+function requestUser(username) {
     function fillInput(id, content) {
         $(`#${id}`).val(content);
     }
+    $.get("/api/user_management", {
+        username_or_email: username
+    }, function (data) {
+        const noDataMessageKey = "message";
+        if (data.hasOwnProperty(noDataMessageKey)) {
+            //TODO: display message
+            return;
+        }
+        configElements();
+        getCurrentValues(data);
+        updateSubmissionStatus();
+        timeInterval = openTimeInterval();
+        showUserSettings()
+        fillInput(NEW_USERNAME_INPUT_ID, currentUsername);
+        fillInput(NEW_NAME_INPUT_ID, currentName);
+        fillInput(NEW_EMAIL_INPUT_ID, currentEmail);
+        fillUserTable(data["count"]);
+    })
+}
 
-    $(`#${CHECK_BTN_ID}`).on("click", function () {
-        const usernameOrEmail = checkSearchParameter();
-        $.get("/api/user_management", {
-            username_or_email: usernameOrEmail
-        }, function (data) {
-            const noDataMessageKey = "message";
-            if (data.hasOwnProperty(noDataMessageKey)) {
-                //TODO: display message
-                return;
-            }
-            configElements();
-            getCurrentValues(data);
-            updateSubmissionStatus();
-            timeInterval = openTimeInterval();
-            $(`#${USER_SETTINGS_ID}`).show();
-            fillInput(NEW_USERNAME_INPUT_ID, currentUsername);
-            fillInput(NEW_NAME_INPUT_ID, currentName);
-            fillInput(NEW_EMAIL_INPUT_ID, currentEmail);
-            fillUserTable(data["count"]);
+function showUserSettings() {
+    $(`#${USER_SETTINGS_ID}`).show();
+}
 
-        })
-    });
+function hideUserSettings() {
+    $(`#${USER_SETTINGS_ID}`).hide();
 }
 
 function getCurrentValues(data) {
@@ -32,15 +37,6 @@ function getCurrentValues(data) {
     currentName = data["name"];
     currentUsername = data["username"];
     currentCollectionList = Object.keys(Object.fromEntries(Object.entries(data["count"]).filter(([k, v]) => v > 0)));
-}
-
-function checkSearchParameter() {
-    const usernameOrEmail = $(`#${USERNAME_OR_EMAIL_INPUT_ID}`).val();
-    if (usernameOrEmail) {
-        return usernameOrEmail;
-    } else {
-        //TODO: Display error message
-    }
 }
 
 
@@ -70,10 +66,6 @@ function allowEdit() {
 function checkEmailFormat(emailText) {
     const emailFormat = /^[^@]+@[^@]+\.[A-Z0-9._-]/i;
     return emailFormat.test(emailText);
-}
-
-function checkTextLen(text, minLen) {
-    return text.length >= minLen
 }
 
 function checkEmailInput() {
@@ -135,16 +127,7 @@ function getInputValue(inputId) {
     return $(`#${inputId}`).val();
 }
 
-function addErrorStyle(inputObj, errorText) {
-    const inputObjParent = inputObj.parent();
+function cleanUserInfoTable() {
+    $(`#${USER_INFORMATION_TABLE_ID}`).empty();
 
-    inputObjParent.addClass("has-error");
-    inputObjParent.append(`<span class=\"help-block\">${errorText}</span>`);
-}
-
-function removeErrorStyle(inputObj) {
-    const inputObjParent = inputObj.parent();
-
-    inputObjParent.removeClass("has-error");
-    inputObjParent.find("span").remove();
 }

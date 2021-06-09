@@ -1,6 +1,7 @@
 import os
 
 from inginious.frontend.plugins.utils import create_static_resource_page
+from .pages.api.find_user import FindUserAPI
 from .pages.user_management import UserManagementPage
 from .utils import set_use_minified, user_management_hook, on_user_sign_in
 from .pages.api.user_data import UserDataAPI
@@ -19,6 +20,7 @@ def init(plugin_manager, course_factory, client, config):
     plugin_manager.add_page('/user_management', UserManagementPage)
     plugin_manager.add_page('/api/user_management', UserDataAPI)
     plugin_manager.add_page('/api/user_status', UserStatusAPI)
+    plugin_manager.add_page('/api/find_user', FindUserAPI)
 
     plugin_manager.add_hook('open_session', on_user_sign_in)
 

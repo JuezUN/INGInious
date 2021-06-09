@@ -1,5 +1,3 @@
-from collections import OrderedDict
-
 import web
 
 from inginious.frontend.plugins.user_management.find_generator import get_num_open_user_sessions, \

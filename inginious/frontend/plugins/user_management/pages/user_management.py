@@ -10,6 +10,7 @@ class UserManagementPage(SuperadminAuthPage):
         return self.template_helper.get_custom_renderer(BASE_TEMPLATE_FOLDER).user_management()
 
     def add_css_and_js_files(self):
+        self.template_helper.add_javascript("/contact_page/static/js/message_box.js")
         if get_use_minified():
             pass
         else:
@@ -18,4 +19,4 @@ class UserManagementPage(SuperadminAuthPage):
             self.template_helper.add_javascript("/user_management/static/js/user_data.js")
             self.template_helper.add_javascript("/user_management/static/js/confirmation_modal.js")
             self.template_helper.add_javascript("/user_management/static/js/user_status.js")
-            self.template_helper.add_javascript("/contact_page/static/js/message_box.js")
+            self.template_helper.add_javascript("/user_management/static/js/user_list.js")

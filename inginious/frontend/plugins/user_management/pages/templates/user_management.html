@@ -20,25 +20,54 @@ $ success = _("Success")
 $ error = _("something went wrong")
 $ input_errors = _("Some inputs need to be modified or no modification has been made")
 $ no_submissions = _("There is not submissions running")
+$ no_user = _("No user found")
 
 <div class="container">
     <div class="row">
         <div class="col-xs-8 col-centered">
             <h2>$:_("User Management")</h2>
-            <form>
-                <div class="input-group">
-                    <label for="usernameOrEmailInput" class=""></label>
-                    <input type="text" class="form-control" id="usernameOrEmailInput" placeholder="Username/Email">
-                    <span class="input-group-btn px-1">
-                        <a type="button" class="btn btn-info" id="checkBtn">Check</a>
-                    </span>
-                </div>
-            </form>
+            <div class="col-xs-3 col-withoutPadding-left">
+            <select id="fieldOption" class="form-control">
+                <option value="None" selected>$:_("All")</option>
+                <option value="username">$:username</option>
+                <option value="email">$:email</option>
+            </select>
+            </div>
+            <div>
+                <form>
+                    <div class="input-group">
+                        <label for="usernameOrEmailInput" class=""></label>
+                        <input type="text" class="form-control" id="usernameOrEmailInput"
+                               placeholder="Username/Email">
+                        <div class="input-group-btn px-1">
+                            <a type="button" class="btn btn-info" id="checkBtn">$:_("Check")</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row">
         <div class="col-xs-8 col-centered">
-            <div id="notificationsDiv"></div>
+            <div id="notificationsDiv" class="py-1"></div>
+        </div>
+    </div>
+    <div id="listOfUsers" hidden>
+        <div class="row">
+            <div class="col-xs-8 col-centered">
+                <div class="DivWithScroll">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th><h4>$:username</h4></th>
+                        <th><h4>$:email</h4></th>
+                        <th><h4>$:name</h4></th>
+                    </tr>
+                    </thead>
+                    <tbody id="userList"></tbody>
+                </table>
+                    </div>
+            </div>
         </div>
     </div>
     <div id="userSettings" hidden>
@@ -163,4 +192,5 @@ $ no_submissions = _("There is not submissions running")
     }
     const errorText = "$:error";
     const noSubmissions = "$:no_submissions";
+    const noUser = "$:no_user";
 </script>

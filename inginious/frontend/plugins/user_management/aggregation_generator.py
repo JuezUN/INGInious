@@ -3,6 +3,30 @@ from collections import OrderedDict
 from inginious.frontend.plugins.user_management.utils import get_collection_document
 
 
+def search_user(user_text, collections_manager, field=None):
+    def get_regex_pipeline(field_name):
+        return {field_name: {"$regex": user_text}}
+
+    field_names = ["username", "email"]
+    or_pipeline = []
+
+    if field in field_names:
+        or_pipeline.append(get_regex_pipeline(field))
+    else:
+        or_pipeline = [get_regex_pipeline(field_name) for field_name in field_names]
+
+    user_filter = {
+        "$match": {
+            "$or": or_pipeline
+        }}
+    projection = {"$project": {"_id": 0, "username": 1, "realname": 1, "email": 1
+                               }
+                  }
+    query = [user_filter, projection]
+
+    return list(collections_manager.make_aggregation("users", query))
+
+
 def get_count_username_occurrences(username, collection_manager):
     collection_name_list = collection_manager.get_collections_names()
     dictionary = _create_occurrences_dict(collection_name_list)
@@ -22,7 +46,7 @@ def get_count_username_occurrences(username, collection_manager):
             else:
                 to_remove.append(collection_name)
         else:
-            # TODO: message to indicate that there is not info about the collection
+            # TODO: message to indicate that there is not info about the collection. Try to know if is a list
             has_username = has_username_key(collection_manager.get_all_key_names(collection_name))
             if has_username:
                 aggregation = _create_aggregation_to_count(username, [{"path": "username"}])
@@ -169,6 +193,3 @@ def _filter_array_by_username(username, parameter):
 def _project_sum(parameter_names):
     parameter_names = ["$" + parameter for parameter in parameter_names]
     return {"$project": {"num_appearances": {"$sum": parameter_names}}}
-
-
-

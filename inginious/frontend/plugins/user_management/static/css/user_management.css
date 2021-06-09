@@ -60,3 +60,17 @@ input[readonly] {
     margin: 0 0.25rem;
     padding: 0.3rem 1.1rem;
 }
+
+.col-withoutPadding-left {
+    padding-left: 0;
+}
+
+.itemSelection {
+    cursor: pointer;
+}
+
+.DivWithScroll {
+    max-height: 300px;
+    overflow: auto;
+    overflow-x: hidden;
+}
