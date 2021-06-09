@@ -21,5 +21,11 @@ em {
 
 #task .CodeMirror-scroll{
     overflow: auto;
-    max-height: 500px;
+    max-height: 70vh;
+}
+
+@media screen and (min-width:768px) and (max-width:991px) and (max-height:1024px) {
+    #task .CodeMirror-scroll{
+        max-height: 650px;
+    }
 }

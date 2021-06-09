@@ -245,6 +245,12 @@ $if course.is_lti():
 <style>
     #basic_context_form .CodeMirror-scroll{
         overflow: auto;
-        max-height: 450px;
+        max-height: 80vh;
+    }
+
+    @media screen and (min-width:768px) and (max-width:991px) and (device-height:1024px) {
+        #basic_context_form .CodeMirror-scroll{
+            max-height: 750px;
+        }
     }
 </style>

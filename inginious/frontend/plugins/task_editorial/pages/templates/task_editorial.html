@@ -74,12 +74,22 @@ $def with (task_data)
 <style>
     #task_editorial_form .CodeMirror-scroll{
         overflow: auto;
-        max-height: 300px;
+        max-height: 55vh;
     }
 
     #multiple_languages_task_solution .CodeMirror-scroll{
         overflow: auto;
-        max-height: 500px;
+        max-height: 65vh;
+    }
+
+    @media screen and (min-width:768px) and (max-width:991px) and (device-height:1024px) {
+        #task_editorial_form .CodeMirror-scroll{
+            max-height: 500px;
+        }
+
+        #multiple_languages_task_solution .CodeMirror-scroll{
+            max-height: 600px;
+        }
     }
 </style>
 
