@@ -96,7 +96,6 @@ function addHintOnTable(new_hint, hint_id) {
 /* Update the hint on table */
 
 function updateHintOnTable(hint, hint_key) {
-    let hint_id = "hint_" + hint_key;
 
     $("#hint_info_title_" + hint_key).val(hint.title);
     $("#hint_info_penalty_" + hint_key).val(hint.penalty);

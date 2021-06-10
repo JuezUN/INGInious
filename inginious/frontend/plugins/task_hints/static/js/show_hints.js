@@ -20,8 +20,6 @@ function hideHintAlert(alert) {
 
 /* Get the left hint content for the unlocked hints*/
 function loadHintsOnModal() {
-    let to_show_hints = {};
-
     $.get("/api/user_hints_api/", {
         course_id: getCourseId(),
         task_id: getTaskId()
@@ -42,8 +40,6 @@ function setHintUnlockedStatus(index, hint) {
         hint_option.find(".hint_penalty").text(hint_penalty);
     } else {
         hint_option.attr("class", "list-group-item list-group-item-success disabled");
-        let message = hint_option.find("label").html();
-        hint_option.find("label").html();
     }
 }
 
