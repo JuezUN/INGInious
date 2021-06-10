@@ -26,7 +26,9 @@ jobs:
           python-version: '3.5'
           architecture: 'x64'
       - name: Install python babel
-        run: sudo apt-get install python-babel
+        run: |
+          sudo apt-get update
+          sudo apt-get install python-babel
       - uses: actions/checkout@v2
       - name: Check i18n files
         run: |

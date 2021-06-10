@@ -13,6 +13,7 @@ function setTaskSolutionCode(){
         solutionPreviewEditor.setValue(solutionCode);
         solutionPreviewEditor.setOption("readOnly", "nocursor");
     }
+    sendAnalyticsTaskSolution();
 }
 
 //Get and render the notebook file
@@ -25,17 +26,44 @@ function setSolutionNotebook(){
         const notebookContent = JSON.parse(result);
         const solutionNotebookContainer = $("#solution_notebook");
         render_notebook(notebookContent, solutionNotebookContainer);
+        sendAnalyticsTaskSolution();
     });
 }
 
+//Send analytics when a user see the task editorial - tutorial just one time by load data in modal
+function sendAnalyticsTaskTutorial(){
+    $.post("/api/analytics/", {
+        service: {
+            key: "task_tutorial",
+            name: "Task editorial - Tutorial"
+        },
+        course_id: getCourseId()
+    })
+}
+
+//Send analytics when a user see the task editorial - solution everytime he enter the task for the first time
+function sendAnalyticsTaskSolution(){
+    $.post("/api/analytics/", {
+        service: {
+            key: "task_solution",
+            name: "Task editorial - Solution"
+        },
+        course_id: getCourseId()
+    })
+}
+
+$("#task_tutorial_modal").one("shown.bs.modal", function () {
+    sendAnalyticsTaskTutorial();
+});
+
 //Load solution editor/notebook after the solution modal
 
-$("#task_solution_modal").on("shown.bs.modal", function () {
+$("#task_solution_modal").one("shown.bs.modal", function () {
     if(!codeEditors["task_solution_code"]){
             setTaskSolutionCode();
     }
 });
 
-$("#task_solution_notebook_modal").on("shown.bs.modal", function () {
+$("#task_solution_notebook_modal").one("shown.bs.modal", function () {
     setSolutionNotebook();
 });
