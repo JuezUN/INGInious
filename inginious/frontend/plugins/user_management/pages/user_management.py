@@ -15,7 +15,8 @@ class UserManagementPage(SuperadminAuthPage):
         """ add the ccs and js files """
         self.template_helper.add_javascript("/contact_page/static/js/message_box.js")
         if get_use_minified():
-            pass
+            self.template_helper.add_css("/user_management/static/css/user_management.min.css")
+            self.template_helper.add_javascript("/user_management/static/js/user_management.min.js")
         else:
             self.template_helper.add_css("/user_management/static/css/user_management.css")
             self.template_helper.add_javascript("/user_management/static/js/user_management.js")
