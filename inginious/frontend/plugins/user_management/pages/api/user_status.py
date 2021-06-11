@@ -9,7 +9,10 @@ from inginious.frontend.plugins.user_management.collections_manager import Colle
 
 
 class UserStatusAPI(SuperadminAPI):
+    """ API to know the process that are running of a user """
+
     def API_GET(self):
+        """ ger request. returns a list of the process that the user is running"""
         self.check_superadmin_rights()
         username = get_mandatory_parameter(web.input(), "username")
         collection_manager = CollectionsManagerSingleton.get_instance()
@@ -19,25 +22,27 @@ class UserStatusAPI(SuperadminAPI):
         submissions = get_submissions_running(username, collection_manager)
         custom_test = get_custom_test_running(username, collection_manager)
 
-        self.config_submissions(submissions)
-        self.config_submissions(custom_test)
+        self.config_processes_dict(submissions)
+        self.config_processes_dict(custom_test)
 
         user_status["submissions"] = sorted(submissions, key=lambda k: (k["courseid"], k["taskid"]))
         user_status["custom_test"] = sorted(custom_test, key=lambda k: (k["courseid"], k["taskid"]))
 
         return 200, user_status
 
-    def config_submissions(self, submissions):
+    def config_processes_dict(self, processes):
+        """ This method apply a "format" to the process, get course name,
+        get the task name and apply a format for the date """
         lang = self.user_manager.session_language()
-        for submission in submissions:
-            course_name = self.course_factory.get_course(submission["courseid"]).get_name(lang)
-            submission["taskid"] = self.course_factory.get_task(submission["courseid"],
-                                                                submission["taskid"]). \
+        for process in processes:
+            course_name = self.course_factory.get_course(process["courseid"]).get_name(lang)
+            process["taskid"] = self.course_factory.get_task(process["courseid"],
+                                                             process["taskid"]). \
                 get_name_or_id(lang)
-            submission["courseid"] = course_name if course_name else submission["courseid"]
+            process["courseid"] = course_name if course_name else process["courseid"]
 
-            if "submitted_on" in submission:
-                submission["submitted_on"] = submission["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S")
+            if "submitted_on" in process:
+                process["submitted_on"] = process["submitted_on"].strftime("%d/%m/%Y, %H:%M:%S")
             else:
-                submission["submitted_on"] = submission["sent_on"].strftime("%d/%m/%Y, %H:%M:%S")
-                del submission["sent_on"]
+                process["submitted_on"] = process["sent_on"].strftime("%d/%m/%Y, %H:%M:%S")
+                del process["sent_on"]

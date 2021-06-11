@@ -4,6 +4,13 @@ from inginious.frontend.plugins.user_management.utils import get_collection_docu
 
 
 def search_user(user_text, collections_manager, field=None):
+    """ returns a list of users matching the search parameter.
+    :param user_text: Is a mongodb regular expresion
+    :param collections_manager: Is the singleton class
+    :param field: Is an optional parameter to indicate by which specific field to filter. By default, it filter for all
+    field_names
+     """
+
     def get_regex_pipeline(field_name):
         return {field_name: {"$regex": user_text}}
 
@@ -28,6 +35,8 @@ def search_user(user_text, collections_manager, field=None):
 
 
 def get_count_username_occurrences(username, collection_manager):
+    """ returns a dictionary with the collections names as key and the number username occurrences
+    in the collection as value """
     collection_name_list = collection_manager.get_collections_names()
     dictionary = _create_occurrences_dict(collection_name_list)
     collection_information = get_collection_document()
@@ -46,7 +55,7 @@ def get_count_username_occurrences(username, collection_manager):
             else:
                 to_remove.append(collection_name)
         else:
-            # TODO: message to indicate that there is not info about the collection. Try to know if is a list
+            # TODO: message to indicate that there is not info about the collection. Try to know if is a list. Type
             has_username = has_username_key(collection_manager.get_all_key_names(collection_name))
             if has_username:
                 aggregation = _create_aggregation_to_count(username, [{"path": "username"}])
@@ -58,14 +67,17 @@ def get_count_username_occurrences(username, collection_manager):
 
 
 def _create_occurrences_dict(collection_names):
+    """ create the dictionary of occurrences with all the collection names and 0 as value"""
     return OrderedDict.fromkeys(collection_names, 0)
 
 
 def has_username_key(collection_keys):
+    """ returns a boolean value to determinate if username is in a collection """
     return "username" in collection_keys
 
 
 def _create_aggregation_to_count(username, information):
+    """ returns a list with the pipelines to be process and get the occurrences count """
     parameter_names_dict, parameter_names = _generate_new_names(information)
 
     query = [
@@ -81,6 +93,7 @@ def _create_aggregation_to_count(username, information):
 
 
 def _generate_new_names(information):
+    """ generates the new names whom replace the paths in the aggregation """
     key_name_in_json = "path"
     new_names_bidirectional_dict = {}
     parameter_names = []
@@ -98,6 +111,7 @@ def _generate_new_names(information):
 
 
 def _create_match_pipeline(username, information):
+    """ create the match pipeline """
     key_name_in_json = "path"
     match_content = []
     for info in information:
@@ -111,6 +125,7 @@ def _create_match_pipeline(username, information):
 
 
 def _replace_parameters_names(parameter_names_dict, parameter_names):
+    """ create a pipeline to replace the path with new names in the aggregation """
     project_dict = {}
 
     for parameter in parameter_names:
@@ -120,6 +135,7 @@ def _replace_parameters_names(parameter_names_dict, parameter_names):
 
 
 def _put_all_parameters_in_arrays(parameter_names):
+    """ make a pipeline to group the results in arrays """
     group_dict = {
         "_id": None
     }
@@ -130,10 +146,12 @@ def _put_all_parameters_in_arrays(parameter_names):
 
 
 def _push_parameter_to_mongo_array(parameter):
+    """ returns the pipeline that put values in an array """
     return {"$push": "$" + parameter}
 
 
 def _reduce_all_mongo_array(parameter_names_dict, information):
+    """ create a pipeline that turn each mongodb array to one dimension """
     project_dict = {}
     type_name_in_json_file = "index_array"
     key_name_in_json = "path"
@@ -152,6 +170,7 @@ def _reduce_all_mongo_array(parameter_names_dict, information):
 
 
 def _reduce_mongo_array(parameter, num_dimensions):
+    """ pipeline to reduce an array to one dimensions  """
     reduce_dict = {
         "input": "$" + parameter,
         "initialValue": [],
@@ -161,6 +180,7 @@ def _reduce_mongo_array(parameter, num_dimensions):
 
 
 def _multi_concat_array(num_dimensions):
+    """ pipeline to concat internal arrays """
     if num_dimensions < 2:
         return {"$concatArrays": ["$$value", "$$this"]}
     else:
@@ -168,6 +188,7 @@ def _multi_concat_array(num_dimensions):
 
 
 def _count_username_occurrences(username, parameter_names):
+    """ get the the len of all the mongodb arrays """
     project_dict = {}
     for parameter in parameter_names:
         parameter_filter = _filter_array_by_username(username, parameter)
@@ -176,10 +197,12 @@ def _count_username_occurrences(username, parameter_names):
 
 
 def _get_size_mongo_array(mongo_array):
+    """ pipeline to get the len of a mongo array """
     return {"$size": mongo_array}
 
 
 def _filter_array_by_username(username, parameter):
+    """ pipeline to only keep the usernames equal to the username parameter"""
     filter_dict = {
         "input": "$" + parameter,
         "as": "item",
@@ -191,5 +214,6 @@ def _filter_array_by_username(username, parameter):
 
 
 def _project_sum(parameter_names):
+    """ pipeline to get the sum of the array lens """
     parameter_names = ["$" + parameter for parameter in parameter_names]
     return {"$project": {"num_appearances": {"$sum": parameter_names}}}

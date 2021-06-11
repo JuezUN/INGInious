@@ -13,12 +13,14 @@ from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
 
 
 def any_process_running(username, collection_manager):
+    """ indicates whether the user is running any process """
     submissions = get_submissions_running(username, collection_manager)
     custom_test = get_custom_test_running(username, collection_manager)
     return True if submissions or custom_test else False
 
 
 def block_user(username, collection_manager):
+    """ block a user to prevent new process while the data is changing """
     if any_process_running(username, collection_manager):
         raise api.APIError(409, _("There are user's process running"))
     if get_num_open_user_sessions(username, collection_manager):
@@ -27,6 +29,7 @@ def block_user(username, collection_manager):
 
 
 def inform_user_changes(user_original_info, user_final_info):
+    """ Send an email to the student that his their user data has been modified """
     def get_changes():
         text = ""
         key_dict = {"username": _("Username"), "email": _("Email"), "name": _("Name")}
@@ -51,18 +54,23 @@ def inform_user_changes(user_original_info, user_final_info):
 
 
 class UserDataAPI(SuperadminAPI):
+    """ API to get information about a user """
+
     def API_GET(self):
+        """ Get request. Returns data about a user """
         self.check_superadmin_rights()
-        username_or_email = get_mandatory_parameter(web.input(), "username_or_email")
-        return self.get_user_data(username_or_email)
+        username = get_mandatory_parameter(web.input(), "username")
+        user_data = self.get_user_data(username)
+        return 200, user_data
 
     def API_POST(self):
+        """ request to change one or more of the basic data of a user: username, realname or email """
         self.check_superadmin_rights()
         flag = False
         user_data = web.input()
         username = get_mandatory_parameter(user_data, "username")
         collections_manager = CollectionsManagerSingleton.get_instance()
-        ans, user_original_info = self.get_user_data(username)
+        user_original_info = self.get_user_data(username)
 
         username_count = 0
         email_count = 0
@@ -86,7 +94,7 @@ class UserDataAPI(SuperadminAPI):
             return 400, {"error": _("no data to change")}
 
         new_username = user_data["new_username"] if username_count > 0 else username
-        _, user_final_info = self.get_user_data(new_username)
+        user_final_info = self.get_user_data(new_username)
         make_user_changes_register(user_original_info, user_final_info, collections_manager)
 
         remove_block_user(new_username, collections_manager)
@@ -99,20 +107,15 @@ class UserDataAPI(SuperadminAPI):
 
         return 200, {"username": username_count, "email": email_count, "name": name_count}
 
-    def get_user_data(self, username_or_email):
+    def get_user_data(self, username):
+        """ Returns data of a user """
         collections_manager = CollectionsManagerSingleton.get_instance()
-        user_basic_data = self.get_basic_user_data(username_or_email)
+        user_basic_data = self.database.users.find_one({'username': username})
         if user_basic_data:
             data = {"username": user_basic_data["username"],
                     "name": user_basic_data["realname"],
                     "email": user_basic_data["email"],
                     "count": get_count_username_occurrences(user_basic_data["username"], collections_manager)}
-            return 200, data
-        else:
-            return 200, {"message": _("User no found")}
-
-    def get_basic_user_data(self, username_or_email):
-        data = self.database.users.find_one({'username': username_or_email})
-        if data:
             return data
-        return self.database.users.find_one({'email': username_or_email})
+        else:
+            return {"user": _("User no found")}

@@ -1,17 +1,14 @@
 const USER_INFORMATION_TABLE_ID = "userInformation";
+const USER_TOTAL_TABLE_ID = "userInformationFoot";
 
 function requestUser(username) {
     function fillInput(id, content) {
         $(`#${id}`).val(content);
     }
+
     $.get("/api/user_management", {
-        username_or_email: username
+        username: username
     }, function (data) {
-        const noDataMessageKey = "message";
-        if (data.hasOwnProperty(noDataMessageKey)) {
-            //TODO: display message
-            return;
-        }
         configElements();
         getCurrentValues(data);
         updateSubmissionStatus();
@@ -45,9 +42,12 @@ function fillUserTable(count) {
         return `<tr><td><h5><b>${key}</b></h5></td><td><h5>${value}</h5></td></tr>`;
     }
 
+    let total = 0;
     for (const [key, value] of Object.entries(count)) {
+        total += value;
         $(`#${USER_INFORMATION_TABLE_ID}`).append(makeTableItem(key, value));
     }
+    $(`#${USER_TOTAL_TABLE_ID}`).append(makeTableItem("Total", total))
 }
 
 function allowEdit() {
@@ -129,5 +129,5 @@ function getInputValue(inputId) {
 
 function cleanUserInfoTable() {
     $(`#${USER_INFORMATION_TABLE_ID}`).empty();
-
+    $(`#${USER_TOTAL_TABLE_ID}`).empty();
 }

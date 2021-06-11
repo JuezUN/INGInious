@@ -31,11 +31,10 @@ $ no_user = _("No user found")
                     <li>$:_("The change process disconnect and block the user account to prevent new user processes running while changes are being made.")</li>
                     <li>$:_("The search is executed with Mongodb's regular expressions, therefore you must use the partner string like this"):
                         <strong>(?i)student.</strong><br>
-                        <strong>(?i)</strong> turns the pattern to case insensitivity
-                        <a href="https://docs.mongodb.com/v3.4/reference/operator/query/regex/#op._S_options" target="_blank">Click here to see the options</a>.
-                        Also, you do not need to be formal with the regular expression:
-                        with "student" as parameter, for example, it returns results that include the parameter
-                        like student1 or something_student_something.
+                        <strong>(?i)</strong> $:_("turns the pattern to case insensitivity")
+                        <a href="https://docs.mongodb.com/v3.4/reference/operator/query/regex/#op._S_options" target="_blank">$:_("Click here to see the options")</a>.
+                        $:_("Also, you do not need to be formal with the regular expression"):
+                        $:_("with \"student\" as parameter, for example, it returns results that include the parameter like student1 or something_student_something").
                     </li>
                 </ul>
             </div>
@@ -101,6 +100,7 @@ $ no_user = _("No user found")
                         </tr>
                         </thead>
                         <tbody id="userInformation"></tbody>
+                        <tfoot id="userInformationFoot"></tfoot>
                     </table>
                 </div>
             </div>
@@ -108,7 +108,8 @@ $ no_user = _("No user found")
         <div class="row py-1">
             <div class="col-xs-8 col-centered">
                 <h3>$:_("User Status"): <span id="userConnection"
-                                              class="label label-danger badge-pill"> </span></h3>
+                                              class="label label-danger badge-pill"
+                                              title=$:_("\"Number of open user sessions\"")></span></h3>
 
                 <table class="table table-striped">
                     <thead>
