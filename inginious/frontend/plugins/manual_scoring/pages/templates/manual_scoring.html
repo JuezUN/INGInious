@@ -85,41 +85,40 @@ $var Navbar: $:NavbarF()
         <p>$:_("Click to select and deselect")</p>
     </div>
     <div>
-    <table class="table sorted_table table-bordered">
-                <thead>
+        <table class="table sorted_table table-bordered">
+            <thead>
                 <tr>
                     <th></th>
                     $for header in rubric.keys():
                     <th>$header</th>
                 </tr>
-                </thead>
-                <tbody>
+            </thead>
+            <tbody>
                 $ first_level = rubric[list(rubric.keys())[0]]
 
-                $for category_index in range(len(first_level)):
-                $ category_name = list(first_level[category_index])[0]
+                $for category_index, category_name in enumerate(first_level.keys()):
                     <tr>
                         <th>$category_name</th>
                         $ col = 0
-                        $for level_key in rubric:
-                        $ category_content = rubric[level_key][category_index][category_name]
-                        $ category_content = "" if category_content is None else category_content
+                        $for column_key in rubric.keys():
+                            $ category_content = rubric[column_key][category_name]
+                            $ category_content = "" if category_content is None else category_content
 
-                        $ category_content_lines = category_content.split("\n")
-                        <td id="$category_index-$col">
-                            $ col = col + 1
-                            <ul>
-                                $for line in category_content_lines:
-                                <li>$line</li>
-                            </ul>
-                        </td>
+                            $ category_content_lines = category_content.split("\n")
+                            <td id="$category_index-$col">
+                                $ col = col + 1
+                                <ul>
+                                    $for line in category_content_lines:
+                                    <li>$line</li>
+                                </ul>
+                            </td>
                     </tr>
-
-                </tbody>
-    </table>
-        </div>
+            </tbody>
+        </table>
+    </div>
     <div>
-        <h4><strong>$:_("Current Score: ")<strong id="output" style="color: #002a95">$data['grade']</strong></strong></h4>
+        <h4><strong>$:_("Current Score: ")<strong id="output" style="color: #002a95">$data['grade']</strong></strong>
+        </h4>
     </div>
     <div id="gradeEditSubmitStatus"></div>
 </section>
@@ -166,27 +165,35 @@ $var Navbar: $:NavbarF()
 
     const environmentType = function () {
         return "$data['environment_type']"
-    }
+    };
 
     const getURLSubmissionCode = function () {
         return "$get_homepath()/course/$course.get_id()/$task.get_id()" + "?submissionid=" + "$data['submission_id']" + "&questionid=" + "$data['question_id']";
-    }
+    };
 
     const getURLSubmissionInput = function () {
         return "$get_homepath()/course/$course.get_id()/$task.get_id()";
-    }
+    };
     const getCurrentSubmissionId = function () {
         return "$data['submission_id']";
-    }
-    function getTaskId(){
+    };
+
+    function getTaskId() {
         return "$task.get_id()";
     }
+
     const rubricStatus = function () {
         return "$data['rubric_status']"
-    }
-    const getCourseId = function (){
+    };
+    const getCourseId = function () {
         return "$course.get_id()";
-    }
+    };
 
+    const getRubricWidth = () => {
+        return $len(rubric.keys())
+    };
 
+    const getRubricHeight = () => {
+        return $len(rubric[list(rubric.keys())[0]])
+    };
 </script>

@@ -129,7 +129,7 @@ class ManualScoringPage(INGIniousAdminPage):
 
     def render_page(self, course, task, submission_id):
         """ Get all data and display the page """
-        rubric_content = get_rubric_content(self.user_manager)
+        rubric_content = get_rubric_content(self.user_manager, course.get_fs())
         problem_id = task.get_problems()[0].get_id()
         submission = self.submission_manager.get_submission(submission_id, user_check=False)
         submission_input = self.submission_manager.get_input_from_submission(submission)

@@ -10,6 +10,8 @@ _render_path = 'frontend/plugins/manual_scoring/pages/templates'
 _use_minified = True
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 
+CUSTOM_RUBRIC_FILENAME = "manual_scoring_rubric.json"
+
 
 def get_manual_scoring_link_code(course):
     """ Add new Manual scoring item to side bar """
