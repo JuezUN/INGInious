@@ -3,37 +3,6 @@ from collections import OrderedDict
 from inginious.frontend.plugins.user_management.utils import get_collection_document
 
 
-def search_user(user_text, collections_manager, field=None):
-    """ returns a list of users matching the search parameter.
-    :param user_text: Is a mongodb regular expresion
-    :param collections_manager: Is the singleton class
-    :param field: Is an optional parameter to indicate by which specific field to filter. By default, it filter for all
-    field_names
-     """
-
-    def get_regex_pipeline(field_name):
-        return {field_name: {"$regex": user_text}}
-
-    field_names = ["username", "email"]
-    or_pipeline = []
-
-    if field in field_names:
-        or_pipeline.append(get_regex_pipeline(field))
-    else:
-        or_pipeline = [get_regex_pipeline(field_name) for field_name in field_names]
-
-    user_filter = {
-        "$match": {
-            "$or": or_pipeline
-        }}
-    projection = {"$project": {"_id": 0, "username": 1, "realname": 1, "email": 1
-                               }
-                  }
-    query = [user_filter, projection]
-
-    return list(collections_manager.make_aggregation("users", query))
-
-
 def get_count_username_occurrences(username, collection_manager):
     """ returns a dictionary with the collections names as key and the number username occurrences
     in the collection as value """

@@ -1,11 +1,10 @@
 import web
 
-from inginious.frontend.plugins.user_management.find_generator import get_num_open_user_sessions, \
-    get_submissions_running, \
-    get_custom_test_running
-from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
-from inginious.frontend.plugins.utils import get_mandatory_parameter
 from inginious.frontend.plugins.user_management.collections_manager import CollectionsManagerSingleton
+from inginious.frontend.plugins.user_management.user_status import get_num_open_user_sessions, \
+    get_submissions_running, get_custom_test_running
+from inginious.frontend.plugins.utils import get_mandatory_parameter
+from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
 
 
 class UserStatusAPI(SuperadminAPI):

@@ -97,6 +97,18 @@ def remove_block_user(username, collection_manager):
     return collection_manager.update_collection("users", user_filter, new_name)
 
 
+def is_array(collection_information):
+    """ return a boolean value to determinate if the field that is contents the username is an array """
+    path = collection_information["path"]
+    index_list = sorted(collection_information["index_array"])
+    if not index_list:
+        return False
+
+    num_fields = len(_get_field_end_index_in_path(path))
+    last_index_path = num_fields - 1
+    return last_index_path == index_list[-1]
+
+
 def _crete_update_to_change_username_collection(username, new_username, coll_name, collection_info, collection_manager):
     """ For each sub set of information about a collection (path and index_array), make a update process
     and count the number of changes.
@@ -139,18 +151,6 @@ def _create_push_operator(path, new_username):
 def _create_pull_operator(path, username):
     """ create a pull pipeline to remove the old username in a mongodb array """
     return {"$pull": {path: username}}
-
-
-def is_array(collection_information):
-    """ return a boolean value to determinate if the field that is contents the username is an array """
-    path = collection_information["path"]
-    index_list = sorted(collection_information["index_array"])
-    if not index_list:
-        return False
-
-    num_fields = len(_get_field_end_index_in_path(path))
-    last_index_path = num_fields - 1
-    return last_index_path == index_list[-1]
 
 
 def _create_user_filter(username, path):

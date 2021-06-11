@@ -6,16 +6,6 @@ def get_num_open_user_sessions(username, collection_manager):
     return num_sessions
 
 
-def _create_filter_for_sessions(username):
-    """ Returns a dictionary to filter the open sessions of a user in sessions collection """
-    return {"data.username": username, "data.loggedin": True}
-
-
-def _create_projection_for_sessions():
-    """  Returns a dictionary to specify what parameters returns from the DB """
-    return {"data.loggedin": 1, "_id": 0}
-
-
 def get_submissions_running(username, collection_manager):
     """ Returns a list of submissions that are running and belongs to the user """
     return _get_process_running_in_collection(username, "submissions", collection_manager)
@@ -24,6 +14,16 @@ def get_submissions_running(username, collection_manager):
 def get_custom_test_running(username, collection_manager):
     """ Returns a list of custom test that are running and belongs to the user """
     return _get_process_running_in_collection(username, "custom_tests", collection_manager)
+
+
+def _create_filter_for_sessions(username):
+    """ Returns a dictionary to filter the open sessions of a user in sessions collection """
+    return {"data.username": username, "data.loggedin": True}
+
+
+def _create_projection_for_sessions():
+    """  Returns a dictionary to specify what parameters returns from the DB """
+    return {"data.loggedin": 1, "_id": 0}
 
 
 def _get_process_running_in_collection(username, collection_name, collection_manager):

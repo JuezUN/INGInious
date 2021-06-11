@@ -2,12 +2,12 @@ import web
 import json
 import inginious.frontend.pages.api._api_page as api
 
-from inginious.frontend.plugins.user_management.aggregation_generator import get_count_username_occurrences
-from inginious.frontend.plugins.user_management.find_generator import get_submissions_running, \
-    get_custom_test_running, get_num_open_user_sessions
-from inginious.frontend.plugins.user_management.update_generator import change_username, change_email, change_name, \
-    make_user_changes_register, close_user_sessions, add_block_user, remove_block_user
 from inginious.frontend.plugins.user_management.collections_manager import CollectionsManagerSingleton
+from inginious.frontend.plugins.user_management.update_user_data import close_user_sessions, add_block_user, \
+    change_email, change_name, change_username, make_user_changes_register, remove_block_user
+from inginious.frontend.plugins.user_management.user_information import get_count_username_occurrences
+from inginious.frontend.plugins.user_management.user_status import get_submissions_running, get_custom_test_running, \
+    get_num_open_user_sessions
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
 

@@ -1,13 +1,44 @@
 import web
 
-from inginious.frontend.plugins.user_management.aggregation_generator import search_user
 from inginious.frontend.plugins.user_management.collections_manager import CollectionsManagerSingleton
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
 
 
+def search_user(user_text, collections_manager, field=None):
+    """ returns a list of users matching the search parameter.
+    :param user_text: Is a mongodb regular expresion
+    :param collections_manager: Is the singleton class
+    :param field: Is an optional parameter to indicate by which specific field to filter. By default, it filter for all
+    field_names
+     """
+
+    def get_regex_pipeline(field_name):
+        return {field_name: {"$regex": user_text}}
+
+    field_names = ["username", "email"]
+    or_pipeline = []
+
+    if field in field_names:
+        or_pipeline.append(get_regex_pipeline(field))
+    else:
+        or_pipeline = [get_regex_pipeline(field_name) for field_name in field_names]
+
+    user_filter = {
+        "$match": {
+            "$or": or_pipeline
+        }}
+    projection = {"$project": {"_id": 0, "username": 1, "realname": 1, "email": 1
+                               }
+                  }
+    query = [user_filter, projection]
+
+    return list(collections_manager.make_aggregation("users", query))
+
+
 class FindUserAPI(SuperadminAPI):
     """ An API to find users whom are related with the search parameter """
+
     def API_GET(self):
         """ Get request. returns a list of users matching the search parameter """
         self.check_superadmin_rights()
