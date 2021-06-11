@@ -75,3 +75,8 @@ class CollectionsManagerSingleton:
         """ Find request to a collection """
         collection = getattr(self.db, collection_name)
         return collection.find(filter=query, projection=projection)
+
+    def make_find_one_request(self, collection_name, query=None, projection=None):
+        """ find one request to a collection """
+        collection = getattr(self.db, collection_name)
+        return collection.find_one(filter=query, projection=projection)

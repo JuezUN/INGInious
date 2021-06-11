@@ -29,7 +29,8 @@ def block_user(username, collection_manager):
 
 
 def inform_user_changes(user_original_info, user_final_info):
-    """ Send an email to the student that his their user data has been modified """
+    """ Send an email to the student that their user data has been modified """
+
     def get_changes():
         text = ""
         key_dict = {"username": _("Username"), "email": _("Email"), "name": _("Name")}
@@ -112,10 +113,13 @@ class UserDataAPI(SuperadminAPI):
         collections_manager = CollectionsManagerSingleton.get_instance()
         user_basic_data = self.database.users.find_one({'username': username})
         if user_basic_data:
+            collection_data, unknown_collections = get_count_username_occurrences(user_basic_data["username"],
+                                                                                  collections_manager)
             data = {"username": user_basic_data["username"],
                     "name": user_basic_data["realname"],
                     "email": user_basic_data["email"],
-                    "count": get_count_username_occurrences(user_basic_data["username"], collections_manager)}
+                    "count": collection_data,
+                    "unknown_collections": unknown_collections}
             return data
         else:
             return {"user": _("User no found")}

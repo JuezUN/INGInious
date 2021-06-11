@@ -18,6 +18,7 @@ function requestUser(username) {
         fillInput(NEW_NAME_INPUT_ID, currentName);
         fillInput(NEW_EMAIL_INPUT_ID, currentEmail);
         fillUserTable(data["count"]);
+        alertForUnknownCollections(data["unknown_collections"]);
     })
 }
 
@@ -130,4 +131,10 @@ function getInputValue(inputId) {
 function cleanUserInfoTable() {
     $(`#${USER_INFORMATION_TABLE_ID}`).empty();
     $(`#${USER_TOTAL_TABLE_ID}`).empty();
+}
+
+function alertForUnknownCollections(unknownCollections) {
+    if (unknownCollections.length) {
+        new MessageBox(NOTIFICATIONS_ID, `${unknownCollectionsMessage}: ${unknownCollections}`, "warning", false)
+    }
 }

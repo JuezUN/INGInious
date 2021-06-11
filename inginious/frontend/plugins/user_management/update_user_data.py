@@ -1,4 +1,6 @@
 import datetime
+
+from inginious.frontend.plugins.user_management.user_information import username_is_array
 from inginious.frontend.plugins.user_management.utils import get_collection_document
 import re
 
@@ -53,7 +55,11 @@ def change_username(username, new_username, collection_manager, collection_name_
         if collection_name in collection_information_list:
             information = collection_information_list[collection_name]
         else:
-            information = default_collection_information  # TODO: array?
+            information = default_collection_information.copy()
+            # index_array indicates witch fields in the collection are arrays. By default there is just username
+            # therefore if username is an array the index is 0.
+            information[0]["index_array"] = [0] if username_is_array(collection_name, collection_manager) else []
+
         count += _crete_update_to_change_username_collection(username, new_username, collection_name, information,
                                                              collection_manager)
     return count
@@ -124,23 +130,26 @@ def _create_update_to_change_username(username, new_username, coll_name, collect
     """ update the username with the new username in a specific path """
     user_filter = _create_user_filter(username, collection_info_field["path"])
     path = _process_path(collection_info_field)
-
+    there_are_changes = True
+    change_username_count = 0
+    # positional operator "$" only acts as a placeholder for the first element that matches the query document
+    # therefore is necessary (in mongodb 3.4) repeat the request to get to all objects in an array of objects
     if is_array(collection_info_field):
         push_new_username = _create_push_operator(path, new_username)
         pull_old_username = _create_pull_operator(path, username)
-        there_are_changes = True
-        change_username_count = 0
         while there_are_changes:
             push_ans = collection_manager.update_many_in_collection(coll_name, user_filter, push_new_username)
             there_are_changes = push_ans.modified_count > 0
             if there_are_changes:
                 pull_ans = collection_manager.update_many_in_collection(coll_name, user_filter, pull_old_username)
                 change_username_count += pull_ans.modified_count
-        return change_username_count
-    # TODO IF it has arrays
-    set_username = _set_operator_to_change_username(path, new_username)
-    set_ans = collection_manager.update_many_in_collection(coll_name, user_filter, set_username)
-    return set_ans.modified_count
+    else:
+        set_username = _set_operator_to_change_username(path, new_username)
+        while there_are_changes:
+            set_ans = collection_manager.update_many_in_collection(coll_name, user_filter, set_username)
+            there_are_changes = set_ans.modified_count > 0
+            change_username_count += set_ans.modified_count
+    return change_username_count
 
 
 def _create_push_operator(path, new_username):

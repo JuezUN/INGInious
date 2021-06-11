@@ -10,6 +10,7 @@ def get_count_username_occurrences(username, collection_manager):
     dictionary = _create_occurrences_dict(collection_name_list)
     collection_information = get_collection_document()
     to_remove = []
+    unknown_collections = []
 
     def get_aggregation_result(name, query):
         ans = collection_manager.make_aggregation(name, query)
@@ -24,7 +25,7 @@ def get_count_username_occurrences(username, collection_manager):
             else:
                 to_remove.append(collection_name)
         else:
-            # TODO: message to indicate that there is not info about the collection. Try to know if is a list. Type
+            unknown_collections.append(collection_name)
             has_username = has_username_key(collection_manager.get_all_key_names(collection_name))
             if has_username:
                 aggregation = _create_aggregation_to_count(username, [{"path": "username"}])
@@ -32,7 +33,7 @@ def get_count_username_occurrences(username, collection_manager):
 
     for item_to_remove in to_remove:
         del dictionary[item_to_remove]
-    return OrderedDict(sorted(dictionary.items()))
+    return OrderedDict(sorted(dictionary.items())), unknown_collections
 
 
 def _create_occurrences_dict(collection_names):
@@ -43,6 +44,12 @@ def _create_occurrences_dict(collection_names):
 def has_username_key(collection_keys):
     """ returns a boolean value to determinate if username is in a collection """
     return "username" in collection_keys
+
+
+def username_is_array(collection_name, collection_manager):
+    """ indicate for unknown collection that has username if this field is an array """
+    example = collection_manager.make_find_one_request(collection_name, {"username": {"$exists": True}})
+    return isinstance(example["username"], list)
 
 
 def _create_aggregation_to_count(username, information):
