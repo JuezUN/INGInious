@@ -1,0 +1,78 @@
+$def with (task_hints)
+
+<div class="alert alert-warning">
+    <i class="fa fa-info-circle"/>
+    </i>
+    $:_("Add hints to the task that can be accessed before the task ends.<br><b>Note:</b>You can only add hints for individual tasks")
+</div>
+
+<div class="jumbotron">
+    <div class="row form-group">
+        <h3>$:_("Hints list")</h3>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-12">
+            <table id="task_hints_table" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="col-sm-7">
+                            $:_("Hint title")
+                        </th>
+                        <th class="col-sm-2">
+                            $:_("Penalty per hint (%)")
+                        </th>
+                        <th class="col-sm-3">
+                            $:_("Hint options")
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    $for key, hint in task_hints.items():
+
+                        $ title = hint["title"]
+                        $ penalty = hint["penalty"]
+                        $ content = hint["content"]
+                        $ id = hint["id"]
+
+                        <tr id="hint_$key">
+                            <td hidden>
+                                <input id="hint_info_id_$key" class="form-control" name="task_hints[$key][id]" value="$id">
+                            </td>
+                            <td>
+                                <input id="hint_info_title_$key" type="text" class="form-control" name="task_hints[$key][title]" value="$title" readonly/>
+                            </td>
+                            <td>
+                                <input id="hint_info_penalty_$key" type="text" class="form-control" name="task_hints[$key][penalty]" value="$penalty" readonly/>
+                            </td>
+                            <td>
+                                <div id="hint_options_$key">
+                                    <button class="col-sm-6 btn btn-info" type="button" onclick="onEditHintClick($key)"><i class="fa fa-edit"></i></button>
+                                    <button class="col-sm-6 btn btn-danger" type="button" onclick="deleteHints($key)"><i class="fa fa-trash"></i></button>
+                                </div>
+                            </td>
+                            <td style="display:none">
+                                <textarea id="hint_info_content_$key" class="code-editor form-control" data-x-language="rst" data-x-lines="0" name="task_hints[$key][content]">$content</textarea>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-success"
+                    data-toggle="modal"
+                    data-target="#hints_edit_modal">$:_("Add hint")</button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function getTaskHints(){
+        return "$task_hints";
+    }
+
+</script>
