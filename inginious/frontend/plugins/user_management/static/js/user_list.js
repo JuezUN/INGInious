@@ -1,10 +1,10 @@
 const USER_LIST_DIV_ID = "listOfUsers";
 const USER_TABLE_ID = "userList";
 const FIELD_OPTION_ID = "fieldOption";
-const CHECK_BTN_ID = "checkBtn";
+const SEARCH_BTN_ID = "searchBtn";
 
-function addCheckBtnListener() {
-    $(`#${CHECK_BTN_ID}`).on("click", function () {
+function addSearchBtnListener() {
+    $(`#${SEARCH_BTN_ID}`).on("click", function () {
         if (checkSearchInput()) {
             const fieldOption = $(`#${FIELD_OPTION_ID}`).val();
             const usernameOrEmail = getSearchParameter();

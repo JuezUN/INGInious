@@ -13,7 +13,7 @@ let timeInterval;
 
 function addEvents() {
     allowEdit();
-    addCheckBtnListener();
+    addSearchBtnListener();
     addListenerUpdateBtn();
     ajaxSetup();
 }
