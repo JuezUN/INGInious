@@ -14,9 +14,9 @@ def search_user(user_text, collections_manager, field=None):
      """
 
     def get_regex_pipeline(field_name):
-        return {field_name: {"$regex": user_text}}
+        return {field_name: {"$regex": user_text, "$options": "i"}}
 
-    field_names = ["username", "email"]
+    field_names = ["username", "email", "realname"]
     or_pipeline = []
 
     if field in field_names:
