@@ -5,10 +5,6 @@ $# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
 $# more information about the licensing of this file.
 $#
 
-
-$ num_tags_filter = 4
-
-
 $var title: $:_("View submissions")
 
 $var Column: $:template_helper.call('course_admin_menu',course=course,current='submissions')
@@ -107,7 +103,6 @@ $if len(old_input.task) == 1:
             <!-- Content coolspse Advanced query -->
             <!-- Checkboxs -->
             $ list_checkboxes = [("eval", _("Only evaluation submissions")), 
-            $                    ("show_tags", _("Show tags")), 
             $                    ("show_id", _("Show submission id")), 
             $                    ("show_task_name", _("Show task name")),
             $                    ("show_stud_name", _("Show student name"))]
@@ -161,29 +156,6 @@ $if len(old_input.task) == 1:
                     \$('#date_after_picker').datetimepicker({locale: '$user_manager.session_language()', sideBySide: true});
                 });
             </script>
-
-            <!-- Tag filtering -->
-            $if "show_tags" in old_input:
-                $for i in range(num_tags_filter):
-                    <div class="col-xs-6 form-group">
-                        <div class="row borders">
-                            <div class="col-xs-6 col-sm-6">
-                                <label>$:_("The tag")</label>
-                                <select name="filter_tags" class="form-control" id="select_filter_tags_$i">
-                                    <option value=""></option>
-                                $for tag in course.get_all_tags()[0] + course.get_all_tags()[1]:
-                                    <option value="$tag.get_id()" $('selected' if len(old_input['filter_tags']) > i and old_input['filter_tags'][i] == tag.get_id() else '')>$tag.get_name()</option>
-                                </select>
-                            </div>
-                            <div class="col-xs-6 col-sm-6">
-                                <label>$:_("is")</label>
-                                <select name="filter_tags_presence" class="form-control" id="select_filter_tags_presence_$i">
-                                    <option value="True">$:_("present")</option>
-                                    <option value="False" $('selected' if len(old_input['filter_tags_presence']) > i and old_input['filter_tags_presence'][i] == "False" else '')>$:_("not present")</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
 
             <!-- Sort by -->
             <div class="col-xs-12 form-group">
@@ -299,8 +271,6 @@ $if statistics != None and len(data) > 0:
                 <th>$:_("id")</th>
             <th>$:_("submitted on")</th>
             <th>$:_("result")</th>
-            $if "show_tags" in old_input:
-                <th>$:_("tags")</th>
             <th>
                 <!-- the 73px is there to force horizontal button-group. The btn-group may becomes vertical without this. -->
                 <div class="btn-group" role="group" style="width:73px">
@@ -356,35 +326,7 @@ $if statistics != None and len(data) > 0:
                     $:_("Failed")
                 ($submission.get("grade",0.0)%)
             </td>
-            
-            <!-- TAGS td -->
-            $if "show_tags" in old_input:
-                <td>
-                $for tag in tasks[submission["taskid"]].get_tags()[0]:
-                    <span style="line-height: 18px;">
-                    $if "tests" in submission and tag.get_id() in submission["tests"] and submission["tests"][tag.get_id()]:
-                        <span class="badge alert-success" id="$tag.get_id()">$:_(tag.get_name())</span>
-                    $else:
-                        <span class="badge alert-info" id="$tag.get_id()">$:_(tag.get_name())</span>
-                    </span>
-                $for tag in tasks[submission["taskid"]].get_tags()[1]:
-                    <span style="line-height: 18px;">
-                    $if "tests" in submission and tag.get_id() in submission["tests"] and submission["tests"][tag.get_id()]:
-                        <span class="badge alert-danger" id="$tag.get_id()">$:_(tag.get_name())</span> 
-                    </span>
-                $# Auto-tags not defined in task
-                $if "tests" in submission:
-                    $for tag in submission["tests"]:
-                        $if tag.startswith("*auto-tag-"):
-                            <span style="line-height: 18px;">
-                                $if len(submission["tests"][tag]) > 30:
-                                    <span class="badge alert-default" data-toggle="tooltip" data-placement="left" data-original-title="$submission['tests'][tag]">$submission["tests"][tag][:30]…</span> 
-                                $else:
-                                    <span class="badge alert-default">$submission["tests"][tag]</span> 
-                            </span>
-                </td>
-            <!-- END TAGS td -->
-            
+              
             <td>
                 <div class="btn-group" role="group">
                     <a href="$get_homepath()/submission/$submission['_id']"
