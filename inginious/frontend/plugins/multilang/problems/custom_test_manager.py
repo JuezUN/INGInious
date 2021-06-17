@@ -66,6 +66,9 @@ class CustomTestManager(object):
             else:
                 raise Exception(_("A custom test is already pending for this task. Wait for a while to run the tests."))
 
+        # Send the session language to the container to do the corresponding translations.
+        input_data["@lang"] = self._user_manager.session_language()
+
         job_id = self._client.new_job(task, input_data,
                                       (lambda result, grade, problems, tests, custom, archive, stdout, stderr:
                                        self._job_done_callback(custom_test_id, result, stdout, stderr)),

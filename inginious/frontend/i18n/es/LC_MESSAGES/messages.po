@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-08 22:10-0500\n"
+"POT-Creation-Date: 2021-06-10 16:40-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -244,7 +244,7 @@ msgstr "Usted no esta autorizado para enviar esta tarea."
 msgid "Your task has been regenerated. This current task is outdated."
 msgstr "Esta tarea ha sido reinicializada y no está disponible."
 
-#: inginious/frontend/pages/tasks.py:218
+#: inginious/frontend/pages/tasks.py:219
 msgid ""
 "Please answer to all the questions and verify the extensions of the files"
 " you want to upload. Your responses were not tested."
@@ -253,22 +253,22 @@ msgstr ""
 "archivos enviados sean correctas. Estas respuestas no han sido "
 "verificadas."
 
-#: inginious/frontend/pages/tasks.py:236 inginious/frontend/pages/tasks.py:342
+#: inginious/frontend/pages/tasks.py:237 inginious/frontend/pages/tasks.py:343
 msgid "<b>Your submission has been sent...</b>"
 msgstr "<b>Su petición ha sido enviada...</b>"
 
 #: inginious/frontend/pages/course_admin/task_edit_file.py:202
 #: inginious/frontend/pages/course_admin/task_edit_file.py:223
 #: inginious/frontend/pages/course_admin/task_edit_file.py:227
-#: inginious/frontend/pages/tasks.py:246
+#: inginious/frontend/pages/tasks.py:247
 msgid "Internal error"
 msgstr "Error interno"
 
-#: inginious/frontend/pages/tasks.py:311
+#: inginious/frontend/pages/tasks.py:312
 msgid "<b>UNCode is currently grading your answers.<b/> (almost done)"
 msgstr "<b>UNCode está evaluando tus respuestas.<b/> (finalizando)"
 
-#: inginious/frontend/pages/tasks.py:313
+#: inginious/frontend/pages/tasks.py:314
 msgid ""
 "<b>UNCode is currently grading your answers.<b/> (Approx. wait time: {} "
 "seconds)"
@@ -276,41 +276,41 @@ msgstr ""
 "<b>UNCode está evaluando tus respuestas.<b/> (Tiempo aproximado: {} "
 "segundos)"
 
-#: inginious/frontend/pages/tasks.py:316
+#: inginious/frontend/pages/tasks.py:317
 msgid "<b>You are next in the waiting queue!</b>"
 msgstr "<b>¡Eres el siguiente en la lista de espera!</b>"
 
-#: inginious/frontend/pages/tasks.py:318
+#: inginious/frontend/pages/tasks.py:319
 msgid "<b>There is one task in front of you in the waiting queue.</b>"
 msgstr "<b>Hay una tarea más en la lista de espera.</b>"
 
-#: inginious/frontend/pages/tasks.py:320
+#: inginious/frontend/pages/tasks.py:321
 msgid "<b>There are {} tasks in front of you in the waiting queue.</b>"
 msgstr "<b>Hay {} tareas más en la lista de espera.</b>"
 
-#: inginious/frontend/pages/tasks.py:344
+#: inginious/frontend/pages/tasks.py:345
 msgid "There are some errors in your answer. Your score is {score}%."
 msgstr "Tu respuesta contiene algunos errores. Tu calificación actual es {score}%."
 
-#: inginious/frontend/pages/tasks.py:346
+#: inginious/frontend/pages/tasks.py:347
 msgid "Your answer passed the tests! Your score is {score}%."
 msgstr "¡Tu respuesta es exitosa! Tu calificación es {score}%."
 
-#: inginious/frontend/pages/tasks.py:348
+#: inginious/frontend/pages/tasks.py:349
 msgid "Your submission timed out. Your score is {score}%."
 msgstr "El tiempo de tu petición se ha terminado. Tu calificación es {score}%."
 
-#: inginious/frontend/pages/tasks.py:350
+#: inginious/frontend/pages/tasks.py:351
 msgid "Your submission made an overflow. Your score is {score}%."
 msgstr ""
 "Tu respuesta ha generado un \"overflow\" (desbordamiento) en memoria. Tu "
 "calificación es {score}%."
 
-#: inginious/frontend/pages/tasks.py:352
+#: inginious/frontend/pages/tasks.py:353
 msgid "Your submission was killed."
 msgstr "Tu envío ha sido terminado."
 
-#: inginious/frontend/pages/tasks.py:354
+#: inginious/frontend/pages/tasks.py:355
 msgid ""
 "An internal error occurred. Please retry later. If the error persists, "
 "send an email to the course administrator."
@@ -318,17 +318,22 @@ msgstr ""
 "Ha ocurrido un error interno, intenta más tarde. Si el error persiste, "
 "envía un correo electrónico al administrador del curso."
 
-#: inginious/frontend/pages/tasks.py:358
+#: inginious/frontend/pages/tasks.py:359
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:68
 #: inginious/frontend/templates/course_admin/submissions.html:369
 #: inginious/frontend/templates/task.html:222
-msgid "\"Later submission: it does not affect the grade.\""
+msgid "\"Late submission: it does not affect the grade.\""
 msgstr "\"Envío después de la fecha límite: no afecta la calificación.\""
 
-#: inginious/frontend/pages/tasks.py:363
-msgid "Later submission"
+#: inginious/frontend/pages/tasks.py:364
+msgid "Late submission"
 msgstr "Envío posterior"
 
-#: inginious/frontend/pages/tasks.py:365
+#: inginious/frontend/pages/tasks.py:369
+msgid "<p>A penalty of <b>{penalty}%</b> was applied to this submission.</p>"
+msgstr "<p>Fue aplicada una penalización de <b>{penalty}%</b>.</p>"
+
+#: inginious/frontend/pages/tasks.py:371
 msgid "[Submission #{submissionid}]"
 msgstr "[Envío #{submissionid}]"
 
@@ -390,34 +395,34 @@ msgstr "El usuario generó un formato inválido."
 msgid "Classroom not found."
 msgstr "El grupo no fue encontrado."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:146
+#: inginious/frontend/pages/course_admin/danger_zone.py:161
 msgid "Operation aborted due to invalid token."
 msgstr "La operación se ha interrumpido debido a que el \"token\" es inválido."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:150
-#: inginious/frontend/pages/course_admin/danger_zone.py:173
+#: inginious/frontend/pages/course_admin/danger_zone.py:165
+#: inginious/frontend/pages/course_admin/danger_zone.py:188
 msgid "Wrong course id."
 msgstr "El identificador del curso es incorrecto."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:155
+#: inginious/frontend/pages/course_admin/danger_zone.py:170
 msgid "All course data have been deleted."
 msgstr "La información de los cursos ha sido suprimida."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:157
+#: inginious/frontend/pages/course_admin/danger_zone.py:172
 msgid "An error occurred while dumping course from database."
 msgstr ""
 "Un error ha ocurrido durante el intento de suprimir el curso de la base "
 "de datos."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:167
+#: inginious/frontend/pages/course_admin/danger_zone.py:182
 msgid "Course restored to date : {}."
 msgstr "El curso será restaurado en la siguiente fecha: {}."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:169
+#: inginious/frontend/pages/course_admin/danger_zone.py:184
 msgid "An error occurred while restoring backup."
 msgstr "Un error ha ocurrido durante la restauración de tus datos."
 
-#: inginious/frontend/pages/course_admin/danger_zone.py:180
+#: inginious/frontend/pages/course_admin/danger_zone.py:195
 msgid "An error occurred while deleting the course data."
 msgstr "Un error ha ocurrido durante la supresión de datos del curso."
 
@@ -1042,6 +1047,7 @@ msgstr "¿Está seguro de borrar todos los archivos?"
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:68
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:105
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:34
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
 #: inginious/frontend/templates/course_admin/danger_zone.html:81
 #: inginious/frontend/templates/course_admin/danger_zone.html:160
@@ -1175,6 +1181,7 @@ msgstr ""
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:195
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:82
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:120
 #: inginious/frontend/templates/auth.html:16
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
 #: inginious/frontend/templates/lti_login.html:30
@@ -1545,12 +1552,14 @@ msgstr "Actualizar"
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:80
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:28
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:55
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:66
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:75
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:89
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:30
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:40
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:61
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:72
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:81
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:97
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:111
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:36
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:46
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:58
 msgid "Download CSV"
 msgstr "Descargar CSV"
 
@@ -2159,6 +2168,7 @@ msgstr ""
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:11
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:106
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:149
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:38
 msgid "Save"
 msgstr "Guardar"
 
@@ -2207,8 +2217,8 @@ msgstr "Retroalimentación"
 #: inginious/frontend/plugins/manual_scoring/constants.py:88
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:53
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:55
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:57
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:59
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:56
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:58
 msgid "Not available"
 msgstr "No disponible"
 
@@ -2369,7 +2379,7 @@ msgid "See submission"
 msgstr "Ver envío"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:57
-#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:61
+#: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:60
 msgid ""
 "\"It is possible that the grader could not finish its process with this "
 "submission.\""
@@ -3067,7 +3077,7 @@ msgstr "Estadísticas"
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:15
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:22
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.py:27
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.py:35
 msgid "Course statistics"
 msgstr "Estadísticas del curso"
 
@@ -3080,46 +3090,58 @@ msgid "Grade distribution"
 msgstr "Distribución notas"
 
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:39
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:72
-msgid "Submissions Verdict (ALL)"
-msgstr "Veredicto submissions (TODAS)"
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:78
+msgid "Submissions Verdict"
+msgstr "Veredicto envíos"
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:44
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:86
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:45
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:93
+msgid "Submissions Verdict (LATE)"
+msgstr "Veredicto envíos (POSTERIOR)"
+
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:50
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:108
 msgid "Submissions Verdict (BEST)"
 msgstr "Veredicto submissions (MEJOR)"
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:52
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:58
 msgid "Submissions by grade"
 msgstr "Submissions por nota"
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:63
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:69
 msgid "Final grade distribution"
 msgstr "Distribución nota final"
 
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:81
-#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:95
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:37
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:87
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:103
+#: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:117
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:43
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:55
 msgid "Toggle normalize"
 msgstr "Alternar normalización"
 
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:3
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:8
-#: inginious/frontend/plugins/statistics/pages/user_statistics.py:28
+#: inginious/frontend/plugins/statistics/pages/user_statistics.py:38
 msgid "My statistics"
 msgstr "Mis estadísticas"
 
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:16
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:28
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:34
 msgid "Trials and Best Grade"
 msgstr "Intentos y mejor nota"
 
 #: inginious/frontend/plugins/statistics/pages/user_statistics.html:21
-#: inginious/frontend/plugins/statistics/pages/user_statistics.html:33
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:39
 msgid "Bar Submissions Per Tasks"
-msgstr "Barra - Submissions por tarea"
+msgstr "Diagrama de barras de envíos por tarea"
 
-#: inginious/frontend/plugins/statistics/pages/user_statistics.py:27
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:27
+#: inginious/frontend/plugins/statistics/pages/user_statistics.html:50
+msgid "Bar Submissions Per Tasks (LATE)"
+msgstr "Diagrama de barras de envíos por tarea (POSTERIOR)"
+
+#: inginious/frontend/plugins/statistics/pages/user_statistics.py:37
 msgid "Student's Tools"
 msgstr "Herramientas de los Estudiantes"
 
@@ -3138,8 +3160,8 @@ msgstr ""
 "al que podrán acceder cuando finalice la fecha límite"
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:11
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:21
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:60
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:22
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:61
 msgid "Task tutorial"
 msgstr "Tutorial de la tarea"
 
@@ -3154,15 +3176,15 @@ msgstr ""
 "contexto de la tarea\""
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:26
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:36
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:50
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:76
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:104
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:37
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:51
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:77
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:105
 msgid "Task solution"
 msgstr "Solución de la tarea"
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:33
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:82
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:83
 msgid "Solution language"
 msgstr "Lenguaje del código"
 
@@ -3179,7 +3201,7 @@ msgid "Select language"
 msgstr "Seleccionar lenguaje"
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial.html:61
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:110
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:111
 msgid "Solution notebook"
 msgstr "Notebook solución"
 
@@ -3191,26 +3213,223 @@ msgstr "\"Seleccionar un archivo de notebook con extensión .ipynb\""
 msgid "Solution notebook name"
 msgstr "Nombre del notebook"
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:6
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:7
 msgid "Editorial"
 msgstr ""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:18
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:19
 msgid "\"Task tutorial not available until the task deadline is over\""
 msgstr ""
 "\"Tutorial de la tarea no disponible hasta finalizar la fecha límite de "
 "entrega\""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:33
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:47
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:34
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:48
 msgid "\"Task solution not available until the task deadline is over\""
 msgstr ""
 "\"Solución de la tarea no disponible hasta finalizar la fecha límite de "
 "entrega\""
 
-#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:84
+#: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:85
 msgid "No language"
 msgstr "Sin lenguaje"
+
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:20
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:6
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:15
+msgid "Hints"
+msgstr "Pistas"
+
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:67
+msgid "Some hints in task have empty content fields."
+msgstr "Hay pistas sin contenido en la tarea."
+
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:70
+msgid "Some hints in task have empty title fields."
+msgstr "Hay pistas sin títulos en la tarea."
+
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:77
+msgid "Penalty for hints must be between 0.0% and 100.0%."
+msgstr "La penalización de las pistas debe estar entre 0.0% y 100%."
+
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:81
+msgid "Each hint penalty must be a float."
+msgstr "La penalización de las pistas debe ser un número decimal."
+
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:93
+msgid "Hints cannot be added for group tasks mode"
+msgstr "No se pueden agregar pistas para tareas grupales"
+
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:32
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:67
+msgid "The course does not exist or the user does not have access."
+msgstr "El curso no existe o el usuario no tiene permisos."
+
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:37
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:72
+msgid "The task does not exist in the course."
+msgstr "Esta tarea no existe en el curso"
+
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:40
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:75
+msgid "The user is not registered in this course."
+msgstr "El usuario no está registrado a este curso."
+
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:47
+msgid "An error occurred while getting the user's hints."
+msgstr "Un error ha ocurrido al obtener las pistas del usuario."
+
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:82
+msgid ""
+"An error occurred while updating status of the hint. The hint does not "
+"exist in the database."
+msgstr ""
+"Un error ha ocurrido al actualizar la pista. La pista no existe en la "
+"base de datos."
+
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:85
+msgid "Hint unlocked successfully."
+msgstr "La pista fue desbloqueada exitosamente"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:5
+msgid "Create new hint"
+msgstr "Crear una nueva pista"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:11
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_tab.html:19
+msgid "Hint title"
+msgstr "Nombre de la pista"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:15
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:58
+msgid "Penalty"
+msgstr "Penalización"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:17
+msgid ""
+"\"Grade penalty for using the hint. You can set a penalty from 0.0% to "
+"100.0%, which will reduce the student's final grade, in case they decide "
+"to see a given hint.\""
+msgstr ""
+"\"Penalización que se aplica en la nota del estudiante cuando se utiliza "
+"la pista. La nota puede tener una penalización de 0.0% a 100%, en caso de"
+" que el estudiante desee acceder a esta.\""
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:25
+msgid "Hint content"
+msgstr "Contenido de la pista"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_tab.html:6
+msgid ""
+"Add hints to the task that can be accessed before the task "
+"ends.<br><b>Note:</b>You can only add hints for individual tasks"
+msgstr ""
+"Establecer las pistas a las cuales el estudiante puede acceder antes de "
+"finalizar la tarea.<br><b>Nota:</b>Solo se pueden añadir pistas para "
+"tareas individuales."
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_tab.html:11
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:38
+msgid "Hints list"
+msgstr "Lista de pistas"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_tab.html:22
+msgid "Penalty per hint (%)"
+msgstr "Penalización por pista (%)"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_tab.html:25
+msgid "Hint options"
+msgstr "Opciones de las pista"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_tab.html:66
+msgid "Add hint"
+msgstr "Agregar pista"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:25
+msgid "Task hints"
+msgstr "Pistas de la tarea"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:43
+msgid "Help"
+msgstr "Ayuda"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:60
+msgid "No penalty"
+msgstr "Sin penalización"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:65
+msgid "This task doesn't have hints to show"
+msgstr "No hay pistas para esta tarea"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:68
+msgid "Total penalty to be applied: "
+msgstr "Penalización total a aplicar: "
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:75
+msgid "Hints help"
+msgstr "Ayuda sobre las pistas"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:77
+msgid ""
+"Task's hints offer you the opportunity to get additional information "
+"about how to address the problem and get a solution."
+msgstr ""
+"Las pistas de la tarea te permiten obtener información adicional sobre "
+"cómo resolver el problema."
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:79
+msgid ""
+"Each hint is like a small help or suggestion with information that you "
+"can use to reach the solution more easily, this includes some code tips, "
+"theory, or processes that might help you to solve the problem. Try to "
+"solve the problem without unlocking the hints as they might reduce your "
+"task's final grade task."
+msgstr ""
+"Cada pista te da una pequeña ayuda o sugerencia con información para "
+"solucionar el problema más fácilmente, esto pueden tips sobre el código, "
+"conceptos a tener en cuenta, o procedimientos para obtener la solución. "
+"Intenta resolver el problema sin desbloquear las pistas, ya que estas "
+"podrían reducir tu nota final de la tarea."
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:81
+msgid ""
+"To unlock a hint, select it and click on the <b>Get hint</b> button. "
+"However, some hints may have a penalty that will be applied on your final"
+" submission score, so be careful if you want to unlock them!."
+msgstr ""
+"Puedes desbloquear una pista al oprimir el botón <b>Desbloquear</b>. Ten "
+"en cuenta que algunas pistas pueden aplicar una penalización en tu "
+"calificación final, por lo tanto, ¡ten cuidado al desbloquearlas!."
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:84
+msgid ""
+"<b>Note:</b> The sum of the hints penalties will we applied as a "
+"percentage of the total submission score."
+msgstr ""
+"<b>Nota:</b> Todas las penalizaciones se aplican como porcentajes a la "
+"calificación final."
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:98
+msgid "Applied penalty"
+msgstr "Penalización aplicada"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:108
+msgid ""
+"You have not unlocked this hint yet. <b>When you unlock the hint, a "
+"penalty will be applied on your task submission score</b>. Do you want to"
+" unlock it?"
+msgstr ""
+"Aun no has desbloqueado esta pista. <b>Si desbloqueas la pista, se "
+"aplicará una penalización en tu nota final</b>. ¿Estás seguro de que "
+"quieres desbloquearla?"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:111
+msgid "This will reduce a <b></b> of your total submission score"
+msgstr "Esta pista tiene una penalización de <b></b>"
+
+#: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:113
+msgid "Get Hint"
+msgstr "Desbloquear"
 
 #: inginious/frontend/plugins/utils/__init__.py:19
 msgid " is mandatory"
@@ -4375,12 +4594,13 @@ msgstr "Archivar los datos del curso"
 #: inginious/frontend/templates/course_admin/danger_zone.html:51
 msgid ""
 "<p>This will reset and backup all course data (submissions, "
-"classrooms/teams, user statistics) from the database.</p><p>To confirm "
-"your will, please type the course id below :</p>"
+"classrooms/teams, user statistics, among others) from the "
+"database.</p><p>To confirm your will, please type the course id "
+"below:</p>"
 msgstr ""
 "<p>Esta acción reinicializará y hará un respaldo de la información de "
-"todos los cursos (tareas enviadas, grupos, equipos, estadísticas de "
-"usuarios) de esta base de datos.</p><p>Para confirmar dicha acción, "
+"todo el curso (tareas enviadas, grupos, equipos, estadísticas de "
+"usuarios, entre otros) de esta base de datos.</p><p>Para confirmar, "
 "escriba el identificador del curso:</p>"
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:56
@@ -4438,7 +4658,7 @@ msgstr ""
 "seguro de realizar esta acción?</p>"
 
 #: inginious/frontend/templates/course_admin/download.html:31
-#: inginious/frontend/templates/course_admin/replay.html:46
+#: inginious/frontend/templates/course_admin/replay.html:41
 msgid "Other options"
 msgstr "Otras opciones"
 
@@ -4477,24 +4697,18 @@ msgstr "¿Como crear una tarea?"
 msgid "Documentation"
 msgstr "Documentación"
 
-#: inginious/frontend/templates/course_admin/replay.html:27
-msgid "This feature is under testing and is not made for production use."
-msgstr ""
-"Esta característica está bajo pruebas y no está hecha para uso en "
-"producción."
-
-#: inginious/frontend/templates/course_admin/replay.html:50
-#: inginious/frontend/templates/course_admin/replay.html:73
+#: inginious/frontend/templates/course_admin/replay.html:45
+#: inginious/frontend/templates/course_admin/replay.html:68
 msgid "Replay"
 msgstr "Responder"
 
-#: inginious/frontend/templates/course_admin/replay.html:57
+#: inginious/frontend/templates/course_admin/replay.html:52
 msgid "Only the evaluation submission (Warning: the best submission may change)"
 msgstr ""
 "Solo la evaluación de las tareas (precaución, solo se elegirán las "
 "mejores evaluaciones)"
 
-#: inginious/frontend/templates/course_admin/replay.html:63
+#: inginious/frontend/templates/course_admin/replay.html:58
 msgid "All the submissions"
 msgstr "Todas las tareas"
 
@@ -5233,7 +5447,7 @@ msgid "Student choice"
 msgstr "Elección del estudiante"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:160
-msgid "Allow later submission"
+msgid "Allow late submission"
 msgstr "Permitir envío después de fecha límite"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:162

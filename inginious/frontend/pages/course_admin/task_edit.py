@@ -262,12 +262,12 @@ class CourseEditTask(INGIniousAdminPage):
                 del data["submission_limit_soft_1"]
                 data["submission_limit"] = result
 
-            # Allow later submission
-            allow_later_submission = data.get("allow_later_submission", False)
-            if allow_later_submission:
-                data["allow_later_submission"] = True
+            # Allow late submission
+            allow_late_submission = data.get("allow_late_submission", False)
+            if allow_late_submission:
+                data["allow_late_submission"] = True
             else:
-                data["allow_later_submission"] = False
+                data["allow_late_submission"] = False
 
             # Accessible
             if data["accessible"] == "custom":

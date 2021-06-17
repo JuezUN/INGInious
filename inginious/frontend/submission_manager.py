@@ -49,11 +49,24 @@ class WebAppSubmissionManager:
         submission = self.get_submission(submissionid, False)
         submission = self.get_input_from_submission(submission)
 
+        # Get user penalty stored in 'user_hints' collection to apply in grade of submission
+        # TODO: should be done for submissions in group tasks mode
+
+        if grade:
+            try:
+                penalty = \
+                self._hook_manager.call_hook('show_hints', taskid=task.get_id(), username=submission["username"][0],
+                                             database=self._database)[0]
+            except:
+                penalty = 0.0
+            grade = max(0.0, round(grade - penalty, 2))
+
         data = {
             "status": ("done" if result[0] == "success" or result[0] == "failed" else "error"),
              # error only if error was made by INGInious
             "result": result[0],
             "grade": grade,
+            "penalty": penalty,
             "text": result[1],
             "tests": tests,
             "problems": problems,
@@ -181,7 +194,7 @@ class WebAppSubmissionManager:
             inputdata["@lang"] = self._user_manager.session_language()
             submission["input"] = self._gridfs.put(bson.BSON.encode(inputdata))
             submission["tests"] = {} # Be sure tags are reinitialized
-            submission["is_later_submission"] = False  # It does not count for admins or tutors
+            submission["is_late_submission"] = False  # It does not count for admins or tutors
             submissionid = self._database.submissions.insert(submission)
 
         jobid = self._client.new_job(task, inputdata,
@@ -240,7 +253,7 @@ class WebAppSubmissionManager:
         if waiting_submission is not None:
             raise Exception("A submission is already pending for this task!")
 
-        is_later_submission = self._user_manager.course_is_open_to_user(task.get_course(), username) \
+        is_late_submission = self._user_manager.course_is_open_to_user(task.get_course(), username) \
                               and not self._user_manager.has_staff_rights_on_course(task.get_course(), username) \
                               and task.can_submit_after_deadline()
 
@@ -251,7 +264,7 @@ class WebAppSubmissionManager:
             "submitted_on": datetime.now(),
             "username": [username],
             "response_type": task.get_response_type(),
-            "is_later_submission": is_later_submission
+            "is_late_submission": is_late_submission
         }
 
         # Send additional data to the client in inputdata. For now, the username and the language. New fields can be added with the

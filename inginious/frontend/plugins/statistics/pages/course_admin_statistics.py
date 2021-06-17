@@ -19,10 +19,19 @@ class CourseAdminStatisticsPage(INGIniousAdminPage):
 
         return (
             self.template_helper.get_custom_renderer(base_renderer_path()).course_admin_statistics(
-                course)
+                course, self._contains_late_submissions(course_id))
         )
+
+    def _contains_late_submissions(self, course_id):
+        """
+        This checks whether the course contains late submissions. In case the course does not have, the statistics tab
+        for late submissions is not shown.
+        """
+        data = list(self.database.submissions.find({"courseid": course_id, "is_late_submission": True}))
+        return len(data) > 0
 
 
 def statistics_course_admin_menu_hook(course):
     course_statistics_str = _("Course statistics")
-    return "statistics", '<i class="fa fa-bar-chart" aria-hidden="true"></i> {}'.format(course_statistics_str)
+    return "statistics", '<i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i>&nbsp; {}'.format(
+        course_statistics_str)

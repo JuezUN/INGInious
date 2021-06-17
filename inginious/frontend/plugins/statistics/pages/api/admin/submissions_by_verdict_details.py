@@ -7,9 +7,13 @@ from .utils import task_submissions_detail
 
 class SubmissionsByVerdictDetailsApi(AdminApi):
 
-    def _compute_details(self, course, task_id, summary_result):
+    def _compute_details(self, course, task_id, summary_result, late_submissions=False):
         course_id = course.get_id()
         admins = list(set(course.get_staff() + self.user_manager._superadmins))
+
+        late_submissions_filter = True
+        if not late_submissions:
+            late_submissions_filter = {"$in": [False, None]}
 
         submissions = self.database.submissions.aggregate([
             {"$match":
@@ -18,6 +22,7 @@ class SubmissionsByVerdictDetailsApi(AdminApi):
                     "custom.custom_summary_result": summary_result,
                     "taskid": task_id,
                     "username": {"$nin": admins},
+                    "is_late_submission": late_submissions_filter
                 }
             },
             {"$unwind":
@@ -43,7 +48,8 @@ class SubmissionsByVerdictDetailsApi(AdminApi):
 
         task_id = self.get_mandatory_parameter(parameters, 'task_id')
         summary_result = self.get_mandatory_parameter(parameters, 'summary_result')
+        late_submissions = self.get_mandatory_parameter(parameters, "late_submissions")
 
-        submissions = self._compute_details(course, task_id, summary_result)
+        submissions = self._compute_details(course, task_id, summary_result, late_submissions == "true")
 
         return 200, submissions

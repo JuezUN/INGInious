@@ -15,7 +15,7 @@ class RadarPlotAPI(SuperadminAPI):
             return error.status_code, {"error": error.return_value}
 
         data = {'services': [], 'visits': []}
-        data_by_service = list(self.get_data_by_service(query_parameters))
+        data_by_service = list(sorted(self.get_data_by_service(query_parameters), key=lambda x: x["visits"]))
         for val in data_by_service:
             data['services'].append(val['service'])
             data['visits'].append(val['visits'])

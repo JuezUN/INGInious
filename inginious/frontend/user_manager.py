@@ -513,7 +513,7 @@ class UserManager:
                 {"username": username, "courseid": submission["courseid"], "taskid": submission["taskid"]}, {"$inc": {"tried": 1, "tokens.amount": 1}})
 
             # If this is a submission after deadline, do not affect the final grade.
-            if submission.get("is_later_submission", False):
+            if submission.get("is_late_submission", False):
                 return
 
             # Check if the submission is the default download
@@ -526,7 +526,7 @@ class UserManager:
                     {"username": username, "courseid": submission["courseid"], "taskid": submission["taskid"]},
                     {"$set": {"succeeded": result_str == "success", "grade": grade, "submissionid": submission['_id']}})
         else:
-            if submission.get("is_later_submission", False):
+            if submission.get("is_late_submission", False):
                 return
 
             old_submission = self._database.user_tasks.find_one(
@@ -535,7 +535,7 @@ class UserManager:
             if task.get_evaluate() == 'best':  # if best, update cache consequently (with best submission)
                 def_sub = list(self._database.submissions.find({
                     "username": username, "courseid": task.get_course_id(),
-                    "taskid": task.get_id(), "status": "done", "is_later_submission": {"$in": [False, None]}
+                    "taskid": task.get_id(), "status": "done", "is_late_submission": {"$in": [False, None]}
                 }).sort([("grade", pymongo.DESCENDING), ("submitted_on", pymongo.DESCENDING)]).limit(1))
 
                 if len(def_sub) > 0:

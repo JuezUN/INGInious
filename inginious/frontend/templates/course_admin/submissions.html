@@ -364,9 +364,9 @@ $if statistics != None and len(data) > 0:
             <td>
                 $if "best" in submission and submission["best"]:
                     <i class="fa fa-star" title=$submission["_id"] data-toggle="tooltip" data-placement="bottom"></i>
-                $if submission.get("is_later_submission", False):
+                $if submission.get("is_late_submission", False):
                     <i class="fa fa-clock-o" data-toggle="tooltip" data-placement="bottom"
-                       title=$:_('"Later submission: it does not affect the grade."')></i>
+                       title=$:_('"Late submission: it does not affect the grade."')></i>
             </td>
             <td>
                 $for user in submission["username"]:

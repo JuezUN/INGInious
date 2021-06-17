@@ -22,5 +22,6 @@ recursive-include inginious/frontend/plugins/analytics *
 recursive-include inginious/frontend/plugins/task_editorial *
 recursive-include inginious/frontend/plugins/contact_page *
 recursive-include inginious/frontend/plugins/manual_scoring *
+recursive-include inginious/frontend/plugins/task_hints *
 recursive-include inginious/frontend/plugins/course_creation *
 recursive-include inginious/frontend/plugins/user_management *
