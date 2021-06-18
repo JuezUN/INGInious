@@ -143,7 +143,7 @@ function removeSubmission(id) {
 }
 
 //Updates a loading submission
-function updateSubmission(id, result, grade, tags)
+function updateSubmission(id, result, grade)
 {
     grade = grade || "0.0";
 
@@ -158,7 +158,6 @@ function updateSubmission(id, result, grade, tags)
             $(this).removeClass('list-group-item-warning').addClass(nclass);
             var date = $(this).find("span[id='txt']");
             date.text(date.text() + " - " + grade + "%");
-            
         }
     });
 }
@@ -417,11 +416,8 @@ function waitForSubmission(submissionid)
                     else // == "error"
                         displayTaskStudentAlertWithProblems(data, "danger", false);
 
-                    if("tests" in data){
-                        updateSubmission(submissionid, data['result'], data["grade"], data["tests"]);
-                    }else{
-                        updateSubmission(submissionid, data['result'], data["grade"], []);
-                    }
+                    updateSubmission(submissionid, data['result'], data["grade"]);
+                    
                     unblurTaskForm();
 
                     if("replace" in data && data["replace"] && $('#my_submission').length) {
@@ -436,7 +432,7 @@ function waitForSubmission(submissionid)
                 else
                 {
                     displayTaskStudentAlertWithProblems(data, "danger", false);
-                    updateSubmission(submissionid, "error", "0.0", []);
+                    updateSubmission(submissionid, "error", "0.0");
                     updateTaskStatus("Failed", 0);
                     unblurTaskForm();
                 }
@@ -445,7 +441,7 @@ function waitForSubmission(submissionid)
             .fail(function()
             {
                 displayTaskStudentAlertWithProblems(data, "danger", false);
-                updateSubmission(submissionid, "error", "0.0", []);
+                updateSubmission(submissionid, "error", "0.0");
                 updateTaskStatus("Failed", 0);
                 unblurTaskForm();
             });
