@@ -10,16 +10,16 @@ $def NavbarF():
 
 $var Navbar: $:NavbarF()
 
-$ input_len_error = _("not large enough")
+$ input_len_error = _("Not large enough")
 $ input_email_error = _("An email is requested")
 $ email = _("Email")
 $ name = _("Name")
 $ username = _("Username")
 $ username_confirmation_error = _("Username does not match")
 $ success = _("Success")
-$ error = _("something went wrong")
+$ error = _("Something went wrong")
 $ input_errors = _("Some inputs need to be modified or no modification has been made")
-$ no_submissions = _("There is not submissions running")
+$ no_submissions = _("There is not process running")
 $ no_user = _("No user found")
 $ unknown_collections_message = _("There are collections without information")
 
@@ -31,7 +31,7 @@ $ unknown_collections_message = _("There are collections without information")
                 <ul class="normalList">
                     <li>$:_("The change process disconnects and block the user account to prevent new user processes running while changes are being made.")</li>
                     <li>$:_("The search is executed with Mongodb's regular expressions, therefore you can use all the advantages to do more complete searches").
-                        $:_("To do a regular expression research, you just need send a normal text. You can not use <strong>/pattern/</strong> to indicate mongodb regular expression due JS"),
+                        $:_("To do a regular expression search, you just need to send a normal text. You can not use <strong>/pattern/</strong> to indicate mongodb regular expression due JS"),
                         $:_("but you can use expressions like this: ") <strong>(?x)stu dent[1-4]</strong><br>
                         <strong>(?x)</strong> $:_("Extended capability to ignore all white space characters in the pattern").
                         <a href="https://docs.mongodb.com/v3.4/reference/operator/query/regex/#op._S_options" target="_blank">$:_("Click here to see the options")</a>
@@ -100,8 +100,8 @@ $ unknown_collections_message = _("There are collections without information")
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th><h4>$:_("Collection's name")</h4></th>
-                            <th><h4># $:_("Username occurrences")</h4></th>
+                            <th><h4>$:_("Collection Names")</h4></th>
+                            <th><h4># $:_("Username Occurrences")</h4></th>
                         </tr>
                         </thead>
                         <tbody id="userInformation"></tbody>
@@ -145,7 +145,7 @@ $ unknown_collections_message = _("There are collections without information")
                                         <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
                                 </tr>
                                 <tr>
-                                    <td><h4>$:_("Complete name")</h4></td>
+                                    <td><h4>$:_("Complete Name")</h4></td>
                                     <td><input type="text" id="newNameInput" class="form-control input-sm"
                                                placeholder="New Name" readonly></td>
                                     <td><a class="edit" data-action="#newNameInput">
