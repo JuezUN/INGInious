@@ -28,7 +28,10 @@ def get_count_username_occurrences(username, collection_manager):
             unknown_collections.append(collection_name)
             has_username = has_username_key(collection_manager.get_all_key_names(collection_name))
             if has_username:
-                aggregation = _create_aggregation_to_count(username, [{"path": "username"}])
+                default_dict = {"path": "username", "index_array": []}
+                if username_is_array(collection_name, collection_manager):
+                    default_dict["index_array"] = [0]
+                aggregation = _create_aggregation_to_count(username, [default_dict])
                 dictionary[collection_name] = get_aggregation_result(collection_name, aggregation)
 
     for item_to_remove in to_remove:
