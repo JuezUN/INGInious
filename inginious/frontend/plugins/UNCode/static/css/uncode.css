@@ -40,9 +40,13 @@ em {
     color: #e99002;
 }
 
-/*.alert.alert-success {*/
-/*    font-size: 13px;*/
-/*    background-color: #dff0d8;*/
-/*    border-color: #dff0d8;*/
-/*    color: #43ac6a;*/
-/*}*/
+#task .CodeMirror-scroll {
+    overflow: auto;
+    max-height: 70vh;
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) and (max-height: 1024px) {
+    #task .CodeMirror-scroll {
+        max-height: 650px;
+    }
+}
