@@ -135,6 +135,6 @@ function cleanUserInfoTable() {
 
 function alertForUnknownCollections(unknownCollections) {
     if (unknownCollections.length) {
-        new MessageBox(NOTIFICATIONS_ID, `${unknownCollectionsMessage}: ${unknownCollections}`, "warning", false)
+        new MessageBox(NOTIFICATIONS_ID, `${unknownCollectionsMessage}: ${unknownCollections}. ${pleaseCheck}`, "warning", false);
     }
 }

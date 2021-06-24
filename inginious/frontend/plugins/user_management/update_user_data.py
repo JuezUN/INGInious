@@ -187,7 +187,7 @@ def _process_path(collection_information):
     for i in range(index_list_len):
         index = index_list[i]
         field_end_index = field_end_index_list[index] + index_adjustment
-        is_end_string = i + 1 == index_list_len
+        is_end_string = field_end_index_list[index] == field_end_index_list[-1]
         if not is_end_string:
             path = _add_positional_operator(path, field_end_index)
             index_adjustment += len(positional_operator)
