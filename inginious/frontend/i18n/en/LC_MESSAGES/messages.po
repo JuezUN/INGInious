@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-06-24 17:03-0500\n"
+"POT-Creation-Date: 2021-06-24 17:38-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -921,7 +921,7 @@ msgstr ""
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:36
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:68
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:105
-#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:78
+#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:77
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:34
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
@@ -2103,7 +2103,7 @@ msgstr ""
 msgid "Current rubric"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:80
+#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:79
 msgid "Save rubric"
 msgstr ""
 

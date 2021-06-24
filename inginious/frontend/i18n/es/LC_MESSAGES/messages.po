@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-06-24 17:03-0500\n"
+"POT-Creation-Date: 2021-06-24 17:38-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1046,7 +1046,7 @@ msgstr "¿Está seguro de borrar todos los archivos?"
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:36
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:68
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:105
-#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:78
+#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:77
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:34
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
@@ -2353,7 +2353,7 @@ msgstr "Seleccione una rubrica a subir"
 msgid "Current rubric"
 msgstr "Rubrica actual"
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:80
+#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:79
 msgid "Save rubric"
 msgstr "Guardar rubrica"
 
@@ -5887,13 +5887,4 @@ msgstr "Tamaño máximo del archivo:"
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr "Extensiones permitidas"
-
-#~ msgid ""
-#~ "DANGER: When you modify the rubric, "
-#~ "all the submissions that already have"
-#~ " a manual grade in this course "
-#~ "will be removed, as the rubric has"
-#~ " changed and the grade may change "
-#~ "with the new rubric too."
-#~ msgstr ""
 
