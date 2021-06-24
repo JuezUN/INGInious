@@ -51,7 +51,7 @@ class WebAppSubmissionManager:
 
         # Get user penalty stored in 'user_hints' collection to apply in grade of submission
         # TODO: should be done for submissions in group tasks mode
-
+        penalty = 0.0
         if grade:
             try:
                 penalty = \
