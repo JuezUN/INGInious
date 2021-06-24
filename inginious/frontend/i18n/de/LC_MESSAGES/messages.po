@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-06-16 20:34-0500\n"
+"POT-Creation-Date: 2021-06-24 17:54-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -948,7 +948,7 @@ msgstr ""
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:105
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:34
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:198
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:199
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
 #: inginious/frontend/templates/course_admin/danger_zone.html:81
 #: inginious/frontend/templates/course_admin/danger_zone.html:160
@@ -962,7 +962,7 @@ msgid "Cancel"
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:18
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:200
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:201
 msgid "Confirm"
 msgstr ""
 
@@ -1364,13 +1364,13 @@ msgstr ""
 #: inginious/frontend/plugins/register_students/static/email_template.html:12
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:36
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:17
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:141
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:142
 #: inginious/frontend/templates/auth.html:23
 msgid "Username"
 msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:65
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:123
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:124
 #: inginious/frontend/templates/mycourses.html:78
 msgid "Course"
 msgstr ""
@@ -1380,7 +1380,7 @@ msgid "\"All courses\""
 msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:78
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:166
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:167
 #: inginious/frontend/templates/course_admin/classroom_edit.html:161
 #: inginious/frontend/templates/course_admin/classroom_edit.html:254
 #: inginious/frontend/templates/course_admin/teams_edit.html:226
@@ -1518,7 +1518,7 @@ msgstr ""
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:45
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:36
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:15
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:155
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:156
 msgid "Email"
 msgstr ""
 
@@ -1538,9 +1538,9 @@ msgid "Name"
 msgstr ""
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:69
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:145
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:152
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:159
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:146
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:153
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:160
 #: inginious/frontend/templates/course_admin/edit_tabs/files.html:17
 msgid "Edit"
 msgstr ""
@@ -2119,7 +2119,7 @@ msgstr ""
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:19
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:19
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:24
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:124
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:125
 #: inginious/frontend/templates/course_admin/aggregation_info.html:31
 msgid "Task"
 msgstr ""
@@ -2166,7 +2166,7 @@ msgstr ""
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:38
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:43
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:35
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:125
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:126
 msgid "Date"
 msgstr ""
 
@@ -2289,7 +2289,7 @@ msgstr ""
 #: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:45
 #: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:27
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:21
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:122
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:123
 #: inginious/frontend/templates/course_admin/download.html:47
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:92
 #: inginious/frontend/templates/course_admin/subproblems/code.html:22
@@ -3171,7 +3171,7 @@ msgid "User no found"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:8
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:49
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:50
 msgid "User Management"
 msgstr ""
 
@@ -3211,106 +3211,110 @@ msgstr ""
 msgid "There are collections without information"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:30
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:25
+msgid "Please check that they do not use username"
+msgstr ""
+
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:31
 msgid "To keep in mind"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:32
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:33
 msgid ""
 "The change process disconnects and block the user account to prevent new "
 "user processes running while changes are being made."
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:33
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:34
 msgid ""
 "The search is executed with Mongodb's regular expressions, therefore you "
 "can use all the advantages to do more complete searches"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:34
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:35
 msgid ""
 "To do a regular expression search, you just need to send a normal text. "
 "You can not use <strong>/pattern/</strong> to indicate mongodb regular "
 "expression due JS"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:35
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:36
 msgid "but you can use expressions like this: "
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:36
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:37
 msgid "Extended capability to ignore all white space characters in the pattern"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:37
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:38
 msgid "Click here to see the options"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:38
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:39
 msgid "(by default it is case insensitivity)"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:39
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:40
 msgid "And <strong>[1-4]</strong> indicates the next character is between 1 and 4"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:40
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:41
 msgid "You do not need to be formal with the regular expression"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:41
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:42
 msgid ""
 "with <strong>student</strong> as parameter, for example, it returns "
 "results that include the parameter like <strong>student</strong>1 or "
 "something_<strong>student</strong>_something"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:52
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:53
 msgid "All"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:65
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:66
 #: inginious/frontend/templates/mycourses.html:103
 msgid "Search"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:98
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:99
 msgid "User information"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:103
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:104
 msgid "Collection Names"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:104
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:105
 msgid "Username Occurrences"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:115
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:116
 msgid "User Status"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:117
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:118
 msgid "\"Number of open user sessions\""
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:137
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:138
 msgid "User settings"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:148
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:149
 msgid "Complete Name"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:182
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:183
 msgid "Update User Data"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:186
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:187
 msgid "Are you sure you want to make this change?"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:189
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:190
 msgid "Type the username"
 msgstr ""
 
