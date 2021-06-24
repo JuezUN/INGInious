@@ -41,3 +41,16 @@
         </div>
     </div>
 </div>
+
+<style>
+    #hint_content_container .CodeMirror-scroll{
+        overflow: auto;
+        max-height: 65vh;
+    }
+
+    @media screen and (min-width:768px) and (max-width:991px) and (device-height:1024px) {
+        #hint_content_container .CodeMirror-scroll{
+            max-height: 500px;
+        }
+    }
+</style>
