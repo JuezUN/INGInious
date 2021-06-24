@@ -16,7 +16,6 @@ class UploadCustomRubric(AdminApi):
         """
         Method receiving POST request, receiving the file and course to upload a custom rubric for the course.
         """
-        # TODO: What if another (uploaded or the default) rubric was already used to add custom rubrics?
         file = get_mandatory_parameter(web.input(), "file")
         course_id = get_mandatory_parameter(web.input(), "course")
 
@@ -34,7 +33,8 @@ class UploadCustomRubric(AdminApi):
             rubric = json.loads(text, object_pairs_hook=OrderedDict)
         except:
             return 200, {"status": "error",
-                         "text": _("The JSON format is not correct. Please check the file and upload it again.")}
+                         "text": _(
+                             "The rubric is not well formatted. The JSON format is not correct, please check the file and upload it again.")}
 
         try:
             parsed_rubric = self._parse_rubric(rubric)
@@ -44,32 +44,41 @@ class UploadCustomRubric(AdminApi):
         course_fs = self.course_factory.get_course_fs(course_id)
         course_fs.put(CUSTOM_RUBRIC_FILENAME, json.dumps(parsed_rubric))
 
-        message = _("The rubric was successfully uploaded. Refresh the page to load the changes.")
+        self._remove_feedback_previous_submissions(course_id)
+
+        message = _("The rubric was successfully uploaded. The page will reload once you close the modal.")
 
         return 200, {"status": "success", "text": message}
 
+    def _remove_feedback_previous_submissions(self, course_id):
+        self.database.submissions.update_many({"courseid": course_id}, {"$unset": {"manual_scoring": 1}})
+
     def _parse_rubric(self, rubric):
         if not len(rubric) or not rubric:
-            raise Exception(_("The uploaded rubric is empty."))
+            raise Exception(_("The rubric is not well formatted. The uploaded rubric is empty."))
 
         column_names = list(rubric.keys())
         categories = sorted(list(rubric[column_names[0]]))
 
         if not (len(column_names) or len(categories)):
-            raise Exception(_("The rubric is not well formatted."))
+            raise Exception(
+                _("The rubric is not well formatted. There are missing categories or grade levels in the rubric."))
 
         parsed_rubric = OrderedDict()
 
         for column_name in column_names:
             categories_column = rubric[column_name].keys()
             if not categories_column or len(categories_column) != len(categories):
-                raise Exception(_("There are some missing rows."))
+                raise Exception(
+                    _(
+                        "The rubric is not well formatted. The number of categories (rows) must be the same for each grade level."))
             if sorted(list(categories_column)) != categories:
-                raise Exception(_("Not all rows have the same name."))
+                raise Exception(
+                    _("The rubric is not well formatted. Not all the categories (rows) have the same name."))
 
             for value_cell in rubric[column_name].values():
                 if not value_cell:
-                    raise Exception(_("The values of the cells cannot be empty."))
+                    raise Exception(_("The rubric is not well formatted. There some values for the cells empty."))
 
             parsed_rubric[column_name] = OrderedDict(sorted(rubric[column_name].items()))
 

@@ -12,7 +12,11 @@ $def with (rubric, rubric_str)
             <div class="modal-body">
                 <div class="alert" role="alert" id="save_rubric_alert" hidden></div>
                 <form id="upload_rubric_file" method="post" enctype="multipart/form-data">
-                    <div class="alert alert-info">
+                    <div class="alert alert-danger" role="alert">
+                        <i class="fa fa-bomb fa-fw"></i>
+                        $:_("DANGER: When you modify the rubric, the manual grade in the submissions that already have a manual grade in this course will be removed, as the rubric has changed and the grade may change with the new rubric too.")
+                    </div>
+                    <div class="alert alert-info" role="alert">
                         <i class="fa fa-info-circle fa-fw"></i>
                         $:_("Choose a file in case you want to change the rubric used to manually evaluate the students.")
                         <br>

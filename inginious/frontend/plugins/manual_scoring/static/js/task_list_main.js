@@ -63,6 +63,7 @@ function makeModalClosable() {
     $("#upload_custom_rubric_modal button[data-dismiss=modal]").each(function () {
         $(this).prop("disabled", false);
     });
+    $("#upload_custom_rubric_modal").scrollTop(0);
 }
 
 function onSubmitSaveRubric() {
@@ -89,6 +90,7 @@ function onSubmitSaveRubric() {
                 beforeSend: function () {
                     $("#submit_save_rubric").prop("disabled", true);
                     preventModalToBeClosed();
+                    alert("Do you want to upload this rubric?");
                 },
                 success: function (data) {
                     makeModalClosable();
@@ -112,8 +114,7 @@ function onSubmitSaveRubric() {
 function closeModalEvent() {
     // Function to describe the process to follow when the modal is closed.
     $("#upload_custom_rubric_modal").on("hidden.bs.modal", function () {
-        $("#rubric_file").val('');
-        $("#save_rubric_alert").prop("hidden", true);
+        window.location.reload();
     });
 }
 

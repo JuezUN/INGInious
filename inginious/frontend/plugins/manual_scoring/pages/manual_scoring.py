@@ -43,7 +43,7 @@ def check_rubric_format(rubric):
 
     rubric_len = len(rubric_id_list)
     rubric_max_len = 5
-    id_regular_expression = re.compile(r"^([0-4]-[0-4])$")
+    id_regular_expression = re.compile(r"^([0-9]+-[0-9]+)$")
 
     if rubric_len > rubric_max_len:
         raise ManualScoringError("List is too long")
