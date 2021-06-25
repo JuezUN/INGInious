@@ -810,28 +810,4 @@ function updateMainTags(data){
             $(this).attr('class', 'badge alert-info');
         }
     });
-        
-    if("tests" in data){
-        for (var tag in data["tests"]){
-            //Get and update the color of HTML nodes that represent tags
-            var elem = $('#'.concat(tag.replace("*", "\\*"))); //The * makes error with JQuery so, we escape it.
-            if(data["tests"][tag]){
-                //If this is a alert-danger class, this is an misconception
-                if(elem.attr('class') == "badge alert-danger"){
-                    elem.show();
-                }else{
-                    elem.attr('class', 'badge alert-success')
-                }
-            }
-            if(tag.startsWith("*auto-tag-")){
-                var max_length = 28;
-                if(data["tests"][tag].length > max_length){
-                    $('#main_tag_group').append('<span class="badge alert-default" data-toggle="tooltip" data-placement="top" data-original-title="'+data["tests"][tag]+'">'+data["tests"][tag].substring(0, max_length)+'…</span>');
-                }
-                else{
-                    $('#main_tag_group').append('<span class="badge alert-default">'+data["tests"][tag]+'</span>');
-                }
-            }
-        }
-    }
 }
