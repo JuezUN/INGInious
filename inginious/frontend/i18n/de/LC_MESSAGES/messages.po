@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-06-24 17:38-0500\n"
+"POT-Creation-Date: 2021-06-24 19:11-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -2121,6 +2121,15 @@ msgid ""
 "For reference, see the default rubric file here: "
 msgstr ""
 
+#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:24
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:48
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:55
+#: inginious/frontend/templates/course_admin/download.html:70
+#: inginious/frontend/templates/course_admin/edit_tabs/files.html:16
+#: inginious/frontend/templates/course_admin/submissions.html:256
+msgid "Download"
+msgstr ""
+
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:28
 msgid "Select a rubric to upload"
 msgstr ""
@@ -2140,14 +2149,6 @@ msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:22
 msgid "Feedback for:"
-msgstr ""
-
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:48
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:55
-#: inginious/frontend/templates/course_admin/download.html:70
-#: inginious/frontend/templates/course_admin/edit_tabs/files.html:16
-#: inginious/frontend/templates/course_admin/submissions.html:256
-msgid "Download"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:56
