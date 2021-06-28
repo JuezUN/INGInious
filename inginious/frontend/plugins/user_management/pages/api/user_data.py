@@ -28,7 +28,7 @@ def block_user(username, collection_manager):
     add_block_user(username, collection_manager)
 
 
-def inform_user_changes(user_original_info, user_final_info):
+def inform_user_changes(user_original_info, user_final_info, collection_manager):
     """ Send an email to the student that their user data has been modified """
 
     def get_changes():
@@ -41,17 +41,31 @@ def inform_user_changes(user_original_info, user_final_info):
                 text += """    - """ + key_dict[key] + ": " + user_original_info[key] + " -> " + user_final_info[
                     key] + "\n"
         return text
-
     user_email = user_final_info["email"]
     subject = _("Changes in your user account")
+    hash_link = get_user_activation_link(user_final_info["username"], collection_manager)
+    post_data_auth_prob = _("- If at some point you had authentication problems, it may be due to the change process.")
+    post_data_contact_admin = _("- If you think any change is wrong, please contact the administrator.")
+    post_data_hash = _(
+        """- We have noticed that you have not yet activated your account, please click on the following link:
+        """) + hash_link
+    final_post = post_data_hash if hash_link else post_data_auth_prob
     message = _("""Some changes have been made to your account:
 """) + get_changes() + _(""" To keep in mind:
-    """) + _("""- Also, if at some point you had authentication problems, it may be due to the change process.
-    """) + _("""- If you think any change is wrong, please contact the administrator.""")
+    """) + post_data_contact_admin + """ 
+    """ + final_post
     try:
         web.sendmail(web.config.smtp_sendername, user_email, subject, message)
     except (ValueError, TypeError):
         raise api.APIError(500, _("Something went  wrong when we sent the information email to the user"))
+
+
+def get_user_activation_link(username, collection_manager):
+    """ Returns the activation link if the user has not activated the account """
+    user = collection_manager.make_find_one_request("users", {"username": username})
+    if "activate" in user:
+        return web.ctx.home + "/register?activate=" + user["activate"]
+    return ""
 
 
 class UserDataAPI(SuperadminAPI):
@@ -101,7 +115,7 @@ class UserDataAPI(SuperadminAPI):
         remove_block_user(new_username, collections_manager)
 
         try:
-            inform_user_changes(user_original_info, user_final_info)
+            inform_user_changes(user_original_info, user_final_info, collections_manager)
         except api.APIError as error:
             return error.status_code, {"username": username_count, "email": email_count, "name": name_count,
                                        "error": error.return_value}
