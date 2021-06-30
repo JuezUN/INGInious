@@ -9,6 +9,7 @@ const UserStatistics = {
             "WRONG_ANSWER": 'rgb(227,79,54)',
             "OUTPUT_LIMIT_EXCEEDED": 'rgb(137,139,37)',
             "GRADING_RUNTIME_ERROR": 'rgb(139,62,0)',
+            "PRESENTATION_ERROR": 'rgb(59,105,139)',
             "ACCEPTED": 'rgb(35,181,100)'
         }
 };
@@ -140,10 +141,12 @@ const BarSubmissionsPerTasks = (function () {
             colors["OUTPUT_LIMIT_EXCEEDED"]);
         const grading_error_data = this.createObjectToPlotData(data, data_count_obj, "GRADING_RUNTIME_ERROR",
             colors["GRADING_RUNTIME_ERROR"]);
+        const presentation_error_data = this.createObjectToPlotData(data, data_count_obj, "PRESENTATION_ERROR",
+            colors["PRESENTATION_ERROR"]);
         const accepted_data = this.createObjectToPlotData(data, data_count_obj, "ACCEPTED", colors["ACCEPTED"]);
 
         const plotData = [compilation_error_data, time_limit_data, memory_limit_data, runtime_error_data,
-            wrong_answer_data, output_limit_error_data, accepted_data, grading_error_data];
+            wrong_answer_data, output_limit_error_data, grading_error_data, presentation_error_data, accepted_data];
 
         const layout = {
             barmode: 'stack',
