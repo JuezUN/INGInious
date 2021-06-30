@@ -26,7 +26,7 @@ class UserHintManagerSingleton(object):
             self._database = database
             UserHintManagerSingleton._instance = self
 
-    def get_hint_content_by_status(self, task_id, username, hints):
+    def get_hint_content_by_status(self, task, username, hints):
 
         """
             This is a method to check each hint unlocked status, and return the left content
@@ -34,6 +34,14 @@ class UserHintManagerSingleton(object):
             attribute for the unlocked hints to show their additional data
             in the modal hints in the task.
         """
+        task_id = task.get_id()
+
+        if(task.is_group_task()):
+            users_group = self._database.aggregations.find_one(
+                {"courseid": task.get_course_id(), "groups.students": username},
+                {"groups": {"$elemMatch": {"students": username}}}
+            )     
+
         user_hints = self.get_user_hints(task_id, username)
         unlocked_hints_penalties = {}
         data = {}
@@ -129,19 +137,32 @@ class UserHintManagerSingleton(object):
         )
         self.update_total_penalty(task_id, username)
 
-    def unlock_hint(self, task_id, username, hint_id, task_hints):
 
-        """ Method to add the new unlocked hint in the user unlocked hints """
-        if not self.is_hint_unlocked(task_id, username, hint_id):
-            self._database.user_hints.find_one_and_update({"taskid": task_id, "username": username},
-                                                          {"$push": {
-                                                              "unlocked_hints": {
-                                                                  "penalty": task_hints[hint_id]["penalty"],
-                                                                  "id": task_hints[hint_id]["id"]
-                                                              }
-                                                          }
-                                                          })
-            self.update_total_penalty(task_id, username)
+    def unlock_hint(self, task, username, hint_id, task_hints):
+
+        task_id = task.get_id()
+
+        if(task.is_group_task()):
+            users_group = self._database.aggregations.find_one(
+                {"courseid": task.get_course_id(), "groups.students": username},
+                {"groups": {"$elemMatch": {"students": username}}}
+            )
+        
+            students = users_group["groups"][0]['students']
+
+        for user in students:
+            print(user)
+            """ Method to add the new unlocked hint in the user unlocked hints """
+            if False:
+                self._database.user_hints.find_one_and_update({"taskid": task_id, "username": username},
+                                                            {"$push": {
+                                                                "unlocked_hints": {
+                                                                    "penalty": task_hints[hint_id]["penalty"],
+                                                                    "id": task_hints[hint_id]["id"]
+                                                                }
+                                                            }
+                                                            })
+                self.update_total_penalty(task_id, username)
 
         return 200, ""
 
