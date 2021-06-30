@@ -2396,7 +2396,7 @@ msgstr "Seleccione una rúbrica a subir"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:38
 msgid "Current rubric"
-msgstr "rúbrica actual"
+msgstr "Rúbrica actual"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:79
 msgid "Save rubric"
@@ -2440,7 +2440,7 @@ msgstr "Comentarios"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:19
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:83
 msgid "Rubric"
-msgstr "rúbrica"
+msgstr "Rúbrica"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:86
 msgid "Manual grade: "
