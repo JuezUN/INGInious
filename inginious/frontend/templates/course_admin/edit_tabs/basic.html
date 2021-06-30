@@ -32,7 +32,7 @@ $if len(available_filetypes) != 1:
     </div>
 $else:
     <input type="hidden" id="@filetype" name="@filetype" value="$available_filetypes[0]"/>
-<div class="form-group">
+<div id="basic_context_form" class="form-group">
     <label for="context" class="col-sm-2 control-label">$:_("Context")</label>
     <div class="col-sm-10">
         <textarea id="context" class="code-editor form-control" name="context" data-x-language="rst" data-x-lines="10">${task_data.get('context','')}</textarea>
@@ -242,3 +242,15 @@ $if course.is_lti():
     </div>
 </div>
 <!-- END Random Inputs Form -->
+<style>
+    #basic_context_form .CodeMirror-scroll{
+        overflow: auto;
+        max-height: 80vh;
+    }
+
+    @media screen and (min-width:768px) and (max-width:991px) and (device-height:1024px) {
+        #basic_context_form .CodeMirror-scroll{
+            max-height: 750px;
+        }
+    }
+</style>
