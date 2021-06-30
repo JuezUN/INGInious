@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-06-30 17:36-0500\n"
+"POT-Creation-Date: 2021-06-30 18:42-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -2280,13 +2280,13 @@ msgstr ""
 "La rúbrica no tiene un formato correcto. El formato JSON no es correcto, "
 "por favor revise el archivo y súbalo de nuevo."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:47
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:46
 msgid "Something went wrong while saving the rubric. Please try again."
 msgstr ""
 "Hubo un error mientras se guardaba la rúbrica. Por favor vuélvalo a "
 "intentar."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:54
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:53
 msgid ""
 "The rubric was successfully uploaded. The page will reload once you close"
 " the modal."
@@ -2294,13 +2294,13 @@ msgstr ""
 "La rúbrica fue subida satisfactoriamente. La página se recargará una vez "
 "el modal se cierre."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:63
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:62
 msgid "The rubric is not well formatted. The uploaded rubric is empty."
 msgstr ""
 "La rúbrica no tiene un formato correcto. La rúbrica seleccionada está "
 "vacía."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:70
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:69
 msgid ""
 "The rubric is not well formatted. There are missing categories or grade "
 "levels in the rubric."
@@ -2308,7 +2308,7 @@ msgstr ""
 "La rúbrica no tiene un formato correcto. Faltan categorías o niveles de "
 "calificación en la rúbrica."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:79
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:78
 msgid ""
 "The rubric is not well formatted. The number of categories (rows) must be"
 " the same for each grade level."
@@ -2316,7 +2316,7 @@ msgstr ""
 "La rúbrica no tiene un formato correcto. El número de categorías (filas) "
 "debe ser el mismo para cada nivel de calificación."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:83
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:82
 msgid ""
 "The rubric is not well formatted. Not all the categories (rows) have the "
 "same name."
@@ -2324,7 +2324,7 @@ msgstr ""
 "La rúbrica no tiene un formato correcto. No todas las categorías (filas) "
 "tienen el mismo nombre."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:89
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:88
 msgid "The rubric is not well formatted. There some values for the cells empty."
 msgstr "La rúbrica no tiene un formato correcto. Hay unos valores de celda vacíos."
 

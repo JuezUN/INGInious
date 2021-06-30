@@ -40,7 +40,6 @@ class UploadCustomRubric(AdminApi):
         try:
             parsed_rubric = self._parse_rubric(rubric)
         except api.APIError as e:
-            print(e.return_value)
             return 200, {"status": "error", "text": e.return_value}
         except Exception:
             return 200, {"status": "error",
