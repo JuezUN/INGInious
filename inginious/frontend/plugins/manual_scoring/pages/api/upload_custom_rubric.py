@@ -5,6 +5,7 @@ from os.path import dirname, join
 from collections import OrderedDict
 
 from inginious.frontend.plugins.utils.admin_api import AdminApi
+import inginious.frontend.pages.api._api_page as api
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from ...constants import CUSTOM_RUBRIC_FILENAME
 
@@ -38,8 +39,12 @@ class UploadCustomRubric(AdminApi):
 
         try:
             parsed_rubric = self._parse_rubric(rubric)
-        except Exception as e:
-            return 200, {"status": "error", "text": str(e)}
+        except api.APIError as e:
+            print(e.return_value)
+            return 200, {"status": "error", "text": e.return_value}
+        except Exception:
+            return 200, {"status": "error",
+                         "text": _("Something went wrong while saving the rubric. Please try again.")}
 
         course_fs = self.course_factory.get_course_fs(course_id)
         course_fs.put(CUSTOM_RUBRIC_FILENAME, json.dumps(parsed_rubric))
@@ -55,30 +60,33 @@ class UploadCustomRubric(AdminApi):
 
     def _parse_rubric(self, rubric):
         if not len(rubric) or not rubric:
-            raise Exception(_("The rubric is not well formatted. The uploaded rubric is empty."))
+            raise api.APIError(400, _("The rubric is not well formatted. The uploaded rubric is empty."))
 
         column_names = list(rubric.keys())
         categories = sorted(list(rubric[column_names[0]]))
 
         if not (len(column_names) or len(categories)):
-            raise Exception(
-                _("The rubric is not well formatted. There are missing categories or grade levels in the rubric."))
+            raise api.APIError(400,
+                               _(
+                                   "The rubric is not well formatted. There are missing categories or grade levels in the rubric."))
 
         parsed_rubric = OrderedDict()
 
         for column_name in column_names:
             categories_column = rubric[column_name].keys()
             if not categories_column or len(categories_column) != len(categories):
-                raise Exception(
-                    _(
-                        "The rubric is not well formatted. The number of categories (rows) must be the same for each grade level."))
+                raise api.APIError(400,
+                                   _(
+                                       "The rubric is not well formatted. The number of categories (rows) must be the same for each grade level."))
             if sorted(list(categories_column)) != categories:
-                raise Exception(
-                    _("The rubric is not well formatted. Not all the categories (rows) have the same name."))
+                raise api.APIError(400,
+                                   _(
+                                       "The rubric is not well formatted. Not all the categories (rows) have the same name."))
 
             for value_cell in rubric[column_name].values():
                 if not value_cell:
-                    raise Exception(_("The rubric is not well formatted. There some values for the cells empty."))
+                    raise api.APIError(400,
+                                       _("The rubric is not well formatted. There some values for the cells empty."))
 
             parsed_rubric[column_name] = OrderedDict(sorted(rubric[column_name].items()))
 

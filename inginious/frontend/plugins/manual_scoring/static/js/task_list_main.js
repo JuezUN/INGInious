@@ -105,6 +105,9 @@ function onSubmitSaveRubric() {
                     displaySaveRubricAlertError(data["text"]);
                     makeModalClosable();
                     $("#submit_save_rubric").prop("disabled", false);
+                },
+                complete: () => {
+                    $("#rubric_file").val("");
                 }
             });
         }

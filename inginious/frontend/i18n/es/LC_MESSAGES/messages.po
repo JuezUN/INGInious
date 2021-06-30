@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-06-24 19:11-0500\n"
+"POT-Creation-Date: 2021-06-30 17:30-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -2232,65 +2232,71 @@ msgstr "Sin calificar"
 msgid "The task was deleted"
 msgstr "La tarea fue eliminada"
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:25
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:26
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:32
 msgid "The course does not exist or the user does not have permissions."
 msgstr "El curso no existe o el usuario no tiene permisos."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:30
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:31
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:37
 msgid "The file is not coded in UTF-8. Please change the encoding."
 msgstr "El archivo no está codificado en UTF-8. Por favor cambie la codificación."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:36
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:37
 msgid ""
 "The rubric is not well formatted. The JSON format is not correct, please "
 "check the file and upload it again."
 msgstr ""
-"La rubrica no tiene un formato correcto. El formato JSON no es correcto, "
+"La rúbrica no tiene un formato correcto. El formato JSON no es correcto, "
 "por favor revise el archivo y súbalo de nuevo."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:49
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:47
+msgid "Something went wrong while saving the rubric. Please try again."
+msgstr ""
+"Hubo un error mientras se guardaba la rúbrica. Por favor vuélvalo a "
+"intentar."
+
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:54
 msgid ""
 "The rubric was successfully uploaded. The page will reload once you close"
 " the modal."
 msgstr ""
-"La rubrica fue subida satisfactoriamente. La página se recargará una vez "
+"La rúbrica fue subida satisfactoriamente. La página se recargará una vez "
 "el modal se cierre."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:58
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:63
 msgid "The rubric is not well formatted. The uploaded rubric is empty."
 msgstr ""
-"La rubrica no tiene un formato correcto. La rubrica seleccionada está "
+"La rúbrica no tiene un formato correcto. La rúbrica seleccionada está "
 "vacía."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:65
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:70
 msgid ""
 "The rubric is not well formatted. There are missing categories or grade "
 "levels in the rubric."
 msgstr ""
-"La rubrica no tiene un formato correcto. Faltan categorías o niveles de "
-"calificación en la rubrica."
+"La rúbrica no tiene un formato correcto. Faltan categorías o niveles de "
+"calificación en la rúbrica."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:73
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:79
 msgid ""
 "The rubric is not well formatted. The number of categories (rows) must be"
 " the same for each grade level."
 msgstr ""
-"La rubrica no tiene un formato correcto. El número de categorías (filas) "
+"La rúbrica no tiene un formato correcto. El número de categorías (filas) "
 "debe ser el mismo para cada nivel de calificación."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:77
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:83
 msgid ""
 "The rubric is not well formatted. Not all the categories (rows) have the "
 "same name."
 msgstr ""
-"La rubrica no tiene un formato correcto. No todas las categorías (filas) "
+"La rúbrica no tiene un formato correcto. No todas las categorías (filas) "
 "tienen el mismo nombre."
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:81
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:89
 msgid "The rubric is not well formatted. There some values for the cells empty."
-msgstr "La rubrica no tiene un formato correcto. Hay unos valores de celda vacíos."
+msgstr "La rúbrica no tiene un formato correcto. Hay unos valores de celda vacíos."
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:24
 msgid "Tasks List"
@@ -2299,7 +2305,7 @@ msgstr "Lista de tareas"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:30
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:10
 msgid "Upload custom rubric"
-msgstr "Subir rubrica personalizada"
+msgstr "Subir rúbrica personalizada"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:46
 msgid "Task Name"
@@ -2324,16 +2330,16 @@ msgid ""
 "that already have a manual grade in this course will be removed, as the "
 "rubric has changed and the grade may change with the new rubric too."
 msgstr ""
-"PELIGRO: cuando la rubrica se modifica, la calificación manual en los "
+"PELIGRO: cuando la rúbrica se modifica, la calificación manual en los "
 "envíos que ya tienen calificación manual en este curso será eliminada, ya"
-" que la rubrica cambió y la nota podría cambiar con la nueva rubrica."
+" que la rúbrica cambió y la nota podría cambiar con la nueva rúbrica."
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:21
 msgid ""
 "Choose a file in case you want to change the rubric used to manually "
 "evaluate the students."
 msgstr ""
-"Seleccione un archivo en caso que quiera cambiar la rubrica usada para "
+"Seleccione un archivo en caso que quiera cambiar la rúbrica usada para "
 "evaluar manualmente a los estudiantes."
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:23
@@ -2342,7 +2348,7 @@ msgid ""
 "For reference, see the default rubric file here: "
 msgstr ""
 "El archivo debe ser un archivo JSON que contenga los diferentes valores "
-"de la rubrica. Para referencia, descargue el archivo de la rubrica por "
+"de la rúbrica. Para referencia, descargue el archivo de la rúbrica por "
 "defecto aquí: "
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:24
@@ -2356,15 +2362,15 @@ msgstr "Descargar"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:28
 msgid "Select a rubric to upload"
-msgstr "Seleccione una rubrica a subir"
+msgstr "Seleccione una rúbrica a subir"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:38
 msgid "Current rubric"
-msgstr "Rubrica actual"
+msgstr "rúbrica actual"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:79
 msgid "Save rubric"
-msgstr "Guardar rubrica"
+msgstr "Guardar rúbrica"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:14
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:16
@@ -2404,7 +2410,7 @@ msgstr "Comentarios"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:19
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:83
 msgid "Rubric"
-msgstr "Rubrica"
+msgstr "rúbrica"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:86
 msgid "Manual grade: "

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-06-24 19:11-0500\n"
+"POT-Creation-Date: 2021-06-30 17:30-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -2048,51 +2048,55 @@ msgstr ""
 msgid "The task was deleted"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:25
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:26
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:32
 msgid "The course does not exist or the user does not have permissions."
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:30
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:31
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:37
 msgid "The file is not coded in UTF-8. Please change the encoding."
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:36
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:37
 msgid ""
 "The rubric is not well formatted. The JSON format is not correct, please "
 "check the file and upload it again."
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:49
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:47
+msgid "Something went wrong while saving the rubric. Please try again."
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:54
 msgid ""
 "The rubric was successfully uploaded. The page will reload once you close"
 " the modal."
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:58
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:63
 msgid "The rubric is not well formatted. The uploaded rubric is empty."
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:65
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:70
 msgid ""
 "The rubric is not well formatted. There are missing categories or grade "
 "levels in the rubric."
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:73
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:79
 msgid ""
 "The rubric is not well formatted. The number of categories (rows) must be"
 " the same for each grade level."
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:77
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:83
 msgid ""
 "The rubric is not well formatted. Not all the categories (rows) have the "
 "same name."
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:81
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:89
 msgid "The rubric is not well formatted. There some values for the cells empty."
 msgstr ""
 
