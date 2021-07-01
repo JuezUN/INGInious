@@ -245,6 +245,8 @@ class CourseTaskFiles(INGIniousAdminPage):
         (method, mimetype_or_none, file_or_url) = task_fs.distribute(wanted_path)
 
         if method == "local":
+            filename = path.split("/")[-1]
+            web.header("Content-Disposition", "attachment; filename=" + filename)
             web.header('Content-Type', mimetype_or_none)
             return file_or_url
         elif method == "url":
