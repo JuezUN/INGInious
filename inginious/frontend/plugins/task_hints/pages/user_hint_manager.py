@@ -36,12 +36,6 @@ class UserHintManagerSingleton(object):
         """
         task_id = task.get_id()
 
-        if(task.is_group_task()):
-            users_group = self._database.aggregations.find_one(
-                {"courseid": task.get_course_id(), "groups.students": username},
-                {"groups": {"$elemMatch": {"students": username}}}
-            )     
-
         user_hints = self.get_user_hints(task_id, username)
         unlocked_hints_penalties = {}
         data = {}
@@ -118,6 +112,7 @@ class UserHintManagerSingleton(object):
         for hint in unlocked_hints:
             if hint_id == hint["id"]:
                 return True
+            print(hint_id,"/n",hint["id"])
 
         return False
 
@@ -147,14 +142,16 @@ class UserHintManagerSingleton(object):
                 {"courseid": task.get_course_id(), "groups.students": username},
                 {"groups": {"$elemMatch": {"students": username}}}
             )
-        
-            students = users_group["groups"][0]['students']
+            if users_group:
+                students = users_group["groups"][0]['students']
+        else:
+            students = [username]
 
-        for user in students:
-            print(user)
+        for student in students:
             """ Method to add the new unlocked hint in the user unlocked hints """
-            if False:
-                self._database.user_hints.find_one_and_update({"taskid": task_id, "username": username},
+            if not self.is_hint_unlocked(task_id, student, task_hints[hint_id]["id"]):
+                print(student)
+                self._database.user_hints.find_one_and_update({"taskid": task_id, "username": student},
                                                             {"$push": {
                                                                 "unlocked_hints": {
                                                                     "penalty": task_hints[hint_id]["penalty"],
@@ -162,7 +159,7 @@ class UserHintManagerSingleton(object):
                                                                 }
                                                             }
                                                             })
-                self.update_total_penalty(task_id, username)
+                self.update_total_penalty(task_id, student)
 
         return 200, ""
 

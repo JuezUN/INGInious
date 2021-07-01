@@ -56,7 +56,7 @@ class WebAppSubmissionManager:
             try:
                 penalty = \
                 self._hook_manager.call_hook('show_hints', taskid=task.get_id(), username=submission["username"],
-                                             database=self._database)
+                                             database=self._database)[0]
             except:
                 penalty = 0.0
             grade = max(0.0, round(grade - penalty, 2))

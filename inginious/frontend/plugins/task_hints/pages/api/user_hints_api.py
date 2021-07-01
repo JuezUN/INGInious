@@ -75,8 +75,12 @@ class UserHintsAPI(APIAuthenticatedPage):
             raise APIError(400, {"error": _("The user is not registered in this course.")})
 
         task_hints = self.get_task_hints(task)
-
-        self.user_hint_manager.unlock_hint(task, username, hint_id, task_hints)
+        
+        try: 
+            self.user_hint_manager.unlock_hint(task, username, hint_id, task_hints)
+        except Exception:
+            return 200, {"status": "error", "message": _(
+                "An error occurred while updating status of the hint. The hint does not exist in the database.")}
 
         return 200, {"status": "success", "message": _("Hint unlocked successfully.")}
 
