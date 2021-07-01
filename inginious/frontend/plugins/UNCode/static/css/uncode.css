@@ -19,13 +19,6 @@ em {
     color: #f04124;
 }
 
-.alert.alert-info {
-    font-size: 13px;
-    background-color: #c4e3f3;
-    border-color: #c4e3f3;
-    color: #317488;
-}
-
 .alert.alert-danger {
     font-size: 13px;
     background-color: #ebcccc;
