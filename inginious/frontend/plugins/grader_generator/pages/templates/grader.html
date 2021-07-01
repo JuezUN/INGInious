@@ -69,6 +69,22 @@ $#
 </div>
 
 <div class="grader_form" id="multilang_grader_form">
+    <div class="form-group">
+        <label for="ignore_presentation_error" class="col-sm-4 control-label">
+            $:_("Ignore Presentation error")
+            <i class="fa fa-question-circle"
+               title=$:_("\"In case it is checked, the presentation errors will be ignored when grading the student's submission\"")
+               data-toggle="tooltip"></i>
+        </label>
+        <div class="col-sm-8">
+            <div class="checkbox"><label>
+                <input type="checkbox" id="ignore_presentation_error" name="ignore_presentation_error"
+                    $if task_data.get('ignore_presentation_error', False):
+                        checked="checked"
+                />&nbsp;
+            </label></div>
+        </div>
+    </div>
     <div class="row">
         <div class="form-group col-xs-12">
             <div class="col-xs-4">

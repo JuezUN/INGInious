@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 #: inginious/frontend/accessible_time.py:58
 msgid "The accessibility end date must be greater than the start date."
@@ -1178,7 +1178,7 @@ msgstr ""
 "documentation</a> del lenguaje <strong>RST</strong>"
 
 #: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:144
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:195
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:207
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:82
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:120
@@ -1289,10 +1289,28 @@ msgstr ""
 "puedes usar la herramienta \"Probar código\" en el botón de herramientas."
 
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:55
+msgid ""
+"The data in your output is correct, but it is not formatted in the proper"
+" way. Check the problem statement to understand the correct format of the"
+" output."
+msgstr ""
+"Los datos en la salida son correctos, pero no tienen el formato "
+"apropiado. Revise el enunciado del problema para entender el correcto "
+"formato de la salida."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:57
+msgid ""
+"Missing/excessive blank lines or unnecessary spaces are likely to have "
+"caused this message."
+msgstr ""
+"Ausentes/excesivos saltos de línea o espacios innecesarios probablemente "
+"causaron este mensaje."
+
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:67
 msgid "Your code does not compile :/. Something is faulty in your code:"
 msgstr "Tu código no compila :/. Algo falla en éste:"
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:57
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:69
 msgid ""
 "It may be a misplaced colon, bracket, quotation mark, or symbol; you may "
 "be using a reserved keyword as a variable; you may have chosen a "
@@ -1302,7 +1320,7 @@ msgstr ""
 " estar usando una palabra reservada como variable; el lenguaje "
 "seleccionado no es el correcto; entre muchas otra opciones."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:59
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:71
 msgid ""
 "The \"compilation error\" message includes the output that the compiler "
 "produced with the error. Read the message carefully, it is tells you what"
@@ -1312,7 +1330,7 @@ msgstr ""
 " por el compilador. Lee el mensaje con cuidado, este puede contener "
 "información importante sobre el error."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:69
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:81
 msgid ""
 "This means that your code failed while it was executing, which means that"
 " your code compiled but exited unexpectedly when executed."
@@ -1320,11 +1338,11 @@ msgstr ""
 "Tu código falló mientras era ejecutado, esto significa que  compiló pero "
 "finalizó inesperadamente al ser ejecutado."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:71
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:83
 msgid "There are many reasons why your code could crashed, some of them are:"
 msgstr "Hay muchas razones del por qué tu código falló, algunas de estas son:"
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:73
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:85
 msgid ""
 "Division by zero, invalid memory access (e.g. bad index access to an "
 "array), null pointers, among many options."
@@ -1332,7 +1350,7 @@ msgstr ""
 "División por cero, acceso inválido a memoria (por ejemplo índice no "
 "válido en un arreglo), apuntadores nulos, entre muchas opciones."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:83
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:95
 msgid ""
 "Your code exceeded the time limit. Thus, your code took too long to run "
 "the input for a given test case."
@@ -1340,7 +1358,7 @@ msgstr ""
 "Tu código excedió el tiempo límite, por ende tomó mucho tiempo para "
 "finalizar un caso de prueba dado."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:85
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:97
 msgid ""
 "There are two options: either  your code  got stuck in an infinite loop "
 "or your code takes much longer than it should."
@@ -1348,7 +1366,7 @@ msgstr ""
 "Hay dos opciones: ya sea que tu código se quedó en un ciclo infinito o "
 "que tu código toma más tiempo del que debería."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:87
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:99
 msgid ""
 "Check for infinite loops. Try to find another solution, one that takes "
 "less time to compute."
@@ -1356,11 +1374,11 @@ msgstr ""
 "Busca ciclos infinitos. Intenta encontrar otra solución, una que tome "
 "menos tiempo."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:97
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:109
 msgid "Getting this result means your code is using too much memory at runtime."
 msgstr "Tu código toma mucha memoria en tiempo de ejecución."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:99
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:111
 msgid ""
 "Check the data structures you are using, or find a more \"optimal\" "
 "solution, a solution that uses less memory."
@@ -1368,17 +1386,17 @@ msgstr ""
 "Revisa las estructuras de datos usadas, o encuentra una solución más "
 "\"óptima\", una que use menos memoria."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:109
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:121
 msgid ""
 "Getting this result means the output of your code is longer that the "
 "allowed."
 msgstr "Esto significa que la salida de tu código es más grande de lo permitido."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:111
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:123
 msgid "Check for print expressions in a loop."
 msgstr "Revisa expresiones 'print' en un ciclo."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:121
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:133
 msgid ""
 "Error related to notebook file submissions. This points out a runtime "
 "error while running the grading testing code."
@@ -1386,7 +1404,7 @@ msgstr ""
 "Error relacionado a submissions de Notebooks. Esto indica un error en "
 "tiempo de ejecución mientras se ejecutaba el código de evaluación."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:123
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:135
 msgid ""
 "This might be either an error in the grading code (i.e. calling non "
 "existent variable or function) or student code (i.e. the function to be "
@@ -1397,7 +1415,7 @@ msgstr ""
 " ejemplo que la función a ser probada no está en el código del "
 "estudiante)."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:125
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:137
 msgid ""
 "Check that your code implements all that was requested with the correct "
 "signature."
@@ -1406,7 +1424,7 @@ msgstr ""
 "instrucciones, así como las firmas de variables y funciones sin "
 "modificar."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:131
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:143
 msgid ""
 "Results related to UNCode. Unexpected errors when your code was been "
 "executed."
@@ -1414,13 +1432,13 @@ msgstr ""
 "Resultados relacionados a UNCode. Errores internos al momento de ejecutar"
 " tu código."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:139
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:151
 msgid ""
 "If you get this message, do not worry, There's Nothing Wrong With Your "
 "Code!"
 msgstr "Si obtienes este mensaje, no te preocupes, ¡tu código no está mal!"
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:141
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:153
 msgid ""
 "This error means UNCode had a problem while running or assessing your "
 "code. So, <b>the problem is on our side.</b>"
@@ -1428,7 +1446,7 @@ msgstr ""
 "Este error indica que UNCode tuvo un problema al ejecutar el código. Por "
 "ende, <b>el problema se aloja en nuestro lado.</b>"
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:143
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:155
 msgid ""
 "We apologise in advance. Please reload the page and try submitting again!"
 " If you still get the same result, please wait a while and try again or "
@@ -1438,7 +1456,7 @@ msgstr ""
 " Si el error persiste, por favor espera un tiempo y vuelve a intentarlo, "
 "o contacta con tu profesor."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:153
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:165
 msgid ""
 "If you get this, it means that we had a problem running and assessing "
 "your code. Wait for a while and try to send a submission again."
@@ -1446,7 +1464,7 @@ msgstr ""
 "Tuvimos un problema ejecutando tu código. Espera por un tiempo y vuelve a"
 " realizar el envío."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:155
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:167
 msgid ""
 "This might be also caused by a too small time limit in the task "
 "configuration (talk to your professor about it)."
@@ -1454,7 +1472,7 @@ msgstr ""
 "Esto también puede ser ocasionado por un tiempo límite muy pequeño al "
 "configurar la tarea (habla con tu profesor al respecto)."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:165
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:177
 msgid ""
 "If you get this, it means the grading environment run out of memory. "
 "There might be two possible causes:"
@@ -1462,7 +1480,7 @@ msgstr ""
 "El ambiente de evaluación se quedó sin memoria. Pueden haber dos posibles"
 " causas:"
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:169
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:181
 msgid ""
 "The configured memory is to low to solve this problem (talk to your "
 "professor about it)."
@@ -1470,7 +1488,7 @@ msgstr ""
 "La memoria configurada es muy baja para resolver el problema (comuníquese"
 " con su profesor)."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:172
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:184
 msgid ""
 "Your code is printing too much data, possibly caused by prints in an "
 "infinite loop."
@@ -1478,7 +1496,7 @@ msgstr ""
 "Tu código tiene una salida muy grande, probablemente causado por imprimir"
 " en ciclos infinitos."
 
-#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:188
+#: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:200
 msgid ""
 "There was a problem while assessing your submission. Please wait a while "
 "and reload the page, and try submitting again."
@@ -1686,7 +1704,7 @@ msgid "Email"
 msgstr "Email"
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:57
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:269
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:285
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:34
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:9
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
@@ -1842,49 +1860,49 @@ msgstr "Ningún testbench fué seleccionado."
 msgid "No expected output was selected for testing"
 msgstr "Ninguna salida esperada fue seleccionada."
 
-#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:44
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:45
 #: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:49
 msgid "The weight for grader test cases must be a float"
 msgstr "El peso para los casos de prueba deber ser un número decimal."
 
-#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:51
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:52
 msgid "Invalid input file in grader test case"
 msgstr "Archivo de entrada inválido para el caso de prueba"
 
-#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:54
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:55
 msgid "Invalid output file in grader test case"
 msgstr "Archivo de salida inválido para el caso de prueba"
 
-#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:57
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:58
 msgid "Grader input file does not exist: "
 msgstr "El archivo de entrada no existe: "
 
-#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:60
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:61
 msgid "Grader output file does not exist: "
 msgstr "El archivo de salida no existe: "
 
-#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:65
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:66
 msgid "You must provide test cases to generate the grader"
 msgstr "Debe proveer casos de prueba para generar el calificador."
 
-#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:71
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:72
 msgid "Duplicated input files in grader"
 msgstr "Archivos de entrada están duplicados."
 
-#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:75
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:76
 #: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:76
 msgid "The sum of all weights must be grater than zero"
 msgstr "La suma de todos los pesos debe ser mayor a cero."
 
-#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:102
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:105
 msgid "Grader: Memory limit exceeds the maximum allowed (500 MBs)."
 msgstr "Calificador: Límite de memoria excede el máximo permitido (500 MBs)."
 
-#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:105
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:108
 msgid "Grader: Time limit exceeds the maximum allowed (30 s)."
 msgstr "Calificador: Límite de tiempo excede el máximo permitido (30 s)."
 
-#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:108
+#: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:111
 msgid "Grader: Output limit exceeds the maximum allowed (30 MBs)."
 msgstr ""
 "Calificador: Límite de salida estándar excede el máximo permitido (30 "
@@ -2001,103 +2019,115 @@ msgstr ""
 "solo ACCEPTED o WRONG_ANSWER. Si está chequeado, se muestran errores "
 "adicionales cómo RUNTIME_ERROR o TIME_LIMIT_EXCEEDED.\""
 
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:74
+msgid "Ignore Presentation error"
+msgstr "Ignorar Error de presentación"
+
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:76
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:217
+msgid ""
+"\"In case it is checked, the presentation errors will be ignored when "
+"grading the student's submission\""
+msgstr ""
+"\"En caso de que esté seleccionado, los errores de presentación serán "
+"ignorados cuando se evalúan los envíos de los estudiantes.\""
+
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:92
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:233
 msgid "Time limit test cases (s)"
 msgstr "Tiempo límite casos de prueba (s)"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:78
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:94
 msgid "\"Time limit for each test case in seconds. (Max. 30s)\""
 msgstr "\"Tiempo límite para cada caso de prueba en segundos. (Max. 30s)\""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:86
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:227
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:102
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:243
 msgid "Memory limit test cases (MB)"
 msgstr "Límite de memoria casos de prueba (MB)"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:88
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:104
 msgid "\"Memory limit for each test case in MBs. (Max. 500 MBs)\""
 msgstr "\"Límite de memoria para cada caso de prueba en MBs. (Max. 500 MBs)\""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:96
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:112
 msgid "Output limit test cases (MB)"
 msgstr "Límite de salida estándar de casos de prueba (MB)"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:98
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:114
 msgid "\"Output limit for each test case in MBs. (Max. 30 MBs)\""
 msgstr "\"Límite de salida para cada caso de prueba en MBs. (Máx. 30 MBs)\""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:107
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:123
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:55
 msgid "Test cases"
 msgstr "Casos de prueba"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:111
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:256
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:127
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:272
 msgid "All diffs"
 msgstr "Todas las diferencias"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:114
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:130
 msgid "Remove all tests"
 msgstr "Eliminar todas las pruebas"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:122
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:140
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:138
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:156
 msgid "Input file"
 msgstr "Archivo de entrada"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:123
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:145
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:139
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:161
 msgid "Output file"
 msgstr "Archivo de salida"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:124
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:270
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:140
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:286
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:27
 msgid "Weight"
 msgstr "Peso"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:125
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:141
 msgid "Show differences"
 msgstr "Mostrar diferencias"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:128
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:144
 msgid "\"Custom feedback to show to the students\""
 msgstr "\"Retroalimentación personalizada a mostrar a los estudiantes\""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:129
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:145
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:35
 msgid "Custom feedback"
 msgstr "Retroalimentación personalizada"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:130
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:280
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:146
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:296
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:97
 msgid "Options"
 msgstr "Opciones"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:151
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:167
 #: inginious/frontend/templates/course_admin/edit_tabs/subproblems.html:24
 msgid "Add"
 msgstr "Agregar"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:163
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:179
 msgid "Entity (only on VHDL)"
 msgstr "Entidad (solo en VHDL)"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:174
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:190
 msgid "Testbench"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:179
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:195
 msgid "Golden Model"
 msgstr "Modelo Golden"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:191
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:207
 msgid "Dataset URL"
 msgstr "Enlace del dataset"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:193
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:209
 msgid ""
 "\"Dataset URL to download file before running grading code. This is "
 "helpful when dataset is too long and cannot be uploaded in the files tab."
@@ -2111,11 +2141,11 @@ msgstr ""
 " del contenedor'. Además, establezca el nombre del archivo en el campo de"
 " abajo.\""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:203
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:219
 msgid "Dataset filename"
 msgstr "Nombre de archivo de datos"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:205
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:221
 msgid ""
 "\"Filename with extension for downloaded dataset (i.e. data.csv). This "
 "filename is the one used to load the dataset in the code.\""
@@ -2124,19 +2154,19 @@ msgstr ""
 "data.csv). Este nombre de archivo es el utilizado para cargar el dataset "
 "en el código.\""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:218
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:234
 msgid "\"Time limit for each test case in seconds. (Max. 30 s)\""
 msgstr "\"Límite de tiempo para cada caso de prueba en segundos. (Max. 30 s)\""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:228
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:244
 msgid "\"Memory limit for each test case in MBs. (Max 600 MBs)\""
 msgstr "\"Límite de memoria para cada caso de prueba en MBs. (Max. 600 MBs) \""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:243
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:259
 msgid "Setup code for all tests"
 msgstr "Setup code para todos los casos"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:245
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:261
 msgid ""
 "\"Python code executed before all tests. Useful to setup, for example, "
 "initial data and variables to be used in all tests. This code must be "
@@ -2148,16 +2178,16 @@ msgstr ""
 "las pruebas. El código debe ser como el intérprete interactivo de Python,"
 " donde cada línea es un comando diferente en el intérprete\""
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:262
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:278
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:8
 msgid "Add a test"
 msgstr "Agregar prueba"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:273
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:289
 msgid "Show debug info"
 msgstr "Mostrar más información"
 
-#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:275
+#: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:291
 msgid ""
 "\"Check to show more info the student like output difference and runtime "
 "errors\""
