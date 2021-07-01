@@ -40,9 +40,7 @@ class UserHintManagerSingleton(object):
         unlocked_hints_penalties = {}
         data = {}
 
-        if user_hints is None:
-            self.insert_default_user_hints(task_id, username)
-        else:
+        if user_hints:
             unlocked_hints = user_hints["unlocked_hints"]
             data["total_penalty"] = user_hints["total_penalty"]
             for hint in unlocked_hints:
@@ -136,6 +134,13 @@ class UserHintManagerSingleton(object):
     def unlock_hint(self, task, username, hint_id, task_hints):
 
         task_id = task.get_id()
+        
+        # Check if user hints document already exists in database
+        user_hints = self.get_user_hints(task_id, username)
+
+        # Create the user hints document if doesn't exists
+        if user_hints is None:
+            self.insert_default_user_hints(task_id, username)
 
         if(task.is_group_task()):
             users_group = self._database.aggregations.find_one(
