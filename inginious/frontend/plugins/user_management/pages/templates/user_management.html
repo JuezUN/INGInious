@@ -1,6 +1,6 @@
 $def with()
 
-$var title: User Management
+$var title: $:_("User Management")
 
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
@@ -11,7 +11,7 @@ $def NavbarF():
 $var Navbar: $:NavbarF()
 
 $ input_len_error = _("Not large enough")
-$ input_email_error = _("An email is requested")
+$ input_email_error = _("The email is mandatory")
 $ email = _("Email")
 $ name = _("Name")
 $ username = _("Username")
@@ -19,9 +19,9 @@ $ username_confirmation_error = _("Username does not match")
 $ success = _("Success")
 $ error = _("Something went wrong")
 $ input_errors = _("Some inputs need to be modified or no modification has been made")
-$ no_submissions = _("There is not process running")
+$ no_submissions = _("There are no jobs running")
 $ no_user = _("No user found")
-$ unknown_collections_message = _("There are collections without information")
+$ unknown_collections_message = _("There are collections without data")
 $ please_check = _("Please check that they do not use username")
 
 <div class="container">
@@ -30,13 +30,13 @@ $ please_check = _("Please check that they do not use username")
             <div class="alert alert-warning information">
                 <h3><strong>$:_("To keep in mind")</strong></h3>
                 <ul class="normalList">
-                    <li>$:_("The change process disconnects and block the user account to prevent new user processes running while changes are being made.")</li>
+                    <li>$:_("The change process blocks the user account and removes the session to prevent changes in the database while the user's data is updated.")</li>
                     <li>$:_("The search is executed with Mongodb's regular expressions, therefore you can use all the advantages to do more complete searches").
                         $:_("To do a regular expression search, you just need to send a normal text. You can not use <strong>/pattern/</strong> to indicate mongodb regular expression due JS"),
                         $:_("but you can use expressions like this: ") <strong>(?x)student[1-4]</strong><br>
                         <strong>(?x)</strong> $:_("Extended capability to ignore all white space characters in the pattern").
                         <a href="https://docs.mongodb.com/v3.4/reference/operator/query/regex/#op._S_options" target="_blank">$:_("Click here to see the options")</a>
-                        $:_("(by default it is case insensitivity)").
+                        $:_("(by default it is not case sensitive)").
                         $:_("And <strong>[1-4]</strong> indicates the next character is between 1 and 4").</li>
                     <li>$:_("You do not need to be formal with the regular expression"):
                         $:_("with <strong>student</strong> as parameter, for example, it returns results that include the parameter like <strong>student</strong>1 or something_<strong>student</strong>_something").</li>

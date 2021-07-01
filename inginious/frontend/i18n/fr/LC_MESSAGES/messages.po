@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-06-27 22:58-0500\n"
+"POT-Creation-Date: 2021-07-01 14:04-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -3152,7 +3152,7 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:25
-msgid "There are user's process running"
+msgid "There are users' jobs running"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:45
@@ -3166,7 +3166,7 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:48
-msgid "- If you think any change is wrong, please contact the administrator."
+msgid "- If you think some changes are wrong, please contact the administrator."
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:49
@@ -3187,7 +3187,9 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:60
-msgid "Something went  wrong when we sent the information email to the user"
+msgid ""
+"Something went wrong while trying to send the email with the information "
+"to the user"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:109
@@ -3208,7 +3210,7 @@ msgid "Not large enough"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:14
-msgid "An email is requested"
+msgid "The email is mandatory"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:18
@@ -3228,15 +3230,16 @@ msgid "Some inputs need to be modified or no modification has been made"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:22
-msgid "There is not process running"
-msgstr ""
+#: inginious/frontend/templates/queue.html:51
+msgid "There are no jobs running"
+msgstr "Aucune tâche n'est en cours d'exécution."
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:23
 msgid "No user found"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:24
-msgid "There are collections without information"
+msgid "There are collections without data"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:25
@@ -3249,8 +3252,8 @@ msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:33
 msgid ""
-"The change process disconnects and block the user account to prevent new "
-"user processes running while changes are being made."
+"The change process blocks the user account and removes the session to "
+"prevent changes in the database while the user's data is updated."
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:34
@@ -3279,7 +3282,7 @@ msgid "Click here to see the options"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:39
-msgid "(by default it is case insensitivity)"
+msgid "(by default it is not case sensitive)"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:40
@@ -3816,10 +3819,6 @@ msgstr "Oui"
 #: inginious/frontend/templates/queue.html:70
 msgid "No"
 msgstr "Non"
-
-#: inginious/frontend/templates/queue.html:51
-msgid "There are no jobs running"
-msgstr "Aucune tâche n'est en cours d'exécution."
 
 #: inginious/frontend/templates/queue.html:53
 msgid "Jobs in queue"
@@ -5733,5 +5732,33 @@ msgstr "Extensions autorisées:"
 #~ "had authentication problems, it may be"
 #~ " due to the change process.\n"
 #~ "    "
+#~ msgstr ""
+
+#~ msgid "Something went  wrong when we sent the information email to the user"
+#~ msgstr ""
+
+#~ msgid "An email is requested"
+#~ msgstr ""
+
+#~ msgid "There is not process running"
+#~ msgstr ""
+
+#~ msgid "There are collections without information"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The change process disconnects and block"
+#~ " the user account to prevent new "
+#~ "user processes running while changes are"
+#~ " being made."
+#~ msgstr ""
+
+#~ msgid "There are user's process running"
+#~ msgstr ""
+
+#~ msgid "- If you think any change is wrong, please contact the administrator."
+#~ msgstr ""
+
+#~ msgid "(by default it is case insensitivity)"
 #~ msgstr ""
 

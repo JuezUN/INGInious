@@ -22,7 +22,7 @@ def any_process_running(username, collection_manager):
 def block_user(username, collection_manager):
     """ block a user to prevent new process while the data is changing """
     if any_process_running(username, collection_manager):
-        raise api.APIError(409, _("There are user's process running"))
+        raise api.APIError(409, _("There are users' jobs running"))
     if get_num_open_user_sessions(username, collection_manager):
         close_user_sessions(username, collection_manager)
     add_block_user(username, collection_manager)
@@ -45,7 +45,7 @@ def inform_user_changes(user_original_info, user_final_info, collection_manager)
     subject = _("Changes in your user account")
     hash_link = get_user_activation_link(user_final_info["username"], collection_manager)
     post_data_auth_prob = _("- If at some point you had authentication problems, it may be due to the change process.")
-    post_data_contact_admin = _("- If you think any change is wrong, please contact the administrator.")
+    post_data_contact_admin = _("- If you think some changes are wrong, please contact the administrator.")
     post_data_hash = _(
         """- We have noticed that you have not yet activated your account, please click on the following link:
         """) + hash_link
@@ -57,7 +57,7 @@ def inform_user_changes(user_original_info, user_final_info, collection_manager)
     try:
         web.sendmail(web.config.smtp_sendername, user_email, subject, message)
     except (ValueError, TypeError):
-        raise api.APIError(500, _("Something went  wrong when we sent the information email to the user"))
+        raise api.APIError(500, _("Something went wrong while trying to send the email with the information to the user"))
 
 
 def get_user_activation_link(username, collection_manager):

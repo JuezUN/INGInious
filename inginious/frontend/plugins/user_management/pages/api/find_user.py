@@ -37,7 +37,7 @@ def search_user(user_text, collections_manager, field=None):
 
 
 class FindUserAPI(SuperadminAPI):
-    """ An API to find users whom are related with the search parameter """
+    """ An API to find users whom are related to the search parameter """
 
     def API_GET(self):
         """ Get request. returns a list of users matching the search parameter """

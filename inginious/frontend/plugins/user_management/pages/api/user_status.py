@@ -8,7 +8,7 @@ from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
 
 
 class UserStatusAPI(SuperadminAPI):
-    """ API to know the process that are running of a user """
+    """ API to know the processes that are running of a user and the active sessions """
 
     def API_GET(self):
         """ ger request. returns a list of the process that the user is running"""
@@ -30,8 +30,11 @@ class UserStatusAPI(SuperadminAPI):
         return 200, user_status
 
     def config_processes_dict(self, processes):
-        """ This method apply a "format" to the process, get course name,
-        get the task name and apply a format for the date """
+        """ This method applies a "format" to the processes: it gets the course name
+        and the task name to apply a format to the process date.
+        This structure is used in the web page "user_management", therefore, the processes (submissions or custom test)
+        are standardized
+        """
         lang = self.user_manager.session_language()
         for process in processes:
             course_name = self.course_factory.get_course(process["courseid"]).get_name(lang)
