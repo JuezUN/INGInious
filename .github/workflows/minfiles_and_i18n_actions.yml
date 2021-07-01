@@ -19,18 +19,21 @@ jobs:
           fi
         working-directory: utils/minify_plugins/
   check-all-minified-file:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
     steps:
-      - uses: actions/setup-node@v2.1.2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
       - uses: actions/checkout@v2
-      - name: Install grunt
-        run: |
-          sudo apt-get update
-          npm install -g grunt-cli
       - name: Minify and check all-minified file
         run: |
           npm install
-          grunt
+          rm package-lock.json
+          sudo npm install -g grunt-cli
+          grunt --version
+          grunt -v
+          git status
+          git diff
           if [[ -n "$(git status -s)" ]]; then
               echo "The all-minified file must be updated. Please update it before merging this.";
               exit 1;
