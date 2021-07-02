@@ -80,7 +80,7 @@ class AuthMethod(object, metaclass=ABCMeta):
 
 
 class UserManager:
-    def __init__(self, session_dict, database, superadmins, hook_manager):
+    def __init__(self, session_dict, database, superadmins, plugin_manager):
         """
         :type session_dict: web.session.Session
         :type database: pymongo.database.Database
@@ -92,7 +92,7 @@ class UserManager:
         self._superadmins = superadmins
         self._auth_methods = OrderedDict()
         self._logger = logging.getLogger("inginious.webapp.users")
-        self._hook_manager = hook_manager
+        self._plugin_manager = plugin_manager
 
     ##############################################
     #           User session management          #
@@ -279,8 +279,10 @@ class UserManager:
         :param realname: User real name
         :param email: User email
         """
-        is_block = self._hook_manager.call_hook("open_session", username=username)
-        if not is_block[0]:
+        values_of_hooks = self._plugin_manager.call_hook("open_session", username=username)
+        someone_calls_the_hook = len(values_of_hooks) > 0
+        is_block = values_of_hooks[0] if someone_calls_the_hook else False
+        if not is_block:
             self._database.users.update_one({"email": email}, {"$set": {"realname": realname, "username": username, "language": language}},
                                             upsert=True)
             self._logger.info("User %s connected - %s - %s - %s", username, realname, email, web.ctx.ip)

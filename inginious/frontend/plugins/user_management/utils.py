@@ -36,7 +36,7 @@ def get_collection_document():
 def on_user_sign_in(username):
     """ It's called when a user is logging. It returns a boolean value to determinate if the user is blocked """
     collections_manager = CollectionsManagerSingleton.get_instance()
-    user = list(collections_manager.make_find_request("users", {"username": username}, {"block": 1}))
+    user = collections_manager.make_find_one_request("users", {"username": username}, {"block": 1})
     if user:
-        return user[0]["block"] if "block" in user[0] else False
+        return user["block"] if "block" in user else False
     return True
