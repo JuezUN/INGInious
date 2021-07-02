@@ -192,24 +192,6 @@ $def ColumnF():
                                     <a class="allowed" title="Select for evaluation" data-toggle="tooltip" data-placement="right"><i class="fa fa-star fa-fw"></i></a>&nbsp;
                                 $elif task.get_evaluate() == 'student':
                                     <a class="notallowed" title="Not the same $('group' if course.use_classrooms() else 'team')" data-toggle="tooltip" data-placement="right"><i class="fa fa-minus-circle fa-fw"></i></a>&nbsp;
-
-                            <!-- Tags -->
-                            $# This display a badge with the number of validated tags in each row of the submission history.
-                            $# The badge is green (success style) if all tags are validated, blue (info style) otherwise.    
-                            $if (len(visible_tags) > 0):
-                                $ tags_ok_counter = 0
-                                $ list_tags_ok = []
-                                $for tag in task.get_tags()[0]:
-                                    $if (tag.is_visible_for_student() or user_manager.has_staff_rights_on_course(course)):
-                                        $ class_tag = "badge alert-info"
-                                        $if "tests" in submission and tag.get_id() in submission["tests"] and submission["tests"][tag.get_id()]:
-                                            $ tags_ok_counter += 1
-                                            $list_tags_ok.append(_(tag.get_name()))
-                                $if tags_ok_counter == len(visible_tags):
-                                    <span class="badge alert-success" id="tag_counter">$tags_ok_counter</span>
-                                $else:
-                                    <span class="badge alert-info" id="tag_counter" data-toggle="tooltip" data-placement="left" title="$', '.join(list_tags_ok)">$tags_ok_counter</span>
-                            <!-- End Tags -->
                         
                             $if "grade" in submission:
                                 <span id="txt">$submission["submitted_on"].strftime("%d/%m/%Y %H:%M:%S") - $submission["grade"]%</span>
