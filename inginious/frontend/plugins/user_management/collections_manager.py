@@ -21,7 +21,7 @@ class CollectionsManagerSingleton:
         """ returns a list of the collection's names """
         return self.db.list_collection_names()
 
-    def get_all_key_names(self, collection_name):
+    def get_all_collection_keys(self, collection_name):
         """ return a list with the keys that appear in a collection """
         collection = getattr(self.db, collection_name)
         all_keys = list(collection.aggregate([

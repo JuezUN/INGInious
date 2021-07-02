@@ -1,7 +1,7 @@
 import datetime
 
 from inginious.frontend.plugins.user_management.user_information import username_is_array
-from inginious.frontend.plugins.user_management.utils import get_collection_document
+from inginious.frontend.plugins.user_management.utils import read_collections_info_file
 import re
 
 
@@ -48,7 +48,7 @@ def change_email(username, param, collections_manager):
 
 def change_username(username, new_username, collection_manager, collection_name_list):
     """ change the username of a user """
-    collection_information_list = get_collection_document()
+    collection_information_list = read_collections_info_file()
     default_collection_information = [{"path": "username", "index_array": []}]
     count = 0
     for collection_name in collection_name_list:
@@ -91,7 +91,7 @@ def add_block_user(username, collection_manager):
     return collection_manager.update_collection("users", user_filter, new_name)
 
 
-def remove_block_user(username, collection_manager):
+def unlock_user(username, collection_manager):
     """ Removes the block field from the user's document """
     user_filter = {
         "username": username

@@ -1,4 +1,4 @@
-def get_num_open_user_sessions(username, collection_manager):
+def get_total_open_sessions(username, collection_manager):
     """ return the number of open sessions of a user  """
     sessions = list(collection_manager.make_find_request("sessions", _create_filter_for_sessions(username),
                                                          _create_projection_for_sessions()))

@@ -27,7 +27,7 @@ def user_management_hook(plugin_manager):
         <i class="fa fa-user-plus" aria-hidden="true"></i> User Management</a></li>""")
 
 
-def get_collection_document():
+def read_collections_info_file():
     """ return the document that has the info about the collections """
     file_path = os.path.join(_static_folder_path, 'json/collections_info.json')
     return OrderedDict(sorted(read_json_file(file_path).items()))

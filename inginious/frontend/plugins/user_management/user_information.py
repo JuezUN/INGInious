@@ -1,6 +1,6 @@
 from collections import OrderedDict
 
-from inginious.frontend.plugins.user_management.utils import get_collection_document
+from inginious.frontend.plugins.user_management.utils import read_collections_info_file
 
 
 def get_count_username_occurrences(username, collection_manager):
@@ -8,7 +8,7 @@ def get_count_username_occurrences(username, collection_manager):
     in the collection as value """
     collection_name_list = collection_manager.get_collections_names()
     dictionary = _create_occurrences_dict(collection_name_list)
-    collection_information = get_collection_document()
+    collection_information = read_collections_info_file()
     to_remove = []
     unknown_collections = []
 
@@ -26,7 +26,7 @@ def get_count_username_occurrences(username, collection_manager):
                 to_remove.append(collection_name)
         else:
             unknown_collections.append(collection_name)
-            has_username = has_username_key(collection_manager.get_all_key_names(collection_name))
+            has_username = has_username_key(collection_manager.get_all_collection_keys(collection_name))
             if has_username:
                 default_dict = {"path": "username", "index_array": []}
                 if username_is_array(collection_name, collection_manager):

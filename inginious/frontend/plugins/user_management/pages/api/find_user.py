@@ -16,13 +16,13 @@ def search_user(user_text, collections_manager, field=None):
     def get_regex_pipeline(field_name):
         return {field_name: {"$regex": user_text, "$options": "i"}}
 
-    field_names = ["username", "email", "realname"]
+    search_fields = ["username", "email", "realname"]
     or_pipeline = []
 
-    if field in field_names:
+    if field in search_fields:
         or_pipeline.append(get_regex_pipeline(field))
     else:
-        or_pipeline = [get_regex_pipeline(field_name) for field_name in field_names]
+        or_pipeline = [get_regex_pipeline(field_name) for field_name in search_fields]
 
     user_filter = {
         "$match": {
@@ -43,6 +43,6 @@ class FindUserAPI(SuperadminAPI):
         """ Get request. returns a list of users matching the search parameter """
         self.check_superadmin_rights()
         user_string = get_mandatory_parameter(web.input(), "user")
-        field = web.input()["field"] if "field" in web.input() else None
+        field_search = web.input().get("field", None)
         collection_manager = CollectionsManagerSingleton.get_instance()
-        return 200, {"users": search_user(user_string, collection_manager, field)}
+        return 200, {"users": search_user(user_string, collection_manager, field_search)}

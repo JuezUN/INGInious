@@ -1,7 +1,7 @@
 import web
 
 from inginious.frontend.plugins.user_management.collections_manager import CollectionsManagerSingleton
-from inginious.frontend.plugins.user_management.user_status import get_num_open_user_sessions, \
+from inginious.frontend.plugins.user_management.user_status import get_total_open_sessions, \
     get_submissions_running, get_custom_test_running
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
@@ -17,19 +17,19 @@ class UserStatusAPI(SuperadminAPI):
         collection_manager = CollectionsManagerSingleton.get_instance()
 
         user_status = {"username": username,
-                       "num_connections": get_num_open_user_sessions(username, collection_manager)}
+                       "num_connections": get_total_open_sessions(username, collection_manager)}
         submissions = get_submissions_running(username, collection_manager)
         custom_test = get_custom_test_running(username, collection_manager)
 
-        self.config_processes_dict(submissions)
-        self.config_processes_dict(custom_test)
+        self.format_processes_dict(submissions)
+        self.format_processes_dict(custom_test)
 
         user_status["submissions"] = sorted(submissions, key=lambda k: (k["courseid"], k["taskid"]))
         user_status["custom_test"] = sorted(custom_test, key=lambda k: (k["courseid"], k["taskid"]))
 
         return 200, user_status
 
-    def config_processes_dict(self, processes):
+    def format_processes_dict(self, processes):
         """ This method applies a "format" to the processes: it gets the course name
         and the task name to apply a format to the process date.
         This structure is used in the web page "user_management", therefore, the processes (submissions or custom test)
