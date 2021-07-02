@@ -7,7 +7,7 @@ from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
 
 def search_user(user_text, collections_manager, field=None):
     """ returns a list of users matching the search parameter.
-    :param user_text: Is a mongodb regular expresion
+    :param user_text: Is a mongodb regular expression
     :param collections_manager: Is the singleton class
     :param field: Is an optional parameter to indicate by which specific field to filter. By default, it filter for all
     field_names

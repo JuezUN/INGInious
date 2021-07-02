@@ -12,7 +12,7 @@ from inginious.frontend.plugins.utils import get_mandatory_parameter
 from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
 
 
-def any_process_running(username, collection_manager):
+def _any_process_running(username, collection_manager):
     """ indicates whether the user is running any process """
     submissions = get_submissions_running(username, collection_manager)
     custom_test = get_custom_test_running(username, collection_manager)
@@ -21,7 +21,7 @@ def any_process_running(username, collection_manager):
 
 def block_user(username, collection_manager):
     """ block a user to prevent new process while the data is changing """
-    if any_process_running(username, collection_manager):
+    if _any_process_running(username, collection_manager):
         raise api.APIError(409, _("There are users' jobs running"))
     if get_total_open_sessions(username, collection_manager):
         close_user_sessions(username, collection_manager)
@@ -41,6 +41,7 @@ def inform_user_changes(user_original_info, user_final_info, collection_manager)
                 text += """    - """ + key_dict[key] + ": " + user_original_info[key] + " -> " + user_final_info[
                     key] + "\n"
         return text
+
     user_email = user_final_info["email"]
     subject = _("Changes in your user account")
     activation_link = get_user_activation_link(user_final_info["username"], collection_manager)
@@ -57,7 +58,8 @@ def inform_user_changes(user_original_info, user_final_info, collection_manager)
     try:
         web.sendmail(web.config.smtp_sendername, user_email, subject, message)
     except (ValueError, TypeError):
-        raise api.APIError(500, _("Something went wrong while trying to send the email with the information to the user"))
+        raise api.APIError(500,
+                           _("Something went wrong while trying to send the email with the information to the user"))
 
 
 def get_user_activation_link(username, collection_manager):
