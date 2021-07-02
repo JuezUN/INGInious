@@ -4,6 +4,9 @@ const SUBMISSIONS_TABLE_ID = "userSubmissions";
 
 function updateSubmissionStatus() {
     $.ajax({
+        data: {
+            username: currentUsername
+        },
         type: "GET",
         url: "/api/user_status",
         success: function (data) {
@@ -12,9 +15,6 @@ function updateSubmissionStatus() {
         },
         beforeSend(jqXHR, settings) {
             // break default setting
-        },
-        data: {
-            username: currentUsername
         }
     })
 }

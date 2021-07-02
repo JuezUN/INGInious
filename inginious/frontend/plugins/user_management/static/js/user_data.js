@@ -1,7 +1,7 @@
 const USER_INFORMATION_TABLE_ID = "userInformation";
 const USER_TOTAL_TABLE_ID = "userInformationFoot";
 
-function requestUser(username) {
+function requestUserData(username) {
     function fillInput(id, content) {
         $(`#${id}`).val(content);
     }

@@ -61,7 +61,7 @@ $ please_check = _("Please check that they do not use username")
                     <div class="input-group">
                         <label for="usernameOrEmailInput" class=""></label>
                         <input type="text" class="form-control" id="usernameOrEmailInput"
-                               placeholder="Username/Email">
+                               placeholder="$:email/$:username/$:name">
                         <div class="input-group-btn px-1">
                             <a type="button" class="btn btn-info" id="searchBtn">$:_("Search")</a>
                         </div>
@@ -141,21 +141,21 @@ $ please_check = _("Please check that they do not use username")
                                 <tr>
                                     <td><h4>$:_("Username")</h4></td>
                                     <td><input type="text" id="newUsernameInput" class="form-control input-sm"
-                                               placeholder="New Username" readonly></td>
+                                               placeholder="$:_('New Username')" readonly></td>
                                     <td><a class="edit" data-action="#newUsernameInput">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
                                 </tr>
                                 <tr>
                                     <td><h4>$:_("Complete Name")</h4></td>
                                     <td><input type="text" id="newNameInput" class="form-control input-sm"
-                                               placeholder="New Name" readonly></td>
+                                               placeholder="$:_('New Name')" readonly></td>
                                     <td><a class="edit" data-action="#newNameInput">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
                                 </tr>
                                 <tr>
                                     <td><h4>$:_("Email")</h4></td>
                                     <td><input type="text" id="newEmailInput" class="form-control input-sm"
-                                               placeholder="New Email" readonly></td>
+                                               placeholder="$:_('New Email')" readonly></td>
                                     <td><a class="edit" data-action="#newEmailInput">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
                                 </tr>
@@ -191,7 +191,7 @@ $ please_check = _("Please check that they do not use username")
                 <form class="">
                     <div class="form-group">
                         <label for="usernameInputConfirmation" class=""></label>
-                        <input type="text" class="form-control" id="usernameInputConfirmation" placeholder="Username">
+                        <input type="text" class="form-control" id="usernameInputConfirmation" placeholder="$:username">
                     </div>
                 </form>
             </div>
