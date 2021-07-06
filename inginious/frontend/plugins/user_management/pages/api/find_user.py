@@ -1,3 +1,4 @@
+import pymongo.errors
 import web
 
 from inginious.frontend.plugins.user_management.collections_manager import CollectionsManagerSingleton
@@ -45,4 +46,8 @@ class FindUserAPI(SuperadminAPI):
         user_string = get_mandatory_parameter(web.input(), "user")
         field_search = web.input().get("field", None)
         collection_manager = CollectionsManagerSingleton.get_instance()
-        return 200, {"users": search_user(user_string, collection_manager, field_search)}
+        try:
+            list_of_users = search_user(user_string, collection_manager, field_search)
+        except pymongo.errors.OperationFailure:
+            return 500, {"error": _("mongo operation fail")}
+        return 200, {"users": list_of_users}

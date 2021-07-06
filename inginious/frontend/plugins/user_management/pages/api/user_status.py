@@ -1,3 +1,4 @@
+import pymongo.errors
 import web
 
 from inginious.frontend.plugins.user_management.collections_manager import CollectionsManagerSingleton
@@ -18,8 +19,11 @@ class UserStatusAPI(SuperadminAPI):
 
         user_status = {"username": username,
                        "num_connections": get_total_open_sessions(username, collection_manager)}
-        submissions = get_submissions_running(username, collection_manager)
-        custom_test = get_custom_test_running(username, collection_manager)
+        try:
+            submissions = get_submissions_running(username, collection_manager)
+            custom_test = get_custom_test_running(username, collection_manager)
+        except pymongo.errors.OperationFailure:
+            return 500, {"error": _("mongo operation fail")}
 
         self.format_processes_dict(submissions)
         self.format_processes_dict(custom_test)

@@ -1,3 +1,4 @@
+import pymongo.errors
 import web
 import json
 import inginious.frontend.pages.api._api_page as api
@@ -8,7 +9,7 @@ from inginious.frontend.plugins.user_management.update_user_data import close_us
 from inginious.frontend.plugins.user_management.user_information import get_count_username_occurrences
 from inginious.frontend.plugins.user_management.user_status import get_submissions_running, get_custom_test_running, \
     get_total_open_sessions
-from inginious.frontend.plugins.utils import get_mandatory_parameter
+from inginious.frontend.plugins.utils import get_mandatory_parameter, check_email_format
 from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
 
 
@@ -70,6 +71,70 @@ def get_user_activation_link(username, collection_manager):
     return ""
 
 
+def _validate_email(email, collections_manager):
+    """ checks that the new email is valid to replace the previous one.
+    - It must be a email
+    - It must not be in use for another user
+    """
+    if check_email_format(email) is None:
+        return False
+    user = collections_manager.make_find_one_request("users", {"email": email})
+    if user:
+        return False
+    return True
+
+
+def _validate_real_name(name):
+    """ checks that the new name is valid to replace the previous one.
+    - It must be a no empty string
+    """
+    if len(name) == 0:
+        return False
+    return True
+
+
+def _validate_username(username, collections_manager):
+    """ checks that the new username is valid to replace the previous one.
+    - It must have at least 4 characters
+    - It must not be in use for another user
+    """
+    user = collections_manager.make_find_one_request("username", {"email": username})
+    min_username_len = 4
+    if len(username) < min_username_len:
+        return False
+    if user:
+        return False
+    return True
+
+
+def _update_user_data(user_data, username, collections_manager):
+    """ Updates the basic user data username, name or email """
+    user_has_changed = False
+    username_count = 0
+    email_count = 0
+    name_count = 0
+    if "email" in user_data:
+        if not _validate_email(user_data["email"], collections_manager):
+            raise api.APIError(400, _("invalid email by format or already in use"))
+        user_has_changed = True
+        email_count = change_email(username, user_data["email"], collections_manager)
+    if "name" in user_data:
+        if not _validate_real_name(user_data["name"]):
+            raise api.APIError(400, _("invalid name"))
+        user_has_changed = True
+        name_count = change_name(username, user_data["name"], collections_manager)
+    if "new_username" in user_data:
+        if not _validate_username(user_data["new_username"], collections_manager):
+            raise api.APIError(400, _("invalid username by length or already in use"))
+        user_has_changed = True
+        collection_name_list = json.loads(get_mandatory_parameter(user_data, "collection_list"))
+        username_count = change_username(username, user_data["new_username"], collections_manager,
+                                         collection_name_list)
+    if not user_has_changed:
+        raise api.APIError(400, _("no data to change"))
+    return email_count, name_count, username_count
+
+
 class UserDataAPI(SuperadminAPI):
     """ API to get information about a user """
 
@@ -77,43 +142,36 @@ class UserDataAPI(SuperadminAPI):
         """ Get request. Returns data about a user """
         self.check_superadmin_rights()
         username = get_mandatory_parameter(web.input(), "username")
-        user_data = self.get_user_data(username)
+        try:
+            user_data = self.get_user_data(username)
+        except api.APIError as error:
+            return error.status_code, {"error": error.return_value}
         return 200, user_data
 
     def API_POST(self):
         """ request to change one or more of the basic data of a user: username, realname or email """
         self.check_superadmin_rights()
-        user_has_changed = False
         user_data = web.input()
         username = get_mandatory_parameter(user_data, "username")
         collections_manager = CollectionsManagerSingleton.get_instance()
-        user_original_info = self.get_user_data(username)
 
-        username_count = 0
-        email_count = 0
-        name_count = 0
         try:
+            user_original_info = self.get_user_data(username)
             block_user(username, collections_manager)
+            email_count, name_count, username_count = _update_user_data(user_data, username, collections_manager)
         except api.APIError as error:
             return error.status_code, {"error": error.return_value}
-        if "email" in user_data:
-            user_has_changed = True
-            email_count = change_email(username, user_data["email"], collections_manager)
-        if "name" in user_data:
-            user_has_changed = True
-            name_count = change_name(username, user_data["name"], collections_manager)
-        if "new_username" in user_data:
-            user_has_changed = True
-            collection_name_list = json.loads(get_mandatory_parameter(user_data, "collection_list"))
-            username_count = change_username(username, user_data["new_username"], collections_manager,
-                                             collection_name_list)
-        if not user_has_changed:
-            return 400, {"error": _("no data to change")}
+        except pymongo.errors.OperationFailure:
+            return 500, {"error": _("mongo operation fail")}
 
         new_username = user_data["new_username"] if username_count > 0 else username
-        user_final_info = self.get_user_data(new_username)
-        make_user_changes_register(user_original_info, user_final_info, collections_manager)
 
+        try:
+            user_final_info = self.get_user_data(new_username)
+        except api.APIError as error:
+            return 500, {"error": error.return_value}
+
+        make_user_changes_register(user_original_info, user_final_info, collections_manager)
         unlock_user(new_username, collections_manager)
 
         try:
@@ -138,4 +196,4 @@ class UserDataAPI(SuperadminAPI):
                     "unknown_collections": unknown_collections}
             return data
         else:
-            return {"user": _("User no found")}
+            raise api.APIError(404, _("User no found"))
