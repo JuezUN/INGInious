@@ -120,7 +120,7 @@ def _update_user_data(user_data, username, collections_manager):
         email_count = change_email(username, user_data["email"], collections_manager)
     if "name" in user_data:
         if not _validate_real_name(user_data["name"]):
-            raise api.APIError(400, _("invalid name"))
+            raise api.APIError(400, _("invalid name by length"))
         user_has_changed = True
         name_count = change_name(username, user_data["name"], collections_manager)
     if "new_username" in user_data:

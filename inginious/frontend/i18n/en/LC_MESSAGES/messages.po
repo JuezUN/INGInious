@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-06-24 19:34-0500\n"
+"POT-Creation-Date: 2021-07-06 16:42-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.6.0\n"
 
 #: inginious/frontend/accessible_time.py:58
 msgid "The accessibility end date must be greater than the start date."
@@ -1349,7 +1349,7 @@ msgstr ""
 #: inginious/frontend/plugins/auth/custom_auth_form.html:29
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:33
 #: inginious/frontend/plugins/register_students/static/email_template.html:12
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:36
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:37
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:17
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:142
 #: inginious/frontend/templates/auth.html:23
@@ -1503,7 +1503,7 @@ msgid "Request to create a new course "
 msgstr ""
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:45
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:36
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:37
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:15
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:156
 msgid "Email"
@@ -1512,7 +1512,7 @@ msgstr ""
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:57
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:285
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:34
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:36
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:37
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:16
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:9
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
@@ -3126,55 +3126,74 @@ msgid ""
 "Management</a></li>"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:25
+#: inginious/frontend/plugins/user_management/pages/api/find_user.py:52
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:165
+#: inginious/frontend/plugins/user_management/pages/api/user_status.py:26
+msgid "mongo operation fail"
+msgstr ""
+
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:26
 msgid "There are users' jobs running"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:45
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:47
 msgid "Changes in your user account"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:47
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:49
 msgid ""
 "- If at some point you had authentication problems, it may be due to the "
 "change process."
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:48
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:50
 msgid "- If you think some changes are wrong, please contact the administrator."
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:49
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:51
 msgid ""
 "- We have noticed that you have not yet activated your account, please "
 "click on the following link:\n"
 "        "
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:53
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:55
 msgid "Some changes have been made to your account:\n"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:54
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:56
 msgid ""
 " To keep in mind:\n"
 "    "
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:60
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:63
 msgid ""
 "Something went wrong while trying to send the email with the information "
 "to the user"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:109
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:118
+msgid "invalid email by format or already in use"
+msgstr ""
+
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:123
+msgid "invalid name by length"
+msgstr ""
+
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:128
+msgid "invalid username by length or already in use"
+msgstr ""
+
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:134
 msgid "no data to change"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:139
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:199
 msgid "User no found"
 msgstr ""
 
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:3
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:8
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:50
 msgid "User Management"
@@ -3239,9 +3258,9 @@ msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:35
 msgid ""
-"To do a regular expression search, you just need to send a normal text. "
-"You can not use <strong>/pattern/</strong> to indicate mongodb regular "
-"expression due JS"
+"To do a search using regular expressions, you just need to type a normal "
+"text. You can not write it in the way <strong>/pattern/</strong> to "
+"indicate a mongodb regular expression."
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:36
@@ -3324,7 +3343,7 @@ msgstr ""
 msgid "Type the username"
 msgstr ""
 
-#: inginious/frontend/plugins/utils/__init__.py:19
+#: inginious/frontend/plugins/utils/__init__.py:20
 msgid " is mandatory"
 msgstr ""
 
@@ -5545,4 +5564,15 @@ msgstr ""
 #: inginious/frontend/templates/tasks/file.html:35
 msgid "Allowed extensions:"
 msgstr ""
+
+#~ msgid ""
+#~ "To do a regular expression search, "
+#~ "you just need to send a normal "
+#~ "text. You can not use "
+#~ "<strong>/pattern/</strong> to indicate mongodb "
+#~ "regular expression due JS"
+#~ msgstr ""
+
+#~ msgid "invalid name"
+#~ msgstr ""
 
