@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-06-24 19:34-0500\n"
+"POT-Creation-Date: 2021-07-08 15:30-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -3725,7 +3725,7 @@ msgstr "Registrarse"
 msgid "UNCode is distributed under AGPL license"
 msgstr "UNCode sigue la especificación de la licencia AGPL"
 
-#: inginious/frontend/templates/layout_lti.html:89
+#: inginious/frontend/templates/layout_lti.html:90
 msgid ""
 "Powered by <a href=\"http://www.inginious.org\" "
 "target=\"_blank\">UNCode</a>, a free and open-source grading tool."
@@ -3733,6 +3733,14 @@ msgstr ""
 "Sitio generado con <a href=\"http://www.inginious.org\" "
 "target=\"_blank\">UNCode</a>, una plataforma de evaluación académica. El "
 "código fuente de UNCode es libre y abierto (open source)."
+
+#: inginious/frontend/templates/layout_lti.html:91
+msgid ""
+"Visit the <a href=\"https://juezun.github.io\" target=\"_blank\">UNCode "
+"Web Page</a> for more information and documentation."
+msgstr ""
+"Visite la <a href=\"https://juezun.github.io\" target=\"_blank\">Página "
+"Web de UNCode</a> para más información y documentación."
 
 #: inginious/frontend/templates/lti_bind.html:8
 msgid "Bind LTI"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-06-24 19:34-0500\n"
+"POT-Creation-Date: 2021-07-08 15:30-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -3379,10 +3379,16 @@ msgstr ""
 msgid "UNCode is distributed under AGPL license"
 msgstr ""
 
-#: inginious/frontend/templates/layout_lti.html:89
+#: inginious/frontend/templates/layout_lti.html:90
 msgid ""
 "Powered by <a href=\"http://www.inginious.org\" "
 "target=\"_blank\">UNCode</a>, a free and open-source grading tool."
+msgstr ""
+
+#: inginious/frontend/templates/layout_lti.html:91
+msgid ""
+"Visit the <a href=\"https://juezun.github.io\" target=\"_blank\">UNCode "
+"Web Page</a> for more information and documentation."
 msgstr ""
 
 #: inginious/frontend/templates/lti_bind.html:8
