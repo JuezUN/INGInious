@@ -23,7 +23,7 @@ class UserStatusAPI(SuperadminAPI):
             submissions = get_submissions_running(username, collection_manager)
             custom_test = get_custom_test_running(username, collection_manager)
         except pymongo.errors.OperationFailure:
-            return 500, {"error": _("mongo operation fail")}
+            return 500, {"error": _("Mongo operation fail")}
 
         self.format_processes_dict(submissions)
         self.format_processes_dict(custom_test)

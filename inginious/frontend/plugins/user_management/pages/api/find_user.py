@@ -49,5 +49,5 @@ class FindUserAPI(SuperadminAPI):
         try:
             list_of_users = search_user(user_string, collection_manager, field_search)
         except pymongo.errors.OperationFailure:
-            return 500, {"error": _("mongo operation fail")}
+            return 500, {"error": _("Mongo operation fail")}
         return 200, {"users": list_of_users}

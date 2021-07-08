@@ -60,8 +60,8 @@ def change_username(username, new_username, collection_manager, collection_name_
             # therefore if username is an array the index is 0.
             information[0]["index_array"] = [0] if username_is_array(collection_name, collection_manager) else []
 
-        count += _crete_update_to_change_username_collection(username, new_username, collection_name, information,
-                                                             collection_manager)
+        count += _update_username_in_all_collections(username, new_username, collection_name, information,
+                                                     collection_manager)
     return count
 
 
@@ -104,7 +104,7 @@ def unlock_user(username, collection_manager):
 
 
 def is_array(collection_information):
-    """ return a boolean value to determinate if the field that is contents the username is an array """
+    """ Returns a boolean value to determinate if the field that contains the username is an array """
     path = collection_information["path"]
     index_list = sorted(collection_information["index_array"])
     if not index_list:
@@ -115,28 +115,29 @@ def is_array(collection_information):
     return last_index_path == index_list[-1]
 
 
-def _crete_update_to_change_username_collection(username, new_username, coll_name, collection_info, collection_manager):
+def _update_username_in_all_collections(username, new_username, coll_name, collection_info, collection_manager):
     """ For each sub set of information about a collection (path and index_array), make a update process
     and count the number of changes.
-     """
+    """
     count = 0
     for info in collection_info:
-        ans = _create_update_to_change_username(username, new_username, coll_name, info, collection_manager)
+        ans = _update_username_in_collection(username, new_username, coll_name, info, collection_manager)
         count += ans
     return count
 
 
-def _create_update_to_change_username(username, new_username, coll_name, collection_info_field, collection_manager):
+def _update_username_in_collection(username, new_username, coll_name, collection_info_field, collection_manager):
     """ update the username with the new username in a specific path """
     user_filter = _create_user_filter(username, collection_info_field["path"])
     path = _process_path(collection_info_field)
     there_are_changes = True
     change_username_count = 0
-    # positional operator "$" only acts as a placeholder for the first element that matches the query document
-    # therefore is necessary (in mongodb 3.4) repeat the request to get to all objects in an array of objects
     if is_array(collection_info_field):
         push_new_username = _create_push_operator(path, new_username)
         pull_old_username = _create_pull_operator(path, username)
+        # positional operator "$" only acts as a placeholder for the first element that matches the query document
+        # therefore is necessary (in mongodb 3.4) repeat the request to access all objects objects
+        # in an array of objects until there are no more changes
         while there_are_changes:
             push_ans = collection_manager.update_many_in_collection(coll_name, user_filter, push_new_username)
             there_are_changes = push_ans.modified_count > 0
@@ -145,6 +146,9 @@ def _create_update_to_change_username(username, new_username, coll_name, collect
                 change_username_count += pull_ans.modified_count
     else:
         set_username = _set_operator_to_change_username(path, new_username)
+        # positional operator "$" only acts as a placeholder for the first element that matches the query document
+        # therefore is necessary (in mongodb 3.4) repeat the request to access all objects objects
+        # in an array of objects until there are no more changes
         while there_are_changes:
             set_ans = collection_manager.update_many_in_collection(coll_name, user_filter, set_username)
             there_are_changes = set_ans.modified_count > 0

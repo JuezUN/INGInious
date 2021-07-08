@@ -74,7 +74,7 @@ def get_user_activation_link(username, collection_manager):
 def _validate_email(email, collections_manager):
     """ checks that the new email is valid to replace the previous one.
     - It must be a email
-    - It must not be in use for another user
+    - It must not be in use by another user
     """
     if check_email_format(email) is None:
         return False
@@ -115,23 +115,23 @@ def _update_user_data(user_data, username, collections_manager):
     name_count = 0
     if "email" in user_data:
         if not _validate_email(user_data["email"], collections_manager):
-            raise api.APIError(400, _("invalid email by format or already in use"))
+            raise api.APIError(400, _("Invalid email by format or already in use"))
         user_has_changed = True
         email_count = change_email(username, user_data["email"], collections_manager)
     if "name" in user_data:
         if not _validate_real_name(user_data["name"]):
-            raise api.APIError(400, _("invalid name by length"))
+            raise api.APIError(400, _("Invalid name by length"))
         user_has_changed = True
         name_count = change_name(username, user_data["name"], collections_manager)
     if "new_username" in user_data:
         if not _validate_username(user_data["new_username"], collections_manager):
-            raise api.APIError(400, _("invalid username by length or already in use"))
+            raise api.APIError(400, _("Invalid username. It is either too short (at least 4 characters) or the username was already taken."))
         user_has_changed = True
         collection_name_list = json.loads(get_mandatory_parameter(user_data, "collection_list"))
         username_count = change_username(username, user_data["new_username"], collections_manager,
                                          collection_name_list)
     if not user_has_changed:
-        raise api.APIError(400, _("no data to change"))
+        raise api.APIError(400, _("No data to change"))
     return email_count, name_count, username_count
 
 
@@ -162,7 +162,7 @@ class UserDataAPI(SuperadminAPI):
         except api.APIError as error:
             return error.status_code, {"error": error.return_value}
         except pymongo.errors.OperationFailure:
-            return 500, {"error": _("mongo operation fail")}
+            return 500, {"error": _("Mongo operation fail")}
 
         new_username = user_data["new_username"] if username_count > 0 else username
 

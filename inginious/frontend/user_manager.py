@@ -279,10 +279,10 @@ class UserManager:
         :param realname: User real name
         :param email: User email
         """
-        values_of_hooks = self._plugin_manager.call_hook("open_session", username=username)
-        someone_calls_the_hook = len(values_of_hooks) > 0
-        is_block = values_of_hooks[0] if someone_calls_the_hook else False
-        if not is_block:
+        open_sessions_call_values = self._plugin_manager.call_hook("open_session", username=username)
+        has_open_sessions_values = len(open_sessions_call_values) > 0
+        user_is_blocked = open_sessions_call_values[0] if has_open_sessions_values else False
+        if not user_is_blocked:
             self._database.users.update_one({"email": email}, {"$set": {"realname": realname, "username": username, "language": language}},
                                             upsert=True)
             self._logger.info("User %s connected - %s - %s - %s", username, realname, email, web.ctx.ip)

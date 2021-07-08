@@ -28,7 +28,7 @@ def _create_projection_for_sessions():
 
 def _get_process_running_in_collection(username, collection_name, collection_manager):
     """ returns a list of process running in collection """
-    submissions = list(collection_manager.make_find_request(collection_name, _create_filter_for_process(username),
+    submissions = list(collection_manager.make_find_request(collection_name, _create_filter_running_jobs(username),
                                                             _create_projection_for_submissions()))
     for submission in submissions:
         submission["_id"] = str(submission["_id"])
@@ -36,7 +36,7 @@ def _get_process_running_in_collection(username, collection_name, collection_man
     return submissions
 
 
-def _create_filter_for_process(username):
+def _create_filter_running_jobs(username):
     """ returns a dictionary to filter the user's process that are running """
     return {"username": username, "status": "waiting"}
 
