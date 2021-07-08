@@ -98,7 +98,7 @@ def _validate_username(username, collections_manager):
     - It must have at least 4 characters
     - It must not be in use for another user
     """
-    user = collections_manager.make_find_one_request("username", {"email": username})
+    user = collections_manager.make_find_one_request("users", {"username": username})
     min_username_len = 4
     if len(username) < min_username_len:
         return False

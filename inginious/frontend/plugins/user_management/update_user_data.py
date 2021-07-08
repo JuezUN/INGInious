@@ -1,8 +1,8 @@
 import datetime
+import re
 
 from inginious.frontend.plugins.user_management.user_information import username_is_array
 from inginious.frontend.plugins.user_management.utils import read_collections_info_file
-import re
 
 
 def make_user_changes_register(user_original_info, user_final_info, collections_manager):
@@ -33,13 +33,17 @@ def change_name(username, param, collection_manager):
     return ans.modified_count
 
 
-def change_email(username, param, collections_manager):
+def change_email(username, new_email, collections_manager):
     """ change the email of a user """
+    user = collections_manager.make_find_one_request("username", {"username": new_email})
+    if user:
+        raise Exception(_("Invalid email: the email was already taken."))
+
     user_filter_users = {
         "username": username
     }
     new_email_users = {
-        "$set": {"email": param}
+        "$set": {"email": new_email}
     }
 
     ans = collections_manager.update_collection("users", user_filter_users, new_email_users)
@@ -48,6 +52,10 @@ def change_email(username, param, collections_manager):
 
 def change_username(username, new_username, collection_manager, collection_name_list):
     """ change the username of a user """
+    user = collection_manager.make_find_one_request("username", {"username": new_username})
+    if user:
+        raise Exception(_("Invalid username: the username was already taken."))
+
     collection_information_list = read_collections_info_file()
     default_collection_information = [{"path": "username", "index_array": []}]
     count = 0
