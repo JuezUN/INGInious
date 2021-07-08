@@ -27,7 +27,6 @@ class UserHintManagerSingleton(object):
             UserHintManagerSingleton._instance = self
 
     def get_hint_content_by_status(self, task, username, hints):
-
         """
             This is a method to check each hint unlocked status, and return the left content
             if it is unlocked. Also set a 'True' value in the 'unlocked'
@@ -36,7 +35,18 @@ class UserHintManagerSingleton(object):
         """
         task_id = task.get_id()
 
-        user_hints = self.get_user_hints(task_id, username)
+        if(task.is_group_task()):
+            users_group = self._database.aggregations.find_one(
+                {"courseid": task.get_course_id(), "groups.students": username},
+                {"groups": {"$elemMatch": {"students": username}}}
+            )
+            if users_group:
+                students = users_group["groups"][0]['students']
+        else:
+            students = [username]
+
+        user_hints = self.get_user_hints(task_id, students)
+        
         unlocked_hints_penalties = {}
         data = {}
 
@@ -74,7 +84,6 @@ class UserHintManagerSingleton(object):
                                                    "username": username})
 
     def update_unlocked_users_hints(self, task_id, task_hints):
-
         """
             Method to check and delete hints that were removed from the task. These
             hints are removed from unlocked hints for all users in task.
@@ -96,13 +105,12 @@ class UserHintManagerSingleton(object):
             username = user_hints["username"]
             self.remove_deleted_hints(task_id, username, task_hints_ids)
 
-    def insert_default_user_hints(self, task_id, username):
+    def insert_default_user_hints(self, task_id, username, shared_hints=False):
 
         self._database.user_hints.insert(
-            {"taskid": task_id, "username": username, "unlocked_hints": [], "total_penalty": 0})
+            {"taskid": task_id, "username": username, "unlocked_hints": [], "total_penalty": 0, "shared_hints": shared_hints})
 
     def is_hint_unlocked(self, task_id, username, hint_id):
-
         """ Method to check if the hint is already in the user hints """
         user_hints = self.get_user_hints(task_id, username)
         unlocked_hints = user_hints["unlocked_hints"]
@@ -110,12 +118,10 @@ class UserHintManagerSingleton(object):
         for hint in unlocked_hints:
             if hint_id == hint["id"]:
                 return True
-            print(hint_id,"/n",hint["id"])
 
         return False
 
     def remove_deleted_hints(self, task_id, username, hints_ids):
-
         """ Method to delete hints from the user unlocked hints"""
         self._database.user_hints.find_one_and_update(
             {"taskid": task_id, "username": username},
@@ -134,13 +140,8 @@ class UserHintManagerSingleton(object):
     def unlock_hint(self, task, username, hint_id, task_hints):
 
         task_id = task.get_id()
-        
-        # Check if user hints document already exists in database
-        user_hints = self.get_user_hints(task_id, username)
 
-        # Create the user hints document if doesn't exists
-        if user_hints is None:
-            self.insert_default_user_hints(task_id, username)
+        # Check if task is a group task
 
         if(task.is_group_task()):
             users_group = self._database.aggregations.find_one(
@@ -148,28 +149,33 @@ class UserHintManagerSingleton(object):
                 {"groups": {"$elemMatch": {"students": username}}}
             )
             if users_group:
-                students = users_group["groups"][0]['students']
+                username = users_group["groups"][0]['students']
         else:
-            students = [username]
+            username = [username]
 
-        for student in students:
-            """ Method to add the new unlocked hint in the user unlocked hints """
-            if not self.is_hint_unlocked(task_id, student, task_hints[hint_id]["id"]):
-                print(student)
-                self._database.user_hints.find_one_and_update({"taskid": task_id, "username": student},
-                                                            {"$push": {
-                                                                "unlocked_hints": {
-                                                                    "penalty": task_hints[hint_id]["penalty"],
-                                                                    "id": task_hints[hint_id]["id"]
-                                                                }
-                                                            }
-                                                            })
-                self.update_total_penalty(task_id, student)
+        # Check if user hints document already exists in database
+        user_hints = self.get_user_hints(task_id, username)
+
+        # Create the user hints document if doesn't exists
+        if user_hints is None:
+            self.insert_default_user_hints(task_id, username, task.is_group_task())
+
+        """ Method to add the new unlocked hint in the user unlocked hints """
+        if not self.is_hint_unlocked(task_id, username, task_hints[hint_id]["id"]):
+
+            self._database.user_hints.find_one_and_update({"taskid": task_id, "username": username},
+                                                          {"$push": {
+                                                              "unlocked_hints": {
+                                                                  "penalty": task_hints[hint_id]["penalty"],
+                                                                  "id": task_hints[hint_id]["id"]
+                                                              }
+                                                          }
+            })
+            self.update_total_penalty(task_id, username)
 
         return 200, ""
 
     def update_total_penalty(self, task_id, username):
-
         """ Method needed to compare the saved hints per student, and the task hints
             to change penalty to the student
         """
@@ -185,6 +191,15 @@ class UserHintManagerSingleton(object):
         self._database.user_hints.find_one_and_update({"taskid": task_id, "username": username},
                                                       {"$set": {"total_penalty": new_penalty}
                                                        })
+
+    def on_change_task_submission_mode(self, task_id, task_group):
+
+        if(task_group):  
+            self._database.user_hints.delete_many({"taskid":task_id,"groups":not task_group})
+        else:
+            self._database.user_hints.delete_many({"taskid":task_id,"groups":not task_group})
+        
+        return task_id                                               
 
     def parse_rst_content(self, content):
 
