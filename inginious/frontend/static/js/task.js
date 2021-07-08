@@ -117,10 +117,6 @@ function displayNewSubmission(id, is_late_submission=false)
 
     jQuery('<span id="txt"/>', {}).text(getDateTime()).appendTo(submission_link);
     
-    //If there exists tags, we add a badge with '0' in the new submission.
-    if($('span', $('#main_tag_group')).length > 0){
-        submission_link.append('<span class="badge alert-info" id="tag_counter" >0</span>');
-    }
 
     if (is_late_submission) {
         submission_link.append("<span class=\"badge alert-warning\" id=\"is_late_submission\" " +
@@ -147,7 +143,7 @@ function removeSubmission(id) {
 }
 
 //Updates a loading submission
-function updateSubmission(id, result, grade, tags)
+function updateSubmission(id, result, grade)
 {
     grade = grade || "0.0";
 
@@ -162,9 +158,6 @@ function updateSubmission(id, result, grade, tags)
             $(this).removeClass('list-group-item-warning').addClass(nclass);
             var date = $(this).find("span[id='txt']");
             date.text(date.text() + " - " + grade + "%");
-            
-            //update the badge
-            updateTagsToNewSubmission($(this), tags);  
         }
     });
 }
@@ -423,11 +416,8 @@ function waitForSubmission(submissionid)
                     else // == "error"
                         displayTaskStudentAlertWithProblems(data, "danger", false);
 
-                    if("tests" in data){
-                        updateSubmission(submissionid, data['result'], data["grade"], data["tests"]);
-                    }else{
-                        updateSubmission(submissionid, data['result'], data["grade"], []);
-                    }
+                    updateSubmission(submissionid, data['result'], data["grade"]);
+                    
                     unblurTaskForm();
 
                     if("replace" in data && data["replace"] && $('#my_submission').length) {
@@ -442,7 +432,7 @@ function waitForSubmission(submissionid)
                 else
                 {
                     displayTaskStudentAlertWithProblems(data, "danger", false);
-                    updateSubmission(submissionid, "error", "0.0", []);
+                    updateSubmission(submissionid, "error", "0.0");
                     updateTaskStatus("Failed", 0);
                     unblurTaskForm();
                 }
@@ -451,7 +441,7 @@ function waitForSubmission(submissionid)
             .fail(function()
             {
                 displayTaskStudentAlertWithProblems(data, "danger", false);
-                updateSubmission(submissionid, "error", "0.0", []);
+                updateSubmission(submissionid, "error", "0.0");
                 updateTaskStatus("Failed", 0);
                 unblurTaskForm();
             });
@@ -820,62 +810,4 @@ function updateMainTags(data){
             $(this).attr('class', 'badge alert-info');
         }
     });
-        
-    if("tests" in data){
-        for (var tag in data["tests"]){
-            //Get and update the color of HTML nodes that represent tags
-            var elem = $('#'.concat(tag.replace("*", "\\*"))); //The * makes error with JQuery so, we escape it.
-            if(data["tests"][tag]){
-                //If this is a alert-danger class, this is an misconception
-                if(elem.attr('class') == "badge alert-danger"){
-                    elem.show();
-                }else{
-                    elem.attr('class', 'badge alert-success')
-                }
-            }
-            if(tag.startsWith("*auto-tag-")){
-                var max_length = 28;
-                if(data["tests"][tag].length > max_length){
-                    $('#main_tag_group').append('<span class="badge alert-default" data-toggle="tooltip" data-placement="top" data-original-title="'+data["tests"][tag]+'">'+data["tests"][tag].substring(0, max_length)+'…</span>');
-                }
-                else{
-                    $('#main_tag_group').append('<span class="badge alert-default">'+data["tests"][tag]+'</span>');
-                }
-            }
-        }
-    }
-}
-
-/*
- * Update color of tags presents in 'elem' node. 
- * 'data' is a dictionnary that should contains tag values in data["tests"][tag] = True/False
- */
-function updateTagsToNewSubmission(elem, data){
-
-    var n_ok = 0;   // number of tag equals true
-    var tags_ok = [];
-    var n_tot = 0;  // total number of tags
-    var badge = elem.find('span[id="tag_counter"]');
-    
-    //Get all tags listed in main tag section
-    $('span', $('#main_tag_group')).each(function() {
-        var id = $(this).attr("id");
-        var color = $(this).attr("class");
-        //Only consider normal tag (we do not consider misconception
-        if(color != "badge alert-danger"){
-            if(id in data && data[id]){
-                n_ok++;
-                tags_ok.push($(this).text());
-            }
-            n_tot++;
-        }
-    });
-    badge.text(n_ok);
-    if(n_tot == n_ok){
-        badge.attr("class", "badge alert-success");
-    }else if(n_ok > 0){
-        badge.attr("data-toggle", "tooltip");
-        badge.attr("data-placement", "left");
-        badge.attr('data-original-title', tags_ok.join(", "));
-    }
 }
