@@ -1,91 +1,37 @@
 {
-   "Grade 1:":[
-      {
-         "Claridad del código":"El código no muestra ningún orden. Las variables, funciones y clases no tienen nombres apropiados. No se hace un uso apropiado de los comentarios. No se hace una correcta abstracción de los conceptos del código."
-      },
-      {
-         "Estructuras de datos":"Sin lógica."
-      },
-      {
-         "Casos de prueba":"No pasa ningún caso de prueba."
-      },
-      {
-         "Entendimiento del problema":"Se muestra una compresión nula del problema."
-      },
-      {
-         "Estrategia usada":"Puede ser la solución de otro problema."
-      }
-   ],
-   "Grade 2:":[
-      {
-         "Claridad del código":"El código muestra un orden mínimo. Son pocas las variables, funciones y clases que tienen nombres apropiados. En ocasiones se hace un uso apropiado de los comentarios. Muestra una mínima abstracción correcta de los conceptos del código."
-      },
-      {
-         "Estructuras de datos":"Tiene las estructuras de datos correctas pero estan mal implementadas, mal usadas o son incoherentes.\nIncluye otras estructuras de datos diferentes a las necesarias para resolver el problema. No interesa como las implemente o que esten bien implementadas."
-      },
-      {
-         "Casos de prueba":"No pasa ningún caso de prueba o máximo pasa un caso de prueba."
-      },
-      {
-         "Entendimiento del problema":"Se muestra una comprensión muy básica o casi nula del problema."
-
-      },
-      {
-         "Estrategia usada":"La solución no usa una aproximación adecuada. Puede ser usando fuerza bruta u otra aproximación que no funcione bien.\nNo se ve un propósito claro en el código y en la estrategia usada,  es difícil seguir la lógica del mismo."
-
-      }
-   ],
-   "Grade 3:":[
-      {
-         "Claridad del código":"El código muestra cierta noción de orden. Algunas variables, funciones y clases presentan nombres apropiados. Se hace uso apropiado de los comentarios.  Muestra una abstracción correcta de los conceptos en algunas partes del código."
-      },
-      {
-         "Estructuras de datos":"Las estructuras necesarias para solucionar el problema existen y estan bien implementadas."
-      },
-      {
-         "Casos de prueba":"Puede pasar algunos casos de prueba."
-      },
-      {
-         "Entendimiento del problema":"Se muestra una comprensión parcial del problema a solucionar."
-
-      },
-      {
-         "Estrategia usada":"La solución usa una estrategia medianamente adecuada."
-      }
-   ],
-   "Grade 4:":[
-      {
-         "Claridad del código":"El código está ordenado. Las variables, funciones y clases presentan en su mayoría nombres apropiados. Se hace uso apropiado de los comentarios.  Se hace una correcta abstracción de los conceptos en la mayor parte del código."
-      },
-      {
-         "Estructuras de datos":"Presenta problemas en la definición de tipo de datos, condicionales. Presenta mas iteraciones de las necesarias."
-      },
-      {
-         "Casos de prueba":"Pasa algunos casos de prueba."
-      },
-      {
-         "Entendimiento del problema":"Muestra un entendimiento completo del problema a resolver. No identificó detalles del problema por lo que lo llevan a una solución no aceptada.\nLos casos borde y los límites no estan bien contemplados."
-      },
-      {
-         "Estrategia usada":"La estrategia que usa para solucionar el problema es clara, fácil de seguir y acorde con lo esperado."
-      }
-   ],
-   "Grade 5:":[
-      {
-         "Claridad del código":"El código está ordenado. Las variables, funciones y clases presentan nombres apropiados. Se hace un uso apropiado de los comentarios.  Se hace una correcta abstracción de los conceptos en todo el código."
-      },
-      {
-         "Estructuras de datos":"No presenta ningún problema con la definición de tipo de datos, condicionales. Las iteraciones son las necesarias."
-      },
-      {
-         "Casos de prueba":"Pasa todos los casos de prueba de manera eficiente."
-      },
-      {
-         "Entendimiento del problema":"Muestra un entimiento completo del problema y el veredicto de su solución es 'ACCEPTED'."
-
-      },
-      {
-         "Estrategia usada":"La estrategia utilizada para solucionar el problema es clara, fácil de leer y acorde a lo esperado."
-      }
-   ]
+  "Grade 1:": {
+    "Claridad del código": "El código no muestra ningún orden. Las variables, funciones y clases no tienen nombres apropiados. No se hace un uso apropiado de los comentarios. No se hace una correcta abstracción de los conceptos del código.",
+    "Estructuras de datos": "Sin lógica.",
+    "Casos de prueba": "No pasa ningún caso de prueba.",
+    "Entendimiento del problema": "Se muestra una compresión nula del problema.",
+    "Estrategia usada": "Puede ser la solución de otro problema."
+  },
+  "Grade 2:": {
+    "Claridad del código": "El código muestra un orden mínimo. Son pocas las variables, funciones y clases que tienen nombres apropiados. En ocasiones se hace un uso apropiado de los comentarios. Muestra una mínima abstracción correcta de los conceptos del código.",
+    "Estructuras de datos": "Tiene las estructuras de datos correctas pero estan mal implementadas, mal usadas o son incoherentes. Incluye otras estructuras de datos diferentes a las necesarias para resolver el problema. No interesa como las implemente o que esten bien implementadas.",
+    "Casos de prueba": "No pasa ningún caso de prueba o máximo pasa un caso de prueba.",
+    "Entendimiento del problema": "Se muestra una comprensión muy básica o casi nula del problema.",
+    "Estrategia usada": "La solución no usa una aproximación adecuada. Puede ser usando fuerza bruta u otra aproximación que no funcione bien. No se ve un propósito claro en el código y en la estrategia usada,  es difícil seguir la lógica del mismo."
+  },
+  "Grade 3:": {
+    "Claridad del código": "El código muestra cierta noción de orden. Algunas variables, funciones y clases presentan nombres apropiados. Se hace uso apropiado de los comentarios.  Muestra una abstracción correcta de los conceptos en algunas partes del código.",
+    "Estructuras de datos": "Las estructuras necesarias para solucionar el problema existen y estan bien implementadas.",
+    "Casos de prueba": "Puede pasar algunos casos de prueba.",
+    "Entendimiento del problema": "Se muestra una comprensión parcial del problema a solucionar.",
+    "Estrategia usada": "La solución usa una estrategia medianamente adecuada."
+  },
+  "Grade 4:": {
+    "Claridad del código": "El código está ordenado. Las variables, funciones y clases presentan en su mayoría nombres apropiados. Se hace uso apropiado de los comentarios.  Se hace una correcta abstracción de los conceptos en la mayor parte del código.",
+    "Estructuras de datos": "Presenta problemas en la definición de tipo de datos, condicionales. Presenta mas iteraciones de las necesarias.",
+    "Casos de prueba": "Pasa algunos casos de prueba.",
+    "Entendimiento del problema": "Muestra un entendimiento completo del problema a resolver. No identificó detalles del problema por lo que lo llevan a una solución no aceptada.\nLos casos borde y los límites no estan bien contemplados.",
+    "Estrategia usada": "La estrategia que usa para solucionar el problema es clara, fácil de seguir y acorde con lo esperado."
+  },
+  "Grade 5:": {
+    "Claridad del código": "El código está ordenado. Las variables, funciones y clases presentan nombres apropiados. Se hace un uso apropiado de los comentarios.  Se hace una correcta abstracción de los conceptos en todo el código.",
+    "Estructuras de datos": "No presenta ningún problema con la definición de tipo de datos, condicionales. Las iteraciones son las necesarias.",
+    "Casos de prueba": "Pasa todos los casos de prueba de manera eficiente.",
+    "Entendimiento del problema": "Muestra un entimiento completo del problema y el veredicto de su solución es 'ACCEPTED'.",
+    "Estrategia usada": "La estrategia utilizada para solucionar el problema es clara, fácil de leer y acorde a lo esperado."
+  }
 }

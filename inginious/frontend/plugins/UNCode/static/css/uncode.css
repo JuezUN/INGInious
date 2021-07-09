@@ -19,13 +19,27 @@ em {
     color: #f04124;
 }
 
-#task .CodeMirror-scroll{
+.alert.alert-danger {
+    font-size: 13px;
+    background-color: #ebcccc;
+    border-color: #ebcccc;
+    color: #f04124;
+}
+
+.alert.alert-warning {
+    font-size: 13px;
+    background-color: #faf2cc;
+    border-color: #faf2cc;
+    color: #e99002;
+}
+
+#task .CodeMirror-scroll {
     overflow: auto;
     max-height: 70vh;
 }
 
-@media screen and (min-width:768px) and (max-width:991px) and (max-height:1024px) {
-    #task .CodeMirror-scroll{
+@media screen and (min-width: 768px) and (max-width: 991px) and (max-height: 1024px) {
+    #task .CodeMirror-scroll {
         max-height: 650px;
     }
 }
