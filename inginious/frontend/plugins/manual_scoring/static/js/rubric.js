@@ -2,16 +2,17 @@ class Rubric {
     constructor() {
         this.score = 0.0;
         this.matrix = [];
-        this.matrixLength = 5;
+        this.matrixHeight = getRubricHeight();
+        this.matrixWidth = getRubricWidth();
         this.classMarkerId = "box1";
         this.scoreTextId = "output";
         this.formMatrixRespectRubric();
     }
 
     formMatrixRespectRubric() {
-        for (let i = 0; i < this.matrixLength; i++) {
+        for (let i = 0; i < this.matrixHeight; i++) {
             this.matrix[i] = [];
-            for (let j = 0; j < this.matrixLength; j++) {
+            for (let j = 0; j < this.matrixWidth; j++) {
                 let matrixField = new MatrixField(i, j);
                 this.matrix[i][j] = document.getElementById(matrixField.fieldId);
             }
@@ -19,8 +20,8 @@ class Rubric {
     }
 
     makeRubricInteractive() {
-        for (let i = 0; i < this.matrixLength; i++) {
-            for (let j = 0; j < this.matrixLength; j++) {
+        for (let i = 0; i < this.matrixHeight; i++) {
+            for (let j = 0; j < this.matrixWidth; j++) {
                 let matrixField = new MatrixField(i, j);
                 this.addSelectFunction(matrixField);
                 this.changeCursorToPointerWhenIsOver(matrixField);
@@ -70,7 +71,7 @@ class Rubric {
     }
 
     getSelectionOnRow(row) {
-        for (let i = 0; i < this.matrixLength; i++) {
+        for (let i = 0; i < this.matrixWidth; i++) {
             let matrixField = new MatrixField(row, i);
             if (this.isFieldSelected(matrixField)) {
                 return matrixField;
@@ -101,17 +102,20 @@ class Rubric {
 
 
     updateScore(colPosition, isAdd = true) {
+        // Grades are always given in a scale under 5.0
+        const gradeScale = 5.0;
+        const grade = gradeScale * (colPosition + 1) * (1.0 / this.matrixHeight) / this.matrixWidth;
         if (isAdd) {
-            this.score += (colPosition + 1) * 0.2;
+            this.score += grade
         } else {
-            this.score -= (colPosition + 1) * 0.2;
+            this.score -= grade;
         }
         this.updateScoreText();
     }
 
     getSelectedFieldIds() {
         let fieldIds = [];
-        for (let i = 0; i < this.matrixLength; i++) {
+        for (let i = 0; i < this.matrixHeight; i++) {
             let matrixField = this.getSelectionOnRow(i);
             if (matrixField !== null) {
                 fieldIds.push(matrixField.fieldId);
@@ -177,7 +181,7 @@ class Score {
             9: "#2d8e00",
             10: "#008e02",
             "defaultColor": "#002a95"
-        }
+        };
 
         const id = this.scoreToDictId(score)
         return colorScale[id];

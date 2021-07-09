@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-07-08 15:30-0500\n"
+"POT-Creation-Date: 2021-07-09 12:04-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -921,6 +921,7 @@ msgstr ""
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:36
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:68
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:105
+#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:77
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:34
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
@@ -1368,7 +1369,7 @@ msgid "Update"
 msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:80
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:28
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:33
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:61
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:72
 #: inginious/frontend/plugins/statistics/pages/course_admin_statistics.html:81
@@ -1961,7 +1962,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:11
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:106
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:149
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:148
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:38
 msgid "Save"
 msgstr ""
@@ -1994,7 +1995,7 @@ msgstr ""
 msgid "Expected output"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/constants.py:16
+#: inginious/frontend/plugins/manual_scoring/constants.py:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:24
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:16
@@ -2003,12 +2004,12 @@ msgstr ""
 msgid "Manual Scoring"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/constants.py:23
+#: inginious/frontend/plugins/manual_scoring/constants.py:25
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:16
 msgid "Feedback"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/constants.py:88
+#: inginious/frontend/plugins/manual_scoring/constants.py:90
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:53
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:55
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:56
@@ -2016,7 +2017,7 @@ msgstr ""
 msgid "Not available"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:17
+#: inginious/frontend/plugins/manual_scoring/pages/rubric.py:16
 #: inginious/frontend/plugins/manual_scoring/pages/student_submissions.py:18
 msgid "No grade"
 msgstr ""
@@ -2025,24 +2026,121 @@ msgstr ""
 msgid "The task was deleted"
 msgstr ""
 
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:26
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:32
+msgid "The course does not exist or the user does not have permissions."
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:31
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:37
+msgid "The file is not coded in UTF-8. Please change the encoding."
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:37
+msgid ""
+"The rubric is not well formatted. The JSON format is not correct, please "
+"check the file and upload it again."
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:46
+msgid "Something went wrong while saving the rubric. Please try again."
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:53
+msgid ""
+"The rubric was successfully uploaded. The page will reload once you close"
+" the modal."
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:62
+msgid "The rubric is not well formatted. The uploaded rubric is empty."
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:69
+msgid ""
+"The rubric is not well formatted. There are missing categories or grade "
+"levels in the rubric."
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:78
+msgid ""
+"The rubric is not well formatted. The number of categories (rows) must be"
+" the same for each grade level."
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:82
+msgid ""
+"The rubric is not well formatted. Not all the categories (rows) have the "
+"same name."
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/api/upload_custom_rubric.py:88
+msgid "The rubric is not well formatted. There some values for the cells empty."
+msgstr ""
+
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:24
 msgid "Tasks List"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:40
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:30
+#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:10
+msgid "Upload custom rubric"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:46
 msgid "Task Name"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:41
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:47
 msgid "Students succeeded"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:42
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:48
 msgid "Students attempted"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:61
+#: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:67
 msgid "No Tasks with attempts Yet"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:17
+msgid ""
+"DANGER: When you modify the rubric, the manual grade in the submissions "
+"that already have a manual grade in this course will be removed, as the "
+"rubric has changed and the grade may change with the new rubric too."
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:21
+msgid ""
+"Choose a file in case you want to change the rubric used to manually "
+"evaluate the students."
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:23
+msgid ""
+"This must be a JSON file containing the different values of the rubric. "
+"For reference, see the default rubric file here: "
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:24
+#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:48
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:55
+#: inginious/frontend/templates/course_admin/download.html:70
+#: inginious/frontend/templates/course_admin/edit_tabs/files.html:16
+#: inginious/frontend/templates/course_admin/submissions.html:228
+msgid "Download"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:28
+msgid "Select a rubric to upload"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:38
+msgid "Current rubric"
+msgstr ""
+
+#: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:79
+msgid "Save rubric"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:14
@@ -2052,14 +2150,6 @@ msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:22
 msgid "Feedback for:"
-msgstr ""
-
-#: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:48
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:55
-#: inginious/frontend/templates/course_admin/download.html:70
-#: inginious/frontend/templates/course_admin/edit_tabs/files.html:16
-#: inginious/frontend/templates/course_admin/submissions.html:228
-msgid "Download"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:56
@@ -2083,7 +2173,7 @@ msgid "Summary"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/feedback.html:75
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:130
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:129
 msgid "Comments"
 msgstr ""
 
@@ -2124,19 +2214,19 @@ msgstr ""
 msgid "Click to select and deselect"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:122
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:120
 msgid "Current Score: "
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:131
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:130
 msgid "\"Use RST format to write the comment\""
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:137
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:136
 msgid "Write"
 msgstr ""
 
-#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:138
+#: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:137
 msgid "Preview"
 msgstr ""
 
@@ -2621,14 +2711,6 @@ msgstr ""
 
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:27
 msgid "Language is not available."
-msgstr ""
-
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:32
-msgid "The course does not exist or the user does not have permissions."
-msgstr ""
-
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:37
-msgid "The file is not coded in UTF-8. Please change the encoding."
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:43

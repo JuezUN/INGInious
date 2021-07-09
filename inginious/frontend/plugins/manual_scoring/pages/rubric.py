@@ -5,8 +5,7 @@
 """ Contents all logic related with rubric """
 import os
 
-from ..constants import get_use_minify
-from inginious.frontend.plugins.manual_scoring.constants import get_static_folder_path
+from ..constants import get_use_minify, get_static_folder_path, CUSTOM_RUBRIC_FILENAME
 from inginious.frontend.plugins.utils import read_json_file
 from collections import OrderedDict
 
@@ -25,13 +24,21 @@ def get_manual_scoring_data(submission):
     return comment, score, rubric
 
 
-def get_rubric_content(user_manager):
-    """ return the content of the rubric depending of the language """
-    path = os.path.join(get_static_folder_path(), 'json')
-    language_file = {'es': 'rubric_es.json', 'en': 'rubric.json', 'de': 'rubric.json', 'fr': 'rubric.json',
-                     'pt': 'rubric.json'}
-    current_language = user_manager.session_language()
-    path = os.path.join(path, language_file[current_language])
+def get_rubric_content(user_manager, course_fs):
+    """
+    return the content of the rubric. This loads the custom rubric for the course or the default rubric depending
+    on the session language.
+    """
+
+    if course_fs.exists(CUSTOM_RUBRIC_FILENAME):
+        path = os.path.join(course_fs.prefix, "manual_scoring_rubric.json")
+    else:
+        path = os.path.join(get_static_folder_path(), 'json')
+        language_file = {'es': 'rubric_es.json', 'en': 'rubric.json', 'de': 'rubric.json', 'fr': 'rubric.json',
+                         'pt': 'rubric.json'}
+        current_language = user_manager.session_language()
+        path = os.path.join(path, language_file[current_language])
+
     return OrderedDict(sorted(read_json_file(path).items()))
 
 

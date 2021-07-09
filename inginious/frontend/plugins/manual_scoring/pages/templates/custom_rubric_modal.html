@@ -1,0 +1,91 @@
+$def with (rubric, rubric_str)
+
+<div id="upload_custom_rubric_modal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title"><i class="fa fa-check-square-o"> $:_("Upload custom rubric")</i></h3>
+            </div>
+            <div class="modal-body">
+                <div class="alert" role="alert" id="save_rubric_alert" hidden></div>
+                <form id="upload_rubric_file" method="post" enctype="multipart/form-data">
+                    <div class="alert alert-danger" role="alert">
+                        <i class="fa fa-bomb fa-fw"></i>
+                        $:_("DANGER: When you modify the rubric, the manual grade in the submissions that already have a manual grade in this course will be removed, as the rubric has changed and the grade may change with the new rubric too.")
+                    </div>
+                    <div class="alert alert-info" role="alert">
+                        <i class="fa fa-info-circle fa-fw"></i>
+                        $:_("Choose a file in case you want to change the rubric used to manually evaluate the students.")
+                        <br>
+                        $:_("This must be a JSON file containing the different values of the rubric. For reference, see the default rubric file here: ")
+                        <a id="download_rubric" href="#">$:_("Download")</a>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="rubric_file">
+                            <strong>$:_("Select a rubric to upload"):</strong>
+                        </label>
+                        <input type="file" id="rubric_file" class="form-control">
+                    </div>
+                </form>
+                <hr>
+                <div>
+                    <section>
+                        <div class="row py-1">
+                            <div class="col-lg-3">
+                                <h3><strong>$:_("Current rubric")</strong></h3>
+                            </div>
+                        </div>
+                        <div>
+                            <table class="table sorted_table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        $for header in rubric.keys():
+                                        <th>$header</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    $ first_level = rubric[list(rubric.keys())[0]]
+
+                                    $for category_index, category_name in enumerate(first_level.keys()):
+                                        <tr>
+                                            <th>$category_name</th>
+                                            $ col = 0
+                                            $for column_key in rubric.keys():
+                                                $ category_content = rubric[column_key][category_name]
+                                                $ category_content = "" if category_content is None else category_content
+
+                                                $ category_content_lines = category_content.split("\n")
+                                                <td id="$category_index-$col">
+                                                    $ col = col + 1
+                                                    <ul>
+                                                        $for line in category_content_lines:
+                                                        <li>$line</li>
+                                                    </ul>
+                                                </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">$:_("Cancel")</button>
+                <button class="btn btn-success" form="upload_rubric_file" id="submit_save_rubric" type="submit">
+                    $:_("Save rubric")
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const getRubric = () => {
+        const regex = /&quot;/g;
+        return "$rubric_str".replace(regex, "\"");
+    };
+</script>
