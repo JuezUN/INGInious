@@ -39,7 +39,9 @@ function getCurrentValues(data) {
 
 
 function fillUserTable(count) {
-    function makeTableItem(key, value) {
+    function makeTableItem(key, value, valueInBold=false) {
+        if (valueInBold)
+            return `<tr><td><h5><b>${key}</b></h5></td><td><h5><b>${value}</b></h5></td></tr>`;
         return `<tr><td><h5><b>${key}</b></h5></td><td><h5>${value}</h5></td></tr>`;
     }
 
@@ -48,7 +50,7 @@ function fillUserTable(count) {
         total += value;
         $(`#${USER_INFORMATION_TABLE_ID}`).append(makeTableItem(key, value));
     }
-    $(`#${USER_TOTAL_TABLE_ID}`).append(makeTableItem("Total", total))
+    $(`#${USER_TOTAL_TABLE_ID}`).append(makeTableItem("Total", total, true))
 }
 
 function allowEdit() {
