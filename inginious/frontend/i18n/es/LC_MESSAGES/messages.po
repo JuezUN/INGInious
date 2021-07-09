@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-07-06 16:49-0500\n"
+"POT-Creation-Date: 2021-07-09 07:58-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1568,7 +1568,6 @@ msgid "\"All courses\""
 msgstr "\"Todos los cursos\""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:78
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:167
 #: inginious/frontend/templates/course_admin/classroom_edit.html:161
 #: inginious/frontend/templates/course_admin/classroom_edit.html:254
 #: inginious/frontend/templates/course_admin/teams_edit.html:226
@@ -3479,6 +3478,14 @@ msgstr "Esta pista tiene una penalización de <b></b>"
 msgid "Get Hint"
 msgstr "Desbloquear"
 
+#: inginious/frontend/plugins/user_management/update_user_data.py:40
+msgid "Invalid email: the email was already taken."
+msgstr "Corre electrónico inválido: el corre electrónico ya fue tomado."
+
+#: inginious/frontend/plugins/user_management/update_user_data.py:57
+msgid "Invalid username: the username was already taken."
+msgstr "Nombre de usuario inválido: el nombre de usuario ya fue tomado."
+
 #: inginious/frontend/plugins/user_management/utils.py:26
 msgid ""
 "\"<li><a href='/user_management' class='navbar-link'>\n"
@@ -3492,8 +3499,8 @@ msgstr ""
 #: inginious/frontend/plugins/user_management/pages/api/find_user.py:52
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:165
 #: inginious/frontend/plugins/user_management/pages/api/user_status.py:26
-msgid "mongo operation fail"
-msgstr "fallo en la operación de mongo"
+msgid "Mongo operation fail"
+msgstr "Fallo en la operación de Mongo"
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:26
 msgid "There are users' jobs running"
@@ -3548,20 +3555,23 @@ msgstr ""
 "información al usuario"
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:118
-msgid "invalid email by format or already in use"
-msgstr "correo electrónico no válido por formato o ya está en uso"
+msgid "Invalid email by format or already in use"
+msgstr "Correo electrónico inválido por formato o ya está en uso"
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:123
-msgid "invalid name by length"
-msgstr "nombre inválido por longitud"
+msgid "Invalid name by length"
+msgstr "Nombre inválido por longitud"
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:128
-msgid "invalid username by length or already in use"
-msgstr "nombre de usuario inválido por longitud o ya está en uso"
+msgid ""
+"Invalid username. It is either too short (at least 4 characters) or the "
+"username was already taken."
+msgstr "Nombre de usuario inválido. Es demasiado corto (necesita al menos 4 carateres) o el "
+"nombre de usuario ya fue tomado."
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:134
-msgid "no data to change"
-msgstr "no hay datos por cambiar"
+msgid "No data to change"
+msgstr "No hay datos que modificar"
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:199
 msgid "User no found"
@@ -3617,7 +3627,7 @@ msgid "Please check that they do not use username"
 msgstr "Por favor, compruebe que no utilizan username"
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:31
-msgid "To keep in mind"
+msgid "To Keep in Mind"
 msgstr "Para tener en cuenta"
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:33
@@ -3671,8 +3681,12 @@ msgid "And <strong>[1-4]</strong> indicates the next character is between 1 and 
 msgstr "Y <strong>[1-4]</strong> indica que el siguiente caracter está entre 1 y 4"
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:41
-msgid "You do not need to be formal with the regular expression"
-msgstr "No necesitas ser formal con las expresiones regulares"
+msgid ""
+"You do not need to be strict with the regular expression and specify "
+"which symbols are allowed"
+msgstr ""
+"No necesitas ser estricto con las expresiones regulares y especificar "
+"cúales símbolos son permitidos"
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:42
 msgid ""
@@ -3694,8 +3708,8 @@ msgid "Search"
 msgstr "Buscar"
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:99
-msgid "User information"
-msgstr "Información sobre el usuario"
+msgid "User Information"
+msgstr "Información del usuario"
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:104
 msgid "Collection Names"
@@ -3714,12 +3728,16 @@ msgid "\"Number of open user sessions\""
 msgstr "\"Número de sesiones de usuario abiertas\""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:138
-msgid "User settings"
-msgstr "Configuración del usuario"
+msgid "Manage User Data"
+msgstr "Gestionar datos de usuario"
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:149
 msgid "Complete Name"
 msgstr "Nombre completo"
+
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:167
+msgid "Update User"
+msgstr "Actualizar usuario"
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:183
 msgid "Update User Data"
@@ -6114,4 +6132,37 @@ msgstr "Extensiones permitidas"
 
 #~ msgid "invalid name"
 #~ msgstr "nombre inválido"
+
+#~ msgid "mongo operation fail"
+#~ msgstr "fallo en la operación de mongo"
+
+#~ msgid "invalid email by format or already in use"
+#~ msgstr "correo electrónico no válido por formato o ya está en uso"
+
+#~ msgid "invalid name by length"
+#~ msgstr "nombre inválido por longitud"
+
+#~ msgid "invalid username by length or already in use"
+#~ msgstr "nombre de usuario inválido por longitud o ya está en uso"
+
+#~ msgid "no data to change"
+#~ msgstr "no hay datos por cambiar"
+
+#~ msgid "To keep in mind"
+#~ msgstr "Para tener en cuenta"
+
+#~ msgid "You do not need to be formal with the regular expression"
+#~ msgstr "No necesitas ser formal con las expresiones regulares"
+
+#~ msgid "User information"
+#~ msgstr "Información sobre el usuario"
+
+#~ msgid "User settings"
+#~ msgstr "Configuración del usuario"
+
+#~ msgid "User Settings"
+#~ msgstr ""
+
+#~ msgid "Update user"
+#~ msgstr ""
 

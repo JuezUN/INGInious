@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-07-06 16:49-0500\n"
+"POT-Creation-Date: 2021-07-09 07:58-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -1405,7 +1405,6 @@ msgid "\"All courses\""
 msgstr "\"Meus cursos\""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:78
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:167
 #: inginious/frontend/templates/course_admin/classroom_edit.html:161
 #: inginious/frontend/templates/course_admin/classroom_edit.html:254
 #: inginious/frontend/templates/course_admin/teams_edit.html:226
@@ -3158,6 +3157,14 @@ msgstr ""
 msgid "Get Hint"
 msgstr ""
 
+#: inginious/frontend/plugins/user_management/update_user_data.py:40
+msgid "Invalid email: the email was already taken."
+msgstr ""
+
+#: inginious/frontend/plugins/user_management/update_user_data.py:57
+msgid "Invalid username: the username was already taken."
+msgstr ""
+
 #: inginious/frontend/plugins/user_management/utils.py:26
 msgid ""
 "\"<li><a href='/user_management' class='navbar-link'>\n"
@@ -3168,7 +3175,7 @@ msgstr ""
 #: inginious/frontend/plugins/user_management/pages/api/find_user.py:52
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:165
 #: inginious/frontend/plugins/user_management/pages/api/user_status.py:26
-msgid "mongo operation fail"
+msgid "Mongo operation fail"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:26
@@ -3213,19 +3220,21 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:118
-msgid "invalid email by format or already in use"
+msgid "Invalid email by format or already in use"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:123
-msgid "invalid name by length"
+msgid "Invalid name by length"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:128
-msgid "invalid username by length or already in use"
+msgid ""
+"Invalid username. It is either too short (at least 4 characters) or the "
+"username was already taken."
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:134
-msgid "no data to change"
+msgid "No data to change"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:199
@@ -3280,7 +3289,7 @@ msgid "Please check that they do not use username"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:31
-msgid "To keep in mind"
+msgid "To Keep in Mind"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:33
@@ -3323,7 +3332,9 @@ msgid "And <strong>[1-4]</strong> indicates the next character is between 1 and 
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:41
-msgid "You do not need to be formal with the regular expression"
+msgid ""
+"You do not need to be strict with the regular expression and specify "
+"which symbols are allowed"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:42
@@ -3343,7 +3354,7 @@ msgid "Search"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:99
-msgid "User information"
+msgid "User Information"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:104
@@ -3363,11 +3374,15 @@ msgid "\"Number of open user sessions\""
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:138
-msgid "User settings"
+msgid "Manage User Data"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:149
 msgid "Complete Name"
+msgstr ""
+
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:167
+msgid "Update User"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:183
@@ -5669,5 +5684,38 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "invalid name"
+#~ msgstr ""
+
+#~ msgid "mongo operation fail"
+#~ msgstr ""
+
+#~ msgid "invalid email by format or already in use"
+#~ msgstr ""
+
+#~ msgid "invalid name by length"
+#~ msgstr ""
+
+#~ msgid "invalid username by length or already in use"
+#~ msgstr ""
+
+#~ msgid "no data to change"
+#~ msgstr ""
+
+#~ msgid "To keep in mind"
+#~ msgstr ""
+
+#~ msgid "You do not need to be formal with the regular expression"
+#~ msgstr ""
+
+#~ msgid "User information"
+#~ msgstr ""
+
+#~ msgid "User settings"
+#~ msgstr ""
+
+#~ msgid "User Settings"
+#~ msgstr ""
+
+#~ msgid "Update user"
 #~ msgstr ""
 
