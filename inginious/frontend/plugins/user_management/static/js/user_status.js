@@ -81,7 +81,7 @@ function openTimeInterval() {
     return setInterval(updateSubmissionStatus, 3000);
 }
 
-function closeInterval() {
+function closeTimeInterval() {
     clearInterval(timeInterval);
 }
 

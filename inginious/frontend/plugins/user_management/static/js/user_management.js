@@ -34,8 +34,17 @@ function cleanNotifications() {
     $(`#${NOTIFICATIONS_ID}`).empty();
 }
 
-function configElements() {
+function resetElements() {
+    cleanBasicDataInputs();
+    cleanUserInfoTable();
+    hideUserSettingsDiv();
+    cleanCurrentValues();
+    closeTimeInterval();
+    cleanNotifications();
+    configUserTable();
+}
 
+function cleanBasicDataInputs() {
     $(".edit").each(function (_, obj) {
         const input = $($(obj).attr("data-action"));
 
@@ -43,13 +52,6 @@ function configElements() {
         input.attr("value", "");
 
     });
-
-    cleanUserInfoTable();
-    hideUserSettings();
-    cleanCurrentValues();
-    closeInterval();
-    cleanNotifications();
-    configUserTable();
 }
 
 function cleanCurrentValues() {
@@ -93,6 +95,6 @@ function toggleEditTextListener() {
 }
 
 $(function () {
-    configElements()
+    resetElements()
     addEvents();
 });

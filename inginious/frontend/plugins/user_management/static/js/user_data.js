@@ -10,7 +10,7 @@ function requestUserData(username) {
     $.get("/api/user_management", {
         username: username
     }, function (data) {
-        configElements();
+        resetElements();
         getCurrentValues(data);
         updateSubmissionStatus();
         timeInterval = openTimeInterval();
@@ -28,7 +28,7 @@ function showUserSettings() {
     $(`#${USER_SETTINGS_ID}`).show();
 }
 
-function hideUserSettings() {
+function hideUserSettingsDiv() {
     $(`#${USER_SETTINGS_ID}`).hide();
 }
 

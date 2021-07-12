@@ -1,5 +1,5 @@
 const USER_LIST_DIV_ID = "listOfUsers";
-const USER_TABLE_ID = "userList";
+const USER_LIST_TABLE_ID = "userList";
 const FIELD_OPTION_ID = "fieldOption";
 const SEARCH_BTN_ID = "searchBtn";
 const USER_BASIC_DATA_INPUT_ID = "userBasicDataInput";
@@ -14,8 +14,8 @@ function addSearchBtnListener() {
                 user: userBasicData,
                 field: fieldOption
             }, function (data) {
+                resetElements();
                 _updateUserTable(data);
-                cleanNotifications();
             });
         } else {
             new MessageBox(NOTIFICATIONS_ID, inputGeneralError, "danger", false);
@@ -34,15 +34,15 @@ function addSearchInputEnterListener() {
 }
 
 function configUserTable() {
-    cleanUserTable();
-    hideUserTableDiv();
+    cleanUserListTable();
+    hideUserListTableDiv();
 }
 
-function showUserTableDiv() {
+function showUserListTableDiv() {
     $(`#${USER_LIST_DIV_ID}`).show();
 }
 
-function hideUserTableDiv() {
+function hideUserListTableDiv() {
     $(`#${USER_LIST_DIV_ID}`).hide();
 }
 
@@ -54,15 +54,15 @@ function _updateUserTable(data) {
     } else {
         _appendNoUserMessage();
     }
-    showUserTableDiv();
+    showUserListTableDiv();
 }
 
-function cleanUserTable() {
-    $(`#${USER_TABLE_ID}`).empty();
+function cleanUserListTable() {
+    $(`#${USER_LIST_TABLE_ID}`).empty();
 }
 
 function _appendUsersToTable(userList) {
-    const table = $(`#${USER_TABLE_ID}`);
+    const table = $(`#${USER_LIST_TABLE_ID}`);
     $.each(userList, (_, user) => {
         table.append(_createUserItem(user));
     })
@@ -77,7 +77,7 @@ function _createUserItem(userData) {
 
 function _appendNoUserMessage() {
     const noUserMessage = `<tr><td colspan="3" class="text-center"><h4>${noUser}</h4></td></tr>`;
-    $(`#${USER_TABLE_ID}`).append(noUserMessage);
+    $(`#${USER_LIST_TABLE_ID}`).append(noUserMessage);
 }
 
 function checkSearchInput() {
