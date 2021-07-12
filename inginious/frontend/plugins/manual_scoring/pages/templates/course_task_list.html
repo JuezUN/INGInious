@@ -1,4 +1,4 @@
-$def with (course,data, num_students)
+$def with (course, data, num_students)
 
 $#
 $# This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
@@ -20,13 +20,19 @@ $def NavbarF():
 $var Navbar: $:NavbarF()
 
 <div class="row">
-    <div class="col-md-10">
-    <h2>$:_("Manual Scoring"): $:_("Tasks List")</h2>
+    <div class="col-md-7">
+        <h2>$:_("Manual Scoring"): $:_("Tasks List")</h2>
     </div>
-    <div class="col-md-1 ">
-        <a type="button" class="btn btn-info" id="download_csv">
-                <i class="fa fa-table"></i> $:_("Download CSV")
-        </a>
+    <div class="col-md-5">
+        <div class="btn-group" role="group">
+            <a type="button" class="btn btn-success" id="create_rubric" data-toggle='modal'
+               data-target='#upload_custom_rubric_modal'>
+                <i class="fa fa-check-square-o fa-fw"></i> $:_("Upload custom rubric")
+            </a>
+            <a type="button" class="btn btn-info" id="download_csv">
+                <i class="fa fa-table fa-fw"></i> $:_("Download CSV")
+            </a>
+        </div>
     </div>
     <div class="col-md-12 py-1" id="information_area"></div>
 </div>

@@ -4,10 +4,12 @@
 # more information about the licensing of this file.
 
 """ Course task list for manual scoring page"""
+import json
 
 from collections import OrderedDict
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-from inginious.frontend.plugins.manual_scoring.constants import get_use_minify, get_render_path
+from ..constants import get_use_minify, get_render_path
+from .rubric import get_rubric_content
 
 base_renderer_path = get_render_path()
 
@@ -32,8 +34,18 @@ class CourseTaskListPage(INGIniousAdminPage):
 
         self.add_css_and_js_file()
 
-        return self.template_helper.get_custom_renderer(base_renderer_path) \
-            .course_task_list(course, tasks_data, total_students)
+        rubric_content = get_rubric_content(self.user_manager, course.get_fs())
+
+        upload_custom_rubric_template = \
+            self.template_helper.get_custom_renderer(base_renderer_path, False).custom_rubric_modal(rubric_content,
+                                                                                                    json.dumps(
+                                                                                                        rubric_content))
+
+        page_template = self.template_helper.get_custom_renderer(base_renderer_path).course_task_list(course,
+                                                                                                      tasks_data,
+                                                                                                      total_students)
+
+        return str(page_template) + str(upload_custom_rubric_template)
 
     def get_tasks_data(self, course):
         """ cross the task data and return the result """

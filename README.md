@@ -4,7 +4,7 @@
 [![Contributors](https://img.shields.io/github/contributors/JuezUN/INGInious?style=plastic)][contributors_url]
 [![GitHub issues](https://img.shields.io/github/issues/JuezUN/INGInious?style=plastic)][issues_url]
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/73d2fa452a2a480aa36edeea79a725a9)][codacy_badge_url]
-[![Build Status](https://travis-ci.org/JuezUN/INGInious.svg?branch=master)][travis_status_url]
+[![Build Status](https://travis-ci.com/JuezUN/INGInious.svg?branch=master)][travis_status_url]
 [![CLA assistant](https://cla-assistant.io/readme/badge/JuezUN/INGInious)][cla_url]
 [![Gitter](https://badges.gitter.im/uncode-unal/community.svg)][gitter_url]
 
@@ -108,7 +108,7 @@ pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
 [contributors_url]: https://github.com/JuezUN/INGInious/graphs/contributors
 [issues_url]: https://github.com/JuezUN/INGInious/issues
 [codacy_badge_url]: https://www.codacy.com/gh/JuezUN/INGInious/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JuezUN/INGInious&amp;utm_campaign=Badge_Grade
-[travis_status_url]: https://travis-ci.org/JuezUN/INGInious
+[travis_status_url]: https://travis-ci.com/github/JuezUN/INGInious
 [cla_url]: https://cla-assistant.io/JuezUN/INGInious
 [gitter_url]:https://gitter.im/uncode-unal/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
 [inginious_url]: https://github.com/UCL-INGI/INGInious

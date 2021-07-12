@@ -6,7 +6,7 @@
 from inginious.frontend.pages.api._api_page import APIError
 from inginious.frontend.pages.utils import INGIniousAuthPage
 from inginious.frontend.parsable_text import ParsableText
-from inginious.frontend.plugins.manual_scoring.constants import get_render_path, get_use_minify, get_dict_value
+from ..constants import get_render_path, get_use_minify, get_dict_value
 from .rubric import get_manual_scoring_data, get_rubric_content, add_static_files_to_render_notebook
 
 base_renderer_path = get_render_path()
@@ -23,7 +23,7 @@ class FeedbackPage(INGIniousAuthPage):
 
     def render_page(self, course, submission):
         """ Get all data and display the page """
-        rubric_content = get_rubric_content(self.user_manager)
+        rubric_content = get_rubric_content(self.user_manager, course.get_fs())
         comment, score, rubric_status = get_manual_scoring_data(submission)
         task_id = submission['taskid']
         task = self.get_task(course, task_id)
