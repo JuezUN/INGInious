@@ -47,7 +47,7 @@ function resetElements() {
 function cleanBasicDataInputs() {
     $(".edit").each(function (_, obj) {
         const input = $($(obj).attr("data-action"));
-
+        $(obj).html(`<i class="fa fa-pencil" aria-hidden="true"></i>${editText}</a></td>`);
         input.prop("readonly", true);
         input.attr("value", "");
 

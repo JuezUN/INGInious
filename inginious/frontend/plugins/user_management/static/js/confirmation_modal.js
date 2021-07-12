@@ -44,8 +44,8 @@ function confirmListener() {
             hideModal();
             $.post("/api/user_management", requestToUpdate, function (data) {
                 const message = `<strong>${successMessage}:</strong> ${dataToString(data)}`;
-                new MessageBox(NOTIFICATIONS_ID, message, "success", false);
                 resetElements();
+                new MessageBox(NOTIFICATIONS_ID, message, "success", false);
             }).fail((xhr, status, error) => {
                 const response = JSON.parse(xhr.responseText);
                 const message = `<strong>${errorText}:</strong> ${dataToString(response)}`;

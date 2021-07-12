@@ -80,3 +80,7 @@ class CollectionsManagerSingleton:
         """ find one request to a collection """
         collection = getattr(self.db, collection_name)
         return collection.find_one(filter=query, projection=projection)
+
+    def delete_many_request(self, collection_name, query):
+        collection = getattr(self.db, collection_name)
+        return collection.delete_many(query)

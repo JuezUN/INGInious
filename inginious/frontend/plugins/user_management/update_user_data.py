@@ -75,16 +75,11 @@ def change_username(username, new_username, collection_manager, collection_name_
 
 def close_user_sessions(username, collection_manager):
     """ Close the open sessions of a user """
-    update_filter = {
+    delete_filter = {
         "data.username": username
     }
-    close_sessions = {
-        "$set": {
-            "data.loggedin": False
-        }
-    }
 
-    return collection_manager.update_many_in_collection("sessions", update_filter, close_sessions)
+    return collection_manager.delete_many_request("sessions", delete_filter)
 
 
 def add_block_user(username, collection_manager):
