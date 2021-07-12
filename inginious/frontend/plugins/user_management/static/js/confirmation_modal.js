@@ -42,10 +42,10 @@ function confirmListener() {
         requestToUpdate["username"] = currentUsername;
         if (checkConfirmationInput()) {
             hideModal();
-            resetElements();
             $.post("/api/user_management", requestToUpdate, function (data) {
                 const message = `<strong>${successMessage}:</strong> ${dataToString(data)}`;
                 new MessageBox(NOTIFICATIONS_ID, message, "success", false);
+                resetElements();
             }).fail((xhr, status, error) => {
                 const response = JSON.parse(xhr.responseText);
                 const message = `<strong>${errorText}:</strong> ${dataToString(response)}`;

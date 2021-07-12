@@ -85,14 +85,24 @@ function checkEmailInput() {
         }
     }
 }
+function checkUsernameFormat(username) {
+    const usernameFormat = /^[-_.|~0-9A-Z]$/;
+    return usernameFormat.test(username);
+}
 
 function checkUsername() {
     const username = $(`#${NEW_USERNAME_INPUT_ID}`);
     const minLen = 4;
+
     removeErrorStyle(username);
     if (hasUsernameChanged()) {
         if (checkTextLen(username.val(), minLen)) {
-            return true;
+            if(checkUsernameFormat(username)){
+                return true;
+            }else {
+                addErrorStyle(username, usernameFormatError);
+                return false;
+            }
         } else {
             addErrorStyle(username, inputLenError);
             return false;

@@ -2,6 +2,7 @@ import pymongo.errors
 import web
 import json
 import inginious.frontend.pages.api._api_page as api
+import re
 
 from inginious.frontend.plugins.user_management.collections_manager import CollectionsManagerSingleton
 from inginious.frontend.plugins.user_management.update_user_data import close_user_sessions, add_block_user, \
@@ -99,8 +100,7 @@ def _validate_username(username, collections_manager):
     - It must not be in use for another user
     """
     user = collections_manager.make_find_one_request("users", {"username": username})
-    min_username_len = 4
-    if len(username) < min_username_len:
+    if re.match(r"^[-_.|~0-9A-Z]{4,}$", username, re.IGNORECASE) is None:
         return False
     if user:
         return False
@@ -125,7 +125,7 @@ def _update_user_data(user_data, username, collections_manager):
         name_count = change_name(username, user_data["name"], collections_manager)
     if "new_username" in user_data:
         if not _validate_username(user_data["new_username"], collections_manager):
-            raise api.APIError(400, _("Invalid username. It is either too short (at least 4 characters) or the username was already taken."))
+            raise api.APIError(400, _("Invalid username by format or already in use"))
         user_has_changed = True
         collection_name_list = json.loads(get_mandatory_parameter(user_data, "collection_list"))
         username_count = change_username(username, user_data["new_username"], collections_manager,
