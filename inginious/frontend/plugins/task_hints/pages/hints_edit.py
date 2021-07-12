@@ -43,6 +43,7 @@ def add_static_files(template_helper):
 
 
 def on_task_submit(course, taskid, task_data, task_fs):
+
     task_data["task_hints"] = CourseEditTask.dict_from_prefix("task_hints", task_data)
 
     # Delete key for hint template if it exists
@@ -90,7 +91,7 @@ def on_task_submit(course, taskid, task_data, task_fs):
     # Update users hints in task when saved
     user_hint_manager().update_unlocked_users_hints(taskid, task_data["task_hints"])
 
-    user_hint_manager().on_change_task_submission_mode(taskid, task_data["groups"])
+    user_hint_manager().on_change_task_submission_mode(course.get_id(), taskid, task_data["groups"], task_data["task_hints"])
 
 def set_hints_id(task_hints):
     for key in task_hints:
