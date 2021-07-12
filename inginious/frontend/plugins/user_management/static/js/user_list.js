@@ -2,14 +2,16 @@ const USER_LIST_DIV_ID = "listOfUsers";
 const USER_TABLE_ID = "userList";
 const FIELD_OPTION_ID = "fieldOption";
 const SEARCH_BTN_ID = "searchBtn";
+const USER_BASIC_DATA_INPUT_ID = "userBasicDataInput";
+
 
 function addSearchBtnListener() {
     $(`#${SEARCH_BTN_ID}`).on("click", function () {
         if (checkSearchInput()) {
             const fieldOption = $(`#${FIELD_OPTION_ID}`).val();
-            const usernameOrEmail = getSearchParameter();
+            const userBasicData = getSearchParameter();
             $.get("/api/find_user", {
-                user: usernameOrEmail,
+                user: userBasicData,
                 field: fieldOption
             }, function (data) {
                 _updateUserTable(data);
@@ -19,6 +21,15 @@ function addSearchBtnListener() {
             new MessageBox(NOTIFICATIONS_ID, inputGeneralError, "danger", false);
         }
 
+    });
+}
+
+function addSearchInputEnterListener() {
+    $(`#${USER_BASIC_DATA_INPUT_ID}`).on("keypress", function (event) {
+        if (event.key === "Enter"){
+            event.preventDefault();
+            $(`#${SEARCH_BTN_ID}`).trigger("click");
+        }
     });
 }
 
@@ -70,7 +81,7 @@ function _appendNoUserMessage() {
 }
 
 function checkSearchInput() {
-    const usernameOrEmail = $(`#${USERNAME_OR_EMAIL_INPUT_ID}`);
+    const usernameOrEmail = $(`#${USER_BASIC_DATA_INPUT_ID}`);
     const minLen = 4;
     removeErrorStyle(usernameOrEmail);
     if (checkTextLen(usernameOrEmail.val(), minLen)) {
@@ -82,6 +93,6 @@ function checkSearchInput() {
 }
 
 function getSearchParameter() {
-    return $(`#${USERNAME_OR_EMAIL_INPUT_ID}`).val();
+    return $(`#${USER_BASIC_DATA_INPUT_ID}`).val();
 
 }

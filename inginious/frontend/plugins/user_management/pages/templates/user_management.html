@@ -23,6 +23,9 @@ $ no_submissions = _("There are no jobs running")
 $ no_user = _("No user found")
 $ unknown_collections_message = _("There are collections without data")
 $ please_check = _("Please check that they do not use username")
+$ user_information_title = _("User Information")
+$ edit_text = _("Edit")
+$ done_editing_text = _("Done Editing")
 
 <div class="container">
     <div class="row">
@@ -59,8 +62,8 @@ $ please_check = _("Please check that they do not use username")
             <div>
                 <form>
                     <div class="input-group">
-                        <label for="usernameOrEmailInput" class=""></label>
-                        <input type="text" class="form-control" id="usernameOrEmailInput"
+                        <label for="userBasicDataInput" class=""></label>
+                        <input type="text" class="form-control" id="userBasicDataInput"
                                placeholder="$:email/$:username/$:name">
                         <div class="input-group-btn px-1">
                             <a type="button" class="btn btn-success" id="searchBtn">$:_("Search")</a>
@@ -97,7 +100,7 @@ $ please_check = _("Please check that they do not use username")
     <div id="userSettings" hidden>
         <div class="row">
             <div class="col-xs-8 col-centered">
-                <h3>$:_("User Information"):</h3>
+                <h3 id="userInformationTitle"></h3>
                 <div class="col-md-8 col-centered">
                     <table class="table table-striped">
                         <thead>
@@ -144,21 +147,21 @@ $ please_check = _("Please check that they do not use username")
                                     <td><input type="text" id="newUsernameInput" class="form-control input-sm"
                                                placeholder="$:_('New Username')" readonly></td>
                                     <td><a class="edit" data-action="#newUsernameInput">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>$:edit_text</a></td>
                                 </tr>
                                 <tr>
                                     <td><h4>$:_("Complete Name")</h4></td>
                                     <td><input type="text" id="newNameInput" class="form-control input-sm"
                                                placeholder="$:_('New Name')" readonly></td>
                                     <td><a class="edit" data-action="#newNameInput">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>$:edit_text</a></td>
                                 </tr>
                                 <tr>
                                     <td><h4>$:_("Email")</h4></td>
                                     <td><input type="text" id="newEmailInput" class="form-control input-sm"
                                                placeholder="$:_('New Email')" readonly></td>
                                     <td><a class="edit" data-action="#newEmailInput">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>$:_("Edit")</a></td>
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>$:edit_text</a></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -222,4 +225,7 @@ $ please_check = _("Please check that they do not use username")
     const noUser = "$:no_user";
     const unknownCollectionsMessage = "$:unknown_collections_message";
     const pleaseCheck = "$:please_check";
+    const userInformationTitleText = "$:user_information_title";
+    const editText = "$:edit_text";
+    const doneEditingText = "$:done_editing_text";
 </script>

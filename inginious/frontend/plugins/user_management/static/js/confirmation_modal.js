@@ -18,6 +18,7 @@ function addListenerUpdateBtn() {
             confirmListener();
         } else {
             new MessageBox(NOTIFICATIONS_ID, inputGeneralError, "danger", false);
+            mainScrollToTop();
         }
     });
 }
@@ -49,6 +50,7 @@ function confirmListener() {
                 const response = JSON.parse(xhr.responseText);
                 const message = `<strong>${errorText}:</strong> ${dataToString(response)}`;
                 new MessageBox(NOTIFICATIONS_ID, message, "danger", false);
+                mainScrollToTop();
             });
         }
     });

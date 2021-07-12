@@ -1,5 +1,6 @@
 const USER_INFORMATION_TABLE_ID = "userInformation";
 const USER_TOTAL_TABLE_ID = "userInformationFoot";
+const USER_INFORMATION_TITLE_ID = "userInformationTitle";
 
 function requestUserData(username) {
     function fillInput(id, content) {
@@ -19,6 +20,7 @@ function requestUserData(username) {
         fillInput(NEW_EMAIL_INPUT_ID, currentEmail);
         fillUserTable(data["count"]);
         alertForUnknownCollections(data["unknown_collections"]);
+        fillUserInformationTitle(data);
     })
 }
 
@@ -39,7 +41,7 @@ function getCurrentValues(data) {
 
 
 function fillUserTable(count) {
-    function makeTableItem(key, value, valueInBold=false) {
+    function makeTableItem(key, value, valueInBold = false) {
         if (valueInBold)
             return `<tr><td><h5><b>${key}</b></h5></td><td><h5><b>${value}</b></h5></td></tr>`;
         return `<tr><td><h5><b>${key}</b></h5></td><td><h5>${value}</h5></td></tr>`;
@@ -139,4 +141,10 @@ function alertForUnknownCollections(unknownCollections) {
     if (unknownCollections.length) {
         new MessageBox(NOTIFICATIONS_ID, `${unknownCollectionsMessage}: ${unknownCollections}. ${pleaseCheck}`, "warning", false);
     }
+}
+
+function fillUserInformationTitle(userData) {
+    const username = userData["username"];
+    const name = userData["name"];
+    $(`#${USER_INFORMATION_TITLE_ID}`).html(`${userInformationTitleText}: ${username} (${name})`);
 }

@@ -1,7 +1,6 @@
 const NEW_USERNAME_INPUT_ID = "newUsernameInput";
 const NEW_NAME_INPUT_ID = "newNameInput";
 const NEW_EMAIL_INPUT_ID = "newEmailInput";
-const USERNAME_OR_EMAIL_INPUT_ID = "usernameOrEmailInput";
 const USER_SETTINGS_ID = "userSettings";
 const NOTIFICATIONS_ID = "notificationsDiv";
 
@@ -16,12 +15,17 @@ function addEvents() {
     addSearchBtnListener();
     addListenerUpdateBtn();
     ajaxSetup();
+    addSearchInputEnterListener();
+    toggleEditTextListener();
 }
 
 function ajaxSetup() {
     $.ajaxSetup({
         beforeSend: function () {
             new MessageBox(NOTIFICATIONS_ID, "Loading...", "info", false);
+        },
+        error: function () {
+            mainScrollToTop();
         }
     });
 }
@@ -71,6 +75,21 @@ function addErrorStyle(inputObj, errorText) {
 
     inputObjParent.addClass("has-error");
     inputObjParent.append(`<span class=\"help-block\">${errorText}</span>`);
+}
+
+function mainScrollToTop() {
+    $(window).scrollTop(0);
+}
+
+function toggleEditTextListener() {
+    $(".edit").on("click", function () {
+        const currentContent = $(this).html();
+        if (currentContent.includes(doneEditingText)) {
+            $(this).html(`<i class="fa fa-pencil" aria-hidden="true"></i>${editText}</a></td>`);
+        } else {
+            $(this).html(`<i class="fa fa-floppy-o" aria-hidden="true"></i>${doneEditingText}</a></td>`);
+        }
+    });
 }
 
 $(function () {
