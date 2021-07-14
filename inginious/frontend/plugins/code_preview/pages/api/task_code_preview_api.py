@@ -5,7 +5,6 @@ import yaml
 from inginious.frontend.pages.api._api_page import APIAuthenticatedPage, APIError
 from inginious.common.course_factory import CourseNotFoundException, CourseUnreadableException, InvalidNameException
 from inginious.frontend.plugins.utils import get_mandatory_parameter
-# from ...constants import use_minified
 
 
 class TaskCodePreviewAPI(APIAuthenticatedPage):
