@@ -15,3 +15,10 @@ def set_use_minified(use_minified):
 def use_minified():
     """ return a boolean to define if use minified files """
     return _use_minified
+
+
+def add_static_files_on_task_page(template_helper):
+    if use_minified:
+        template_helper.add_javascript("/code_preview/static/js/code_preview_load.min.js")
+    else:
+        template_helper.add_javascript("/code_preview/static/js/code_preview_load.js")

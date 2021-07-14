@@ -5,6 +5,7 @@ import yaml
 from inginious.frontend.pages.api._api_page import APIAuthenticatedPage, APIError
 from inginious.common.course_factory import CourseNotFoundException, CourseUnreadableException, InvalidNameException
 from inginious.frontend.plugins.utils import get_mandatory_parameter
+# from ...constants import use_minified
 
 
 class TaskCodePreviewAPI(APIAuthenticatedPage):
@@ -41,7 +42,6 @@ class TaskCodePreviewAPI(APIAuthenticatedPage):
                     with open(os.path.join(task.get_fs().prefix, filename), 'r') as file_preview:
                         return 200, file_preview.read()
                 except yaml.YAMLError as exc:
-                    print(exc)
                     return 200, ""
         except Exception:
             return 200, ""

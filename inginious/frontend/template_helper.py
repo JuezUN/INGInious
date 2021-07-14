@@ -51,7 +51,9 @@ class TemplateHelper(object):
                               "superadmin_options": (
                                   lambda **kwargs: self._generic_hook('superadmin_options', **kwargs)),
                               "uncode_navbar_options": (
-                                  lambda **kwargs: self._generic_hook('uncode_navbar_options', **kwargs))
+                                  lambda **kwargs: self._generic_hook('uncode_navbar_options', **kwargs)),
+                              "add_task_page_static_files":
+                                  lambda **kwargs: self._generic_hook("load_task_page_static_files", **kwargs)
                               }
         self._plugin_manager = plugin_manager
         self._template_dir = default_template_dir

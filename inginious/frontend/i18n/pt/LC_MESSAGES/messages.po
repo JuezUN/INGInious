@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-07-09 12:04-0500\n"
+"POT-Creation-Date: 2021-07-14 17:53-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -233,15 +233,15 @@ msgstr "Hash de redefinição inválido."
 msgid "Your password has been successfully changed."
 msgstr "Sua senha foi alterada com sucesso."
 
-#: inginious/frontend/pages/tasks.py:199
+#: inginious/frontend/pages/tasks.py:201
 msgid "You are not allowed to submit for this task."
 msgstr "Você não tem permissão para submeter para esta tarefa."
 
-#: inginious/frontend/pages/tasks.py:207
+#: inginious/frontend/pages/tasks.py:209
 msgid "Your task has been regenerated. This current task is outdated."
 msgstr "Sua tarefa foi regenerada. A tarefa atual está desatualizada."
 
-#: inginious/frontend/pages/tasks.py:219
+#: inginious/frontend/pages/tasks.py:221
 msgid ""
 "Please answer to all the questions and verify the extensions of the files"
 " you want to upload. Your responses were not tested."
@@ -249,24 +249,24 @@ msgstr ""
 "Por favor, responda todas as perguntas e verifique as extensões dos "
 "arquivos que você deseja enviar. Suas respostas não foram testadas."
 
-#: inginious/frontend/pages/tasks.py:237 inginious/frontend/pages/tasks.py:343
+#: inginious/frontend/pages/tasks.py:239 inginious/frontend/pages/tasks.py:345
 msgid "<b>Your submission has been sent...</b>"
 msgstr "<b> Sua submissão foi enviada ... </b>"
 
 #: inginious/frontend/pages/course_admin/task_edit_file.py:202
 #: inginious/frontend/pages/course_admin/task_edit_file.py:223
 #: inginious/frontend/pages/course_admin/task_edit_file.py:227
-#: inginious/frontend/pages/tasks.py:247
+#: inginious/frontend/pages/tasks.py:249
 msgid "Internal error"
 msgstr "Erro interno"
 
-#: inginious/frontend/pages/tasks.py:312
+#: inginious/frontend/pages/tasks.py:314
 msgid "<b>UNCode is currently grading your answers.<b/> (almost done)"
 msgstr ""
 "<b> O UNCode está atualmente avaliando suas respostas. <b /> (quase "
 "pronto)"
 
-#: inginious/frontend/pages/tasks.py:314
+#: inginious/frontend/pages/tasks.py:316
 msgid ""
 "<b>UNCode is currently grading your answers.<b/> (Approx. wait time: {} "
 "seconds)"
@@ -274,39 +274,39 @@ msgstr ""
 "<b> O UNCode está atualmente avaliando suas respostas. <b /> (Tempo de "
 "espera aproximado: {} segundos)"
 
-#: inginious/frontend/pages/tasks.py:317
+#: inginious/frontend/pages/tasks.py:319
 msgid "<b>You are next in the waiting queue!</b>"
 msgstr "<b> Você é o próximo na fila de espera! </b>"
 
-#: inginious/frontend/pages/tasks.py:319
+#: inginious/frontend/pages/tasks.py:321
 msgid "<b>There is one task in front of you in the waiting queue.</b>"
 msgstr "<b> Há uma tarefa à sua frente na fila de espera. </b>"
 
-#: inginious/frontend/pages/tasks.py:321
+#: inginious/frontend/pages/tasks.py:323
 msgid "<b>There are {} tasks in front of you in the waiting queue.</b>"
 msgstr "<b> Há {} tarefas à sua frente na fila de espera. </b>"
 
-#: inginious/frontend/pages/tasks.py:345
+#: inginious/frontend/pages/tasks.py:347
 msgid "There are some errors in your answer. Your score is {score}%."
 msgstr "Existem alguns erros na sua resposta. Sua pontuação é de {score}%."
 
-#: inginious/frontend/pages/tasks.py:347
+#: inginious/frontend/pages/tasks.py:349
 msgid "Your answer passed the tests! Your score is {score}%."
 msgstr "Sua resposta passou nos testes! Sua pontuação é de {score}%."
 
-#: inginious/frontend/pages/tasks.py:349
+#: inginious/frontend/pages/tasks.py:351
 msgid "Your submission timed out. Your score is {score}%."
 msgstr "Seu submissão expirou. Sua pontuação é de {score}%."
 
-#: inginious/frontend/pages/tasks.py:351
+#: inginious/frontend/pages/tasks.py:353
 msgid "Your submission made an overflow. Your score is {score}%."
 msgstr "Sua submissão fez um \"overflow\". Sua pontuação é de {score}%."
 
-#: inginious/frontend/pages/tasks.py:353
+#: inginious/frontend/pages/tasks.py:355
 msgid "Your submission was killed."
 msgstr "Sua submissão foi encerrada."
 
-#: inginious/frontend/pages/tasks.py:355
+#: inginious/frontend/pages/tasks.py:357
 msgid ""
 "An internal error occurred. Please retry later. If the error persists, "
 "send an email to the course administrator."
@@ -314,22 +314,22 @@ msgstr ""
 "Ocorreu um erro interno. Por favor, tente novamente mais tarde. Se o erro"
 " persistir, envie um email ao administrador do curso."
 
-#: inginious/frontend/pages/tasks.py:359
+#: inginious/frontend/pages/tasks.py:361
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:68
 #: inginious/frontend/templates/course_admin/submissions.html:303
 #: inginious/frontend/templates/task.html:204
 msgid "\"Late submission: it does not affect the grade.\""
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:364
+#: inginious/frontend/pages/tasks.py:366
 msgid "Late submission"
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:369
+#: inginious/frontend/pages/tasks.py:371
 msgid "<p>A penalty of <b>{penalty}%</b> was applied to this submission.</p>"
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:371
+#: inginious/frontend/pages/tasks.py:373
 msgid "[Submission #{submissionid}]"
 msgstr "[Submissão nº {submissionid}]"
 
