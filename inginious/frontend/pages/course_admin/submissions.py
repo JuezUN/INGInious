@@ -153,13 +153,6 @@ class CourseSubmissionsPage(INGIniousAdminPage):
                 query_advanced["submitted_on"] = {"$gte": date_after, "$lte": date_before}
         except ValueError:  # If match of datetime.strptime() fails
             pass
-        
-        # Query with tags
-        if len(user_input.filter_tags) == len(user_input.filter_tags_presence):
-            for i in range(0, len(user_input.filter_tags)):
-                if id_checker(user_input.filter_tags[i]):
-                    state = (user_input.filter_tags_presence[i] in ["True", "true"])
-                    query_advanced["tests." + user_input.filter_tags[i]] = {"$in": [None, False]} if not state else True
             
         # Mongo operations
         data = list(self.database.submissions.find({**query_base, **query_advanced}).sort([(user_input.sort_by, 
@@ -189,8 +182,6 @@ class CourseSubmissionsPage(INGIniousAdminPage):
             sort_by="submitted_on",
             order='0',  # "0" for pymongo.DESCENDING, anything else for pymongo.ASCENDING
             limit='',
-            filter_tags=[],
-            filter_tags_presence=[],
             date_after='',
             date_before='',
             stat='with_stat',

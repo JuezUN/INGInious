@@ -7,12 +7,11 @@
 
 from inginious.frontend.plugins.utils import create_static_resource_page
 
-from inginious.frontend.plugins.manual_scoring.pages import students_list, student_submissions, manual_scoring, \
-    course_task_list, student_feedback_list, feedback
-from inginious.frontend.plugins.manual_scoring.constants import set_use_minified, get_manual_scoring_link_code, get_feedback_link_code, \
-    get_static_folder_path
+from .pages import students_list, student_submissions, manual_scoring, course_task_list, student_feedback_list, feedback
+from .constants import set_use_minified, get_manual_scoring_link_code, get_feedback_link_code, get_static_folder_path
 from .pages.api.rst_parser import RstParserAPI
 from .pages.api.manual_scoring_info import ManualScoringInfoApi
+from .pages.api.upload_custom_rubric import UploadCustomRubric
 
 
 def init(plugin_manager, _, __, plugin_config):
@@ -38,6 +37,8 @@ def init(plugin_manager, _, __, plugin_config):
     plugin_manager.add_page(
         r'/admin/([a-z0-9A-Z\-_]+)/manual_scoring/task/([a-z0-9A-Z\-_]+)/submission/([a-z0-9A-Z\-_]+)',
         manual_scoring.ManualScoringPage)
+
+    plugin_manager.add_page("/api/manual_scoring/upload_custom_rubric", UploadCustomRubric)
 
     plugin_manager.add_hook('course_admin_menu', get_manual_scoring_link_code)
 
