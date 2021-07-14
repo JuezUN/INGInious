@@ -35,19 +35,15 @@ class UserHintManagerSingleton(object):
         """
         task_id = task.get_id()
 
-        students = [username]
-
         if(task.is_group_task()):
             users_group = self._database.aggregations.find_one(
                 {"courseid": task.get_course_id(), "groups.students": username},
                 {"groups": {"$elemMatch": {"students": username}}}
             )
             if users_group:
-                students = users_group["groups"][0]['students']
-        else:
-            students = [username]
+                username = users_group["groups"][0]['students']
 
-        user_hints = self.get_user_hints(task_id, students)
+        user_hints = self.get_user_hints(task_id, username)
         
         unlocked_hints_penalties = {}
         data = {}
@@ -78,12 +74,10 @@ class UserHintManagerSingleton(object):
 
         return data
 
-    def get_task_users_hints(self, task_id):
-        return self._database.user_hints.find({"taskid": task_id})
-
     def get_user_hints(self, task_id, username):
         return self._database.user_hints.find_one({"taskid": task_id,
-                                                   "username": username})
+                                                   "username": username
+                                                    })
 
     def update_unlocked_users_hints(self, task_id, task_hints):
         """
@@ -194,13 +188,13 @@ class UserHintManagerSingleton(object):
                                                       {"$set": {"total_penalty": new_penalty}
                                                        })
 
-    def on_change_task_submission_mode(self, courseid, task_id, is_task_group, task_hints):
+    def on_change_task_submission_mode(self, courseid, task_id, submission_mode_change, task_hints):
 
         "Update the user hints document structure when the task mode is changed."
         "When a individually task, each student have it's own user hints document."
         "When a group task, there is only a document for the students group"
 
-        if(is_task_group):  
+        if(submission_mode_change):  
             
             classrooms = self._database.aggregations.find({"courseid": courseid}
             )
@@ -210,8 +204,12 @@ class UserHintManagerSingleton(object):
                 for group in classroom.get("groups"):
 
                     students = group.get("students")
-
-                    group_hints_document = self.get_user_hints(task_id, students)
+                    
+                    group_hints_document = {}
+                    if len(students) == 1:
+                        group_hints_document = self.get_user_hints(task_id, students[0])
+                    else:
+                        group_hints_document = self.get_user_hints(task_id, students)
                     
                     if group_hints_document: 
                     
@@ -219,6 +217,7 @@ class UserHintManagerSingleton(object):
 
                         for member in group_hints_document_members:
                             if member not in students:
+
                                 self._database.user_hints.find_one_and_update(
                                     {"taskid": task_id, "username": students},
                                     {"$pull": {
@@ -236,9 +235,10 @@ class UserHintManagerSingleton(object):
                                 user_hints_id = user_hints.get("_id")
                                 
                                 group_user_hints.append(user_hints)
+
                                 self._database.user_hints.find_one_and_update(
-                                        {"_id": user_hints_id},
-                                        {"$pull": {
+                                    {"_id": user_hints_id},
+                                    {"$pull": {
                                             "username": student
                                         }
                                     }
@@ -263,7 +263,8 @@ class UserHintManagerSingleton(object):
                         if common_user_hints_data:
                             self._database.user_hints.insert(
                                 {"taskid": task_id, "username": students, "unlocked_hints": common_user_hints_data, "total_penalty": 0})
-                            self.update_total_penalty(task_id,students)
+                            
+                            self.update_total_penalty(task_id, students)
                                   
 
         else:
@@ -276,21 +277,29 @@ class UserHintManagerSingleton(object):
 
                     students = group.get("students")
 
-                    for student in students:
+                    group_hints_document = self.get_user_hints(task_id, students)
 
-                        group_hints_document = self.get_user_hints(task_id, student)
+                    if group_hints_document: 
 
-                        if group_hints_document: 
+                        group_hints_document_hints = group_hints_document["unlocked_hints"]
 
-                            group_hints_document_hints = group_hints_document["unlocked_hints"]
+                        self._database.user_hints.find_one_and_delete({"taskid": task_id, "username": students})
 
-                            self._database.user_hints.find_one_and_delete({"taskid": task_id, "username": student})
+                        for student in students:
 
                             self._database.user_hints.insert(
-                                {"taskid": task_id, "username": student, "unlocked_hints": group_hints_document_hints, "total_penalty": 0})
+                                {"taskid": task_id, "username": [student], "unlocked_hints": group_hints_document_hints, "total_penalty": 0})
+                            
+                            self.update_total_penalty(task_id, student)
 
+        #Remove documents that doesn't have a user
+        self.remove_unasigned_hints(task_id)
+        
         return task_id        
                        
+    def remove_unasigned_hints(self, task_id):
+
+        self._database.user_hints.delete_many({"taskid": task_id, "username": {"$exists": True, "$size": 0}})
 
     def parse_rst_content(self, content):
 
