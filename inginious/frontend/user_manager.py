@@ -80,7 +80,7 @@ class AuthMethod(object, metaclass=ABCMeta):
 
 
 class UserManager:
-    def __init__(self, session_dict, database, superadmins):
+    def __init__(self, session_dict, database, superadmins, plugin_manager):
         """
         :type session_dict: web.session.Session
         :type database: pymongo.database.Database
@@ -92,6 +92,7 @@ class UserManager:
         self._superadmins = superadmins
         self._auth_methods = OrderedDict()
         self._logger = logging.getLogger("inginious.webapp.users")
+        self._plugin_manager = plugin_manager
 
     ##############################################
     #           User session management          #
@@ -278,12 +279,15 @@ class UserManager:
         :param realname: User real name
         :param email: User email
         """
-
-        self._database.users.update_one({"email": email}, {"$set": {"realname": realname, "username": username, "language": language}},
-                                        upsert=True)
-        self._logger.info("User %s connected - %s - %s - %s", username, realname, email, web.ctx.ip)
-        self._set_session(username, realname, email, language)
-        return True
+        open_sessions_call_values = self._plugin_manager.call_hook("open_session", username=username)
+        has_open_sessions_values = len(open_sessions_call_values) > 0
+        user_is_blocked = open_sessions_call_values[0] if has_open_sessions_values else False
+        if not user_is_blocked:
+            self._database.users.update_one({"email": email}, {"$set": {"realname": realname, "username": username, "language": language}},
+                                            upsert=True)
+            self._logger.info("User %s connected - %s - %s - %s", username, realname, email, web.ctx.ip)
+            self._set_session(username, realname, email, language)
+            return True
 
     def disconnect_user(self):
         """

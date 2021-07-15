@@ -1,0 +1,230 @@
+$def with()
+
+$var title: $:_("User Management")
+
+$def NavbarF():
+    <ol class="nav navbar-nav nav-breadcrumb">
+        <a href="$get_homepath()"></a>
+        <li class="active"><a href="/user_management">$:_("User Management")</a></li>
+    </ol>
+
+$var Navbar: $:NavbarF()
+
+$ input_len_error = _("Not large enough")
+$ input_email_error = _("The email is mandatory")
+$ email = _("Email")
+$ name = _("Name")
+$ username = _("Username")
+$ username_confirmation_error = _("Username does not match")
+$ success = _("Success")
+$ error = _("Something went wrong")
+$ input_errors = _("Some inputs need to be modified or no modification has been made")
+$ no_submissions = _("There are no jobs running")
+$ no_user = _("No user found")
+$ unknown_collections_message = _("There are collections without data")
+$ please_check = _("Please check that they do not use username")
+$ user_information_title = _("User Information")
+$ edit_text = _("Edit")
+$ done_editing_text = _("Done")
+$ username_format_error = _("Invalid username format.")
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8 col-centered">
+            <div class="alert alert-warning information">
+                <h3><strong>$:_("To Keep in Mind")</strong></h3>
+                <ul class="normalList">
+                    <li>$:_("The change process blocks the user account and removes the session to prevent changes in the database while the user's data is updated.")</li>
+                    <li>$:_("The search is executed with Mongodb's regular expressions, therefore you can use all the advantages to do more complete searches").
+                        $:_("To do a search using regular expressions, you just need to type a normal text. You can not write it in the way <strong>/pattern/</strong> to indicate a mongodb regular expression."),
+                        $:_("but you can use expressions like this: ") <strong>(?x)student[1-4]</strong><br>
+                        <strong>(?x)</strong> $:_("Extended capability to ignore all white space characters in the pattern").
+                        <a href="https://docs.mongodb.com/v3.4/reference/operator/query/regex/#op._S_options" target="_blank">$:_("Click here to see the options")</a>
+                        $:_("(by default it is not case sensitive)").
+                        $:_("And <strong>[1-4]</strong> indicates the next character is between 1 and 4").</li>
+                    <li>$:_("You do not need to be strict with the regular expression and specify which symbols are allowed"):
+                        $:_("with <strong>student</strong> as parameter, for example, it returns results that include the parameter like <strong>student</strong>1 or something_<strong>student</strong>_something").</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-8 col-centered">
+            <h2>$:_("User Management")</h2>
+            <div class="col-xs-3 col-withoutPadding-left">
+            <select id="fieldOption" class="form-control">
+                <option value="None" selected>$:_("All")</option>
+                <option value="username">$:username</option>
+                <option value="email">$:email</option>
+                <option value="realname">$:name</option>
+            </select>
+            </div>
+            <div>
+                <form>
+                    <div class="input-group">
+                        <label for="userBasicDataInput" class=""></label>
+                        <input type="text" class="form-control" id="userBasicDataInput"
+                               placeholder="$:email/$:username/$:name">
+                        <div class="input-group-btn px-1">
+                            <a type="button" class="btn btn-success" id="searchBtn">$:_("Search")</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-8 col-centered">
+            <div id="notificationsDiv" class="py-1"></div>
+        </div>
+    </div>
+    <div id="listOfUsers" hidden>
+        <div class="row">
+            <div class="col-xs-8 col-centered">
+                <p><b>$_("*Select an user to manage")</b></p>
+                <div class="DivWithScroll">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th><h4>$:username</h4></th>
+                        <th><h4>$:email</h4></th>
+                        <th><h4>$:name</h4></th>
+                    </tr>
+                    </thead>
+                    <tbody id="userList"></tbody>
+                </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div id="userSettings" hidden>
+        <div class="row">
+            <div class="col-xs-8 col-centered">
+                <h3 id="userInformationTitle"></h3>
+                <div class="col-md-8 col-centered">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th><h4>$:_("Collection Names")</h4></th>
+                            <th><h4># $:_("Username Occurrences")</h4></th>
+                        </tr>
+                        </thead>
+                        <tbody id="userInformation"></tbody>
+                        <tfoot id="userInformationFoot"></tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row py-1">
+            <div class="col-xs-8 col-centered">
+                <h3>$:_("User Status"): <span id="userConnection"
+                                              class="label label-danger badge-pill"
+                                              title=$:_("\"Number of open user sessions\"")></span></h3>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th><h4>$:_("Type")</h4></th>
+                        <th><h4>$:_("Course")</h4></th>
+                        <th><h4>$:_("Task")</h4></th>
+                        <th><h4>$:_("Date")</h4></th>
+                    </tr>
+                    </thead>
+                    <tbody id="userSubmissions"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-8 col-centered">
+                <div id="userDataManagement">
+                    <form>
+                        <div class="form-group">
+                            <h3>$:_("Manage User Data")</h3>
+                            <table class="table">
+                                <tbody class="center-table">
+                                <tr>
+                                    <td><h4>$:_("Username")</h4></td>
+                                    <td><input type="text" id="newUsernameInput" class="form-control input-sm"
+                                               placeholder="$:_('New Username')" readonly></td>
+                                    <td><a class="edit" data-action="#newUsernameInput"></a></td>
+                                </tr>
+                                <tr>
+                                    <td><h4>$:_("Complete Name")</h4></td>
+                                    <td><input type="text" id="newNameInput" class="form-control input-sm"
+                                               placeholder="$:_('New Name')" readonly></td>
+                                    <td><a class="edit" data-action="#newNameInput"></a></td>
+                                </tr>
+                                <tr>
+                                    <td><h4>$:_("Email")</h4></td>
+                                    <td><input type="text" id="newEmailInput" class="form-control input-sm"
+                                               placeholder="$:_('New Email')" readonly></td>
+                                    <td><a class="edit" data-action="#newEmailInput"></i>$:edit_text</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-primary btn-block" id="updateBtn">
+                                <i class="fa fa-floppy-o" aria-hidden="true"></i> $:_("Update User")
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="uploadModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title">$:_("Update User Data")</h3>
+            </div>
+            <div class="modal-body text-justify">
+                <h4>
+                    $:_("Are you sure you want to make this change?")
+                </h4>
+                <ul id="listParametersChanged" class="normalList"></ul>
+                <h5>$:_("Type the username"): <b id="usernameToConfirm">Student1</b></h5>
+                <form class="">
+                    <div class="form-group">
+                        <label for="usernameInputConfirmation" class=""></label>
+                        <input type="text" class="form-control" id="usernameInputConfirmation" placeholder="$:username">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">$:_("Cancel")</button>
+                <button type="button" class="btn btn-danger" id='updateDataConfirmBtn'>
+                    $:_("Confirm")
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const inputLenError = "$:input_len_error";
+    const emailFormatError = "$:input_email_error";
+    const usernameMatchError = "$:username_confirmation_error";
+    const successMessage = "$:success";
+    const inputGeneralError = "$:input_errors";
+    const wordsDictionary = {
+        "username": "$:username",
+        "email": "$:email",
+        "name": "$:name",
+        "error": "error"
+    }
+    const errorText = "$:error";
+    const noSubmissions = "$:no_submissions";
+    const noUser = "$:no_user";
+    const unknownCollectionsMessage = "$:unknown_collections_message";
+    const pleaseCheck = "$:please_check";
+    const userInformationTitleText = "$:user_information_title";
+    const editText = "$:edit_text";
+    const doneEditingText = "$:done_editing_text";
+    const usernameFormatError = "$:username_format_error";
+</script>
