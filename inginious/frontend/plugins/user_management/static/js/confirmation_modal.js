@@ -42,6 +42,8 @@ function confirmListener() {
         requestToUpdate["username"] = currentUsername;
         if (checkConfirmationInput()) {
             hideModal();
+            mainScrollToTop();
+            disableSettings(true);
             $.post("/api/user_management", requestToUpdate, function (data) {
                 const message = `<strong>${successMessage}:</strong> ${dataToString(data)}`;
                 resetElements();
@@ -50,7 +52,8 @@ function confirmListener() {
                 const response = JSON.parse(xhr.responseText);
                 const message = `<strong>${errorText}:</strong> ${dataToString(response)}`;
                 new MessageBox(NOTIFICATIONS_ID, message, "danger", false);
-                mainScrollToTop();
+            }).done(() => {
+                disableSettings(false);
             });
         }
     });

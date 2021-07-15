@@ -154,6 +154,10 @@ class UserDataAPI(SuperadminAPI):
         user_data = web.input()
         username = get_mandatory_parameter(user_data, "username")
         collections_manager = CollectionsManagerSingleton.get_instance()
+        superadmin_username = self.user_manager.session_username()
+
+        if username == superadmin_username:
+            return 400, {"error": _("Superadmin can not modify its own data")}
 
         try:
             user_original_info = self.get_user_data(username)

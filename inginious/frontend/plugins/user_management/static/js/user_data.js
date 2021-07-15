@@ -74,37 +74,38 @@ function checkEmailFormat(emailText) {
 }
 
 function checkEmailInput() {
-    const email = $(`#${NEW_EMAIL_INPUT_ID}`);
-    removeErrorStyle(email);
+    const emailInput = $(`#${NEW_EMAIL_INPUT_ID}`);
+    removeErrorStyle(emailInput);
     if (hasEmailChanged()) {
-        if (checkEmailFormat(email.val())) {
+        if (checkEmailFormat(emailInput.val())) {
             return true;
         } else {
-            addErrorStyle(email, emailFormatError);
+            addErrorStyle(emailInput, emailFormatError);
             return false;
         }
     }
 }
-function checkUsernameFormat(username) {
-    const usernameFormat = /^[-_.|~0-9A-Z]$/;
-    return usernameFormat.test(username);
+
+function checkUsernameFormat(usernameText) {
+    const usernameFormat = /^[-_.|~0-9A-Z]{4,}$/i;
+    return usernameFormat.test(usernameText);
 }
 
 function checkUsername() {
-    const username = $(`#${NEW_USERNAME_INPUT_ID}`);
+    const usernameInput = $(`#${NEW_USERNAME_INPUT_ID}`);
     const minLen = 4;
 
-    removeErrorStyle(username);
+    removeErrorStyle(usernameInput);
     if (hasUsernameChanged()) {
-        if (checkTextLen(username.val(), minLen)) {
-            if(checkUsernameFormat(username)){
+        if (checkTextLen(usernameInput.val(), minLen)) {
+            if (checkUsernameFormat(usernameInput.val())) {
                 return true;
-            }else {
-                addErrorStyle(username, usernameFormatError);
+            } else {
+                addErrorStyle(usernameInput, usernameFormatError);
                 return false;
             }
         } else {
-            addErrorStyle(username, inputLenError);
+            addErrorStyle(usernameInput, inputLenError);
             return false;
         }
     }
@@ -158,3 +159,19 @@ function fillUserInformationTitle(userData) {
     const name = userData["name"];
     $(`#${USER_INFORMATION_TITLE_ID}`).html(`${userInformationTitleText}: ${username} (${name})`);
 }
+
+function disableSettings(blockSettings) {
+    $(`#${UPDATE_BTN_ID}`).prop("disabled", blockSettings);
+    $(".edit").each(function (_, obj) {
+        const inputId = $(obj).attr("data-action");
+        const input = $(inputId);
+        if (blockSettings) {
+            input.prop("readonly", blockSettings);
+            $(obj).html(`<i class="fa fa-pencil" aria-hidden="true"></i>${editText}</a></td>`);
+            $(obj).addClass("disabled");
+        } else {
+            $(obj).removeClass("disabled");
+        }
+    });
+}
+

@@ -84,3 +84,8 @@ input[readonly] {
 ul.normalList {
     list-style: disc;
 }
+
+a.disabled {
+  color: gray;
+  pointer-events: none;
+}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-07-12 13:15-0500\n"
+"POT-Creation-Date: 2021-07-15 17:10-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -3600,7 +3600,7 @@ msgstr ""
 " usuarios</a></li>"
 
 #: inginious/frontend/plugins/user_management/pages/api/find_user.py:65
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:165
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:169
 #: inginious/frontend/plugins/user_management/pages/api/user_status.py:26
 msgid "Mongo operation fail"
 msgstr "Fallo en la operación de Mongo"
@@ -3618,8 +3618,8 @@ msgid ""
 "- If at some point you had authentication problems, it may be due to the "
 "change process."
 msgstr ""
-"- Si en algún momento tuvo problemas de autenticación, puede ser debido "
-"al proceso de de actualización."
+"- Si en algún momento has tenido problemas de autenticación, puede ser "
+"debido al proceso de de actualización."
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:51
 msgid "- If you think some changes are wrong, please contact the administrator."
@@ -3633,8 +3633,8 @@ msgid ""
 "click on the following link:\n"
 "        "
 msgstr ""
-"- Hemos notado que aún no has activado tu cuenta, por favor sigue el "
-"siguiente enlace: \n"
+"- Hemos notado que aún no has activado la cuenta, por favor sigue el "
+"siguiente enlace:\n"
 "        "
 
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:56
@@ -3673,7 +3673,11 @@ msgstr "Nombre de usuario inválido por formato o ya está en uso"
 msgid "No data to change"
 msgstr "No hay datos que modificar"
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:199
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:160
+msgid "Superadmin can not modify its own data"
+msgstr "El superadministrador no puede modificar sus propios datos"
+
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:203
 msgid "User no found"
 msgstr "Usuario no encontrado"
 
@@ -3731,8 +3735,8 @@ msgid "User Information"
 msgstr "Información del usuario"
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:28
-msgid "Done Editing"
-msgstr "Finalizar edición"
+msgid "Done"
+msgstr "Completar"
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:35
 msgid "To Keep in Mind"
@@ -6287,4 +6291,10 @@ msgstr "Extensiones permitidas"
 #~ " corto (necesita al menos 4 "
 #~ "carateres) o el nombre de usuario "
 #~ "ya fue tomado."
+
+#~ msgid "Done Editing"
+#~ msgstr "Finalizar edición"
+
+#~ msgid "superadmin can not modify its own data"
+#~ msgstr ""
 
