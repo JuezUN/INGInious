@@ -7,6 +7,8 @@ from ..user_hint_manager import UserHintManagerSingleton
 
 class HintsModeAPI(AdminApi):
 
+    "API to manage the users hints documents on a task, when task submission mode changes"
+
     @property
     def user_hint_manager(self) -> UserHintManagerSingleton:
         """ Returns user hint manager singleton """
@@ -27,10 +29,10 @@ class HintsModeAPI(AdminApi):
 
         try:
             task = self.task_factory.get_task(course, task_id)
-            task_submission_mode = task._data.get('groups')
+            task_submission_mode = task._data.get('groups', False)
 
         except Exception:
-            raise APIError(400, {"error": "Task does not exist"})
+            raise APIError(400, {"error": _("Task does not exist.")})
 
         return 200, task_submission_mode
 
@@ -51,8 +53,8 @@ class HintsModeAPI(AdminApi):
 
         try:
             task = self.task_factory.get_task(course, task_id)
-            task_submission_mode = task._data.get('groups')
-            task_hints = task._data.get('task_hints')
+            task_submission_mode = task._data.get('groups', False)
+            task_hints = task._data.get('task_hints', {})
 
             last_submission_mode = ('true' == last_submission_mode)
 
@@ -61,7 +63,7 @@ class HintsModeAPI(AdminApi):
                 self.user_hint_manager.on_change_task_submission_mode(course_id, task_id, task_submission_mode, task_hints)
 
         except Exception:
-            raise APIError(400, {"error": "There was a problem to update submission mode on user hints"})
+            raise APIError(400, {"error": _("There was a problem to update submission mode on users hints.")})
 
         return 200, task_submission_mode
 

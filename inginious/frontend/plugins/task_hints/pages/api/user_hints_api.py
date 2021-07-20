@@ -41,7 +41,11 @@ class UserHintsAPI(APIAuthenticatedPage):
 
         hints_data = {}
 
-        hints_data = self.user_hint_manager.get_hint_content_by_status(task, username, self.get_task_hints(task))
+        try:
+            hints_data = self.user_hint_manager.get_hint_content_by_status(task, username, self.get_task_hints(task))
+        except Exception:
+            raise APIError(400, {"message": _("An error occurred while getting the user's hints.")})
+
         return 200, {"status": "success", "data": hints_data}
 
     def API_POST(self):
@@ -72,7 +76,10 @@ class UserHintsAPI(APIAuthenticatedPage):
 
         task_hints = self.get_task_hints(task)
         
-        self.user_hint_manager.unlock_hint(task, username, hint_id, task_hints)
+        try:
+            self.user_hint_manager.unlock_hint(task, username, hint_id, task_hints)
+        except Exception:
+            return 200, {"status": "error", "message": _("An error occurred while updating status of the hint. The hint does not exist in the database.")}
 
         return 200, {"status": "success", "message": _("Hint unlocked successfully.")}
 

@@ -35,7 +35,7 @@ class UserHintManagerSingleton(object):
         """
         task_id = task.get_id()
 
-        if(task.is_group_task()):
+        if task.is_group_task():
             users_group = self._database.aggregations.find_one(
                 {"courseid": task.get_course_id(), "groups.students": username},
                 {"groups": {"$elemMatch": {"students": username}}}
@@ -139,7 +139,7 @@ class UserHintManagerSingleton(object):
 
         # Check if task is a group task
 
-        if(task.is_group_task()):
+        if task.is_group_task():
             users_group = self._database.aggregations.find_one(
                 {"courseid": task.get_course_id(), "groups.students": username},
                 {"groups": {"$elemMatch": {"students": username}}}
@@ -193,8 +193,8 @@ class UserHintManagerSingleton(object):
         "Update the user hints document structure when the task mode is changed."
         "When a individually task, each student have it's own user hints document."
         "When a group task, there is only a document for the students group"
-
-        if(submission_mode_change):  
+ 
+        if submission_mode_change:  
             
             classrooms = self._database.aggregations.find({"courseid": courseid}
             )
