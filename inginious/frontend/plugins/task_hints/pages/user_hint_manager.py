@@ -1,4 +1,5 @@
 from inginious.frontend.parsable_text import ParsableText
+from pymongo import ReturnDocument
 
 
 class UserHintManagerSingleton(object):
@@ -76,7 +77,9 @@ class UserHintManagerSingleton(object):
 
     def get_user_hints(self, task_id, username):
         return self._database.user_hints.find_one({"taskid": task_id,
-                                                   "username":  username
+                                                   "username":  {
+                                                       "$in": username
+                                                    }
                                                 })
 
     def update_unlocked_users_hints(self, task_id, task_hints):
@@ -171,12 +174,12 @@ class UserHintManagerSingleton(object):
 
         return 200, ""
 
-    def update_total_penalty(self, task_id, username):
+    def update_total_penalty(self, task_id, students):
         """ Method needed to compare the saved hints per student, and the task hints
-            to change penalty to the student
+            to change penalty to the students
         """
         new_penalty = 0
-        user_hints = self.get_user_hints(task_id, username)
+        user_hints = self.get_user_hints(task_id, students)
         unlocked_hints = user_hints["unlocked_hints"]
 
         for hint in unlocked_hints:
@@ -184,7 +187,7 @@ class UserHintManagerSingleton(object):
 
         new_penalty = min(new_penalty, 100.0)
 
-        self._database.user_hints.find_one_and_update({"taskid": task_id, "username": username},
+        self._database.user_hints.find_one_and_update({"taskid": task_id, "username": students},
                                                       {"$set": {"total_penalty": new_penalty}
                                                        })
 
@@ -203,53 +206,79 @@ class UserHintManagerSingleton(object):
                 for group in classroom.get("groups"):
 
                     students = group.get("students")
+
+                    # To groups that have students
+                    if students:
                     
-                    group_user_hints = []
+                        #Save the hints documents of all students in group
+                        group_user_hints = []
+                        #Save students in group that already get user hints documents
+                        already_visited_user_hints = []
 
-                    for student in students:
+                        for student in students:
 
-                        user_hints = self.get_user_hints(task_id, student)
-                        if user_hints: 
-                            if user_hints: 
-                        if user_hints: 
-                            user_hints_id = user_hints.get("_id")
+                            if student not in already_visited_user_hints:
+
+                                user_hints = self.get_user_hints(task_id, student)
                                 
-                            group_user_hints.append(user_hints)
+                                if user_hints: 
 
-                            """
-                                self._database.user_hints.find_one_and_update(
-                                    {"_id": user_hints_id},
-                                    {"$pull": {
-                                            "username": student
-                                        }
-                                    }
-                                )
-                            """
+                                    user_hints_id = user_hints.get("_id")
+                                    user_hints_students = user_hints.get("username")
+                                    user_hints_data =  user_hints.get("unlocked_hints")
 
-                    if group_user_hints: 
-                        common_user_hints = set([hint.get("id") for hint in group_user_hints[0].get("unlocked_hints")])
+                                    already_visited_user_hints += user_hints_students
+
+                                    #Get students that are not in group
+                                    no_group_students = [user_hints_students[i] for i, _ in enumerate(user_hints_students) if user_hints_students[i] not in students] 
+
+                                    if no_group_students:
+
+                                        user_hints = self._database.user_hints.find_one_and_update(
+                                                {"_id": user_hints_id},
+                                                {"$pull": {
+                                                        "username": {
+                                                            "$in": no_group_students
+                                                        }
+                                                    }
+                                                },
+                                                return_document=ReturnDocument.AFTER
+                                            )
+
+                                        for member in no_group_students:
+
+                                            self._database.user_hints.insert(
+                                                {"taskid": task_id, 
+                                                "username": [member], 
+                                                "unlocked_hints": user_hints_data, 
+                                                "total_penalty": 0}) 
+
+                                            self.update_total_penalty(task_id, member)
+                                        
+                                    group_user_hints.append(user_hints.get("unlocked_hints"))
+
+                        #Find common hints if students have their hints in different documents
+                        if group_user_hints:
                         
-                        if len(group_user_hints) > 1:
+                            if len(group_user_hints) > 1: 
                             
-                            for document in group_user_hints[1:]:
+                                common_user_hints = set([hint.get("id") for hint in group_user_hints[0]])
+                                    
+                                for user_hints in group_user_hints[1:]:
 
-                                temp = set([hint.get("id") for hint in document.get("unlocked_hints")])
-                                common_user_hints = common_user_hints.intersection(temp)
+                                    temp = set([hint.get("id") for hint in user_hints])
+                                    common_user_hints = common_user_hints.intersection(temp)
 
-                            
-                        common_user_hints_data = []
-                        for hint in task_hints.values():
-                            if hint['id'] in common_user_hints:
-                                common_user_hints_data.append({"id": hint['id'],"penalty": hint['penalty']})
+                                    
+                                common_user_hints_data = []
+                                for hint in task_hints.values():
+                                    if hint['id'] in common_user_hints:
+                                        common_user_hints_data.append({"id": hint['id'],"penalty": hint['penalty']})
 
-                        if common_user_hints_data:
-
-                            """
-                                self._database.user_hints.insert(
-                                    {"taskid": task_id, "username": students, "unlocked_hints": common_user_hints_data, "total_penalty": 0})
+                                if common_user_hints_data:
                                 
-                                self.update_total_penalty(task_id, students)
-                            """   
+                                    self.merge_group_users_hints(task_id, students, common_user_hints_data)
+
 
 
         else:
@@ -280,9 +309,68 @@ class UserHintManagerSingleton(object):
         
         return task_id        
                        
+    def merge_group_users_hints(self, task_id, students, group_users_hints):
+
+        """
+            Method to merge the hints of all the students in a group.
+            If already a student in group has a document, updates that 
+            document with the users in group and their common hints, 
+            and delete the otrher documents. Else, create a new document for all
+            students with these hints.
+        """
+
+        base_document = self._database.user_hints.find_one({
+                                                            "taskid": task_id,
+                                                            "username":  {
+                                                                "$in": students
+                                                            }
+                                                        })
+
+        if base_document:
+
+            base_document_id = base_document.get("_id")
+            self._database.user_hints.delete_many({
+                                                    "_id": {
+                                                        "$ne": base_document_id
+                                                    },
+                                                    "taskid": task_id,
+                                                    "username":  {
+                                                        "$in": students
+                                                        }
+                                                    })
+
+            self._database.user_hints.update_one({"_id": base_document_id},
+                                                 {"$addToSet": {
+                                                    "username": {
+                                                        "$each": students
+                                                    }
+                                                 },
+                                                  "$set": {
+                                                    "unlocked_hints": group_users_hints
+                                                  }
+                                                 }
+                                                ) 
+
+        else: 
+
+            self._database.user_hints.insert(
+                                {"taskid": task_id, 
+                                "username": students, 
+                                "unlocked_hints": group_users_hints, 
+                                "total_penalty": 0})    
+
+        self.update_total_penalty(task_id, students)                    
+
+
     def remove_unasigned_hints(self, task_id):
 
-        self._database.user_hints.delete_many({"taskid": task_id, "username": {"$exists": True, "$size": 0}})
+        self._database.user_hints.delete_many({
+                                                "taskid": task_id, 
+                                                "username": {
+                                                    "$exists": True, 
+                                                    "$size": 0
+                                                }
+                                            })
 
     def parse_rst_content(self, content):
 
