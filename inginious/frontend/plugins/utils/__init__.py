@@ -2,6 +2,7 @@ import json
 import posixpath
 import urllib
 import web
+import re
 
 import inginious.frontend.pages.api._api_page as api
 from inginious.frontend.pages.utils import INGIniousPage
@@ -45,3 +46,12 @@ def read_json_file(source):
     with open(source) as file:
         data = json.load(file)
         return data
+
+
+def check_email_format(email):
+    """ Checks email matches a real email."""
+    email_re = re.compile(
+        r"(^[-!#$%&'*+/=?^_`{}|~0-9A-Z]+(\.[-!#$%&'*+/=?^_`{}|~0-9A-Z]+)*"  # dot-atom
+        r'|^"([\001-\010\013\014\016-\037!#-\[\]-\177]|\\[\001-011\013\014\016-\177])*"'  # quoted-string
+        r')@(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+[A-Z]{2,6}\.?$', re.IGNORECASE)  # domain
+    return email_re.match(email)

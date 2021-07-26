@@ -1,0 +1,85 @@
+{
+  "aggregations": [
+    {
+      "path": "students",
+      "index_array": [0]
+    },
+    {
+      "path": "tutors",
+      "index_array": [0]
+    },
+    {
+      "path": "groups.students",
+      "index_array": [0,1]
+    }
+  ],
+  "analytics": [
+    {
+      "path": "username",
+      "index_array": []
+    }
+  ],
+  "custom_tests": [
+    {
+      "path": "none"
+    }
+  ],
+  "fs.chunks": [
+    {
+      "path": "none"
+    }
+  ],
+  "fs.files": [
+    {
+      "path": "none"
+    }
+  ],
+  "plagiarism_checks": [
+    {
+      "path": "none"
+    }
+  ],
+  "problem_banks": [
+    {
+      "path": "none"
+    }
+  ],
+  "services": [
+    {
+      "path": "none"
+    }
+  ],
+  "sessions": [
+    {
+      "path": "none"
+    }
+  ],
+  "submissions": [
+    {
+      "path": "username",
+      "index_array": [0]
+    }
+  ],
+  "tasks_cache": [
+    {
+      "path": "none"
+    }
+  ],
+  "user_tasks": [
+    {
+      "path": "username",
+      "index_array": []
+    }
+  ],
+  "users": [
+    {
+      "path": "username",
+      "index_array": []
+    }
+  ],
+  "users_changes": [
+    {
+      "path": "none"
+    }
+  ]
+}

@@ -17,6 +17,7 @@ const _CONTACT_PAGE_PLUGIN_PATH = `${_BASE_PATH}/contact_page/static`;
 const _MANUAL_SCORING_PATH = `${_BASE_PATH}/manual_scoring/static`;
 const _TASK_HINTS_PATH = `${_BASE_PATH}/task_hints/static`;
 const _COURSE_CREATION_PATH = `${_BASE_PATH}/course_creation/static`;
+const _USER_MANAGEMENT_PATH = `${_BASE_PATH}/user_management/static`
 
 /**
  * Read file synchronously.
@@ -351,6 +352,23 @@ function minifyCourseCreationPlugin() {
     minifyJSFiles(jsFiles, jsFilesPath, "course_creation");
 }
 
+function minifyUserManagementPlugin() {
+    const cssFilesPath = _USER_MANAGEMENT_PATH + "/css/";
+    const jsFilesPath = _USER_MANAGEMENT_PATH + "/js/";
+
+    const cssFiles = ["user_management"].map((name) => {
+        return getCssFilePath(cssFilesPath, name);
+    });
+    const jsFiles = ["user_data", "user_list", "confirmation_modal", "user_status", "user_management"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+
+    console.log("Minify 'User Management' plugin static files.");
+
+    minifyCssFiles(cssFiles, cssFilesPath, "user_management");
+    minifyJSFiles(jsFiles, jsFilesPath, "user_management");
+}
+
 minifyUNCodePlugin();
 minifyUNTemplatePlugin();
 minifyStatisticsPlugin();
@@ -365,3 +383,4 @@ minifyTaskEditorialPlugin();
 minifyContactPagePlugin();
 minifyTaskHintsPlugin();
 minifyCourseCreationPlugin();
+minifyUserManagementPlugin();

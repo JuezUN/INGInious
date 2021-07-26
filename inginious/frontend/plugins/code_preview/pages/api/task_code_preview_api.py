@@ -41,7 +41,6 @@ class TaskCodePreviewAPI(APIAuthenticatedPage):
                     with open(os.path.join(task.get_fs().prefix, filename), 'r') as file_preview:
                         return 200, file_preview.read()
                 except yaml.YAMLError as exc:
-                    print(exc)
                     return 200, ""
         except Exception:
             return 200, ""
