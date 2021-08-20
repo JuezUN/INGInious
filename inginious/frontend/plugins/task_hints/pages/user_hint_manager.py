@@ -42,11 +42,13 @@ class UserHintManagerSingleton(object):
                 {"groups": {"$elemMatch": {"students": username}}}
             )
             if users_group:
-                username = users_group["groups"][0]["students"]
+                username_list = users_group["groups"][0]["students"]
+            else:
+                username_list = [username]
         else:
-            username = [username]
+            username_list = [username]
 
-        user_hints = self.get_user_hints(task_id, username)
+        user_hints = self.get_user_hints(task_id, username_list)
         
         unlocked_hints_penalties = {}
         data = {}
@@ -159,23 +161,25 @@ class UserHintManagerSingleton(object):
                 {"groups": {"$elemMatch": {"students": username}}}
             )
             if users_group:
-                username = users_group["groups"][0]['students']
+                username_list = users_group["groups"][0]['students']
+            else:
+                username_list = [username]
         else:
-            username = [username]
+            username_list = [username]
 
         # Check if user hints document already exists in database
-        user_hints = self.get_user_hints(task_id, username)
+        user_hints = self.get_user_hints(task_id, username_list)
 
         # Create the user hints document if doesn't exists
         if user_hints is None:
-            self.insert_default_user_hints(task_id, username)
+            self.insert_default_user_hints(task_id, username_list)
 
         """ Method to add the new unlocked hint in the user unlocked hints """
-        if not self.is_hint_unlocked(task_id, username, task_hints[hint_id]["id"]):
+        if not self.is_hint_unlocked(task_id, username_list, task_hints[hint_id]["id"]):
 
             self._database.user_hints.find_one_and_update({"taskid": task_id, 
                                                            "username": {
-                                                                "$all": username
+                                                                "$all": username_list
                                                             }
                                                          },
                                                           {"$push": {
@@ -185,7 +189,7 @@ class UserHintManagerSingleton(object):
                                                               }
                                                           }
             })
-            self.update_total_penalty(task_id, username)
+            self.update_total_penalty(task_id, username_list)
 
         return 200, ""
 
@@ -391,6 +395,18 @@ class UserHintManagerSingleton(object):
                                                     "$size": 0
                                                 }
                                             })
+
+    def update_course_hints_mode(self, course):
+
+        course_id = course.get_id()
+        tasks = course.get_tasks()
+
+        for task_id, task in tasks.items():
+            
+            task_hints = task._data.get("task_hints", {})
+            task_submission_group_mode = task._data.get('groups', False)
+
+            self.on_change_task_submission_mode(course_id, task_id, task_submission_group_mode, task_hints)
 
     def parse_rst_content(self, content):
 

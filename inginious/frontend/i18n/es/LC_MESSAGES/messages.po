@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-07-19 23:45-0500\n"
+"POT-Creation-Date: 2021-08-20 08:39-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 #: inginious/frontend/accessible_time.py:58
 msgid "The accessibility end date must be greater than the start date."
@@ -338,35 +338,35 @@ msgstr "<p>Fue aplicada una penalización de <b>{penalty}%</b>.</p>"
 msgid "[Submission #{submissionid}]"
 msgstr "[Envío #{submissionid}]"
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:184
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:189
 msgid "Classroom with id {} not found."
 msgstr "El identificador del grupo {} no existe."
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:184
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:189
 msgid "Team with id {} not found."
 msgstr "El equipo con el identificador {} no existe."
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:187
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:192
 #: inginious/frontend/pages/course_admin/classroom_edit.py:150
 msgid "You can't remove your default classroom."
 msgstr "No se puede suprimir el grupo inicial (creado por defecto)."
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:196
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:235
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:201
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:240
 #: inginious/frontend/pages/course_admin/classroom_edit.py:183
 msgid "Classroom updated."
 msgstr "Actualización del grupo."
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:229
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:234
 #: inginious/frontend/pages/course_admin/classroom_edit.py:177
 msgid "Changes couldn't be applied for following students :"
 msgstr "La actualización no se llevó a cabo para los siguientes estudiantes:"
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:235
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:240
 msgid "Teams updated."
 msgstr "Los equipos fueron actualizados."
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:237
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:244
 #: inginious/frontend/pages/course_admin/classroom_edit.py:187
 msgid "An error occurred while parsing the data."
 msgstr "Un error ha ocurrido durante la validación de la sintaxis."
