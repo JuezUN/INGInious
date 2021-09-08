@@ -85,7 +85,7 @@ class RegistrationPage(INGIniousPage):
             msg = _("Passwords don't match !")
 
         if not error:
-            existing_user = self.database.users.find_one({"$or": [{"username": data["username"]}, {"email": data["email"]}]})
+            existing_user = self.database.users.find_one({"$or": [{"username": data["username"]}, {"email": {"$regex": data["email"], "$options": "i"}}]})
             if existing_user is not None:
                 error = True
                 if existing_user["username"] == data["username"]:

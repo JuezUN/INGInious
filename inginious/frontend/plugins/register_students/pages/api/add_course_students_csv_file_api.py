@@ -62,7 +62,7 @@ class AddCourseStudentsCsvFile(AdminApi):
                 map(lambda x: "<br>  - {} - {}".format(x["username"], x["email"]), users_failed))
             failed_students_message = _(
                 """<br><br>The next students were not registered because of an unexpected error, probably the user 
-                is already registered with another username or the username is already taken:
+                is already registered with another username, the username is already taken or the email adress is already in use:
                 {}""".format(html_users_failed))
             message += failed_students_message
 
@@ -116,8 +116,9 @@ class AddCourseStudentsCsvFile(AdminApi):
         :param data: Dict containing the user data
         :return: True if succeeded the register. If user already exists returns False.
         """
+        email_insensitive_expresion = {"$regex": data["email"], "$options": "i"}
         existing_user = self.database.users.find_one(
-            {"$or": [{"username": data["username"]}, {"email": data["email"]}]})
+            {"$or": [{"username": data["username"]}, {"email": email_insensitive_expresion}]})
         if existing_user is not None:
             return False, None, False
         password = data["password"]
