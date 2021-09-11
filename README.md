@@ -81,7 +81,7 @@ Project page: <https://juezun.github.io/>
 ## Publications
 
 - F. Restrepo-Calle, J.J. Ramírez-Echeverry, F.A. Gonzalez. "[UNCode: Interactive system for learning and automatic 
-evaluation of computer programming skills.][uncode_publication_url]". In Proceedings of the 10th annual International 
+evaluation of computer programming skills.][uncode_publication_2018_url]". In Proceedings of the 10th annual International 
 Conference on Education  and New Learning Technologies EDULEARN 2018. Palma de Mallorca, Spain, 2nd-4th July 2018, 
 pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
 
@@ -103,6 +103,22 @@ pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
     }
 ```
 
+- F. Restrepo-Calle, J.J. Ramírez-Echeverry, F.A. González, "[Using an Interactive Software Tool for the Formative and Summative Evaluation in a Computer Programming Course: an Experience Report][uncode_publication_2020_url]," Glob. J. Eng. Educ., vol. 22, no. 3, pp. 174–185, 2020.
+
+```
+    @article{Restrepo-Calle2020,
+        author = {Restrepo-Calle, Felipe and Ram{\'{i}}rez-Echeverry, Jhon Jairo and Gonz{\'{a}}lez, Fabio A},
+        journal = {Global Journal of Engineering Education},
+        keywords = {automatic assessment,computer programming,computer science education,formative evaluation,summative evaluation},
+        number = {3},
+        pages = {174--185},
+        title = {{Using an Interactive Software Tool for the Formative and Summative Evaluation in a Computer Programming Course: an Experience Report}},
+        volume = {22},
+        year = {2020}
+    }
+```
+
+
 [uncode_url]: https://uncode.unal.edu.co/courselist
 [license_url]: https://github.com/JuezUN/INGInious/blob/master/LICENSE
 [contributors_url]: https://github.com/JuezUN/INGInious/graphs/contributors
@@ -121,4 +137,5 @@ pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
 [install_locally_url]: https://inginious.readthedocs.io/en/v0.5/install_doc/installation.html
 [project_url]: https://github.com/orgs/JuezUN/projects/3
 [contributing_url]: https://github.com/JuezUN/INGInious/blob/master/CONTRIBUTING.md
-[uncode_publication_url]: https://library.iated.org/view/RESTREPOCALLE2018UNC
+[uncode_publication_2018_url]: https://library.iated.org/view/RESTREPOCALLE2018UNC
+[uncode_publication_2020_url]: http://www.wiete.com.au/journals/GJEE/Publish/vol22no3/06-Echeverry-J.pdf
