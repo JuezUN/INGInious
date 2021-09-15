@@ -116,9 +116,9 @@ class AddCourseStudentsCsvFile(AdminApi):
         :param data: Dict containing the user data
         :return: True if succeeded the register. If user already exists returns False.
         """
-        email_insensitive_expresion = {"$regex": data["email"], "$options": "i"}
+        regex_user_email = {"$regex": data["email"], "$options": "i"}
         existing_user = self.database.users.find_one(
-            {"$or": [{"username": data["username"]}, {"email": email_insensitive_expresion}]})
+            {"$or": [{"username": data["username"]}, {"email": regex_user_email}]})
         if existing_user is not None:
             return False, None, False
         password = data["password"]

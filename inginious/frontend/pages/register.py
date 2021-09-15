@@ -85,7 +85,8 @@ class RegistrationPage(INGIniousPage):
             msg = _("Passwords don't match !")
 
         if not error:
-            existing_user = self.database.users.find_one({"$or": [{"username": data["username"]}, {"email": {"$regex": data["email"], "$options": "i"}}]})
+            regex_user_email = {"$regex": data["email"], "$options": "i"}
+            existing_user = self.database.users.find_one({"$or": [{"username": data["username"]}, {"email": regex_user_email}]})
             if existing_user is not None:
                 error = True
                 if existing_user["username"] == data["username"]:
@@ -137,7 +138,8 @@ You can check the data policy here:
 
         if not error:
             reset_hash = hashlib.sha512(str(random.getrandbits(256)).encode("utf-8")).hexdigest()
-            user = self.database.users.find_one_and_update({"email": data["recovery_email"]}, {"$set": {"reset": reset_hash}})
+            regex_recovery_email = {"$regex": data["recovery_email"], "$options": "i"}
+            user = self.database.users.find_one_and_update({"email": regex_recovery_email}, {"$set": {"reset": reset_hash}})
             if user is None:
                 error = True
                 msg = _("This email address was not found in database.")
