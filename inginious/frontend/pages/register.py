@@ -54,7 +54,7 @@ class RegistrationPage(INGIniousPage):
         user = self.database.users.find_one_and_update({"activate": data["activate"]}, {"$unset": {"activate": True}})
         if user is None:
             error = True
-            msg = _("Invalid activation hash.")
+            msg = _("The activation hash is invalid. Your user account may already be activated.")
         else:
             msg = _("You are now activated. You can proceed to login.")
 
