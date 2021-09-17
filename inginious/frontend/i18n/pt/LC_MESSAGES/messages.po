@@ -116,8 +116,10 @@ msgid "Couldn't validate LTI request"
 msgstr "Não foi possível validar a solicitação de LTI"
 
 #: inginious/frontend/pages/register.py:57
-msgid "Invalid activation hash."
-msgstr "Hash de ativação inválido."
+msgid ""
+"The activation hash is invalid. Your user account may already be "
+"activated."
+msgstr ""
 
 #: inginious/frontend/pages/register.py:59
 msgid "You are now activated. You can proceed to login."
