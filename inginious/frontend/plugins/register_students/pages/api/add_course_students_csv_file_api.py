@@ -62,8 +62,8 @@ class AddCourseStudentsCsvFile(AdminApi):
                 map(lambda x: "<br>  - {} - {}".format(x["username"], x["email"]), users_failed))
             failed_students_message = _(
                 """<br><br>The next students were not registered because of an unexpected error, probably the user 
-                is already registered with another username, the username is already taken or the email adress is already in use:
-                {}""".format(html_users_failed))
+                is already registered with another username, the username is already taken or the email address is already in use:
+                {}""").format(html_users_failed)
             message += failed_students_message
 
         return 200, {"status": "success", "text": message}

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-09-16 17:12-0500\n"
+"POT-Creation-Date: 2021-09-17 15:05-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -2747,12 +2747,12 @@ msgid ""
 "students were registered."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:66
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:63
 msgid ""
 "<br><br>The next students were not registered because of an unexpected "
 "error, probably the user \n"
 "                is already registered with another username, the username"
-" is already taken or the email adress is already in use:\n"
+" is already taken or the email address is already in use:\n"
 "                {}"
 msgstr ""
 
