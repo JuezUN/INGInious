@@ -82,7 +82,8 @@ function updateCodePreviewLanguages() {
  * In case a template file is associated to the language, it sets the code to Codemirror.
  */
 function loadCodePreviewToCodemirror() {
-    $.get("/api/code_preview/", {
+    const url = '/' + ($('form#task').attr("action").split('/')[1]) + "/api/code_preview/";
+    $.get(url, {
         task_id: getTaskId(),
         course_id: getCourseId(),
         language: getInginiousLanguageForProblemId(getProblemId())

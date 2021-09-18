@@ -20,7 +20,8 @@ function hideHintAlert(alert) {
 
 /* Get the left hint content for the unlocked hints*/
 function loadHintsOnModal() {
-    $.get("/api/user_hints_api/", {
+    const url = '/' + ($('form#task').attr("action").split('/')[1]) + "/api/user_hints_api/";
+    $.get(url, {
         course_id: getCourseId(),
         task_id: getTaskId()
     }).done(function (result) {
@@ -115,8 +116,9 @@ function changeHint(key) {
 
 /* Add the hint on the student unlocked hints list*/
 function unlockNewHint(selected_hint_id) {
+    const url = '/' + ($('form#task').attr("action").split('/')[1]) + "/api/user_hints_api/";
     $.ajax({
-        url: "/api/user_hints_api/",
+        url: url,
         method: "POST",
         data: {
             course_id: getCourseId(),
@@ -132,7 +134,8 @@ function unlockNewHint(selected_hint_id) {
 
 /* Send analytics when a user unlock a hint */
 function sendUseTaskHintsAnalytics() {
-    $.post("/api/analytics/", {
+    const url = '/' + ($('form#task').attr("action").split('/')[1]) + "/api/analytics/";
+    $.post(url, {
         service: {
             key: "task_hints_unlock",
             name: "Task hints - Unlocked by students"
