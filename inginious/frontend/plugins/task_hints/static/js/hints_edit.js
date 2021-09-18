@@ -1,4 +1,5 @@
 let update_hint_id = null;
+let task_submission_mode = null;
 let timer;
 
 /* Show a message into an alert */
@@ -155,9 +156,30 @@ function eraseModalInputs() {
 
 const original_studio_submit = studio_submit;
 studio_submit = () => {
+    
+    task_submssion_mode();
     original_studio_submit();
     getTaskHintsId();
+
+    check_submission_mode_change();
 };
+
+function task_submssion_mode(){
+    $.get("/api/hints_mode_api/", {
+        course_id: getCourseId(),
+        task_id: getTaskId()
+    }).done(function (result) {
+        task_submission_mode = result;
+    })
+}
+
+function check_submission_mode_change(){
+    $.post("/api/hints_mode_api/", {
+        course_id: getCourseId(),
+        task_id: getTaskId(),
+        last_submission_mode: task_submission_mode
+    })
+}
 
 function getTaskHintsId() {
     $.get("/api/edit_hints_api/", {

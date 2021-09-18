@@ -71,6 +71,12 @@
       "index_array": []
     }
   ],
+  "user_hints": [
+    {
+      "path": "username",
+      "index_array": [0]
+    }
+  ],
   "users": [
     {
       "path": "username",
