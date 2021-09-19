@@ -307,35 +307,35 @@ msgstr ""
 msgid "[Submission #{submissionid}]"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:184
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:189
 msgid "Classroom with id {} not found."
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:184
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:189
 msgid "Team with id {} not found."
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:187
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:192
 #: inginious/frontend/pages/course_admin/classroom_edit.py:150
 msgid "You can't remove your default classroom."
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:196
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:235
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:201
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:240
 #: inginious/frontend/pages/course_admin/classroom_edit.py:183
 msgid "Classroom updated."
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:229
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:234
 #: inginious/frontend/pages/course_admin/classroom_edit.py:177
 msgid "Changes couldn't be applied for following students :"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:235
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:240
 msgid "Teams updated."
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:237
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:244
 #: inginious/frontend/pages/course_admin/classroom_edit.py:187
 msgid "An error occurred while parsing the data."
 msgstr ""
@@ -3033,24 +3033,28 @@ msgstr ""
 msgid "Hints"
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:67
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:68
 msgid "Some hints in task have empty content fields."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:70
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:71
 msgid "Some hints in task have empty title fields."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:77
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:78
 msgid "Penalty for hints must be between 0.0% and 100.0%."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:81
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:82
 msgid "Each hint penalty must be a float."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:93
-msgid "Hints cannot be added for group tasks mode"
+#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:35
+msgid "Task does not exist."
+msgstr ""
+
+#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:66
+msgid "There was a problem to update submission mode on users hints."
 msgstr ""
 
 #: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:32
@@ -3078,7 +3082,7 @@ msgid ""
 "exist in the database."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:85
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:84
 msgid "Hint unlocked successfully."
 msgstr ""
 

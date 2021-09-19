@@ -13,10 +13,15 @@ from pymongo import ReturnDocument
 
 from inginious.common import custom_yaml
 from inginious.frontend.pages.course_admin.utils import INGIniousAdminPage
-
+from inginious.frontend.plugins.task_hints.pages.user_hint_manager import UserHintManagerSingleton
 
 class CourseEditAggregation(INGIniousAdminPage):
     """ Edit a task """
+
+    @property
+    def user_hint_manager(self) -> UserHintManagerSingleton:
+        """ Returns user hint manager singleton """
+        return UserHintManagerSingleton.get_instance()
 
     def get_user_lists(self, course, aggregationid=''):
         """ Get the available student and tutor lists for aggregation edition"""
@@ -233,6 +238,8 @@ class CourseEditAggregation(INGIniousAdminPage):
                 error = True
             elif not error:
                 msg = _("Classroom updated.") if course.use_classrooms() else _("Teams updated.")
+                self.user_hint_manager.update_course_hints_mode(course)
+
         except:
             msg = _('An error occurred while parsing the data.')
             error = True

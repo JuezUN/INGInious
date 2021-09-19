@@ -43,13 +43,18 @@ def get_user_total_penalty(taskid, username, database):
     when a submission is sent.
 
     :param taskid: ID of the task
-    :param username: Username of the student that made the submission
+    :param username: List of the student usernames that are associated to the submission
     :param database: General database object to find unlocked user hints in 'user_hints' collection
     :return: 'penalty' to be applied on the final grade of the submission
     """
     penalty = 0.0
     if username and taskid:
-        data = database.user_hints.find_one({"taskid": taskid, "username": username})
+        data = database.user_hints.find_one({
+            "taskid": taskid, 
+            "username": {
+                "$all": username
+            }
+        })
         if data:
             penalty = data["total_penalty"]
 

@@ -342,35 +342,35 @@ msgstr "<p>Fue aplicada una penalización de <b>{penalty}%</b>.</p>"
 msgid "[Submission #{submissionid}]"
 msgstr "[Envío #{submissionid}]"
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:184
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:189
 msgid "Classroom with id {} not found."
 msgstr "El identificador del grupo {} no existe."
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:184
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:189
 msgid "Team with id {} not found."
 msgstr "El equipo con el identificador {} no existe."
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:187
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:192
 #: inginious/frontend/pages/course_admin/classroom_edit.py:150
 msgid "You can't remove your default classroom."
 msgstr "No se puede suprimir el grupo inicial (creado por defecto)."
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:196
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:235
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:201
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:240
 #: inginious/frontend/pages/course_admin/classroom_edit.py:183
 msgid "Classroom updated."
 msgstr "Actualización del grupo."
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:229
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:234
 #: inginious/frontend/pages/course_admin/classroom_edit.py:177
 msgid "Changes couldn't be applied for following students :"
 msgstr "La actualización no se llevó a cabo para los siguientes estudiantes:"
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:235
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:240
 msgid "Teams updated."
 msgstr "Los equipos fueron actualizados."
 
-#: inginious/frontend/pages/course_admin/aggregation_edit.py:237
+#: inginious/frontend/pages/course_admin/aggregation_edit.py:244
 #: inginious/frontend/pages/course_admin/classroom_edit.py:187
 msgid "An error occurred while parsing the data."
 msgstr "Un error ha ocurrido durante la validación de la sintaxis."
@@ -3395,25 +3395,31 @@ msgstr "Sin lenguaje"
 msgid "Hints"
 msgstr "Pistas"
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:67
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:68
 msgid "Some hints in task have empty content fields."
 msgstr "Hay pistas sin contenido en la tarea."
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:70
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:71
 msgid "Some hints in task have empty title fields."
 msgstr "Hay pistas sin títulos en la tarea."
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:77
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:78
 msgid "Penalty for hints must be between 0.0% and 100.0%."
 msgstr "La penalización de las pistas debe estar entre 0.0% y 100%."
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:81
+#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:82
 msgid "Each hint penalty must be a float."
 msgstr "La penalización de las pistas debe ser un número decimal."
 
-#: inginious/frontend/plugins/task_hints/pages/hints_edit.py:93
-msgid "Hints cannot be added for group tasks mode"
-msgstr "No se pueden agregar pistas para tareas grupales"
+#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:35
+msgid "Task does not exist."
+msgstr "La tarea no existe."
+
+#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:66
+msgid "There was a problem to update submission mode on users hints."
+msgstr ""
+"Ocurrio un problema al actualizar el modo de la tarea en las pistas de "
+"los usuarios."
 
 #: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:32
 #: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:67
@@ -3423,7 +3429,7 @@ msgstr "El curso no existe o el usuario no tiene permisos."
 #: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:37
 #: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:72
 msgid "The task does not exist in the course."
-msgstr "Esta tarea no existe en el curso"
+msgstr "Esta tarea no existe en el curso."
 
 #: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:40
 #: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:75
@@ -3442,7 +3448,7 @@ msgstr ""
 "Un error ha ocurrido al actualizar la pista. La pista no existe en la "
 "base de datos."
 
-#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:85
+#: inginious/frontend/plugins/task_hints/pages/api/user_hints_api.py:84
 msgid "Hint unlocked successfully."
 msgstr "La pista fue desbloqueada exitosamente"
 
