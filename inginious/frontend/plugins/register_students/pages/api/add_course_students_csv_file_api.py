@@ -62,8 +62,8 @@ class AddCourseStudentsCsvFile(AdminApi):
                 map(lambda x: "<br>  - {} - {}".format(x["username"], x["email"]), users_failed))
             failed_students_message = _(
                 """<br><br>The next students were not registered because of an unexpected error, probably the user 
-                is already registered with another username or the username is already taken:
-                {}""".format(html_users_failed))
+                is already registered with another username, the username is already taken or the email address is already in use:
+                {}""").format(html_users_failed)
             message += failed_students_message
 
         return 200, {"status": "success", "text": message}
@@ -107,7 +107,18 @@ class AddCourseStudentsCsvFile(AdminApi):
 
         user = self.database.users.find_one({"username": data["username"]})
 
-        return (not was_registered and user is None) or (user is not None and user["email"] != data["email"]) or failed
+        return (not was_registered and user is None) or (user is not None and not self._is_user_email_equal(user["email"], data["email"])) or failed
+
+    def _is_user_email_equal(self, user_email, data_email):
+        """
+        Check if user email in database, is the same email given for user registration. Compare emails in lower case
+        to avoid case sensitive.
+        """
+
+        if user_email.lower() == data_email.lower():
+            return True
+
+        return False
 
     def _register_student(self, data, course, email_language):
         """
@@ -116,8 +127,9 @@ class AddCourseStudentsCsvFile(AdminApi):
         :param data: Dict containing the user data
         :return: True if succeeded the register. If user already exists returns False.
         """
+        regex_user_email = {"$regex": data["email"], "$options": "i"}
         existing_user = self.database.users.find_one(
-            {"$or": [{"username": data["username"]}, {"email": data["email"]}]})
+            {"$or": [{"username": data["username"]}, {"email": regex_user_email}]})
         if existing_user is not None:
             return False, None, False
         password = data["password"]
