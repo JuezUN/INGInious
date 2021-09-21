@@ -107,7 +107,18 @@ class AddCourseStudentsCsvFile(AdminApi):
 
         user = self.database.users.find_one({"username": data["username"]})
 
-        return (not was_registered and user is None) or (user is not None and user["email"] != data["email"]) or failed
+        return (not was_registered and user is None) or (user is not None and not self._is_user_email_equal(user["email"], data["email"])) or failed
+
+    def _is_user_email_equal(self, user_email, data_email):
+        """
+        Check if user email in database, is the same email given for user registration. Compare emails in lower case
+        to avoid case sensitive.
+        """
+
+        if user_email.lower() == data_email.lower():
+            return True
+
+        return False
 
     def _register_student(self, data, course, email_language):
         """
