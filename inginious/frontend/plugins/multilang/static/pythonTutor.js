@@ -107,7 +107,11 @@ var PythonTutor = (function () {
 
 function visualizeCode(language, problemId){
     var pythonTutor = new PythonTutor(problemId, language);
-    $.post('/api/analytics/', {
+    let url = "/api/analytics/";
+    if(is_lti()){
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url; 
+    }
+    $.post(url, {
         service: {
             key: "python_tutor",
             name: "Python tutor"

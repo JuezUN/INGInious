@@ -20,7 +20,10 @@ function hideHintAlert(alert) {
 
 /* Get the left hint content for the unlocked hints*/
 function loadHintsOnModal() {
-    const url = '/' + ($('form#task').attr("action").split('/')[1]) + "/api/user_hints_api/";
+    let url = "/api/user_hints_api/";
+    if(is_lti()){
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url; 
+    } 
     $.get(url, {
         course_id: getCourseId(),
         task_id: getTaskId()
@@ -116,7 +119,10 @@ function changeHint(key) {
 
 /* Add the hint on the student unlocked hints list*/
 function unlockNewHint(selected_hint_id) {
-    const url = '/' + ($('form#task').attr("action").split('/')[1]) + "/api/user_hints_api/";
+    let url = "/api/user_hints_api/";
+    if(is_lti()){
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url;
+    }
     $.ajax({
         url: url,
         method: "POST",
@@ -134,7 +140,10 @@ function unlockNewHint(selected_hint_id) {
 
 /* Send analytics when a user unlock a hint */
 function sendUseTaskHintsAnalytics() {
-    const url = '/' + ($('form#task').attr("action").split('/')[1]) + "/api/analytics/";
+    let url = "/api/analytics/";
+    if(is_lti()){
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url;
+    }
     $.post(url, {
         service: {
             key: "task_hints_unlock",
