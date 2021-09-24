@@ -69,7 +69,7 @@ function waitForCustomTest(customTestId) {
     setTimeout(() => {
         let url = "/api/custom_input_notebook/";
         if(is_lti()){
-            url = "/" + ($("form#task").attr("action").slice("/")[1]) + url;
+            url = "/" + ($("form#task").attr("action").split("/")[1]) + url;
         }
         $.get(url, {"custom_test_id": customTestId})
             .done((data) => {
@@ -113,7 +113,7 @@ function apiTestNotebookRequest(inputId, taskForm) {
     let url = "/api/custom_input_notebook/";
 
     if(is_lti()){
-        url = "/" + ($("form#task").attr("action").slice("/")[1]) + url
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url
     }
 
     $.ajax({
@@ -158,7 +158,7 @@ function apiCustomInputRequest(inputId, taskform) {
     let url = "/api/custom_input/";
 
     if(is_lti()){
-        url = "/" + ($("form#task").attr("action").slice("/")[1]) + url
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url
     }
 
     const runCustomInputCallback = function (data) {
@@ -173,6 +173,8 @@ function apiCustomInputRequest(inputId, taskform) {
     customTestOutputArea.html("Running...");
 
     sendCustomInputAnalytics();
+
+    console.log(url);
 
     $.ajax({
         url: url,

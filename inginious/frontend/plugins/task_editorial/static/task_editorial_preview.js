@@ -49,7 +49,7 @@ function sendAnalyticsTaskTutorial(){
 function sendAnalyticsTaskSolution(){
     let url = "/api/analytics/";
     if(is_lti()){
-        url = "/" + ($("form#task").attr("action").slice("/")[1]) + url;
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url;
     }
     $.post(url, {
         service: {
