@@ -294,12 +294,20 @@ class CourseEditTask(INGIniousAdminPage):
         except:
             return json.dumps({"status": "error", "message": _("Error while reading course's information")})
 
+        orig_data = {}
         # Get original data
         try:
             orig_data = self.task_factory.get_task_descriptor_content(courseid, taskid)
-            data["order"] = orig_data["order"]
         except:
             pass
+
+        if orig_data and orig_data["order"]:
+            data["order"] = orig_data["order"]
+        else:
+            course_tasks = self.task_factory.get_all_tasks(course)
+            number_of_tasks = len(course_tasks)
+            data["order"] = number_of_tasks
+
 
         task_fs = self.task_factory.get_task_fs(courseid, taskid)
         task_fs.ensure_exists()
