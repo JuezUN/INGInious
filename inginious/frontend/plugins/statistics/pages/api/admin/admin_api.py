@@ -44,10 +44,7 @@ class AdminApi(api.APIAuthenticatedPage):
         """
 
         course_tasks = course.get_tasks()
-        sorted_tasks = sorted(course_tasks.values(), key=lambda task: task.get_id())
-
-        for task in sorted_tasks:
-            print(task.get_id())
+        sorted_tasks = sorted(course_tasks.values(), key=lambda task: (task.get_order(), task.get_id()))
             
         def generate_task_element(task):
             element = {}
