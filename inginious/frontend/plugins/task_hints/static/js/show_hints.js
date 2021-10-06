@@ -120,6 +120,10 @@ function changeHint(key) {
 /* Add the hint on the student unlocked hints list*/
 function unlockNewHint(selected_hint_id) {
     let url = "/api/user_hints_api/";
+
+    /* If task is lti, set the session id from task page in api url of the plugin.
+       All api calls in task view that requieres the user's session must add this validation.
+    */
     if(is_lti()){
         url = "/" + ($("form#task").attr("action").split("/")[1]) + url;
     }
@@ -141,6 +145,7 @@ function unlockNewHint(selected_hint_id) {
 /* Send analytics when a user unlock a hint */
 function sendUseTaskHintsAnalytics() {
     let url = "/api/analytics/";
+    //Verify if is a lti task, and set the actual session id from task page (Do that for all analytics calls in task view)
     if(is_lti()){
         url = "/" + ($("form#task").attr("action").split("/")[1]) + url;
     }

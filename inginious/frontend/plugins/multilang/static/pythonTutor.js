@@ -108,6 +108,8 @@ var PythonTutor = (function () {
 function visualizeCode(language, problemId){
     var pythonTutor = new PythonTutor(problemId, language);
     let url = "/api/analytics/";
+
+    //Verify if is a lti task, and set the actual session id from task page (Do that for all analytics calls in task view)
     if(is_lti()){
         url = "/" + ($("form#task").attr("action").split("/")[1]) + url; 
     }

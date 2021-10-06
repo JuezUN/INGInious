@@ -68,6 +68,9 @@ function displayCustomInputResults(data, customTestOutputArea = null, placeholde
 function waitForCustomTest(customTestId) {
     setTimeout(() => {
         let url = "/api/custom_input_notebook/";
+        /* If task is lti, set the session id from task page in api url of the plugin.
+           All api calls in task view that requieres the user's session must add this validation.
+        */
         if(is_lti()){
             url = "/" + ($("form#task").attr("action").split("/")[1]) + url;
         }
@@ -112,6 +115,9 @@ function apiTestNotebookRequest(inputId, taskForm) {
 
     let url = "/api/custom_input_notebook/";
 
+    /* If task is lti, set the session id from task page in api url of the plugin.
+       All api calls in task view that requieres the user's session must add this validation.
+    */
     if(is_lti()){
         url = "/" + ($("form#task").attr("action").split("/")[1]) + url
     }
@@ -157,6 +163,9 @@ function apiCustomInputRequest(inputId, taskform) {
 
     let url = "/api/custom_input/";
 
+    /* If task is lti, set the session id from task page in api url of the plugin.
+       All api calls in task view that requieres the user's session must add this validation.
+    */
     if(is_lti()){
         url = "/" + ($("form#task").attr("action").split("/")[1]) + url
     }
@@ -173,8 +182,6 @@ function apiCustomInputRequest(inputId, taskform) {
     customTestOutputArea.html("Running...");
 
     sendCustomInputAnalytics();
-
-    console.log(url);
 
     $.ajax({
         url: url,
@@ -212,6 +219,7 @@ function runCustomTest(inputId, environment = "multilang") {
 
 function sendCustomInputAnalytics() {
     let url = "/api/analytics/";
+    //Verify if is a lti task, and set the actual session id from task page (Do that for all analytics calls in task view)
     if(is_lti()){
         url = "/" + ($("form#task").attr("action").split("/")[1]) + url; 
     }
@@ -226,6 +234,7 @@ function sendCustomInputAnalytics() {
 
 function sendTestNotebookAnalytics() {
     let url = "/api/analytics/";
+    //Verify if is a lti task, and set the actual session id from task page (Do that for all analytics calls in task view)
     if(is_lti()){
         url = "/" + ($("form#task").attr("action").split("/")[1]) + url; 
     }
