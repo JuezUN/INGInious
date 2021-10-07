@@ -83,6 +83,10 @@ function updateCodePreviewLanguages() {
  */
 function loadCodePreviewToCodemirror() {
     let url = "/api/code_preview/";
+
+    /* If task is lti, set the session id from task page in api url of the plugin.
+       All api calls in task view that requires the user's session must add this validation.
+    */
     if(is_lti()){
         url = "/" + ($("form#task").attr("action").split("/")[1]) + url;
     }
