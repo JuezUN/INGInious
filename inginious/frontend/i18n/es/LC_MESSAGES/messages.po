@@ -135,37 +135,37 @@ msgid "Invalid username format."
 msgstr "El formato del nombre de usuario es invalido."
 
 #: inginious/frontend/pages/register.py:79
-#: inginious/frontend/pages/register.py:136
+#: inginious/frontend/pages/register.py:137
 msgid "Invalid email format."
 msgstr "El formato del correo electrónico es inválido."
 
 #: inginious/frontend/pages/preferences/profile.py:47
 #: inginious/frontend/pages/register.py:82
-#: inginious/frontend/pages/register.py:166
+#: inginious/frontend/pages/register.py:168
 msgid "Password too short."
 msgstr "La contraseña no contiene el mínimo de caracteres."
 
 #: inginious/frontend/pages/preferences/profile.py:51
 #: inginious/frontend/pages/register.py:85
-#: inginious/frontend/pages/register.py:169
+#: inginious/frontend/pages/register.py:171
 msgid "Passwords don't match !"
 msgstr "¡Las contraseñas no coinciden!"
 
-#: inginious/frontend/pages/register.py:92
+#: inginious/frontend/pages/register.py:93
 msgid "This username is already taken !"
 msgstr "¡El nombre de usuario ya existe!"
 
-#: inginious/frontend/pages/register.py:94
+#: inginious/frontend/pages/register.py:95
 msgid "This email address is already in use !"
 msgstr "¡La dirección de correo electrónico ya existe!"
 
-#: inginious/frontend/pages/register.py:106
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:149
+#: inginious/frontend/pages/register.py:107
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:161
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr "Bienvenido a UNCode"
 
-#: inginious/frontend/pages/register.py:107
+#: inginious/frontend/pages/register.py:108
 msgid ""
 "Welcome on UNCode !\n"
 "\n"
@@ -175,7 +175,7 @@ msgstr ""
 "\n"
 "Para activar tu cuenta, haz clic en el siguiente enlace:\n"
 
-#: inginious/frontend/pages/register.py:112
+#: inginious/frontend/pages/register.py:113
 msgid ""
 "\n"
 "                                 \n"
@@ -185,7 +185,7 @@ msgstr ""
 "                                 \n"
 "Puedes consultar la política de tratamiento de datos aquí:\n"
 
-#: inginious/frontend/pages/register.py:117
+#: inginious/frontend/pages/register.py:118
 msgid ""
 "You are successfully registered. An email has been sent to you for "
 "activation."
@@ -193,7 +193,7 @@ msgstr ""
 "Ahora estas registrado. Un correo electrónico ha sido enviado para "
 "activar tu cuenta."
 
-#: inginious/frontend/pages/register.py:120
+#: inginious/frontend/pages/register.py:121
 msgid ""
 "Something went wrong while sending you activation email. Please contact "
 "the administrator."
@@ -201,15 +201,15 @@ msgstr ""
 "Ocurrió un error durante el envío del correo de activación de tu cuenta. "
 "Contacta al administrador."
 
-#: inginious/frontend/pages/register.py:143
+#: inginious/frontend/pages/register.py:145
 msgid "This email address was not found in database."
 msgstr "El correo electrónico no se encontró en la base de datos."
 
-#: inginious/frontend/pages/register.py:146
+#: inginious/frontend/pages/register.py:148
 msgid "UNCode password recovery"
 msgstr "Recuperación de la contraseña de UNCode"
 
-#: inginious/frontend/pages/register.py:147
+#: inginious/frontend/pages/register.py:149
 msgid ""
 "Dear {realname},\n"
 "\n"
@@ -221,11 +221,11 @@ msgstr ""
 "Ha realizado una petición para actualizar su contraseña en UNCode. Si "
 "usted realizó esta petición, por favor diríjase al siguiente enlace:\n"
 
-#: inginious/frontend/pages/register.py:151
+#: inginious/frontend/pages/register.py:153
 msgid "An email has been sent to you to reset your password."
 msgstr "Un correo electrónico ha sido enviado para cambiar tu contraseña."
 
-#: inginious/frontend/pages/register.py:154
+#: inginious/frontend/pages/register.py:156
 msgid ""
 "Something went wrong while sending you reset email. Please contact the "
 "administrator."
@@ -233,11 +233,11 @@ msgstr ""
 "Ocurrió un error durante el envío del correo para cambiar tu contraseña. "
 "Contacta al administrador."
 
-#: inginious/frontend/pages/register.py:178
+#: inginious/frontend/pages/register.py:180
 msgid "Invalid reset hash."
 msgstr "El cambio del hash es inválido."
 
-#: inginious/frontend/pages/register.py:180
+#: inginious/frontend/pages/register.py:182
 msgid "Your password has been successfully changed."
 msgstr "La contraseña ha sido actualizada con éxito."
 
@@ -3073,18 +3073,19 @@ msgstr ""
 " segundo plano, por favor espere un tiempo y vuelva a revisar que todos "
 "los             estudiantes hayan sido registrados."
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:66
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:63
 msgid ""
 "<br><br>The next students were not registered because of an unexpected "
 "error, probably the user \n"
-"                is already registered with another username or the "
-"username is already taken:\n"
+"                is already registered with another username, the username"
+" is already taken or the email address is already in use:\n"
 "                {}"
 msgstr ""
 "<br><br>Los siguientes estudiantes no fueron registrados debido a un "
 "error inesperado, es probable que el usuario \n"
-"                ya está registrado con otro nombre de usuario o el nombre"
-" de usuario ya ha sido tomado: \n"
+"                ya esté registrado con otro nombre de usuario, que el "
+"nombre de usuario ya se haya tomado, o que la dirección de correo ya "
+"exista: \n"
 "                {}"
 
 #: inginious/frontend/plugins/register_students/static/email_template.html:5
