@@ -67,7 +67,14 @@ function displayCustomInputResults(data, customTestOutputArea = null, placeholde
 
 function waitForCustomTest(customTestId) {
     setTimeout(() => {
-        $.get("/api/custom_input_notebook/", {"custom_test_id": customTestId})
+        let url = "/api/custom_input_notebook/";
+        /* If task is lti, set the session id from task page in api url of the plugin.
+           All api calls in task view that requires the user's session must add this validation.
+        */
+        if(is_lti()){
+            url = "/" + ($("form#task").attr("action").split("/")[1]) + url;
+        }
+        $.get(url, {"custom_test_id": customTestId})
             .done((data) => {
                 data = JSON.parse(data);
                 if ("status" in data && data["status"] === "waiting") {
@@ -106,8 +113,17 @@ function apiTestNotebookRequest(inputId, taskForm) {
     blurTaskForm();
     sendTestNotebookAnalytics();
 
+    let url = "/api/custom_input_notebook/";
+
+    /* If task is lti, set the session id from task page in api url of the plugin.
+       All api calls in task view that requires the user's session must add this validation.
+    */
+    if(is_lti()){
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url
+    }
+
     $.ajax({
-        url: "/api/custom_input_notebook/",
+        url: url,
         method: "POST",
         dataType: "json",
         data: taskForm,
@@ -145,6 +161,15 @@ function apiCustomInputRequest(inputId, taskform) {
     const placeholderSpan = "<span class='placeholder-text'>Your output goes here</span>";
     if (!taskFormValid()) return;
 
+    let url = "/api/custom_input/";
+
+    /* If task is lti, set the session id from task page in api url of the plugin.
+       All api calls in task view that requires the user's session must add this validation.
+    */
+    if(is_lti()){
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url
+    }
+
     const runCustomInputCallback = function (data) {
         data = JSON.parse(data);
         customTestOutputArea.empty();
@@ -159,7 +184,7 @@ function apiCustomInputRequest(inputId, taskform) {
     sendCustomInputAnalytics();
 
     $.ajax({
-        url: "/api/custom_input/",
+        url: url,
         method: "POST",
         dataType: "json",
         data: taskform,
@@ -193,7 +218,12 @@ function runCustomTest(inputId, environment = "multilang") {
 }
 
 function sendCustomInputAnalytics() {
-    $.post("/api/analytics/", {
+    let url = "/api/analytics/";
+    //Verify if is a lti task, and set the actual session id from task page (Do that for all analytics calls in task view)
+    if(is_lti()){
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url; 
+    }
+    $.post(url, {
         service: {
             key: "custom_input",
             name: "Custom input"
@@ -203,7 +233,12 @@ function sendCustomInputAnalytics() {
 }
 
 function sendTestNotebookAnalytics() {
-    $.post("/api/analytics/", {
+    let url = "/api/analytics/";
+    //Verify if is a lti task, and set the actual session id from task page (Do that for all analytics calls in task view)
+    if(is_lti()){
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url; 
+    }
+    $.post(url, {
         service: {
             key: "custom_input_notebook",
             name: "Custom input notebook"

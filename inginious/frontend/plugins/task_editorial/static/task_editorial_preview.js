@@ -32,7 +32,13 @@ function setSolutionNotebook(){
 
 //Send analytics when a user see the task editorial - tutorial just one time by load data in modal
 function sendAnalyticsTaskTutorial(){
-    $.post("/api/analytics/", {
+    let url = "/api/analytics/";
+
+    //Verify if is a lti task, and set the actual session id from task page (Do that for all analytics calls in task view)
+    if(is_lti()){
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url; 
+    }
+    $.post(url, {
         service: {
             key: "task_tutorial",
             name: "Task editorial - Tutorial"
@@ -43,7 +49,13 @@ function sendAnalyticsTaskTutorial(){
 
 //Send analytics when a user see the task editorial - solution everytime he enter the task for the first time
 function sendAnalyticsTaskSolution(){
-    $.post("/api/analytics/", {
+    let url = "/api/analytics/";
+
+    //Verify if is a lti task, and set the actual session id from task page (Do that for all analytics calls in task view)
+    if(is_lti()){
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url;
+    }
+    $.post(url, {
         service: {
             key: "task_solution",
             name: "Task editorial - Solution"

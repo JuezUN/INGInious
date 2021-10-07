@@ -20,7 +20,14 @@ function hideHintAlert(alert) {
 
 /* Get the left hint content for the unlocked hints*/
 function loadHintsOnModal() {
-    $.get("/api/user_hints_api/", {
+    let url = "/api/user_hints_api/";
+    /* If task is lti, set the session id from task page in api url of the plugin.
+       All api calls in task view that requires the user's session must add this validation.
+    */
+    if(is_lti()){
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url; 
+    } 
+    $.get(url, {
         course_id: getCourseId(),
         task_id: getTaskId()
     }).done(function (result) {
@@ -115,8 +122,16 @@ function changeHint(key) {
 
 /* Add the hint on the student unlocked hints list*/
 function unlockNewHint(selected_hint_id) {
+    let url = "/api/user_hints_api/";
+
+    /* If task is lti, set the session id from task page in api url of the plugin.
+       All api calls in task view that requires the user's session must add this validation.
+    */
+    if(is_lti()){
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url;
+    }
     $.ajax({
-        url: "/api/user_hints_api/",
+        url: url,
         method: "POST",
         data: {
             course_id: getCourseId(),
@@ -132,7 +147,12 @@ function unlockNewHint(selected_hint_id) {
 
 /* Send analytics when a user unlock a hint */
 function sendUseTaskHintsAnalytics() {
-    $.post("/api/analytics/", {
+    let url = "/api/analytics/";
+    //Verify if is a lti task, and set the actual session id from task page (Do that for all analytics calls in task view)
+    if(is_lti()){
+        url = "/" + ($("form#task").attr("action").split("/")[1]) + url;
+    }
+    $.post(url, {
         service: {
             key: "task_hints_unlock",
             name: "Task hints - Unlocked by students"
