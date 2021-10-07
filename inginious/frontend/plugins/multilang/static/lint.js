@@ -266,11 +266,11 @@
             for (let i = 0; i < gutters.length; ++i) if (gutters[i] === GUTTER_ID) hasLintGutter = true;
             const state = cm.state.lint = new LintState(cm, parseOptions(cm, val), hasLintGutter);
             if (state.options.lintOnChange !== false)
-                cm.off("change", onChange);
+                cm.on("change", onChange);
             if (state.options.tooltips !== false && state.options.tooltips !== "gutter")
                 CodeMirror.on(cm.getWrapperElement(), "mouseover", state.onMouseOver);
 
-            startLinting(cm);
+            //startLinting(cm);
         }
     });
 
