@@ -23,7 +23,7 @@ class EditHintsAPI(AdminApi):
         try:
             task = self.task_factory.get_task(course, task_id)
         except Exception:
-            raise APIError(400, {"error": "The task does not exist in the course"})
+            raise APIError(400, {"error": "Task does not exist, or task has not been created yet."})
 
         task_hints = task._data.get('task_hints', {})
 

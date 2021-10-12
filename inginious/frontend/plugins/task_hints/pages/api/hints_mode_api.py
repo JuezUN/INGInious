@@ -32,7 +32,7 @@ class HintsModeAPI(AdminApi):
             task_submission_mode = task._data.get('groups', False)
 
         except Exception:
-            raise APIError(400, {"error": _("Task does not exist.")})
+            raise APIError(400, {"error": _("Task does not exist, or task has not been created yet.")})
 
         return 200, task_submission_mode
 
@@ -50,9 +50,12 @@ class HintsModeAPI(AdminApi):
         last_submission_mode = get_mandatory_parameter(input_data, 'last_submission_mode')
 
         course = self.get_course_and_check_rights(course_id)
-
         try:
             task = self.task_factory.get_task(course, task_id)
+        except Exception:
+            raise APIError(400, {"error": _("Task does not exist, or task has not been created yet.")})
+
+        try:
             task_submission_mode = task._data.get('groups', False)
             task_hints = task._data.get('task_hints', {})
 
