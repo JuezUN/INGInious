@@ -301,12 +301,16 @@ class CourseEditTask(INGIniousAdminPage):
         except:
             pass
 
+        # Set order for task
         if orig_data and "order" in orig_data:
             data["order"] = orig_data["order"]
         else:
             course_tasks = self.task_factory.get_all_tasks(course)
-            number_of_tasks = len(course_tasks)
-            data["order"] = number_of_tasks
+            tasks_order = [task.get_order() for _, task in course_tasks.items()]
+            new_task_order = 0
+            if tasks_order:
+                new_task_order = max(tasks_order) + 1     
+            data["order"] = new_task_order
 
 
         task_fs = self.task_factory.get_task_fs(courseid, taskid)
