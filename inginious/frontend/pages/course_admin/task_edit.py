@@ -309,7 +309,7 @@ class CourseEditTask(INGIniousAdminPage):
             tasks_order = [task.get_order() for _, task in course_tasks.items()]
             new_task_order = 0
             if tasks_order:
-                new_task_order = max(tasks_order) + 1     
+                new_task_order = max(tasks_order) + 1
             data["order"] = new_task_order
 
 
