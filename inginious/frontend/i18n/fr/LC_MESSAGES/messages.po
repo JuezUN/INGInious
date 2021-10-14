@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-09-28 15:30-0500\n"
+"POT-Creation-Date: 2021-10-13 14:17-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -572,15 +572,15 @@ msgstr "Votre navigateur a renvoyé un formaulaire invalide ({})"
 msgid "Error while reading course's information"
 msgstr "Une erreur s'est produite lors de la lecture des informations du cours"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:319
+#: inginious/frontend/pages/course_admin/task_edit.py:331
 msgid "Invalid data: {}"
 msgstr "Données invalides : {}"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:325
+#: inginious/frontend/pages/course_admin/task_edit.py:337
 msgid "Cannot read zip file. Files were not modified"
 msgstr "Impossible de lire le fichier ZIP. Les fichiers n'ont pas été modifiés"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:332
+#: inginious/frontend/pages/course_admin/task_edit.py:344
 msgid ""
 "There was a problem while extracting the zip archive. Some files may have"
 " been modified"

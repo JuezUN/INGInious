@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-09-28 15:30-0500\n"
+"POT-Creation-Date: 2021-10-13 14:17-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -577,17 +577,17 @@ msgstr "Tu navegador web muestra una forma inválida ({})"
 msgid "Error while reading course's information"
 msgstr "Error durante la consulta de información del curso"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:319
+#: inginious/frontend/pages/course_admin/task_edit.py:331
 msgid "Invalid data: {}"
 msgstr "Información inválida: {}"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:325
+#: inginious/frontend/pages/course_admin/task_edit.py:337
 msgid "Cannot read zip file. Files were not modified"
 msgstr ""
 "El archivo comprimido (zip) no se puede leer. Los archivos no fueron "
 "alterados"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:332
+#: inginious/frontend/pages/course_admin/task_edit.py:344
 msgid ""
 "There was a problem while extracting the zip archive. Some files may have"
 " been modified"
