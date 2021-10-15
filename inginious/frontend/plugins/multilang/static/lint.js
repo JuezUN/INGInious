@@ -270,7 +270,6 @@
             if (state.options.tooltips !== false && state.options.tooltips !== "gutter")
                 CodeMirror.on(cm.getWrapperElement(), "mouseover", state.onMouseOver);
 
-            //startLinting(cm);
         }
     });
 
