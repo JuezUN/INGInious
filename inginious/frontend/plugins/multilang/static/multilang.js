@@ -20,7 +20,8 @@ function changeSubmissionLanguage(key, problem_type) {
     const mode = CodeMirror.findModeByName(language);
     const editor = codeEditors[key];
     const lintingOptions = {
-        async: true
+        async: true,
+        lintOnChange: false
     };
 
     //This should be first because setOption("mode", ...) triggers callbacks that call the linter
