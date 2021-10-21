@@ -27,6 +27,8 @@ class CourseSettings(INGIniousAdminPage):
         course_content = {}
         try:
             data = web.input()
+            for item in data:
+                print(item)
             course_content = self.course_factory.get_course_descriptor_content(courseid)
             course_content['name'] = data['name']
             if course_content['name'] == "":
@@ -91,6 +93,8 @@ class CourseSettings(INGIniousAdminPage):
                     errors.append(_("LTI keys must be alphanumerical."))
 
             course_content['lti_send_back_grade'] = 'lti_send_back_grade' in data and data['lti_send_back_grade'] == "true"
+        
+            course_content['enable_linter'] = True if data['enable_linter'] == 'true' else False
         except:
             errors.append(_('User returned an invalid form.'))
 
