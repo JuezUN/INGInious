@@ -111,10 +111,16 @@ $elif saved:
         <label class="col-sm-2 control-label">$:_("Enable Linter")</label>
         <div class="col-sm-10">
             <label>
-                <input type="radio" value="true" name="enable_linter" checked="checked"/>$:_("Yes")
+                <input type="radio" value="true" name="enable_linter"
+                    $if course.enable_automatic_linter():
+                        checked="checked"
+                />$:_("Yes")
             </label><br/>
             <label>
-                <input type="radio" value="false" name="enable_linter"/>$:_("No")
+                <input type="radio" value="false" name="enable_linter"
+                    $if not course.enable_automatic_linter():
+                        checked="checked"
+                />$:_("No")
             </label>
         </div>
     </div>

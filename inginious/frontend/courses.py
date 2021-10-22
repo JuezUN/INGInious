@@ -58,7 +58,6 @@ class WebAppCourse(Course):
             self._use_classrooms = True
             self._allow_unregister = True
             self._allow_preview = False
-            self._enable_linter = True
         else:
             self._lti_keys = {}
             self._lti_send_back_grade = False

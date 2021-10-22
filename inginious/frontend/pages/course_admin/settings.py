@@ -27,8 +27,6 @@ class CourseSettings(INGIniousAdminPage):
         course_content = {}
         try:
             data = web.input()
-            for item in data:
-                print(item)
             course_content = self.course_factory.get_course_descriptor_content(courseid)
             course_content['name'] = data['name']
             if course_content['name'] == "":
