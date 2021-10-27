@@ -2,6 +2,7 @@ import web
 
 from inginious.frontend.pages.api._api_page import APIError
 from inginious.frontend.plugins.utils.admin_api import AdminApi
+from inginious.common.task_file_readers.yaml_reader import TaskYAMLFileReader
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from ..user_hint_manager import UserHintManagerSingleton
 
@@ -13,6 +14,26 @@ class HintsModeAPI(AdminApi):
     def user_hint_manager(self) -> UserHintManagerSingleton:
         """ Returns user hint manager singleton """
         return UserHintManagerSingleton.get_instance()
+
+    def get_temporal_task_hints_file(self, course, task_id):
+        
+        temporal_task_file = self.task_factory.get_temporal_task_file(course, task_id)
+        task_file_manager = TaskYAMLFileReader()
+
+        if not temporal_task_file:
+
+            data = {}
+            
+            data["task_hints"] = {}
+            data["groups"] = False
+
+            temporal_task_file_content = task_file_manager.dump(data)
+
+            temporal_task_file = self.task_factory.get_task_fs(course.get_id(), task_id).put("task_temp.yaml", temporal_task_file_content)
+            temporal_task_file = self.task_factory.get_task_fs(course.get_id(), task_id).get("task_temp.yaml")
+
+        return task_file_manager.load(temporal_task_file)
+
 
     def API_GET(self):
         
@@ -28,11 +49,13 @@ class HintsModeAPI(AdminApi):
         course = self.get_course_and_check_rights(course_id)
 
         try:
-            task = self.task_factory.get_task(course, task_id)
-            task_submission_mode = task._data.get('groups', False)
+            task_file = self.task_factory.get_task(course, task_id)
+            task_submission_mode = task_file._data.get('groups', False)
 
         except Exception:
-            raise APIError(400, {"error": _("Task does not exist, or task has not been created yet.")})
+            #raise APIError(400, {"error": _("Task does not exist, or task has not been created yet.")})
+            task_file = self.get_temporal_task_hints_file(course, task_id)
+            task_submission_mode = task_file.get('groups', False)
 
         return 200, task_submission_mode
 

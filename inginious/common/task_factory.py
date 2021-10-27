@@ -46,6 +46,20 @@ class TaskFactory(object):
 
         return self._cache[(course.get_id(), taskid)][0]
 
+    def get_temporal_task_file(self, course, taskid):
+
+        if not id_checker(taskid):
+            raise InvalidNameException("Task with invalid name: " + taskid)
+        
+        task_fs = self.get_task_fs(course.get_id(), taskid)
+        try:
+            temporal_task_file = task_fs.get("task_temp.yaml")
+        except Exception:
+            temporal_task_file = None
+
+        return temporal_task_file
+
+
     def get_task_descriptor_content(self, courseid, taskid):
         """
         :param courseid: the course id of the course
