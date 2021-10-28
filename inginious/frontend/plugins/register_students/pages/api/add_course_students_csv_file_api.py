@@ -79,7 +79,7 @@ class AddCourseStudentsCsvFile(AdminApi):
             data = self._parse_user_data(user_data)
 
             was_registered, email, failed, user_already_exist = self._register_student(data, course, email_language)
-            #If the user was registered, append 2 emails to send, one to activate the account
+            #If the user was registered, append 1 email to send, one to activate the account
             if was_registered:
                 registered_users += 1
                 all_emails_new_users.append(email)
@@ -93,9 +93,6 @@ class AddCourseStudentsCsvFile(AdminApi):
                 was_registered_on_course = self.user_manager.course_register_user(course, data["username"], '', True)
                 if was_registered_on_course:
                     registered_on_course += 1
-                #another email to give information of the course they were enrolled to
-                if was_registered and was_registered_on_course:
-                    all_emails_registered_on_course_users.append(self._email_user_register_on_course(data["username"],data["email"],course))
                 #If the user wasn't registered because already exist in database:
                 #only send the email to give information of the course they were enrolled to
                 if was_registered_on_course and user_already_exist:
@@ -199,7 +196,7 @@ class AddCourseStudentsCsvFile(AdminApi):
         headers = {"Content-Type": 'text/html'}
         for (email_address, email_content) in emails:
             try:
-                web.sendmail(web.config.smtp_sendername, email_address, subject, email_content, headers) 
+                web.sendmail(web.config.smtp_sendername, email_address, subject, email_content, headers)
             except:
                 # Unregister student in case it failed to send the email.
                 if not registered:
