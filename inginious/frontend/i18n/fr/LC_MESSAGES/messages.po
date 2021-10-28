@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-13 14:17-0500\n"
+"POT-Creation-Date: 2021-10-27 23:17-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -385,7 +385,7 @@ msgid "You have no rights to add/change classrooms"
 msgstr "Vous n'avez pas les droits d'ajouter/modifier les classes"
 
 #: inginious/frontend/pages/course_admin/aggregation_list.py:76
-#: inginious/frontend/pages/course_admin/settings.py:95
+#: inginious/frontend/pages/course_admin/settings.py:97
 msgid "User returned an invalid form."
 msgstr "L'utilisateur a soumis un formulaire invalide."
 
@@ -3964,13 +3964,13 @@ msgstr "Démarré à"
 msgid "Timeout at"
 msgstr "Expiration à"
 
-#: inginious/frontend/templates/course_admin/settings.html:211
+#: inginious/frontend/templates/course_admin/settings.html:222
 #: inginious/frontend/templates/queue.html:39
 #: inginious/frontend/templates/queue.html:68
 msgid "Yes"
 msgstr "Oui"
 
-#: inginious/frontend/templates/course_admin/settings.html:217
+#: inginious/frontend/templates/course_admin/settings.html:228
 #: inginious/frontend/templates/queue.html:41
 #: inginious/frontend/templates/queue.html:70
 msgid "No"
@@ -4852,53 +4852,64 @@ msgid "Staff and students"
 msgstr "Par l'équipe enseignante et les étudiants"
 
 #: inginious/frontend/templates/course_admin/settings.html:111
+msgid "Use Linter in tasks automatically"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/settings.html:117
+msgid ""
+"Check this option to automatically use Linter for all the code multiple "
+"language type problems in course (every time a user makes a change to "
+"their code.)"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/settings.html:122
 msgid "Accessibility"
 msgstr "Accesibilité"
 
-#: inginious/frontend/templates/course_admin/settings.html:118
+#: inginious/frontend/templates/course_admin/settings.html:129
 msgid "Course hidden from students"
 msgstr "Cours masqué aux étudiants"
 
-#: inginious/frontend/templates/course_admin/settings.html:124
+#: inginious/frontend/templates/course_admin/settings.html:135
 msgid "Always accessible"
 msgstr "Toujours accessible"
 
-#: inginious/frontend/templates/course_admin/settings.html:130
-#: inginious/frontend/templates/course_admin/settings.html:176
+#: inginious/frontend/templates/course_admin/settings.html:141
+#: inginious/frontend/templates/course_admin/settings.html:187
 msgid "Custom:"
 msgstr "Personnalisé"
 
-#: inginious/frontend/templates/course_admin/settings.html:134
-#: inginious/frontend/templates/course_admin/settings.html:180
+#: inginious/frontend/templates/course_admin/settings.html:145
+#: inginious/frontend/templates/course_admin/settings.html:191
 msgid "From"
 msgstr "De"
 
-#: inginious/frontend/templates/course_admin/settings.html:141
-#: inginious/frontend/templates/course_admin/settings.html:187
+#: inginious/frontend/templates/course_admin/settings.html:152
+#: inginious/frontend/templates/course_admin/settings.html:198
 msgid "To"
 msgstr "A"
 
-#: inginious/frontend/templates/course_admin/settings.html:158
+#: inginious/frontend/templates/course_admin/settings.html:169
 msgid "Registration"
 msgstr "Inscription"
 
-#: inginious/frontend/templates/course_admin/settings.html:164
+#: inginious/frontend/templates/course_admin/settings.html:175
 msgid "Closed"
 msgstr "Fermé"
 
-#: inginious/frontend/templates/course_admin/settings.html:170
+#: inginious/frontend/templates/course_admin/settings.html:181
 msgid "Always open"
 msgstr "Toujours ouvert"
 
-#: inginious/frontend/templates/course_admin/settings.html:204
+#: inginious/frontend/templates/course_admin/settings.html:215
 msgid "Allow auto-unregistration"
 msgstr "Permettre l'auto-désinscription"
 
-#: inginious/frontend/templates/course_admin/settings.html:222
+#: inginious/frontend/templates/course_admin/settings.html:233
 msgid "Registration password"
 msgstr "Mot de passe d'inscription"
 
-#: inginious/frontend/templates/course_admin/settings.html:225
+#: inginious/frontend/templates/course_admin/settings.html:236
 msgid ""
 "\"Password needed for registration. Leave blank if you don't want to set "
 "a password.\""
@@ -4906,41 +4917,41 @@ msgstr ""
 "\"Mot de passe requis pour l'inscription. Laissez vide si vous ne "
 "souhaitez pas configurer de mot de passe.\""
 
-#: inginious/frontend/templates/course_admin/settings.html:230
+#: inginious/frontend/templates/course_admin/settings.html:241
 msgid "Access control"
 msgstr "Contrôle d'accès"
 
-#: inginious/frontend/templates/course_admin/settings.html:236
+#: inginious/frontend/templates/course_admin/settings.html:247
 msgid "No access control (everyone can register)"
 msgstr "Pas de contrôle d'accès (tout le monde peut s'inscrire)"
 
-#: inginious/frontend/templates/course_admin/settings.html:242
+#: inginious/frontend/templates/course_admin/settings.html:253
 msgid "Check by username"
 msgstr "Vérification par nom d'utilisateur"
 
-#: inginious/frontend/templates/course_admin/settings.html:248
+#: inginious/frontend/templates/course_admin/settings.html:259
 msgid "Check by authentication binding"
 msgstr "Vérification par méthode d'authentification"
 
-#: inginious/frontend/templates/course_admin/settings.html:254
+#: inginious/frontend/templates/course_admin/settings.html:265
 msgid "Check by email"
 msgstr "Vérification par email"
 
-#: inginious/frontend/templates/course_admin/settings.html:259
+#: inginious/frontend/templates/course_admin/settings.html:270
 msgid "Access control list"
 msgstr "Liste de contrôle d'accès"
 
-#: inginious/frontend/templates/course_admin/settings.html:261
+#: inginious/frontend/templates/course_admin/settings.html:272
 msgid "\"Only used if access control is activated. Separate users by new lines.\""
 msgstr ""
 "\"Utilisé uniquement si le contrôle d'accès est activé. Séparez les "
 "utilisateurs par de nouvelles lignes.\""
 
-#: inginious/frontend/templates/course_admin/settings.html:265
+#: inginious/frontend/templates/course_admin/settings.html:276
 msgid "LTI keys"
 msgstr "Clés LTI"
 
-#: inginious/frontend/templates/course_admin/settings.html:268
+#: inginious/frontend/templates/course_admin/settings.html:279
 msgid ""
 "\"LTI keys in the form name:key, separated by newlines. Please ensure "
 "keys are long enough and random.\""
@@ -4948,17 +4959,17 @@ msgstr ""
 "\"Clés LTI sous la forme clé:secret, séparées par de nouvelles lignes. "
 "Assurez vous que les secrets soient assez long et aléatoires.\""
 
-#: inginious/frontend/templates/course_admin/settings.html:273
+#: inginious/frontend/templates/course_admin/settings.html:284
 msgid "Send back grades"
 msgstr "Envoyer les notes"
 
-#: inginious/frontend/templates/course_admin/settings.html:279
+#: inginious/frontend/templates/course_admin/settings.html:290
 msgid ""
 "Enable this to send back grades to the calling Tool Consumer (which is, "
 "most of the time, your LMS)."
 msgstr "Activez cette option pour envoyer les notes à la plateforme LMS hôte."
 
-#: inginious/frontend/templates/course_admin/settings.html:283
+#: inginious/frontend/templates/course_admin/settings.html:294
 #: inginious/frontend/templates/course_admin/task_edit.html:31
 #: inginious/frontend/templates/course_admin/task_edit.html:90
 msgid "Save changes"
