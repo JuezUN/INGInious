@@ -108,20 +108,14 @@ $elif saved:
         </div>
     </div>
     <div class="form-group no-lti">
-        <label class="col-sm-2 control-label">$:_("Enable Linter")</label>
+        <label class="col-sm-2 control-label">$:_("Use Linter in tasks automatically")</label>
         <div class="col-sm-10">
             <label>
-                <input type="radio" value="true" name="enable_linter"
+                <input type="checkbox" value="true" id="enable_automatic_linter" name="enable_automatic_linter"
                     $if course.enable_automatic_linter():
                         checked="checked"
-                />$:_("Yes")
+                /> $:_("Check this option to automatically use Linter for all the code multiple language type problems in course when a user makes a change to their code, instead of clicking the <b>'Perform lint'</b> button.")
             </label><br/>
-            <label>
-                <input type="radio" value="false" name="enable_linter"
-                    $if not course.enable_automatic_linter():
-                        checked="checked"
-                />$:_("No")
-            </label>
         </div>
     </div>
     <div class="form-group no-lti">

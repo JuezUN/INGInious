@@ -119,7 +119,7 @@ class Task(object):
         """ Returns a FileSystemProvider which points to the folder of this task """
         return self._fs
 
-    def enable_linter(self):
+    def use_linter_automatically(self):
         course = self.get_course()
         enable_linter_option = course.enable_automatic_linter()
         return enable_linter_option

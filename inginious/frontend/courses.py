@@ -43,7 +43,7 @@ class WebAppCourse(Course):
             self._is_lti = self._content.get('is_lti', False)
             self._lti_keys = self._content.get('lti_keys', {})
             self._lti_send_back_grade = self._content.get('lti_send_back_grade', False)
-            self._enable_linter = self._content.get('enable_linter',True)
+            self._enable_automatic_linter = self._content.get('enable_automatic_linter',True)
         except:
             raise Exception("Course has an invalid description: " + self.get_id())
 
@@ -156,7 +156,7 @@ class WebAppCourse(Course):
 
     def enable_automatic_linter(self):
         """ Returns True if Linter is allowed to be automatically called in tasks"""
-        return self._enable_linter
+        return self._enable_automatic_linter
 
     def allow_unregister(self, plugin_override=True):
         """ Returns True if students can unregister from course """

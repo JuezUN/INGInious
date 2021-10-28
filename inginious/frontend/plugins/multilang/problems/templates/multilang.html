@@ -1,4 +1,4 @@
-$def with (inputId, dropdownId, languages, problemid, type, task_id, course_id, environment, enable_linter)
+$def with (inputId, dropdownId, languages, problemid, type, task_id, course_id, environment, automatic_linter_option)
 
 $#
 $# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
@@ -47,8 +47,8 @@ $#
 		return "$environment";
 	}
 
-	function enable_linter(){
-		return '$enable_linter' === 'True';
+	function getAutomaticLinterOption(){
+		return '$automatic_linter_option' === 'True';
 	}
 </script>
 
