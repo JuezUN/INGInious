@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-29 10:55-0500\n"
+"POT-Creation-Date: 2021-10-29 11:37-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -2367,7 +2367,6 @@ msgid "Students attempted"
 msgstr "Estudiantes que lo han intentado"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:67
-#, fuzzy
 msgid "No Tasks with attempts Yet"
 msgstr "La tarea no se ha intentado"
 
@@ -2488,7 +2487,7 @@ msgid "Select the best description to grade the student's code"
 msgstr "Seleccione la mejor descripción para evaluar el código del estudiante"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:85
-#, fuzzy
+
 msgid "Click to select and deselect"
 msgstr "Haz click para seleccionar y doble click para desmarcar"
 
@@ -3111,8 +3110,8 @@ msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:10
 msgid ""
-"If you already had activated your account, you can login to UNCode for "
-"begin the course."
+"If you have already activated your account, you can access to UNCode to "
+"start the course."
 msgstr ""
 "Si ya activaste tu cuenta, puedes ingresar a la plataforma UNCode para "
 "empezar el curso."
@@ -4788,7 +4787,7 @@ msgstr "̉¿Estás seguro?"
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:74
 #: inginious/frontend/templates/unregister_button.html:22
-#, fuzzy
+
 msgid "Unregister"
 msgstr "\"Eliminar registro de estudiante\""
 

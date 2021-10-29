@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-29 10:55-0500\n"
+"POT-Creation-Date: 2021-10-29 11:37-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -761,7 +761,7 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:25
-#, fuzzy
+
 msgid "Goal"
 msgstr "Local"
 
@@ -773,7 +773,7 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:29
-#, fuzzy
+
 msgid "Scope"
 msgstr "code"
 
@@ -908,7 +908,7 @@ msgid "Complete name and last name."
 msgstr "Nom complet."
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:107
-#, fuzzy
+
 msgid "Contact information."
 msgstr "Informations de débogage"
 
@@ -1365,7 +1365,7 @@ msgid "The start date must be greater than end date."
 msgstr ""
 
 #: inginious/frontend/plugins/analytics/utils.py:59
-#, fuzzy
+
 msgid "Invalid date format"
 msgstr ""
 
@@ -1411,7 +1411,7 @@ msgid "Course"
 msgstr "Cours"
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:69
-#, fuzzy
+
 msgid "\"All courses\""
 msgstr "\"Mes cours\""
 
@@ -2160,7 +2160,7 @@ msgid "Students attempted"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:67
-#, fuzzy
+
 msgid "No Tasks with attempts Yet"
 msgstr "Pas encore essayé"
 
@@ -2745,7 +2745,7 @@ msgid "Start!"
 msgstr ""
 
 #: inginious/frontend/plugins/problem_bank/__init__.py:30
-#, fuzzy
+
 msgid " Problem bank"
 msgstr "Nouvel identifiant de problème"
 
@@ -2804,7 +2804,7 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:193
-#, fuzzy
+
 msgid "You have been enrolled on a course"
 msgstr "Vous n'êtes inscrit à aucun cours"
 
@@ -2813,7 +2813,7 @@ msgid "Welcome on {course_name}"
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:6
-#, fuzzy
+
 msgid "Hello {username}"
 msgstr "nom d'utilisateur"
 
@@ -2826,8 +2826,8 @@ msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:10
 msgid ""
-"If you already had activated your account, you can login to UNCode for "
-"begin the course."
+"If you have already activated your account, you can access to UNCode to "
+"start the course."
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:13
@@ -3119,7 +3119,7 @@ msgid "\"Task solution not available until the task deadline is over\""
 msgstr ""
 
 #: inginious/frontend/plugins/task_editorial/pages/templates/task_editorial_preview.html:85
-#, fuzzy
+
 msgid "No language"
 msgstr ""
 
@@ -4630,7 +4630,7 @@ msgstr "Nom d'utilisateur de l'étudiant (sera incrit) :"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:77
 #: inginious/frontend/templates/course_admin/teams_edit.html:53
-#, fuzzy
+
 msgid "\"Student username\""
 msgstr "nom de l'étudiant"
 
@@ -4648,7 +4648,7 @@ msgstr ""
 "étudiants ne peuvent en être supprimés."
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:112
-#, fuzzy
+
 msgid "Classroom description"
 msgstr "Description de la nouvelle classe"
 
@@ -4712,7 +4712,7 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:56
 #: inginious/frontend/templates/course_admin/danger_zone.html:141
-#, fuzzy
+
 msgid "\"course id\""
 msgstr "\"Liste des cours\""
 
@@ -5043,12 +5043,12 @@ msgid "Teaching staff"
 msgstr "Équipe enseignante"
 
 #: inginious/frontend/templates/course_admin/student_list.html:38
-#, fuzzy
+
 msgid "Registered staff"
 msgstr "Etudiant enregistré"
 
 #: inginious/frontend/templates/course_admin/student_list.html:43
-#, fuzzy
+
 msgid "Registered students"
 msgstr "Etudiant enregistré"
 
@@ -5073,7 +5073,7 @@ msgid "\"Unregister all\""
 msgstr "\"Désinscrire tous les étudiants\""
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:61
-#, fuzzy
+
 msgid "\"Unregister\""
 msgstr "Se désinscrire"
 
@@ -5458,7 +5458,7 @@ msgid "Author"
 msgstr "Auteur"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:48
-#, fuzzy
+
 msgid "\"Your name\""
 msgstr "nom d'utilisateur"
 
@@ -5913,5 +5913,11 @@ msgstr "Extensions autorisées:"
 #~ msgstr ""
 
 #~ msgid "superadmin can not modify its own data"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If you already had activated your "
+#~ "account, you can login to UNCode "
+#~ "for begin the course."
 #~ msgstr ""
 
