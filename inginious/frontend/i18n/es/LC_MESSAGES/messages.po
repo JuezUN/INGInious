@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-31 17:08-0500\n"
+"POT-Creation-Date: 2021-10-31 17:17-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -3133,7 +3133,7 @@ msgid ""
 "click this link:"
 msgstr ""
 "Selecciona el curso <strong>{course_name}</strong> de la lista para "
-"entrar, tambien puedes ingresar por este link:"
+"entrar, también puedes ingresar por medio de este link:"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:17
 msgid "{course_link}"
@@ -3141,7 +3141,7 @@ msgstr "{course_link}"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:19
 msgid "Now you can see the tasks of the course, you are ready."
-msgstr "Ahora puedes acceder a las tareas del curso!."
+msgstr "¡Ahora puedes acceder a las tareas del curso!."
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:24
 #: inginious/frontend/plugins/register_students/static/email_template.html:34
