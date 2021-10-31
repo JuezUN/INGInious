@@ -83,7 +83,6 @@ class AddCourseStudentsCsvFile(AdminApi):
             if was_registered:
                 registered_users += 1
                 all_emails_new_users.append(email)
-            
 
             if self._is_failed_register(was_registered, failed, data):
                 users_failed.append(data)
@@ -102,9 +101,9 @@ class AddCourseStudentsCsvFile(AdminApi):
 
         # Send the emails in the background as this may take a long time.
         emails_new_users_thread = threading.Thread(target=self._send_emails_in_background,
-                                         args=[all_emails_new_users,False, self.database.users.delete_one])
+                                         args=[all_emails_new_users, False, self.database.users.delete_one])
         emails_registered_on_course_users_thread = threading.Thread(target=self._send_emails_in_background,
-                                         args=[all_emails_registered_on_course_users,True, self.database.users.delete_one])
+                                         args=[all_emails_registered_on_course_users, True, self.database.users.delete_one])
         
         
         emails_new_users_thread.start()
@@ -134,7 +133,7 @@ class AddCourseStudentsCsvFile(AdminApi):
         return False
 
 
-    def _email_user_register_on_course(self,username,email, course):
+    def _email_user_register_on_course(self, username, email, course):
         """
         Format an email to an existing user enrolled to a course,
         :param email: string of the email of the user
@@ -144,8 +143,7 @@ class AddCourseStudentsCsvFile(AdminApi):
         data_policy_link = web.ctx.home + "/data_policy"
         course_link = web.ctx.home + "/course/" + course.get_id() + "/"
         content = str(self.template_helper.get_custom_renderer(_static_folder_path, False).email_course_registration_template()).format(
-                course_name=course.get_name("en"),course_link = course_link,username=username, data_policy=data_policy_link
-            )
+                course_name=course.get_name("en"), course_link = course_link, username=username, data_policy=data_policy_link)
         email_tuple = (email, content)
         return email_tuple
 
@@ -161,7 +159,7 @@ class AddCourseStudentsCsvFile(AdminApi):
         existing_user = self.database.users.find_one(
             {"$or": [{"username": data["username"]}, {"email": regex_user_email}]})
         if existing_user is not None:
-            return False, self._email_user_register_on_course(data["username"],data["email"], course), False, True
+            return False, self._email_user_register_on_course(data["username"], data["email"], course), False, True
         password = data["password"]
         passwd_hash = hashlib.sha512(data["password"].encode("utf-8")).hexdigest()
         activate_hash = hashlib.sha512(str(random.getrandbits(256)).encode("utf-8")).hexdigest()
@@ -187,7 +185,7 @@ class AddCourseStudentsCsvFile(AdminApi):
         email = (data["email"], content)
         return True, email, False, False
 
-    def _send_emails_in_background(self, emails,registered, delete_user_function):
+    def _send_emails_in_background(self, emails, registered, delete_user_function):
         
         if registered:
             subject = _("You have been enrolled on a course")
