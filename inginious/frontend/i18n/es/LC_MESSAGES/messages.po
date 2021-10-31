@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-29 11:37-0500\n"
+"POT-Creation-Date: 2021-10-31 17:08-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -2487,7 +2487,6 @@ msgid "Select the best description to grade the student's code"
 msgstr "Seleccione la mejor descripción para evaluar el código del estudiante"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:85
-
 msgid "Click to select and deselect"
 msgstr "Haz click para seleccionar y doble click para desmarcar"
 
@@ -3118,15 +3117,15 @@ msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:13
 msgid "How to proceed?"
-msgstr "Cual es el siguiente paso?"
+msgstr "¿Cuál es el siguiente paso?"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:15
 msgid ""
 "When you logged in, you could see the main page with the courses that you"
 " are enrolled"
 msgstr ""
-"Cuando ingreses podras ver la pagina principal con los cursos a los "
-"cuales estas inscrito"
+"Cuando ingreses podrás ver la página principal con los cursos a los "
+"cuales estas inscrito."
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:16
 msgid ""
@@ -3134,7 +3133,7 @@ msgid ""
 "click this link:"
 msgstr ""
 "Selecciona el curso <strong>{course_name}</strong> de la lista para "
-"entrar ooprime este link:"
+"entrar, tambien puedes ingresar por este link:"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:17
 msgid "{course_link}"
@@ -4787,7 +4786,6 @@ msgstr "̉¿Estás seguro?"
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:74
 #: inginious/frontend/templates/unregister_button.html:22
-
 msgid "Unregister"
 msgstr "\"Eliminar registro de estudiante\""
 
