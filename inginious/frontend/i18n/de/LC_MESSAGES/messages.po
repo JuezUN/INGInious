@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-31 17:17-0500\n"
+"POT-Creation-Date: 2021-10-31 17:38-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -157,7 +157,7 @@ msgid "This email address is already in use !"
 msgstr "Diese E-Mail Adresse wird bereits benutzt !"
 
 #: inginious/frontend/pages/register.py:107
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:195
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:193
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr "Willkommen bei UNCode"
@@ -2780,7 +2780,7 @@ msgid ""
 "                {}"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:193
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:191
 msgid "You have been enrolled on a course"
 msgstr ""
 
