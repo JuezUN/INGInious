@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-31 17:38-0500\n"
+"POT-Creation-Date: 2021-11-02 11:16-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -3125,7 +3125,7 @@ msgid ""
 " are enrolled"
 msgstr ""
 "Cuando ingreses podrás ver la página principal con los cursos a los "
-"cuales estas inscrito."
+"cuales estás inscrito."
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:16
 msgid ""
@@ -3181,7 +3181,7 @@ msgstr "¿Cómo cambiar la contraseña?"
 #: inginious/frontend/plugins/register_students/static/email_template.html:21
 #: inginious/frontend/plugins/register_students/static/email_template.html:28
 msgid "In top nav bar, click on the option displaying your name."
-msgstr "En la barra superior, haga clic dónde su nombre se muestra."
+msgstr "En la barra superior, haga clic dónde se muestra su nombre."
 
 #: inginious/frontend/plugins/register_students/static/email_template.html:22
 msgid "Click on 'Preferences' option."
