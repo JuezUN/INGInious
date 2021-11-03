@@ -59,6 +59,49 @@ class TaskFactory(object):
 
         return temporal_task_file
 
+    def update_temporal_task_file(self, course, taskid, data):
+
+        if not id_checker(taskid):
+            raise InvalidNameException("Task with invalid name: " + taskid)
+
+        task_fs = self.get_task_fs(course.get_id(), taskid)
+
+        task_file_manager = None
+        
+        try:
+            for file_extension, file_manager in self._task_file_managers.items():
+                if file_extension is "yaml":
+                    task_file_manager = file_manager   
+        
+        except: 
+            raise TaskReaderNotFoundException()
+
+        if task_file_manager:
+            temporal_task_file_content = task_file_manager.dump(data)
+
+        try:
+            task_fs.put("task_temp.yaml", temporal_task_file_content)
+        except: 
+            raise TaskNotFoundException()
+
+    def get_temporal_task_file_content(self, course, taskid):
+
+        if not id_checker(taskid):
+            raise InvalidNameException("Task with invalid name: " + taskid)
+
+        task_file_manager = None
+
+        task_fs = self.get_task_fs(course.get_id(), taskid)
+        for file_extension, file_manager in self._task_file_managers.items():
+                if task_fs.get("task_temp."+file_extension):
+                    task_file_manager = file_manager 
+        try:
+            temporal_task_file_content = task_file_manager.load(task_fs.get("task_temp.yaml"))
+        except Exception as e:
+            raise TaskUnreadableException(str(e))
+        
+        return temporal_task_file_content
+
 
     def get_task_descriptor_content(self, courseid, taskid):
         """

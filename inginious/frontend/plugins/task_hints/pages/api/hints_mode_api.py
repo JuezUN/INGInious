@@ -15,25 +15,27 @@ class HintsModeAPI(AdminApi):
         """ Returns user hint manager singleton """
         return UserHintManagerSingleton.get_instance()
 
-    def get_temporal_task_hints_file(self, course, task_id):
+    def get_temporal_task_hints_file_content(self, course, task_id):
         
         temporal_task_file = self.task_factory.get_temporal_task_file(course, task_id)
-        task_file_manager = TaskYAMLFileReader()
+
+        temporal_task_file_content = {}
 
         if not temporal_task_file:
 
-            data = {}
+            self.set_temporal_task_hints_file(course, task_id)
+            temporal_task_file_content = self.task_factory.get_temporal_task_file_content(course, task_id)
+
+        return temporal_task_file_content
+
+    def set_temporal_task_hints_file(self, course, task_id):
+
+        data = {}
             
-            data["task_hints"] = {}
-            data["groups"] = False
+        data["task_hints"] = {}
+        data["groups"] = False
 
-            temporal_task_file_content = task_file_manager.dump(data)
-
-            temporal_task_file = self.task_factory.get_task_fs(course.get_id(), task_id).put("task_temp.yaml", temporal_task_file_content)
-            temporal_task_file = self.task_factory.get_task_fs(course.get_id(), task_id).get("task_temp.yaml")
-
-        return task_file_manager.load(temporal_task_file)
-
+        self.task_factory.update_temporal_task_file(course, task_id, data)
 
     def API_GET(self):
         
@@ -49,13 +51,13 @@ class HintsModeAPI(AdminApi):
         course = self.get_course_and_check_rights(course_id)
 
         try:
-            task_file = self.task_factory.get_task(course, task_id)
-            task_submission_mode = task_file._data.get('groups', False)
+            task = self.task_factory.get_task(course, task_id)
+            task_submission_mode = task._data.get('groups', False)
 
         except Exception:
             #raise APIError(400, {"error": _("Task does not exist, or task has not been created yet.")})
-            task_file = self.get_temporal_task_hints_file(course, task_id)
-            task_submission_mode = task_file.get('groups', False)
+            task = self.get_temporal_task_hints_file_content(course, task_id)
+            task_submission_mode = task.get('groups', False)
 
         return 200, task_submission_mode
 
@@ -75,12 +77,15 @@ class HintsModeAPI(AdminApi):
         course = self.get_course_and_check_rights(course_id)
         try:
             task = self.task_factory.get_task(course, task_id)
-        except Exception:
-            raise APIError(400, {"error": _("Task does not exist, or task has not been created yet.")})
-
-        try:
             task_submission_mode = task._data.get('groups', False)
             task_hints = task._data.get('task_hints', {})
+        except Exception:
+            #raise APIError(400, {"error": _("Task does not exist, or task has not been created yet.")})
+            task = self.get_temporal_task_hints_file_content(course, task_id)
+            task_submission_mode = task.get('groups', False)
+            task_hints = task.get('task_hints', {})
+
+        try:
 
             last_submission_mode = ('true' == last_submission_mode)
 
