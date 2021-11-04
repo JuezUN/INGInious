@@ -13,6 +13,7 @@ const SEND_BUTTON_ID = "send-contact-page-button";
 const COMMENTS_INSTRUCTIONS_ID = "description-comment";
 const NEW_COURSE_INSTRUCTIONS_ID = "description-new-course";
 const ALERT_SPACE_ID = "alert-space";
+const MODAL_SEND_ID = "modalSendMessage"
 
 class ContactPageForm {
     constructor() {
@@ -27,6 +28,7 @@ class ContactPageForm {
         this.sendButton = $(`#${SEND_BUTTON_ID}`);
         this.commentInstructions = $(`#${COMMENTS_INSTRUCTIONS_ID}`);
         this.newCourseInstructions = $(`#${NEW_COURSE_INSTRUCTIONS_ID}`);
+        this.modalSendMessage = $(`#${MODAL_SEND_ID}`);
         this.configForm();
         this.addChangeListenerToSelect();
         this.addChangeListenerToCheckbox();
@@ -94,6 +96,7 @@ class ContactPageForm {
 
     sendInfo() {
         if (this.validateFieldsStatus()) {
+            this.modalSendMessage.modal("show");
             this.sendRequest();
             this.sendContactPageAnalytics();
         } else {
@@ -131,11 +134,9 @@ class ContactPageForm {
             },
             success: function (data) {
                 new MessageBox(ALERT_SPACE_ID, "The message has been sent", "info", false);
-                this.sendButton.prop("disabled", false);
             },
             error: function (request, status, error) {
                 new MessageBox(ALERT_SPACE_ID, "The message could not be sent", "danger", false);
-                this.sendButton.prop("disabled", false);
             }
         });
     }
