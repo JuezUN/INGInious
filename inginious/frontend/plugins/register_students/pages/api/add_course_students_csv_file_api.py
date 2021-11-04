@@ -141,7 +141,7 @@ class AddCourseStudentsCsvFile(AdminApi):
         :return: a Tuple with the email and the content of the email to send.
         """
         data_policy_link = web.ctx.home + "/data_policy"
-        course_link = web.ctx.home + "/course/" + course.get_id() + "/"
+        course_link = web.ctx.home + "/course/" + course.get_id()
         content = str(self.template_helper.get_custom_renderer(_static_folder_path, False).email_course_registration_template()).format(
                 course_name=course.get_name("en"), course_link = course_link, username=username, data_policy=data_policy_link)
         email_tuple = (email, content)
