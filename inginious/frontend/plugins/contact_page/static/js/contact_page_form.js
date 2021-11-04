@@ -6,6 +6,7 @@ const EMAIL_INPUT_ID = "email-input";
 const NAME_INPUT_ID = "name-input";
 const CHECKBOX_ID = "checkbox-edit";
 const COURSE_NAME_ID = "course-name";
+const COURSE_GROUP_ID = "course-group";
 const COURSE_NAME_SPACE_ID = "course-space";
 const TEXTAREA_ID = "textarea-contact-page";
 const SEND_BUTTON_ID = "send-contact-page-button";
@@ -20,6 +21,7 @@ class ContactPageForm {
         this.nameInput = $(`#${NAME_INPUT_ID}`);
         this.editCheckbox = $(`#${CHECKBOX_ID}`);
         this.courseNameInput = $(`#${COURSE_NAME_ID}`);
+        this.courseGroupInput = $(`#${COURSE_GROUP_ID}`);
         this.courseNameSpace = $(`#${COURSE_NAME_SPACE_ID}`);
         this.textarea = $(`#${TEXTAREA_ID}`);
         this.sendButton = $(`#${SEND_BUTTON_ID}`);
@@ -76,6 +78,7 @@ class ContactPageForm {
         const self = this;
         this.sendButton.click(function () {
             self.sendInfo();
+            self.sendButton.prop("disabled",true);
         });
     }
 
@@ -123,13 +126,16 @@ class ContactPageForm {
                 "email": this.emailInput.val(),
                 "name": this.nameInput.val(),
                 "courseName": this.courseNameInput.val(),
+                "courseGroup":this.courseGroupInput.val(),
                 "textarea": this.textarea.val()
             },
             success: function (data) {
                 new MessageBox(ALERT_SPACE_ID, "The message has been sent", "info", false);
+                this.sendButton.prop("disabled", false);
             },
             error: function (request, status, error) {
                 new MessageBox(ALERT_SPACE_ID, "The message could not be sent", "danger", false);
+                this.sendButton.prop("disabled", false);
             }
         });
     }
