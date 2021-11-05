@@ -71,7 +71,6 @@ class AddCourseStudentsCsvFile(AdminApi):
     def register_all_students(self, parsed_file, course, email_language):
         registered_on_course = 0
         registered_users = 0
-        all_emails = []
         all_emails_new_users = []
         all_emails_registered_on_course_users = []
         users_failed = []

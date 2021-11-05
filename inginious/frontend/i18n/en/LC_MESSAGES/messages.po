@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-03 10:33-0500\n"
+"POT-Creation-Date: 2021-11-04 21:09-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -150,7 +150,7 @@ msgid "This email address is already in use !"
 msgstr ""
 
 #: inginious/frontend/pages/register.py:107
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:193
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:192
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr ""
@@ -2756,16 +2756,16 @@ msgid ""
 "                {}"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:191
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:190
 msgid "You have been enrolled on a course"
 msgstr "You have been enrolled on a course"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:4
-msgid "Welcome on {course_name}"
-msgstr "Welcome on {course_name}"
+msgid "Welcome on"
+msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:6
-msgid "Hello {username}"
+msgid "Hello"
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:8
@@ -2795,10 +2795,6 @@ msgstr ""
 msgid ""
 "Click on <strong>{course_name}</strong> option on the course list or "
 "click this link:"
-msgstr ""
-
-#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:17
-msgid "{course_link}"
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:19
@@ -5785,5 +5781,14 @@ msgstr ""
 #~ "If you already had activated your "
 #~ "account, you can login to UNCode "
 #~ "for begin the course."
+#~ msgstr ""
+
+#~ msgid "Welcome on {course_name}"
+#~ msgstr "Welcome on {course_name}"
+
+#~ msgid "Hello {username}"
+#~ msgstr ""
+
+#~ msgid "{course_link}"
 #~ msgstr ""
 

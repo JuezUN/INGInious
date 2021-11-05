@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-03 10:33-0500\n"
+"POT-Creation-Date: 2021-11-04 21:09-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -155,7 +155,7 @@ msgid "This email address is already in use !"
 msgstr "Cette adresse email est déjà utilisée !"
 
 #: inginious/frontend/pages/register.py:107
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:193
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:192
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr "Bienvenue sur UNCode"
@@ -2796,17 +2796,18 @@ msgid ""
 "                {}"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:191
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:190
 msgid "You have been enrolled on a course"
 msgstr "Vous n'êtes inscrit à aucun cours"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:4
-msgid "Welcome on {course_name}"
-msgstr ""
+#, fuzzy
+msgid "Welcome on"
+msgstr "Bienvenue"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:6
-msgid "Hello {username}"
-msgstr "nom d'utilisateur"
+msgid "Hello"
+msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:8
 #: inginious/frontend/plugins/register_students/static/email_template.html:6
@@ -2835,10 +2836,6 @@ msgstr ""
 msgid ""
 "Click on <strong>{course_name}</strong> option on the course list or "
 "click this link:"
-msgstr ""
-
-#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:17
-msgid "{course_link}"
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:19
@@ -5902,5 +5899,14 @@ msgstr "Extensions autorisées:"
 #~ "If you already had activated your "
 #~ "account, you can login to UNCode "
 #~ "for begin the course."
+#~ msgstr ""
+
+#~ msgid "Welcome on {course_name}"
+#~ msgstr ""
+
+#~ msgid "Hello {username}"
+#~ msgstr "nom d'utilisateur"
+
+#~ msgid "{course_link}"
 #~ msgstr ""
 

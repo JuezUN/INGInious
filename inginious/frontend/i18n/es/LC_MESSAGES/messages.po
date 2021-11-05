@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-03 10:33-0500\n"
+"POT-Creation-Date: 2021-11-04 21:09-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -160,7 +160,7 @@ msgid "This email address is already in use !"
 msgstr "¡La dirección de correo electrónico ya existe!"
 
 #: inginious/frontend/pages/register.py:107
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:193
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:192
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr "Bienvenido a UNCode"
@@ -3086,17 +3086,17 @@ msgstr ""
 "exista: \n"
 "                {}"
 
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:191
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:190
 msgid "You have been enrolled on a course"
 msgstr "Has sido inscrito en un curso"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:4
-msgid "Welcome on {course_name}"
-msgstr "Bienvenido a {course_name}"
+msgid "Welcome on"
+msgstr "Bienvenido a"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:6
-msgid "Hello {username}"
-msgstr "Hola {username}"
+msgid "Hello"
+msgstr "Hola"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:8
 #: inginious/frontend/plugins/register_students/static/email_template.html:6
@@ -3134,10 +3134,6 @@ msgid ""
 msgstr ""
 "Selecciona el curso <strong>{course_name}</strong> de la lista para "
 "entrar, también puedes ingresar por medio de este link:"
-
-#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:17
-msgid "{course_link}"
-msgstr "{course_link}"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:19
 msgid "Now you can see the tasks of the course, you are ready."
@@ -6357,4 +6353,13 @@ msgstr "Extensiones permitidas"
 
 #~ msgid "superadmin can not modify its own data"
 #~ msgstr ""
+
+#~ msgid "Welcome on {course_name}"
+#~ msgstr "Bienvenido a {course_name}"
+
+#~ msgid "Hello {username}"
+#~ msgstr "Hola {username}"
+
+#~ msgid "{course_link}"
+#~ msgstr "{course_link}"
 
