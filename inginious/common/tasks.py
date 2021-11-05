@@ -120,6 +120,7 @@ class Task(object):
         return self._fs
 
     def use_linter_automatically(self):
+        """ Returns True if Linter is allowed to be used automatically in course settings """
         course = self.get_course()
         enable_linter_option = course.enable_automatic_linter()
         return enable_linter_option
