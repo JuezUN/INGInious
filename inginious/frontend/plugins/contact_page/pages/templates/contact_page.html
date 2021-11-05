@@ -76,8 +76,8 @@ $ is_logged_in = user_manager.session_logged_in()
                         <input type="text" class="form-control" id="course-name" placeholder='$:_("Course Name")'>
                     </div>
                     <div style="margin-right: 0.9rem" class="form-group col-md-4">
-                        <label for="course-group"><h3>$:_("Group Number/Name")</h3></label>
-                        <input type="text" class="form-control" id="course-group" placeholder='$:_("Group Number/Name")'>
+                        <label for="course-group"><h3>$:_("Group")</h3></label>
+                        <input type="text" class="form-control" id="course-group" placeholder='$:_("Group")'>
                     </div>
                 </div>
                 <div class="row">
@@ -94,17 +94,20 @@ $ is_logged_in = user_manager.session_logged_in()
                     </div>
                 </div>
                 <div class="modal fade" id="modalSendMessage" role="dialog">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                Prueba
+                                <h3>$:_("Message Status")</h3>
                             </div>
                             <div class="modal-body">
-                                Prueba
+                                <div id="alert-onmodal" class="alert show" role="alert">
+                                    <h4 hidden id="text-alert-modal-success">$:_("The message has been sent")</h4>
+                                    <h4 hidden id="text-alert-modal-fail">$:_("The message could not be sent")</h4>
+                                </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">$:_("Close")</button>
                             </div>
                         </div>
                     </div>

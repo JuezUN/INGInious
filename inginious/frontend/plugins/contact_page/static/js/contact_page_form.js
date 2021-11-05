@@ -13,7 +13,11 @@ const SEND_BUTTON_ID = "send-contact-page-button";
 const COMMENTS_INSTRUCTIONS_ID = "description-comment";
 const NEW_COURSE_INSTRUCTIONS_ID = "description-new-course";
 const ALERT_SPACE_ID = "alert-space";
-const MODAL_SEND_ID = "modalSendMessage"
+const MODAL_SEND_ID = "modalSendMessage";
+const ALERT_MODAL_ID = "alert-onmodal";
+const TEXT_ALERT_ON_MODAL_SUCCESS_ID = "text-alert-modal-success";
+const TEXT_ALERT_ON_MODAL_FAIL_ID = "text-alert-modal-fail";
+
 
 class ContactPageForm {
     constructor() {
@@ -29,6 +33,9 @@ class ContactPageForm {
         this.commentInstructions = $(`#${COMMENTS_INSTRUCTIONS_ID}`);
         this.newCourseInstructions = $(`#${NEW_COURSE_INSTRUCTIONS_ID}`);
         this.modalSendMessage = $(`#${MODAL_SEND_ID}`);
+        this.alertOnModal = $(`#${ALERT_MODAL_ID}`);
+        this.textOnAlertSuccess = $(`#${TEXT_ALERT_ON_MODAL_SUCCESS_ID}`);
+        this.textOnAlertFail = $(`#${TEXT_ALERT_ON_MODAL_FAIL_ID}`);
         this.configForm();
         this.addChangeListenerToSelect();
         this.addChangeListenerToCheckbox();
@@ -84,6 +91,27 @@ class ContactPageForm {
         });
     }
 
+    addCloseListenerToOnCloseModal(success) {
+        const self = this;
+        this.modalSendMessage.on("hidden.bs.modal", function() {
+            if (self.alertOnModal.is('.alert-success')) {
+                if (self.editCheckbox.is(":checked")) {
+                    self.emailInput.val('');
+                    self.nameInput.val('');
+                }
+                self.courseNameInput.val('');
+                self.courseGroupInput.val('');
+                self.textarea.val('');
+                self.alertOnModal.removeClass('alert-success');
+                self.textOnAlertSuccess.hide();
+            } 
+            if (self.alertOnModal.is('.alert-danger')) {
+                self.alertOnModal.removeClass('alert-danger');
+                self.textOnAlertFail.hide();
+            }
+        });
+    }
+
     lockOrUnlockEmailAndNameInputF() {
         if (this.editCheckbox.is(":checked")) {
             this.emailInput.prop("disabled", false);
@@ -96,7 +124,6 @@ class ContactPageForm {
 
     sendInfo() {
         if (this.validateFieldsStatus()) {
-            this.modalSendMessage.modal("show");
             this.sendRequest();
             this.sendContactPageAnalytics();
         } else {
@@ -122,6 +149,7 @@ class ContactPageForm {
     }
 
     sendRequest() {
+        const self = this;
         jQuery.ajax({
             method: "POST",
             data: {
@@ -132,11 +160,19 @@ class ContactPageForm {
                 "courseGroup":this.courseGroupInput.val(),
                 "textarea": this.textarea.val()
             },
-            success: function (data) {
-                new MessageBox(ALERT_SPACE_ID, "The message has been sent", "info", false);
+            success: function (data) { 
+                self.alertOnModal.addClass('alert-success');
+                self.textOnAlertSuccess.show();
+                self.addCloseListenerToOnCloseModal(true);
+                self.modalSendMessage.modal("show");
+                //new MessageBox(ALERT_SPACE_ID, "The message has been sent", "info", false);
             },
             error: function (request, status, error) {
-                new MessageBox(ALERT_SPACE_ID, "The message could not be sent", "danger", false);
+                self.alertOnModal.addClass('alert-danger');
+                self.textOnAlertFail.show();
+                self.addCloseListenerToOnCloseModal(false);
+                self.modalSendMessage.modal("show");
+                //new MessageBox(ALERT_SPACE_ID, "The message could not be sent", "danger", false);
             }
         });
     }

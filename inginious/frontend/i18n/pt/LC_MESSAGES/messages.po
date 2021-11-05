@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-13 14:17-0500\n"
+"POT-Creation-Date: 2021-11-04 15:39-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -1088,6 +1088,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:144
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:207
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:110
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:82
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:120
@@ -1575,20 +1576,39 @@ msgstr ""
 msgid "Course Name"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:81
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:79
+#: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:29
+#: inginious/frontend/templates/task.html:133
+msgid "Group"
+msgstr "Grupo"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:85
 msgid "Comments or description"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:82
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:86
 msgid "Put your opinion or tell us about the problem you have encountered "
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:83
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:87
 msgid "Describe and justify the course you want to create "
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:89
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:93
 msgid "Send"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:101
+#, fuzzy
+msgid "Message Status"
+msgstr "Status do serviço"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:105
+msgid "The message has been sent"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:106
+msgid "The message could not be sent"
 msgstr ""
 
 #: inginious/frontend/plugins/course_creation/constants.py:43
@@ -1642,11 +1662,6 @@ msgstr ""
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:19
 msgid "Course name"
 msgstr ""
-
-#: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:29
-#: inginious/frontend/templates/task.html:133
-msgid "Group"
-msgstr "Grupo"
 
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:35
 msgid "Year"
