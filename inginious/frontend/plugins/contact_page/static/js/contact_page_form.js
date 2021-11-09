@@ -17,6 +17,10 @@ const MODAL_SEND_ID = "modalSendMessage";
 const ALERT_MODAL_ID = "alert-onmodal";
 const TEXT_ALERT_ON_MODAL_SUCCESS_ID = "text-alert-modal-success";
 const TEXT_ALERT_ON_MODAL_FAIL_ID = "text-alert-modal-fail";
+const BUTTON_MORE_DETAILS = "button-more-details";
+const DETAILS_DIV = "details";
+const DETAILS_COLLAPSE = "details-text";
+const ERROR_TEXT = "error";
 
 
 class ContactPageForm {
@@ -36,6 +40,10 @@ class ContactPageForm {
         this.alertOnModal = $(`#${ALERT_MODAL_ID}`);
         this.textOnAlertSuccess = $(`#${TEXT_ALERT_ON_MODAL_SUCCESS_ID}`);
         this.textOnAlertFail = $(`#${TEXT_ALERT_ON_MODAL_FAIL_ID}`);
+        this.buttonMoreDetails = $(`#${BUTTON_MORE_DETAILS}`);
+        this.details = $(`#${DETAILS_DIV}`);
+        this.errorText = $(`#${ERROR_TEXT}`);
+        this.detailsText = $(`#${DETAILS_COLLAPSE}`);
         this.configForm();
         this.addChangeListenerToSelect();
         this.addChangeListenerToCheckbox();
@@ -91,7 +99,7 @@ class ContactPageForm {
         });
     }
 
-    addCloseListenerToOnCloseModal(success) {
+    addCloseListenerToOnCloseModal() {
         const self = this;
         this.modalSendMessage.on("hidden.bs.modal", function() {
             if (self.alertOnModal.is('.alert-success')) {
@@ -108,6 +116,9 @@ class ContactPageForm {
             if (self.alertOnModal.is('.alert-danger')) {
                 self.alertOnModal.removeClass('alert-danger');
                 self.textOnAlertFail.hide();
+                self.errorText.text('');
+                self.details.hide();
+                self.detailsText.collapse('hide');
             }
         });
     }
@@ -163,16 +174,16 @@ class ContactPageForm {
             success: function (data) { 
                 self.alertOnModal.addClass('alert-success');
                 self.textOnAlertSuccess.show();
-                self.addCloseListenerToOnCloseModal(true);
-                self.modalSendMessage.modal("show");
-                //new MessageBox(ALERT_SPACE_ID, "The message has been sent", "info", false);
+                self.addCloseListenerToOnCloseModal();
+                self.modalSendMessage.modal("show"); 
             },
             error: function (request, status, error) {
                 self.alertOnModal.addClass('alert-danger');
                 self.textOnAlertFail.show();
-                self.addCloseListenerToOnCloseModal(false);
+                self.addCloseListenerToOnCloseModal();
                 self.modalSendMessage.modal("show");
-                //new MessageBox(ALERT_SPACE_ID, "The message could not be sent", "danger", false);
+                self.errorText.text(request.status+ " " + error);
+                self.details.show();
             }
         });
     }

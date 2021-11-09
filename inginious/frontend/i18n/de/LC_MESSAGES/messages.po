@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-04 15:39-0500\n"
+"POT-Creation-Date: 2021-11-09 15:47-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -1077,7 +1077,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:144
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:207
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:110
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:119
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:82
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:120
@@ -1596,6 +1596,10 @@ msgstr ""
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:106
 msgid "The message could not be sent"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:110
+msgid "More Details"
 msgstr ""
 
 #: inginious/frontend/plugins/course_creation/constants.py:43

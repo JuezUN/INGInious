@@ -104,6 +104,15 @@ $ is_logged_in = user_manager.session_logged_in()
                                 <div id="alert-onmodal" class="alert show" role="alert">
                                     <h4 hidden id="text-alert-modal-success">$:_("The message has been sent")</h4>
                                     <h4 hidden id="text-alert-modal-fail">$:_("The message could not be sent")</h4>
+                                    
+                                    <div hidden class="details" id="details">
+                                        <hr>
+                                        <a class="text-danger font-weight-bold" data-toggle="collapse" id="button-more-details" href="#details-text"  role="button" aria-expanded="false" aria-controls="details-text"><p>$:_("More Details")</p></a>
+                                        <div id="details-text" class="collapse">
+                                            <span id="error"></span>
+                                        </div> 
+                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="modal-footer">
