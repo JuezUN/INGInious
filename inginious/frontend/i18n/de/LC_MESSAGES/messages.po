@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-09 15:47-0500\n"
+"POT-Creation-Date: 2021-11-16 14:19-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -1077,7 +1077,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:144
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:207
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:119
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:126
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:82
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:120
@@ -1516,30 +1516,43 @@ msgstr ""
 msgid "Contact Page"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:30
-msgid "Subject"
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:26
+msgid "Correct all the errors noted in order to send the message"
 msgstr ""
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:32
-msgid "Select an option"
-msgstr ""
-
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:33
-msgid "Report a problem or make a comment"
+msgid "Subject"
 msgstr ""
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:34
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:38
+msgid "Select an option"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:35
+msgid "Report a problem or make a comment"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:36
 msgid "Request to create a new course "
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:45
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:48
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:38
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:15
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:159
 msgid "Email"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:57
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:53
+msgid "The email field is required"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:54
+msgid "An email is requested"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:62
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:285
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:34
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:38
@@ -1554,51 +1567,59 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:69
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:67
+msgid "The name field is required"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:75
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:27
 #: inginious/frontend/templates/course_admin/edit_tabs/files.html:17
 msgid "Edit"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:75
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:81
 msgid "Course Name"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:79
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:85
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:29
 #: inginious/frontend/templates/task.html:133
 msgid "Group"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:85
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:91
 msgid "Comments or description"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:86
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:92
 msgid "Put your opinion or tell us about the problem you have encountered "
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:87
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:93
 msgid "Describe and justify the course you want to create "
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:93
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:95
+msgid "The comment is too short"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:100
 msgid "Send"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:101
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:108
 msgid "Message Status"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:105
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:112
 msgid "The message has been sent"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:106
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:113
 msgid "The message could not be sent"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:110
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:117
 msgid "More Details"
 msgstr ""
 

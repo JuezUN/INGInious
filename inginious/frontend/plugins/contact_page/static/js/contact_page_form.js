@@ -12,7 +12,7 @@ const TEXTAREA_ID = "textarea-contact-page";
 const SEND_BUTTON_ID = "send-contact-page-button";
 const COMMENTS_INSTRUCTIONS_ID = "description-comment";
 const NEW_COURSE_INSTRUCTIONS_ID = "description-new-course";
-const ALERT_SPACE_ID = "alert-space";
+const ALERT_HAS_ERRORS_ID = "alert-has-errors";
 const MODAL_SEND_ID = "modalSendMessage";
 const ALERT_MODAL_ID = "alert-onmodal";
 const TEXT_ALERT_ON_MODAL_SUCCESS_ID = "text-alert-modal-success";
@@ -44,6 +44,7 @@ class ContactPageForm {
         this.details = $(`#${DETAILS_DIV}`);
         this.errorText = $(`#${ERROR_TEXT}`);
         this.detailsText = $(`#${DETAILS_COLLAPSE}`);
+        this.alertOnErrorValidation = $(`#${ALERT_HAS_ERRORS_ID}`)
         this.configForm();
         this.addChangeListenerToSelect();
         this.addChangeListenerToCheckbox();
@@ -135,10 +136,11 @@ class ContactPageForm {
 
     sendInfo() {
         if (this.validateFieldsStatus()) {
+            this.alertOnErrorValidation.hide();
             this.sendRequest();
             this.sendContactPageAnalytics();
         } else {
-            new MessageBox(ALERT_SPACE_ID, "Correct all the errors noted in order to send the message ", "danger", false);
+            this.alertOnErrorValidation.show();
         }
     }
 
@@ -189,22 +191,21 @@ class ContactPageForm {
     }
 
     addErrorStyle(inputObj, errorText) {
-        const inputObjParent = inputObj.parent();
-
+        const inputObjParent = inputObj.parent(); 
         inputObjParent.addClass("has-error");
-        inputObjParent.append(`<span class=\"help-block\">${errorText}</span>`);
+        const error = $(`#${errorText}`);
+        error.show();
     }
 
     removeErrorStyle(inputObj) {
         const inputObjParent = inputObj.parent();
-
         inputObjParent.removeClass("has-error");
-        inputObjParent.find("span").remove();
+        inputObjParent.find("p.help-block").hide();
     }
 
     checkSubjectIsOk() {
         if (!this.checkSubjectIsSelected()) {
-            this.addErrorStyle(this.selectGroup, "Select an option");
+            this.addErrorStyle(this.selectGroup, "error-subject-no-selected");
             return false;
         }
         return true;
@@ -212,11 +213,11 @@ class ContactPageForm {
 
     checkEmailFieldIsOk() {
         if (!this.checkInputContent(this.emailInput, 0)) {
-            this.addErrorStyle(this.emailInput, "The email field is required");
+            this.addErrorStyle(this.emailInput, "error-email-required");
             return false;
         }
         if (!this.validateEmailFormat()) {
-            this.addErrorStyle(this.emailInput, "An email is requested");
+            this.addErrorStyle(this.emailInput, "error-email-not-email");
             return false;
         }
         return true;
@@ -224,7 +225,7 @@ class ContactPageForm {
 
     checkNameFieldIsOk() {
         if (!this.checkInputContent(this.nameInput, 0)) {
-            this.addErrorStyle(this.nameInput, "The name field is required");
+            this.addErrorStyle(this.nameInput, "error-name-required");
             return false;
         }
         return true;
@@ -232,7 +233,7 @@ class ContactPageForm {
 
     checkTextAreaIsOk() {
         if (!this.checkInputContent(this.textarea, 21)) {
-            this.addErrorStyle(this.textarea, "The comment is too short");
+            this.addErrorStyle(this.textarea, "error-textarea-ok");
             return false;
         }
         return true;
