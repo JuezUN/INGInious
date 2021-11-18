@@ -71,15 +71,17 @@ class AddCourseStudentsCsvFile(AdminApi):
     def register_all_students(self, parsed_file, course, email_language):
         registered_on_course = 0
         registered_users = 0
-        all_emails = []
+        all_emails_new_users = []
+        all_emails_registered_on_course_users = []
         users_failed = []
         for user_data in parsed_file:
             data = self._parse_user_data(user_data)
 
-            was_registered, email, failed = self._register_student(data, course, email_language)
+            was_registered, email, failed, user_already_exist = self._register_student(data, course, email_language)
+            #If the user was registered, append 1 email to send, one to activate the account
             if was_registered:
                 registered_users += 1
-                all_emails.append(email)
+                all_emails_new_users.append(email)
 
             if self._is_failed_register(was_registered, failed, data):
                 users_failed.append(data)
@@ -89,13 +91,22 @@ class AddCourseStudentsCsvFile(AdminApi):
                 was_registered_on_course = self.user_manager.course_register_user(course, data["username"], '', True)
                 if was_registered_on_course:
                     registered_on_course += 1
+                #If the user wasn't registered because already exist in database:
+                #only send the email to give information of the course they were enrolled to
+                if was_registered_on_course and user_already_exist:
+                    all_emails_registered_on_course_users.append(email)
             except:
                 pass
 
         # Send the emails in the background as this may take a long time.
-        emails_thread = threading.Thread(target=self._send_emails_in_background,
-                                         args=[all_emails, self.database.users.delete_one])
-        emails_thread.start()
+        emails_new_users_thread = threading.Thread(target=self._send_emails_in_background,
+                                         args=[all_emails_new_users, False, self.database.users.delete_one])
+        emails_registered_on_course_users_thread = threading.Thread(target=self._send_emails_in_background,
+                                         args=[all_emails_registered_on_course_users, True, self.database.users.delete_one])
+        
+        
+        emails_new_users_thread.start()
+        emails_registered_on_course_users_thread.start()
         return registered_on_course, registered_users, users_failed
 
     def _is_failed_register(self, was_registered, failed, data):
@@ -120,6 +131,22 @@ class AddCourseStudentsCsvFile(AdminApi):
 
         return False
 
+
+    def _email_user_register_on_course(self, username, email, course):
+        """
+        Format an email to an existing user enrolled to a course,
+        :param email: string of the email of the user
+               course: course to enroll
+        :return: a Tuple with the email and the content of the email to send.
+        """
+        data_policy_link = web.ctx.home + "/data_policy"
+        course_link = web.ctx.home + "/course/" + course.get_id()
+        content = str(self.template_helper.get_custom_renderer(_static_folder_path, False).email_course_registration_template()).format(
+                course_name=course.get_name("en"), course_link = course_link, username=username, data_policy=data_policy_link)
+        email_tuple = (email, content)
+        return email_tuple
+
+
     def _register_student(self, data, course, email_language):
         """
         Registers the student in UNCode and sends a verification email to the user. If the user already exists, nothing
@@ -131,7 +158,7 @@ class AddCourseStudentsCsvFile(AdminApi):
         existing_user = self.database.users.find_one(
             {"$or": [{"username": data["username"]}, {"email": regex_user_email}]})
         if existing_user is not None:
-            return False, None, False
+            return False, self._email_user_register_on_course(data["username"], data["email"], course), False, True
         password = data["password"]
         passwd_hash = hashlib.sha512(data["password"].encode("utf-8")).hexdigest()
         activate_hash = hashlib.sha512(str(random.getrandbits(256)).encode("utf-8")).hexdigest()
@@ -152,20 +179,25 @@ class AddCourseStudentsCsvFile(AdminApi):
                 password=password, course_name=course.get_name("en"), data_policy=data_policy_link)
             self.database.users.insert(data)
         except:
-            return False, None, True
+            return False, None, True, False
 
         email = (data["email"], content)
-        return True, email, False
+        return True, email, False, False
 
-    def _send_emails_in_background(self, emails, delete_user_function):
-        subject = _("Welcome on UNCode")
+    def _send_emails_in_background(self, emails, registered, delete_user_function):
+        
+        if registered:
+            subject = _("You have been enrolled on a course")
+        else:
+            subject = _("Welcome on UNCode")
         headers = {"Content-Type": 'text/html'}
         for (email_address, email_content) in emails:
             try:
                 web.sendmail(web.config.smtp_sendername, email_address, subject, email_content, headers)
             except:
                 # Unregister student in case it failed to send the email.
-                delete_user_function({"email": email_address})
+                if not registered:
+                    delete_user_function({"email": email_address})
 
     def _check_email_format(self, email):
         """Checks email matches a real email."""
