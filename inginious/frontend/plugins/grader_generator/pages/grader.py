@@ -16,6 +16,12 @@ def on_task_editor_submit(course, taskid, task_data, task_fs):
     Returns: None if successful otherwise a str
     """
 
+    problem_type = task_data['problems'][task_data['grader_problem_id']]['type']
+    grader_environment = task_data['environment']
+    if problem_type in ['code_multiple_languages', 'code_file_multiple_languages'] and grader_environment not in ['multiple_languages', 'HDL', 'Data Science']:
+        return json.dumps({"status":"error","message": "Cannot set a 'code_multiple_languages' or 'code_file_multiple_languages' problem with a 'Notebook' grading environment"})
+
+
     # Create form object
     task_data["generate_grader"] = "generate_grader" in task_data
 
