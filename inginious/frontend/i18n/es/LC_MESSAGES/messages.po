@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-04 18:55-0500\n"
+"POT-Creation-Date: 2021-11-04 21:09-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -160,7 +160,7 @@ msgid "This email address is already in use !"
 msgstr "¡La dirección de correo electrónico ya existe!"
 
 #: inginious/frontend/pages/register.py:107
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:161
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:192
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr "Bienvenido a UNCode"
@@ -1555,7 +1555,7 @@ msgstr "\"Todos los servicios\""
 #: inginious/frontend/plugins/analytics/pages/analytics.html:57
 #: inginious/frontend/plugins/auth/custom_auth_form.html:29
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:33
-#: inginious/frontend/plugins/register_students/static/email_template.html:12
+#: inginious/frontend/plugins/register_students/static/email_template.html:14
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:38
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:17
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:147
@@ -1624,7 +1624,7 @@ msgid "Course deleted"
 msgstr "Curso borrado"
 
 #: inginious/frontend/plugins/auth/custom_auth_form.html:32
-#: inginious/frontend/plugins/register_students/static/email_template.html:13
+#: inginious/frontend/plugins/register_students/static/email_template.html:15
 #: inginious/frontend/templates/auth.html:26
 #: inginious/frontend/templates/mycourses.html:89
 #: inginious/frontend/templates/register_button.html:31
@@ -2367,7 +2367,6 @@ msgid "Students attempted"
 msgstr "Estudiantes que lo han intentado"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:67
-#, fuzzy
 msgid "No Tasks with attempts Yet"
 msgstr "La tarea no se ha intentado"
 
@@ -2488,7 +2487,6 @@ msgid "Select the best description to grade the student's code"
 msgstr "Seleccione la mejor descripción para evaluar el código del estudiante"
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:85
-#, fuzzy
 msgid "Click to select and deselect"
 msgstr "Haz click para seleccionar y doble click para desmarcar"
 
@@ -3088,7 +3086,20 @@ msgstr ""
 "exista: \n"
 "                {}"
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:5
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:190
+msgid "You have been enrolled on a course"
+msgstr "Has sido inscrito en un curso"
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:4
+msgid "Welcome on"
+msgstr "Bienvenido a"
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:6
+msgid "Hello"
+msgstr "Hola"
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:8
+#: inginious/frontend/plugins/register_students/static/email_template.html:6
 msgid ""
 "You have been registered for the course: <strong>{course_name}</strong> "
 "at Universidad Nacional de Colombia."
@@ -3096,11 +3107,58 @@ msgstr ""
 "Has sido registrado en el curso: <strong>{course_name}</strong> en la "
 "Universidad Nacional de Colombia."
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:7
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:10
+msgid ""
+"If you have already activated your account, you can access to UNCode to "
+"start the course."
+msgstr ""
+"Si ya activaste tu cuenta, puedes ingresar a la plataforma UNCode para "
+"empezar el curso."
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:13
+msgid "How to proceed?"
+msgstr "¿Cuál es el siguiente paso?"
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:15
+msgid ""
+"When you logged in, you could see the main page with the courses that you"
+" are enrolled"
+msgstr ""
+"Cuando ingreses podrás ver la página principal con los cursos a los "
+"cuales estás inscrito."
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:16
+msgid ""
+"Click on <strong>{course_name}</strong> option on the course list or "
+"click this link:"
+msgstr ""
+"Selecciona el curso <strong>{course_name}</strong> de la lista para "
+"entrar, también puedes ingresar por medio de este link:"
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:19
+msgid "Now you can see the tasks of the course, you are ready."
+msgstr "¡Ahora puedes acceder a las tareas del curso!."
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:24
+#: inginious/frontend/plugins/register_students/static/email_template.html:34
+msgid "See the UNCode's"
+msgstr "Consulta nuestra"
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:25
+#: inginious/frontend/plugins/register_students/static/email_template.html:35
+msgid "data policy"
+msgstr "política de datos"
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:27
+#: inginious/frontend/plugins/register_students/static/email_template.html:37
+msgid "Code and learn!"
+msgstr "!Programa y Aprende!"
+
+#: inginious/frontend/plugins/register_students/static/email_template.html:9
 msgid "To activate your account, please click on the following link:"
 msgstr "Para activar tu cuenta, por favor sigue el siguiente enlace: "
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:10
+#: inginious/frontend/plugins/register_students/static/email_template.html:12
 msgid ""
 "After you active the account, you can login to UNCode using next "
 "credentials:"
@@ -3108,24 +3166,24 @@ msgstr ""
 "Después de activar la cuenta, puedes iniciar sesión en UNCode usando las "
 "siguientes credenciales:"
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:15
+#: inginious/frontend/plugins/register_students/static/email_template.html:17
 msgid "Remember to change your password in 'Preferences' option."
 msgstr "Recuerde cambiar su contraseña en la opción 'Preferencias'."
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:17
+#: inginious/frontend/plugins/register_students/static/email_template.html:19
 msgid "How to change the password?"
 msgstr "¿Cómo cambiar la contraseña?"
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:19
-#: inginious/frontend/plugins/register_students/static/email_template.html:26
+#: inginious/frontend/plugins/register_students/static/email_template.html:21
+#: inginious/frontend/plugins/register_students/static/email_template.html:28
 msgid "In top nav bar, click on the option displaying your name."
-msgstr "En la barra superior, haga clic dónde su nombre se muestra."
+msgstr "En la barra superior, haga clic dónde se muestra su nombre."
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:20
+#: inginious/frontend/plugins/register_students/static/email_template.html:22
 msgid "Click on 'Preferences' option."
 msgstr "Clic en la opción 'Preferencias'."
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:21
+#: inginious/frontend/plugins/register_students/static/email_template.html:23
 msgid ""
 "Now you can change your password setting your current password and the "
 "new password."
@@ -3133,11 +3191,11 @@ msgstr ""
 "Ahora puede cambiar la contraseña, poniendo la contraseña actual y la "
 "nueva contraseña."
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:24
+#: inginious/frontend/plugins/register_students/static/email_template.html:26
 msgid "How to authenticate using Google Authentication method?"
 msgstr "¿Cómo autenticarse usando una cuenta de Google?"
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:27
+#: inginious/frontend/plugins/register_students/static/email_template.html:29
 msgid ""
 "Click on 'Preferences' option, this will display a page with a menu in "
 "the right side. Click on the 'Authentication binding' option."
@@ -3146,7 +3204,7 @@ msgstr ""
 "menú en en el lado derecho. Selecciona la opción 'Enlaces de "
 "Autenticación'."
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:28
+#: inginious/frontend/plugins/register_students/static/email_template.html:30
 msgid ""
 "To add the Google Authentication method, select 'Google' then click on "
 "'Add new binding' button."
@@ -3154,7 +3212,7 @@ msgstr ""
 "Selecciona Google como enlace de autenticación y haz clic en 'Agregar "
 "nuevo enlace'."
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:29
+#: inginious/frontend/plugins/register_students/static/email_template.html:31
 msgid ""
 "After adding Google Authentication you can log in to UNCode using either "
 "the normal Authentication (username and password) or Google "
@@ -3162,18 +3220,6 @@ msgid ""
 msgstr ""
 "Después de esto, puedes iniciar sesión usando ya sea tu usuario y "
 "contraseña o con tu cuenta de Google."
-
-#: inginious/frontend/plugins/register_students/static/email_template.html:32
-msgid "See the UNCode's"
-msgstr "Consulta nuestra"
-
-#: inginious/frontend/plugins/register_students/static/email_template.html:33
-msgid "data policy"
-msgstr "política de datos"
-
-#: inginious/frontend/plugins/register_students/static/email_template.html:35
-msgid "Code and learn!"
-msgstr "!Programa y Aprende!"
 
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:5
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:15
@@ -4736,7 +4782,6 @@ msgstr "̉¿Estás seguro?"
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:74
 #: inginious/frontend/templates/unregister_button.html:22
-#, fuzzy
 msgid "Unregister"
 msgstr "\"Eliminar registro de estudiante\""
 
@@ -6321,4 +6366,13 @@ msgstr "Extensiones permitidas"
 
 #~ msgid "superadmin can not modify its own data"
 #~ msgstr ""
+
+#~ msgid "Welcome on {course_name}"
+#~ msgstr "Bienvenido a {course_name}"
+
+#~ msgid "Hello {username}"
+#~ msgstr "Hola {username}"
+
+#~ msgid "{course_link}"
+#~ msgstr "{course_link}"
 
