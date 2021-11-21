@@ -220,10 +220,17 @@
     function onChange(cm) {
         const state = cm.state.lint;
         if (!state) return;
-        clearTimeout(state.timeout);
-        state.timeout = setTimeout(function () {
-            startLinting(cm);
-        }, state.options.delay || 5000);
+
+        const lintOnChange = state.options.lintOnChange;
+
+        if(lintOnChange){
+            clearTimeout(state.timeout);
+            state.timeout = setTimeout(function () {
+                startLinting(cm);
+            }, state.options.delay || 5000);
+        }else{
+            clearMarks(cm);
+        }
     }
 
     function popupTooltips(annotations, e) {
@@ -253,8 +260,7 @@
     CodeMirror.defineOption("lint", false, function (cm, val, old) {
         if (old && old !== CodeMirror.Init) {
             clearMarks(cm);
-            if (cm.state.lint.options.lintOnChange !== false)
-                cm.off("change", onChange);
+            cm.on("change", onChange);
             CodeMirror.off(cm.getWrapperElement(), "mouseover", cm.state.lint.onMouseOver);
             clearTimeout(cm.state.lint.timeout);
             delete cm.state.lint;
@@ -265,11 +271,9 @@
             let hasLintGutter = false;
             for (let i = 0; i < gutters.length; ++i) if (gutters[i] === GUTTER_ID) hasLintGutter = true;
             const state = cm.state.lint = new LintState(cm, parseOptions(cm, val), hasLintGutter);
-            if (state.options.lintOnChange !== false)
-                cm.on("change", onChange);
+            cm.on("change", onChange);
             if (state.options.tooltips !== false && state.options.tooltips !== "gutter")
                 CodeMirror.on(cm.getWrapperElement(), "mouseover", state.onMouseOver);
-
         }
     });
 

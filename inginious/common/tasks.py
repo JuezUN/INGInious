@@ -119,6 +119,12 @@ class Task(object):
         """ Returns a FileSystemProvider which points to the folder of this task """
         return self._fs
 
+    def use_linter_automatically(self):
+        """ Returns True if Linter is allowed to be used automatically in course settings """
+        course = self.get_course()
+        enable_linter_option = course.enable_automatic_linter()
+        return enable_linter_option
+
     def check_answer(self, task_input, language):
         """
             Verify the answers in task_input. Returns six values
