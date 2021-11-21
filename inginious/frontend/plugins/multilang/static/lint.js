@@ -227,7 +227,7 @@
             clearTimeout(state.timeout);
             state.timeout = setTimeout(function () {
                 startLinting(cm);
-            }, state.options.delay || 1000);
+            }, state.options.delay || 5000);
         }else{
             clearMarks(cm);
         }
