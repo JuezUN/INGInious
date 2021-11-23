@@ -2,7 +2,7 @@ import web
 
 from inginious.frontend.pages.api._api_page import APIError
 from inginious.frontend.plugins.utils.admin_api import AdminApi
-from inginious.common.task_file_readers.yaml_reader import TaskYAMLFileReader
+from inginious.common.exceptions import InvalidNameException
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from ..user_hint_manager import UserHintManagerSingleton
 
@@ -21,7 +21,7 @@ class HintsModeAPI(AdminApi):
 
         temporal_task_file_content = {}
 
-        if not temporal_task_file:
+        if temporal_task_file is None:
 
             self.set_temporal_task_hints_file(course, task_id)
             temporal_task_file_content = self.task_factory.get_temporal_task_file_content(course, task_id)
@@ -44,20 +44,33 @@ class HintsModeAPI(AdminApi):
         """
 
         input_data = web.input()
-
+        
         course_id = get_mandatory_parameter(input_data, 'course_id')
         task_id = get_mandatory_parameter(input_data, 'task_id')
 
         course = self.get_course_and_check_rights(course_id)
 
+        use_temporal_file = False
+        task = None
+        
         try:
             task = self.task_factory.get_task(course, task_id)
-            task_submission_mode = task._data.get('groups', False)
+            task_data = task._data
 
-        except Exception:
-            #raise APIError(400, {"error": _("Task does not exist, or task has not been created yet.")})
-            task = self.get_temporal_task_hints_file_content(course, task_id)
-            task_submission_mode = task.get('groups', False)
+        except:
+            use_temporal_file = True
+
+        if use_temporal_file:
+            try:
+                task = self.get_temporal_task_hints_file_content(course, task_id)
+                task_data = task.get('data',{})
+            except InvalidNameException:
+                raise APIError(400, {"error": _("Invalid task name")})
+        
+        if task is None:
+            raise APIError(400, {"error": _("Task does not exist, or task has not been created yet.")})
+        
+        task_submission_mode = task_data.get('groups', False)
 
         return 200, task_submission_mode
 
@@ -75,15 +88,30 @@ class HintsModeAPI(AdminApi):
         last_submission_mode = get_mandatory_parameter(input_data, 'last_submission_mode')
 
         course = self.get_course_and_check_rights(course_id)
+
+        use_temporal_file = False
+        task = None
+        
         try:
             task = self.task_factory.get_task(course, task_id)
-            task_submission_mode = task._data.get('groups', False)
-            task_hints = task._data.get('task_hints', {})
-        except Exception:
-            #raise APIError(400, {"error": _("Task does not exist, or task has not been created yet.")})
-            task = self.get_temporal_task_hints_file_content(course, task_id)
-            task_submission_mode = task.get('groups', False)
-            task_hints = task.get('task_hints', {})
+            task_data = task._data
+
+        except:
+            use_temporal_file = True
+
+        if use_temporal_file:
+            try:
+                task = self.get_temporal_task_hints_file_content(course, task_id)
+                task_data = task.get('data',{})
+            except InvalidNameException:
+                raise APIError(400, {"error": _("Invalid task name")})
+        
+        if task is None:
+            raise APIError(400, {"error": _("Task does not exist, or task has not been created yet.")})
+        
+    
+        task_submission_mode = task_data.get('groups', False)
+        task_hints = task_data.get('task_hints', {})
 
         self.task_factory.delete_temporal_task_file(course, task_id)
 

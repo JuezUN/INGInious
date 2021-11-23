@@ -54,7 +54,7 @@ class TaskFactory(object):
         task_fs = self.get_task_fs(course.get_id(), taskid)
         try:
             temporal_task_file = task_fs.get("task_temp.yaml")
-        except Exception:
+        except:
             temporal_task_file = None
 
         return temporal_task_file
@@ -94,9 +94,11 @@ class TaskFactory(object):
         task_fs = self.get_task_fs(course.get_id(), taskid)
         for file_extension, file_manager in self._task_file_managers.items():
                 if task_fs.get("task_temp."+file_extension):
-                    task_file_manager = file_manager 
+                    task_file_manager = file_manager
+
+        temporal_task_file_content = {} 
         try:
-            temporal_task_file_content = task_file_manager.load(task_fs.get("task_temp.yaml"))
+            temporal_task_file_content["data"] = task_file_manager.load(task_fs.get("task_temp.yaml"))
         except Exception as e:
             raise TaskUnreadableException(str(e))
         
