@@ -102,6 +102,19 @@ class TaskFactory(object):
         
         return temporal_task_file_content
 
+    def delete_temporal_task_file(self, course, taskid):
+
+        if not id_checker(taskid):
+            raise InvalidNameException("Task with invalid name: " + taskid)
+
+        task_fs = self.get_task_fs(course.get_id(), taskid)
+
+        if self._task_file_exists(task_fs):
+
+            for ext in self.get_available_task_file_extensions():
+                if ext == "yaml" and task_fs.exists("task_temp."+ext):
+                    task_fs.delete("task_temp."+ext)
+
 
     def get_task_descriptor_content(self, courseid, taskid):
         """

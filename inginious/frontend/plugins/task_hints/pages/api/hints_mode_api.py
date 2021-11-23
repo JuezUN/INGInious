@@ -85,6 +85,8 @@ class HintsModeAPI(AdminApi):
             task_submission_mode = task.get('groups', False)
             task_hints = task.get('task_hints', {})
 
+        self.task_factory.delete_temporal_task_file(course, task_id)
+
         try:
 
             last_submission_mode = ('true' == last_submission_mode)
