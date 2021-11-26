@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-13 14:17-0500\n"
+"POT-Creation-Date: 2021-11-25 23:53-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -1092,6 +1092,7 @@ msgstr ""
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:82
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:120
 #: inginious/frontend/templates/auth.html:16
+#: inginious/frontend/templates/course_admin/edit_tabs/container.html:81
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
 #: inginious/frontend/templates/lti_login.html:30
 #: inginious/frontend/templates/register_button.html:36
@@ -1664,7 +1665,17 @@ msgstr ""
 msgid "Select a course to copy tasks"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/grader.py:47
+#: inginious/frontend/plugins/grader_generator/pages/grader.py:25
+msgid ""
+"Cannot set a 'Code Multiple Languages' or 'Code File Multiple Languages' "
+"problem with a 'Notebook' grading environment"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/grader.py:28
+msgid "Cannot set a 'Notebook' problem in a non 'Notebook' grading environment"
+msgstr ""
+
+#: inginious/frontend/plugins/grader_generator/pages/grader.py:59
 msgid "Grader"
 msgstr ""
 
@@ -5495,6 +5506,14 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:59
 msgid "Are the task's responses written in HTML instead of restructuredText?"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/edit_tabs/container.html:78
+msgid "If you change the grading environment task subproblem will be deleted!"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/edit_tabs/container.html:82
+msgid "Change"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:7

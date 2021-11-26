@@ -321,9 +321,25 @@ function setupGradingEnvironmentView() {
     $('#change_environment').on('click', function () {
         environmentValue = environmentSelectElement.val();
         configEnvironmentView();
+        deleteProblem();
     });
 
     configEnvironmentView(false);
+}
+
+function deleteProblem(){
+
+    // Delete the task problem as studio function, but do not show the confirm alert.
+
+    const problemId = getProblemIdEdit();
+    const well_problem_ID = "#subproblem_well_" + problemId;
+
+    const well = $(well_problem_ID);
+
+    well.detach();
+
+    toggle_display_new_subproblem_option();
+    showCorrectLanguagesEnvironment();
 }
 
 function configEnvironmentView(uncheckBoxes = true) {
