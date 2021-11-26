@@ -307,11 +307,22 @@ function showCorrectLanguagesEnvironment(uncheckBoxes = true) {
 
 function setupGradingEnvironmentView() {
     const environmentSelectElement = $("#environment");
+    let environmentValue = environmentSelectElement.val();
     if (environmentSelectElement.length) {
         environmentSelectElement.on('change', function () {
-            configEnvironmentView()
+            $('#change_grading_environment').modal('show');
         });
     }
+    
+    $('#change_grading_environment').on('hidden.bs.modal', function(){
+        environmentSelectElement.val(environmentValue);
+    });
+
+    $('#change_environment').on('click', function () {
+        environmentValue = environmentSelectElement.val();
+        configEnvironmentView();
+    });
+
     configEnvironmentView(false);
 }
 
