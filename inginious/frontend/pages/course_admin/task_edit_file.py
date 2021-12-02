@@ -162,7 +162,7 @@ class CourseTaskFiles(INGIniousAdminPage):
 
         task_fs = self.task_factory.get_task_fs(courseid, taskid)
         try:
-            content = fileobj.file.read().decode("utf-8").replace("\r\n","\n").encode()
+            content = fileobj.file.read().decode("utf-8").replace("\r\n", "\n").encode()
             task_fs.put(wanted_path, content)
         except:
             return self.show_tab_file(courseid, taskid, _("An error occurred while writing the file"))
