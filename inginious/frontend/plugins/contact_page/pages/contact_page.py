@@ -25,6 +25,7 @@ def generate_slack_request_payload(data):
               create_slack_text_block("Name", data["name"])]
     if is_new_course_request(data["subject_id"]):
         blocks.append(create_slack_text_block("Course Name", data["courseName"]))
+        blocks.append(create_slack_text_block("Course Group", data["courseGroup"]))
     blocks.append(create_slack_text_block("Comments", data["textarea"]))
     return json.dumps({"blocks": blocks})
 
