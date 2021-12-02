@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-16 14:19-0500\n"
+"POT-Creation-Date: 2021-12-01 23:13-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -754,9 +754,8 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:25
-#, fuzzy
 msgid "Goal"
-msgstr "Local"
+msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:27
 msgid ""
@@ -766,9 +765,8 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:29
-#, fuzzy
 msgid "Scope"
-msgstr "código"
+msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:31
 msgid ""
@@ -901,9 +899,8 @@ msgid "Complete name and last name."
 msgstr "Nome completo."
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:107
-#, fuzzy
 msgid "Contact information."
-msgstr "Informações de depuração"
+msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:111
 msgid ""
@@ -1359,7 +1356,6 @@ msgid "The start date must be greater than end date."
 msgstr ""
 
 #: inginious/frontend/plugins/analytics/utils.py:59
-#, fuzzy
 msgid "Invalid date format"
 msgstr ""
 
@@ -1405,9 +1401,8 @@ msgid "Course"
 msgstr "Curso"
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:69
-#, fuzzy
 msgid "\"All courses\""
-msgstr "\"Meus cursos\""
+msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:78
 #: inginious/frontend/templates/course_admin/classroom_edit.html:161
@@ -1623,7 +1618,7 @@ msgstr ""
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:108
 #, fuzzy
 msgid "Message Status"
-msgstr "Status do serviço"
+msgstr ""
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:112
 msgid "The message has been sent"
@@ -2194,9 +2189,8 @@ msgid "Students attempted"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:67
-#, fuzzy
 msgid "No Tasks with attempts Yet"
-msgstr "Ainda não tentou"
+msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:17
 msgid ""
@@ -4611,9 +4605,8 @@ msgstr "Nome de usuário do aluno (será registrado):"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:77
 #: inginious/frontend/templates/course_admin/teams_edit.html:53
-#, fuzzy
 msgid "\"Student username\""
-msgstr "ID da tarefa / nome de usuário"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:100
 #: inginious/frontend/templates/course_admin/task_edit.html:44
@@ -4629,9 +4622,8 @@ msgstr ""
 "não podem ser removidos dela."
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:112
-#, fuzzy
 msgid "Classroom description"
-msgstr "Nova descrição da sala de aula"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:122
 msgid "Delete classroom"
@@ -4693,9 +4685,8 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:56
 #: inginious/frontend/templates/course_admin/danger_zone.html:141
-#, fuzzy
 msgid "\"course id\""
-msgstr "\"Lista de cursos\""
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:72
 msgid "Restore backup from {}"
@@ -5007,14 +4998,12 @@ msgid "Teaching staff"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list.html:38
-#, fuzzy
 msgid "Registered staff"
-msgstr "Estudante registrado"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list.html:43
-#, fuzzy
 msgid "Registered students"
-msgstr "Estudante registrado"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:15
 msgid "member"
@@ -5037,9 +5026,8 @@ msgid "\"Unregister all\""
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:61
-#, fuzzy
 msgid "\"Unregister\""
-msgstr "Cancelar registro"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:77
 msgid "This will remove {} from the course. Are you sure ?"
@@ -5420,9 +5408,8 @@ msgid "Author"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:48
-#, fuzzy
 msgid "\"Your name\""
-msgstr "\"Meus cursos\""
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:53
 msgid "LTI task URL"

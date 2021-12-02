@@ -104,10 +104,6 @@ class ContactPageForm {
         const self = this;
         this.modalSendMessage.on("hidden.bs.modal", function() {
             if (self.alertOnModal.is('.alert-success')) {
-                if (self.editCheckbox.is(":checked")) {
-                    self.emailInput.val('');
-                    self.nameInput.val('');
-                }
                 self.courseNameInput.val('');
                 self.courseGroupInput.val('');
                 self.textarea.val('');
