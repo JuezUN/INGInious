@@ -6,12 +6,22 @@ const EMAIL_INPUT_ID = "email-input";
 const NAME_INPUT_ID = "name-input";
 const CHECKBOX_ID = "checkbox-edit";
 const COURSE_NAME_ID = "course-name";
+const COURSE_GROUP_ID = "course-group";
 const COURSE_NAME_SPACE_ID = "course-space";
 const TEXTAREA_ID = "textarea-contact-page";
 const SEND_BUTTON_ID = "send-contact-page-button";
 const COMMENTS_INSTRUCTIONS_ID = "description-comment";
 const NEW_COURSE_INSTRUCTIONS_ID = "description-new-course";
 const ALERT_SPACE_ID = "alert-space";
+const MODAL_SEND_ID = "modalSendMessage";
+const ALERT_MODAL_ID = "alert-onmodal";
+const TEXT_ALERT_ON_MODAL_SUCCESS_ID = "text-alert-modal-success";
+const TEXT_ALERT_ON_MODAL_FAIL_ID = "text-alert-modal-fail";
+const BUTTON_MORE_DETAILS = "button-more-details";
+const DETAILS_DIV = "details";
+const DETAILS_COLLAPSE = "details-text";
+const ERROR_TEXT = "error";
+
 
 class ContactPageForm {
     constructor() {
@@ -20,11 +30,20 @@ class ContactPageForm {
         this.nameInput = $(`#${NAME_INPUT_ID}`);
         this.editCheckbox = $(`#${CHECKBOX_ID}`);
         this.courseNameInput = $(`#${COURSE_NAME_ID}`);
+        this.courseGroupInput = $(`#${COURSE_GROUP_ID}`);
         this.courseNameSpace = $(`#${COURSE_NAME_SPACE_ID}`);
         this.textarea = $(`#${TEXTAREA_ID}`);
         this.sendButton = $(`#${SEND_BUTTON_ID}`);
         this.commentInstructions = $(`#${COMMENTS_INSTRUCTIONS_ID}`);
         this.newCourseInstructions = $(`#${NEW_COURSE_INSTRUCTIONS_ID}`);
+        this.modalSendMessage = $(`#${MODAL_SEND_ID}`);
+        this.alertOnModal = $(`#${ALERT_MODAL_ID}`);
+        this.textOnAlertSuccess = $(`#${TEXT_ALERT_ON_MODAL_SUCCESS_ID}`);
+        this.textOnAlertFail = $(`#${TEXT_ALERT_ON_MODAL_FAIL_ID}`);
+        this.buttonMoreDetails = $(`#${BUTTON_MORE_DETAILS}`);
+        this.details = $(`#${DETAILS_DIV}`);
+        this.errorText = $(`#${ERROR_TEXT}`);
+        this.detailsText = $(`#${DETAILS_COLLAPSE}`);
         this.configForm();
         this.addChangeListenerToSelect();
         this.addChangeListenerToCheckbox();
@@ -76,6 +95,27 @@ class ContactPageForm {
         const self = this;
         this.sendButton.click(function () {
             self.sendInfo();
+            self.sendButton.prop("disabled",true);
+        });
+    }
+
+    addCloseListenerToOnCloseModal() {
+        const self = this;
+        this.modalSendMessage.on("hidden.bs.modal", function() {
+            if (self.alertOnModal.is('.alert-success')) {
+                self.courseNameInput.val('');
+                self.courseGroupInput.val('');
+                self.textarea.val('');
+                self.alertOnModal.removeClass('alert-success');
+                self.textOnAlertSuccess.hide();
+            } 
+            if (self.alertOnModal.is('.alert-danger')) {
+                self.alertOnModal.removeClass('alert-danger');
+                self.textOnAlertFail.hide();
+                self.errorText.text('');
+                self.details.hide();
+                self.detailsText.collapse('hide');
+            }
         });
     }
 
@@ -116,6 +156,7 @@ class ContactPageForm {
     }
 
     sendRequest() {
+        const self = this;
         jQuery.ajax({
             method: "POST",
             data: {
@@ -123,13 +164,22 @@ class ContactPageForm {
                 "email": this.emailInput.val(),
                 "name": this.nameInput.val(),
                 "courseName": this.courseNameInput.val(),
+                "courseGroup":this.courseGroupInput.val(),
                 "textarea": this.textarea.val()
             },
-            success: function (data) {
-                new MessageBox(ALERT_SPACE_ID, "The message has been sent", "info", false);
+            success: function (data) { 
+                self.alertOnModal.addClass('alert-success');
+                self.textOnAlertSuccess.show();
+                self.addCloseListenerToOnCloseModal();
+                self.modalSendMessage.modal("show"); 
             },
             error: function (request, status, error) {
-                new MessageBox(ALERT_SPACE_ID, "The message could not be sent", "danger", false);
+                self.alertOnModal.addClass('alert-danger');
+                self.textOnAlertFail.show();
+                self.addCloseListenerToOnCloseModal();
+                self.modalSendMessage.modal("show");
+                self.errorText.text(request.status+ " " + error);
+                self.details.show();
             }
         });
     }
