@@ -21,7 +21,7 @@ function changeSubmissionLanguage(key, problem_type) {
     const editor = codeEditors[key];
     const lintingOptions = {
         async: true,
-        lintOnChange: false
+        lintOnChange: getAutomaticLinterOption()
     };
 
     //This should be first because setOption("mode", ...) triggers callbacks that call the linter
