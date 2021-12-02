@@ -186,10 +186,10 @@ class ContactPageForm {
         });
     }
 
-    addErrorStyle(inputObj, errorText) {
+    addErrorStyle(inputObj, errorMessageId) {
         const inputObjParent = inputObj.parent(); 
         inputObjParent.addClass("has-error");
-        const error = $(`#${errorText}`);
+        const error = $(`#${errorMessageId}`);
         error.show();
     }
 
