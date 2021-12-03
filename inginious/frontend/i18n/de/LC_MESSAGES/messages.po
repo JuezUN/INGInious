@@ -2803,9 +2803,8 @@ msgid "You have been enrolled on a course"
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:4
-#, fuzzy
 msgid "Welcome on"
-msgstr "Willkommen bei UNCode"
+msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:6
 msgid "Hello"
