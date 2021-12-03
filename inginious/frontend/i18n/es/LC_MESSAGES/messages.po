@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-25 23:53-0500\n"
+"POT-Creation-Date: 2021-12-03 07:43-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1836,17 +1836,18 @@ msgid "Select a course to copy tasks"
 msgstr "Seleccione un curso para copiar tareas"
 
 #: inginious/frontend/plugins/grader_generator/pages/grader.py:25
-#, fuzzy
 msgid ""
 "Cannot set a 'Code Multiple Languages' or 'Code File Multiple Languages' "
 "problem with a 'Notebook' grading environment"
 msgstr ""
-"Calificador: Solo 'Code Multiple Language', 'Code File Multiple Language'"
-" y 'Notebook' son soportados."
+"Calificador: No se puede crear un subproblema de tipo 'Code Multiple "
+"Language' o 'Code File Multiple Language' con un calificador 'Notebook'."
 
 #: inginious/frontend/plugins/grader_generator/pages/grader.py:28
 msgid "Cannot set a 'Notebook' problem in a non 'Notebook' grading environment"
 msgstr ""
+"Calificador: Solo se puede crear un subproblema de tipo 'Notebook' para "
+"un calificador de 'Notebook'"
 
 #: inginious/frontend/plugins/grader_generator/pages/grader.py:59
 msgid "Grader"
