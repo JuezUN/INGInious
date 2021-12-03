@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-12-03 07:43-0500\n"
+"POT-Creation-Date: 2021-12-03 10:58-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -5481,6 +5481,10 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:59
 msgid "Are the task's responses written in HTML instead of restructuredText?"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/edit_tabs/container.html:75
+msgid "Change grading environment"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:78
