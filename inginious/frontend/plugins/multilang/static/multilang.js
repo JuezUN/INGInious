@@ -310,7 +310,10 @@ function setupGradingEnvironmentView() {
     let environmentValue = environmentSelectElement.val();
     if (environmentSelectElement.length) {
         environmentSelectElement.on('change', function () {
-            $('#change_grading_environment').modal('show');
+
+            if (taskAlreadyHasASubproblem()){
+                $('#change_grading_environment').modal('show');
+            }
         });
     }
     
@@ -327,14 +330,29 @@ function setupGradingEnvironmentView() {
     configEnvironmentView(false);
 }
 
+function taskAlreadyHasASubproblem(){
+    const subproblemContainer = $("#accordion");
+    const subproblemList = subproblemContainer.children();
+    if (subproblemList.length > 0){
+        return true;
+    }
+    return false;
+}
+
 function deleteProblem(){
 
-    // Delete the task problem as studio function, but do not show the confirm alert.
+    /*
+      Delete the task problem as studio function, but do not show the confirm alert.
+
+      This function is used when a course admin change the grading environment for a task
+      that already has a subproblem.
+    */
+
 
     const problemId = getProblemIdEdit();
-    const well_problem_ID = "#subproblem_well_" + problemId;
+    const wellProblemId = "#subproblem_well_" + problemId;
 
-    const well = $(well_problem_ID);
+    const well = $(wellProblemId);
 
     well.detach();
 
