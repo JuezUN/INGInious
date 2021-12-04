@@ -56,7 +56,7 @@ class DisplayableCodeFileMultipleLanguagesProblem(CodeFileMultipleLanguagesProbl
 
         multiple_language_render = str(
             renderer.multilang(self.get_id(), dropdown_id, allowed_languages, self.get_id(), self.get_type(),
-                               task_id=self.get_task().get_id(), course_id=course_id, environment=environment))
+                               task_id=self.get_task().get_id(), course_id=course_id, environment=environment, automatic_linter_option = None))
         standard_code_problem_render = super(DisplayableCodeFileMultipleLanguagesProblem, self).show_input(
             template_helper, language, seed)
         tools_render = ""

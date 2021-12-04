@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-26 10:25-0500\n"
+"POT-Creation-Date: 2021-12-03 11:51-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -157,7 +157,7 @@ msgid "This email address is already in use !"
 msgstr "Este endereço de e-mail já está em uso!"
 
 #: inginious/frontend/pages/register.py:107
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:161
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:192
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr "Bem-vindo ao UNCode"
@@ -386,7 +386,7 @@ msgid "You have no rights to add/change classrooms"
 msgstr "Você não tem direitos para adicionar / alterar salas de aula"
 
 #: inginious/frontend/pages/course_admin/aggregation_list.py:76
-#: inginious/frontend/pages/course_admin/settings.py:95
+#: inginious/frontend/pages/course_admin/settings.py:97
 msgid "User returned an invalid form."
 msgstr "O usuário retornou um formulário inválido."
 
@@ -567,15 +567,15 @@ msgstr "Seu navegador retornou um formulário inválido ({})"
 msgid "Error while reading course's information"
 msgstr "Erro ao ler as informações do curso"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:319
+#: inginious/frontend/pages/course_admin/task_edit.py:331
 msgid "Invalid data: {}"
 msgstr "Dados inválidos: {}"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:325
+#: inginious/frontend/pages/course_admin/task_edit.py:337
 msgid "Cannot read zip file. Files were not modified"
 msgstr "Não é possível ler o arquivo zip. Arquivos não foram modificados"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:332
+#: inginious/frontend/pages/course_admin/task_edit.py:344
 msgid ""
 "There was a problem while extracting the zip archive. Some files may have"
 " been modified"
@@ -754,9 +754,8 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:25
-#, fuzzy
 msgid "Goal"
-msgstr "Local"
+msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:27
 msgid ""
@@ -766,9 +765,8 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:29
-#, fuzzy
 msgid "Scope"
-msgstr "código"
+msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:31
 msgid ""
@@ -901,9 +899,8 @@ msgid "Complete name and last name."
 msgstr "Nome completo."
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:107
-#, fuzzy
 msgid "Contact information."
-msgstr "Informações de depuração"
+msgstr ""
 
 #: inginious/frontend/plugins/UNCode/pages/templates/data_policy.html:111
 msgid ""
@@ -1088,6 +1085,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:144
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:207
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:119
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:82
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:120
@@ -1358,7 +1356,6 @@ msgid "The start date must be greater than end date."
 msgstr ""
 
 #: inginious/frontend/plugins/analytics/utils.py:59
-#, fuzzy
 msgid "Invalid date format"
 msgstr ""
 
@@ -1389,7 +1386,7 @@ msgstr ""
 #: inginious/frontend/plugins/analytics/pages/analytics.html:57
 #: inginious/frontend/plugins/auth/custom_auth_form.html:29
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:33
-#: inginious/frontend/plugins/register_students/static/email_template.html:12
+#: inginious/frontend/plugins/register_students/static/email_template.html:14
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:38
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:17
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:147
@@ -1404,9 +1401,8 @@ msgid "Course"
 msgstr "Curso"
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:69
-#, fuzzy
 msgid "\"All courses\""
-msgstr "\"Meus cursos\""
+msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:78
 #: inginious/frontend/templates/course_admin/classroom_edit.html:161
@@ -1459,7 +1455,7 @@ msgid "Course deleted"
 msgstr ""
 
 #: inginious/frontend/plugins/auth/custom_auth_form.html:32
-#: inginious/frontend/plugins/register_students/static/email_template.html:13
+#: inginious/frontend/plugins/register_students/static/email_template.html:15
 #: inginious/frontend/templates/auth.html:26
 #: inginious/frontend/templates/mycourses.html:89
 #: inginious/frontend/templates/register_button.html:31
@@ -1575,20 +1571,42 @@ msgstr ""
 msgid "Course Name"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:81
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:79
+#: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:29
+#: inginious/frontend/templates/task.html:133
+msgid "Group"
+msgstr "Grupo"
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:85
 msgid "Comments or description"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:82
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:86
 msgid "Put your opinion or tell us about the problem you have encountered "
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:83
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:87
 msgid "Describe and justify the course you want to create "
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:89
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:93
 msgid "Send"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:101
+msgid "Message Status"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:105
+msgid "The message has been sent"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:106
+msgid "The message could not be sent"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:110
+msgid "More Details"
 msgstr ""
 
 #: inginious/frontend/plugins/course_creation/constants.py:43
@@ -1642,11 +1660,6 @@ msgstr ""
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:19
 msgid "Course name"
 msgstr ""
-
-#: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:29
-#: inginious/frontend/templates/task.html:133
-msgid "Group"
-msgstr "Grupo"
 
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:35
 msgid "Year"
@@ -2153,9 +2166,8 @@ msgid "Students attempted"
 msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:67
-#, fuzzy
 msgid "No Tasks with attempts Yet"
-msgstr "Ainda não tentou"
+msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:17
 msgid ""
@@ -2795,78 +2807,120 @@ msgid ""
 "                {}"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:5
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:190
+msgid "You have been enrolled on a course"
+msgstr "Você não está registrado em nenhum curso"
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:4
+msgid "Welcome on"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:6
+msgid "Hello"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:8
+#: inginious/frontend/plugins/register_students/static/email_template.html:6
 msgid ""
 "You have been registered for the course: <strong>{course_name}</strong> "
 "at Universidad Nacional de Colombia."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:7
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:10
+msgid ""
+"If you have already activated your account, you can access to UNCode to "
+"start the course."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:13
+msgid "How to proceed?"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:15
+msgid ""
+"When you logged in, you could see the main page with the courses that you"
+" are enrolled"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:16
+msgid ""
+"Click on <strong>{course_name}</strong> option on the course list or "
+"click this link:"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:19
+msgid "Now you can see the tasks of the course, you are ready."
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:24
+#: inginious/frontend/plugins/register_students/static/email_template.html:34
+msgid "See the UNCode's"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:25
+#: inginious/frontend/plugins/register_students/static/email_template.html:35
+msgid "data policy"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:27
+#: inginious/frontend/plugins/register_students/static/email_template.html:37
+msgid "Code and learn!"
+msgstr ""
+
+#: inginious/frontend/plugins/register_students/static/email_template.html:9
 msgid "To activate your account, please click on the following link:"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:10
+#: inginious/frontend/plugins/register_students/static/email_template.html:12
 msgid ""
 "After you active the account, you can login to UNCode using next "
 "credentials:"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:15
+#: inginious/frontend/plugins/register_students/static/email_template.html:17
 msgid "Remember to change your password in 'Preferences' option."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:17
+#: inginious/frontend/plugins/register_students/static/email_template.html:19
 msgid "How to change the password?"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:19
-#: inginious/frontend/plugins/register_students/static/email_template.html:26
+#: inginious/frontend/plugins/register_students/static/email_template.html:21
+#: inginious/frontend/plugins/register_students/static/email_template.html:28
 msgid "In top nav bar, click on the option displaying your name."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:20
+#: inginious/frontend/plugins/register_students/static/email_template.html:22
 msgid "Click on 'Preferences' option."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:21
+#: inginious/frontend/plugins/register_students/static/email_template.html:23
 msgid ""
 "Now you can change your password setting your current password and the "
 "new password."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:24
+#: inginious/frontend/plugins/register_students/static/email_template.html:26
 msgid "How to authenticate using Google Authentication method?"
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:27
+#: inginious/frontend/plugins/register_students/static/email_template.html:29
 msgid ""
 "Click on 'Preferences' option, this will display a page with a menu in "
 "the right side. Click on the 'Authentication binding' option."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:28
+#: inginious/frontend/plugins/register_students/static/email_template.html:30
 msgid ""
 "To add the Google Authentication method, select 'Google' then click on "
 "'Add new binding' button."
 msgstr ""
 
-#: inginious/frontend/plugins/register_students/static/email_template.html:29
+#: inginious/frontend/plugins/register_students/static/email_template.html:31
 msgid ""
 "After adding Google Authentication you can log in to UNCode using either "
 "the normal Authentication (username and password) or Google "
 "Authentication."
-msgstr ""
-
-#: inginious/frontend/plugins/register_students/static/email_template.html:32
-msgid "See the UNCode's"
-msgstr ""
-
-#: inginious/frontend/plugins/register_students/static/email_template.html:33
-msgid "data policy"
-msgstr ""
-
-#: inginious/frontend/plugins/register_students/static/email_template.html:35
-msgid "Code and learn!"
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:5
@@ -3962,13 +4016,13 @@ msgstr "Começou em"
 msgid "Timeout at"
 msgstr "Tempo limite às"
 
-#: inginious/frontend/templates/course_admin/settings.html:211
+#: inginious/frontend/templates/course_admin/settings.html:222
 #: inginious/frontend/templates/queue.html:39
 #: inginious/frontend/templates/queue.html:68
 msgid "Yes"
 msgstr "Sim"
 
-#: inginious/frontend/templates/course_admin/settings.html:217
+#: inginious/frontend/templates/course_admin/settings.html:228
 #: inginious/frontend/templates/queue.html:41
 #: inginious/frontend/templates/queue.html:70
 msgid "No"
@@ -4578,9 +4632,8 @@ msgstr "Nome de usuário do aluno (será registrado):"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:77
 #: inginious/frontend/templates/course_admin/teams_edit.html:53
-#, fuzzy
 msgid "\"Student username\""
-msgstr "ID da tarefa / nome de usuário"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:100
 #: inginious/frontend/templates/course_admin/task_edit.html:44
@@ -4596,9 +4649,8 @@ msgstr ""
 "não podem ser removidos dela."
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:112
-#, fuzzy
 msgid "Classroom description"
-msgstr "Nova descrição da sala de aula"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:122
 msgid "Delete classroom"
@@ -4660,9 +4712,8 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:56
 #: inginious/frontend/templates/course_admin/danger_zone.html:141
-#, fuzzy
 msgid "\"course id\""
-msgstr "\"Lista de cursos\""
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:72
 msgid "Restore backup from {}"
@@ -4837,107 +4888,117 @@ msgid "Staff and students"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/settings.html:111
+msgid "Use Linter in tasks automatically"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/settings.html:117
+msgid ""
+"Check this option to automatically use Linter for all the code multiple "
+"language type problems in course (when the students change their code.)"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/settings.html:122
 msgid "Accessibility"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:118
+#: inginious/frontend/templates/course_admin/settings.html:129
 msgid "Course hidden from students"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:124
+#: inginious/frontend/templates/course_admin/settings.html:135
 msgid "Always accessible"
-msgstr ""
-
-#: inginious/frontend/templates/course_admin/settings.html:130
-#: inginious/frontend/templates/course_admin/settings.html:176
-msgid "Custom:"
-msgstr ""
-
-#: inginious/frontend/templates/course_admin/settings.html:134
-#: inginious/frontend/templates/course_admin/settings.html:180
-msgid "From"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/settings.html:141
 #: inginious/frontend/templates/course_admin/settings.html:187
+msgid "Custom:"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/settings.html:145
+#: inginious/frontend/templates/course_admin/settings.html:191
+msgid "From"
+msgstr ""
+
+#: inginious/frontend/templates/course_admin/settings.html:152
+#: inginious/frontend/templates/course_admin/settings.html:198
 msgid "To"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:158
+#: inginious/frontend/templates/course_admin/settings.html:169
 msgid "Registration"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:164
+#: inginious/frontend/templates/course_admin/settings.html:175
 msgid "Closed"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:170
+#: inginious/frontend/templates/course_admin/settings.html:181
 msgid "Always open"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:204
+#: inginious/frontend/templates/course_admin/settings.html:215
 msgid "Allow auto-unregistration"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:222
+#: inginious/frontend/templates/course_admin/settings.html:233
 msgid "Registration password"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:225
+#: inginious/frontend/templates/course_admin/settings.html:236
 msgid ""
 "\"Password needed for registration. Leave blank if you don't want to set "
 "a password.\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:230
+#: inginious/frontend/templates/course_admin/settings.html:241
 msgid "Access control"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:236
+#: inginious/frontend/templates/course_admin/settings.html:247
 msgid "No access control (everyone can register)"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:242
+#: inginious/frontend/templates/course_admin/settings.html:253
 msgid "Check by username"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:248
+#: inginious/frontend/templates/course_admin/settings.html:259
 msgid "Check by authentication binding"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:254
+#: inginious/frontend/templates/course_admin/settings.html:265
 msgid "Check by email"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:259
+#: inginious/frontend/templates/course_admin/settings.html:270
 msgid "Access control list"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:261
+#: inginious/frontend/templates/course_admin/settings.html:272
 msgid "\"Only used if access control is activated. Separate users by new lines.\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:265
+#: inginious/frontend/templates/course_admin/settings.html:276
 msgid "LTI keys"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:268
+#: inginious/frontend/templates/course_admin/settings.html:279
 msgid ""
 "\"LTI keys in the form name:key, separated by newlines. Please ensure "
 "keys are long enough and random.\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:273
+#: inginious/frontend/templates/course_admin/settings.html:284
 msgid "Send back grades"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:279
+#: inginious/frontend/templates/course_admin/settings.html:290
 msgid ""
 "Enable this to send back grades to the calling Tool Consumer (which is, "
 "most of the time, your LMS)."
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/settings.html:283
+#: inginious/frontend/templates/course_admin/settings.html:294
 #: inginious/frontend/templates/course_admin/task_edit.html:31
 #: inginious/frontend/templates/course_admin/task_edit.html:90
 msgid "Save changes"
@@ -4974,14 +5035,12 @@ msgid "Teaching staff"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list.html:38
-#, fuzzy
 msgid "Registered staff"
-msgstr "Estudante registrado"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list.html:43
-#, fuzzy
 msgid "Registered students"
-msgstr "Estudante registrado"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:15
 msgid "member"
@@ -5004,9 +5063,8 @@ msgid "\"Unregister all\""
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:61
-#, fuzzy
 msgid "\"Unregister\""
-msgstr "Cancelar registro"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/student_list_table.html:77
 msgid "This will remove {} from the course. Are you sure ?"
@@ -5387,9 +5445,8 @@ msgid "Author"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:48
-#, fuzzy
 msgid "\"Your name\""
-msgstr "\"Meus cursos\""
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:53
 msgid "LTI task URL"
@@ -5836,5 +5893,20 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "superadmin can not modify its own data"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If you already had activated your "
+#~ "account, you can login to UNCode "
+#~ "for begin the course."
+#~ msgstr ""
+
+#~ msgid "Welcome on {course_name}"
+#~ msgstr ""
+
+#~ msgid "Hello {username}"
+#~ msgstr ""
+
+#~ msgid "{course_link}"
 #~ msgstr ""
 
