@@ -44,7 +44,7 @@ class ContactPageForm {
         this.details = $(`#${DETAILS_DIV}`);
         this.errorText = $(`#${ERROR_TEXT}`);
         this.detailsText = $(`#${DETAILS_COLLAPSE}`);
-        this.alertOnErrorValidation = $(`#${ALERT_HAS_ERRORS_ID}`)
+        this.alertOnErrorValidation = $(`#${ALERT_HAS_ERRORS_ID}`);
         this.configForm();
         this.addChangeListenerToSelect();
         this.addChangeListenerToCheckbox();
