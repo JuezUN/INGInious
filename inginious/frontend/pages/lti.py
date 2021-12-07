@@ -113,6 +113,11 @@ class LTILoginPage(INGIniousPage):
             return self.template_helper.get_renderer().lti_bind(False, "", None, "Invalid LTI data")
 
         user_profile = self.database.users.find_one({"ltibindings." + data["task"][0] + "." + data["consumer_key"]: data["username"]})
+        
+        if user_profile is None:
+            user_session_data = self.user_manager.session_lti_info()
+            lti_user = course._hook_manager.call_hook('lti_user', user_data=user_session_data)
+        
         if user_profile:
             self.user_manager.connect_user(user_profile["username"], user_profile["realname"], user_profile["email"], user_profile["language"])
 

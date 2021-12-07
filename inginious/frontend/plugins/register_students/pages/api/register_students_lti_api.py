@@ -3,7 +3,7 @@ import web
 from inginious.frontend.plugins.utils.admin_api import AdminApi
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 
-class RegisterStudentsLTIAPI(AdminAPI):
+class RegisterStudentsLTIAPI(AdminApi):
 
     def API_POST(self):
 
