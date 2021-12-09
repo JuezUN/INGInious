@@ -47,7 +47,12 @@ class TaskFactory(object):
         return self._cache[(course.get_id(), taskid)][0]
 
     def get_temporal_task_file(self, course, taskid):
-
+        """
+        :param course: a Course object
+        :param taskid: the task id of the task
+        :raise InvalidNameException
+        :return: the temporary task file in the task folder
+        """
         if not id_checker(taskid):
             raise InvalidNameException("Task with invalid name: " + taskid)
         
@@ -60,7 +65,14 @@ class TaskFactory(object):
         return temporal_task_file
 
     def update_temporal_task_file(self, course, taskid, data):
-
+        """
+        :param course: a Course object
+        :param taskid: the task id of the task
+        :param data: a Dict with the temporary data of the task to be stored
+        :raise InvalidNameException, TaskReaderNotFoundException, TaskNotFoundException
+      
+        Create or Update a temporary task file that is used to store the task data that is required for some plugins
+        """
         if not id_checker(taskid):
             raise InvalidNameException("Task with invalid name: " + taskid)
 
@@ -85,6 +97,12 @@ class TaskFactory(object):
             raise TaskNotFoundException()
 
     def get_temporal_task_file_content(self, course, taskid):
+        """
+        :param course: a Course object
+        :param taskid: the task id of the task
+        :raise InvalidNameException, TaskUnreadableException
+        :return: the content of the temporary task file
+        """
 
         if not id_checker(taskid):
             raise InvalidNameException("Task with invalid name: " + taskid)
@@ -105,6 +123,13 @@ class TaskFactory(object):
         return temporal_task_file_content
 
     def delete_temporal_task_file(self, course, taskid):
+        """
+        :param course: a Course object
+        :param taskid: the task id of the task
+        :raise InvalidNameException
+
+        Delete the temporary task file from task folder
+        """
 
         if not id_checker(taskid):
             raise InvalidNameException("Task with invalid name: " + taskid)
