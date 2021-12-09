@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-12-07 16:42-0500\n"
+"POT-Creation-Date: 2021-12-08 22:01-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -3496,11 +3496,19 @@ msgstr "La penalización de las pistas debe estar entre 0.0% y 100%."
 msgid "Each hint penalty must be a float."
 msgstr "La penalización de las pistas debe ser un número decimal."
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:35
-msgid "Task does not exist."
-msgstr "La tarea no existe."
+#: inginious/frontend/plugins/task_hints/pages/api/edit_hints_api.py:38
+#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:68
+#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:107
+msgid "Invalid task name"
+msgstr "Nombre de la tarea inválido"
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:66
+#: inginious/frontend/plugins/task_hints/pages/api/edit_hints_api.py:41
+#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:71
+#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:110
+msgid "Task does not exist, or task has not been created yet."
+msgstr "La tarea no existe o la tarea aún no ha sido creada."
+
+#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:127
 msgid "There was a problem to update submission mode on users hints."
 msgstr ""
 "Ocurrio un problema al actualizar el modo de la tarea en las pistas de "
