@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-12-08 22:01-0500\n"
+"POT-Creation-Date: 2021-12-08 22:37-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -256,9 +256,9 @@ msgstr ""
 msgid "<b>Your submission has been sent...</b>"
 msgstr "<b> Sua submissão foi enviada ... </b>"
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:202
-#: inginious/frontend/pages/course_admin/task_edit_file.py:223
-#: inginious/frontend/pages/course_admin/task_edit_file.py:227
+#: inginious/frontend/pages/course_admin/task_edit_file.py:203
+#: inginious/frontend/pages/course_admin/task_edit_file.py:224
+#: inginious/frontend/pages/course_admin/task_edit_file.py:228
 #: inginious/frontend/pages/tasks.py:249
 msgid "Internal error"
 msgstr "Erro interno"
@@ -584,20 +584,20 @@ msgstr ""
 "sido modificados"
 
 #: inginious/frontend/pages/course_admin/task_edit_file.py:161
-#: inginious/frontend/pages/course_admin/task_edit_file.py:181
-#: inginious/frontend/pages/course_admin/task_edit_file.py:206
+#: inginious/frontend/pages/course_admin/task_edit_file.py:182
+#: inginious/frontend/pages/course_admin/task_edit_file.py:207
 msgid "Invalid new path"
 msgstr "Novo caminho inválido"
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:167
+#: inginious/frontend/pages/course_admin/task_edit_file.py:168
 msgid "An error occurred while writing the file"
 msgstr "Ocorreu um erro ao gravar o arquivo"
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:212
+#: inginious/frontend/pages/course_admin/task_edit_file.py:213
 msgid "An error occurred while moving the files"
 msgstr "Ocorreu um erro ao mover os arquivos"
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:235
+#: inginious/frontend/pages/course_admin/task_edit_file.py:236
 msgid "An error occurred while deleting the files"
 msgstr "Ocorreu um erro ao excluir os arquivos"
 

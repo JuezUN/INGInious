@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-12-08 22:01-0500\n"
+"POT-Creation-Date: 2021-12-08 22:37-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -262,9 +262,9 @@ msgstr ""
 msgid "<b>Your submission has been sent...</b>"
 msgstr "<b>Su petición ha sido enviada...</b>"
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:202
-#: inginious/frontend/pages/course_admin/task_edit_file.py:223
-#: inginious/frontend/pages/course_admin/task_edit_file.py:227
+#: inginious/frontend/pages/course_admin/task_edit_file.py:203
+#: inginious/frontend/pages/course_admin/task_edit_file.py:224
+#: inginious/frontend/pages/course_admin/task_edit_file.py:228
 #: inginious/frontend/pages/tasks.py:249
 msgid "Internal error"
 msgstr "Error interno"
@@ -596,20 +596,20 @@ msgstr ""
 " archivos pudieron ser alterados"
 
 #: inginious/frontend/pages/course_admin/task_edit_file.py:161
-#: inginious/frontend/pages/course_admin/task_edit_file.py:181
-#: inginious/frontend/pages/course_admin/task_edit_file.py:206
+#: inginious/frontend/pages/course_admin/task_edit_file.py:182
+#: inginious/frontend/pages/course_admin/task_edit_file.py:207
 msgid "Invalid new path"
 msgstr "La nueva ruta del archivo es inválida"
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:167
+#: inginious/frontend/pages/course_admin/task_edit_file.py:168
 msgid "An error occurred while writing the file"
 msgstr "Ha ocurrido un error durante la escritura del archivo"
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:212
+#: inginious/frontend/pages/course_admin/task_edit_file.py:213
 msgid "An error occurred while moving the files"
 msgstr "Ha ocurrido un error durante el cambio de directorio de los archivos"
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:235
+#: inginious/frontend/pages/course_admin/task_edit_file.py:236
 msgid "An error occurred while deleting the files"
 msgstr "Ha ocurrido un error eliminando los archivos"
 
