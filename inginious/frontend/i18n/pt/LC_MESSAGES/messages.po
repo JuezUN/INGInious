@@ -256,9 +256,9 @@ msgstr ""
 msgid "<b>Your submission has been sent...</b>"
 msgstr "<b> Sua submissão foi enviada ... </b>"
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:202
-#: inginious/frontend/pages/course_admin/task_edit_file.py:223
-#: inginious/frontend/pages/course_admin/task_edit_file.py:227
+#: inginious/frontend/pages/course_admin/task_edit_file.py:203
+#: inginious/frontend/pages/course_admin/task_edit_file.py:224
+#: inginious/frontend/pages/course_admin/task_edit_file.py:228
 #: inginious/frontend/pages/tasks.py:249
 msgid "Internal error"
 msgstr "Erro interno"
@@ -584,20 +584,20 @@ msgstr ""
 "sido modificados"
 
 #: inginious/frontend/pages/course_admin/task_edit_file.py:161
-#: inginious/frontend/pages/course_admin/task_edit_file.py:181
-#: inginious/frontend/pages/course_admin/task_edit_file.py:206
+#: inginious/frontend/pages/course_admin/task_edit_file.py:182
+#: inginious/frontend/pages/course_admin/task_edit_file.py:207
 msgid "Invalid new path"
 msgstr "Novo caminho inválido"
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:167
+#: inginious/frontend/pages/course_admin/task_edit_file.py:168
 msgid "An error occurred while writing the file"
 msgstr "Ocorreu um erro ao gravar o arquivo"
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:212
+#: inginious/frontend/pages/course_admin/task_edit_file.py:213
 msgid "An error occurred while moving the files"
 msgstr "Ocorreu um erro ao mover os arquivos"
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:235
+#: inginious/frontend/pages/course_admin/task_edit_file.py:236
 msgid "An error occurred while deleting the files"
 msgstr "Ocorreu um erro ao excluir os arquivos"
 
@@ -1085,7 +1085,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/UNCode/static/task_context_help_modal.html:144
 #: inginious/frontend/plugins/UNCode/static/task_result_legend_modal.html:207
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:119
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:126
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file.html:101
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:82
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:120
@@ -1524,30 +1524,43 @@ msgstr ""
 msgid "Contact Page"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:30
-msgid "Subject"
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:26
+msgid "Correct all the errors noted in order to send the message"
 msgstr ""
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:32
-msgid "Select an option"
-msgstr ""
-
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:33
-msgid "Report a problem or make a comment"
+msgid "Subject"
 msgstr ""
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:34
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:38
+msgid "Select an option"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:35
+msgid "Report a problem or make a comment"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:36
 msgid "Request to create a new course "
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:45
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:48
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:38
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:15
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:159
 msgid "Email"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:57
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:53
+msgid "The email field is required"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:54
+msgid "An email is requested"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:62
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:285
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:34
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:38
@@ -1562,51 +1575,59 @@ msgstr ""
 msgid "Name"
 msgstr "Nome"
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:69
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:67
+msgid "The name field is required"
+msgstr ""
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:75
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:27
 #: inginious/frontend/templates/course_admin/edit_tabs/files.html:17
 msgid "Edit"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:75
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:81
 msgid "Course Name"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:79
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:85
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:29
 #: inginious/frontend/templates/task.html:133
 msgid "Group"
 msgstr "Grupo"
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:85
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:91
 msgid "Comments or description"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:86
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:92
 msgid "Put your opinion or tell us about the problem you have encountered "
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:87
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:93
 msgid "Describe and justify the course you want to create "
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:93
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:95
+msgid "The comment is too short"
+msgstr "Nome muito curto."
+
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:100
 msgid "Send"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:101
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:108
 msgid "Message Status"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:105
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:112
 msgid "The message has been sent"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:106
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:113
 msgid "The message could not be sent"
 msgstr ""
 
-#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:110
+#: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:117
 msgid "More Details"
 msgstr ""
 
@@ -3153,11 +3174,19 @@ msgstr ""
 msgid "Each hint penalty must be a float."
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:35
-msgid "Task does not exist."
+#: inginious/frontend/plugins/task_hints/pages/api/edit_hints_api.py:38
+#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:68
+#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:107
+msgid "Invalid task name"
 msgstr ""
 
-#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:66
+#: inginious/frontend/plugins/task_hints/pages/api/edit_hints_api.py:41
+#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:71
+#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:110
+msgid "Task does not exist, or task has not been created yet."
+msgstr ""
+
+#: inginious/frontend/plugins/task_hints/pages/api/hints_mode_api.py:127
 msgid "There was a problem to update submission mode on users hints."
 msgstr ""
 
