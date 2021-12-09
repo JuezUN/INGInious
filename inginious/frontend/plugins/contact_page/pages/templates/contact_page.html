@@ -22,7 +22,9 @@ $ is_logged_in = user_manager.session_logged_in()
             <form class="form-horizontal">
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <div id="alert-space"></div>
+                        <div hidden id="alert-has-errors" class="alert alert-danger" role="alert">
+                            <h5>$:_("Correct all the errors noted in order to send the message")</h5>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -33,6 +35,7 @@ $ is_logged_in = user_manager.session_logged_in()
                             <option id="subject-comment">$:_("Report a problem or make a comment")</option>
                             <option id="subject-new-course">$:_("Request to create a new course ")</option>
                         </select>
+                        <p hidden id="error-subject-no-selected" class="help-block">$:_("Select an option")</p>
                     </div>
                 </div>
                 <div class="row">
@@ -47,6 +50,8 @@ $ is_logged_in = user_manager.session_logged_in()
                         $if is_logged_in:
                                disabled
                         >
+                        <p hidden id="error-email-required" class="help-block">$:_("The email field is required")</p>
+                        <p hidden id="error-email-not-email" class="help-block">$:_("An email is requested")</p>
                     </div>
                     <div style="margin-right: 0.9rem" class="form-group
                     $if is_logged_in:
@@ -59,6 +64,7 @@ $ is_logged_in = user_manager.session_logged_in()
                         $if is_logged_in:
                                disabled
                         >
+                        <p hidden id="error-name-required" class="help-block">$:_("The name field is required")</p>
                     </div>
 
                     <div class="checkbox col-md-2" id="checkbox-space"
@@ -86,6 +92,7 @@ $ is_logged_in = user_manager.session_logged_in()
                         <p hidden id="description-comment" class="py-1"><em>$:_("Put your opinion or tell us about the problem you have encountered ")</em></p>
                         <p hidden id="description-new-course" class="py-1"><em>$:_("Describe and justify the course you want to create ")</em></p>
                         <textarea class="form-control" rows="5" id="textarea-contact-page"></textarea>
+                        <p hidden id="error-textarea-ok" class="help-block">$:_("The comment is too short")</p>
                     </div>
                 </div>
                 <div class="row">
