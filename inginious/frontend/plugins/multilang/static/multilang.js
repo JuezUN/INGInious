@@ -313,22 +313,26 @@ function setupGradingEnvironmentView() {
 
             if (taskAlreadyHasASubproblem()){
                 $('#change_grading_environment').modal('show');
+            }else{
+                configEnvironmentView();
             }
         });
     }
     
+    $('#change_environment').on('click', function () {
+        environmentValue = environmentSelectElement.val();
+        deleteProblem();
+        configEnvironmentView();
+    });
+
     $('#change_grading_environment').on('hidden.bs.modal', function(){
         environmentSelectElement.val(environmentValue);
     });
 
-    $('#change_environment').on('click', function () {
-        environmentValue = environmentSelectElement.val();
-        configEnvironmentView();
-        deleteProblem();
-    });
-
     configEnvironmentView(false);
+
 }
+
 
 function taskAlreadyHasASubproblem(){
     const subproblemContainer = $("#accordion");
@@ -348,16 +352,11 @@ function deleteProblem(){
       that already has a subproblem.
     */
 
+    const subproblemContainerElements = $("#accordion").children();
 
-    const problemId = getProblemIdEdit();
-    const wellProblemId = "#subproblem_well_" + problemId;
-
-    const well = $(wellProblemId);
-
-    well.detach();
+    subproblemContainerElements.remove();
 
     toggle_display_new_subproblem_option();
-    showCorrectLanguagesEnvironment();
 }
 
 function configEnvironmentView(uncheckBoxes = true) {
