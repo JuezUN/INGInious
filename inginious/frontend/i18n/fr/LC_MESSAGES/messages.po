@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-12-09 18:25-0500\n"
+"POT-Creation-Date: 2021-12-09 19:49-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -5636,9 +5636,8 @@ msgid "If you change the grading environment task subproblem will be deleted!"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:82
-#, fuzzy
 msgid "Change"
-msgstr "Appliquer les changements"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:7
 #: inginious/frontend/templates/course_admin/edit_tabs/files.html:60
