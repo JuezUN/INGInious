@@ -118,6 +118,10 @@ class LTILoginPage(INGIniousPage):
             user_session_data = self.user_manager.session_lti_info()
             lti_user = course._hook_manager.call_hook('lti_user', user_data=user_session_data)
         
+            print(lti_user)
+
+            self.database.users.insert(lti_user)
+
         if user_profile:
             self.user_manager.connect_user(user_profile["username"], user_profile["realname"], user_profile["email"], user_profile["language"])
 
