@@ -1,7 +1,6 @@
 import os
 from inginious.frontend.plugins.utils import create_static_resource_page, read_file
 from .pages.api.add_course_students_csv_file_api import AddCourseStudentsCsvFile
-from .pages.api.register_students_lti_api import RegisterStudentsLTIAPI
 
 _static_folder_path = os.path.join(os.path.dirname(__file__), "static")
 _REGISTER_STUDENTS_MODAL_HTML_FILE = "register_students_modal.html"
@@ -10,7 +9,6 @@ _REGISTER_STUDENTS_MODAL_HTML_FILE = "register_students_modal.html"
 def init(plugin_manager, _1, _2, config):
     plugin_manager.add_page(r'/register_students/static/(.*)', create_static_resource_page(_static_folder_path))
     plugin_manager.add_page("/api/addStudents/", AddCourseStudentsCsvFile)
-    plugin_manager.add_page("/api/regiterStudentslti/", RegisterStudentsLTIAPI)
 
     use_minified = config.get("use_minified", True)
     template_helper = plugin_manager._app.template_helper

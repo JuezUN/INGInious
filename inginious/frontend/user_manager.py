@@ -196,7 +196,7 @@ class UserManager:
         self._session.token = None
         self._session.lti = None
 
-    def create_lti_session(self, user_id, roles, realname, email, course_id, task_id, consumer_key, outcome_service_url,
+    def create_lti_session(self, user_id, roles, username, realname, email, course_id, task_id, consumer_key, outcome_service_url,
                            outcome_result_id, tool_name, tool_desc, tool_url, context_title, context_label):
         """ Creates an LTI cookieless session. Returns the new session id"""
 
@@ -206,7 +206,8 @@ class UserManager:
 
         self._session.lti = {
             "email": email,
-            "username": user_id,
+            "user_id": user_id,
+            "username": username,
             "realname": realname,
             "roles": roles,
             "task": (course_id, task_id),
