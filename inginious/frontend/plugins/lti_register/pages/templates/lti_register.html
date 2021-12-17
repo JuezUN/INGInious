@@ -6,6 +6,9 @@ $var title: $:_("LTI Registration")
 
     <div class="container">
         <div class="row">
+
+            <div id="registration_lti_alert">
+            </div>
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h4>$:_("Your new user account data")</h4>
@@ -37,9 +40,9 @@ $var title: $:_("LTI Registration")
                 <div class="modal-body">
                     $:_("Create a new UNCode account with the following data:")
                     <ul>
-                        <li><strong>$:_("Your name: ")</strong></li>
-                        <li><strong>$:_("Your username: ")</strong></li>
-                        <li><strong>$:_("Your email: ")</strong></li>
+                        <li><strong>$:_("Your name: ")</strong>$new_user["realname"]</li>
+                        <li><strong>$:_("Your username: ")</strong>$new_user["username"]</li>
+                        <li><strong>$:_("Your email: ")</strong>$new_user["email"]</li>
                     </ul>
                 </div>
                 <div class="modal-footer">
