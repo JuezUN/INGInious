@@ -113,7 +113,7 @@ class LTILoginPage(INGIniousPage):
             return self.template_helper.get_renderer().lti_bind(False, "", None, "Invalid LTI data")
 
         new_user = {}
-        user_profile = self.database.users.find_one({"ltibindings." + data["task"][0] + "." + data["consumer_key"]: data["username"]})
+        user_profile = self.database.users.find_one({"ltibindings." + data["task"][0] + "." + data["consumer_key"]: data["user_id"]})
 
         if user_profile is None:
 

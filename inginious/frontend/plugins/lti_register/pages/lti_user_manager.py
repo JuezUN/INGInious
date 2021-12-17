@@ -73,12 +73,37 @@ class RegisterLTIPage(INGIniousPage):
             "password": random_password(15).replace("{", "{{").replace("}", "}}")
         }
 
+        status_messages = []
+
         try:
-            success_user_registration_message = self.register_user(course, user_data)
+            success_user_registration, to_send_email = self.register_user(course, user_data)
         except:
             raise APIError(400, {"error": _("An error has occurred while registering the user.")})
 
-        return 200, success_user_registration_message
+        if not success_user_registration:
+            status_messages.append(json.dumps({"status": "error", "message": _("The new user was not created. Maybe this username or email are already taken.")}))
+            
+        is_user_registered_in_course = None
+        try:
+            is_user_registered_in_course  = self.register_in_course(course, user_data["username"])
+        except:
+            raise APIError(400, {"error": _("An error has occurred while registering the user in the coourse.")})
+
+        if is_user_registered_in_course:
+            status_messages.append(json.dumps({"status":"success","text":_("Your user was registered on curse.")}))
+        else:
+            status_messages.append(json.dumps({"status":"errpr","text":_("You were not registered on curse. Your are already registered in course or you have no permissions")}))
+
+
+        if success_user_registration:
+            try:
+                self.send_email(user_data, to_send_email)
+                status_messages.append(json.dumps({"status":"success","text":_("Your UNCode account was successfully created!. An email was sent to you with your account credentials.")}))
+            except:
+                self.database.users.delete_one({"username":user_data["username"], "email": user_data["email"]})
+                status_messages.append(json.dumps({"status": "error", "message": _("The new user was not created. There was an error while sending the email.")}))
+
+        return 200, status_messages
         
 
     def register_user(self, course, user_data):
@@ -86,9 +111,11 @@ class RegisterLTIPage(INGIniousPage):
         user_exists = self.already_user_exists(user_data["username"], user_data["email"])
 
         if user_exists:
-            return False
+            return False, None
 
-        user_password_hash = hashlib.sha512(user_data["password"].encode("utf-8")).hexdigest()
+        password = user_data["password"]
+
+        user_password_hash = hashlib.sha512(password.encode("utf-8")).hexdigest()
         user_activation_hash = hashlib.sha512(str(random.getrandbits(256)).encode("utf-8")).hexdigest()
 
         user_data = {
@@ -105,42 +132,32 @@ class RegisterLTIPage(INGIniousPage):
         try:
             user_activation_link = web.ctx.home + "/register?activate=" + user_activation_hash
             data_policy_link = web.ctx.home + "/data_policy"
-            email_template = str(self.template_helper.get_custom_renderer(_EMAIL_REGISTER_USER_TEMPLATES_PATH).email_template()).format(
+            to_send_email = str(self.template_helper.get_custom_renderer(_EMAIL_REGISTER_USER_TEMPLATES_PATH, False).email_template()).format(
                 activation_link=user_activation_link, username=user_data["username"],
-                password=user_data["password"], course_name=course.get_name("en"), data_policy=data_policy_link)
+                password=password, course_name=course.get_name("en"), data_policy=data_policy_link)
 
             self.database.users.insert(user_data)
         except:
-            return json.dumps({"status": "error", "message": _("The new user was not created. Maybe this username or email are already taken")})
+            return False, None
         
-        is_user_registered_in_course  = self.register_in_course(course, user_data["username"])
-
-        if is_user_registered_in_course:
-
-            subject = _("Welcome on UNCode")
-            headers = {"Content-Type": 'text/html'}
-
-            try:
-                web.sendmail(web.config.smtp_sendername, user_data["email"], subject, email_template, headers)
-            except:
-                return json.dumps({"status": "error", "message": _("There was an error while sending the email")})
-
-        return json.dumps({"status":"succsess","text":_("Your UNCode account was successfully created!. You can now bind your new account.")})
+        return True, to_send_email
         
-    
     def register_in_course(self, course, username):
 
         user_registered_in_course = None
 
-        try:
-            user_registered_in_course = self.user_manager.course_register_user(course, username, '', True)
-        except:
-            pass
+        user_registered_in_course = self.user_manager.course_register_user(course, username, '', True)
 
         if user_registered_in_course:
             return True
         return False
 
+    def send_email(self, user_data, to_send_email):
+
+        subject = _("Welcome on UNCode")
+        headers = {"Content-Type": 'text/html'}
+
+        web.sendmail(web.config.smtp_sendername, user_data["email"], subject, to_send_email, headers)
 
     def already_user_exists(self, username, email):
         
