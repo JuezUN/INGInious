@@ -73,7 +73,7 @@ class RegisterLTIPage(INGIniousPage):
             "password": random_password(15).replace("{", "{{").replace("}", "}}")
         }
 
-        status_messages = []
+        all_messages = []
 
         try:
             success_user_registration, to_send_email = self.register_user(course, user_data)
@@ -81,7 +81,7 @@ class RegisterLTIPage(INGIniousPage):
             raise APIError(400, {"error": _("An error has occurred while registering the user.")})
 
         if not success_user_registration:
-            status_messages.append(json.dumps({"status": "error", "message": _("The new user was not created. Maybe this username or email are already taken.")}))
+            all_messages.append({"status": "error", "message": _("The new user was not created. Maybe the username or email are already taken.")})
             
         is_user_registered_in_course = None
         try:
@@ -90,20 +90,20 @@ class RegisterLTIPage(INGIniousPage):
             raise APIError(400, {"error": _("An error has occurred while registering the user in the coourse.")})
 
         if is_user_registered_in_course:
-            status_messages.append(json.dumps({"status":"success","text":_("Your user was registered on curse.")}))
+            all_messages.append({"status":"success","message":_("Your user was registered on curse.")})
         else:
-            status_messages.append(json.dumps({"status":"errpr","text":_("You were not registered on curse. Your are already registered in course or you have no permissions")}))
+            all_messages.append({"status":"error","message":_("You were not registered on curse. Your are already registered in course, you have no permissions or there is no a created user with the provided data")})
 
 
         if success_user_registration:
             try:
                 self.send_email(user_data, to_send_email)
-                status_messages.append(json.dumps({"status":"success","text":_("Your UNCode account was successfully created!. An email was sent to you with your account credentials.")}))
+                all_messages.append({"status":"success","message":_("Your UNCode account was successfully created!. An email was sent to you with your account credentials.")})
             except:
                 self.database.users.delete_one({"username":user_data["username"], "email": user_data["email"]})
-                status_messages.append(json.dumps({"status": "error", "message": _("The new user was not created. There was an error while sending the email.")}))
+                all_messages.append({"status": "error", "message": _("The new user was not created. There was an error while sending the email.")})
 
-        return 200, status_messages
+        return {"all_messages": all_messages}
         
 
     def register_user(self, course, user_data):

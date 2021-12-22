@@ -7,7 +7,13 @@ $var title: $:_("LTI Registration")
     <div class="container">
         <div class="row">
 
-            <div id="registration_lti_alert">
+            <div id="registration_lti_alert" class="alert alert-warning" hidden>
+                <div id="success_messages" hidden>
+                    $:_("The following operations were successful when registering the user:")
+                </div>
+                <div id="error_messages" hidden>
+                    $:_("Some errors has occurred while registering the user:")
+                </div>
             </div>
             <div class="panel panel-info">
                 <div class="panel-heading">
