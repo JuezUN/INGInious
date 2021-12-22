@@ -123,6 +123,8 @@ class LTILoginPage(INGIniousPage):
 
                 new_user = course._hook_manager.call_hook('lti_user_account', user_data=data)[0]
 
+                print(new_user)
+
         else:
             self.user_manager.connect_user(user_profile["username"], user_profile["realname"], user_profile["email"], user_profile["language"])
 
