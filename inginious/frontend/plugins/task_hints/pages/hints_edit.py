@@ -43,6 +43,7 @@ def add_static_files(template_helper):
 
 
 def on_task_submit(course, taskid, task_data, task_fs):
+
     task_data["task_hints"] = CourseEditTask.dict_from_prefix("task_hints", task_data)
 
     # Delete key for hint template if it exists
@@ -86,11 +87,6 @@ def on_task_submit(course, taskid, task_data, task_fs):
     # Add id for hints
     task_data["task_hints"] = set_hints_id(task_data["task_hints"])
     task_data["task_hints"] = OrderedDict(sorted(task_data["task_hints"].items()))
-
-    if task_data["task_hints"]:
-        # If task is a group task type, hints couldn't be created
-        if task_data["groups"]:
-            return json.dumps({"status": "error", "message": _("Hints cannot be added for group tasks mode")})
 
     # Update users hints in task when saved
     user_hint_manager().update_unlocked_users_hints(taskid, task_data["task_hints"])

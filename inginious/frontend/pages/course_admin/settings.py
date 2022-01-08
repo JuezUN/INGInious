@@ -91,6 +91,8 @@ class CourseSettings(INGIniousAdminPage):
                     errors.append(_("LTI keys must be alphanumerical."))
 
             course_content['lti_send_back_grade'] = 'lti_send_back_grade' in data and data['lti_send_back_grade'] == "true"
+        
+            course_content['enable_automatic_linter'] = True if'enable_automatic_linter' in data and data['enable_automatic_linter'] == 'true' else False
         except:
             errors.append(_('User returned an invalid form.'))
 

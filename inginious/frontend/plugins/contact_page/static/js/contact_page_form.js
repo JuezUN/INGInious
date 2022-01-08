@@ -6,12 +6,22 @@ const EMAIL_INPUT_ID = "email-input";
 const NAME_INPUT_ID = "name-input";
 const CHECKBOX_ID = "checkbox-edit";
 const COURSE_NAME_ID = "course-name";
+const COURSE_GROUP_ID = "course-group";
 const COURSE_NAME_SPACE_ID = "course-space";
 const TEXTAREA_ID = "textarea-contact-page";
 const SEND_BUTTON_ID = "send-contact-page-button";
 const COMMENTS_INSTRUCTIONS_ID = "description-comment";
 const NEW_COURSE_INSTRUCTIONS_ID = "description-new-course";
-const ALERT_SPACE_ID = "alert-space";
+const ALERT_HAS_ERRORS_ID = "alert-has-errors";
+const MODAL_SEND_ID = "modalSendMessage";
+const ALERT_MODAL_ID = "alert-onmodal";
+const TEXT_ALERT_ON_MODAL_SUCCESS_ID = "text-alert-modal-success";
+const TEXT_ALERT_ON_MODAL_FAIL_ID = "text-alert-modal-fail";
+const BUTTON_MORE_DETAILS = "button-more-details";
+const DETAILS_DIV = "details";
+const DETAILS_COLLAPSE = "details-text";
+const ERROR_TEXT = "error";
+
 
 class ContactPageForm {
     constructor() {
@@ -20,11 +30,21 @@ class ContactPageForm {
         this.nameInput = $(`#${NAME_INPUT_ID}`);
         this.editCheckbox = $(`#${CHECKBOX_ID}`);
         this.courseNameInput = $(`#${COURSE_NAME_ID}`);
+        this.courseGroupInput = $(`#${COURSE_GROUP_ID}`);
         this.courseNameSpace = $(`#${COURSE_NAME_SPACE_ID}`);
         this.textarea = $(`#${TEXTAREA_ID}`);
         this.sendButton = $(`#${SEND_BUTTON_ID}`);
         this.commentInstructions = $(`#${COMMENTS_INSTRUCTIONS_ID}`);
         this.newCourseInstructions = $(`#${NEW_COURSE_INSTRUCTIONS_ID}`);
+        this.modalSendMessage = $(`#${MODAL_SEND_ID}`);
+        this.alertOnModal = $(`#${ALERT_MODAL_ID}`);
+        this.textOnAlertSuccess = $(`#${TEXT_ALERT_ON_MODAL_SUCCESS_ID}`);
+        this.textOnAlertFail = $(`#${TEXT_ALERT_ON_MODAL_FAIL_ID}`);
+        this.buttonMoreDetails = $(`#${BUTTON_MORE_DETAILS}`);
+        this.details = $(`#${DETAILS_DIV}`);
+        this.errorText = $(`#${ERROR_TEXT}`);
+        this.detailsText = $(`#${DETAILS_COLLAPSE}`);
+        this.alertOnErrorValidation = $(`#${ALERT_HAS_ERRORS_ID}`);
         this.configForm();
         this.addChangeListenerToSelect();
         this.addChangeListenerToCheckbox();
@@ -76,6 +96,27 @@ class ContactPageForm {
         const self = this;
         this.sendButton.click(function () {
             self.sendInfo();
+            self.sendButton.prop("disabled",true);
+        });
+    }
+
+    addCloseListenerToOnCloseModal() {
+        const self = this;
+        this.modalSendMessage.on("hidden.bs.modal", function() {
+            if (self.alertOnModal.is('.alert-success')) {
+                self.courseNameInput.val('');
+                self.courseGroupInput.val('');
+                self.textarea.val('');
+                self.alertOnModal.removeClass('alert-success');
+                self.textOnAlertSuccess.hide();
+            } 
+            if (self.alertOnModal.is('.alert-danger')) {
+                self.alertOnModal.removeClass('alert-danger');
+                self.textOnAlertFail.hide();
+                self.errorText.text('');
+                self.details.hide();
+                self.detailsText.collapse('hide');
+            }
         });
     }
 
@@ -91,10 +132,11 @@ class ContactPageForm {
 
     sendInfo() {
         if (this.validateFieldsStatus()) {
+            this.alertOnErrorValidation.hide();
             this.sendRequest();
             this.sendContactPageAnalytics();
         } else {
-            new MessageBox(ALERT_SPACE_ID, "Correct all the errors noted in order to send the message ", "danger", false);
+            this.alertOnErrorValidation.show();
         }
     }
 
@@ -116,6 +158,7 @@ class ContactPageForm {
     }
 
     sendRequest() {
+        const self = this;
         jQuery.ajax({
             method: "POST",
             data: {
@@ -123,34 +166,42 @@ class ContactPageForm {
                 "email": this.emailInput.val(),
                 "name": this.nameInput.val(),
                 "courseName": this.courseNameInput.val(),
+                "courseGroup":this.courseGroupInput.val(),
                 "textarea": this.textarea.val()
             },
-            success: function (data) {
-                new MessageBox(ALERT_SPACE_ID, "The message has been sent", "info", false);
+            success: function (data) { 
+                self.alertOnModal.addClass('alert-success');
+                self.textOnAlertSuccess.show();
+                self.addCloseListenerToOnCloseModal();
+                self.modalSendMessage.modal("show"); 
             },
             error: function (request, status, error) {
-                new MessageBox(ALERT_SPACE_ID, "The message could not be sent", "danger", false);
+                self.alertOnModal.addClass('alert-danger');
+                self.textOnAlertFail.show();
+                self.addCloseListenerToOnCloseModal();
+                self.modalSendMessage.modal("show");
+                self.errorText.text(request.status+ " " + error);
+                self.details.show();
             }
         });
     }
 
-    addErrorStyle(inputObj, errorText) {
-        const inputObjParent = inputObj.parent();
-
+    addErrorStyle(inputObj, errorMessageId) {
+        const inputObjParent = inputObj.parent(); 
         inputObjParent.addClass("has-error");
-        inputObjParent.append(`<span class=\"help-block\">${errorText}</span>`);
+        const error = $(`#${errorMessageId}`);
+        error.show();
     }
 
     removeErrorStyle(inputObj) {
         const inputObjParent = inputObj.parent();
-
         inputObjParent.removeClass("has-error");
-        inputObjParent.find("span").remove();
+        inputObjParent.find("p.help-block").hide();
     }
 
     checkSubjectIsOk() {
         if (!this.checkSubjectIsSelected()) {
-            this.addErrorStyle(this.selectGroup, "Select an option");
+            this.addErrorStyle(this.selectGroup, "error-subject-no-selected");
             return false;
         }
         return true;
@@ -158,11 +209,11 @@ class ContactPageForm {
 
     checkEmailFieldIsOk() {
         if (!this.checkInputContent(this.emailInput, 0)) {
-            this.addErrorStyle(this.emailInput, "The email field is required");
+            this.addErrorStyle(this.emailInput, "error-email-required");
             return false;
         }
         if (!this.validateEmailFormat()) {
-            this.addErrorStyle(this.emailInput, "An email is requested");
+            this.addErrorStyle(this.emailInput, "error-email-not-email");
             return false;
         }
         return true;
@@ -170,7 +221,7 @@ class ContactPageForm {
 
     checkNameFieldIsOk() {
         if (!this.checkInputContent(this.nameInput, 0)) {
-            this.addErrorStyle(this.nameInput, "The name field is required");
+            this.addErrorStyle(this.nameInput, "error-name-required");
             return false;
         }
         return true;
@@ -178,7 +229,7 @@ class ContactPageForm {
 
     checkTextAreaIsOk() {
         if (!this.checkInputContent(this.textarea, 21)) {
-            this.addErrorStyle(this.textarea, "The comment is too short");
+            this.addErrorStyle(this.textarea, "error-textarea-ok");
             return false;
         }
         return true;

@@ -69,7 +69,7 @@ class CourseTaskFiles(INGIniousAdminPage):
         tmp_out = {}
         entries = task_fs.list(True, True, True)
         for entry in entries:
-            if os.path.splitext(entry)[0] == "task" and os.path.splitext(entry)[1][1:] in task_factory.get_available_task_file_extensions():
+            if (os.path.splitext(entry)[0] == "task" or  os.path.splitext(entry)[0] == "task_temp") and os.path.splitext(entry)[1][1:] in task_factory.get_available_task_file_extensions():
                 continue
 
             data = entry.split("/")
@@ -162,7 +162,8 @@ class CourseTaskFiles(INGIniousAdminPage):
 
         task_fs = self.task_factory.get_task_fs(courseid, taskid)
         try:
-            task_fs.put(wanted_path, fileobj.file.read())
+            content = fileobj.file.read().decode("utf-8").replace("\r\n", "\n").encode()
+            task_fs.put(wanted_path, content)
         except:
             return self.show_tab_file(courseid, taskid, _("An error occurred while writing the file"))
         return self.show_tab_file(courseid, taskid)

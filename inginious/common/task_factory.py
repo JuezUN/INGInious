@@ -46,6 +46,103 @@ class TaskFactory(object):
 
         return self._cache[(course.get_id(), taskid)][0]
 
+    def get_temporal_task_file(self, course, taskid):
+        """
+        :param course: a Course object
+        :param taskid: the task id of the task
+        :raise InvalidNameException
+        :return: the temporary task file in the task folder
+        """
+        if not id_checker(taskid):
+            raise InvalidNameException("Task with invalid name: " + taskid)
+        
+        task_fs = self.get_task_fs(course.get_id(), taskid)
+        try:
+            temporal_task_file = task_fs.get("task_temp.yaml")
+        except:
+            temporal_task_file = None
+
+        return temporal_task_file
+
+    def update_temporal_task_file(self, course, taskid, data):
+        """
+        :param course: a Course object
+        :param taskid: the task id of the task
+        :param data: a Dict with the temporary data of the task to be stored
+        :raise InvalidNameException, TaskReaderNotFoundException, TaskNotFoundException
+      
+        Create or Update a temporary task file that is used to store the task data that is required for some plugins
+        """
+        if not id_checker(taskid):
+            raise InvalidNameException("Task with invalid name: " + taskid)
+
+        task_fs = self.get_task_fs(course.get_id(), taskid)
+
+        task_file_manager = None
+        
+        try:
+            for file_extension, file_manager in self._task_file_managers.items():
+                if file_extension is "yaml":
+                    task_file_manager = file_manager   
+        
+        except: 
+            raise TaskReaderNotFoundException()
+
+        if task_file_manager:
+            temporal_task_file_content = task_file_manager.dump(data)
+
+        try:
+            task_fs.put("task_temp.yaml", temporal_task_file_content)
+        except: 
+            raise TaskNotFoundException()
+
+    def get_temporal_task_file_content(self, course, taskid):
+        """
+        :param course: a Course object
+        :param taskid: the task id of the task
+        :raise InvalidNameException, TaskUnreadableException
+        :return: the content of the temporary task file
+        """
+
+        if not id_checker(taskid):
+            raise InvalidNameException("Task with invalid name: " + taskid)
+
+        task_file_manager = None
+
+        task_fs = self.get_task_fs(course.get_id(), taskid)
+        for file_extension, file_manager in self._task_file_managers.items():
+                if task_fs.get("task_temp."+file_extension):
+                    task_file_manager = file_manager
+
+        temporal_task_file_content = {} 
+        try:
+            temporal_task_file_content["data"] = task_file_manager.load(task_fs.get("task_temp.yaml"))
+        except Exception as e:
+            raise TaskUnreadableException(str(e))
+        
+        return temporal_task_file_content
+
+    def delete_temporal_task_file(self, course, taskid):
+        """
+        :param course: a Course object
+        :param taskid: the task id of the task
+        :raise InvalidNameException
+
+        Delete the temporary task file from task folder
+        """
+
+        if not id_checker(taskid):
+            raise InvalidNameException("Task with invalid name: " + taskid)
+
+        task_fs = self.get_task_fs(course.get_id(), taskid)
+
+        if self._task_file_exists(task_fs):
+
+            for ext in self.get_available_task_file_extensions():
+                if ext == "yaml" and task_fs.exists("task_temp."+ext):
+                    task_fs.delete("task_temp."+ext)
+
+
     def get_task_descriptor_content(self, courseid, taskid):
         """
         :param courseid: the course id of the course

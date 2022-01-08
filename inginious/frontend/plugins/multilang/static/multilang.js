@@ -20,7 +20,8 @@ function changeSubmissionLanguage(key, problem_type) {
     const mode = CodeMirror.findModeByName(language);
     const editor = codeEditors[key];
     const lintingOptions = {
-        async: true
+        async: true,
+        lintOnChange: getAutomaticLinterOption()
     };
 
     //This should be first because setOption("mode", ...) triggers callbacks that call the linter
@@ -244,7 +245,14 @@ function sendSubmissionAnalytics() {
             'HDL_code_file_multiple_languages': [`HDL_code_file_multiple_languages`, `HDL - File submission`],
         };
 
-        $.post('/api/analytics/', {
+        let url = '/api/analytics/';
+
+        //Verify if is a lti task, and set the actual session id from task page (Do that for all analytics calls in task view)
+        if(is_lti()){
+            url = '/' + ($("form#task").attr("action").split('/')[1]) + url; 
+        }
+            
+        $.post(url, {
             service: {
                 key: services[`${getTaskEnvironment()}_${getProblemType()}`][0] + lateSubmissionData["key"],
                 name: services[`${getTaskEnvironment()}_${getProblemType()}`][1] + lateSubmissionData["name"]
