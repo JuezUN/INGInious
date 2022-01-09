@@ -1,3 +1,4 @@
+from email import header
 import web
 
 import hashlib
@@ -158,6 +159,24 @@ class RegisterLTIPage(INGIniousPage):
         headers = {"Content-Type": 'text/html'}
 
         web.sendmail(web.config.smtp_sendername, user_data["email"], subject, to_send_email, headers)
+
+    def send_course_registration_email(self, username, user_email, course):
+
+        subject = _("You have been enrolled on a course")
+        headers = {"Content-Type": 'text/html'}
+
+        data_policy_link = web.ctx.home + "/data_policy"
+        course_link = web.ctx.home + "/course/" + course.get_id()
+
+        course_name = course.get_name()
+
+        to_send_email = str(self.template_helper.get_custom_renderer(_EMAIL_REGISTER_USER_TEMPLATES_PATH, False).email_course_registration_temaplate()).format(
+            course_name=course_name, course_link=course_link, username=username, data_policy=data_policy_link
+        )
+
+        web.sendmail(web.config.smtp_sendername, user_email, subject, to_send_email, headers)
+
+
 
     def already_user_exists(self, username, email):
         
