@@ -85,20 +85,26 @@ class RegisterLTIPage(INGIniousPage):
             all_messages.append({"status": "error", "message": _("The new user was not created. Maybe the username or email are already taken.")})
             
         is_user_registered_in_course = None
+
         try:
-            is_user_registered_in_course  = self.register_in_course(course, user_data["username"])
+            is_user_registered_in_course = self.register_in_course(course, user_data["username"])
         except:
-            raise APIError(400, {"error": _("An error has occurred while registering the user in the coourse.")})
+            raise APIError(400, {"error": _("An error has occurred while registering the user in the course.")})
 
         if is_user_registered_in_course:
-            all_messages.append({"status":"success","message":_("Your user was registered on curse.")})
+            all_messages.append({"status":"success","message":_("Your user was registered on course.")})
         else:
-            all_messages.append({"status":"error","message":_("You were not registered on curse. Your are already registered in course, you have no permissions or there is no a created user with the provided data")})
+            all_messages.append({"status":"error","message":_("You were not registered on course. Your are already registered in course, you have no permissions or there is no a created user with the provided data")})
 
 
-        if success_user_registration:
+        if to_send_email:
+            if success_user_registration:
+                subject = _("Welcome on UNCode")
+            else:
+                subject = _("You have been enrolled on a course")
+
             try:
-                self.send_email(user_data, to_send_email)
+                self.send_email(subject, user_data, to_send_email)
                 all_messages.append({"status":"success","message":_("Your UNCode account was successfully created!. An email was sent to you with your account credentials.")})
             except:
                 self.database.users.delete_one({"username":user_data["username"], "email": user_data["email"]})
@@ -112,7 +118,7 @@ class RegisterLTIPage(INGIniousPage):
         user_exists = self.already_user_exists(user_data["username"], user_data["email"])
 
         if user_exists:
-            return False, None
+            return False, self.course_registration_email(user_data["username"], course)
 
         password = user_data["password"]
 
@@ -131,11 +137,7 @@ class RegisterLTIPage(INGIniousPage):
         }
 
         try:
-            user_activation_link = web.ctx.home + "/register?activate=" + user_activation_hash
-            data_policy_link = web.ctx.home + "/data_policy"
-            to_send_email = str(self.template_helper.get_custom_renderer(_EMAIL_REGISTER_USER_TEMPLATES_PATH, False).email_template()).format(
-                activation_link=user_activation_link, username=user_data["username"],
-                password=password, course_name=course.get_name("en"), data_policy=data_policy_link)
+            to_send_email = self.registration_email(user_data["username"], course, password, user_activation_hash)
 
             self.database.users.insert(user_data)
         except:
@@ -153,28 +155,36 @@ class RegisterLTIPage(INGIniousPage):
             return True
         return False
 
-    def send_email(self, user_data, to_send_email):
+    def send_email(self, subject, user_data, to_send_email):
 
-        subject = _("Welcome on UNCode")
         headers = {"Content-Type": 'text/html'}
 
         web.sendmail(web.config.smtp_sendername, user_data["email"], subject, to_send_email, headers)
 
-    def send_course_registration_email(self, username, user_email, course):
+    def registration_email(self, username, course, user_password, user_activation_hash):
 
-        subject = _("You have been enrolled on a course")
-        headers = {"Content-Type": 'text/html'}
+        user_activation_link = web.ctx.home + "/register?activate=" + user_activation_hash
+        data_policy_link = web.ctx.home + "/data_policy"
+
+        to_send_email = str(self.template_helper.get_custom_renderer(_EMAIL_REGISTER_USER_TEMPLATES_PATH, False).email_template()).format(
+                activation_link=user_activation_link, username=username, password=user_password, course_name=course.get_name("en"), data_policy=data_policy_link
+        )
+        
+        return to_send_email
+
+
+    def course_registration_email(self, username, course):
 
         data_policy_link = web.ctx.home + "/data_policy"
         course_link = web.ctx.home + "/course/" + course.get_id()
 
-        course_name = course.get_name()
+        course_name = course.get_name("en")
 
-        to_send_email = str(self.template_helper.get_custom_renderer(_EMAIL_REGISTER_USER_TEMPLATES_PATH, False).email_course_registration_temaplate()).format(
+        to_send_email = str(self.template_helper.get_custom_renderer(_EMAIL_REGISTER_USER_TEMPLATES_PATH, False).email_course_registration_template()).format(
             course_name=course_name, course_link=course_link, username=username, data_policy=data_policy_link
         )
 
-        web.sendmail(web.config.smtp_sendername, user_email, subject, to_send_email, headers)
+        return to_send_email
 
 
 
