@@ -307,12 +307,56 @@ function showCorrectLanguagesEnvironment(uncheckBoxes = true) {
 
 function setupGradingEnvironmentView() {
     const environmentSelectElement = $("#environment");
+    let environmentValue = environmentSelectElement.val();
     if (environmentSelectElement.length) {
         environmentSelectElement.on('change', function () {
-            configEnvironmentView()
+
+            if (taskAlreadyHasASubproblem()){
+                $('#change_grading_environment').modal('show');
+            }else{
+                configEnvironmentView();
+            }
         });
     }
+    
+    $('#change_environment').on('click', function () {
+        environmentValue = environmentSelectElement.val();
+        deleteProblem();
+        configEnvironmentView();
+    });
+
+    $('#change_grading_environment').on('hidden.bs.modal', function(){
+        environmentSelectElement.val(environmentValue);
+    });
+
     configEnvironmentView(false);
+
+}
+
+
+function taskAlreadyHasASubproblem(){
+    const subproblemContainer = $("#accordion");
+    const subproblemList = subproblemContainer.children();
+    if (subproblemList.length > 0){
+        return true;
+    }
+    return false;
+}
+
+function deleteProblem(){
+
+    /*
+      Delete the task problem as studio function, but do not show the confirm alert.
+
+      This function is used when a course admin change the grading environment for a task
+      that already has a subproblem.
+    */
+
+    const subproblemContainerElements = $("#accordion").children();
+
+    subproblemContainerElements.remove();
+
+    toggle_display_new_subproblem_option();
 }
 
 function configEnvironmentView(uncheckBoxes = true) {
