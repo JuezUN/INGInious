@@ -81,7 +81,18 @@ class RegisterLTIPage(INGIniousPage):
         except:
             raise APIError(400, {"error": _("An error has occurred while registering the user.")})
 
-        if not success_user_registration:
+        if success_user_registration:
+
+            try:
+                subject = _("Welcome on UNCode")
+
+                self.send_email(subject, user_data, to_send_email)
+                all_messages.append({"status":"success","message":_("Your UNCode account was successfully created!. An email was sent to you with your account credentials.")})
+            except:
+                self.database.users.delete_one({"username":user_data["username"], "email": user_data["email"]})
+                all_messages.append({"status": "error", "message": _("The new user was not created. There was an error while sending the email.")})
+    
+        else:
             all_messages.append({"status": "error", "message": _("The new user was not created. Maybe the username or email are already taken.")})
             
         is_user_registered_in_course = None
@@ -91,24 +102,18 @@ class RegisterLTIPage(INGIniousPage):
         except:
             raise APIError(400, {"error": _("An error has occurred while registering the user in the course.")})
 
+        print(is_user_registered_in_course)
+
         if is_user_registered_in_course:
-            all_messages.append({"status":"success","message":_("Your user was registered on course.")})
-        else:
-            all_messages.append({"status":"error","message":_("You were not registered on course. Your are already registered in course, you have no permissions or there is no a created user with the provided data")})
-
-
-        if to_send_email:
-            if success_user_registration:
-                subject = _("Welcome on UNCode")
+            if not success_user_registration and to_send_email:
+                try:
+                    subject = _("You have been enrolled on a course")
+                    self.send_email(subject, user_data, to_send_email)
+                    all_messages.append({"status":"success","message":_("Your user was registered on course.")})
+                except:
+                    all_messages.append({"status":"error","message":_("The user was not registered in course. There was an error while sending the email.")})
             else:
-                subject = _("You have been enrolled on a course")
-
-            try:
-                self.send_email(subject, user_data, to_send_email)
-                all_messages.append({"status":"success","message":_("Your UNCode account was successfully created!. An email was sent to you with your account credentials.")})
-            except:
-                self.database.users.delete_one({"username":user_data["username"], "email": user_data["email"]})
-                all_messages.append({"status": "error", "message": _("The new user was not created. There was an error while sending the email.")})
+                all_messages.append({"status":"error","message":_("You were not registered on course. Your are already registered in course, you have no permissions or there is no a created user with the provided data")})
 
         return {"all_messages": all_messages}
         
@@ -151,9 +156,7 @@ class RegisterLTIPage(INGIniousPage):
 
         user_registered_in_course = self.user_manager.course_register_user(course, username, '', True)
 
-        if user_registered_in_course:
-            return True
-        return False
+        return user_registered_in_course
 
     def send_email(self, subject, user_data, to_send_email):
 

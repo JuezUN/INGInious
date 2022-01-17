@@ -1,9 +1,18 @@
-function display_alert(alert){
+function display_alert(){
+
+    let alert_id = "#registration_lti_alert";
+    let alert = $(alert_id);
+
     alert.show();
 }
 
-function hide_alert(alert){
+function hide_alert(){
+
+    let alert_id = "#registration_lti_alert";
+    let alert = $(alert_id);
+
     alert.hide();
+    clear_messages();
 }
 
 function set_all_messages(result_messages){
@@ -11,12 +20,17 @@ function set_all_messages(result_messages){
     let alert = $(alert_id);
     let status;
     let message;
+    clear_messages();
     result_messages.forEach((element) => {
         status = element.status;
         message = element.message; 
         add_new_alert_satus(alert, status, message);
     });
     display_alert(alert);
+
+    setTimeout(function (){
+        hide_alert(alert);
+    },1000000)
 }
 
 function add_new_alert_satus(alert, status, message){
@@ -54,7 +68,15 @@ function add_new_alert_satus(alert, status, message){
 
 }
 
+function clear_messages(){
+    $("#success_messages").children().remove();
+    $("#error_messages").children().remove();
+}
+
 function register_user(){
+
+
+    hide_alert();
     
     jQuery.ajax({
         method: "POST",
@@ -63,7 +85,6 @@ function register_user(){
         }
     }).done(function(result){
         let result_messages = JSON.parse(result.replaceAll('\'','"'));
-        console.log(result_messages);
         set_all_messages(result_messages.all_messages);
     });
 }
