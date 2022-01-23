@@ -1195,6 +1195,7 @@ msgstr ""
 #: inginious/frontend/plugins/multilang/problems/templates/tools.html:82
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_view.html:120
 #: inginious/frontend/templates/auth.html:16
+#: inginious/frontend/templates/course_admin/edit_tabs/container.html:81
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
 #: inginious/frontend/templates/lti_login.html:30
 #: inginious/frontend/templates/register_button.html:36
@@ -1876,7 +1877,21 @@ msgstr "Copiar tareas de"
 msgid "Select a course to copy tasks"
 msgstr "Seleccione un curso para copiar tareas"
 
-#: inginious/frontend/plugins/grader_generator/pages/grader.py:47
+#: inginious/frontend/plugins/grader_generator/pages/grader.py:25
+msgid ""
+"Cannot set a 'Code Multiple Languages' or 'Code File Multiple Languages' "
+"problem with a 'Notebook' grading environment"
+msgstr ""
+"Calificador: No se puede crear un subproblema de tipo 'Code Multiple "
+"Language' o 'Code File Multiple Language' con un calificador 'Notebook'."
+
+#: inginious/frontend/plugins/grader_generator/pages/grader.py:28
+msgid "Cannot set a 'Notebook' problem in a non 'Notebook' grading environment"
+msgstr ""
+"Calificador: Solo se puede crear un subproblema de tipo 'Notebook' para "
+"un calificador de 'Notebook'"
+
+#: inginious/frontend/plugins/grader_generator/pages/grader.py:59
 msgid "Grader"
 msgstr "Calificador"
 
@@ -6190,6 +6205,18 @@ msgid "Are the task's responses written in HTML instead of restructuredText?"
 msgstr ""
 "Son las respuestas de la tarea escritas en HTML en vez de "
 "restructuredText?"
+
+#: inginious/frontend/templates/course_admin/edit_tabs/container.html:75
+msgid "Change grading environment"
+msgstr "Cambiar el entorno de evaluación"
+
+#: inginious/frontend/templates/course_admin/edit_tabs/container.html:78
+msgid "If you change the grading environment task subproblem will be deleted!"
+msgstr "¡Si cambia el entorno de evaluacioń el subproblema sera eliminado!"
+
+#: inginious/frontend/templates/course_admin/edit_tabs/container.html:82
+msgid "Change"
+msgstr "Cambiar"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:7
 #: inginious/frontend/templates/course_admin/edit_tabs/files.html:60
