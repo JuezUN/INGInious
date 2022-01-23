@@ -117,13 +117,11 @@ class LTILoginPage(INGIniousPage):
 
         if user_profile is None:
 
-            user_account = self.database.users.find_one({"$or": [{"username":data["username"]},{"email":data["email"]}]})
+            exists_user_profile = self.database.users.find_one({"$or": [{"username":data["username"]},{"email":data["email"]}]})
 
-            if user_account is None:
+            if exists_user_profile is None:
 
-                new_user = course._hook_manager.call_hook('lti_user_account', user_data=data)[0]
-
-                print(new_user)
+                new_user = course._hook_manager.call_hook('get_user_lti_account', user_data=data)[0]
 
         else:
             self.user_manager.connect_user(user_profile["username"], user_profile["realname"], user_profile["email"], user_profile["language"])
@@ -176,7 +174,7 @@ class LTILaunchPage(INGIniousPage):
         if verified:
             self.logger.debug('parse_lit_data for %s', str(post_input))
             user_id = post_input["user_id"]
-            username = post_input["ext_user_username"]
+            username = post_input.get("ext_user_username", "")
             roles = post_input.get("roles", "Student").split(",")
             realname = self._find_realname(post_input)
             email = post_input.get("lis_person_contact_email_primary", "")

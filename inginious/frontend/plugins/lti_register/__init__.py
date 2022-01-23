@@ -16,4 +16,4 @@ def init(plugin_manager, course_factory, client, config):
 
     plugin_manager.add_page('/register_user', RegisterLTIPage)
 
-    plugin_manager.add_hook('lti_user_account', get_user_lti)
+    plugin_manager.add_hook('get_user_lti_account', get_user_lti)

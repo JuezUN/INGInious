@@ -18,7 +18,7 @@ def get_user_lti(user_data):
     user_realname = user_data["realname"]
     user_email = user_data["email"]
 
-    user_username = user_email.split('@')[0]
+    user_username = user_data["username"]
 
     task = user_data["task"]
 
@@ -35,6 +35,10 @@ def get_user_lti(user_data):
     return json.dumps(new_user)
 
 class RegisterLTIPage(INGIniousPage):
+
+    """
+    Page called by the LTI Login page to register a new user
+    """
     def is_lti_page(self):
         return False
     
@@ -79,7 +83,7 @@ class RegisterLTIPage(INGIniousPage):
         try:
             success_user_registration, to_send_email = self.register_user(course, user_data)
         except:
-            raise APIError(400, {"error": _("An error has occurred while registering the user.")})
+            raise APIError(400, {"error": _("An error occurred while registering the user.")})
 
         if success_user_registration:
 
@@ -90,36 +94,43 @@ class RegisterLTIPage(INGIniousPage):
                 all_messages.append({"status":"success","message":_("Your UNCode account was successfully created!. An email was sent to you with your account credentials.")})
             except:
                 self.database.users.delete_one({"username":user_data["username"], "email": user_data["email"]})
-                all_messages.append({"status": "error", "message": _("The new user was not created. There was an error while sending the email.")})
+                all_messages.append({"status": "error", "message": _("The new user was not created. There was an error sending the email.")})
     
         else:
-            all_messages.append({"status": "error", "message": _("The new user was not created. Maybe the username or email are already taken.")})
+            all_messages.append({"status": "error", "message": _("The new user was not created. Maybe the username or email were already taken.")})
             
         is_user_registered_in_course = None
 
         try:
             is_user_registered_in_course = self.register_in_course(course, user_data["username"])
         except:
-            raise APIError(400, {"error": _("An error has occurred while registering the user in the course.")})
+            raise APIError(400, {"error": _("An error occurred while registering the user in the course.")})
 
         print(is_user_registered_in_course)
 
         if is_user_registered_in_course:
+            all_messages.append({"status":"success","message":_("Your user was registered in the course. Please check the email that was sent to you with the information of the course you have been enrolled to.")})
             if not success_user_registration and to_send_email:
                 try:
                     subject = _("You have been enrolled on a course")
                     self.send_email(subject, user_data, to_send_email)
-                    all_messages.append({"status":"success","message":_("Your user was registered on course.")})
                 except:
-                    all_messages.append({"status":"error","message":_("The user was not registered in course. There was an error while sending the email.")})
-            else:
-                all_messages.append({"status":"error","message":_("You were not registered on course. Your are already registered in course, you have no permissions or there is no a created user with the provided data")})
+                    all_messages.append({"status":"error","message":_("There was an error sending the course registration email.")})
+        else:
+            all_messages.append({"status":"error","message":_("You were not registered in the course. Your are already registered in the course, you have no permissions or there is no a created user with the provided data")})
 
         return {"all_messages": all_messages}
         
 
     def register_user(self, course, user_data):
 
+        """
+        Register a new user to UNCode
+        
+        :param course: Course in which the user will be registered
+        :param user_data: The user data requiered to create a new account 
+        :return: Retrun a tuple with a True value when a new user is created, and a email template.
+        """
         user_exists = self.already_user_exists(user_data["username"], user_data["email"])
 
         if user_exists:
@@ -151,6 +162,11 @@ class RegisterLTIPage(INGIniousPage):
         return True, to_send_email
         
     def register_in_course(self, course, username):
+        """
+        Register a user in a course
+        
+        :return: Return True if the user was registered in thecourse.
+        """
 
         user_registered_in_course = None
 
@@ -159,13 +175,22 @@ class RegisterLTIPage(INGIniousPage):
         return user_registered_in_course
 
     def send_email(self, subject, user_data, to_send_email):
+        """
+        Send a registration email to a user
+
+        :param subject: An email subject
+        :param user_data: Receiving user data 
+        :param to_send_email: The email template
+        """
 
         headers = {"Content-Type": 'text/html'}
 
         web.sendmail(web.config.smtp_sendername, user_data["email"], subject, to_send_email, headers)
 
     def registration_email(self, username, course, user_password, user_activation_hash):
-
+        """
+        Format the new user registration email template to be sent
+        """
         user_activation_link = web.ctx.home + "/register?activate=" + user_activation_hash
         data_policy_link = web.ctx.home + "/data_policy"
 
@@ -177,6 +202,9 @@ class RegisterLTIPage(INGIniousPage):
 
 
     def course_registration_email(self, username, course):
+        """
+        Format the registration course email template to be sent
+        """
 
         data_policy_link = web.ctx.home + "/data_policy"
         course_link = web.ctx.home + "/course/" + course.get_id()
@@ -192,6 +220,9 @@ class RegisterLTIPage(INGIniousPage):
 
 
     def already_user_exists(self, username, email):
+        """
+        Return True if user already exists
+        """
         
         user = self.database.users.find_one({"$or": [{"username":username},{"email":email}]})
 

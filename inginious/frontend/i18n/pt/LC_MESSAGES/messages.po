@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-12-22 15:43-0500\n"
+"POT-Creation-Date: 2022-01-22 21:16-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -97,11 +97,11 @@ msgstr "Dados de LTI inválidos"
 msgid "Your account is already bound with this context."
 msgstr "Sua conta já está vinculada a esse contexto."
 
-#: inginious/frontend/pages/lti.py:174
+#: inginious/frontend/pages/lti.py:172
 msgid "Error while validating LTI request"
 msgstr "Erro ao validar a solicitação LTI"
 
-#: inginious/frontend/pages/lti.py:190
+#: inginious/frontend/pages/lti.py:188
 msgid ""
 "In order to send grade back to the TC, UNCode needs the parameters "
 "lis_outcome_service_url and lis_outcome_result_id in the LTI basic-"
@@ -111,7 +111,7 @@ msgstr ""
 "lis_outcome_service_url e lis_outcome_result_id na solicitação básica de "
 "inicialização do LTI. Por favor, entre em contato com seu administrador."
 
-#: inginious/frontend/pages/lti.py:210
+#: inginious/frontend/pages/lti.py:208
 msgid "Couldn't validate LTI request"
 msgstr "Não foi possível validar a solicitação de LTI"
 
@@ -156,9 +156,9 @@ msgstr "Este nome de usuário já está em uso!"
 msgid "This email address is already in use !"
 msgstr "Este endereço de e-mail já está em uso!"
 
-#: inginious/frontend/pages/register.py:106
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:157
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:149
+#: inginious/frontend/pages/register.py:107
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:91
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:192
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr "Bem-vindo ao UNCode"
@@ -958,8 +958,8 @@ msgstr ""
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:36
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:68
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:105
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:34
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:57
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:35
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:58
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:77
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:34
@@ -2085,134 +2085,139 @@ msgstr ""
 msgid "Expected output"
 msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:62
-#, fuzzy
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:67
 msgid "The course does not exist."
-msgstr "A tarefa com o ID {} não existe!"
+msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:65
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:70
 msgid "User cannot be registered. Some user data is no provided."
 msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:81
-#, fuzzy
-msgid "An error has occurred while registering the user."
-msgstr "Ocorreu um erro ao gravar o arquivo"
-
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:84
-msgid ""
-"The new user was not created. Maybe the username or email are already "
-"taken."
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:86
+msgid "An error occurred while registering the user."
 msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:90
-#, fuzzy
-msgid "An error has occurred while registering the user in the coourse."
-msgstr "Ocorreu um erro ao excluir os dados do curso."
-
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:93
-#, fuzzy
-msgid "Your user was registered on curse."
-msgstr "Você não está registrado em nenhum curso"
-
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:95
-msgid ""
-"You were not registered on curse. Your are already registered in course, "
-"you have no permissions or there is no a created user with the provided "
-"data"
-msgstr ""
-
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:101
-#, fuzzy
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:94
 msgid ""
 "Your UNCode account was successfully created!. An email was sent to you "
 "with your account credentials."
 msgstr ""
-"Você foi registrado com sucesso. Um e-mail foi enviado para você para a "
-"ativação da sua conta."
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:104
-msgid "The new user was not created. There was an error while sending the email."
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:97
+msgid "The new user was not created. There was an error sending the email."
+msgstr ""
+
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:100
+msgid ""
+"The new user was not created. Maybe the username or email were already "
+"taken."
+msgstr ""
+
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:107
+msgid "An error occurred while registering the user in the course."
+msgstr ""
+
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:112
+msgid ""
+"Your user was registered in the course. Please check the email that was "
+"sent to you with the information of the course you have been enrolled to."
+msgstr ""
+
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:115
+#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:190
+msgid "You have been enrolled on a course"
+msgstr "Você não está registrado em nenhum curso"
+
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:118
+msgid "There was an error sending the course registration email."
+msgstr ""
+
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:120
+msgid ""
+"You were not registered in the course. Your are already registered in the"
+" course, you have no permissions or there is no a created user with the "
+"provided data"
 msgstr ""
 
 #: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:3
-#, fuzzy
 msgid "LTI Registration"
-msgstr "Datas de registro inválidas"
+msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:12
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:13
 msgid "The following operations were successful when registering the user:"
 msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:15
-#, fuzzy
-msgid "Some errors has occurred while registering the user:"
-msgstr "Ocorreu um erro ao gravar o arquivo"
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:16
+msgid "Some errors occurred while registering the user:"
+msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:20
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:21
 msgid "Your new user account data"
 msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:23
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:24
 msgid ""
 "You are going to create a new user account on the UNCode platform. The "
 "following user data is used to create your account:"
 msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:25
-#, fuzzy
-msgid "Your complate name: "
-msgstr "Nome completo:"
-
 #: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:26
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:52
-#, fuzzy
-msgid "Your username: "
-msgstr "Nome de usuário incorreto."
+msgid "Your complate name: "
+msgstr ""
 
 #: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:27
 #: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:53
-msgid "Your email: "
+msgid "Your username: "
 msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:29
-msgid ""
-"Do you want to create your user account with this data?. An email will be"
-" sent to you with the credentials of your UNCode account and the "
-"activation steps."
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:28
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:54
+msgid "Your email: "
 msgstr ""
 
 #: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:30
 msgid ""
-"Once you have activated your UNCode account, go back to the task page in "
-"course and click the <strong>\"Bind your UNCode account\"</strong> link "
-"to use UNCode."
+"Do you want to create your user account with these data?. An email will "
+"be sent to you with the credentials of your UNCode account and the "
+"activation steps."
 msgstr ""
 
 #: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:31
 msgid ""
-"<strong>Note:</strong> You need to bind your account every time you enter"
-" a new task in a course."
+"Once you have activated your UNCode account, go back to the task page in "
+"the course and click the <strong>\"Bind your UNCode account\"</strong> "
+"link to use UNCode."
 msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:35
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:58
-#, fuzzy
-msgid "Create account"
-msgstr "Deletar minha conta"
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:32
+msgid ""
+"<strong>Note:</strong> You must bind your account each time you access a "
+"new task in a course."
+msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:46
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:36
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:59
+msgid "Create account"
+msgstr ""
+
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:47
 msgid "Create a new UNCode account"
 msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:49
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:50
 msgid "Create a new UNCode account with the following data:"
 msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:51
-#, fuzzy
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:52
 msgid "Your name: "
-msgstr "\"Meus cursos\""
+msgstr ""
+
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:66
+msgid ""
+"No username or email have been provided to create your account. Please "
+"contact your course administrator to change the course privacy options to"
+" share your username and email with UNCode"
+msgstr ""
 
 #: inginious/frontend/plugins/manual_scoring/constants.py:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/course_task_list.html:18
@@ -2959,10 +2964,6 @@ msgid ""
 " is already taken or the email address is already in use:\n"
 "                {}"
 msgstr ""
-
-#: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:190
-msgid "You have been enrolled on a course"
-msgstr "Você não está registrado em nenhum curso"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:4
 msgid "Welcome on"
@@ -4052,7 +4053,7 @@ msgstr ""
 
 #: inginious/frontend/templates/lti_login.html:35
 msgid ""
-"If you don't have a UNCode aacount yet, you can create a new one with "
+"If you don't have a UNCode account yet, you can create a new one with "
 "your existing account in this platform or you can create a different "
 "account via UNCode."
 msgstr ""

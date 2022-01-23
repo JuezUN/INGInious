@@ -12,7 +12,7 @@ function hide_alert(){
     let alert = $(alert_id);
 
     alert.hide();
-    clear_messages();
+    clear_list_messages();
 }
 
 function set_all_messages(result_messages){
@@ -20,7 +20,7 @@ function set_all_messages(result_messages){
     let alert = $(alert_id);
     let status;
     let message;
-    clear_messages();
+    clear_list_messages();
     result_messages.forEach((element) => {
         status = element.status;
         message = element.message; 
@@ -68,9 +68,17 @@ function add_new_alert_satus(alert, status, message){
 
 }
 
-function clear_messages(){
-    $("#success_messages").children().remove();
-    $("#error_messages").children().remove();
+function clear_messages(list_id){
+    let success_messages_list = $(list_id);
+
+    success_messages_list.children().remove();
+    success_messages_list.hide();
+}
+
+function clear_list_messages(){
+
+    clear_messages("#success_messages");
+    clear_messages("#error_messages");
 }
 
 function register_user(){
