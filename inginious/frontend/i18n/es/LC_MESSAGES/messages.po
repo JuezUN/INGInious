@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-01-22 21:16-0500\n"
+"POT-Creation-Date: 2022-01-22 21:42-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -2337,7 +2337,9 @@ msgstr ""
 msgid ""
 "The new user was not created. Maybe the username or email were already "
 "taken."
-msgstr "No se pudo crear el nuevo usuario. Es posible que el nombre de usuario o e"
+msgstr ""
+"No se pudo crear el nuevo usuario. Es posible que el nombre de usuario o "
+"elcorreo electrónico ya se estén utilizando."
 
 #: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:107
 msgid "An error occurred while registering the user in the course."
@@ -2375,6 +2377,10 @@ msgstr ""
 #: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:3
 msgid "LTI Registration"
 msgstr "Registro por LTI"
+
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:5
+msgid "Create a new account"
+msgstr "Crear una nueva cuenta en UNCode"
 
 #: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:13
 msgid "The following operations were successful when registering the user:"

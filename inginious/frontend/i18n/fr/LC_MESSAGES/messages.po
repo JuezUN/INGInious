@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-01-22 21:16-0500\n"
+"POT-Creation-Date: 2022-01-22 21:42-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -2159,6 +2159,10 @@ msgstr ""
 
 #: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:3
 msgid "LTI Registration"
+msgstr ""
+
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:5
+msgid "Create a new account"
 msgstr ""
 
 #: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:13
