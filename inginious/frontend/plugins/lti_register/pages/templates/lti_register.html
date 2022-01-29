@@ -4,67 +4,72 @@ $var title: $:_("LTI Registration")
 
 <h2>$:_("Create a new account")</h2>
 
-    $if new_user["username"] and new_user["email"]:
-        <div class="container">
-            <div class="row">
+    $if new_user:
+        $if new_user["username"] and new_user["email"]:
+            <div class="container">
+                <div class="row">
 
-                <div id="registration_lti_alert" class="alert alert-warning" hidden>
-                    <div id="success_messages" hidden>
-                        $:_("The following operations were successful when registering the user:")
-                    </div>
-                    <div id="error_messages" hidden>
-                        $:_("Some errors occurred while registering the user:")
-                    </div>
-                </div>
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4>$:_("Your new user account data")</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>$:_("You are going to create a new user account on the UNCode platform. The following user data is used to create your account:")</p>
-                        <div class="col-md-12">
-                            <p class="col-md-12"><strong>$:_("Your complate name: ")</strong>$new_user["realname"]</p>
-                            <p class="col-md-12"><strong>$:_("Your username: ")</strong>$new_user["username"]</p>
-                            <p class="col-md-12"><strong>$:_("Your email: ")</strong>$new_user["email"]</p>
+                    <div id="registration_lti_alert" class="alert alert-warning" hidden>
+                        <div id="success_messages" hidden>
+                            $:_("The following operations were successful when registering the user:")
                         </div>
-                        <p>$:_("Do you want to create your user account with these data?. An email will be sent to you with the credentials of your UNCode account and the activation steps.")</p>
-                        <br/><p>$:_("Once you have activated your UNCode account, go back to the task page in the course and click the <strong>\"Bind your UNCode account\"</strong> link to use UNCode.")</p>
-                        <br/><p>$:_("<strong>Note:</strong> You must bind your account each time you access a new task in a course.")</p>
+                        <div id="error_messages" hidden>
+                            $:_("Some errors occurred while registering the user:")
+                        </div>
                     </div>
-                    <div class="panel-footer text-right">
-                        <button class="btn btn-danger" onclick="location.href='/index';">$:_("Cancel")</button>
-                        <button class="btn btn-success" data-toggle="modal" data-target="#create_new_user">$:_("Create account")</button>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4>$:_("Your new user account data")</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>$:_("You are going to create a new user account on the UNCode platform. The following user data is used to create your account:")</p>
+                            <div class="col-md-12">
+                                <p class="col-md-12"><strong>$:_("Your complate name: ")</strong>$new_user["realname"]</p>
+                                <p class="col-md-12"><strong>$:_("Your username: ")</strong>$new_user["username"]</p>
+                                <p class="col-md-12"><strong>$:_("Your email: ")</strong>$new_user["email"]</p>
+                            </div>
+                            <p>$:_("Do you want to create your user account with these data?. An email will be sent to you with the credentials of your UNCode account and the activation steps.")</p>
+                            <br/><p>$:_("Once you have activated your UNCode account, go back to the task page in the course and click the <strong>\"Bind your UNCode account\"</strong> link to use UNCode.")</p>
+                            <br/><p>$:_("<strong>Note:</strong> You must bind your account each time you access a new task in a course.")</p>
+                        </div>
+                        <div class="panel-footer text-right">
+                            <button class="btn btn-danger" onclick="location.href='/index';">$:_("Cancel")</button>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#create_new_user">$:_("Create account")</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div id="create_new_user" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                            <h4 class="modal-title">$:_("Create a new UNCode account")</h4>
-                    </div>
-                    <div class="modal-body">
-                        $:_("Create a new UNCode account with the following data:")
-                        <ul>
-                            <li><strong>$:_("Your name: ")</strong>$new_user["realname"]</li>
-                            <li><strong>$:_("Your username: ")</strong>$new_user["username"]</li>
-                            <li><strong>$:_("Your email: ")</strong>$new_user["email"]</li>
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">$:_("Cancel")</button>
-                        <button type="submit" onclick="register_user()" class="btn btn-success" data-dismiss="modal">$:_("Create account")</button>
+            <div id="create_new_user" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                                <h4 class="modal-title">$:_("Create a new UNCode account")</h4>
+                        </div>
+                        <div class="modal-body">
+                            $:_("Create a new UNCode account with the following data:")
+                            <ul>
+                                <li><strong>$:_("Your name: ")</strong>$new_user["realname"]</li>
+                                <li><strong>$:_("Your username: ")</strong>$new_user["username"]</li>
+                                <li><strong>$:_("Your email: ")</strong>$new_user["email"]</li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">$:_("Cancel")</button>
+                            <button type="submit" onclick="register_user()" class="btn btn-success" data-dismiss="modal">$:_("Create account")</button>
+                        </div>
                     </div>
                 </div>
             </div>
+        
+        $else:
+            <div class="alert alert-warning">$:_("No username or email have been provided to create your account. Please contact your course administrator to change the course privacy options to share your username and email with UNCode")</div>
+    $else:
+        <div class="row">
+            <div class="alert alert-warning col-md-6 col-md-offset-3">$:_("No user data has been provided to create your account. If you entered the page manually or changed the language, please close this window and enter again from the link.")</div>
         </div>
     
-    $else:
-        <div class="alert alert-warning">$:_("No username or email have been provided to create your account. Please contact your course administrator to change the course privacy options to share your username and email with UNCode")</div>
-
     <script>
 
         function getUserDataLTI(){
@@ -72,7 +77,3 @@ $var title: $:_("LTI Registration")
         }
 
     </script>
-    
-    
-    
-

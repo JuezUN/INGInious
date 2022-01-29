@@ -48,11 +48,17 @@ class RegisterLTIPage(INGIniousPage):
     def GET(self):
 
         data = web.input()
-        new_user = json.loads(data.get("new_user",{}))
+        
+        new_user = data.get("new_user",{})
+        parsed_new_user = {}
+
+        if new_user:
+
+            parsed_new_user = json.loads(new_user)
 
         self.add_static_files()
 
-        return self.template_helper.get_custom_renderer(_LTI_REGISTRATION_TEMPLATES_PATH).lti_register(new_user)
+        return self.template_helper.get_custom_renderer(_LTI_REGISTRATION_TEMPLATES_PATH).lti_register(parsed_new_user)
     
     def POST(self):
 
@@ -105,8 +111,6 @@ class RegisterLTIPage(INGIniousPage):
             is_user_registered_in_course = self.register_in_course(course, user_data["username"])
         except:
             raise APIError(400, {"error": _("An error occurred while registering the user in the course.")})
-
-        print(is_user_registered_in_course)
 
         if is_user_registered_in_course:
             all_messages.append({"status":"success","message":_("Your user was registered in the course. Please check the email that was sent to you with the information of the course you have been enrolled to.")})
