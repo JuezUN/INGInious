@@ -17,7 +17,9 @@ const _CONTACT_PAGE_PLUGIN_PATH = `${_BASE_PATH}/contact_page/static`;
 const _MANUAL_SCORING_PATH = `${_BASE_PATH}/manual_scoring/static`;
 const _TASK_HINTS_PATH = `${_BASE_PATH}/task_hints/static`;
 const _COURSE_CREATION_PATH = `${_BASE_PATH}/course_creation/static`;
-const _USER_MANAGEMENT_PATH = `${_BASE_PATH}/user_management/static`
+const _USER_MANAGEMENT_PATH = `${_BASE_PATH}/user_management/static`;
+const _LTI_REGISTER_PATH = `${_BASE_PATH}/lti_register/static`;
+
 
 /**
  * Read file synchronously.
@@ -369,6 +371,18 @@ function minifyUserManagementPlugin() {
     minifyJSFiles(jsFiles, jsFilesPath, "user_management");
 }
 
+function minifyLTIRegisterPlugin(){
+    const jsFilesPath = _LTI_REGISTER_PATH + "/js/";
+
+    const jsFiles = ["register_user_lti"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+
+    console.log("Minify 'LTI registration' plugin static files.");
+
+    minifyJSFiles(jsFiles, jsFilesPath, "register_user_lti");
+}
+
 minifyUNCodePlugin();
 minifyUNTemplatePlugin();
 minifyStatisticsPlugin();
@@ -384,3 +398,4 @@ minifyContactPagePlugin();
 minifyTaskHintsPlugin();
 minifyCourseCreationPlugin();
 minifyUserManagementPlugin();
+minifyLTIRegisterPlugin();

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-01-28 23:02-0500\n"
+"POT-Creation-Date: 2022-01-29 23:27-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -160,7 +160,7 @@ msgid "This email address is already in use !"
 msgstr "¡La dirección de correo electrónico ya existe!"
 
 #: inginious/frontend/pages/register.py:107
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:97
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:101
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:192
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
@@ -2305,21 +2305,21 @@ msgstr "Código"
 msgid "Expected output"
 msgstr "Salida esperada"
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:73
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:77
 msgid "The course does not exist."
 msgstr "El curso no existe."
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:76
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:80
 msgid "User cannot be registered. Some user data is no provided."
 msgstr ""
 "No se puede registrar al usuario. Falta proporcionar información del "
 "usuario."
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:92
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:96
 msgid "An error occurred while registering the user."
 msgstr "Un error ocurrió mientras se registraba al usuario."
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:100
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:104
 msgid ""
 "Your UNCode account was successfully created!. An email was sent to you "
 "with your account credentials."
@@ -2327,13 +2327,13 @@ msgstr ""
 "¡Tu cuenta de UNCode fue creada exitosamente!. Un correo electrónico con "
 "tus credenciales te ha sido enviado para activar tu cuenta."
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:103
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:107
 msgid "The new user was not created. There was an error sending the email."
 msgstr ""
 "No se pudo crear el nuevo usuario. Ocurrió un error al enviar el correo "
 "electrónico."
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:106
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:110
 msgid ""
 "The new user was not created. Maybe the username or email were already "
 "taken."
@@ -2341,11 +2341,11 @@ msgstr ""
 "No se pudo crear el nuevo usuario. Es posible que el nombre de usuario o "
 "el correo electrónico ya se estén utilizando."
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:113
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:117
 msgid "An error occurred while registering the user in the course."
 msgstr "Un error ha ocurrido al registrar al usuario al curso."
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:116
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:120
 msgid ""
 "Your user was registered in the course. Please check the email that was "
 "sent to you with the information of the course you have been enrolled to."
@@ -2353,18 +2353,18 @@ msgstr ""
 "Has sido registrado al curso. Por favor revisa el correo que fue enviado "
 "con la información del curso."
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:119
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:123
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:190
 msgid "You have been enrolled on a course"
 msgstr "Has sido inscrito en un curso"
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:122
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:126
 msgid "There was an error sending the course registration email."
 msgstr ""
 "Un error ha ocurrido mientras se enviaba el correo electrónico del "
 "registro."
 
-#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:124
+#: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:128
 msgid ""
 "You were not registered in the course. Your are already registered in the"
 " course, you have no permissions or there is no a created user with the "

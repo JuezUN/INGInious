@@ -9,6 +9,7 @@ from inginious.frontend.pages.api._api_page import APIError
 from inginious.frontend.pages.utils import INGIniousPage 
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from inginious.frontend.plugins.register_students.pages.api.add_course_students_csv_file_api import random_password
+from .constants import use_minified
 
 _LTI_REGISTRATION_TEMPLATES_PATH = "frontend/plugins/lti_register/pages/templates"
 _EMAIL_REGISTER_USER_TEMPLATES_PATH = "frontend/plugins/register_students/static"
@@ -42,8 +43,11 @@ class RegisterLTIPage(INGIniousPage):
     def is_lti_page(self):
         return False
     
-    def add_static_files(self):
-        self.template_helper.add_javascript("/lti_register/static/js/register_user_lti.js")
+    def add_static_files(self, template_helper):
+        if use_minified():
+            template_helper.add_javascript("/lti_register/static/js/register_user_lti.min.js")
+        else:
+            template_helper.add_javascript("/lti_register/static/js/register_user_lti.js")
 
     def GET(self):
 
@@ -56,7 +60,7 @@ class RegisterLTIPage(INGIniousPage):
 
             parsed_new_user = json.loads(new_user)
 
-        self.add_static_files()
+        self.add_static_files(self.template_helper)
 
         return self.template_helper.get_custom_renderer(_LTI_REGISTRATION_TEMPLATES_PATH).lti_register(parsed_new_user)
     
