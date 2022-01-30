@@ -1,4 +1,4 @@
-$def with (error)
+$def with (error, new_user)
 
 $#
 $# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
@@ -30,6 +30,11 @@ $# Start content
                     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">$:_("Close")</span></button>
                     $:_("Invalid login/password")
                 </div>
+            
+            $if new_user:
+                <p>$:_("If you don't have a UNCode account yet, you can create a new one with your existing account in this platform or you can create a different account via UNCode.")</p>              
+                <br/><p><a href="$get_homepath(True)/register_user?new_user=$new_user" target="_blank">$:_("Create a UNCode account via this platform")</a></p>
+                <br/><p>$:_("If you already have an account, please bind your account to this platform.")</p><br/>
 
             <p><a onclick="window.open('$get_homepath(True)/lti/bind?sessionid=$user_manager.session_id()');" href="#">$:_("Bind your UNCode account")</a></p>
             <p><a href="$get_homepath()/lti/login">$:_("Refresh")</a></p>
