@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-10 12:41-0500\n"
+"POT-Creation-Date: 2022-03-10 16:54-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -1679,7 +1679,7 @@ msgstr ""
 msgid "Cannot set a 'Notebook' problem in a non 'Notebook' grading environment"
 msgstr ""
 
-#: inginious/frontend/plugins/grader_generator/pages/grader.py:62
+#: inginious/frontend/plugins/grader_generator/pages/grader.py:59
 msgid "Grader"
 msgstr ""
 
