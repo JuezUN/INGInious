@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-01-29 23:27-0500\n"
+"POT-Creation-Date: 2022-03-10 12:41-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -77,34 +77,34 @@ msgstr ""
 msgid "You're not registered in a group."
 msgstr ""
 
-#: inginious/frontend/pages/lti.py:46 inginious/frontend/pages/lti.py:58
+#: inginious/frontend/pages/lti.py:48 inginious/frontend/pages/lti.py:60
 msgid "Missing LTI session id"
 msgstr ""
 
-#: inginious/frontend/pages/lti.py:51 inginious/frontend/pages/lti.py:63
+#: inginious/frontend/pages/lti.py:53 inginious/frontend/pages/lti.py:65
 msgid "Invalid LTI session id"
 msgstr ""
 
-#: inginious/frontend/pages/lti.py:70
+#: inginious/frontend/pages/lti.py:72
 msgid "Invalid LTI data"
 msgstr ""
 
-#: inginious/frontend/pages/lti.py:90
+#: inginious/frontend/pages/lti.py:92
 msgid "Your account is already bound with this context."
 msgstr ""
 
-#: inginious/frontend/pages/lti.py:172
+#: inginious/frontend/pages/lti.py:171
 msgid "Error while validating LTI request"
 msgstr ""
 
-#: inginious/frontend/pages/lti.py:188
+#: inginious/frontend/pages/lti.py:189
 msgid ""
 "In order to send grade back to the TC, UNCode needs the parameters "
 "lis_outcome_service_url and lis_outcome_result_id in the LTI basic-"
 "launch-request. Please contact your administrator."
 msgstr ""
 
-#: inginious/frontend/pages/lti.py:208
+#: inginious/frontend/pages/lti.py:209
 msgid "Couldn't validate LTI request"
 msgstr ""
 
