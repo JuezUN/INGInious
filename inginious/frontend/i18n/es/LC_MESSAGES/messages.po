@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-10 12:25-0500\n"
+"POT-Creation-Date: 2022-03-10 12:41-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -82,27 +82,27 @@ msgstr "El usuario no está autorizado a cambiar de grupo."
 msgid "You're not registered in a group."
 msgstr "Usted no está registrado en ningún grupo."
 
-#: inginious/frontend/pages/lti.py:46 inginious/frontend/pages/lti.py:58
+#: inginious/frontend/pages/lti.py:48 inginious/frontend/pages/lti.py:60
 msgid "Missing LTI session id"
 msgstr "El identificador de la sesión LTI no está disponible"
 
-#: inginious/frontend/pages/lti.py:51 inginious/frontend/pages/lti.py:63
+#: inginious/frontend/pages/lti.py:53 inginious/frontend/pages/lti.py:65
 msgid "Invalid LTI session id"
 msgstr "Identificador de la sesión LTI es inválido"
 
-#: inginious/frontend/pages/lti.py:70
+#: inginious/frontend/pages/lti.py:72
 msgid "Invalid LTI data"
 msgstr "El dato LTI es inválido"
 
-#: inginious/frontend/pages/lti.py:90
+#: inginious/frontend/pages/lti.py:92
 msgid "Your account is already bound with this context."
 msgstr "Tu cuenta ya está ligada a este contenido."
 
-#: inginious/frontend/pages/lti.py:172
+#: inginious/frontend/pages/lti.py:171
 msgid "Error while validating LTI request"
 msgstr "Error durante la validación de la petición LTI"
 
-#: inginious/frontend/pages/lti.py:188
+#: inginious/frontend/pages/lti.py:189
 msgid ""
 "In order to send grade back to the TC, UNCode needs the parameters "
 "lis_outcome_service_url and lis_outcome_result_id in the LTI basic-"
@@ -112,7 +112,7 @@ msgstr ""
 "lis_outcome_service_url y lis_outcome_result_id en la petición LTI basic-"
 "launch-request. Contacte a su administrador para  más detalles."
 
-#: inginious/frontend/pages/lti.py:208
+#: inginious/frontend/pages/lti.py:209
 msgid "Couldn't validate LTI request"
 msgstr "La petición LTI es invalida"
 
