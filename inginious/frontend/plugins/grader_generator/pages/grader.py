@@ -31,27 +31,26 @@ def on_task_editor_submit(course, taskid, task_data, task_fs):
     # Create form object
     task_data["generate_grader"] = "generate_grader" in task_data
 
-    if task_data['generate_grader']:
-        if task_data['environment'] == 'multiple_languages' or task_data['environment'] == 'Data Science':
-            form = MultilangForm(task_data, task_fs)
-        elif task_data['environment'] == 'HDL':
-            form = HDLForm(task_data, task_fs)
-        elif task_data['environment'] == 'Notebook':
-            form = NotebookForm(task_data, task_fs)
-        else:
-            return
+    if task_data['environment'] == 'multiple_languages' or task_data['environment'] == 'Data Science':
+        form = MultilangForm(task_data, task_fs)
+    elif task_data['environment'] == 'HDL':
+        form = HDLForm(task_data, task_fs)
+    elif task_data['environment'] == 'Notebook':
+        form = NotebookForm(task_data, task_fs)
+    else:
+        return
+    # Try to parse and validate all the information
+    try:
+        form.parse()
+        form.validate()
+    except InvalidGraderError as error:
+        return json.dumps({'status': 'error', 'message': error.message})
 
-        # Try to parse and validate all the information
-        try:
-            form.parse()
-            form.validate()
-        except InvalidGraderError as error:
-            return json.dumps({'status': 'error', 'message': error.message})
-
-        # Generate the grader
-        if form.task_data['generate_grader']:
-            form.generate_grader()
-            task_data['grader_test_cases'] = form.task_data['grader_test_cases']
+    # Generate the grader
+    if form.task_data['generate_grader'] and task_data['generate_grader']:
+        form.generate_grader()
+    #Keep track of test cases saved even if the generate_grader option is unchecked
+    task_data['grader_test_cases'] = form.task_data['grader_test_cases']
 
 
 def grader_generator_tab(course, taskid, task_data, template_helper):
