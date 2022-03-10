@@ -1,5 +1,5 @@
 # coding=utf-8
-
+import re
 import web
 from inginious.frontend.lti_request_validator import LTIValidator
 from inginious.frontend.pages.utils import INGIniousPage, INGIniousAuthPage
@@ -8,7 +8,7 @@ from inginious.common import exceptions
 from inginious.frontend.lti_tool_provider import LTIWebPyToolProvider
 from inginious.frontend.pages.tasks import BaseTaskPage
 
-import re
+
 
 
 class LTITaskPage(INGIniousAuthPage):
@@ -120,8 +120,7 @@ class LTILoginPage(INGIniousPage):
             exists_user_profile = self.database.users.find_one({"$or": [{"username":data["username"]},{"email":data["email"]}]})
 
             if exists_user_profile is None:
-                new_user = course._hook_manager.call_hook('get_user_lti_account', user_data=data)[0]
-                
+                new_user = course._hook_manager.call_hook('get_user_lti_account', user_data=data)[0]          
 
         else:
             self.user_manager.connect_user(user_profile["username"], user_profile["realname"], user_profile["email"], user_profile["language"])
@@ -220,7 +219,7 @@ class LTILaunchPage(INGIniousPage):
 
         # Then the email
         if "lis_person_contact_email_primary" in post_input:
-            return re.sub('(@[A-Za-z0-9.-]+\.[A-Za-z]{2,})', r'', post_input["lis_person_contact_email_primary"])
+            return re.sub(r'(@[A-Za-z0-9.-]+\.[A-Za-z]{2,})', r'', post_input["lis_person_contact_email_primary"])
             
 
         # Then only part of the full name
