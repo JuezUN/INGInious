@@ -25,3 +25,4 @@ recursive-include inginious/frontend/plugins/manual_scoring *
 recursive-include inginious/frontend/plugins/task_hints *
 recursive-include inginious/frontend/plugins/course_creation *
 recursive-include inginious/frontend/plugins/user_management *
+recursive-include inginious/frontend/plugins/lti_register *
