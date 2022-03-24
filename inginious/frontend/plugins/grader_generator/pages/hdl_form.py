@@ -14,10 +14,10 @@ class HDLForm(GraderForm):
     def parse(self):
         super(HDLForm, self).parse()
 
-        if not self.task_data['testbench_file_name']:
+        if 'testbench_file_name' not in self.task_data:
             raise InvalidGraderError(_("No testbench was selected for testing"))
 
-        if not self.task_data['hdl_expected_output']:
+        if 'hdl_expected_output' not in self.task_data:
             raise InvalidGraderError(_("No expected output was selected for testing"))
 
     def generate_grader(self):
