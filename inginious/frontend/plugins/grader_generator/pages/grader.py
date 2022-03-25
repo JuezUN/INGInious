@@ -50,7 +50,8 @@ def on_task_editor_submit(course, taskid, task_data, task_fs):
     if form.task_data['generate_grader'] and task_data['generate_grader']:
         form.generate_grader()
     #Keep track of test cases saved even if the generate_grader option is unchecked
-    task_data['grader_test_cases'] = form.task_data['grader_test_cases']
+    if 'grader_test_cases' in form.task_data:
+        task_data['grader_test_cases'] = form.task_data['grader_test_cases']
 
 
 def grader_generator_tab(course, taskid, task_data, template_helper):

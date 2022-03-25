@@ -39,8 +39,15 @@ class CourseEditTask(INGIniousAdminPage):
             task_data = None
         if task_data is None:
             task_data = {}
-
+        
+        # Sorting to asure that multilang is always the first option
         environments = self.containers
+        if "multiple_languages" in environments:
+            environments = list(environments)
+            environments.remove("multiple_languages")
+            environments.insert(0,"multiple_languages")
+            environments = tuple(environments)
+        
 
         current_filetype = None
         try:
