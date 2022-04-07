@@ -254,3 +254,4 @@ class CourseTaskFiles(INGIniousAdminPage):
             raise web.redirect(file_or_url)
         else:
             raise web.notfound()
+        
