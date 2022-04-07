@@ -7,6 +7,8 @@
 
 import json
 import os
+#This line is required only on development enviroments to allow http traffic
+#os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 import web
 from requests_oauthlib import OAuth2Session
