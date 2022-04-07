@@ -142,8 +142,9 @@ class UserDataAPI(SuperadminAPI):
         """ Get request. Returns data about a user """
         self.check_superadmin_rights()
         username = get_mandatory_parameter(web.input(), "username")
+        email = get_mandatory_parameter(web.input(), "email")
         try:
-            user_data = self.get_user_data(username)
+            user_data = self.get_user_data(username,email)
         except api.APIError as error:
             return error.status_code, {"error": error.return_value}
         return 200, user_data
@@ -153,6 +154,7 @@ class UserDataAPI(SuperadminAPI):
         self.check_superadmin_rights()
         user_data = web.input()
         username = get_mandatory_parameter(user_data, "username")
+        email = get_mandatory_parameter(user_data, "email")
         collections_manager = CollectionsManagerSingleton.get_instance()
         superadmin_username = self.user_manager.session_username()
 
@@ -160,7 +162,7 @@ class UserDataAPI(SuperadminAPI):
             return 400, {"error": _("Superadmin can not modify its own data")}
 
         try:
-            user_original_info = self.get_user_data(username)
+            user_original_info = self.get_user_data(username,email)
             block_user(username, collections_manager)
             email_count, name_count, username_count = _update_user_data(user_data, username, collections_manager)
         except api.APIError as error:
@@ -171,7 +173,7 @@ class UserDataAPI(SuperadminAPI):
         new_username = user_data["new_username"] if username_count > 0 else username
 
         try:
-            user_final_info = self.get_user_data(new_username)
+            user_final_info = self.get_user_data(new_username,email)
         except api.APIError as error:
             return 500, {"error": error.return_value}
 
@@ -186,10 +188,10 @@ class UserDataAPI(SuperadminAPI):
 
         return 200, {"username": username_count, "email": email_count, "name": name_count}
 
-    def get_user_data(self, username):
+    def get_user_data(self, username, email):
         """ Returns data of a user """
         collections_manager = CollectionsManagerSingleton.get_instance()
-        user_basic_data = self.database.users.find_one({'username': username})
+        user_basic_data = self.database.users.find_one({'username': username, 'email': email})
         if user_basic_data:
             collection_data, unknown_collections = get_count_username_occurrences(user_basic_data["username"],
                                                                                   collections_manager)

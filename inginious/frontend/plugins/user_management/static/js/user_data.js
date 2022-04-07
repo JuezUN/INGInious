@@ -2,13 +2,14 @@ const USER_INFORMATION_TABLE_ID = "userInformation";
 const USER_TOTAL_TABLE_ID = "userInformationFoot";
 const USER_INFORMATION_TITLE_ID = "userInformationTitle";
 
-function requestUserData(username) {
+function requestUserData(username, email) {
     function fillInput(id, content) {
         $(`#${id}`).val(content);
     }
 
     $.get("/api/user_management", {
-        username: username
+        username: username,
+        email: email
     }, function (data) {
         resetElements();
         getCurrentValues(data);
