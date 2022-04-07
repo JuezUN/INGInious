@@ -103,36 +103,35 @@ class CourseTaskFiles(INGIniousAdminPage):
         task_fs = self.task_factory.get_task_fs(courseid, taskid)
         # verify that the dir exists
         if not task_fs.exists():
-            return (None, _("Task File System doesn't exist"))
+            return None
 
         # all path given to this part of the application must start with a "/", let's remove it
         if not path.startswith("/"):
-            return (None, _("Invalid path, it must start with a \"/\""))
-        
+            return None
         path = path[1:len(path)]
 
         if ".." in path:
-            return (None, _("Invalid path, it can't be a relative path"))
+            return None
 
         if task_fs.exists(path) == new_path:
-            return (None, _("Invalid path, it already exists in File System"))
+            return None
 
         # do not allow touching the task.* file
         if os.path.splitext(path)[0] == "task" and os.path.splitext(path)[1][1:] in \
                 self.task_factory.get_available_task_file_extensions():
-            return (None, _("Not Allowed"))
+            return None
 
         # do not allow hidden dir/files
         if path != ".":
             for i in path.split(os.path.sep):
                 if i.startswith("."):
-                    return (None, _("Not Allowed"))
+                    return None
         return path
 
     def action_edit(self, courseid, taskid, path):
         """ Edit a file """
         wanted_path = self.verify_path(courseid, taskid, path)
-        if wanted_path[0] is None:
+        if wanted_path is None:
             return "Internal error"
         try:
             content = self.task_factory.get_task_fs(courseid, taskid).get(wanted_path).decode("utf-8")
@@ -143,7 +142,7 @@ class CourseTaskFiles(INGIniousAdminPage):
     def action_edit_save(self, courseid, taskid, path, content):
         """ Save an edited file """
         wanted_path = self.verify_path(courseid, taskid, path)
-        if wanted_path[0] is None:
+        if wanted_path is None:
             return json.dumps({"error": True})
         try:
             self.task_factory.get_task_fs(courseid, taskid).put(wanted_path, content.encode("utf-8"))
@@ -158,8 +157,8 @@ class CourseTaskFiles(INGIniousAdminPage):
         if not path.startswith("/"):
             path = "/" + path
         wanted_path = self.verify_path(courseid, taskid, path, True)
-        if wanted_path[0] is None:
-            return self.show_tab_file(courseid, taskid, wanted_path[1])
+        if wanted_path is None:
+            return self.show_tab_file(courseid, taskid, _("Invalid new path"))
 
         task_fs = self.task_factory.get_task_fs(courseid, taskid)
         try:
@@ -179,8 +178,8 @@ class CourseTaskFiles(INGIniousAdminPage):
         want_directory = path.endswith("/")
 
         wanted_path = self.verify_path(courseid, taskid, path, True)
-        if wanted_path[0] is None:
-            return self.show_tab_file(courseid, taskid, wanted_path[1])
+        if wanted_path is None:
+            return self.show_tab_file(courseid, taskid, _("Invalid new path"))
 
         task_fs = self.task_factory.get_task_fs(courseid, taskid)
         if want_directory:
@@ -190,7 +189,7 @@ class CourseTaskFiles(INGIniousAdminPage):
         return self.show_tab_file(courseid, taskid)
 
     def action_rename(self, courseid, taskid, path, new_path):
-        """ Rename a file or a directory """
+        """ Delete a file or a directory """
         # normalize
         path = path.strip()
         new_path = new_path.strip()
@@ -200,12 +199,12 @@ class CourseTaskFiles(INGIniousAdminPage):
             new_path = "/" + new_path
 
         old_path = self.verify_path(courseid, taskid, path)
-        if old_path[0] is None:
-            return self.show_tab_file(courseid, taskid, old_path[1])
+        if old_path is None:
+            return self.show_tab_file(courseid, taskid, _("Internal error"))
 
         wanted_path = self.verify_path(courseid, taskid, new_path, True)
-        if wanted_path[0] is None:
-            return self.show_tab_file(courseid, taskid, wanted_path[1])
+        if wanted_path is None:
+            return self.show_tab_file(courseid, taskid, _("Invalid new path"))
 
         try:
             self.task_factory.get_task_fs(courseid, taskid).move(old_path, wanted_path)
@@ -221,8 +220,8 @@ class CourseTaskFiles(INGIniousAdminPage):
             path = "/" + path
 
         wanted_path = self.verify_path(courseid, taskid, path)
-        if wanted_path[0] is None:
-            return self.show_tab_file(courseid, taskid, wanted_path[1])
+        if wanted_path is None:
+            return self.show_tab_file(courseid, taskid, _("Internal error"))
 
         # special case: cannot delete current directory of the task
         if "/" == wanted_path:
