@@ -9,7 +9,7 @@ function requestUserData(username, email) {
 
     $.get("/api/user_management", {
         username: username,
-        email: email
+        email: email,
     }, function (data) {
         resetElements();
         getCurrentValues(data);
