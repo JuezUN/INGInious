@@ -72,7 +72,7 @@ function _createUserItem(userData) {
     const username = userData["username"];
     const email = userData["email"];
     const name = userData["realname"];
-    return `<tr class="itemSelection" onclick='requestUserData(\"${username}\")'><td>${username}</td><td>${email}</td><td>${name}</td></tr>`;
+    return `<tr class="itemSelection" onclick='requestUserData(\"${username}\",\"${email}\")'><td>${username}</td><td>${email}</td><td>${name}</td></tr>`;
 }
 
 function _appendNoUserMessage() {
