@@ -44,6 +44,10 @@ function getCurrentValues(data) {
 
 
 function fillUserTable(user_info_table = 1,data_dict) {
+    /*
+    fills tables given a dictionary with the data.
+    boolean parameter user_info_table determines wich of the two current tables in the user manager is being filled
+    */
     function makeTableItem(key, value, valueInBold = false) {
         if (valueInBold)
             return `<tr><td><h5><b>${key}</b></h5></td><td><h5><b>${value}</b></h5></td></tr>`;

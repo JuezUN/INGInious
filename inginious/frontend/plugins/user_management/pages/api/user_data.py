@@ -2,7 +2,6 @@ import pymongo.errors
 import web
 import json
 import inginious.frontend.pages.api._api_page as api
-from collections import OrderedDict
 import re
 
 from inginious.frontend.plugins.user_management.collections_manager import CollectionsManagerSingleton
@@ -192,6 +191,7 @@ class UserDataAPI(SuperadminAPI):
         """ Returns data of a user """
         collections_manager = CollectionsManagerSingleton.get_instance()
         user_basic_data = self.database.users.find_one({'username': username, 'email': email})
+        #find in the aggregations table all documents in which the username appears inside the students array
         user_courses = self.get_user_courses(self.database.aggregations.find({'students': username}))
         if user_basic_data:
             collection_data, unknown_collections = get_count_username_occurrences(user_basic_data["username"],
@@ -207,6 +207,9 @@ class UserDataAPI(SuperadminAPI):
             raise api.APIError(404, _("User no found"))
 
     def get_user_courses(self,associated_aggregations):
+        """ Returns dictionary with the coursesIDs as keys and the respective courses names as values 
+        :param associated_aggregations: Pymongo coursor. an iterable returned by a find query
+        """
         courses_ids = []
         courses_names= []
         for doc in associated_aggregations:
