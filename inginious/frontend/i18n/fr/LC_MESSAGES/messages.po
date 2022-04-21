@@ -3518,7 +3518,7 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/api/find_user.py:65
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:169
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:171
 #: inginious/frontend/plugins/user_management/pages/api/user_status.py:26
 msgid "Mongo operation fail"
 msgstr ""
@@ -3580,11 +3580,11 @@ msgstr ""
 msgid "No data to change"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:160
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:162
 msgid "Superadmin can not modify its own data"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:203
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:205
 msgid "User no found"
 msgstr ""
 
