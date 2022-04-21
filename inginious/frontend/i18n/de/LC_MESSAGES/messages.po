@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-07 15:04-0500\n"
+"POT-Creation-Date: 2022-04-21 13:02-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -2993,7 +2993,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:4
 msgid "Welcome on"
-msgstr ""
+msgstr "Willkomen bei"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:6
 msgid "Hello"
@@ -3914,7 +3914,7 @@ msgstr ""
 
 #: inginious/frontend/templates/course_unavailable.html:11
 msgid "You are not registered to this course."
-msgstr ""
+msgstr "Sie sind in keiner Gruppe registriert."
 
 #: inginious/frontend/templates/index.html:8
 #: inginious/frontend/templates/index.html:12
@@ -4508,7 +4508,7 @@ msgstr ""
 
 #: inginious/frontend/templates/team.html:54
 msgid "Register for a group"
-msgstr "Sie sind in keiner Gruppe registriert."
+msgstr ""
 
 #: inginious/frontend/templates/team.html:76
 msgid "My team : {}"
