@@ -259,19 +259,23 @@ class UserManager:
         """
         return self._auth_methods
 
-    def auth_user(self, username, password):
+    def auth_user(self, identifier, password):
         """
         Authenticate the user in database
-        :param username: Username/Login
+        :param identifier: Username/Email
         :param password: User password
         :return: Returns a dict represrnting the user
         """
         password_hash = hashlib.sha512(password.encode("utf-8")).hexdigest()
-
+        #Find user based on username
         user = self._database.users.find_one(
-            {"username": username, "password": password_hash, "activate": {"$exists": False}})
+            {"username": identifier, "password": password_hash, "activate": {"$exists": False}})
+        #Find user based on email
+        if user == None:
+            user = self._database.users.find_one(
+                {"email": identifier, "password": password_hash, "activate": {"$exists": False}})
 
-        return user if user is not None and self.connect_user(username, user["realname"], user["email"], user["language"]) else None
+        return user if user is not None and self.connect_user(user["username"], user["realname"], user["email"], user["language"]) else None
 
     def connect_user(self, username, realname, email, language):
         """
