@@ -8,8 +8,8 @@ function requestUserData(username, email) {
     }
 
     $.get("/api/user_management", {
-        username: username,
-        email: email,
+        username,
+        email
     }, function (data) {
         resetElements();
         getCurrentValues(data);
