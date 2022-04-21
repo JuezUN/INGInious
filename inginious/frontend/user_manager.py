@@ -271,7 +271,7 @@ class UserManager:
         user = self._database.users.find_one(
             {"username": identifier, "password": password_hash, "activate": {"$exists": False}})
         #Find user based on email
-        if user == None:
+        if user is None:
             user = self._database.users.find_one(
                 {"email": identifier, "password": password_hash, "activate": {"$exists": False}})
 

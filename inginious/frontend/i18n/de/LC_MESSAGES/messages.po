@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-07 18:44-0500\n"
+"POT-Creation-Date: 2022-04-21 16:32-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -1385,7 +1385,6 @@ msgstr ""
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:38
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:17
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:147
-#: inginious/frontend/templates/auth.html:23
 msgid "Username"
 msgstr ""
 
@@ -3728,6 +3727,11 @@ msgstr ""
 #: inginious/frontend/templates/auth.html:8
 msgid "Welcome"
 msgstr ""
+
+#: inginious/frontend/templates/auth.html:23
+#, fuzzy
+msgid "Username or email"
+msgstr "Nutzername hat invalides Format."
 
 #: inginious/frontend/templates/auth.html:26
 msgid "Lost password?"
