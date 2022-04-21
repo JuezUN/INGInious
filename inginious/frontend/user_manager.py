@@ -14,7 +14,7 @@ from functools import reduce
 from natsort import natsorted
 from collections import OrderedDict
 import pymongo
-
+import re
 
 class AuthInvalidInputException(Exception):
     pass
@@ -347,7 +347,6 @@ class UserManager:
         auth_method = self.get_auth_method(auth_id)
         if not auth_method:
             raise web.notfound()
-
         # Look for already bound auth method username
         user_profile = self._database.users.find_one({"bindings." + auth_id: username})
 
@@ -374,12 +373,18 @@ class UserManager:
                 self._logger.exception("The binding email is already used by another account!")
             else:
                 # New user, create an account using email address
-                self._database.users.insert({"username": "",
-                                            "realname": realname,
-                                            "email": email,
-                                            "bindings": {auth_id: [username, {}]},
-                                            "language": self._session.get("language", "en")})
-                self.connect_user("", realname, email, self._session.get("language", "en"))
+                # Verify that email's username does not exist on database
+                username_based_on_email = re.sub(r'(@[A-Za-z0-9.-]+\.[A-Za-z]{2,})', r'', email)
+                user = self._database.users.find_one({"username": username_based_on_email})
+                if user:
+                    self._logger.exception("The username is already used by another account!")
+                else:
+                    self._database.users.insert({"username": username_based_on_email,
+                                                "realname": realname,
+                                                "email": email,
+                                                "bindings": {auth_id: [username, {}]},
+                                                "language": self._session.get("language", "en")})
+                    self.connect_user(username_based_on_email, realname, email, self._session.get("language", "en"))
 
     ##############################################
     #      User task/course info management      #
