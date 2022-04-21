@@ -37,6 +37,7 @@ function cleanNotifications() {
 function resetElements() {
     cleanBasicDataInputs();
     cleanUserInfoTable();
+    cleanUserCoursesTable();
     hideUserSettingsDiv();
     cleanCurrentValues();
     closeTimeInterval();

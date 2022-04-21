@@ -1,5 +1,6 @@
 const USER_INFORMATION_TABLE_ID = "userInformation";
 const USER_TOTAL_TABLE_ID = "userInformationFoot";
+const USER_COURSES_TABLE_ID = "userCoursesInformation";
 const USER_INFORMATION_TITLE_ID = "userInformationTitle";
 
 function requestUserData(username, email) {
@@ -19,7 +20,8 @@ function requestUserData(username, email) {
         fillInput(NEW_USERNAME_INPUT_ID, currentUsername);
         fillInput(NEW_NAME_INPUT_ID, currentName);
         fillInput(NEW_EMAIL_INPUT_ID, currentEmail);
-        fillUserTable(data["count"]);
+        fillUserTable(user_info_table=1,data_dict=data["count"]);
+        fillUserTable(user_info_table=0,data_dict=data["courses"]);
         alertForUnknownCollections(data["unknown_collections"]);
         fillUserInformationTitle(data);
     })
@@ -41,19 +43,25 @@ function getCurrentValues(data) {
 }
 
 
-function fillUserTable(count) {
+function fillUserTable(user_info_table = 1,data_dict) {
     function makeTableItem(key, value, valueInBold = false) {
         if (valueInBold)
             return `<tr><td><h5><b>${key}</b></h5></td><td><h5><b>${value}</b></h5></td></tr>`;
         return `<tr><td><h5><b>${key}</b></h5></td><td><h5>${value}</h5></td></tr>`;
     }
 
-    let total = 0;
-    for (const [key, value] of Object.entries(count)) {
-        total += value;
-        $(`#${USER_INFORMATION_TABLE_ID}`).append(makeTableItem(key, value));
+    if (user_info_table){
+        let total = 0;
+        for (const [key, value] of Object.entries(data_dict)) {
+            total += value;
+            $(`#${USER_INFORMATION_TABLE_ID}`).append(makeTableItem(key, value));
+        }
+        $(`#${USER_TOTAL_TABLE_ID}`).append(makeTableItem("Total", total, true))
+    }else{
+        for (const [key, value] of Object.entries(data_dict)) {
+            $(`#${USER_COURSES_TABLE_ID}`).append(makeTableItem(key, value));
+        }
     }
-    $(`#${USER_TOTAL_TABLE_ID}`).append(makeTableItem("Total", total, true))
 }
 
 function allowEdit() {
@@ -147,6 +155,9 @@ function getInputValue(inputId) {
 function cleanUserInfoTable() {
     $(`#${USER_INFORMATION_TABLE_ID}`).empty();
     $(`#${USER_TOTAL_TABLE_ID}`).empty();
+}
+function cleanUserCoursesTable() {
+    $(`#${USER_COURSES_TABLE_ID}`).empty();
 }
 
 function alertForUnknownCollections(unknownCollections) {
