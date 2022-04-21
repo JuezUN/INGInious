@@ -144,7 +144,7 @@ class UserDataAPI(SuperadminAPI):
         username = get_mandatory_parameter(web.input(), "username")
         email = get_mandatory_parameter(web.input(), "email")
         try:
-            user_data = self.get_user_data(username,email)
+            user_data = self.get_user_data(username, email)
         except api.APIError as error:
             return error.status_code, {"error": error.return_value}
         return 200, user_data
@@ -162,7 +162,7 @@ class UserDataAPI(SuperadminAPI):
             return 400, {"error": _("Superadmin can not modify its own data")}
 
         try:
-            user_original_info = self.get_user_data(username,email)
+            user_original_info = self.get_user_data(username, email)
             block_user(username, collections_manager)
             email_count, name_count, username_count = _update_user_data(user_data, username, collections_manager)
         except api.APIError as error:
@@ -173,7 +173,7 @@ class UserDataAPI(SuperadminAPI):
         new_username = user_data["new_username"] if username_count > 0 else username
 
         try:
-            user_final_info = self.get_user_data(new_username,email)
+            user_final_info = self.get_user_data(new_username, email)
         except api.APIError as error:
             return 500, {"error": error.return_value}
 
