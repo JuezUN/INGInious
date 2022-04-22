@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-07 18:44-0500\n"
+"POT-Creation-Date: 2022-04-21 16:05-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -234,9 +234,7 @@ msgstr ""
 msgid "<b>Your submission has been sent...</b>"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:203
-#: inginious/frontend/pages/course_admin/task_edit_file.py:224
-#: inginious/frontend/pages/course_admin/task_edit_file.py:228
+#: inginious/frontend/pages/course_admin/task_edit_file.py:229
 #: inginious/frontend/pages/tasks.py:249
 msgid "Internal error"
 msgstr ""
@@ -551,21 +549,36 @@ msgid ""
 " been modified"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:161
-#: inginious/frontend/pages/course_admin/task_edit_file.py:182
-#: inginious/frontend/pages/course_admin/task_edit_file.py:207
-msgid "Invalid new path"
+#: inginious/frontend/pages/course_admin/task_edit_file.py:106
+msgid "Task File System doesn't exist"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:168
+#: inginious/frontend/pages/course_admin/task_edit_file.py:110
+msgid "Invalid path, it must start with a \"/\""
+msgstr ""
+
+#: inginious/frontend/pages/course_admin/task_edit_file.py:115
+msgid "Invalid path, it can't be a relative path"
+msgstr ""
+
+#: inginious/frontend/pages/course_admin/task_edit_file.py:118
+msgid "Invalid path, it already exists in File System"
+msgstr ""
+
+#: inginious/frontend/pages/course_admin/task_edit_file.py:123
+#: inginious/frontend/pages/course_admin/task_edit_file.py:129
+msgid "Not Allowed"
+msgstr ""
+
+#: inginious/frontend/pages/course_admin/task_edit_file.py:169
 msgid "An error occurred while writing the file"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:213
+#: inginious/frontend/pages/course_admin/task_edit_file.py:214
 msgid "An error occurred while moving the files"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:236
+#: inginious/frontend/pages/course_admin/task_edit_file.py:237
 msgid "An error occurred while deleting the files"
 msgstr ""
 
@@ -4108,9 +4121,8 @@ msgid "Tutor"
 msgstr ""
 
 #: inginious/frontend/templates/mycourses.html:135
-#, fuzzy
 msgid "You are not registered to any course"
-msgstr "You have been enrolled on a course"
+msgstr ""
 
 #: inginious/frontend/templates/notfound.html:8
 #: inginious/frontend/templates/notfound.html:13
@@ -7414,5 +7426,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Regenerate random inputs for each reloading of the task page"
+#~ msgstr ""
+
+#~ msgid "Invalid new path"
 #~ msgstr ""
 
