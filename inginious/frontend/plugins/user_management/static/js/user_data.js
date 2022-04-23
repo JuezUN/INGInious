@@ -20,8 +20,8 @@ function requestUserData(username, email) {
         fillInput(NEW_USERNAME_INPUT_ID, currentUsername);
         fillInput(NEW_NAME_INPUT_ID, currentName);
         fillInput(NEW_EMAIL_INPUT_ID, currentEmail);
-        fillUserTable(1,data_dict=data["count"]);
-        fillUserTable(0,data_dict=data["courses"]);
+        fillUserTable(1,dataDict=data["count"]);
+        fillUserTable(0,dataDict=data["courses"]);
         alertForUnknownCollections(data["unknown_collections"]);
         fillUserInformationTitle(data);
     })
@@ -43,7 +43,7 @@ function getCurrentValues(data) {
 }
 
 
-function fillUserTable(userInfoTable = 1,data_dict) {
+function fillUserTable(userInfoTable = 1,dataDict) {
     /*
     fills tables given a dictionary with the data.
     boolean parameter user_info_table determines wich of the two current tables in the user manager is being filled
@@ -56,13 +56,13 @@ function fillUserTable(userInfoTable = 1,data_dict) {
 
     if (userInfoTable){
         let total = 0;
-        for (const [key, value] of Object.entries(data_dict)) {
+        for (const [key, value] of Object.entries(dataDict)) {
             total += value;
             $(`#${USER_INFORMATION_TABLE_ID}`).append(makeTableItem(key, value));
         }
         $(`#${USER_TOTAL_TABLE_ID}`).append(makeTableItem("Total", total, true))
     }else{
-        for (const [key, value] of Object.entries(data_dict)) {
+        for (const [key, value] of Object.entries(dataDict)) {
             $(`#${USER_COURSES_TABLE_ID}`).append(makeTableItem(key, value));
         }
     }

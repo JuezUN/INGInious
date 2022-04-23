@@ -207,7 +207,7 @@ class UserDataAPI(SuperadminAPI):
             raise api.APIError(404, _("User no found"))
 
     def get_user_courses(self, associated_aggregations):
-        """Returns dictionary with the coursesIDs as keys and the respective courses names as values 
+        """ Returns dictionary with the coursesIDs as keys and the respective courses names as values
         :param associated_aggregations: Pymongo coursor. an iterable returned by a find query
         """
         courses_ids = []
