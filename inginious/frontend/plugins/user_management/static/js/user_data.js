@@ -3,46 +3,6 @@ const USER_TOTAL_TABLE_ID = "userInformationFoot";
 const USER_COURSES_TABLE_ID = "userCoursesInformation";
 const USER_INFORMATION_TITLE_ID = "userInformationTitle";
 
-function requestUserData(username, email) {
-    function fillInput(id, content) {
-        $(`#${id}`).val(content);
-    }
-
-    $.get("/api/user_management", {
-        username,
-        email
-    }, function (data) {
-        resetElements();
-        getCurrentValues(data);
-        updateSubmissionStatus();
-        timeInterval = openTimeInterval();
-        showUserSettings()
-        fillInput(NEW_USERNAME_INPUT_ID, currentUsername);
-        fillInput(NEW_NAME_INPUT_ID, currentName);
-        fillInput(NEW_EMAIL_INPUT_ID, currentEmail);
-        fillUserTable(1,dataDict=data["count"]);
-        fillUserTable(0,dataDict=data["courses"]);
-        alertForUnknownCollections(data["unknown_collections"]);
-        fillUserInformationTitle(data);
-    })
-}
-
-function showUserSettings() {
-    $(`#${USER_SETTINGS_ID}`).show();
-}
-
-function hideUserSettingsDiv() {
-    $(`#${USER_SETTINGS_ID}`).hide();
-}
-
-function getCurrentValues(data) {
-    currentEmail = data["email"];
-    currentName = data["name"];
-    currentUsername = data["username"];
-    currentCollectionList = Object.keys(Object.fromEntries(Object.entries(data["count"]).filter(([k, v]) => v > 0)));
-}
-
-
 function fillUserTable(userInfoTable = 1,dataDict) {
     /*
     fills tables given a dictionary with the data.
@@ -67,6 +27,48 @@ function fillUserTable(userInfoTable = 1,dataDict) {
         }
     }
 }
+
+function requestUserData(username, email) {
+    function fillInput(id, content) {
+        $(`#${id}`).val(content);
+    }
+
+    $.get("/api/user_management", {
+        username,
+        email
+    }, function (data) {
+        resetElements();
+        getCurrentValues(data);
+        updateSubmissionStatus();
+        timeInterval = openTimeInterval();
+        showUserSettings()
+        fillInput(NEW_USERNAME_INPUT_ID, currentUsername);
+        fillInput(NEW_NAME_INPUT_ID, currentName);
+        fillInput(NEW_EMAIL_INPUT_ID, currentEmail);
+        fillUserTable(1,data["count"]);
+        fillUserTable(0,data["courses"]);
+        alertForUnknownCollections(data["unknown_collections"]);
+        fillUserInformationTitle(data);
+    })
+}
+
+function showUserSettings() {
+    $(`#${USER_SETTINGS_ID}`).show();
+}
+
+function hideUserSettingsDiv() {
+    $(`#${USER_SETTINGS_ID}`).hide();
+}
+
+function getCurrentValues(data) {
+    currentEmail = data["email"];
+    currentName = data["name"];
+    currentUsername = data["username"];
+    currentCollectionList = Object.keys(Object.fromEntries(Object.entries(data["count"]).filter(([k, v]) => v > 0)));
+}
+
+
+
 
 function allowEdit() {
     $(".edit").on("click", function () {

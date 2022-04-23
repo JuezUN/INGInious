@@ -37,6 +37,14 @@ function cleanNotifications() {
     $(`#${NOTIFICATIONS_ID}`).empty();
 }
 
+function cleanUserInfoTable() {
+    $(`#${USER_INFORMATION_TABLE_ID}`).empty();
+    $(`#${USER_TOTAL_TABLE_ID}`).empty();
+}
+function cleanUserCoursesTable() {
+    $(`#${USER_COURSES_TABLE_ID}`).empty();
+}
+
 function resetElements() {
     cleanBasicDataInputs();
     cleanUserInfoTable();
@@ -58,13 +66,7 @@ function cleanBasicDataInputs() {
     });
 }
 
-function cleanUserInfoTable() {
-    $(`#${USER_INFORMATION_TABLE_ID}`).empty();
-    $(`#${USER_TOTAL_TABLE_ID}`).empty();
-}
-function cleanUserCoursesTable() {
-    $(`#${USER_COURSES_TABLE_ID}`).empty();
-}
+
 
 function cleanCurrentValues() {
     currentEmail = "";
