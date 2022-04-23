@@ -206,14 +206,14 @@ class UserDataAPI(SuperadminAPI):
         else:
             raise api.APIError(404, _("User no found"))
 
-    def get_user_courses(self,associated_aggregations):
-        """ Returns dictionary with the coursesIDs as keys and the respective courses names as values 
+    def get_user_courses(self, associated_aggregations):
+        """Returns dictionary with the coursesIDs as keys and the respective courses names as values 
         :param associated_aggregations: Pymongo coursor. an iterable returned by a find query
         """
         courses_ids = []
-        courses_names= []
+        courses_names = []
         for doc in associated_aggregations:
             courses_ids.append(doc["courseid"])
-            courses_names.append(self.app.course_factory.get_course(doc["courseid"])._name)
+            courses_names.append(self.app.course_factory.get_course(doc["courseid"]).get_name(None))
         zip_iterator = zip(courses_ids, courses_names)
         return dict(zip_iterator)

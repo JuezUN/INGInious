@@ -20,8 +20,8 @@ function requestUserData(username, email) {
         fillInput(NEW_USERNAME_INPUT_ID, currentUsername);
         fillInput(NEW_NAME_INPUT_ID, currentName);
         fillInput(NEW_EMAIL_INPUT_ID, currentEmail);
-        fillUserTable(user_info_table=1,data_dict=data["count"]);
-        fillUserTable(user_info_table=0,data_dict=data["courses"]);
+        fillUserTable(1,data_dict=data["count"]);
+        fillUserTable(0,data_dict=data["courses"]);
         alertForUnknownCollections(data["unknown_collections"]);
         fillUserInformationTitle(data);
     })
@@ -43,7 +43,7 @@ function getCurrentValues(data) {
 }
 
 
-function fillUserTable(user_info_table = 1,data_dict) {
+function fillUserTable(userInfoTable = 1,data_dict) {
     /*
     fills tables given a dictionary with the data.
     boolean parameter user_info_table determines wich of the two current tables in the user manager is being filled
@@ -54,7 +54,7 @@ function fillUserTable(user_info_table = 1,data_dict) {
         return `<tr><td><h5><b>${key}</b></h5></td><td><h5>${value}</h5></td></tr>`;
     }
 
-    if (user_info_table){
+    if (userInfoTable){
         let total = 0;
         for (const [key, value] of Object.entries(data_dict)) {
             total += value;
@@ -156,13 +156,7 @@ function getInputValue(inputId) {
     return $(`#${inputId}`).val();
 }
 
-function cleanUserInfoTable() {
-    $(`#${USER_INFORMATION_TABLE_ID}`).empty();
-    $(`#${USER_TOTAL_TABLE_ID}`).empty();
-}
-function cleanUserCoursesTable() {
-    $(`#${USER_COURSES_TABLE_ID}`).empty();
-}
+
 
 function alertForUnknownCollections(unknownCollections) {
     if (unknownCollections.length) {
