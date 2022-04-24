@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-21 16:05-0500\n"
+"POT-Creation-Date: 2022-04-24 17:10-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -1414,7 +1414,6 @@ msgstr ""
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:38
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:17
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:147
-#: inginious/frontend/templates/auth.html:23
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
@@ -3755,6 +3754,10 @@ msgstr ""
 #: inginious/frontend/templates/auth.html:8
 msgid "Welcome"
 msgstr "Bienvenue"
+
+#: inginious/frontend/templates/auth.html:23
+msgid "Username or email"
+msgstr ""
 
 #: inginious/frontend/templates/auth.html:26
 msgid "Lost password?"
