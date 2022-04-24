@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-21 16:32-0500\n"
+"POT-Creation-Date: 2022-04-24 17:10-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -4011,9 +4011,8 @@ msgid "Welcome"
 msgstr "Bienvenido"
 
 #: inginious/frontend/templates/auth.html:23
-#, fuzzy
 msgid "Username or email"
-msgstr "Nombre de usuario"
+msgstr "Nombre de usuario o correo electrónico"
 
 #: inginious/frontend/templates/auth.html:26
 msgid "Lost password?"
