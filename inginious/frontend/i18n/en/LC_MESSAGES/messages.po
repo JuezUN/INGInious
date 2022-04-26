@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-23 15:35-0500\n"
+"POT-Creation-Date: 2022-04-26 12:40-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -1374,7 +1374,6 @@ msgstr ""
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:37
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:17
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:170
-#: inginious/frontend/templates/auth.html:23
 msgid "Username"
 msgstr ""
 

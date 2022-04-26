@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-23 15:35-0500\n"
+"POT-Creation-Date: 2022-04-26 12:40-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -1407,7 +1407,6 @@ msgstr ""
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:37
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:17
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:170
-#: inginious/frontend/templates/auth.html:23
 msgid "Username"
 msgstr "Nome de usuário"
 
@@ -3721,7 +3720,7 @@ msgstr "Curso"
 msgid "User Status"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:123
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:146
 msgid "\"Number of open user sessions\""
 msgstr ""
 
