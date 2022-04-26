@@ -113,11 +113,11 @@ def _update_user_data(user_data, username, collections_manager):
     username_count = 0
     email_count = 0
     name_count = 0
-    if "email" in user_data:
-        if not _validate_email(user_data["email"], collections_manager):
+    if "new_email" in user_data:
+        if not _validate_email(user_data["new_email"], collections_manager):
             raise api.APIError(400, _("Invalid email by format or already in use"))
         user_has_changed = True
-        email_count = change_email(username, user_data["email"], collections_manager)
+        email_count = change_email(username, user_data["new_email"], collections_manager)
     if "name" in user_data:
         if not _validate_real_name(user_data["name"]):
             raise api.APIError(400, _("Invalid name by length"))
@@ -171,9 +171,10 @@ class UserDataAPI(SuperadminAPI):
             return 500, {"error": _("Mongo operation fail")}
 
         new_username = user_data["new_username"] if username_count > 0 else username
+        new_email = user_data["new_email"] if email_count > 0 else email
 
         try:
-            user_final_info = self.get_user_data(new_username, email)
+            user_final_info = self.get_user_data(new_username, new_email)
         except api.APIError as error:
             return 500, {"error": error.return_value}
 
