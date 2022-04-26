@@ -255,9 +255,7 @@ msgstr ""
 msgid "<b>Your submission has been sent...</b>"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:203
-#: inginious/frontend/pages/course_admin/task_edit_file.py:224
-#: inginious/frontend/pages/course_admin/task_edit_file.py:228
+#: inginious/frontend/pages/course_admin/task_edit_file.py:229
 #: inginious/frontend/pages/tasks.py:249
 msgid "Internal error"
 msgstr "Interner Fehler"
@@ -575,21 +573,36 @@ msgid ""
 " been modified"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:161
-#: inginious/frontend/pages/course_admin/task_edit_file.py:182
-#: inginious/frontend/pages/course_admin/task_edit_file.py:207
-msgid "Invalid new path"
+#: inginious/frontend/pages/course_admin/task_edit_file.py:106
+msgid "Task File System doesn't exist"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:168
+#: inginious/frontend/pages/course_admin/task_edit_file.py:110
+msgid "Invalid path, it must start with a \"/\""
+msgstr ""
+
+#: inginious/frontend/pages/course_admin/task_edit_file.py:115
+msgid "Invalid path, it can't be a relative path"
+msgstr ""
+
+#: inginious/frontend/pages/course_admin/task_edit_file.py:118
+msgid "Invalid path, it already exists in File System"
+msgstr ""
+
+#: inginious/frontend/pages/course_admin/task_edit_file.py:123
+#: inginious/frontend/pages/course_admin/task_edit_file.py:129
+msgid "Not Allowed"
+msgstr ""
+
+#: inginious/frontend/pages/course_admin/task_edit_file.py:169
 msgid "An error occurred while writing the file"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:213
+#: inginious/frontend/pages/course_admin/task_edit_file.py:214
 msgid "An error occurred while moving the files"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit_file.py:236
+#: inginious/frontend/pages/course_admin/task_edit_file.py:237
 msgid "An error occurred while deleting the files"
 msgstr ""
 
@@ -1384,8 +1397,12 @@ msgstr ""
 #: inginious/frontend/plugins/register_students/static/email_template.html:14
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:37
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:17
+<<<<<<< HEAD
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:170
 #: inginious/frontend/templates/auth.html:23
+=======
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:147
+>>>>>>> master
 msgid "Username"
 msgstr ""
 
@@ -2081,9 +2098,8 @@ msgid "ID"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:95
-#, fuzzy
 msgid "Code"
-msgstr "Code"
+msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:96
 msgid "Expected output"
@@ -2981,9 +2997,8 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:4
-#, fuzzy
 msgid "Welcome on"
-msgstr "Willkommen bei UNCode"
+msgstr "Willkomen bei"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:6
 msgid "Hello"
@@ -3735,6 +3750,10 @@ msgstr ""
 msgid "Welcome"
 msgstr ""
 
+#: inginious/frontend/templates/auth.html:23
+msgid "Username or email"
+msgstr ""
+
 #: inginious/frontend/templates/auth.html:26
 msgid "Lost password?"
 msgstr ""
@@ -3908,7 +3927,6 @@ msgid "Error 403"
 msgstr ""
 
 #: inginious/frontend/templates/course_unavailable.html:11
-#, fuzzy
 msgid "You are not registered to this course."
 msgstr "Sie sind in keiner Gruppe registriert."
 
@@ -4141,9 +4159,8 @@ msgid "Tutor"
 msgstr ""
 
 #: inginious/frontend/templates/mycourses.html:135
-#, fuzzy
 msgid "You are not registered to any course"
-msgstr "Sie sind in keiner Gruppe registriert."
+msgstr ""
 
 #: inginious/frontend/templates/notfound.html:8
 #: inginious/frontend/templates/notfound.html:13
@@ -4390,9 +4407,8 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:142
 #: inginious/frontend/templates/task.html:157
-#, fuzzy
 msgid "Best submission"
-msgstr "[Abgabe #{submissionid}]"
+msgstr ""
 
 #: inginious/frontend/templates/task.html:159
 msgid "Selected submission"
@@ -4468,9 +4484,8 @@ msgid "The deadline is over, you cannot submit anymore"
 msgstr ""
 
 #: inginious/frontend/templates/task.html:360
-#, fuzzy
 msgid "Please register in a group"
-msgstr "Sie sind in keiner Gruppe registriert."
+msgstr ""
 
 #: inginious/frontend/templates/task.html:360
 msgid "Please register in a team"
@@ -4493,9 +4508,8 @@ msgid "It will be refilled within the next {} hour(s)"
 msgstr ""
 
 #: inginious/frontend/templates/task.html:368
-#, fuzzy
 msgid "You are not allowed to submit"
-msgstr "Sie sind nicht berechtigt etwas für diese Aufgabe abzugeben."
+msgstr ""
 
 #: inginious/frontend/templates/task.html:379
 msgid "Share my result on: "
@@ -4507,9 +4521,8 @@ msgid "Task unavailable"
 msgstr ""
 
 #: inginious/frontend/templates/team.html:54
-#, fuzzy
 msgid "Register for a group"
-msgstr "Sie sind in keiner Gruppe registriert."
+msgstr ""
 
 #: inginious/frontend/templates/team.html:76
 msgid "My team : {}"
@@ -5076,9 +5089,8 @@ msgid "Registration"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/settings.html:175
-#, fuzzy
 msgid "Closed"
-msgstr "Code"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/settings.html:181
 msgid "Always open"
@@ -5326,9 +5338,8 @@ msgid "Sort by"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/submissions.html:171
-#, fuzzy
 msgid "Order"
-msgstr "Code"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/submissions.html:173
 msgid "Descending"
@@ -5458,9 +5469,8 @@ msgid "Task files"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/task_edit.html:77
-#, fuzzy
 msgid "File list"
-msgstr "Datei Upload"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:15
 #: inginious/frontend/templates/course_admin/task_edit.html:98
@@ -5545,9 +5555,8 @@ msgid "Create new task"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/task_list.html:87
-#, fuzzy
 msgid "Errors while loading tasks"
-msgstr "Fehler während der Validierung des LTI Requests"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/task_list.html:90
 msgid "task id"
@@ -5608,9 +5617,8 @@ msgid "Grade weight (in comparison to other tasks)"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:65
-#, fuzzy
 msgid "Submission mode"
-msgstr "[Abgabe #{submissionid}]"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:71
 msgid "Individually"
@@ -5645,14 +5653,12 @@ msgid "Soft limit: {nbr_submissions} submission(s) every {nbr_hours} hour(s)"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:136
-#, fuzzy
 msgid "Evaluation submission"
-msgstr "[Abgabe #{submissionid}]"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:154
-#, fuzzy
 msgid "Student choice"
-msgstr "Multiple Choice"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:160
 msgid "Allow late submission"
@@ -5738,19 +5744,16 @@ msgid "File:"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:17
-#, fuzzy
 msgid "File path:"
-msgstr "Datei Upload"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:24
-#, fuzzy
 msgid "Upload"
-msgstr "Datei Upload"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/files.html:15
-#, fuzzy
 msgid "Path"
-msgstr "Übereinstimmung"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/files.html:18
 msgid "Move"
@@ -5877,14 +5880,12 @@ msgid "No team to display"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/subproblems/code.html:26
-#, fuzzy
 msgid "Multiline code"
-msgstr "Multiple Choice"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/subproblems/code.html:28
-#, fuzzy
 msgid "Single-line code"
-msgstr "einzeiliger Code"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/subproblems/code.html:33
 msgid "Optional?"
@@ -5899,9 +5900,8 @@ msgid "Allowed file extensions (including the dot, separated by spaces)"
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/subproblems/file.html:30
-#, fuzzy
 msgid "File upload"
-msgstr "Datei Upload"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/subproblems/match.html:15
 msgid "Answer"
@@ -7464,5 +7464,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Regenerate random inputs for each reloading of the task page"
+#~ msgstr ""
+
+#~ msgid "Invalid new path"
 #~ msgstr ""
 
