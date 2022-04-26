@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-24 17:10-0500\n"
+"POT-Creation-Date: 2022-04-26 16:04-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -3543,7 +3543,7 @@ msgstr ""
 msgid "Superadmin can not modify its own data"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:205
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:206
 msgid "User no found"
 msgstr ""
 
