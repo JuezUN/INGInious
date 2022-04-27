@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-26 19:45-0500\n"
+"POT-Creation-Date: 2022-04-26 19:52-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -554,9 +554,8 @@ msgid "Grade weight must be a floating-point number"
 msgstr "Le poids de la note doit être un nombre réel."
 
 #: inginious/frontend/pages/course_admin/task_edit.py:248
-#, fuzzy
 msgid "The number of stored submission must be a number!"
-msgstr "Le nombre de soumissions sauvegardées doit être positif"
+msgstr ""
 
 #: inginious/frontend/pages/course_admin/task_edit.py:251
 msgid "The number of stored submission must be positive!"
@@ -5675,9 +5674,8 @@ msgid "Only the last "
 msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:110
-#, fuzzy
 msgid "submissions"
-msgstr "Pas de soumission"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:117
 msgid "Submission limits"
