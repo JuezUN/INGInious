@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-24 17:10-0500\n"
+"POT-Creation-Date: 2022-04-26 19:45-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -558,35 +558,38 @@ msgstr "No puede crear una tarea sin subproblemas"
 msgid "Grade weight must be a floating-point number"
 msgstr "La calificación debe de ser un número real"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:245
 #: inginious/frontend/pages/course_admin/task_edit.py:248
-msgid "The number of stored submission must be positive!"
-msgstr "¡El número de tareas almacenadas de ser positivo!"
+msgid "The number of stored submission must be a number!"
+msgstr "¡El número de envios almacenados de ser un numero válido!"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:259
-#: inginious/frontend/pages/course_admin/task_edit.py:265
+#: inginious/frontend/pages/course_admin/task_edit.py:251
+msgid "The number of stored submission must be positive!"
+msgstr "¡El número de envios almacenados de ser positivo!"
+
+#: inginious/frontend/pages/course_admin/task_edit.py:262
+#: inginious/frontend/pages/course_admin/task_edit.py:268
 msgid "Invalid submission limit!"
 msgstr "¡El límite de tareas es inválido!"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:296
+#: inginious/frontend/pages/course_admin/task_edit.py:299
 msgid "Your browser returned an invalid form ({})"
 msgstr "Tu navegador web muestra una forma inválida ({})"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:302
+#: inginious/frontend/pages/course_admin/task_edit.py:305
 msgid "Error while reading course's information"
 msgstr "Error durante la consulta de información del curso"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:338
+#: inginious/frontend/pages/course_admin/task_edit.py:341
 msgid "Invalid data: {}"
 msgstr "Información inválida: {}"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:344
+#: inginious/frontend/pages/course_admin/task_edit.py:347
 msgid "Cannot read zip file. Files were not modified"
 msgstr ""
 "El archivo comprimido (zip) no se puede leer. Los archivos no fueron "
 "alterados"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:351
+#: inginious/frontend/pages/course_admin/task_edit.py:354
 msgid ""
 "There was a problem while extracting the zip archive. Some files may have"
 " been modified"
@@ -4620,7 +4623,7 @@ msgstr "Intentos"
 msgid "Submission limit"
 msgstr "Tiempo límite de envío"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:109
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:121
 #: inginious/frontend/templates/task.html:70
 msgid "No limitation"
 msgstr "Sin Límite"
@@ -4678,12 +4681,12 @@ msgstr "Mi equipo"
 msgid "For evaluation"
 msgstr "Evaluación"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:148
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:160
 #: inginious/frontend/templates/task.html:155
 msgid "Last submission"
 msgstr "Último envío"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:142
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:154
 #: inginious/frontend/templates/task.html:157
 msgid "Best submission"
 msgstr "Mejor envío"
@@ -5940,67 +5943,71 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:82
 msgid "Submission storage"
-msgstr "ALmacenamiento de envíos"
+msgstr "Almacenamiento de envíos"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:89
 msgid "All submissions"
 msgstr "Todas las tareas enviadas"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:98
-msgid "Only the last {nbr_submissions} submissions"
-msgstr "Solamente submissions de evaluación"
+msgid "Only the last "
+msgstr "Solamente "
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:105
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:110
+msgid "submissions"
+msgstr "envios de evaluación"
+
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:117
 msgid "Submission limits"
 msgstr "Límites de envío"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:118
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:130
 msgid "Hard limit: {nbr_submissions} submission(s)"
-msgstr ""
+msgstr "Limite fijo: {nbr_submissions} envio(s)"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:129
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:141
 msgid "Soft limit: {nbr_submissions} submission(s) every {nbr_hours} hour(s)"
-msgstr ""
+msgstr "Limite por hora: {nbr_submissions} envios(s) cada {nbr_hours} hora(s)"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:136
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:148
 msgid "Evaluation submission"
 msgstr "Solamente submissions de evaluación"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:154
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:166
 msgid "Student choice"
 msgstr "Elección del estudiante"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:160
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:172
 msgid "Allow late submission"
 msgstr "Envío posterior"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:162
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:174
 msgid ""
 "\"If checked, the students will be able to do submissions after the "
 "deadline is reached. These submissions won't affect the grade.\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:174
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:186
 msgid "Accessible"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:180
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:192
 msgid "Never"
 msgstr "Nunca"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:186
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:198
 msgid "Always"
 msgstr "Siempre"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:195
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:207
 msgid "Custom, from: {} to: {}"
 msgstr "Personalizado, desde: {} hasta: {}"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:223
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:235
 msgid "Random inputs"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:234
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:246
 msgid "Regenerate random input"
 msgstr ""
 
@@ -7637,7 +7644,7 @@ msgstr "Extensiones permitidas"
 #~ msgstr "Todas las submissions"
 
 #~ msgid "Only the last {nbr_submissions} submissions"
-#~ msgstr "Solamente las últimas {nbr_submissions} submissions"
+#~ msgstr "Solamente los ultimos {nbr_submissions} envios"
 
 #~ msgid "Submission limits"
 #~ msgstr "Límites de submission"

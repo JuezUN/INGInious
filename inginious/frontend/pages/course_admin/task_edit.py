@@ -239,10 +239,13 @@ class CourseEditTask(INGIniousAdminPage):
             if "store_all" in data:
                 try:
                     stored_submissions = data["stored_submissions"]
-                    data["stored_submissions"] = 0 if data["store_all"] == "true" else int(stored_submissions)
+                    if data["store_all"] == "true":
+                        data["stored_submissions"] = 0  
+                    else:
+                        data["stored_submissions"] = int(stored_submissions)
                 except:
                     return json.dumps(
-                        {"status": "error", "message": _("The number of stored submission must be positive!")})
+                        {"status": "error", "message": _("The number of stored submission must be a number!")})
 
                 if data["store_all"] == "false" and data["stored_submissions"] <= 0:
                     return json.dumps({"status": "error", "message": _("The number of stored submission must be positive!")})
