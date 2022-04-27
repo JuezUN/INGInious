@@ -240,7 +240,7 @@ class CourseEditTask(INGIniousAdminPage):
                 try:
                     stored_submissions = data["stored_submissions"]
                     if data["store_all"] == "true":
-                        data["stored_submissions"] = 0  
+                        data["stored_submissions"] = 0
                     else:
                         data["stored_submissions"] = int(stored_submissions)
                 except:
