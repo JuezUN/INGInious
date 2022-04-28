@@ -3,6 +3,9 @@ const NEW_NAME_INPUT_ID = "newNameInput";
 const NEW_EMAIL_INPUT_ID = "newEmailInput";
 const USER_SETTINGS_ID = "userSettings";
 const NOTIFICATIONS_ID = "notificationsDiv";
+const USER_INFORMATION_TABLE_ID = "userInformation";
+const USER_TOTAL_TABLE_ID = "userInformationFoot";
+const USER_COURSES_TABLE_ID = "userCoursesInformation";
 
 let currentEmail = "";
 let currentName = "";
@@ -34,9 +37,18 @@ function cleanNotifications() {
     $(`#${NOTIFICATIONS_ID}`).empty();
 }
 
+function cleanUserInfoTable() {
+    $(`#${USER_INFORMATION_TABLE_ID}`).empty();
+    $(`#${USER_TOTAL_TABLE_ID}`).empty();
+}
+function cleanUserCoursesTable() {
+    $(`#${USER_COURSES_TABLE_ID}`).empty();
+}
+
 function resetElements() {
     cleanBasicDataInputs();
     cleanUserInfoTable();
+    cleanUserCoursesTable();
     hideUserSettingsDiv();
     cleanCurrentValues();
     closeTimeInterval();
@@ -53,6 +65,8 @@ function cleanBasicDataInputs() {
 
     });
 }
+
+
 
 function cleanCurrentValues() {
     currentEmail = "";
