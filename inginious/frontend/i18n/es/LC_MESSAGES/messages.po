@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-28 12:00-0500\n"
+"POT-Creation-Date: 2022-04-28 14:32-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -3835,7 +3835,7 @@ msgstr "No hay datos que modificar"
 msgid "Superadmin can not modify its own data"
 msgstr "El superadministrador no puede modificar sus propios datos"
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:207
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:208
 msgid "User no found"
 msgstr "Usuario no encontrado"
 

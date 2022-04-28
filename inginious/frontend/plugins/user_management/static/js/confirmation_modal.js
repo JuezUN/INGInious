@@ -40,6 +40,7 @@ function confirmListener() {
 
     $(`#${UPDATE_CONFIRM_ID}`).off('click').on("click", function () {
         requestToUpdate["username"] = currentUsername;
+        requestToUpdate["email"] = currentEmail;
         if (checkConfirmationInput()) {
             hideModal();
             mainScrollToTop();
@@ -91,7 +92,7 @@ function validateInputs() {
         addListElement(createListElement(wordsDictionary["name"]));
     }
     if (checkEmailInput()) {
-        requestToUpdate["email"] = getInputValue(NEW_EMAIL_INPUT_ID);
+        requestToUpdate["new_email"] = getInputValue(NEW_EMAIL_INPUT_ID);
         addListElement(createListElement(wordsDictionary["email"]));
     }
     return requestToUpdate;
