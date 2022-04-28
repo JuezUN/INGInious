@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-26 16:04-0500\n"
+"POT-Creation-Date: 2022-04-28 14:32-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -558,35 +558,38 @@ msgstr "No puede crear una tarea sin subproblemas"
 msgid "Grade weight must be a floating-point number"
 msgstr "La calificación debe de ser un número real"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:245
 #: inginious/frontend/pages/course_admin/task_edit.py:248
-msgid "The number of stored submission must be positive!"
-msgstr "¡El número de tareas almacenadas de ser positivo!"
+msgid "The number of stored submission must be a number!"
+msgstr "¡El número de envios almacenados de ser un numero válido!"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:259
-#: inginious/frontend/pages/course_admin/task_edit.py:265
+#: inginious/frontend/pages/course_admin/task_edit.py:251
+msgid "The number of stored submission must be positive!"
+msgstr "¡El número de envios almacenados de ser positivo!"
+
+#: inginious/frontend/pages/course_admin/task_edit.py:262
+#: inginious/frontend/pages/course_admin/task_edit.py:268
 msgid "Invalid submission limit!"
 msgstr "¡El límite de tareas es inválido!"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:296
+#: inginious/frontend/pages/course_admin/task_edit.py:299
 msgid "Your browser returned an invalid form ({})"
 msgstr "Tu navegador web muestra una forma inválida ({})"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:302
+#: inginious/frontend/pages/course_admin/task_edit.py:305
 msgid "Error while reading course's information"
 msgstr "Error durante la consulta de información del curso"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:338
+#: inginious/frontend/pages/course_admin/task_edit.py:341
 msgid "Invalid data: {}"
 msgstr "Información inválida: {}"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:344
+#: inginious/frontend/pages/course_admin/task_edit.py:347
 msgid "Cannot read zip file. Files were not modified"
 msgstr ""
 "El archivo comprimido (zip) no se puede leer. Los archivos no fueron "
 "alterados"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:351
+#: inginious/frontend/pages/course_admin/task_edit.py:354
 msgid ""
 "There was a problem while extracting the zip archive. Some files may have"
 " been modified"
@@ -1049,7 +1052,7 @@ msgstr "¿Estás seguro de que quieres eliminar todos los archivos?"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:77
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:34
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:201
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:224
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
 #: inginious/frontend/templates/course_admin/danger_zone.html:81
 #: inginious/frontend/templates/course_admin/danger_zone.html:160
@@ -1063,7 +1066,7 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:18
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:203
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:226
 msgid "Confirm"
 msgstr "Confirmar"
 
@@ -1513,14 +1516,14 @@ msgstr ""
 #: inginious/frontend/plugins/auth/custom_auth_form.html:29
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:33
 #: inginious/frontend/plugins/register_students/static/email_template.html:14
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:38
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:37
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:17
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:147
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:170
 msgid "Username"
 msgstr "Nombre de usuario"
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:65
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:129
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:152
 #: inginious/frontend/templates/mycourses.html:78
 msgid "Course"
 msgstr "Curso"
@@ -1670,9 +1673,9 @@ msgid "Request to create a new course "
 msgstr "Solicitud para crear un curso "
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:48
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:38
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:37
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:15
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:159
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:182
 msgid "Email"
 msgstr "Email"
 
@@ -1687,7 +1690,7 @@ msgstr "Es necesario un correo electrónico válido"
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:62
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:285
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:34
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:38
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:37
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:16
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:9
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
@@ -1710,6 +1713,7 @@ msgid "Edit"
 msgstr "Editar"
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:81
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:134
 msgid "Course Name"
 msgstr "Nombre del curso"
 
@@ -2621,7 +2625,7 @@ msgstr "Calificación: "
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:19
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:19
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:24
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:130
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:153
 #: inginious/frontend/templates/course_admin/aggregation_info.html:31
 msgid "Task"
 msgstr "Tarea"
@@ -2668,7 +2672,7 @@ msgstr "Retroalimentación para el curso: "
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:38
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:43
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:35
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:131
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:154
 msgid "Date"
 msgstr "Fecha"
 
@@ -2799,7 +2803,7 @@ msgstr "Seleccionar todo"
 #: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:45
 #: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:27
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:21
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:128
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:151
 #: inginious/frontend/templates/course_admin/download.html:47
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:92
 #: inginious/frontend/templates/course_admin/subproblems/code.html:22
@@ -3754,20 +3758,20 @@ msgstr ""
 " usuarios</a></li>"
 
 #: inginious/frontend/plugins/user_management/pages/api/find_user.py:65
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:171
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:170
 #: inginious/frontend/plugins/user_management/pages/api/user_status.py:26
 msgid "Mongo operation fail"
 msgstr "Fallo en la operación de Mongo"
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:27
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:26
 msgid "There are users' jobs running"
 msgstr "Hay procesos de usuarios que se están ejecutando"
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:48
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:47
 msgid "Changes in your user account"
 msgstr "Cambios en su cuenta de usuario"
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:50
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:49
 msgid ""
 "- If at some point you had authentication problems, it may be due to the "
 "change process."
@@ -3775,13 +3779,13 @@ msgstr ""
 "- Si en algún momento has tenido problemas de autenticación, puede ser "
 "debido al proceso de de actualización."
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:51
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:50
 msgid "- If you think some changes are wrong, please contact the administrator."
 msgstr ""
 "- Si cree que algún cambio es incorrecto, póngase en contacto con el "
 "administrador."
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:52
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:51
 msgid ""
 "- We have noticed that you have not yet activated your account, please "
 "click on the following link:\n"
@@ -3791,11 +3795,11 @@ msgstr ""
 "siguiente enlace:\n"
 "        "
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:56
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:55
 msgid "Some changes have been made to your account:\n"
 msgstr "Se han realizado algunos cambios en su cuenta:\n"
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:57
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:56
 msgid ""
 " To keep in mind:\n"
 "    "
@@ -3803,7 +3807,7 @@ msgstr ""
 " Para tener en cuenta:\n"
 "    "
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:64
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:63
 msgid ""
 "Something went wrong while trying to send the email with the information "
 "to the user"
@@ -3811,27 +3815,27 @@ msgstr ""
 "Algo salió mal al intentar enviar el correo electrónico con la "
 "información al usuario"
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:118
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:117
 msgid "Invalid email by format or already in use"
 msgstr "Correo electrónico inválido por formato o ya está en uso"
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:123
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:122
 msgid "Invalid name by length"
 msgstr "Nombre inválido por longitud"
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:128
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:127
 msgid "Invalid username by format or already in use"
 msgstr "Nombre de usuario inválido por formato o ya está en uso"
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:134
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:133
 msgid "No data to change"
 msgstr "No hay datos que modificar"
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:162
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:161
 msgid "Superadmin can not modify its own data"
 msgstr "El superadministrador no puede modificar sus propios datos"
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:206
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:208
 msgid "User no found"
 msgstr "Usuario no encontrado"
 
@@ -3970,35 +3974,39 @@ msgstr ""
 msgid "Username Occurrences"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:121
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:133
+msgid "CourseID"
+msgstr "Identificador del curso"
+
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:144
 msgid "User Status"
 msgstr "Estadísticas del usuario"
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:123
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:146
 msgid "\"Number of open user sessions\""
 msgstr "Número de sesiones de usuario activas"
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:143
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:166
 msgid "Manage User Data"
 msgstr "Gestionar datos de usuario"
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:153
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:176
 msgid "Complete Name"
 msgstr "Nombre completo:"
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:169
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:192
 msgid "Update User"
 msgstr "Actualizar usuario"
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:185
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:208
 msgid "Update User Data"
 msgstr "Actualizar datos de usuario"
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:189
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:212
 msgid "Are you sure you want to make this change?"
 msgstr "¿Estás seguro de que quieres hacer este cambio?"
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:192
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:215
 msgid "Type the username"
 msgstr "Escriba el nombre de usuario"
 
@@ -4620,7 +4628,7 @@ msgstr "Intentos"
 msgid "Submission limit"
 msgstr "Tiempo límite de envío"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:109
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:121
 #: inginious/frontend/templates/task.html:70
 msgid "No limitation"
 msgstr "Sin Límite"
@@ -4678,12 +4686,12 @@ msgstr "Mi equipo"
 msgid "For evaluation"
 msgstr "Evaluación"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:148
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:160
 #: inginious/frontend/templates/task.html:155
 msgid "Last submission"
 msgstr "Último envío"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:142
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:154
 #: inginious/frontend/templates/task.html:157
 msgid "Best submission"
 msgstr "Mejor envío"
@@ -5940,67 +5948,71 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:82
 msgid "Submission storage"
-msgstr "ALmacenamiento de envíos"
+msgstr "Almacenamiento de envíos"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:89
 msgid "All submissions"
 msgstr "Todas las tareas enviadas"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:98
-msgid "Only the last {nbr_submissions} submissions"
-msgstr "Solamente submissions de evaluación"
+msgid "Only the last "
+msgstr "Solamente "
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:105
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:110
+msgid "submissions"
+msgstr "envios de evaluación"
+
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:117
 msgid "Submission limits"
 msgstr "Límites de envío"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:118
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:130
 msgid "Hard limit: {nbr_submissions} submission(s)"
-msgstr ""
+msgstr "Limite fijo: {nbr_submissions} envio(s)"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:129
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:141
 msgid "Soft limit: {nbr_submissions} submission(s) every {nbr_hours} hour(s)"
-msgstr ""
+msgstr "Limite por hora: {nbr_submissions} envios(s) cada {nbr_hours} hora(s)"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:136
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:148
 msgid "Evaluation submission"
 msgstr "Solamente submissions de evaluación"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:154
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:166
 msgid "Student choice"
 msgstr "Elección del estudiante"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:160
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:172
 msgid "Allow late submission"
 msgstr "Envío posterior"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:162
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:174
 msgid ""
 "\"If checked, the students will be able to do submissions after the "
 "deadline is reached. These submissions won't affect the grade.\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:174
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:186
 msgid "Accessible"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:180
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:192
 msgid "Never"
 msgstr "Nunca"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:186
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:198
 msgid "Always"
 msgstr "Siempre"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:195
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:207
 msgid "Custom, from: {} to: {}"
 msgstr "Personalizado, desde: {} hasta: {}"
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:223
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:235
 msgid "Random inputs"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:234
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:246
 msgid "Regenerate random input"
 msgstr ""
 
@@ -7637,7 +7649,7 @@ msgstr "Extensiones permitidas"
 #~ msgstr "Todas las submissions"
 
 #~ msgid "Only the last {nbr_submissions} submissions"
-#~ msgstr "Solamente las últimas {nbr_submissions} submissions"
+#~ msgstr "Solamente los ultimos {nbr_submissions} envios"
 
 #~ msgid "Submission limits"
 #~ msgstr "Límites de submission"

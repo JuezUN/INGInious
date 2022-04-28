@@ -13,7 +13,6 @@ from inginious.frontend.plugins.user_management.user_status import get_submissio
 from inginious.frontend.plugins.utils import get_mandatory_parameter, check_email_format
 from inginious.frontend.plugins.utils.superadmin_utils import SuperadminAPI
 
-
 def _any_process_running(username, collection_manager):
     """ indicates whether the user is running any process """
     submissions = get_submissions_running(username, collection_manager)
@@ -193,14 +192,29 @@ class UserDataAPI(SuperadminAPI):
         """ Returns data of a user """
         collections_manager = CollectionsManagerSingleton.get_instance()
         user_basic_data = self.database.users.find_one({'username': username, 'email': email})
+        #find in the aggregations table all documents in which the username appears inside the students array
+        user_courses = self.get_user_courses(self.database.aggregations.find({'students': username}))
         if user_basic_data:
             collection_data, unknown_collections = get_count_username_occurrences(user_basic_data["username"],
                                                                                   collections_manager)
             data = {"username": user_basic_data["username"],
                     "name": user_basic_data["realname"],
                     "email": user_basic_data["email"],
+                    "courses": user_courses,
                     "count": collection_data,
                     "unknown_collections": unknown_collections}
             return data
         else:
             raise api.APIError(404, _("User no found"))
+
+    def get_user_courses(self, associated_aggregations):
+        """ Returns dictionary with the coursesIDs as keys and the respective courses names as values
+        :param associated_aggregations: Pymongo coursor. an iterable returned by a find query
+        """
+        courses_ids = []
+        courses_names = []
+        for doc in associated_aggregations:
+            courses_ids.append(doc["courseid"])
+            courses_names.append(self.app.course_factory.get_course(doc["courseid"]).get_name(None))
+        zip_iterator = zip(courses_ids, courses_names)
+        return dict(zip_iterator)
