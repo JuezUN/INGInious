@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-24 17:10-0500\n"
+"POT-Creation-Date: 2022-04-26 12:40-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -943,7 +943,7 @@ msgstr ""
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:77
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:34
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:201
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:224
 #: inginious/frontend/templates/course_admin/classroom_edit.html:86
 #: inginious/frontend/templates/course_admin/danger_zone.html:81
 #: inginious/frontend/templates/course_admin/danger_zone.html:160
@@ -957,7 +957,7 @@ msgid "Cancel"
 msgstr ""
 
 #: inginious/frontend/plugins/UNCode/static/delete_all_files_confirm_modal.html:18
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:203
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:226
 msgid "Confirm"
 msgstr ""
 
@@ -1371,14 +1371,14 @@ msgstr ""
 #: inginious/frontend/plugins/auth/custom_auth_form.html:29
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:33
 #: inginious/frontend/plugins/register_students/static/email_template.html:14
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:38
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:37
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:17
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:147
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:170
 msgid "Username"
 msgstr ""
 
 #: inginious/frontend/plugins/analytics/pages/analytics.html:65
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:129
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:152
 #: inginious/frontend/templates/mycourses.html:78
 msgid "Course"
 msgstr ""
@@ -1528,9 +1528,9 @@ msgid "Request to create a new course "
 msgstr ""
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:48
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:38
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:37
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:15
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:159
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:182
 msgid "Email"
 msgstr ""
 
@@ -1545,7 +1545,7 @@ msgstr ""
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:62
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:285
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:34
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:38
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:37
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:16
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:9
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
@@ -1568,6 +1568,7 @@ msgid "Edit"
 msgstr ""
 
 #: inginious/frontend/plugins/contact_page/pages/templates/contact_page.html:81
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:134
 msgid "Course Name"
 msgstr ""
 
@@ -2416,7 +2417,7 @@ msgstr ""
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:19
 #: inginious/frontend/plugins/manual_scoring/pages/templates/students_list.html:19
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism_check_summary.html:24
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:130
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:153
 #: inginious/frontend/templates/course_admin/aggregation_info.html:31
 msgid "Task"
 msgstr ""
@@ -2463,7 +2464,7 @@ msgstr ""
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_feedback_list.html:38
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:43
 #: inginious/frontend/plugins/plagiarism/pages/templates/plagiarism.html:35
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:131
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:154
 msgid "Date"
 msgstr ""
 
@@ -2586,7 +2587,7 @@ msgstr ""
 #: inginious/frontend/plugins/multilang/problems/templates/file_multilang_edit.html:45
 #: inginious/frontend/plugins/multilang/problems/templates/multilang_edit.html:27
 #: inginious/frontend/plugins/multilang/problems/templates/notebook_file_edit.html:21
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:128
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:151
 #: inginious/frontend/templates/course_admin/download.html:47
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:92
 #: inginious/frontend/templates/course_admin/subproblems/code.html:22
@@ -3477,73 +3478,73 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/api/find_user.py:65
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:171
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:170
 #: inginious/frontend/plugins/user_management/pages/api/user_status.py:26
 msgid "Mongo operation fail"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:27
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:26
 msgid "There are users' jobs running"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:48
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:47
 msgid "Changes in your user account"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:50
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:49
 msgid ""
 "- If at some point you had authentication problems, it may be due to the "
 "change process."
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:51
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:50
 msgid "- If you think some changes are wrong, please contact the administrator."
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:52
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:51
 msgid ""
 "- We have noticed that you have not yet activated your account, please "
 "click on the following link:\n"
 "        "
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:56
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:55
 msgid "Some changes have been made to your account:\n"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:57
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:56
 msgid ""
 " To keep in mind:\n"
 "    "
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:64
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:63
 msgid ""
 "Something went wrong while trying to send the email with the information "
 "to the user"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:118
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:117
 msgid "Invalid email by format or already in use"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:123
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:122
 msgid "Invalid name by length"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:128
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:127
 msgid "Invalid username by format or already in use"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:134
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:133
 msgid "No data to change"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:162
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:161
 msgid "Superadmin can not modify its own data"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/api/user_data.py:205
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:207
 msgid "User no found"
 msgstr ""
 
@@ -3675,35 +3676,39 @@ msgstr ""
 msgid "Username Occurrences"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:121
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:133
+msgid "CourseID"
+msgstr ""
+
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:144
 msgid "User Status"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:123
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:146
 msgid "\"Number of open user sessions\""
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:143
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:166
 msgid "Manage User Data"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:153
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:176
 msgid "Complete Name"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:169
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:192
 msgid "Update User"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:185
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:208
 msgid "Update User Data"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:189
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:212
 msgid "Are you sure you want to make this change?"
 msgstr ""
 
-#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:192
+#: inginious/frontend/plugins/user_management/pages/templates/user_management.html:215
 msgid "Type the username"
 msgstr ""
 

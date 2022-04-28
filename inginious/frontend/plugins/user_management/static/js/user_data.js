@@ -1,6 +1,32 @@
 const USER_INFORMATION_TABLE_ID = "userInformation";
 const USER_TOTAL_TABLE_ID = "userInformationFoot";
+const USER_COURSES_TABLE_ID = "userCoursesInformation";
 const USER_INFORMATION_TITLE_ID = "userInformationTitle";
+
+function fillUserTable(userInfoTable = 1,dataDict) {
+    /*
+    fills tables given a dictionary with the data.
+    boolean parameter user_info_table determines wich of the two current tables in the user manager is being filled
+    */
+    function makeTableItem(key, value, valueInBold = false) {
+        if (valueInBold)
+            return `<tr><td><h5><b>${key}</b></h5></td><td><h5><b>${value}</b></h5></td></tr>`;
+        return `<tr><td><h5><b>${key}</b></h5></td><td><h5>${value}</h5></td></tr>`;
+    }
+
+    if (userInfoTable){
+        let total = 0;
+        for (const [key, value] of Object.entries(dataDict)) {
+            total += value;
+            $(`#${USER_INFORMATION_TABLE_ID}`).append(makeTableItem(key, value));
+        }
+        $(`#${USER_TOTAL_TABLE_ID}`).append(makeTableItem("Total", total, true))
+    }else{
+        for (const [key, value] of Object.entries(dataDict)) {
+            $(`#${USER_COURSES_TABLE_ID}`).append(makeTableItem(key, value));
+        }
+    }
+}
 
 function requestUserData(username, email) {
     function fillInput(id, content) {
@@ -19,7 +45,8 @@ function requestUserData(username, email) {
         fillInput(NEW_USERNAME_INPUT_ID, currentUsername);
         fillInput(NEW_NAME_INPUT_ID, currentName);
         fillInput(NEW_EMAIL_INPUT_ID, currentEmail);
-        fillUserTable(data["count"]);
+        fillUserTable(1,data["count"]);
+        fillUserTable(0,data["courses"]);
         alertForUnknownCollections(data["unknown_collections"]);
         fillUserInformationTitle(data);
     })
@@ -41,20 +68,7 @@ function getCurrentValues(data) {
 }
 
 
-function fillUserTable(count) {
-    function makeTableItem(key, value, valueInBold = false) {
-        if (valueInBold)
-            return `<tr><td><h5><b>${key}</b></h5></td><td><h5><b>${value}</b></h5></td></tr>`;
-        return `<tr><td><h5><b>${key}</b></h5></td><td><h5>${value}</h5></td></tr>`;
-    }
 
-    let total = 0;
-    for (const [key, value] of Object.entries(count)) {
-        total += value;
-        $(`#${USER_INFORMATION_TABLE_ID}`).append(makeTableItem(key, value));
-    }
-    $(`#${USER_TOTAL_TABLE_ID}`).append(makeTableItem("Total", total, true))
-}
 
 function allowEdit() {
     $(".edit").on("click", function () {
@@ -144,10 +158,7 @@ function getInputValue(inputId) {
     return $(`#${inputId}`).val();
 }
 
-function cleanUserInfoTable() {
-    $(`#${USER_INFORMATION_TABLE_ID}`).empty();
-    $(`#${USER_TOTAL_TABLE_ID}`).empty();
-}
+
 
 function alertForUnknownCollections(unknownCollections) {
     if (unknownCollections.length) {
