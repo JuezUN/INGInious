@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-26 19:52-0500\n"
+"POT-Creation-Date: 2022-04-28 12:00-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -3975,9 +3975,8 @@ msgid "Username Occurrences"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:133
-#, fuzzy
 msgid "CourseID"
-msgstr "\"id del curso\""
+msgstr "Identificador del curso"
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:144
 msgid "User Status"

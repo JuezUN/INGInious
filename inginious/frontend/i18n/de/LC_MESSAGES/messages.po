@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-26 19:52-0500\n"
+"POT-Creation-Date: 2022-04-28 12:00-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -3704,9 +3704,8 @@ msgid "Username Occurrences"
 msgstr ""
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:133
-#, fuzzy
 msgid "CourseID"
-msgstr "Falsche Kurs-ID."
+msgstr "Kurs-ID"
 
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:144
 msgid "User Status"
