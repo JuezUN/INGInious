@@ -313,14 +313,14 @@ class BaseTaskPage(object):
             if nb_tasks_before == -1 and wait_time <= 0:
                 text = _("<b>UNCode is currently grading your answers.<b/> (almost done)")
             elif nb_tasks_before == -1:
-                text = _("<b>UNCode is currently grading your answers.<b/> (Approx. wait time: {} seconds)").format(
-                    wait_time)
+                text = _("<b>UNCode is currently grading your answers.<b/> (Approx. wait time: ") + "{}".format(
+                    wait_time) + _(" seconds)")
             elif nb_tasks_before == 0:
                 text = _("<b>You are next in the waiting queue!</b>")
             elif nb_tasks_before == 1:
                 text = _("<b>There is one task in front of you in the waiting queue.</b>")
             else:
-                text = _("<b>There are {} tasks in front of you in the waiting queue.</b>").format(nb_tasks_before)
+                text = _("<b>There are ") + "{}".format(nb_tasks_before) + _(" tasks in front of you in the waiting queue.</b>")
 
             return json.dumps({'status': "waiting", 'text': text})
 
@@ -344,13 +344,13 @@ class BaseTaskPage(object):
         if tojson['status'] == 'waiting':
             tojson["text"] = _("<b>Your submission has been sent...</b>")
         elif tojson["result"] == "failed":
-            tojson["text"] = _("There are some errors in your answer. Your score is {score}%.").format(score=data["grade"])
+            tojson["text"] = _("There are some errors in your answer. Your score is ") + "{score}".format(score=data["grade"]) + _("%.")
         elif tojson["result"] == "success":
-            tojson["text"] = _("Your answer passed the tests! Your score is {score}%.").format(score=data["grade"])
+            tojson["text"] = _("Your answer passed the tests! Your score is ") + "{score}".format(score=data["grade"]) + _("%.")
         elif tojson["result"] == "timeout":
-            tojson["text"] = _("Your submission timed out. Your score is {score}%.").format(score=data["grade"])
+            tojson["text"] = _("Your submission timed out. Your score is ") + "{score}".format(score=data["grade"]) + _("%.")
         elif tojson["result"] == "overflow":
-            tojson["text"] = _("Your submission made an overflow. Your score is {score}%.").format(score=data["grade"])
+            tojson["text"] = _("Your submission made an overflow. Your score is ") + "{score}".format(score=data["grade"]) + _("%.")
         elif tojson["result"] == "killed":
             tojson["text"] = _("Your submission was killed.")
         else:
@@ -368,10 +368,10 @@ class BaseTaskPage(object):
         penalty_message = ""
         user_grade_penalty = data.get("penalty",0.0)
         if user_grade_penalty:
-            penalty_message = _("<p>A penalty of <b>{penalty}%</b> was applied to this submission.</p>").format(penalty=user_grade_penalty)
+            penalty_message = _("<p>A penalty of <b>") + "{penalty}%".format(penalty=user_grade_penalty) + _("</b> was applied to this submission.</p>")
 
-        tojson["text"] = "<b>" + tojson["text"] + " " + _("[Submission #{submissionid}]").format(
-            submissionid=data["_id"]) + "</b>" + late_submission_html + "<br><br>" + penalty_message + data.get("text", "")
+        tojson["text"] = "<b>" + tojson["text"] + " " + _("[Submission #") + "{submissionid}".format(
+            submissionid=data["_id"]) + _("]") + "</b>" + late_submission_html + "<br><br>" + penalty_message + data.get("text", "")
         tojson["text"] = self.plugin_manager.call_hook_recursive("feedback_text", task=task, submission=data, text=tojson["text"])["text"]
 
         if reloading:

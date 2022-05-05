@@ -19,7 +19,11 @@ $if data:
         <h3 class="panel-title">$:_("Authorization required")</h3>
       </div>
       <div class="panel-body">
-          $:_("You are going to bind your UNCode account <strong>{realname} [{username}]</strong> with the following LTI tool and context:").format(realname=user_manager.session_realname(), username=user_manager.session_username())
+          $:_("You are going to bind your UNCode account ") 
+          <strong>
+              $:"{realname} [{username}]".format(realname=user_manager.session_realname(), username=user_manager.session_username())
+          </strong>
+          $:_(" with the following LTI tool and context:")
           <ul>
               <li><strong>$:_("Tool name:")</strong> $data["tool_name"]</li>
               <li><strong>$:_("Tool description:")</strong> $data["tool_description"]</li>

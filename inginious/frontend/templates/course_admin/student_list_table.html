@@ -74,13 +74,20 @@ $ is_admin = user_manager.has_admin_rights_on_course(course)
                         <h4 class="modal-title">$:_("Unregister") <span class="username"></span></h4>
                     </div>
                     <div class="modal-body">
-                        <p>$:_("This will remove {} from the course. Are you sure ?").format('<span class="username"></span>')</p>
+                        <p>
+                            $:_("This will remove ")
+                            $:"{}".format('<span class="username"></span>')
+                            $:_(" from the course. Are you sure ?")
+                        </p>
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" name="type" id="type">
                         <input type="hidden" name="username" id="username">
                         <button type="button" class="btn btn-default" data-dismiss="modal">$:_("Cancel")</button>
-                        <button type="submit" name="remove" class="btn btn-danger">$:_("Remove {}").format('<span class="username"></span>')</button>
+                        <button type="submit" name="remove" class="btn btn-danger">
+                            $:_("Remove ")
+                            $:"{}".format('<span class="username"></span>')
+                        </button>
                     </div>
                 </div>
             </div>

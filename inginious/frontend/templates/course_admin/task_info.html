@@ -23,7 +23,9 @@ $def NavbarF():
     </ol>
 $var Navbar: $:NavbarF()
 
-<h2>$:_("Results for task \"{}\"").format(task.get_name_or_id(user_manager.session_language()))</h2>
+<h2>
+    $:(_("Results for task ") + "\"{}\"".format(task.get_name_or_id(user_manager.session_language())))
+</h2>
                     $if not course.is_lti():
                         <div role="tabpanel">
                             <ul class="nav nav-tabs" id="edit_task_tabs" role="tablist">

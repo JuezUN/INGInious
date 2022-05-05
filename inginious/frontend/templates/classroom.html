@@ -126,7 +126,8 @@ $elif msg:
                 <div class="panel panel-info">
                     <div class="panel-heading" role="tab" id="heading">
                         <h4 class="panel-title">
-                            $:_("Group #{}").format(mygroup['index'])
+                            $:_("Group #")
+                            $:"{}".format(mygroup['index'])
                             $if course.can_students_choose_group():
                             <div class="pull-right">
                                 <a href="?unregister_group" data-toggle="tooltip" data-placement="left" title="$:_('Quit group')">
@@ -176,7 +177,8 @@ $elif msg:
                                     <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="heading_$index">
                                 <h4 class="panel-title">
-                                    $:_("Group #{}").format(index+1)
+                                    $:_("Group #")
+                                    $:"{}".format(index+1)
                                     $if mygroup is None and (group["size"]-len(group["students"])) > 0 and course.can_students_choose_group():
                                         (available : $(group["size"]-len(group["students"])) )
                                         <div class="pull-right">
