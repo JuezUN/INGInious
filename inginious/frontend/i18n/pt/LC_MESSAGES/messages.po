@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-05 14:05-0500\n"
+"POT-Creation-Date: 2022-05-10 11:39-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -4626,7 +4626,8 @@ msgid "All teams"
 msgstr "Todas as equipes"
 
 #: inginious/frontend/templates/team.html:161
-msgid "(available : )"
+#, fuzzy
+msgid "(available: )"
 msgstr "(disponível : )"
 
 #: inginious/frontend/templates/unregister_button.html:15

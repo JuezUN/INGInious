@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-05 14:05-0500\n"
+"POT-Creation-Date: 2022-05-10 11:39-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -4604,7 +4604,7 @@ msgid "All teams"
 msgstr ""
 
 #: inginious/frontend/templates/team.html:161
-msgid "(available : )"
+msgid "(available: )"
 msgstr ""
 
 #: inginious/frontend/templates/unregister_button.html:15
@@ -7651,5 +7651,8 @@ msgstr ""
 #~ msgid ""
 #~ ">\n"
 #~ "                    $:_("
+#~ msgstr ""
+
+#~ msgid "(available : )"
 #~ msgstr ""
 

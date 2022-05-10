@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-05 14:05-0500\n"
+"POT-Creation-Date: 2022-05-10 11:39-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -4628,8 +4628,9 @@ msgid "All teams"
 msgstr "Toutes les équipes"
 
 #: inginious/frontend/templates/team.html:161
-msgid "(available : )"
-msgstr ""
+#, fuzzy
+msgid "(available: )"
+msgstr "Exercice non disponible"
 
 #: inginious/frontend/templates/unregister_button.html:15
 msgid "Unregister from "
@@ -7619,5 +7620,8 @@ msgstr "Extensions autorisées:"
 #~ msgid ""
 #~ ">\n"
 #~ "                    $:_("
+#~ msgstr ""
+
+#~ msgid "(available : )"
 #~ msgstr ""
 

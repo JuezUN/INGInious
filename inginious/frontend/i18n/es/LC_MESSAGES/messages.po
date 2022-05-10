@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-05 14:05-0500\n"
+"POT-Creation-Date: 2022-05-10 11:39-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -555,7 +555,7 @@ msgstr "No se encontraron envíos"
 
 #: inginious/frontend/pages/course_admin/submissions.py:96
 msgid "The result contains more than "
-msgstr "La consulta contiene mas de "
+msgstr "La consulta contiene más de "
 
 #: inginious/frontend/pages/course_admin/submissions.py:96
 msgid " submissions. The displayed submissions are truncated.\n"
@@ -2055,7 +2055,7 @@ msgstr "\"Id del Problema\""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:34
 msgid "Maximum diff lines"
-msgstr "'Número máximo de líneas de diferencia'"
+msgstr "Número máximo de líneas de diferencia"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:36
 msgid "\"The maximum number of lines that the diff tool should show\""
@@ -2063,7 +2063,7 @@ msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:46
 msgid "Diff context lines"
-msgstr "'Líneas de diferencia de contexto'"
+msgstr "Líneas de diferencia de contexto"
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:56
 msgid "Show runtime errors"
@@ -3276,7 +3276,7 @@ msgid ""
 "When you logged in, you could see the main page with the courses that you"
 " are enrolled"
 msgstr ""
-"Una vez inicies sesion con tus credenciales, podras ver la pagina "
+"Una vez inicies sesión con tus credenciales, podrás ver la página "
 "principal con los cursos en los que estás inscrito"
 
 #: inginious/frontend/plugins/register_students/static/email_course_registration_template.html:17
@@ -3329,7 +3329,7 @@ msgstr "¿Como cambiar la contraseña?"
 #: inginious/frontend/plugins/register_students/static/email_template.html:22
 #: inginious/frontend/plugins/register_students/static/email_template.html:29
 msgid "In top nav bar, click on the option displaying your name."
-msgstr "En la barra superior, haga clic dónde se muestra su nombre."
+msgstr "En la barra superior, haga clic donde se muestra su nombre."
 
 #: inginious/frontend/plugins/register_students/static/email_template.html:23
 msgid "Click on 'Preferences' option."
@@ -4075,7 +4075,7 @@ msgstr "Iniciar sesión con"
 #: inginious/frontend/templates/mycourses.html:20
 #: inginious/frontend/templates/team.html:22
 msgid "Last tried exercises"
-msgstr ""
+msgstr "Últimos intentos realizados"
 
 #: inginious/frontend/templates/classroom.html:41
 #: inginious/frontend/templates/course.html:40
@@ -4155,7 +4155,7 @@ msgid ""
 msgstr ""
 "Usted no esta registrado a este grupo. Intente registrarse a este grupo "
 "como se indica a continuación para seguir las actividades de los cursos. "
-"Si ningún grupo esta disponible, contacte al administrador del curso."
+"Si ningún grupo está disponible, contacte al administrador del curso."
 
 #: inginious/frontend/templates/classroom.html:168
 msgid ""
@@ -4172,7 +4172,7 @@ msgstr "Todos los grupos"
 #: inginious/frontend/templates/classroom.html:194
 #: inginious/frontend/templates/team.html:173
 msgid "No registered member."
-msgstr ""
+msgstr "No es un miembro registrado."
 
 #: inginious/frontend/templates/course.html:15
 #: inginious/frontend/templates/team.html:14
@@ -4193,7 +4193,7 @@ msgstr "Administración de curso"
 #: inginious/frontend/templates/course.html:58
 #: inginious/frontend/templates/task.html:145
 msgid "Classroom : "
-msgstr "Salon : "
+msgstr "Salón : "
 
 #: inginious/frontend/templates/course.html:61
 #: inginious/frontend/templates/task.html:148
@@ -4348,7 +4348,7 @@ msgstr "Vas a vincular tu cuenta UNCode"
 
 #: inginious/frontend/templates/lti_bind.html:26
 msgid " with the following LTI tool and context:"
-msgstr " con la siguiente servicio y contexto LTI:"
+msgstr " con el siguiente servicio y contexto LTI:"
 
 #: inginious/frontend/templates/lti_bind.html:28
 msgid "Tool name:"
@@ -4693,7 +4693,7 @@ msgstr " envíos"
 #: inginious/frontend/templates/course_admin/task_edit.html:57
 #: inginious/frontend/templates/task.html:101
 msgid "Tags"
-msgstr ""
+msgstr "Etiquetas"
 
 #: inginious/frontend/templates/task.html:111
 msgid "Administration"
@@ -4883,22 +4883,23 @@ msgid ""
 msgstr ""
 "Usted no esta registrado a este grupo. Intente registrarse a este grupo "
 "como se indica a continuación para seguir las actividades de los cursos. "
-"Si ningún grupo esta disponible, contacte al administrador del curso."
+"Si ningún grupo está disponible, contacte al administrador del curso."
 
 #: inginious/frontend/templates/team.html:141
 msgid ""
 "You're not yet registered to a team. Please contact the course "
 "administrator for more information."
 msgstr ""
-"Usted no esta registrado a este grupo. Contacte al administrador del "
-"curso para mas información."
+"Usted no está registrado a este grupo. Contacte al administrador del "
+"curso para más información."
 
 #: inginious/frontend/templates/team.html:145
 msgid "All teams"
 msgstr "Todos los equipos"
 
 #: inginious/frontend/templates/team.html:161
-msgid "(available : )"
+#, fuzzy
+msgid "(available: )"
 msgstr "(disponible: )"
 
 #: inginious/frontend/templates/unregister_button.html:15
@@ -4969,7 +4970,7 @@ msgstr "\"Descargar todas las tareas\""
 #: inginious/frontend/templates/course_admin/task_info.html:53
 #: inginious/frontend/templates/course_admin/task_info.html:118
 msgid "\"Replay all submissions\""
-msgstr "\"Repetir todas los envíos\""
+msgstr "\"Repetir todos los envíos\""
 
 #: inginious/frontend/templates/course_admin/aggregation_info.html:68
 #: inginious/frontend/templates/course_admin/student_info.html:64
@@ -5010,7 +5011,7 @@ msgstr "\"Descargar las tareas enviadas\""
 #: inginious/frontend/templates/course_admin/task_info.html:166
 #: inginious/frontend/templates/course_admin/task_list.html:71
 msgid "\"Replay submissions\""
-msgstr "\"Responder a las tareas enviadas\""
+msgstr "\"Repetir envíos\""
 
 #: inginious/frontend/templates/course_admin/aggregation_list.html:31
 #: inginious/frontend/templates/course_admin/teams_edit.html:8
@@ -5046,7 +5047,7 @@ msgstr ""
 #: inginious/frontend/templates/course_admin/aggregation_list.html:74
 #: inginious/frontend/templates/course_admin/task_info.html:109
 msgid "Classroom"
-msgstr "Grupos"
+msgstr "Aula"
 
 #: inginious/frontend/templates/course_admin/aggregation_list.html:75
 msgid "# students"
@@ -5074,12 +5075,12 @@ msgstr "\"Descargar el archivo CSV\""
 #: inginious/frontend/templates/course_admin/aggregation_list.html:89
 #: inginious/frontend/templates/course_admin/task_info.html:126
 msgid "My classroom(s)"
-msgstr "Grupos"
+msgstr "Mi(s) Aula(s)"
 
 #: inginious/frontend/templates/course_admin/aggregation_list.html:89
 #: inginious/frontend/templates/course_admin/task_info.html:126
 msgid "Other classroom(s)"
-msgstr "Seleccionar classrooms"
+msgstr "Seleccionar aula(s)"
 
 #: inginious/frontend/templates/course_admin/aggregation_list.html:89
 #: inginious/frontend/templates/course_admin/task_info.html:126
@@ -5109,7 +5110,7 @@ msgstr "Descripción del grupo"
 
 #: inginious/frontend/templates/course_admin/aggregation_list.html:140
 msgid "New classroom"
-msgstr "Nuevo classroom"
+msgstr "Nueva aula"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:23
 #: inginious/frontend/templates/course_admin/classroom_edit.html:34
@@ -5133,22 +5134,22 @@ msgstr "Agregar estudiante"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:69
 msgid "Choose student :"
-msgstr "Mostrar nombre del estudiante"
+msgstr "Seleccionar estudiante:"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:85
 #: inginious/frontend/templates/course_admin/teams_edit.html:50
 msgid "Student username (will be registered) :"
-msgstr ""
+msgstr "Estudiante (a registrar):"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:88
 #: inginious/frontend/templates/course_admin/teams_edit.html:53
 msgid "\"Student username\""
-msgstr "Mostrar nombre del estudiante"
+msgstr "Estudiante"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:111
 #: inginious/frontend/templates/course_admin/task_edit.html:51
 msgid "Basic settings"
-msgstr "Configuración del curso"
+msgstr "Configuración básica"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:120
 msgid ""
@@ -5158,11 +5159,11 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:123
 msgid "Classroom description"
-msgstr "Descripción del tutorial"
+msgstr "Descripción del aula"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:133
 msgid "Delete classroom"
-msgstr "Eliminar classrooms"
+msgstr "Eliminar aula"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:140
 msgid "Tutor list"
@@ -5179,7 +5180,7 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:218
 msgid "Max group size :"
-msgstr ""
+msgstr "Tamaño máximo de grupos:"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:251
 msgid "New group"
@@ -5237,7 +5238,7 @@ msgstr "<p>Esta acción restaurará la información del curso a "
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:78
 msgid ". Are you sure ?</p>"
-msgstr "̉. ¿Esta usted seguro?</p>"
+msgstr "̉. ¿Está seguro?</p>"
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:85
 msgid "Restore backup"
@@ -5245,11 +5246,11 @@ msgstr "Restaurar copia de respaldo"
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:93
 msgid "Backups"
-msgstr ""
+msgstr "Copias de respaldo"
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:98
 msgid "backup date"
-msgstr ""
+msgstr "Fecha de la copia de respaldo"
 
 #: inginious/frontend/templates/course_admin/danger_zone.html:99
 msgid "download"
@@ -5321,11 +5322,11 @@ msgstr "Documentación"
 #: inginious/frontend/templates/course_admin/replay.html:45
 #: inginious/frontend/templates/course_admin/replay.html:68
 msgid "Replay"
-msgstr ""
+msgstr "Repetir"
 
 #: inginious/frontend/templates/course_admin/replay.html:52
 msgid "Only the evaluation submission (Warning: the best submission may change)"
-msgstr ""
+msgstr "Únicamente el envío calificador (Aviso: el mejor envío puede cambiar)"
 
 #: inginious/frontend/templates/course_admin/replay.html:58
 msgid "All the submissions"
@@ -5349,15 +5350,15 @@ msgstr "Administradores"
 
 #: inginious/frontend/templates/course_admin/settings.html:37
 msgid "\"Usernames of the administrators, separated by commas\""
-msgstr ""
+msgstr "Nombres de usuario de los administradores, separados por comas"
 
 #: inginious/frontend/templates/course_admin/settings.html:44
 msgid "\"Usernames of the tutors, separated by commas\""
-msgstr ""
+msgstr "Nombres de usuario de los tutores, separados por comas"
 
 #: inginious/frontend/templates/course_admin/settings.html:49
 msgid "Enable LTI"
-msgstr ""
+msgstr "Habilitar LTI"
 
 #: inginious/frontend/templates/course_admin/settings.html:55
 msgid ""
@@ -5366,6 +5367,10 @@ msgid ""
 "will deactivate the access to the course from the main page for non-staff"
 " members of the course, and the team/classroom system."
 msgstr ""
+"Habilite esta opción para permitir que su curso UNCode se use en Sistemas"
+" de gestión de aprendizaje (LMS) como Moodle o edX. Tenga en cuenta que "
+"esto desactivará el acceso al curso desde la página principal para los "
+"miembros no administrativosdel curso, y el sistema de grupos/aulas"
 
 #: inginious/frontend/templates/course_admin/settings.html:60
 msgid "Course preview"
@@ -5429,17 +5434,17 @@ msgstr ""
 #: inginious/frontend/templates/course_admin/settings.html:141
 #: inginious/frontend/templates/course_admin/settings.html:187
 msgid "Custom:"
-msgstr ""
+msgstr "Personalizado:"
 
 #: inginious/frontend/templates/course_admin/settings.html:145
 #: inginious/frontend/templates/course_admin/settings.html:191
 msgid "From"
-msgstr ""
+msgstr "Desde"
 
 #: inginious/frontend/templates/course_admin/settings.html:152
 #: inginious/frontend/templates/course_admin/settings.html:198
 msgid "To"
-msgstr ""
+msgstr "Hasta"
 
 #: inginious/frontend/templates/course_admin/settings.html:169
 msgid "Registration"
@@ -5451,11 +5456,11 @@ msgstr "Cerrado"
 
 #: inginious/frontend/templates/course_admin/settings.html:181
 msgid "Always open"
-msgstr ""
+msgstr "Siempre abierto"
 
 #: inginious/frontend/templates/course_admin/settings.html:215
 msgid "Allow auto-unregistration"
-msgstr ""
+msgstr "Permitir \"darse de baja\" automaticamente"
 
 #: inginious/frontend/templates/course_admin/settings.html:233
 msgid "Registration password"
@@ -5526,7 +5531,7 @@ msgstr ""
 #: inginious/frontend/templates/course_admin/task_edit.html:38
 #: inginious/frontend/templates/course_admin/task_edit.html:97
 msgid "Save changes"
-msgstr ""
+msgstr "Guardar cambios"
 
 #: inginious/frontend/templates/course_admin/student_info.html:19
 #: inginious/frontend/templates/course_admin/submission.html:23
@@ -5618,7 +5623,7 @@ msgstr ""
 
 #: inginious/frontend/templates/course_admin/submission.html:49
 msgid "Download full submission"
-msgstr "\"Descargar todas los envíos\""
+msgstr "Descargar envío completo"
 
 #: inginious/frontend/templates/course_admin/submission.html:56
 msgid "Replay submission"
@@ -5626,11 +5631,11 @@ msgstr "Renviar envío"
 
 #: inginious/frontend/templates/course_admin/submission.html:62
 msgid "Replay as "
-msgstr ""
+msgstr "Repetir como "
 
 #: inginious/frontend/templates/course_admin/submission.html:70
 msgid "Replay/debug as "
-msgstr ""
+msgstr "Repetir/depurar como "
 
 #: inginious/frontend/templates/course_admin/submission.html:107
 msgid "\"Download as file\""
@@ -5703,7 +5708,7 @@ msgstr "Fecha antes"
 
 #: inginious/frontend/templates/course_admin/submissions.html:164
 msgid "Sort by"
-msgstr ""
+msgstr "Organizado por"
 
 #: inginious/frontend/templates/course_admin/submissions.html:171
 msgid "Order"
@@ -5711,11 +5716,11 @@ msgstr "Orden"
 
 #: inginious/frontend/templates/course_admin/submissions.html:173
 msgid "Descending"
-msgstr ""
+msgstr "Descendente"
 
 #: inginious/frontend/templates/course_admin/submissions.html:174
 msgid "Ascending"
-msgstr ""
+msgstr "Ascendente"
 
 #: inginious/frontend/templates/course_admin/submissions.html:178
 msgid "Limit"
@@ -5826,11 +5831,11 @@ msgstr "Ver tarea"
 
 #: inginious/frontend/templates/course_admin/task_edit.html:53
 msgid "Container setup"
-msgstr ""
+msgstr "Configuración del contenedor"
 
 #: inginious/frontend/templates/course_admin/task_edit.html:55
 msgid "Subproblems"
-msgstr ""
+msgstr "Subproblemas"
 
 #: inginious/frontend/templates/course_admin/task_edit.html:59
 msgid "Task files"
@@ -5875,7 +5880,7 @@ msgstr "Resultados individuales"
 
 #: inginious/frontend/templates/course_admin/task_info.html:35
 msgid "Classroom results"
-msgstr "Un nuevo grupo fue creado."
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/task_info.html:35
 msgid "Team results"
@@ -5997,7 +6002,7 @@ msgstr "Individualmente"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:77
 msgid "Per group/team"
-msgstr ""
+msgstr "Por grupo/equipo"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:82
 msgid "Submission storage"
@@ -6021,7 +6026,7 @@ msgstr "Límites de envío"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:130
 msgid "Hard limit: "
-msgstr ""
+msgstr "Limite fijo: "
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:132
 msgid " submission(s)"
@@ -6029,7 +6034,7 @@ msgstr "envío(s)"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:143
 msgid "Soft limit: "
-msgstr ""
+msgstr "Limite suave: "
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:145
 msgid " submission(s) every "
@@ -6037,7 +6042,7 @@ msgstr " envío(s) cada "
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:154
 msgid "Evaluation submission"
-msgstr "Solamente submissions de evaluación"
+msgstr "Envío calificador"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:172
 msgid "Student choice"
@@ -6045,7 +6050,7 @@ msgstr "Elección del estudiante"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:178
 msgid "Allow late submission"
-msgstr "Envío posterior"
+msgstr "Permitir envío posterior"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:180
 msgid ""

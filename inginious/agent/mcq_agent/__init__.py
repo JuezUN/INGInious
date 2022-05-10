@@ -70,7 +70,7 @@ class MCQAgent(Agent):
             raise CannotCreateJobException("Task wrongly configured as a MCQ")
 
         if error_count != 0:
-            text.append(_("You have") + "{}".format(error_count) + _(" wrong answer(s)."))
+            text.append(_("You have ") + "{}".format(error_count) + _(" wrong answer(s)."))
         if mcq_error_count != 0:
             text.append("\n\n" + _("Among them, you have ") + "{}".format(mcq_error_count) + _(" invalid answers in the multiple choice questions"))
 
