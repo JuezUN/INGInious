@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-10 11:39-0500\n"
+"POT-Creation-Date: 2022-05-10 12:20-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -4383,7 +4383,7 @@ msgstr ""
 msgid "Submission limit"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:121
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:111
 #: inginious/frontend/templates/task.html:70
 msgid "No limitation"
 msgstr ""
@@ -4392,7 +4392,7 @@ msgstr ""
 msgid " submissions<br /> every "
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:147
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:137
 #: inginious/frontend/templates/task.html:76
 #: inginious/frontend/templates/task.html:375
 msgid " hour(s)"
@@ -4447,12 +4447,12 @@ msgstr ""
 msgid "For evaluation"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:166
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:156
 #: inginious/frontend/templates/task.html:161
 msgid "Last submission"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:160
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:150
 #: inginious/frontend/templates/task.html:163
 msgid "Best submission"
 msgstr ""
@@ -5695,69 +5695,69 @@ msgstr ""
 msgid "Only the last "
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:110
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:100
 msgid "submissions"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:117
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:107
 msgid "Submission limits"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:130
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:120
 msgid "Hard limit: "
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:132
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:122
 msgid " submission(s)"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:143
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:133
 msgid "Soft limit: "
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:145
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:135
 msgid " submission(s) every "
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:154
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:144
 msgid "Evaluation submission"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:172
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:162
 msgid "Student choice"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:178
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:168
 msgid "Allow late submission"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:180
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:170
 msgid ""
 "\"If checked, the students will be able to do submissions after the "
 "deadline is reached. These submissions won't affect the grade.\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:192
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:182
 msgid "Accessible"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:198
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:188
 msgid "Never"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:204
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:194
 msgid "Always"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:213
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:203
 msgid "Custom, from: {} to: {}"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:241
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:231
 msgid "Random inputs"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:252
+#: inginious/frontend/templates/course_admin/edit_tabs/basic.html:242
 msgid "Regenerate random input"
 msgstr ""
 
