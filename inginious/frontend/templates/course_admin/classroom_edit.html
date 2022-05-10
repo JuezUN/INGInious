@@ -18,11 +18,22 @@ $def NavbarF():
             <i class="fa fa-user-secret"></i></a></li>
         <li><a href="$get_homepath()/admin/$course.get_id()/aggregations" title=$:_('"Classrooms"') data-toggle="tooltip" data-placement="bottom">
             <i class='fa fa-users'></i></a></li>
-        <li class="active"><a href="#">$:_("Edit classroom {}").format(aggregation["description"]) <span class="sr-only">$:_("(current)")</span></a></li>
+        <li class="active">
+            <a href="#">
+                $:_("Edit classroom ")
+                $:"{}".format(aggregation["description"]) 
+                <span class="sr-only">
+                 $:_("(current)")
+                </span>
+            </a>
+        </li>
     </ol>
 $var Navbar: $:NavbarF()
 
-<h2>$:_("Edit classroom {}").format(aggregation["description"])</h2>
+<h2>
+    $:_("Edit classroom ")
+    $:"{}".format(aggregation["description"])
+</h2>
 $if error:
     <div class="alert alert-danger alert-dismissable" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -200,7 +211,8 @@ $elif msg:
                                 <h4 class="panel-title">
                                     <div class="row">
                                         <div class="col-sm-6 col-xs-12">
-                                            $:_("Group #{}").format('<span id="group_number">'+ str(index+1) + '</span>')
+                                            $:_("Group #")
+                                            $:"{}".format('<span id="group_number">'+ str(index+1) + '</span>')
                                         </div>
                                         <div class="col-sm-2 col-xs-3" style="text-align: right;">
                                             <label>$:_("Max group size :")</label>

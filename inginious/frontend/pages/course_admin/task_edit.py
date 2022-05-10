@@ -192,7 +192,7 @@ class CourseEditTask(INGIniousAdminPage):
                     if (" " in id):
                         return json.dumps({"status": "error", "message": _("You can not use spaces in the tag id field.")})
                     if not id_checker(id):
-                        return json.dumps({"status": "error", "message": _("Invalid tag id: {}").format(id)})
+                        return json.dumps({"status": "error", "message": _("Invalid tag id: ") + "{}".format(id)})
                     for k2 in tags:
                         if tags[k2]["type"] != 2 and tags[k2]["id"] == id:
                             count = count+1
@@ -208,7 +208,7 @@ class CourseEditTask(INGIniousAdminPage):
 
             # Determines the task filetype
             if data["@filetype"] not in self.task_factory.get_available_task_file_extensions():
-                return json.dumps({"status": "error", "message": _("Invalid file type: {}").format(str(data["@filetype"]))})
+                return json.dumps({"status": "error", "message": _("Invalid file type: ") + "{}".format(str(data["@filetype"]))})
             file_ext = data["@filetype"]
             del data["@filetype"]
 
@@ -296,7 +296,7 @@ class CourseEditTask(INGIniousAdminPage):
             # Network grading
             data["network_grading"] = "network_grading" in data
         except Exception as message:
-            return json.dumps({"status": "error", "message": _("Your browser returned an invalid form ({})").format(message)})
+            return json.dumps({"status": "error", "message": _("Your browser returned an invalid form (") + "{}".format(message) + _(")")})
 
         # Get the course
         try:
@@ -338,7 +338,7 @@ class CourseEditTask(INGIniousAdminPage):
         try:
             WebAppTask(course, taskid, data, task_fs, self.plugin_manager, self.task_factory.get_problem_types())
         except Exception as message:
-            return json.dumps({"status": "error", "message": _("Invalid data: {}").format(str(message))})
+            return json.dumps({"status": "error", "message": _("Invalid data: ") + "{}".format(str(message))})
 
         if task_zip:
             try:

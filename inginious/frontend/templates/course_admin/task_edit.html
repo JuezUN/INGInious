@@ -5,7 +5,7 @@ $# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
 $# more information about the licensing of this file.
 $#
 
-$var title: $:_("Edit {}").format(taskid)
+$var title: $:(_("Edit ") + "{}".format(taskid))
 
 $def ColumnF():
     $:template_helper.call('course_admin_menu',course=course,current='tasks')
@@ -19,13 +19,20 @@ $def NavbarF():
             <i class="fa fa-user-secret"></i></a></li>
         <li><a href="$get_homepath()/admin/$course.get_id()/tasks" title=$:_('"Tasks"') data-toggle="tooltip" data-placement="bottom">
             <i class="fa fa-tasks"></i></a></li>
-        <li class="active"><a href="#">$:_("Edit task \"{}\"").format(taskid) <span class="sr-only">$:_("(current)")</span></a></li>
+        <li class="active">
+            <a href="#">
+                $:(_("Edit task ") + "\"{}\"".format(taskid))
+                <span class="sr-only">
+                    $:_("(current)")
+                </span>
+            </a>
+        </li>
     </ol>
 $var Navbar: $:NavbarF()
 
 <div class="row">
     <h2>
-        $:_("Edit task \"{}\"").format(taskid)
+        $:(_("Edit task ") + "\"{}\"".format(taskid))
         <div class="pull-right">
             <div class="btn-group">
                 <button class="btn btn-primary btn-success btn-sm task_edit_submit_button" type="button" onclick="studio_submit()"><i class="fa fa-save"></i> $:_("Save changes")</button>

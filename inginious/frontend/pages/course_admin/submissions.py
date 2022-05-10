@@ -40,7 +40,7 @@ class CourseSubmissionsPage(INGIniousAdminPage):
             data, __ = self.get_submissions(course, input)
             for submission in data:
                 self.submission_manager.replay_job(tasks[submission["taskid"]], submission)
-            msgs.append(_("{0} selected submissions were set for replay.").format(str(len(data))))
+            msgs.append("{0}".format(str(len(data))) + _(" selected submissions were set for replay."))
             
         return self.page(course, msgs)
 
@@ -93,7 +93,7 @@ class CourseSubmissionsPage(INGIniousAdminPage):
             data = data[:int(user_input.limit)]
             
         if len(data) > self._trunc_limit:
-            msgs.append(_("The result contains more than {0} submissions. The displayed submissions are truncated.\n").format(self._trunc_limit))
+            msgs.append(_("The result contains more than ") + "{0}".format(self._trunc_limit) + _(" submissions. The displayed submissions are truncated.\n"))
             data = data[:self._trunc_limit]
         return self.template_helper.get_renderer().course_admin.submissions(course, tasks, users, classrooms, data, statistics, user_input, self._allowed_sort, self._allowed_sort_name, self._valid_formats, msgs, self.show_collapse(user_input))
 

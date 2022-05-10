@@ -36,7 +36,7 @@ class CourseReplaySubmissions(INGIniousSubmissionAdminPage):
             msg = _("Selected submissions were set for replay.")
             for i in user_input.tasks:
                 if i not in tasks.keys():
-                    msg = _("Task with id {} does not exist !").format(i)
+                    msg = _("Task with id ") + "{}".format(i) + _(" does not exist !")
                     error = True
 
             if not error:
