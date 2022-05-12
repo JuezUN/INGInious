@@ -120,7 +120,9 @@ class LTILoginPage(INGIniousPage):
             exists_user_profile = self.database.users.find_one({"$or": [{"username":data["username"]},{"email":data["email"]}]})
 
             if exists_user_profile is None:
-                new_user = course._hook_manager.call_hook('get_user_lti_account', user_data=data)[0]          
+                list_of_hooks = course._hook_manager.call_hook('get_user_lti_account', user_data=data)
+                if list_of_hooks:
+                    new_user = list_of_hooks[0]
 
         else:
             self.user_manager.connect_user(user_profile["username"], user_profile["realname"], user_profile["email"], user_profile["language"])
