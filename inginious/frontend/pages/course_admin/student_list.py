@@ -4,7 +4,7 @@
 # more information about the licensing of this file.
 
 from collections import OrderedDict
-
+import json
 import web
 
 from inginious.frontend.pages.course_admin.utils import make_csv, INGIniousAdminPage
@@ -36,10 +36,12 @@ class CourseStudentListPage(INGIniousAdminPage):
             except:
                 pass
         elif "register" in data:
+            if self.database.users.find_one({"username":data["username"].strip()}) is None:
+                return self.page(course,error = _("Username was not found with an already existing account in UNCode") )
             try:
                 self.user_manager.course_register_user(course, data["username"].strip(), '', True)
             except:
-                pass
+                return self.page(course,error = _("User could not be registered due to internal server error") )
         return self.page(course)
 
     def submission_url_generator(self, username):
