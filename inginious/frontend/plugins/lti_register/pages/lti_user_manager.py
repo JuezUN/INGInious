@@ -62,7 +62,7 @@ class RegisterLTIPage(INGIniousPage):
 
         self.add_static_files(self.template_helper)
 
-        return self.template_helper.get_custom_renderer(_LTI_REGISTRATION_TEMPLATES_PATH).lti_register(parsed_new_user)
+        return self.template_helper.get_custom_renderer(_LTI_REGISTRATION_TEMPLATES_PATH).lti_register(parsed_new_user, self.user_manager.session_logged_in())
     
     def POST(self):
 
