@@ -23,7 +23,10 @@ $def NavbarF():
     </ol>
 $var Navbar: $:NavbarF()
 
-<h2>$:_("Statistics for student {realname} ({username})").format(realname=user_realname, username=username)</h2>
+<h2>
+    $:_("Statistics for student ")
+    $:"{realname} ({username})".format(realname=user_realname, username=username)
+</h2>
 <table class="table">
     <thead>
         <tr>

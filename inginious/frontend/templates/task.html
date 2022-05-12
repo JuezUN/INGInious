@@ -70,9 +70,13 @@ $def ColumnF():
                     $:_("No limitation")
                 $else:
                     $if submission_limit["period"] > 0:
-                        $:_("{nb_submissions} submissions<br /> every {nb_hours} hour(s)").format(nb_submissions=submission_limit["amount"], nb_hours=submission_limit["period"])
+                        $:"{nb_submissions}".format(nb_submissions=submission_limit["amount"])
+                        $:_(" submissions<br /> every ")
+                        $:"{nb_hours}".format(nb_hours=submission_limit["period"])
+                        $:_(" hour(s)")
                     $else:
-                        $:_("{nb_submissions} submissions").format(nb_submissions=submission_limit["amount"])
+                        $:"{nb_submissions}".format(nb_submissions=submission_limit["amount"])
+                        $:_(" submissions")
             </td>
         </tr>
         $ tags = ""
@@ -138,9 +142,11 @@ $def ColumnF():
                 <i class="fa fa-group fa-fw"></i>&nbsp;
                 $ myaggregation = user_manager.get_course_user_aggregation(course)
                 $if course.use_classrooms():
-                    $:_("Classroom : {}").format(myaggregation["description"])
+                    $:_("Classroom : ")
+                    $:"{}".format(myaggregation["description"])
                 $elif len(myaggregation['groups']) > 0 and user_manager.session_username() in myaggregation['groups'][0]['students']:
-                    $:_("Team : {}").format(myaggregation['description'])
+                    $:_("Team : ")
+                    $:"{}".format(myaggregation['description'])
                 $else:
                     $:_("Teams management")
             </a>
@@ -269,7 +275,8 @@ $:task.get_context(user_manager.session_language())
         $:_("Paste this command into your terminal:") <br/>
 
     <pre id="commandssh"></pre>
-    $:_("The password to connect is {}").format("<code></code>")
+    $:_("The password to connect is ")
+    $:"{}".format("<code></code>")
 </div>
 <div id="messages" style="display:none;">
     <span id="answerall">$:_("Please answer to all the questions.")</span>
@@ -320,7 +327,8 @@ $else:
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         $if len(task.get_problems()) != 1:
-                            $:_("Question {}").format(str(key+1)):
+                            $:_("Question ")
+                            $:"{}".format(str(key+1)):
                         $problem.get_name(user_manager.session_language())
                     </h3>
                 </div>
@@ -362,7 +370,9 @@ $else:
         <button type="submit" class="btn btn-default btn-lg btn-block center-block" disabled="disabled">
             $(_('You have reached the submission limit.') if not task.is_group_task() else _('Your group have reached the submission limit.') if course.use_classrooms() else _('Your team have reached the submission limit.'))
         $if task.get_submission_limit()["period"] > 0:
-            <br/> $:_("It will be refilled within the next {} hour(s)").format(task.get_submission_limit()["period"])
+            <br/> $:_("It will be refilled within the next ")
+                  $:"{}".format(task.get_submission_limit()["period"])
+                  $:_(" hour(s)")
         </button>
     $else:
         <button type="submit" class="btn btn-default btn-lg btn-block center-block" disabled="disabled">$:_("You are not allowed to submit")</button>

@@ -186,7 +186,7 @@ class CourseEditAggregation(INGIniousAdminPage):
                 aggregation = self.database.aggregations.find_one({"_id": ObjectId(classid), "courseid": courseid}) if ObjectId.is_valid(classid) else None
 
                 if aggregation is None:
-                    msg = _("Classroom with id {} not found.").format(classid) if course.use_classrooms() else _("Team with id {} not found.").format(classid)
+                    msg = _("Classroom with id ") + "{}".format(classid) + _(" not found.") if course.use_classrooms() else _("Team with id ") + "{}".format(classid) + _("not found.")
                     error = True
                 elif aggregation['default'] and aggregationid:
                     msg = _("You can't remove your default classroom.")

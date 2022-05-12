@@ -25,7 +25,8 @@ $#
                 </div>
                 <div class="modal-body">
                     <input type="hidden" name="register_courseid" value="$course.get_id()">
-                    $:_("This will enroll you in the course {}.").format(course.get_name(user_manager.session_language()))
+                    $:_("This will enroll you in the course ")
+                    $:"{}.".format(course.get_name(user_manager.session_language())
                     $if course.is_password_needed_for_registration():
                     <div class="form-group">
                         <label for="register_password" class="control-label">$:_("Password") :</label>

@@ -73,7 +73,10 @@ $elif msg:
     </div>
 
 $if len(myteam["groups"]) > 0 and username in myteam["groups"][0]["students"]:
-    <h3>$:_("My team : {}").format(myteam["description"])</h3>
+    <h3>
+        $:_("My team : ")
+        $:"{}".format(myteam["description"])
+    </h3>
     <div class="panel panel-info">
         <div class="panel-heading" role="tab" id="heading">
             <h4 class="panel-title">
@@ -142,7 +145,10 @@ $if not len(teams) == 0:
     <h3 style="margin-bottom: 20px">$:_("All teams")</h3>
     $for index, team in enumerate(teams):
         $if len(team["groups"])>0:
-            <h4>$:_("Team : {}").format(team["description"])</h4>
+            <h4>
+                $:_("Team : ")
+                $:"{}".format(team["description"])
+            </h4>
             $ group = team["groups"][0]
                     $if len(myteam["groups"]) == 0 or username not in myteam["groups"][0]["students"] and (group["size"]-len(group["students"])) > 0 and course.can_students_choose_group():
                         <div class="panel panel-success">
@@ -152,7 +158,8 @@ $if not len(teams) == 0:
                     <h4 class="panel-title">
                         $:_("Students")
                         $if len(myteam["groups"]) == 0 or username not in myteam["groups"][0]["students"] and (group["size"]-len(group["students"])) > 0 and course.can_students_choose_group():
-                            $:_("(available : {})").format(group["size"]-len(group["students"]))
+                            $:_("(available: )")
+                            $:"{}".format(group["size"]-len(group["students"]))
                             <div class="pull-right">
                                 <a href="?register_group=$team['_id']" data-toggle="tooltip" data-placement="left" title="$:_('Join in')">
                                     <i style="color:white;" class="fa fa-sign-in"></i>
