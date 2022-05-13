@@ -9,6 +9,7 @@ import codecs
 import csv
 import io
 from collections import OrderedDict
+import re
 
 import web
 from bson.objectid import ObjectId
@@ -57,7 +58,7 @@ class INGIniousSubmissionAdminPage(INGIniousAdminPage):
     def _validate_list(self, usernames):
         """ Prevent MongoDB injections by verifying arrays sent to it """
         for i in usernames:
-            if not id_checker(i):
+            if not bool(re.match(r"^[-_.|~0-9A-Z]{4,}$", i, re.IGNORECASE)):
                 raise web.notfound()
 
     def get_selected_submissions(self, course, filter_type, selected_tasks, users, aggregations, stype):
