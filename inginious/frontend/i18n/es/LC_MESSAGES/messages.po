@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-12 15:42-0500\n"
+"POT-Creation-Date: 2022-05-15 17:14-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -527,13 +527,13 @@ msgstr "Evaluación de las tareas (con éxito)"
 msgid "Evaluation submissions (Failed)"
 msgstr "Evaluación de las tareas (han fallado)"
 
-#: inginious/frontend/pages/course_admin/student_list.py:40
+#: inginious/frontend/pages/course_admin/student_list.py:39
 msgid "Username was not found with an already existing account in UNCode"
-msgstr ""
+msgstr "Nombre de usuario no corresponde a una cuenta creada en UNCode"
 
-#: inginious/frontend/pages/course_admin/student_list.py:44
+#: inginious/frontend/pages/course_admin/student_list.py:43
 msgid "User could not be registered due to internal server error"
-msgstr ""
+msgstr "Usuario no pudo ser registrado debido a un error interno del servidor"
 
 #: inginious/frontend/pages/course_admin/submissions.py:24
 msgid "Submitted on"
@@ -671,13 +671,13 @@ msgstr "Ha ocurrido un error durante el cambio de directorio de los archivos"
 msgid "An error occurred while deleting the files"
 msgstr "Ha ocurrido un error eliminando los archivos"
 
-#: inginious/frontend/pages/course_admin/utils.py:256
+#: inginious/frontend/pages/course_admin/utils.py:257
 #: inginious/frontend/templates/course_admin/settings.html:17
 #: inginious/frontend/templates/course_admin/settings.html:21
 msgid "Course settings"
 msgstr "Configuración del curso"
 
-#: inginious/frontend/pages/course_admin/utils.py:258
+#: inginious/frontend/pages/course_admin/utils.py:259
 #: inginious/frontend/templates/classroom.html:104
 #: inginious/frontend/templates/course_admin/classroom_edit.html:113
 #: inginious/frontend/templates/course_admin/student_list.html:19
@@ -689,14 +689,14 @@ msgstr "Configuración del curso"
 msgid "Students"
 msgstr "Estudiantes"
 
-#: inginious/frontend/pages/course_admin/utils.py:262
+#: inginious/frontend/pages/course_admin/utils.py:263
 #: inginious/frontend/templates/course_admin/aggregation_list.html:21
 #: inginious/frontend/templates/course_admin/aggregation_list.html:27
 #: inginious/frontend/templates/course_admin/submissions.html:66
 msgid "Classrooms"
 msgstr "Grupos"
 
-#: inginious/frontend/pages/course_admin/utils.py:262
+#: inginious/frontend/pages/course_admin/utils.py:263
 #: inginious/frontend/templates/course_admin/aggregation_list.html:21
 #: inginious/frontend/templates/course_admin/aggregation_list.html:27
 #: inginious/frontend/templates/course_admin/settings.html:89
@@ -705,14 +705,14 @@ msgstr "Grupos"
 msgid "Teams"
 msgstr "Equipos"
 
-#: inginious/frontend/pages/course_admin/utils.py:264
+#: inginious/frontend/pages/course_admin/utils.py:265
 #: inginious/frontend/templates/course_admin/submissions.html:75
 #: inginious/frontend/templates/course_admin/task_list.html:18
 #: inginious/frontend/templates/course_admin/task_list.html:23
 msgid "Tasks"
 msgstr "Tareas"
 
-#: inginious/frontend/pages/course_admin/utils.py:265
+#: inginious/frontend/pages/course_admin/utils.py:266
 #: inginious/frontend/templates/course_admin/submissions.html:8
 #: inginious/frontend/templates/course_admin/submissions.html:19
 #: inginious/frontend/templates/course_admin/submissions.html:29
@@ -720,21 +720,21 @@ msgstr "Tareas"
 msgid "View submissions"
 msgstr "Ver tareas"
 
-#: inginious/frontend/pages/course_admin/utils.py:266
+#: inginious/frontend/pages/course_admin/utils.py:267
 #: inginious/frontend/templates/course_admin/download.html:8
 #: inginious/frontend/templates/course_admin/download.html:19
 #: inginious/frontend/templates/course_admin/download.html:23
 msgid "Download submissions"
 msgstr "Descargar tareas"
 
-#: inginious/frontend/pages/course_admin/utils.py:269
+#: inginious/frontend/pages/course_admin/utils.py:270
 #: inginious/frontend/templates/course_admin/replay.html:8
 #: inginious/frontend/templates/course_admin/replay.html:19
 #: inginious/frontend/templates/course_admin/replay.html:23
 msgid "Replay submissions"
 msgstr "Reinicializa las tareas"
 
-#: inginious/frontend/pages/course_admin/utils.py:270
+#: inginious/frontend/pages/course_admin/utils.py:271
 #: inginious/frontend/templates/course_admin/danger_zone.html:8
 #: inginious/frontend/templates/course_admin/danger_zone.html:19
 #: inginious/frontend/templates/course_admin/danger_zone.html:23
