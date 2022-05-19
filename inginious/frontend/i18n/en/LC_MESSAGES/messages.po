@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-14 21:51-0500\n"
+"POT-Creation-Date: 2022-05-19 13:50-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -492,6 +492,14 @@ msgstr ""
 msgid "Evaluation submissions (Failed)"
 msgstr ""
 
+#: inginious/frontend/pages/course_admin/student_list.py:39
+msgid "Username was not found with an already existing account in UNCode"
+msgstr ""
+
+#: inginious/frontend/pages/course_admin/student_list.py:43
+msgid "User could not be registered due to internal server error"
+msgstr ""
+
 #: inginious/frontend/pages/course_admin/submissions.py:24
 msgid "Submitted on"
 msgstr ""
@@ -622,13 +630,13 @@ msgstr ""
 msgid "An error occurred while deleting the files"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/utils.py:256
+#: inginious/frontend/pages/course_admin/utils.py:257
 #: inginious/frontend/templates/course_admin/settings.html:17
 #: inginious/frontend/templates/course_admin/settings.html:21
 msgid "Course settings"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/utils.py:258
+#: inginious/frontend/pages/course_admin/utils.py:259
 #: inginious/frontend/templates/classroom.html:104
 #: inginious/frontend/templates/course_admin/classroom_edit.html:113
 #: inginious/frontend/templates/course_admin/student_list.html:19
@@ -640,14 +648,14 @@ msgstr ""
 msgid "Students"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/utils.py:262
+#: inginious/frontend/pages/course_admin/utils.py:263
 #: inginious/frontend/templates/course_admin/aggregation_list.html:21
 #: inginious/frontend/templates/course_admin/aggregation_list.html:27
 #: inginious/frontend/templates/course_admin/submissions.html:66
 msgid "Classrooms"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/utils.py:262
+#: inginious/frontend/pages/course_admin/utils.py:263
 #: inginious/frontend/templates/course_admin/aggregation_list.html:21
 #: inginious/frontend/templates/course_admin/aggregation_list.html:27
 #: inginious/frontend/templates/course_admin/settings.html:89
@@ -656,14 +664,14 @@ msgstr ""
 msgid "Teams"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/utils.py:264
+#: inginious/frontend/pages/course_admin/utils.py:265
 #: inginious/frontend/templates/course_admin/submissions.html:75
 #: inginious/frontend/templates/course_admin/task_list.html:18
 #: inginious/frontend/templates/course_admin/task_list.html:23
 msgid "Tasks"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/utils.py:265
+#: inginious/frontend/pages/course_admin/utils.py:266
 #: inginious/frontend/templates/course_admin/submissions.html:8
 #: inginious/frontend/templates/course_admin/submissions.html:19
 #: inginious/frontend/templates/course_admin/submissions.html:29
@@ -671,21 +679,21 @@ msgstr ""
 msgid "View submissions"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/utils.py:266
+#: inginious/frontend/pages/course_admin/utils.py:267
 #: inginious/frontend/templates/course_admin/download.html:8
 #: inginious/frontend/templates/course_admin/download.html:19
 #: inginious/frontend/templates/course_admin/download.html:23
 msgid "Download submissions"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/utils.py:269
+#: inginious/frontend/pages/course_admin/utils.py:270
 #: inginious/frontend/templates/course_admin/replay.html:8
 #: inginious/frontend/templates/course_admin/replay.html:19
 #: inginious/frontend/templates/course_admin/replay.html:23
 msgid "Replay submissions"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/utils.py:270
+#: inginious/frontend/pages/course_admin/utils.py:271
 #: inginious/frontend/templates/course_admin/danger_zone.html:8
 #: inginious/frontend/templates/course_admin/danger_zone.html:19
 #: inginious/frontend/templates/course_admin/danger_zone.html:23
@@ -5229,11 +5237,11 @@ msgstr ""
 msgid "Teaching staff"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/student_list.html:38
+#: inginious/frontend/templates/course_admin/student_list.html:43
 msgid "Registered staff"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/student_list.html:43
+#: inginious/frontend/templates/course_admin/student_list.html:48
 msgid "Registered students"
 msgstr ""
 
