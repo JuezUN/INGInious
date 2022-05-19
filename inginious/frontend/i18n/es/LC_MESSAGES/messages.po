@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-15 17:14-0500\n"
+"POT-Creation-Date: 2022-05-19 13:50-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1088,8 +1088,8 @@ msgstr "¿Estás seguro de que quieres eliminar todos los archivos?"
 #: inginious/frontend/plugins/UNCode/static/task_files_upload_multiple_modal.html:36
 #: inginious/frontend/plugins/course_creation/templates/create_course_modal.html:68
 #: inginious/frontend/plugins/grader_generator/pages/templates/notebook_grader_test_form_modal.html:105
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:36
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:59
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:39
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:62
 #: inginious/frontend/plugins/manual_scoring/pages/templates/custom_rubric_modal.html:77
 #: inginious/frontend/plugins/register_students/static/register_students_modal.html:67
 #: inginious/frontend/plugins/task_hints/pages/templates/hints_edit_modal.html:34
@@ -1230,7 +1230,7 @@ msgstr ""
 #: inginious/frontend/templates/auth.html:16
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:81
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
-#: inginious/frontend/templates/lti_login.html:30
+#: inginious/frontend/templates/lti_login.html:36
 #: inginious/frontend/templates/register_button.html:37
 msgid "Close"
 msgstr "Cerrar"
@@ -2362,19 +2362,27 @@ msgstr "Registro por LTI"
 msgid "Create a new account"
 msgstr "Crear una nueva cuenta en UNCode"
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:14
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:9
+msgid ""
+"You are already logged in with an existing UNCode account, close this "
+"window and try with \"Bind your account\" option."
+msgstr ""
+"Ya ha iniciado sesión con una cuenta UNCode existente, cierre esta "
+"ventana e intente con la opción \"Enlaza tu cuenta de UNCode\""
+
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:17
 msgid "The following operations were successful when registering the user:"
 msgstr "Ocurrieron algunos errores mientras se registraba el usuario."
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:17
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:20
 msgid "Some errors occurred while registering the user:"
 msgstr "Ocurrieron algunos errores mientras se registraba el usuario."
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:22
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:25
 msgid "Your new user account data"
 msgstr "Los datos de la nueva cuenta son"
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:25
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:28
 msgid ""
 "You are going to create a new user account on the UNCode platform. The "
 "following user data is used to create your account:"
@@ -2382,21 +2390,21 @@ msgstr ""
 "Una nueva cuenta será creada en UNCode. Los siguientes datos serán "
 "utilizados para crear la cuenta:"
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:27
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:30
 msgid "Your complate name: "
 msgstr "Nombre completo:"
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:28
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:54
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:31
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:57
 msgid "Your username: "
 msgstr "Tu nombre de usuario:"
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:29
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:55
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:32
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:58
 msgid "Your email: "
 msgstr "Tu correo: "
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:31
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:34
 msgid ""
 "Do you want to create your user account with these data?. An email will "
 "be sent to you with the credentials of your UNCode account and the "
@@ -2405,7 +2413,7 @@ msgstr ""
 "¿Quieres crear una nueva cuenta con estos datos?. Se enviará un correo "
 "con las credenciales de tu cuenta y los pasos de activación."
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:32
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:35
 msgid ""
 "Once you have activated your UNCode account, go back to the task page in "
 "the course and click the <strong>\"Bind your UNCode account\"</strong> "
@@ -2414,7 +2422,7 @@ msgstr ""
 "Una vez que tu cuenta esté activa, dirígete a la tarea y enlaza tu cuenta"
 " de UNCode."
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:33
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:36
 msgid ""
 "<strong>Note:</strong> You must bind your account each time you access a "
 "new task in a course."
@@ -2422,31 +2430,31 @@ msgstr ""
 "<strong>Nota:</strong> Debes crear un enlace cuando ingreses a una nueva "
 "tarea en un curso."
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:37
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:60
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:40
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:63
 msgid "Create account"
 msgstr "Crear la cuenta"
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:48
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:51
 msgid "Create a new UNCode account"
 msgstr "Crear una nueva cuenta en UNCode"
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:51
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:54
 msgid "Create a new UNCode account with the following data:"
 msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:53
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:56
 msgid "Your name: "
 msgstr "Tu nombre: "
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:67
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:70
 msgid ""
 "No username or email have been provided to create your account. Please "
 "contact your course administrator to change the course privacy options to"
 " share your username and email with UNCode"
 msgstr ""
 
-#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:70
+#: inginious/frontend/plugins/lti_register/pages/templates/lti_register.html:73
 msgid ""
 "No user data has been provided to create your account. If you entered the"
 " page manually or changed the language, please close this window and "
@@ -4386,44 +4394,51 @@ msgstr "Crea enlace con mi cuenta"
 msgid "Login"
 msgstr "Conectarse"
 
-#: inginious/frontend/templates/lti_login.html:16
-msgid ""
-"<h2 class=\"text-justify\">Hello!<br/><small>Welcome on the UNCode "
-"platform.</small></h2>"
-msgstr ""
+#: inginious/frontend/templates/lti_login.html:17
+msgid "Hello!"
+msgstr "Hola!"
 
-#: inginious/frontend/templates/lti_login.html:25
+#: inginious/frontend/templates/lti_login.html:20
+msgid "Welcome on the UNCode platform."
+msgstr "Estás ingresando a UNCode."
+
+#: inginious/frontend/templates/lti_login.html:31
 msgid ""
 "In order to use UNCode via this platform, please bind your existing "
 "account or create a new one."
 msgstr ""
+"Para usar UNCode a través de esta plataforma, por favor vincule su cuenta"
+" existente o cree una nueva."
 
-#: inginious/frontend/templates/lti_login.html:31
+#: inginious/frontend/templates/lti_login.html:37
 msgid "Invalid login/password"
 msgstr "Nombre de usuario o contraseña inválidos"
 
-#: inginious/frontend/templates/lti_login.html:35
+#: inginious/frontend/templates/lti_login.html:41
 msgid ""
 "If you don't have a UNCode account yet, you can create a new one with "
 "your existing account in this platform or you can create a different "
 "account via UNCode."
 msgstr ""
+"Si aún no tiene una cuenta UNCode, puede crear una nueva con la "
+"información de su cuenta existente en esta plataforma o puede crear una "
+"cuenta diferente a través de UNCode."
 
-#: inginious/frontend/templates/lti_login.html:36
+#: inginious/frontend/templates/lti_login.html:42
 msgid "Create a UNCode account via this platform"
-msgstr ""
+msgstr "Cree una cuenta UNCode a través de esta plataforma"
 
-#: inginious/frontend/templates/lti_login.html:37
+#: inginious/frontend/templates/lti_login.html:43
 msgid "If you already have an account, please bind your account to this platform."
-msgstr ""
+msgstr "Si ya tiene una cuenta, por favor vincule su cuenta a esta plataforma."
 
-#: inginious/frontend/templates/lti_login.html:39
+#: inginious/frontend/templates/lti_login.html:45
 msgid "Bind your UNCode account"
 msgstr "Enlaza tu cuenta de UNCode"
 
-#: inginious/frontend/templates/lti_login.html:40
+#: inginious/frontend/templates/lti_login.html:46
 msgid "Refresh"
-msgstr ""
+msgstr "Actualizar la página"
 
 #: inginious/frontend/templates/maintenance.html:16
 msgid "Maintenance"
@@ -4906,7 +4921,6 @@ msgid "All teams"
 msgstr "Todos los equipos"
 
 #: inginious/frontend/templates/team.html:161
-#, fuzzy
 msgid "(available: )"
 msgstr "(disponible: )"
 
@@ -7952,5 +7966,10 @@ msgstr "Extensiones permitidas"
 #~ msgid ""
 #~ ">\n"
 #~ "                    $:_("
+#~ msgstr ""
+
+#~ msgid ""
+#~ "<h2 class=\"text-justify\">Hello!<br/><small>Welcome "
+#~ "on the UNCode platform.</small></h2>"
 #~ msgstr ""
 
