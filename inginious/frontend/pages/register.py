@@ -138,7 +138,7 @@ You can check the data policy here:
 
         if not error:
             reset_hash = hashlib.sha512(str(random.getrandbits(256)).encode("utf-8")).hexdigest()
-            regex_recovery_email = {"$regex": data["recovery_email"], "$options": "i"}
+            regex_recovery_email = {"$regex": "^"+data["recovery_email"]+"$", "$options": "i"}
             user = self.database.users.find_one_and_update({"email": regex_recovery_email}, {"$set": {"reset": reset_hash}})
             if user is None:
                 error = True
