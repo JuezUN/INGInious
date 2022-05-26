@@ -4299,7 +4299,7 @@ msgstr "Mis cursos"
 
 #: inginious/frontend/templates/layout.html:110
 msgid "Preferences"
-msgstr ""
+msgstr "Preferencias"
 
 #: inginious/frontend/templates/layout.html:112
 msgid "Service status"
@@ -4307,7 +4307,7 @@ msgstr ""
 
 #: inginious/frontend/templates/layout.html:115
 msgid "Log out"
-msgstr ""
+msgstr "Cerrar sesión"
 
 #: inginious/frontend/templates/layout.html:131
 msgid "English"

@@ -84,7 +84,7 @@ class MultilangForm(GraderForm):
         total_cases = len(self.task_data['grader_test_cases'])
         self.task_data['time_limit_test_case'] = int(ceil(float(self.task_data.get("time_limit_test_case", 2))))
         self.task_data['memory_limit_test_case'] = int(ceil(float(self.task_data.get("memory_limit_test_case", 50))))
-        self.task_data['output_limit_test_case'] = int(ceil(float(self.task_data.get("output_limit_test_case", 2))))
+        self.task_data['output_limit_test_case'] = float(self.task_data.get("output_limit_test_case", 2))
 
         self.task_data["ignore_presentation_error"] = "ignore_presentation_error" in self.task_data
 
