@@ -21,6 +21,7 @@ class CourseStudentListPage(INGIniousAdminPage):
         """ POST request """
         course, __ = self.get_course_and_check_rights(courseid, None, False)
         data = web.input()
+        success_message = ""
         if "remove" in data:
             try:
                 if data["type"] == "all":
@@ -32,22 +33,29 @@ class CourseStudentListPage(INGIniousAdminPage):
                         self.database.aggregations.replace_one({"_id": aggregation["_id"]}, aggregation)
                 else:
                     self.user_manager.course_unregister_user(course, data["username"])
+                    success_message = _("User was successfully removed")
             except:
                 pass
         elif "register" in data:
             if self.database.users.find_one({"username":data["username"].strip()}) is None:
-                return self.page(course, error = _("Username was not found with an already existing account in UNCode") )
+                possible_user = self.database.users.find_one({"email":data["username"].strip()})
+                if possible_user is None:
+                    return self.page(course, error = _("Username nor email was not found with an already existing account in UNCode") )
+                else :
+                    data["username"] = possible_user["username"]
+
             try:
                 self.user_manager.course_register_user(course, data["username"].strip(), '', True)
+                success_message = _("User was successfully added")
             except:
                 return self.page(course, error = _("User could not be registered due to internal server error") )
-        return self.page(course)
+        return self.page(course, success = success_message)
 
     def submission_url_generator(self, username):
         """ Generates a submission url """
         return "?format=taskid%2Fusername&users=" + username
 
-    def page(self, course, error="", post=False):
+    def page(self, course, error="", post=False, success=""):
         """ Get all data and display the page """
         users = sorted(list(self.user_manager.get_users_info(self.user_manager.get_course_registered_users(course, False)).items()),
                        key=lambda k: k[1][0] if k[1] is not None else "")
@@ -67,4 +75,4 @@ class CourseStudentListPage(INGIniousAdminPage):
         if "csv" in web.input():
             return make_csv(user_data)
 
-        return self.template_helper.get_renderer().course_admin.student_list(course, list(user_data.values()), error, post)
+        return self.template_helper.get_renderer().course_admin.student_list(course, list(user_data.values()), error, post,success)
