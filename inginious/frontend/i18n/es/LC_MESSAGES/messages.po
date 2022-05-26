@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-19 15:10-0500\n"
+"POT-Creation-Date: 2022-05-26 16:39-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -527,11 +527,20 @@ msgstr "Evaluación de las tareas (con éxito)"
 msgid "Evaluation submissions (Failed)"
 msgstr "Evaluación de las tareas (han fallado)"
 
-#: inginious/frontend/pages/course_admin/student_list.py:39
-msgid "Username was not found with an already existing account in UNCode"
-msgstr "Nombre de usuario no corresponde a una cuenta creada en UNCode"
+#: inginious/frontend/pages/course_admin/student_list.py:36
+msgid "User was successfully removed"
+msgstr "El usuario fue removido satisfactoriamente."
 
 #: inginious/frontend/pages/course_admin/student_list.py:43
+msgid "Username nor email was not found with an already existing account in UNCode"
+msgstr "Nombre de usuario ni correo corresponde a una cuenta creada en UNCode"
+
+#: inginious/frontend/pages/course_admin/student_list.py:49
+#, fuzzy
+msgid "User was successfully added"
+msgstr "El curso fue creado satisfactoriamente."
+
+#: inginious/frontend/pages/course_admin/student_list.py:51
 msgid "User could not be registered due to internal server error"
 msgstr "Usuario no pudo ser registrado debido a un error interno del servidor"
 
@@ -5585,11 +5594,11 @@ msgstr "\"Ver todos los envíos\""
 msgid "Teaching staff"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/student_list.html:43
+#: inginious/frontend/templates/course_admin/student_list.html:48
 msgid "Registered staff"
 msgstr "Personal registrado"
 
-#: inginious/frontend/templates/course_admin/student_list.html:48
+#: inginious/frontend/templates/course_admin/student_list.html:53
 msgid "Registered students"
 msgstr "Estudiantes inscritos"
 
