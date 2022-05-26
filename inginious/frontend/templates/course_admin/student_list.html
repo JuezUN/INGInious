@@ -33,6 +33,11 @@ $var Navbar: $:NavbarF()
         </li>
 
     </ul>
+    $if error:
+        <div class="alert fade in alert-dismissible alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            $error
+        </div>
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane" id="tab_staff">
             <h4>$:_("Registered staff"): $len(course.get_staff())</h4>
