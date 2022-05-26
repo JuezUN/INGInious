@@ -40,16 +40,15 @@ class CourseStudentListPage(INGIniousAdminPage):
             if self.database.users.find_one({"username":data["username"].strip()}) is None:
                 possible_user = self.database.users.find_one({"email":data["username"].strip()})
                 if possible_user is None:
-                    return self.page(course, error = _("Username nor email was not found with an already existing account in UNCode") )
-                else :
-                    data["username"] = possible_user["username"]
+                    return self.page(course, error=_("Username nor email was not found with an already existing account in UNCode") )
+                data["username"] = possible_user["username"]
 
             try:
                 self.user_manager.course_register_user(course, data["username"].strip(), '', True)
                 success_message = _("User was successfully added")
             except:
                 return self.page(course, error = _("User could not be registered due to internal server error") )
-        return self.page(course, success = success_message)
+        return self.page(course, success=success_message)
 
     def submission_url_generator(self, username):
         """ Generates a submission url """
@@ -75,4 +74,4 @@ class CourseStudentListPage(INGIniousAdminPage):
         if "csv" in web.input():
             return make_csv(user_data)
 
-        return self.template_helper.get_renderer().course_admin.student_list(course, list(user_data.values()), error, post,success)
+        return self.template_helper.get_renderer().course_admin.student_list(course, list(user_data.values()), error, post, success)
