@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-19 15:10-0500\n"
+"POT-Creation-Date: 2022-05-26 12:12-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -4307,7 +4307,7 @@ msgstr "Mis cursos"
 
 #: inginious/frontend/templates/layout.html:110
 msgid "Preferences"
-msgstr ""
+msgstr "Preferencias"
 
 #: inginious/frontend/templates/layout.html:112
 msgid "Service status"
@@ -4315,7 +4315,7 @@ msgstr ""
 
 #: inginious/frontend/templates/layout.html:115
 msgid "Log out"
-msgstr ""
+msgstr "Cerrar sesión"
 
 #: inginious/frontend/templates/layout.html:131
 msgid "English"
