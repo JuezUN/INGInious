@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-26 12:12-0500\n"
+"POT-Creation-Date: 2022-05-26 20:03-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -516,11 +516,21 @@ msgstr ""
 msgid "Evaluation submissions (Failed)"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/student_list.py:39
-msgid "Username was not found with an already existing account in UNCode"
+#: inginious/frontend/pages/course_admin/student_list.py:36
+msgid "User was successfully removed"
 msgstr ""
 
 #: inginious/frontend/pages/course_admin/student_list.py:43
+msgid ""
+"Username nor email was not found with an already existing account in "
+"UNCode"
+msgstr ""
+
+#: inginious/frontend/pages/course_admin/student_list.py:48
+msgid "User was successfully added"
+msgstr ""
+
+#: inginious/frontend/pages/course_admin/student_list.py:50
 msgid "User could not be registered due to internal server error"
 msgstr ""
 
@@ -5261,11 +5271,11 @@ msgstr ""
 msgid "Teaching staff"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/student_list.html:43
+#: inginious/frontend/templates/course_admin/student_list.html:48
 msgid "Registered staff"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/student_list.html:48
+#: inginious/frontend/templates/course_admin/student_list.html:53
 msgid "Registered students"
 msgstr ""
 
@@ -7675,5 +7685,8 @@ msgstr ""
 #~ msgid ""
 #~ "<h2 class=\"text-justify\">Hello!<br/><small>Welcome "
 #~ "on the UNCode platform.</small></h2>"
+#~ msgstr ""
+
+#~ msgid "Username was not found with an already existing account in UNCode"
 #~ msgstr ""
 
