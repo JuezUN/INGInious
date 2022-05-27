@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-26 16:59-0500\n"
+"POT-Creation-Date: 2022-05-26 20:03-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -530,12 +530,11 @@ msgid ""
 "UNCode"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/student_list.py:49
-#, fuzzy
+#: inginious/frontend/pages/course_admin/student_list.py:48
 msgid "User was successfully added"
-msgstr "Votre mot de passe a bien été modifié."
+msgstr ""
 
-#: inginious/frontend/pages/course_admin/student_list.py:51
+#: inginious/frontend/pages/course_admin/student_list.py:50
 msgid "User could not be registered due to internal server error"
 msgstr ""
 

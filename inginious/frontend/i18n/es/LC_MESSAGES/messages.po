@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-26 16:59-0500\n"
+"POT-Creation-Date: 2022-05-26 20:03-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -535,14 +535,15 @@ msgstr "El usuario fue removido satisfactoriamente."
 msgid ""
 "Username nor email was not found with an already existing account in "
 "UNCode"
-msgstr "Nombre de usuario ni correo corresponde a una cuenta creada en UNCode"
+msgstr ""
+"Ni el nombre de usuario, ni el correo corresponden a una cuenta existente"
+" en UNCode"
 
-#: inginious/frontend/pages/course_admin/student_list.py:49
-#, fuzzy
+#: inginious/frontend/pages/course_admin/student_list.py:48
 msgid "User was successfully added"
-msgstr "El curso fue creado satisfactoriamente."
+msgstr "El usuario fue añadido satisfactoriamente"
 
-#: inginious/frontend/pages/course_admin/student_list.py:51
+#: inginious/frontend/pages/course_admin/student_list.py:50
 msgid "User could not be registered due to internal server error"
 msgstr "Usuario no pudo ser registrado debido a un error interno del servidor"
 
@@ -4318,7 +4319,7 @@ msgstr "Mis cursos"
 
 #: inginious/frontend/templates/layout.html:110
 msgid "Preferences"
-msgstr ""
+msgstr "Preferencias"
 
 #: inginious/frontend/templates/layout.html:112
 msgid "Service status"
@@ -4326,7 +4327,7 @@ msgstr ""
 
 #: inginious/frontend/templates/layout.html:115
 msgid "Log out"
-msgstr ""
+msgstr "Cerrar sesión"
 
 #: inginious/frontend/templates/layout.html:131
 msgid "English"
