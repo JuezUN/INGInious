@@ -108,32 +108,82 @@ $else:
 	$if len(open_courses) != 0:
         $ username = user_manager.session_username()
         $for courseid, course in open_courses.items():
-            <a href="$('{}/course/{}'.format(get_homepath(),courseid) if not course.is_lti() or username in course.get_admins() or user_manager.user_is_superadmin() else '#')"
-               class="list-group-item row $(('list-group-item-warning' if not course.is_lti() else 'list-group-item-info') if not course.is_open_to_non_staff() or course.is_lti() else '')">
-                <div class="col-xs-12 col-md-8">
-                    $course.get_name(user_manager.session_language())
-                </div>
-                <div class="col-xs-12 col-md-4">
-                    <i class="pull-right">
-                        $if not course.is_open_to_non_staff() or course.is_lti():
-                            $if course.is_lti():
-                                <i data-toggle="tooltip" title="" data-placement="top" class="pull-right fa fa-fw fa-external-link" data-original-title="External platform"></i>
-                                $:_("LTI course") -
-                            $else:
-                                $:_("Hidden course") -
+            $ is_lti_student = (course.is_lti() and not user_manager.user_is_superadmin() and (username not in course.get_admins()))
+            $if (course.is_lti() and not user_manager.user_is_superadmin() and (username not in course.get_admins())):
+                <a 
+                class="list-group-item row $(('list-group-item-warning' if not course.is_lti() else 'list-group-item-info') if not course.is_open_to_non_staff() or course.is_lti() else '')"
+                data-toggle="modal" data-target="$('#modalLTI' if username not in course.get_admins() or username not in course.get_tutors() else '')">
+                    <div class="col-xs-12 col-md-8">
+                        $course.get_name(user_manager.session_language())
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <i class="pull-right">
+                            $if not course.is_open_to_non_staff() or course.is_lti():
+                                $if course.is_lti():
+                                    <i data-toggle="tooltip" title="" data-placement="top" class="pull-right fa fa-fw fa-external-link" data-original-title="External platform"></i>
+                                    $:_("LTI course") -
+                                $else:
+                                    $:_("Hidden course") -  
 
-                        $if username in course.get_admins() or user_manager.user_is_superadmin():
-                            $:_("Administrator")
-                        $elif username in course.get_tutors():
-                            $:_("Tutor")
-                        $elif user_manager.course_is_user_registered(course):
-                            $:_("Student")
-                    </i>
-                </div>
-            </a>
+                            $if username in course.get_admins() or user_manager.user_is_superadmin():
+                                $:_("Administrator")
+                            $elif username in course.get_tutors():
+                                $:_("Tutor")
+                            $elif user_manager.course_is_user_registered(course):
+                                $:_("Student")
+                        </i>
+                    </div>
+                </a>
+            $else:
+                <a href="$('{}/course/{}'.format(get_homepath(),courseid) if not course.is_lti() or username in course.get_admins() or user_manager.user_is_superadmin() else '#')"
+                class="list-group-item row $(('list-group-item-warning' if not course.is_lti() else 'list-group-item-info') if not course.is_open_to_non_staff() or course.is_lti() else '')">
+                    <div class="col-xs-12 col-md-8">
+                        $course.get_name(user_manager.session_language())
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <i class="pull-right">
+                            $if not course.is_open_to_non_staff() or course.is_lti():
+                                $if course.is_lti():
+                                    <i data-toggle="tooltip" title="" data-placement="top" class="pull-right fa fa-fw fa-external-link" data-original-title="External platform"></i>
+                                    $:_("LTI course") -
+                                $else:
+                                    $:_("Hidden course") -
+
+                            $if username in course.get_admins() or user_manager.user_is_superadmin():
+                                $:_("Administrator")
+                            $elif username in course.get_tutors():
+                                $:_("Tutor")
+                            $elif user_manager.course_is_user_registered(course):
+                                $:_("Student")
+                        </i>
+                    </div>
+                </a>
     $else:
         <a href="#register" class="list-group-item row disabled">$:_("You are not registered to any course")</a>
 </div>
+
+<div class="modal fade" id="modalLTI" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            
+            <div class="modal-body">
+                <div id="alert-onmodal" class="alert show" role="alert">
+                    <div class="list-group-item list-group-item-warning">
+                        
+                        <h4><i class="fa fa-info-circle"></i>$:_("You are trying to enter to a LTI course. LTI courses are only accessible via the LMS platforms such as Moodle or OpenEdx")
+                        </h4>
+                    </div>
+                         
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">$:_("Close")</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 $if len(open_courses) > 0:
     <div class="align-center">
         <nav aria-label="My courses pagination">
@@ -171,5 +221,9 @@ $if len(open_courses) > 0:
         }
         location.href = new_path;
     }
+
+    
+
+    
 </script>
 

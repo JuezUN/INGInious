@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-19 15:10-0500\n"
+"POT-Creation-Date: 2022-05-26 19:13-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -1159,7 +1159,9 @@ msgstr ""
 #: inginious/frontend/templates/auth.html:16
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:81
 #: inginious/frontend/templates/course_admin/edit_tabs/file_modals.html:23
+#: inginious/frontend/templates/index.html:88
 #: inginious/frontend/templates/lti_login.html:36
+#: inginious/frontend/templates/mycourses.html:180
 #: inginious/frontend/templates/register_button.html:37
 msgid "Close"
 msgstr "Fermer"
@@ -2515,7 +2517,8 @@ msgstr "Exercice"
 #: inginious/frontend/plugins/manual_scoring/pages/templates/manual_scoring.html:18
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:20
 #: inginious/frontend/templates/course_admin/task_info.html:44
-#: inginious/frontend/templates/mycourses.html:130
+#: inginious/frontend/templates/mycourses.html:133
+#: inginious/frontend/templates/mycourses.html:157
 msgid "Student"
 msgstr "Etudiant"
 
@@ -4027,16 +4030,26 @@ msgstr ""
 msgid "My courses / Register for a course"
 msgstr ""
 
-#: inginious/frontend/templates/index.html:47
+#: inginious/frontend/templates/index.html:51
+#: inginious/frontend/templates/index.html:65
 msgid "'External platform'"
 msgstr ""
 
-#: inginious/frontend/templates/index.html:49
+#: inginious/frontend/templates/index.html:53
+#: inginious/frontend/templates/index.html:67
 msgid "'Auto-registration'"
 msgstr ""
 
-#: inginious/frontend/templates/index.html:51
+#: inginious/frontend/templates/index.html:55
+#: inginious/frontend/templates/index.html:69
 msgid "'Password needed'"
+msgstr ""
+
+#: inginious/frontend/templates/index.html:81
+#: inginious/frontend/templates/mycourses.html:173
+msgid ""
+"You are trying to enter to a LTI course. LTI courses are only accessible "
+"via the LMS platforms such as Moodle or OpenEdx"
 msgstr ""
 
 #: inginious/frontend/templates/layout.html:109
@@ -4223,23 +4236,27 @@ msgstr "Sélectionner un cours"
 msgid "'Search course'"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:121
+#: inginious/frontend/templates/mycourses.html:124
+#: inginious/frontend/templates/mycourses.html:148
 msgid "LTI course"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:123
+#: inginious/frontend/templates/mycourses.html:126
+#: inginious/frontend/templates/mycourses.html:150
 msgid "Hidden course"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:126
+#: inginious/frontend/templates/mycourses.html:129
+#: inginious/frontend/templates/mycourses.html:153
 msgid "Administrator"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:128
+#: inginious/frontend/templates/mycourses.html:131
+#: inginious/frontend/templates/mycourses.html:155
 msgid "Tutor"
 msgstr ""
 
-#: inginious/frontend/templates/mycourses.html:135
+#: inginious/frontend/templates/mycourses.html:162
 msgid "You are not registered to any course"
 msgstr ""
 
