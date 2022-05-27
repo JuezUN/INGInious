@@ -39,7 +39,6 @@ class Task(object):
                 if self._limits['time'] <= 0 or self._limits['hard_time'] <= 0 or self._limits['memory'] <= 0 or self._limits['disk'] <= 0:
                     raise Exception(_("Invalid limit - Limit must be positive"))
             except Exception as e:
-                print(e)
                 raise Exception(_("Invalid limit"))
 
         if "problems" not in self._data:
