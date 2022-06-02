@@ -5,6 +5,12 @@ $# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
 $# more information about the licensing of this file.
 $#
 
+<script type="text/javascript">
+    if (window.location.href != window.location.href.split("#")[0] ){
+        window.location.href = window.location.href.split("#")[0];
+    } 
+</script>
+
 $var title: $:course.get_name(user_manager.session_language())
 
 $var Column: $:template_helper.call('course_admin_menu',course=course,current='tasks')
