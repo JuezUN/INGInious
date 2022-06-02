@@ -56,12 +56,11 @@ class INGIniousSubmissionAdminPage(INGIniousAdminPage):
     An INGIniousAdminPage containing some common methods between download/replay pages
     """
 
-    def _validate_list(self, usernames,coursename):
+    def _validate_list(self, usernames, coursename):
         """ Prevent MongoDB injections by verifying arrays sent to it """
         for i in usernames:
             if not username_checker(i):
-                self._logger = get_course_logger(coursename)
-                self._logger.debug("invalid username in list")
+                get_course_logger(coursename).debug("invalid username in list")
                 raise web.notfound()
 
     def get_selected_submissions(self, course, filter_type, selected_tasks, users, aggregations, stype):
@@ -76,7 +75,7 @@ class INGIniousSubmissionAdminPage(INGIniousAdminPage):
         :return:
         """
         if filter_type == "users":
-            self._validate_list(users,course.get_name(None))
+            self._validate_list(users, course.get_name(None))
             aggregations = list(self.database.aggregations.find({"courseid": course.get_id(),
                                                                  "students": {"$in": users}}))
             # Tweak if not using classrooms : classroom['students'] may content ungrouped users
@@ -88,7 +87,7 @@ class INGIniousSubmissionAdminPage(INGIniousAdminPage):
                                   ) for aggregation in aggregations for username in users])
 
         else:
-            self._validate_list(aggregations,course.get_name(None))
+            self._validate_list(aggregations, course.get_name(None))
             aggregations = list(
                 self.database.aggregations.find({"_id": {"$in": [ObjectId(cid) for cid in aggregations]}}))
 
