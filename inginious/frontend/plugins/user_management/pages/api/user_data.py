@@ -3,7 +3,7 @@ import web
 import json
 import inginious.frontend.pages.api._api_page as api
 import re
-
+from inginious.common.base import username_checker
 from inginious.frontend.plugins.user_management.collections_manager import CollectionsManagerSingleton
 from inginious.frontend.plugins.user_management.update_user_data import close_user_sessions, add_block_user, \
     change_email, change_name, change_username, make_user_changes_register, unlock_user
@@ -99,7 +99,7 @@ def _validate_username(username, collections_manager):
     - It must not be in use for another user
     """
     user = collections_manager.make_find_one_request("users", {"username": username})
-    if re.match(r"^[-_.|~0-9A-Z]{4,}$", username, re.IGNORECASE) is None:
+    if not username_checker(username):
         return False
     if user:
         return False

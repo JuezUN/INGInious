@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-06-02 15:52-0500\n"
+"POT-Creation-Date: 2022-06-04 15:07-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -116,7 +116,7 @@ msgstr ""
 msgid "Couldn't validate LTI request"
 msgstr "La petición LTI es invalida"
 
-#: inginious/frontend/pages/register.py:57
+#: inginious/frontend/pages/register.py:58
 msgid ""
 "The activation hash is invalid. Your user account may already be "
 "activated."
@@ -124,49 +124,49 @@ msgstr ""
 "Código de activación inválido. Es posible que tu cuenta ya se encuentre "
 "activa."
 
-#: inginious/frontend/pages/register.py:59
+#: inginious/frontend/pages/register.py:60
 msgid "You are now activated. You can proceed to login."
 msgstr "Cuenta activada. Ahora puedes iniciar una sesión."
 
-#: inginious/frontend/pages/preferences/profile.py:27
-#: inginious/frontend/pages/register.py:76
+#: inginious/frontend/pages/preferences/profile.py:28
+#: inginious/frontend/pages/register.py:77
 #: inginious/frontend/plugins/user_management/pages/templates/user_management.html:29
 msgid "Invalid username format."
 msgstr "El formato del nombre de usuario es invalido."
 
-#: inginious/frontend/pages/register.py:79
-#: inginious/frontend/pages/register.py:137
+#: inginious/frontend/pages/register.py:80
+#: inginious/frontend/pages/register.py:138
 msgid "Invalid email format."
 msgstr "El formato del correo electrónico es inválido."
 
-#: inginious/frontend/pages/preferences/profile.py:47
-#: inginious/frontend/pages/register.py:82
-#: inginious/frontend/pages/register.py:168
+#: inginious/frontend/pages/preferences/profile.py:48
+#: inginious/frontend/pages/register.py:83
+#: inginious/frontend/pages/register.py:169
 msgid "Password too short."
 msgstr "La contraseña no contiene el mínimo de caracteres."
 
-#: inginious/frontend/pages/preferences/profile.py:51
-#: inginious/frontend/pages/register.py:85
-#: inginious/frontend/pages/register.py:171
+#: inginious/frontend/pages/preferences/profile.py:52
+#: inginious/frontend/pages/register.py:86
+#: inginious/frontend/pages/register.py:172
 msgid "Passwords don't match !"
 msgstr "¡Las contraseñas no coinciden!"
 
-#: inginious/frontend/pages/register.py:93
+#: inginious/frontend/pages/register.py:94
 msgid "This username is already taken !"
 msgstr "¡El nombre de usuario ya existe!"
 
-#: inginious/frontend/pages/register.py:95
+#: inginious/frontend/pages/register.py:96
 msgid "This email address is already in use !"
 msgstr "¡La dirección de correo electrónico ya existe!"
 
-#: inginious/frontend/pages/register.py:107
+#: inginious/frontend/pages/register.py:108
 #: inginious/frontend/plugins/lti_register/pages/lti_user_manager.py:101
 #: inginious/frontend/plugins/register_students/pages/api/add_course_students_csv_file_api.py:192
 #: inginious/frontend/plugins/register_students/static/email_template.html:4
 msgid "Welcome on UNCode"
 msgstr "Bienvenido a UNCode"
 
-#: inginious/frontend/pages/register.py:108
+#: inginious/frontend/pages/register.py:109
 msgid ""
 "Welcome on UNCode !\n"
 "\n"
@@ -176,7 +176,7 @@ msgstr ""
 "\n"
 "Para activar tu cuenta, haz clic en el siguiente enlace:\n"
 
-#: inginious/frontend/pages/register.py:113
+#: inginious/frontend/pages/register.py:114
 msgid ""
 "\n"
 "                                 \n"
@@ -186,7 +186,7 @@ msgstr ""
 "                                 \n"
 "Puedes consultar la política de tratamiento de datos aquí:\n"
 
-#: inginious/frontend/pages/register.py:118
+#: inginious/frontend/pages/register.py:119
 msgid ""
 "You are successfully registered. An email has been sent to you for "
 "activation."
@@ -194,7 +194,7 @@ msgstr ""
 "Ahora estas registrado. Un correo electrónico ha sido enviado para "
 "activar tu cuenta."
 
-#: inginious/frontend/pages/register.py:121
+#: inginious/frontend/pages/register.py:122
 msgid ""
 "Something went wrong while sending you activation email. Please contact "
 "the administrator."
@@ -202,15 +202,15 @@ msgstr ""
 "Ocurrió un error durante el envío del correo de activación de tu cuenta. "
 "Contacta al administrador."
 
-#: inginious/frontend/pages/register.py:145
+#: inginious/frontend/pages/register.py:146
 msgid "This email address was not found in database."
 msgstr "El correo electrónico no se encontró en la base de datos."
 
-#: inginious/frontend/pages/register.py:148
+#: inginious/frontend/pages/register.py:149
 msgid "UNCode password recovery"
 msgstr "Recuperación de la contraseña de UNCode"
 
-#: inginious/frontend/pages/register.py:149
+#: inginious/frontend/pages/register.py:150
 msgid ""
 "Dear {realname},\n"
 "\n"
@@ -222,11 +222,11 @@ msgstr ""
 "Ha realizado una petición para actualizar su contraseña en UNCode. Si "
 "usted realizó esta petición, por favor diríjase al siguiente enlace:\n"
 
-#: inginious/frontend/pages/register.py:153
+#: inginious/frontend/pages/register.py:154
 msgid "An email has been sent to you to reset your password."
 msgstr "Un correo electrónico ha sido enviado para cambiar tu contraseña."
 
-#: inginious/frontend/pages/register.py:156
+#: inginious/frontend/pages/register.py:157
 msgid ""
 "Something went wrong while sending you reset email. Please contact the "
 "administrator."
@@ -234,11 +234,11 @@ msgstr ""
 "Ocurrió un error durante el envío del correo para cambiar tu contraseña. "
 "Contacta al administrador."
 
-#: inginious/frontend/pages/register.py:180
+#: inginious/frontend/pages/register.py:181
 msgid "Invalid reset hash."
 msgstr "El cambio del hash es inválido."
 
-#: inginious/frontend/pages/register.py:182
+#: inginious/frontend/pages/register.py:183
 msgid "Your password has been successfully changed."
 msgstr "La contraseña ha sido actualizada con éxito."
 
@@ -683,13 +683,13 @@ msgstr "Ha ocurrido un error durante el cambio de directorio de los archivos"
 msgid "An error occurred while deleting the files"
 msgstr "Ha ocurrido un error eliminando los archivos"
 
-#: inginious/frontend/pages/course_admin/utils.py:257
+#: inginious/frontend/pages/course_admin/utils.py:259
 #: inginious/frontend/templates/course_admin/settings.html:17
 #: inginious/frontend/templates/course_admin/settings.html:21
 msgid "Course settings"
 msgstr "Configuración del curso"
 
-#: inginious/frontend/pages/course_admin/utils.py:259
+#: inginious/frontend/pages/course_admin/utils.py:261
 #: inginious/frontend/templates/classroom.html:104
 #: inginious/frontend/templates/course_admin/classroom_edit.html:113
 #: inginious/frontend/templates/course_admin/student_list.html:19
@@ -701,14 +701,14 @@ msgstr "Configuración del curso"
 msgid "Students"
 msgstr "Estudiantes"
 
-#: inginious/frontend/pages/course_admin/utils.py:263
+#: inginious/frontend/pages/course_admin/utils.py:265
 #: inginious/frontend/templates/course_admin/aggregation_list.html:21
 #: inginious/frontend/templates/course_admin/aggregation_list.html:27
 #: inginious/frontend/templates/course_admin/submissions.html:66
 msgid "Classrooms"
 msgstr "Grupos"
 
-#: inginious/frontend/pages/course_admin/utils.py:263
+#: inginious/frontend/pages/course_admin/utils.py:265
 #: inginious/frontend/templates/course_admin/aggregation_list.html:21
 #: inginious/frontend/templates/course_admin/aggregation_list.html:27
 #: inginious/frontend/templates/course_admin/settings.html:89
@@ -717,14 +717,14 @@ msgstr "Grupos"
 msgid "Teams"
 msgstr "Equipos"
 
-#: inginious/frontend/pages/course_admin/utils.py:265
+#: inginious/frontend/pages/course_admin/utils.py:267
 #: inginious/frontend/templates/course_admin/submissions.html:75
 #: inginious/frontend/templates/course_admin/task_list.html:24
 #: inginious/frontend/templates/course_admin/task_list.html:29
 msgid "Tasks"
 msgstr "Tareas"
 
-#: inginious/frontend/pages/course_admin/utils.py:266
+#: inginious/frontend/pages/course_admin/utils.py:268
 #: inginious/frontend/templates/course_admin/submissions.html:8
 #: inginious/frontend/templates/course_admin/submissions.html:19
 #: inginious/frontend/templates/course_admin/submissions.html:29
@@ -732,21 +732,21 @@ msgstr "Tareas"
 msgid "View submissions"
 msgstr "Ver tareas"
 
-#: inginious/frontend/pages/course_admin/utils.py:267
+#: inginious/frontend/pages/course_admin/utils.py:269
 #: inginious/frontend/templates/course_admin/download.html:8
 #: inginious/frontend/templates/course_admin/download.html:19
 #: inginious/frontend/templates/course_admin/download.html:23
 msgid "Download submissions"
 msgstr "Descargar tareas"
 
-#: inginious/frontend/pages/course_admin/utils.py:270
+#: inginious/frontend/pages/course_admin/utils.py:272
 #: inginious/frontend/templates/course_admin/replay.html:8
 #: inginious/frontend/templates/course_admin/replay.html:19
 #: inginious/frontend/templates/course_admin/replay.html:23
 msgid "Replay submissions"
 msgstr "Reinicializa las tareas"
 
-#: inginious/frontend/pages/course_admin/utils.py:271
+#: inginious/frontend/pages/course_admin/utils.py:273
 #: inginious/frontend/templates/course_admin/danger_zone.html:8
 #: inginious/frontend/templates/course_admin/danger_zone.html:19
 #: inginious/frontend/templates/course_admin/danger_zone.html:23
@@ -768,29 +768,29 @@ msgstr ""
 msgid "The specified email is incorrect."
 msgstr "El formato del correo electrónico es incorrecto."
 
-#: inginious/frontend/pages/preferences/profile.py:30
+#: inginious/frontend/pages/preferences/profile.py:31
 msgid "Username already taken"
 msgstr "El nombre de usuario ya existe, utiliza otro nombre"
 
-#: inginious/frontend/pages/preferences/profile.py:37
+#: inginious/frontend/pages/preferences/profile.py:38
 msgid "Incorrect email."
 msgstr "El formato del correo electrónico es incorrecto."
 
-#: inginious/frontend/pages/preferences/profile.py:41
-#: inginious/frontend/pages/preferences/profile.py:98
+#: inginious/frontend/pages/preferences/profile.py:42
+#: inginious/frontend/pages/preferences/profile.py:99
 msgid "Profile updated."
 msgstr "Tu perfil ha sido actualizado."
 
-#: inginious/frontend/pages/preferences/profile.py:66
+#: inginious/frontend/pages/preferences/profile.py:67
 msgid "Incorrect old password."
 msgstr "La contraseña previa es incorrecta."
 
-#: inginious/frontend/pages/preferences/profile.py:77
-#: inginious/frontend/pages/preferences/profile.py:89
+#: inginious/frontend/pages/preferences/profile.py:78
+#: inginious/frontend/pages/preferences/profile.py:90
 msgid "Incorrect username."
 msgstr "El nombre de usuario es incorrecto."
 
-#: inginious/frontend/pages/preferences/profile.py:95
+#: inginious/frontend/pages/preferences/profile.py:96
 msgid "Name is too short."
 msgstr "El nombre no tiene el mínimo número de caracteres."
 
