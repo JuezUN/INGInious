@@ -155,8 +155,17 @@ class CourseSubmissionsPage(INGIniousAdminPage):
             pass
             
         # Mongo operations
-        data = list(self.database.submissions.find({**query_base, **query_advanced}).sort([(user_input.sort_by, 
-            pymongo.DESCENDING if user_input.order == "0" else pymongo.ASCENDING)]))
+        data = list(self.database.submissions.find({**query_base, **query_advanced},{
+                    "username":1,
+                    "best":1,
+                    "result":1,
+                    "submitted_on":1,
+                    "grade":1,
+                    "status":1,
+                    "taskid":1,
+                    })
+                    .sort([(user_input.sort_by, 
+                            pymongo.DESCENDING if user_input.order == "0" else pymongo.ASCENDING)]))
         data = [dict(list(f.items()) + [("url", self.submission_url_generator(str(f["_id"])))]) for f in data]
 
         # Get best submissions from database
