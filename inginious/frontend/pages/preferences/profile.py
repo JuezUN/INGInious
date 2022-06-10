@@ -8,6 +8,7 @@ import hashlib
 import re
 import web
 from pymongo import ReturnDocument
+from inginious.common.base import username_checker
 
 from inginious.frontend.pages.utils import INGIniousAuthPage
 
@@ -22,7 +23,7 @@ class ProfilePage(INGIniousAuthPage):
 
         # Check if updating username.
         if not userdata["username"] and "username" in data:
-            if re.match(r"^[-_.|~0-9A-Z]{4,}$", data["username"], re.IGNORECASE) is None:
+            if not username_checker(data["username"]):
                 error = True
                 msg = _("Invalid username format.")
             elif self.database.users.find_one({"username": data["username"]}):

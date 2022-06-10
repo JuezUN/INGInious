@@ -17,6 +17,9 @@ def id_checker(id_to_test):
     """Checks if a id is correct"""
     return bool(re.match(r'[a-z0-9\-_]+$', id_to_test, re.IGNORECASE))
 
+def username_checker(username_to_test):
+    """Checks if a possible username is correct"""
+    return bool(re.match(r"^[-_.0-9A-Z]{4,}$", username_to_test, re.IGNORECASE))
 
 def id_checker_tests(id_to_test):
     """Checks if a id is correct"""
