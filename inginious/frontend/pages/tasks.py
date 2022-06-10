@@ -167,8 +167,9 @@ class BaseTaskPage(object):
                 if group is not None and len(group["groups"]) > 0:
                     students = group["groups"][0]["students"]
                 # we don't care for the other case, as the student won't be able to submit.
-
-            submissions = self.submission_manager.get_user_submissions_simplified(task) if self.user_manager.session_logged_in() else []
+            fields = ["input","status","result","submitted_on","grade"]
+                                                                                         
+            submissions = self.submission_manager.get_user_submissions_simplified(task,fields) if self.user_manager.session_logged_in() else []
             user_info = self.database.users.find_one({"username": username})
 
             self.template_helper.call("add_task_page_static_files", template_helper=self.template_helper)

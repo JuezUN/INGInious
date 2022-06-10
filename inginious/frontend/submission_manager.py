@@ -429,19 +429,18 @@ class WebAppSubmissionManager:
 
         return self._user_manager.session_username() in submission["username"]
 
-    def get_user_submissions_simplified(self, task):
+    def get_user_submissions_simplified(self, task, fields=None):
         """ Get all the user's submissions for a given task """
         if not self._user_manager.session_logged_in():
             raise Exception("A user must be logged in to get his submissions")
-
-        cursor = self._database.submissions.find({"username": self._user_manager.session_username(),
-                                                  "taskid": task.get_id(), "courseid": task.get_course_id()},{
-                                                      "input":1,
-                                                      "status":1,
-                                                      "result":1,
-                                                      "submitted_on":1,
-                                                      "grade":1
-                                                  })
+        
+        if fields is None:
+            cursor = self._database.submissions.find({"username": self._user_manager.session_username(),
+                                           "taskid": task.get_id(), "courseid": task.get_course_id()})
+        else:
+            fields_dict = { field : 1 for field in fields }
+            cursor = self._database.submissions.find({"username": self._user_manager.session_username(),
+                                                  "taskid": task.get_id(), "courseid": task.get_course_id()},fields_dict)
         cursor.sort([("submitted_on", -1)])
         return list(cursor)
     

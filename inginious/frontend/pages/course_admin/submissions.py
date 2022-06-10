@@ -58,7 +58,8 @@ class CourseSubmissionsPage(INGIniousAdminPage):
         msgs = msgs if msgs else []
         
         user_input = self.get_input()
-        data, classroom = self.get_submissions(course, user_input)  # ONLY classrooms user wants to query
+        data, classroom = self.get_submissions(course, user_input)
+        data_table, classroom = self.get_submissions(course, user_input,True)# ONLY classrooms user wants to query
         if len(data) == 0 and not self.show_collapse(user_input):
             msgs.append(_("No submissions found"))
 
@@ -95,7 +96,7 @@ class CourseSubmissionsPage(INGIniousAdminPage):
         if len(data) > self._trunc_limit:
             msgs.append(_("The result contains more than ") + "{0}".format(self._trunc_limit) + _(" submissions. The displayed submissions are truncated.\n"))
             data = data[:self._trunc_limit]
-        return self.template_helper.get_renderer().course_admin.submissions(course, tasks, users, classrooms, data, statistics, user_input, self._allowed_sort, self._allowed_sort_name, self._valid_formats, msgs, self.show_collapse(user_input))
+        return self.template_helper.get_renderer().course_admin.submissions(course, tasks, users, classrooms, data_table, statistics, user_input, self._allowed_sort, self._allowed_sort_name, self._valid_formats, msgs, self.show_collapse(user_input))
 
     def show_collapse(self, user_input):
         """ Return True is we should display the main collapse. """
@@ -110,7 +111,7 @@ class CourseSubmissionsPage(INGIniousAdminPage):
             key=lambda k: k[1][0] if k[1] is not None else ""))
         return users
         
-    def get_submissions(self, course, user_input):
+    def get_submissions(self, course, user_input, is_for_table=False):
         """ Returns the list of submissions and corresponding aggragations based on inputs """
 
         # Build lists of wanted users based on classrooms and specific users
@@ -154,18 +155,15 @@ class CourseSubmissionsPage(INGIniousAdminPage):
         except ValueError:  # If match of datetime.strptime() fails
             pass
             
-        # Mongo operations
-        data = list(self.database.submissions.find({**query_base, **query_advanced},{
-                    "username":1,
-                    "best":1,
-                    "result":1,
-                    "submitted_on":1,
-                    "grade":1,
-                    "status":1,
-                    "taskid":1,
-                    })
-                    .sort([(user_input.sort_by, 
-                            pymongo.DESCENDING if user_input.order == "0" else pymongo.ASCENDING)]))
+        # Using submission manager to retrieve data
+        fields = ["username","best","result","submitted_on","grade","status","taskid"]
+        fields_dict = {field : 1 for field in fields}
+        if is_for_table:
+            data = list(self.database.submissions.find({**query_base, **query_advanced},fields_dict).sort([(user_input.sort_by, 
+                         pymongo.DESCENDING if user_input.order == "0" else pymongo.ASCENDING)]))
+        else: 
+            data = list(self.database.submissions.find({**query_base, **query_advanced}).sort([(user_input.sort_by, 
+                         pymongo.DESCENDING if user_input.order == "0" else pymongo.ASCENDING)]))
         data = [dict(list(f.items()) + [("url", self.submission_url_generator(str(f["_id"])))]) for f in data]
 
         # Get best submissions from database
