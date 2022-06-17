@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-06-09 20:37-0500\n"
+"POT-Creation-Date: 2022-06-16 19:22-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -560,15 +560,15 @@ msgstr "Identifiant d'exercice"
 msgid " selected submissions were set for replay."
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/submissions.py:64
+#: inginious/frontend/pages/course_admin/submissions.py:65
 msgid "No submissions found"
 msgstr "Aucune soumission trouvée"
 
-#: inginious/frontend/pages/course_admin/submissions.py:97
+#: inginious/frontend/pages/course_admin/submissions.py:107
 msgid "The result contains more than "
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/submissions.py:97
+#: inginious/frontend/pages/course_admin/submissions.py:107
 msgid " submissions. The displayed submissions are truncated.\n"
 msgstr ""
 
