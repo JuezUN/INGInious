@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-06-09 20:31-0500\n"
+"POT-Creation-Date: 2022-06-16 19:22-0500\n"
 "PO-Revision-Date: 2020-01-06 14:35+0000\n"
 "Last-Translator: Christian Klein <kleinchr@ludwig-geissler-schule.de>\n"
 "Language: de\n"
@@ -237,83 +237,83 @@ msgstr "Ungültiger Zurücksetzungs-Hash."
 msgid "Your password has been successfully changed."
 msgstr "Ihr Passwort wurde erfolgreich geändert."
 
-#: inginious/frontend/pages/tasks.py:201
+#: inginious/frontend/pages/tasks.py:202
 msgid "You are not allowed to submit for this task."
 msgstr "Sie sind nicht berechtigt etwas für diese Aufgabe abzugeben."
 
-#: inginious/frontend/pages/tasks.py:209
+#: inginious/frontend/pages/tasks.py:210
 msgid "Your task has been regenerated. This current task is outdated."
 msgstr "Ihre Aufgabe wurde neu erstellt. Die aktuelle Aufgabe ist  veraltet."
 
-#: inginious/frontend/pages/tasks.py:221
+#: inginious/frontend/pages/tasks.py:222
 msgid ""
 "Please answer to all the questions and verify the extensions of the files"
 " you want to upload. Your responses were not tested."
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:239 inginious/frontend/pages/tasks.py:345
+#: inginious/frontend/pages/tasks.py:240 inginious/frontend/pages/tasks.py:346
 msgid "<b>Your submission has been sent...</b>"
 msgstr ""
 
 #: inginious/frontend/pages/course_admin/task_edit_file.py:229
-#: inginious/frontend/pages/tasks.py:249
+#: inginious/frontend/pages/tasks.py:250
 msgid "Internal error"
 msgstr "Interner Fehler"
 
-#: inginious/frontend/pages/tasks.py:314
+#: inginious/frontend/pages/tasks.py:315
 msgid "<b>UNCode is currently grading your answers.<b/> (almost done)"
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:316
+#: inginious/frontend/pages/tasks.py:317
 msgid "<b>UNCode is currently grading your answers.<b/> (Approx. wait time: "
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:317
+#: inginious/frontend/pages/tasks.py:318
 msgid " seconds)"
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:319
+#: inginious/frontend/pages/tasks.py:320
 msgid "<b>You are next in the waiting queue!</b>"
 msgstr "<b>Sie sind der nächste in der Warteschlange</b>"
 
-#: inginious/frontend/pages/tasks.py:321
+#: inginious/frontend/pages/tasks.py:322
 msgid "<b>There is one task in front of you in the waiting queue.</b>"
 msgstr "<b>Es befindet sich eine Aufgabe vor Ihren in der Warteschlange.</b>"
 
-#: inginious/frontend/pages/tasks.py:323
+#: inginious/frontend/pages/tasks.py:324
 msgid "<b>There are "
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:323
+#: inginious/frontend/pages/tasks.py:324
 msgid " tasks in front of you in the waiting queue.</b>"
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:347
+#: inginious/frontend/pages/tasks.py:348
 msgid "There are some errors in your answer. Your score is "
 msgstr "Es sind Fehler in Ihrer Abgabe. Ihre Punktzahl ist "
 
-#: inginious/frontend/pages/tasks.py:347 inginious/frontend/pages/tasks.py:349
-#: inginious/frontend/pages/tasks.py:351 inginious/frontend/pages/tasks.py:353
+#: inginious/frontend/pages/tasks.py:348 inginious/frontend/pages/tasks.py:350
+#: inginious/frontend/pages/tasks.py:352 inginious/frontend/pages/tasks.py:354
 msgid "%."
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:349
+#: inginious/frontend/pages/tasks.py:350
 msgid "Your answer passed the tests! Your score is "
 msgstr "Ihre Abgabe hat bestanden! Ihre Punktzahl ist "
 
-#: inginious/frontend/pages/tasks.py:351
+#: inginious/frontend/pages/tasks.py:352
 msgid "Your submission timed out. Your score is "
 msgstr "Die Zeit Ihrer Abgabe wurde überschritten. Ihre Punktzahl ist "
 
-#: inginious/frontend/pages/tasks.py:353
+#: inginious/frontend/pages/tasks.py:354
 msgid "Your submission made an overflow. Your score is "
 msgstr "Ihre Abgabe hat einen Überlauf erzeugt. Ihre Punktzahl ist "
 
-#: inginious/frontend/pages/tasks.py:355
+#: inginious/frontend/pages/tasks.py:356
 msgid "Your submission was killed."
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:357
+#: inginious/frontend/pages/tasks.py:358
 msgid ""
 "An internal error occurred. Please retry later. If the error persists, "
 "send an email to the course administrator."
@@ -322,30 +322,30 @@ msgstr ""
 "einmal. Wenn dieser Fehler erneut auftritt, senden Sie bitte eine E-Mail "
 "an den Kursverwalter."
 
-#: inginious/frontend/pages/tasks.py:361
+#: inginious/frontend/pages/tasks.py:362
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:68
 #: inginious/frontend/templates/course_admin/submissions.html:303
 #: inginious/frontend/templates/task.html:210
 msgid "\"Late submission: it does not affect the grade.\""
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:366
+#: inginious/frontend/pages/tasks.py:367
 msgid "Late submission"
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:371
+#: inginious/frontend/pages/tasks.py:372
 msgid "<p>A penalty of <b>"
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:371
+#: inginious/frontend/pages/tasks.py:372
 msgid "</b> was applied to this submission.</p>"
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:373
+#: inginious/frontend/pages/tasks.py:374
 msgid "[Submission #"
 msgstr ""
 
-#: inginious/frontend/pages/tasks.py:374
+#: inginious/frontend/pages/tasks.py:375
 msgid "]"
 msgstr ""
 
@@ -556,15 +556,15 @@ msgstr ""
 msgid " selected submissions were set for replay."
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/submissions.py:63
+#: inginious/frontend/pages/course_admin/submissions.py:65
 msgid "No submissions found"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/submissions.py:96
+#: inginious/frontend/pages/course_admin/submissions.py:107
 msgid "The result contains more than "
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/submissions.py:96
+#: inginious/frontend/pages/course_admin/submissions.py:107
 msgid " submissions. The displayed submissions are truncated.\n"
 msgstr ""
 
