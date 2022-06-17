@@ -58,9 +58,10 @@ class CourseSubmissionsPage(INGIniousAdminPage):
         msgs = msgs if msgs else []
         
         user_input = self.get_input()
-        data, classroom = self.get_submissions(course, user_input)
-        data_table, classroom = self.get_submissions(course, user_input,True)# ONLY classrooms user wants to query
-        if len(data) == 0 and not self.show_collapse(user_input):
+        # Retrieve submissions data required for display the table
+        fields_for_table = ["username","best","result","submitted_on","grade","status","taskid"]
+        data_table, classroom = self.get_submissions(course, user_input,fields_for_table)
+        if len(data_table) == 0 and not self.show_collapse(user_input):
             msgs.append(_("No submissions found"))
 
         classrooms = self.user_manager.get_course_aggregations(course)  # ALL classrooms of the course
@@ -69,12 +70,21 @@ class CourseSubmissionsPage(INGIniousAdminPage):
 
         statistics = None
         if user_input.stat != "no_stat":
-            statistics = compute_statistics(tasks, data, True if "with_pond_stat" == user_input.stat else False)
-
+            # Retrieve submissions data required for display stats
+            fields_for_stats = ["taskid","username","tests","best","result"]
+            data_stats, classroom = self.get_submissions(course, user_input,fields_for_stats)
+            statistics = compute_statistics(tasks, data_stats, True if "with_pond_stat" == user_input.stat else False)
+        
+        #Get csv with all the submissions info in the query
         if "csv" in web.input():
+            #We get the all info of that submissions
+            data, classroom = self.get_submissions(course, user_input)
             return make_csv(data)
-                        
+        
+        #Download all the submissions in the query
         if "download" in web.input():
+            #We get the all info of that submissions
+            data, classroom = self.get_submissions(course, user_input)
             # self._logger.info("Downloading %d submissions from course %s", len(data), course.get_id())
             web.header('Content-Type', 'application/x-gzip', unique=True)
             web.header('Content-Disposition', 'attachment; filename="submissions.tgz"', unique=True)
@@ -91,11 +101,11 @@ class CourseSubmissionsPage(INGIniousAdminPage):
             return self.submission_manager.get_submission_archive(data, list(reversed(download_type.split('/'))), aggregations)
 
         if user_input.limit != '' and user_input.limit.isdigit():
-            data = data[:int(user_input.limit)]
+            data_table = data_table[:int(user_input.limit)]
             
-        if len(data) > self._trunc_limit:
+        if len(data_table) > self._trunc_limit:
             msgs.append(_("The result contains more than ") + "{0}".format(self._trunc_limit) + _(" submissions. The displayed submissions are truncated.\n"))
-            data = data[:self._trunc_limit]
+            data_table = data_table[:self._trunc_limit]
         return self.template_helper.get_renderer().course_admin.submissions(course, tasks, users, classrooms, data_table, statistics, user_input, self._allowed_sort, self._allowed_sort_name, self._valid_formats, msgs, self.show_collapse(user_input))
 
     def show_collapse(self, user_input):
@@ -111,7 +121,7 @@ class CourseSubmissionsPage(INGIniousAdminPage):
             key=lambda k: k[1][0] if k[1] is not None else ""))
         return users
         
-    def get_submissions(self, course, user_input, is_for_table=False):
+    def get_submissions(self, course, user_input, fields=None):
         """ Returns the list of submissions and corresponding aggragations based on inputs """
 
         # Build lists of wanted users based on classrooms and specific users
@@ -154,16 +164,16 @@ class CourseSubmissionsPage(INGIniousAdminPage):
                 query_advanced["submitted_on"] = {"$gte": date_after, "$lte": date_before}
         except ValueError:  # If match of datetime.strptime() fails
             pass
-            
-        # Using submission manager to retrieve data
-        fields = ["username","best","result","submitted_on","grade","status","taskid"]
-        fields_dict = {field : 1 for field in fields}
-        if is_for_table:
-            data = list(self.database.submissions.find({**query_base, **query_advanced},fields_dict).sort([(user_input.sort_by, 
-                         pymongo.DESCENDING if user_input.order == "0" else pymongo.ASCENDING)]))
-        else: 
+              
+        # Data retrieved from database based on fields, if fields are not passed all the info is retrieved
+        if fields is None:
             data = list(self.database.submissions.find({**query_base, **query_advanced}).sort([(user_input.sort_by, 
                          pymongo.DESCENDING if user_input.order == "0" else pymongo.ASCENDING)]))
+        else:
+            fields_dict = {field : 1 for field in fields}
+            data = list(self.database.submissions.find({**query_base, **query_advanced},fields_dict).sort([(user_input.sort_by, 
+                         pymongo.DESCENDING if user_input.order == "0" else pymongo.ASCENDING)]))
+            
         data = [dict(list(f.items()) + [("url", self.submission_url_generator(str(f["_id"])))]) for f in data]
 
         # Get best submissions from database
