@@ -9,7 +9,7 @@ import gettext
 from datetime import datetime
 
 import tidylib
-from docutils import core, nodes
+from docutils import core, nodes, utils
 from docutils.parsers.rst import directives, Directive
 from docutils.statemachine import StringList
 from docutils.writers import html4css1
@@ -171,6 +171,7 @@ class ParsableText(object):
     def rst(cls, string, show_everything=False, translation=gettext.NullTranslations(), initial_header_level=3):
         """Parses reStructuredText"""
         overrides = {
+            'report_level': utils.Reporter.SEVERE_LEVEL, #DEBUG_LEVEL,INFO_LEVEL,WARNING_LEVEL,ERROR_LEVEL,SEVERE_LEVEL, severe is chosen to avoid errors injected in the parsed text unless truly severe
             'initial_header_level': initial_header_level,
             'doctitle_xform': False,
             'syntax_highlight': 'none',
