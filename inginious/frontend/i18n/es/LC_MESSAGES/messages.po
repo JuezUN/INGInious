@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-06-16 19:22-0500\n"
+"POT-Creation-Date: 2022-06-24 15:43-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -581,68 +581,68 @@ msgstr "La consulta contiene más de "
 msgid " submissions. The displayed submissions are truncated.\n"
 msgstr " envíos. El número total de envíos no se muestra por completo.\n"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:193
+#: inginious/frontend/pages/course_admin/task_edit.py:197
 msgid "You can not use spaces in the tag id field."
 msgstr "No puede usar espacios in campo id"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:195
+#: inginious/frontend/pages/course_admin/task_edit.py:199
 msgid "Invalid tag id: "
 msgstr "El identificador de la etiqueta es inválido: "
 
-#: inginious/frontend/pages/course_admin/task_edit.py:200
+#: inginious/frontend/pages/course_admin/task_edit.py:204
 msgid "Some tags have the same id! The id of a tag must be unique."
 msgstr ""
 "¡Algunas etiquetas contienen el mismo identificador! El identificador de "
 "cada tarea debe ser único."
 
-#: inginious/frontend/pages/course_admin/task_edit.py:211
+#: inginious/frontend/pages/course_admin/task_edit.py:215
 msgid "Invalid file type: "
 msgstr "El tipo de archivo es inválido: "
 
-#: inginious/frontend/pages/course_admin/task_edit.py:217
+#: inginious/frontend/pages/course_admin/task_edit.py:221
 msgid "You cannot create a task without subproblems"
 msgstr "No puede crear una tarea sin subproblemas"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:232
+#: inginious/frontend/pages/course_admin/task_edit.py:236
 msgid "Grade weight must be a floating-point number"
 msgstr "La calificación debe de ser un número real"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:248
+#: inginious/frontend/pages/course_admin/task_edit.py:252
 msgid "The number of stored submission must be a number!"
 msgstr "¡El número de envios almacenados de ser un numero válido!"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:251
+#: inginious/frontend/pages/course_admin/task_edit.py:255
 msgid "The number of stored submission must be positive!"
 msgstr "¡El número de envios almacenados de ser positivo!"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:262
-#: inginious/frontend/pages/course_admin/task_edit.py:268
+#: inginious/frontend/pages/course_admin/task_edit.py:266
+#: inginious/frontend/pages/course_admin/task_edit.py:272
 msgid "Invalid submission limit!"
 msgstr "¡El límite de tareas es inválido!"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:299
+#: inginious/frontend/pages/course_admin/task_edit.py:303
 msgid "Your browser returned an invalid form ("
 msgstr "Tu navegador web muestra una forma inválida ("
 
-#: inginious/frontend/pages/course_admin/task_edit.py:299
+#: inginious/frontend/pages/course_admin/task_edit.py:303
 msgid ")"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit.py:305
+#: inginious/frontend/pages/course_admin/task_edit.py:309
 msgid "Error while reading course's information"
 msgstr "Error durante la consulta de información del curso"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:341
+#: inginious/frontend/pages/course_admin/task_edit.py:345
 msgid "Invalid data: "
 msgstr "Información inválida: "
 
-#: inginious/frontend/pages/course_admin/task_edit.py:347
+#: inginious/frontend/pages/course_admin/task_edit.py:351
 msgid "Cannot read zip file. Files were not modified"
 msgstr ""
 "El archivo comprimido (zip) no se puede leer. Los archivos no fueron "
 "alterados"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:354
+#: inginious/frontend/pages/course_admin/task_edit.py:358
 msgid ""
 "There was a problem while extracting the zip archive. Some files may have"
 " been modified"
