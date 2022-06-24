@@ -62,6 +62,10 @@ class CourseEditTask(INGIniousAdminPage):
         additional_footer = self.plugin_manager.call_hook('task_editor_footer', course=course, taskid=taskid,
                                                           task_data=task_data, template_helper=self.template_helper)
 
+        
+        #Create file system if not exists already
+        task_fs = self.task_factory.get_task_fs(courseid, taskid)
+        task_fs.ensure_exists()
 
         return self.template_helper.get_renderer().course_admin.task_edit(
             course,
@@ -322,7 +326,7 @@ class CourseEditTask(INGIniousAdminPage):
                 new_task_order = max(tasks_order) + 1
             data["order"] = new_task_order
 
-
+        #Create file system
         task_fs = self.task_factory.get_task_fs(courseid, taskid)
         task_fs.ensure_exists()
 
