@@ -18,7 +18,7 @@ UNCode_.
 
 Asi se pueden agregar imagenes al problema con un tamaño determinado, debe poner la imagen en la carpeta /public/image_name para que el servidor pueda reconocerla.
 .. image:: task_id/image_name
-   :height: 180px
+:height: 180px
 
 Aquí puede poner un segundo parrafo para el enunciado. Para poder agregar más parrafos tiene que agregar un salto de línea, el caractér '|' en otra línea, agregar otra línea en blaco y ahí si puede poner el otro parrafo. Así como están separados el parrafo 1 y el 2. Los caracteres especiales también deben escaparse como '\\t' Para agregar saltos de linea solo deben estar separados por un salto de linea y empezar por el caracter de tuberia '|'
 
