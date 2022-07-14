@@ -1,0 +1,27 @@
+name: Docker Image Integrity Checking
+
+on:
+  pull_request:
+    branches: [ "master" ]
+    paths:
+      - base-containers/**
+
+jobs:
+
+  build-inginious-c-base:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build Docker image inginious-c-base
+      run: docker build -t ingi/inginious-c-base ./base-containers/base
+        
+  build-inginious-c-default:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build Docker image inginious-c-base
+      run: docker build -t ingi/inginious-c-default ./base-containers/default
