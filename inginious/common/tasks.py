@@ -26,6 +26,9 @@ class Task(object):
 
         # Response is HTML
         self._response_is_html = self._data.get("responseIsHTML", False)
+        
+        #Response type
+        self.response_type = self._data.get("response_type", None)
 
         # Limits
         self._limits = {"time": 20, "memory": 1024, "disk": 1024}
@@ -112,8 +115,8 @@ class Task(object):
         return vals[0] if len(vals) else self._network_grading
 
     def get_response_type(self):
-        """ Returns the method used to parse the output of the task: HTML or rst """
-        return "HTML" if self._response_is_html else "rst"
+        """ Returns the method used to parse the output of the task"""
+        return self.response_type
 
     def get_fs(self):
         """ Returns a FileSystemProvider which points to the folder of this task """

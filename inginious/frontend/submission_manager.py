@@ -379,7 +379,7 @@ class WebAppSubmissionManager:
         if only_feedback:
             submission = {"text": submission.get("text", None), "problems": dict(submission.get("problems", {}))}
         if "text" in submission:
-            submission["text"] = ParsableText(submission["text"], submission["response_type"], show_everything, translation).parse()
+            submission["text"] = ParsableText(submission["text"], submission.get("response_type", "rst"), show_everything, translation).parse()
         if "problems" in submission:
             for problem in submission["problems"]:
                 if isinstance(submission["problems"][problem], str):  # fallback for old-style submissions
