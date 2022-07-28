@@ -28,7 +28,7 @@ class Task(object):
         self._response_is_html = self._data.get("responseIsHTML", False)
         
         #Response type
-        self.response_type = self._data.get("response_type", None)
+        self.response_type = self._data.get("response_type", "json")
 
         # Limits
         self._limits = {"time": 20, "memory": 1024, "disk": 1024}
