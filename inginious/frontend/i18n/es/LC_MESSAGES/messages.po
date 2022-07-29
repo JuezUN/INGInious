@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-07-28 21:08-0500\n"
+"POT-Creation-Date: 2022-07-28 21:19-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -38,7 +38,7 @@ msgstr ""
 
 #: inginious/frontend/parsable_text.py:168
 msgid "Toggle diff"
-msgstr "Alternar diferencia"
+msgstr "Alternar panel de diferencias"
 
 #: inginious/frontend/parsable_text.py:170
 msgid ""
@@ -51,10 +51,18 @@ msgid ""
 "<script>createDownloadLink(\"{title_input}\");</script>\n"
 "                                  "
 msgstr ""
+"<p>Vista previa de la entrada: {title_input}</p>\n"
+"                                  <pre class=\"input-area\" "
+"id=\"{block_id}-input\">{input_text}</pre>\n"
+"                                  <div "
+"id=\"{title_input}_download_link\"></div>\n"
+"                                  "
+"<script>createDownloadLink(\"{title_input}\");</script>\n"
+"                                  "
 
 #: inginious/frontend/parsable_text.py:177
 msgid "<p>Custom feedback</p><pre>{custom_feedback}</pre><br>"
-msgstr "<p>Feedback personalizado</p><pre>{custom_feedback}</pre><br>"
+msgstr "<p>Retroalimentación personalizada</p><pre>{custom_feedback}</pre><br>"
 
 #: inginious/frontend/parsable_text.py:196
 msgid "<b>Parsing failed</b>: <pre>{}</pre>"
@@ -73,8 +81,8 @@ msgid ""
 "<br><strong>{}:</strong> There was an error while running your notebook: "
 "<br><pre>{}</pre><br>"
 msgstr ""
-"<br><strong>{}:</strong> Hubo un error al ejecutar su cuaderno: "
-"<br><pre>{}</pre><br>"
+"<br><strong>{}:</strong> Hubo un error mientras se ejecutaba el notebook:"
+" <br><pre>{}</pre><br>"
 
 #: inginious/frontend/parsable_text.py:350
 msgid "Expand test results"
@@ -83,8 +91,8 @@ msgstr "Expandir resultados del test"
 #: inginious/frontend/parsable_text.py:355
 msgid "<br><strong>Custom feedback:</strong><br><pre>{custom_feedback}</pre>"
 msgstr ""
-"<br><strong>Feedback "
-"personalizado:</strong><br><pre>{custom_feedback}</pre>"
+"<br><strong>Retroalimentación "
+"personalizada:</strong><br><pre>{custom_feedback}</pre>"
 
 #: inginious/frontend/parsable_text.py:358
 msgid ""
@@ -92,6 +100,9 @@ msgid ""
 "                                            <br><strong>Output "
 "difference:</strong><pre>{case_output_diff}</pre><br>"
 msgstr ""
+"\n"
+"                                        <br><strong>Diferencia en la "
+"salida estándar:</strong><pre>{case_output_diff}</pre><br>"
 
 #: inginious/frontend/parsable_text.py:360
 msgid ""
@@ -105,6 +116,15 @@ msgid ""
 "id=\"{case_panel_id}\">{debug_info}</div></li></ul>\n"
 "            "
 msgstr ""
+"<ul class=\"list_disc\" style=\"font-size:12px; list-style-type: "
+"square;\"><li>\n"
+"        <strong>Caso {case_id}:</strong><a class=\"btn btn-default btn-"
+"link btn-xs\" role=\"button\" data-toggle=\"collapse\" \n"
+"        href=\"#{case_panel_id}\" aria-expanded=\"false\"aria-"
+"controls=\"{case_panel_id}\">Mostrar información de depuración</a>\n"
+"        <div class=\"collapse\" "
+"id=\"{case_panel_id}\">{debug_info}</div></li></ul>\n"
+"        "
 
 #: inginious/frontend/parsable_text.py:365
 msgid ""
@@ -112,6 +132,9 @@ msgid ""
 "=\"language-python\" data-"
 "language=\"python\">{case_code}</code></pre><script>highlight_code();</script>"
 msgstr ""
+"<strong>Código ejecutado:</strong><pre class=\"language-python\"><code "
+"class=\"language-python\" data-"
+"language=\"python\">{case_code}</code></pre><script>highlight_code();</script>"
 
 #: inginious/frontend/task_problems.py:61
 msgid "code"
