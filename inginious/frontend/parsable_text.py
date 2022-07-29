@@ -192,7 +192,7 @@ class ParsableText(object):
                     self._parsed = self.from_json(self._content, self._show_everything, self._translation)
                 else:
                     self._parsed = self.rst(self._content, self._show_everything, self._translation)
-            except Exception as e:
+            except:
                 self._parsed = self._translation.gettext("<b>Parsing failed</b>: <pre>{}</pre>").format(html.escape(self._content))
         return self._parsed
 
@@ -213,7 +213,22 @@ class ParsableText(object):
     
     def from_json(self, string, show_everything=False, translation=gettext.NullTranslations()):
         """Parses JSON"""
+        # Load json object
         feedback = json.loads(string)
+        
+        
+        #if the object is a dictionary there is a internal error
+        if isinstance(feedback, dict):
+            container_type = feedback.get("container_type","")
+            if container_type == "multilang" or container_type == "hdl":
+                return _("**Compilation error**:\n\n") + ("<pre>%s</pre>" % (feedback.get("compilation_output",""),))
+            elif container_type == "notebook":
+                return _("<br><strong>{}:</strong> There was an error while running your notebook: <br><pre>{}</pre><br>").format(
+                            feedback.get("error_name", ""), feedback.get("internal_error_output", ""))
+       
+        # else the object is a list
+        # The json list always have this structure
+        # [ feedback_obj_test_cases , options_for_feedback , debug_info ]
         debug_info = feedback.pop(-1)
         options = feedback.pop(-1)
 
@@ -252,7 +267,7 @@ class ParsableText(object):
    
     def to_html_block(self, test_id, result, test_case, input_sample, debug_info):
         """
-        This method creates a html block (rst embedding html) for a single test case.
+        This method creates a html block for a single test case.
 
         Args:
             - test_id (int):
@@ -294,7 +309,6 @@ class ParsableText(object):
             template.append(self.input_template)
 
         if diff_available:
-            print(diff_result)
             template_info["diff_result"] = self.escape_text(diff_result)
             template.append(self.diff_template)
 
