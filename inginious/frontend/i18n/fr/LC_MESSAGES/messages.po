@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-06-30 15:04-0500\n"
+"POT-Creation-Date: 2022-07-28 21:08-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "The accessibility end date must be greater than the start date."
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:47
+#: inginious/frontend/parsable_text.py:49
 msgid "The feedback below will be hidden to the students until {}."
 msgstr "L'évaluation ci-dessous ne sera pas affichée aux étudiants avant le {}."
 
-#: inginious/frontend/parsable_text.py:61
+#: inginious/frontend/parsable_text.py:63
 msgid ""
 "A part of this feedback is hidden until {}. Please come back later and "
 "reload the submission to see the full feedback."
@@ -33,9 +33,76 @@ msgstr ""
 "Une partie de cette évaluation est masquée jusqu'au {}. Rechargez la "
 "soumission ultérieurement pour voir l'évaluation complète"
 
-#: inginious/frontend/parsable_text.py:153
+#: inginious/frontend/parsable_text.py:168
+msgid "Toggle diff"
+msgstr ""
+
+#: inginious/frontend/parsable_text.py:170
+msgid ""
+"<p>Input preview: {title_input}</p>\n"
+"                                  <pre class=\"input-area\" "
+"id=\"{block_id}-input\">{input_text}</pre>\n"
+"                                  <div "
+"id=\"{title_input}_download_link\"></div>\n"
+"                                  "
+"<script>createDownloadLink(\"{title_input}\");</script>\n"
+"                                  "
+msgstr ""
+
+#: inginious/frontend/parsable_text.py:177
+msgid "<p>Custom feedback</p><pre>{custom_feedback}</pre><br>"
+msgstr ""
+
+#: inginious/frontend/parsable_text.py:196
 msgid "<b>Parsing failed</b>: <pre>{}</pre>"
 msgstr "<b>L'analyse a échoué<b>: <pre{}</pre>"
+
+#: inginious/frontend/parsable_text.py:224
+msgid ""
+"**Compilation error**:\n"
+"\n"
+msgstr ""
+
+#: inginious/frontend/parsable_text.py:226
+msgid ""
+"<br><strong>{}:</strong> There was an error while running your notebook: "
+"<br><pre>{}</pre><br>"
+msgstr ""
+
+#: inginious/frontend/parsable_text.py:350
+msgid "Expand test results"
+msgstr ""
+
+#: inginious/frontend/parsable_text.py:355
+msgid "<br><strong>Custom feedback:</strong><br><pre>{custom_feedback}</pre>"
+msgstr ""
+
+#: inginious/frontend/parsable_text.py:358
+msgid ""
+"\n"
+"                                            <br><strong>Output "
+"difference:</strong><pre>{case_output_diff}</pre><br>"
+msgstr ""
+
+#: inginious/frontend/parsable_text.py:360
+msgid ""
+"<ul class=\"list_disc\" style=\"font-size:12px; list-style-type: "
+"square;\"><li>\n"
+"            <strong>Case {case_id}:</strong><a class=\"btn btn-default "
+"btn-link btn-xs\" role=\"button\" data-toggle=\"collapse\" \n"
+"            href=\"#{case_panel_id}\" aria-expanded=\"false\"aria-"
+"controls=\"{case_panel_id}\">Show debug info</a>\n"
+"            <div class=\"collapse\" "
+"id=\"{case_panel_id}\">{debug_info}</div></li></ul>\n"
+"            "
+msgstr ""
+
+#: inginious/frontend/parsable_text.py:365
+msgid ""
+"<strong>Executed code:</strong><pre class=\"language-python\"><code class"
+"=\"language-python\" data-"
+"language=\"python\">{case_code}</code></pre><script>highlight_code();</script>"
+msgstr ""
 
 #: inginious/frontend/task_problems.py:61
 msgid "code"
@@ -572,68 +639,68 @@ msgstr ""
 msgid " submissions. The displayed submissions are truncated.\n"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit.py:197
+#: inginious/frontend/pages/course_admin/task_edit.py:200
 msgid "You can not use spaces in the tag id field."
 msgstr ""
 "Vous ne pouvez pas utiliser d'espace dans le champ identifiant de "
 "l'étiquette"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:199
+#: inginious/frontend/pages/course_admin/task_edit.py:202
 msgid "Invalid tag id: "
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit.py:204
+#: inginious/frontend/pages/course_admin/task_edit.py:207
 msgid "Some tags have the same id! The id of a tag must be unique."
 msgstr ""
 "Plusieurs étiquettes ont le même identifiant! L'identifiant d'une "
 "étiquette doit être unique."
 
-#: inginious/frontend/pages/course_admin/task_edit.py:215
+#: inginious/frontend/pages/course_admin/task_edit.py:218
 msgid "Invalid file type: "
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit.py:221
+#: inginious/frontend/pages/course_admin/task_edit.py:224
 msgid "You cannot create a task without subproblems"
 msgstr "Vous ne pouvez pas créer d'exercice sans sous-problème."
 
-#: inginious/frontend/pages/course_admin/task_edit.py:236
+#: inginious/frontend/pages/course_admin/task_edit.py:239
 msgid "Grade weight must be a floating-point number"
 msgstr "Le poids de la note doit être un nombre réel."
 
-#: inginious/frontend/pages/course_admin/task_edit.py:252
+#: inginious/frontend/pages/course_admin/task_edit.py:255
 msgid "The number of stored submission must be a number!"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit.py:255
+#: inginious/frontend/pages/course_admin/task_edit.py:258
 msgid "The number of stored submission must be positive!"
 msgstr "Le nombre de soumissions sauvegardées doit être positif"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:266
-#: inginious/frontend/pages/course_admin/task_edit.py:272
+#: inginious/frontend/pages/course_admin/task_edit.py:269
+#: inginious/frontend/pages/course_admin/task_edit.py:275
 msgid "Invalid submission limit!"
 msgstr "Limite de soumission invalide!"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:303
+#: inginious/frontend/pages/course_admin/task_edit.py:308
 msgid "Your browser returned an invalid form ("
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit.py:303
+#: inginious/frontend/pages/course_admin/task_edit.py:308
 msgid ")"
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit.py:309
+#: inginious/frontend/pages/course_admin/task_edit.py:314
 msgid "Error while reading course's information"
 msgstr "Une erreur s'est produite lors de la lecture des informations du cours"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:345
+#: inginious/frontend/pages/course_admin/task_edit.py:350
 msgid "Invalid data: "
 msgstr ""
 
-#: inginious/frontend/pages/course_admin/task_edit.py:351
+#: inginious/frontend/pages/course_admin/task_edit.py:356
 msgid "Cannot read zip file. Files were not modified"
 msgstr "Impossible de lire le fichier ZIP. Les fichiers n'ont pas été modifiés"
 
-#: inginious/frontend/pages/course_admin/task_edit.py:358
+#: inginious/frontend/pages/course_admin/task_edit.py:363
 msgid ""
 "There was a problem while extracting the zip archive. Some files may have"
 " been modified"
@@ -5857,12 +5924,12 @@ msgid "Grading environment"
 msgstr "Environnement de correction"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:46
-msgid "Allow internet access inside the grading container?"
+msgid "Task's responses type"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/edit_tabs/container.html:59
-msgid "Are the task's responses written in HTML instead of restructuredText?"
-msgstr "Évaluation écrite en HTML ou restructuredText ?"
+#: inginious/frontend/templates/course_admin/edit_tabs/container.html:58
+msgid "Allow internet access inside the grading container?"
+msgstr ""
 
 #: inginious/frontend/templates/course_admin/edit_tabs/container.html:75
 msgid "Change grading environment"
@@ -7674,4 +7741,7 @@ msgstr "Extensions autorisées:"
 
 #~ msgid "Username was not found with an already existing account in UNCode"
 #~ msgstr ""
+
+#~ msgid "Are the task's responses written in HTML instead of restructuredText?"
+#~ msgstr "Évaluation écrite en HTML ou restructuredText ?"
 
