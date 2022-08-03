@@ -5,6 +5,8 @@
 
 """ Tools to parse text """
 import html
+import json
+from enum import IntEnum
 import gettext
 from datetime import datetime
 
@@ -119,23 +121,62 @@ class _CustomHTMLWriter(html4css1.Writer, object):
             return html4css1.HTMLTranslator.starttag(self, node, tagname, suffix, empty, **attributes)
 
 
+class GraderResult(IntEnum):
+    """
+    Represents a result of the grader. Results are ordered by precedence (lower values override
+    higher values when computing a summary result).
+    """
+    COMPILATION_ERROR = 10
+    TIME_LIMIT_EXCEEDED = 20
+    MEMORY_LIMIT_EXCEEDED = 30
+    RUNTIME_ERROR = 40
+    OUTPUT_LIMIT_EXCEEDED = 50
+    GRADING_RUNTIME_ERROR = 60
+    INTERNAL_ERROR = 70
+    PRESENTATION_ERROR = 80
+    WRONG_ANSWER = 90
+    ACCEPTED = 100
+    
 class ParsableText(object):
     """Allow to parse a string with different parsers"""
 
-    def __init__(self, content, mode="rst", show_everything=False, translation=gettext.NullTranslations()):
+    def __init__(self, content, mode="rst", show_everything=False, translation=gettext.NullTranslations(),options={}):
         """
             content             The string to be parsed.
             mode                The parser to be used. Currently, only rst(reStructuredText) and HTML are supported.
             show_everything     Shows things that are normally hidden, such as the hidden-util directive.
         """
         mode = mode.lower()
-        if mode not in ["rst", "html"]:
+        if mode not in ["rst", "html", "json"]:
             raise Exception("Unknown text parser: " + mode)
         self._content = content
         self._parsed = None
         self._translation = translation
         self._mode = mode
         self._show_everything = show_everything
+        
+        #Strings variables to format json
+        self.diff_max_lines = options.get("diff_max_lines", 100)
+        self.diff_context_lines = options.get("diff_context_lines", 3)
+        self.output_diff_for = set(options.get("output_diff_for", []))
+        self.custom_feedback = options.get("custom_feedback", {})
+        self.show_input = options.get('show_input', False)
+        
+        self.toggle_debug_info_template = ["""<ul><li><strong>Test {test_id}: {result_name} </strong>
+                                    <a class="btn btn-default btn-link btn-xs" role="button" data-toggle="collapse" 
+                                    href="#{panel_id}" aria-expanded="false" aria-controls="{panel_id}">""" +
+                                           _("Toggle diff") + """</a> <div class="collapse" id="{panel_id}">""",
+                                           """</div></li></ul>"""]
+        self.input_template = _("""<p>Input preview: {title_input}</p>
+                                  <pre class="input-area" id="{block_id}-input">{input_text}</pre>
+                                  <div id="{title_input}_download_link"></div>
+                                  <script>createDownloadLink("{title_input}");</script>
+                                  """)
+        self.diff_template = """<pre id="{block_id}"></pre>
+                                <script>updateDiffBlock("{block_id}", `{diff_result}`);</script>"""
+        self.custom_feedback_template = _("""<p>Custom feedback</p><pre>{custom_feedback}</pre><br>""")
+        self.runtime_error_template = """<p>Error: </p><br><pre>{stderr}</pre>"""
+        self.not_debug_info_template = """<ul><li><strong>Test {0}: {1} </strong></li></ul>"""
 
     def original_content(self):
         """ Returns the original content """
@@ -147,6 +188,8 @@ class ParsableText(object):
             try:
                 if self._mode == "html":
                     self._parsed = self.html(self._content, self._show_everything, self._translation)
+                elif self._mode == "json":
+                    self._parsed = self.from_json(self._content, self._show_everything, self._translation)
                 else:
                     self._parsed = self.rst(self._content, self._show_everything, self._translation)
             except:
@@ -166,7 +209,195 @@ class ParsableText(object):
         """Parses HTML"""
         out, _ = tidylib.tidy_fragment(string)
         return out
+    
+    
+    def from_json(self, string, show_everything=False, translation=gettext.NullTranslations()):
+        """Parses JSON"""
+        # Load json object
+        feedback = json.loads(string)
+        
+        
+        #if the object is a dictionary there is a internal error
+        if isinstance(feedback, dict):
+            container_type = feedback.get("container_type","")
+            if container_type == "multilang" or container_type == "hdl":
+                return _("**Compilation error**:\n\n") + ("<pre>%s</pre>" % (feedback.get("compilation_output",""),))
+            elif container_type == "notebook":
+                return _("<br><strong>{}:</strong> There was an error while running your notebook: <br><pre>{}</pre><br>").format(
+                            feedback.get("error_name", ""), feedback.get("internal_error_output", ""))
+       
+        # else the object is a list
+        # The json list always have this structure
+        # [ feedback_obj_test_cases , options_for_feedback , debug_info ]
+        debug_info = feedback.pop(-1)
+        options = feedback.pop(-1)
 
+        self.diff_max_lines = options.get("diff_max_lines", 100)
+        self.diff_context_lines = options.get("diff_context_lines", 3)
+        self.output_diff_for = set(options.get("output_diff_for", []))
+        self.custom_feedback = options.get("custom_feedback", {})
+        self.show_input = options.get('show_input', False)
+        container_type = options.get("container_type","")
+        
+        feed_list = []
+        for case in feedback:
+            i = case["i"]
+            if container_type == "multilang" or container_type == "hdl":
+                result = GraderResult(case["result"])
+                input_sample = case["input_sample"]
+                test = case["test_case"]
+                if container_type == "multilang":
+                    feed_list.append(self.to_html_block(i, result, test, input_sample, debug_info))
+                elif container_type == "hdl":
+                    feed_list.append(self.hdl_to_html_block(i, result, test, input_sample, debug_info))
+            elif container_type == "notebook":
+                test_result = case["test_result"]
+                weights = case["weights"]
+                show_debug_info = case["show_debug_info"]
+                test_custom_feedback = case["test_custom_feedback"]
+                feed_list.append(self.notebook_result_to_html_block(i, test_result, weights, show_debug_info, test_custom_feedback))
+                
+                    
+        feedback_str = '\n\n'.join(feed_list) 
+            
+        return feedback_str
+    
+    def escape_text(self, text):
+        return text.replace('\\', "\\\\").replace('`', "\\`").replace('\n', "\\n").replace("$", "\\$").replace('\t', "\\t")
+   
+    def to_html_block(self, test_id, result, test_case, input_sample, debug_info):
+        """
+        This method creates a html block for a single test case.
+
+        Args:
+            - test_id (int):
+            - result: Represents the results for the feedback (check 'results.py')
+            - test_case (tuple): A pair of names. The input filename and the expected output filename
+            - debug_info (dict): Debugging information about the execution of the source code.
+
+        Returns:
+            An string representing the html block to be presented in the feedback about 
+            a single test case.
+        """
+        input_filename = test_case[0]
+        if result in [GraderResult.ACCEPTED, GraderResult.INTERNAL_ERROR] or input_filename not in self.output_diff_for:
+            text = self.not_debug_info_template.format(
+                test_id + 1, result.name)
+            
+            return text
+
+        diff_result = debug_info.get("files_feedback", {}).get(input_filename, {}).get("diff", None)
+        stderr = debug_info.get("files_feedback", {}).get(input_filename, {}).get("stderr", "")
+        diff_available = diff_result is not None
+        input_text = input_sample
+        template_info = {
+            "test_id": test_id + 1,
+            "result_name": result.name,
+            "panel_id": "collapseDiff" + str(test_id),
+            "block_id": "diffBlock" + str(test_id),
+            "input_text_id": "input_text_" + str(test_id),
+            "input_text": input_text,
+            "title_input": test_case[0]
+        }
+        template = [self.toggle_debug_info_template[0]]
+
+        if input_filename in self.custom_feedback:
+            template_info["custom_feedback"] = self.custom_feedback[input_filename]
+            template.append(self.custom_feedback_template)
+
+        if self.show_input:
+            template.append(self.input_template)
+
+        if diff_available:
+            template_info["diff_result"] = self.escape_text(diff_result)
+            template.append(self.diff_template)
+
+        if GraderResult.RUNTIME_ERROR == result:
+            template_info["stderr"] = stderr
+            template.append(self.runtime_error_template)
+
+        template.append(self.toggle_debug_info_template[1])
+        diff_html = "".join(template).format(**template_info)
+
+        return diff_html
+
+    def hdl_to_html_block(self, test_id, result, test_case, input_sample, debug_info):
+        html_block = self.to_html_block(test_id, result, test_case, input_sample, debug_info)
+        if html_block.find("updateDiffBlock") != -1:
+            html_block = html_block.replace("updateDiffBlock", "updateWaveDromBlock")
+        return html_block
+
+    def notebook_result_to_html_block(self, test_id, test_result, weight, show_debug_info, test_custom_feedback):
+        cases_debug_info = test_result["cases"]
+
+        template_info = {
+            "test_id": test_id + 1,
+            "test_name": test_result["name"],
+            "result_name": GraderResult(test_result["result"]).name,
+            "panel_id": "collapseDebug" + str(test_id),
+            "block_id": "debugBlock" + str(test_id),
+            "weight": weight,
+            "total": "%.2f" % test_result["total"],
+        }
+        test_name_template_html = [
+            """<ul class="list_disc" style="font-size:12px;"><li>
+            <strong style="font-size:15px"> {test_name}: </strong><i>{result_name} - {total} / {weight} </i>""",
+            "</li></ul>"
+        ]
+        test_results_template_html = [
+            """<a class="btn btn-default btn-link btn-xs" role="button"
+            data-toggle="collapse" href="#{panel_id}" aria-expanded="false" aria-controls="{panel_id}">""" +
+            _("Expand test results") +
+            """</a><div class="collapse" id="{panel_id}">""",
+            "</div>"
+        ]
+
+        test_custom_feedback_template_html = _("""<br><strong>Custom feedback:</strong><br><pre>{custom_feedback}</pre>""")
+
+        test_case_error_template_html = """<strong>Error:</strong><br><pre>{case_error}</pre>"""
+        test_case_wrong_answer_template_html = _("""
+                                            <br><strong>Output difference:</strong><pre>{case_output_diff}</pre><br>""")
+        test_case_debug_info_template_html = _("""<ul class="list_disc" style="font-size:12px; list-style-type: square;"><li>
+            <strong>Case {case_id}:</strong><a class="btn btn-default btn-link btn-xs" role="button" data-toggle="collapse" 
+            href="#{case_panel_id}" aria-expanded="false"aria-controls="{case_panel_id}">Show debug info</a>
+            <div class="collapse" id="{case_panel_id}">{debug_info}</div></li></ul>
+            """)
+        test_case_executed_code = _('<strong>Executed code:</strong><pre class="language-python"><code ' +
+                                    'class="language-python" data-language="python">{case_code}</code></pre>' +
+                                    '<script>highlight_code();</script>')
+
+        result_html = [test_name_template_html[0]]
+        if cases_debug_info and show_debug_info:
+            result_html.append(test_results_template_html[0])
+            if test_custom_feedback:
+                template_info['custom_feedback'] = test_custom_feedback
+                result_html.append(test_custom_feedback_template_html)
+            for i, case_debug_info in cases_debug_info.items():
+                debug_info = []
+                if case_debug_info["is_runtime_error"]:
+                    debug_info.append(test_case_error_template_html.format(case_error=case_debug_info["error"]).
+                                    replace("{", "{{").replace("}", "}}"))
+                if "case_code" in case_debug_info:
+                    debug_info.append(test_case_executed_code.format(
+                        case_code=case_debug_info["case_code"].replace("{", "{{").replace("}", "}}")))
+                if not case_debug_info["is_runtime_error"]:
+                    case_output_diff = case_debug_info["case_output_diff"].replace("/n", "\n").replace("<", "&lt;"). \
+                        replace("{", "{{").replace("}", "}}")
+                    debug_info.append(test_case_wrong_answer_template_html.format(case_output_diff=case_output_diff.
+                                                                                replace("{", "{{").replace("}", "}}")))
+                case_data = {
+                    "case_id": i,
+                    "case_panel_id": "collapse_debug_test_%s_case_%s" % (str(test_id), str(i)),
+                    "debug_info": ''.join(debug_info).replace("{", "{{").replace("}", "}}")
+                }
+                result_html.append(test_case_debug_info_template_html.format(**case_data))
+            result_html.append(test_results_template_html[1])
+
+        result_html.append(test_name_template_html[1])
+        result_html = ''.join(result_html).format(**template_info)
+
+        return result_html
+   
     @classmethod
     def rst(cls, string, show_everything=False, translation=gettext.NullTranslations(), initial_header_level=3):
         """Parses reStructuredText"""

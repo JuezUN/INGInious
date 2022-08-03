@@ -1,4 +1,4 @@
-$def with (task_data,environments,contains_is_html)
+$def with (task_data,environments,res_types,contains_is_html)
 
 $#
 $# This file is part of INGInious. See the LICENSE and the COPYRIGHTS files for
@@ -43,6 +43,18 @@ $#
     </div>
 </div>
 <div class="form-group">
+    <label for="response_type" class="col-sm-4 control-label">$:_("Task's responses type")</label>
+    <div class="col-sm-8">
+        <select id="response_type" class="form-control" name="response_type">
+            $for type in res_types:
+                <option value="$type"
+                    $if type == task_data.get('response_type'):
+                        selected="selected"
+                >$type</option>
+        </select>
+    </div>
+</div>
+<div class="form-group">
     <label for="network_grading" class="col-sm-4 control-label">$:_("Allow internet access inside the grading container?")</label>
 
     <div class="col-sm-8">
@@ -54,18 +66,6 @@ $#
         </label></div>
     </div>
 </div>
-$if contains_is_html:
-    <div class="form-group">
-        <label for="responseIsHTML" class="col-sm-4 control-label">$:_("Are the task's responses written in HTML instead of restructuredText?")</label>
-        <div class="col-sm-8">
-            <div class="checkbox"><label>
-                <input type="checkbox" id="responseIsHTML" name="responseIsHTML"
-                    $if task_data.get('responseIsHTML',False):
-                        checked="checked"
-                />&nbsp;
-            </label></div>
-        </div>
-    </div>
 
 <div id="change_grading_environment" class="modal fade">
     <div class="modal-dialog">

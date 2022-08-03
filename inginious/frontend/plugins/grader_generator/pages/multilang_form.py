@@ -134,6 +134,7 @@ class MultilangForm(GraderForm):
             "time_limit": time,
             "hard_time_limit": time,
             "output_limit": output_limit,
+            "response_type": self.task_data["response_type"],
             "memory_limit": self.task_data["memory_limit_test_case"],
             "ignore_presentation_error": self.task_data["ignore_presentation_error"]
         }

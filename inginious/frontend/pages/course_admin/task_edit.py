@@ -48,7 +48,9 @@ class CourseEditTask(INGIniousAdminPage):
             environments.insert(0,"multiple_languages")
             environments = tuple(environments)
         
-
+        
+        res_types = ("json","rst")
+        
         current_filetype = None
         try:
             current_filetype = self.task_factory.get_task_descriptor_extension(courseid, taskid)
@@ -73,6 +75,7 @@ class CourseEditTask(INGIniousAdminPage):
             self.task_factory.get_problem_types(),
             task_data,
             environments,
+            res_types,
             task_data.get('problems',{}),
             self.contains_is_html(task_data),
             current_filetype,
@@ -294,8 +297,10 @@ class CourseEditTask(INGIniousAdminPage):
             del data["accessible_end"]
 
             # Checkboxes
-            if data.get("responseIsHTML"):
+            if data.get("responseIsHTML",False):
                 data["responseIsHTML"] = True
+            else:
+                data["responseIsHTML"] = False
 
             # Network grading
             data["network_grading"] = "network_grading" in data

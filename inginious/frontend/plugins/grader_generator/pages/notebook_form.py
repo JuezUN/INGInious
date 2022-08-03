@@ -240,7 +240,8 @@ class NotebookForm(GraderForm):
             "hard_time_limit": time * 2 + 5,
             "memory_limit": self.task_data["notebook_memory_limit_test_case"],
             "dataset": {"url": self.task_data["notebook_data_set_url"],
-                        "filename": self.task_data["notebook_data_set_name"]}
+                        "filename": self.task_data["notebook_data_set_name"]},
+            "response_type": self.task_data["response_type"],
         }
 
         with open(_RUN_FILE_TEMPLATE_PATH, "r") as template, tempfile.TemporaryDirectory() as temporary:
