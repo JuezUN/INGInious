@@ -29,7 +29,8 @@ class HDLForm(GraderForm):
             "diff_max_lines": self.task_data["grader_diff_max_lines"],
             "diff_context_lines": self.task_data["grader_diff_context_lines"],
             "output_diff_for": [testbench_file_name],
-            "entity_name": self.task_data.get('vhdl_entity', None)
+            "entity_name": self.task_data.get('vhdl_entity', None),
+            "response_type": self.task_data["response_type"],
         }
 
         with open(_HDL_FILE_TEMPLATE_PATH, "r") as template, tempfile.TemporaryDirectory() as temporary:
