@@ -44,11 +44,10 @@ def custom_input_manager_multilang(client):
                     if type(value) is str:
                         user_input[key] = user_input[key].replace("\r", "")
                 result, grade, problems, tests, custom, archive, stdout, stderr = self.add_unsaved_job(task, user_input)
-
                 data = {
                     "status": ("done" if result[0] == "success" or result[0] == "failed" else "error"),
                     "result": result[0],
-                    "text": ParsableText(result[1]).parse(),
+                    "text": ParsableText(result[1],"rst").parse(),
                     "stdout": custom.get("custom_stdout", ""),
                     "stderr": custom.get("custom_stderr", "")
                 }
