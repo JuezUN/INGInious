@@ -40,7 +40,7 @@ class MessageMeta(type):
         :param bmessage: bytestring given by a .dump() call on a message
         :return: the original message
         """
-        message_dict = msgpack.loads(bmessage, use_list=False)
+        message_dict = msgpack.loads(bmessage, encoding="utf8", use_list=False)
 
         try:
             obj = MessageMeta._registered_messages[message_dict["type"]].__new__(MessageMeta._registered_messages[message_dict["type"]])
@@ -128,7 +128,7 @@ class MessageMeta(type):
             """
             :return: a bytestring containing a black-box representation of the message, that can be loaded using MessageMeta.load.
             """
-            return msgpack.dumps(self.__dict__, use_bin_type=True)
+            return msgpack.dumps(self.__dict__, encoding="utf8", use_bin_type=True)
 
         super().__init__(name, bases, attrs)
 
@@ -214,7 +214,7 @@ def run_tests():
 
     print("----------------- Invalid dump 3 (invalid content)")
     try:
-        invalid_dump3 = msgpack.dumps({"type": "kill_container", "container_id": 2})
+        invalid_dump3 = msgpack.dumps({"type": "kill_container", "container_id": 2}, encoding="utf8")
         obj6 = MessageMeta.load(invalid_dump3)
         print(type(obj6))
         print(obj6.container_id)

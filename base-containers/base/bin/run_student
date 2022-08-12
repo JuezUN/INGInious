@@ -57,14 +57,14 @@ try:
     zmq_socket.send(msgpack.dumps({"type": "run_student", "environment": args.container,
                                "time_limit": args.time, "hard_time_limit": args.hard_time,
                                "memory_limit": args.memory, "share_network": args.share_network,
-                               "socket_id": socket_id}, use_bin_type=True))
+                               "socket_id": socket_id},encoding="utf8", use_bin_type=True))
 
     # Check if the container was correctly started
-    message = msgpack.loads(zmq_socket.recv(), use_list=False)
+    message = msgpack.loads(zmq_socket.recv(),encoding="utf8", use_list=False)
     assert message["type"] == "run_student_started"
 
     # Send a dummy message to ask for retval
-    zmq_socket.send(msgpack.dumps({"type": "run_student_ask_retval", "socket_id": socket_id}, use_bin_type=True))
+    zmq_socket.send(msgpack.dumps({"type": "run_student_ask_retval", "socket_id": socket_id},encoding="utf8", use_bin_type=True))
 
     # Serve one and only one connection
     connection, addr = server.accept()
@@ -95,7 +95,7 @@ try:
                 pass
 
     # Wait for everything to end
-    message = msgpack.loads(zmq_socket.recv(), use_list=False)
+    message = msgpack.loads(zmq_socket.recv(), encoding="utf8", use_list=False)
 
     # Unlink uneeded files
     try:
