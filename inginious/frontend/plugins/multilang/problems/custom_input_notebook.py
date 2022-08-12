@@ -67,7 +67,7 @@ def custom_input_notebook(client, custom_test_manager):
                 data = {
                     "status": custom_test["status"],
                     "result": custom_test["result"],
-                    "text": ParsableText(custom_test["text"]).parse(),
+                    "text": ParsableText(custom_test["text"],custom_test["response_type"]).parse(),
                 }
                 web.header("Content-Type", "application/json")
                 self._custom_test_manager.delete_custom_test(custom_test_id)
