@@ -133,7 +133,11 @@ class DockerAgent(Agent):
                         retval = -1
 
                     if container_id in self._containers_running:
+                        stdout,stderr = await self._docker.get_logs(container_id)
+                        self._logger.debug("stdout: "+stdout)
+                        self._logger.debug("stderr: "+stderr)
                         self._create_safe_task(self.handle_job_closing(container_id, retval))
+
                     elif container_id in self._student_containers_running:
                         self._create_safe_task(self.handle_student_job_closing(container_id, retval))
                 elif i["Type"] == "container" and i["status"] == "oom":
@@ -364,7 +368,7 @@ class DockerAgent(Agent):
         :param write_stream: asyncio write stream to the stdin of the container
         :param message: dict to be msgpacked and sent
         """
-        msg = msgpack.dumps(message, encoding="utf8", use_bin_type=True)
+        msg = msgpack.dumps(message, use_bin_type=True)
         self._logger.debug("Sending %i bytes to container", len(msg))
         write_stream.write(struct.pack('I', len(msg)))
         write_stream.write(msg)
@@ -405,7 +409,7 @@ class DockerAgent(Agent):
                         msg_encoded = buffer[4:4 + struct.unpack('I', buffer[0:4])[0]]  # ... get it
                         buffer = buffer[4 + struct.unpack('I', buffer[0:4])[0]:]  # ... withdraw it from the buffer
                         try:
-                            msg = msgpack.unpackb(msg_encoded, encoding="utf8", use_list=False)
+                            msg = msgpack.unpackb(msg_encoded, use_list=False)
                             self._logger.debug("Received msg %s from container %s", msg["type"], container_id)
                             if msg["type"] == "run_student":
                                 # start a new student container
