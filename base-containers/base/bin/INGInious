@@ -180,7 +180,7 @@ class INGIniousMainRunner(object):
 
     async def write_stdout(self, o):
         msg = msgpack.dumps(o, use_bin_type=True)
-        self.stdout.write(struct.pack('I', len(msg)))
+        self.stdout.write(struct.pack('!I', len(msg)))
         self.stdout.write(msg)
         await self.stdout.drain()
 

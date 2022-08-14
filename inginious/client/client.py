@@ -284,6 +284,7 @@ class Client(BetterParanoidPirateClient):
         ssh_callback = _callable_once(ssh_callback if ssh_callback is not None else lambda _1, _2, _3: None)
 
         environment = task.get_environment()
+        print(environment)
         if environment not in self._available_containers:
             self._logger.warning("Env %s not available for task %s/%s", environment, task.get_course_id(), task.get_id())
             ssh_callback(None, None, None)  # ssh_callback must be called once
