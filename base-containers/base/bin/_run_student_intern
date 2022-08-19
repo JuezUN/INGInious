@@ -8,21 +8,25 @@ import shlex
 import socket
 import subprocess
 import threading
-
+import sys
 import msgpack
 import array
 
 import resource
 
 
+
 def handle_signals(subprocess, socket):
     """ Handles signals given by run_student on the socket """
     while True:
-        signal = socket.recv(3)
-        if signal == b'---' or len(signal) < 3: # quit
-            return
-        print("received %s" % signal.decode("utf8"))
-        subprocess.send_signal(int(signal.decode('utf8')))
+        try:
+            signal = socket.recv(3)
+            if signal == b'---' or len(signal) < 3: # quit
+                return
+            print("received %s" % signal.decode("utf8"))
+            subprocess.send_signal(int(signal.decode('utf8')))
+        except:
+            sys.exit(3)
 
 def recv_fds(sock, msglen, maxfds):
     """ Receive FDs from the unix socket. Copy-pasted from the Python doc """
@@ -79,7 +83,7 @@ print("Chdir")
 os.chdir(start_cmd["working_dir"])
 print("Popen")
 print(fds)
-p = subprocess.Popen(shlex.split(start_cmd["command"]), preexec_fn=setlimits, stdin=fds[0], stdout=fds[1], stderr=fds[2])
+p = subprocess.Popen(start_cmd["command"], shell=True, preexec_fn=setlimits, stdin=fds[0], stdout=fds[1], stderr=fds[2])
 
 # Handle the signals
 print("Signal thread")
@@ -89,6 +93,7 @@ thread.start()
 # Wait until the subprocess exit
 print("Waiting for process to end")
 retval = p.wait()
+
 
 # Exit with the same return value than the process (it will be given to docker and given back to run_student)
 print("Exiting")

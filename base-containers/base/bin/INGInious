@@ -128,7 +128,7 @@ class INGIniousMainRunner(object):
                     buf += await reader.read(length-len(buf))
                 if reader.at_eof():
                     continue
-                message = msgpack.unpackb(bytes(buf), use_list=False)
+                message = msgpack.unpackb(bytes(buf), use_list=False)              
                 await self.handle_stdin_message(message)
         except asyncio.CancelledError:
             return
@@ -145,6 +145,7 @@ class INGIniousMainRunner(object):
     async def serve(self):
         self._logger.info("Starting serve")
         stdin_sr, self.stdout = await self.stdio()
+        
         self._loop.create_task(self.handle_stdin(stdin_sr))
 
         self.intern = self._ctx.socket(zmq.ROUTER)

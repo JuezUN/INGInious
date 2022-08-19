@@ -77,7 +77,7 @@ try:
     connection.sendmsg([b'S'],
                        [(socket.SOL_SOCKET, socket.SCM_RIGHTS, array.array("i", [sys.stdin.fileno(), sys.stdout.fileno(), sys.stderr.fileno()]))])
     connection.send(msgpack.dumps({"command": ' '.join(args.cmd), "working_dir": os.getcwd()}))
-
+    
 
     # Catch every signal, and send it to the remote process
     def receive_signal(signum_s, _):
