@@ -131,14 +131,16 @@ class DockerAgent(Agent):
                     except:
                         self._logger.exception("Cannot parse exitCode for container %s", container_id)
                         retval = -1
-
+                    stdout, stderr = await self._docker.get_logs(container_id)
+                    
                     if container_id in self._containers_running:
-                        stdout,stderr = await self._docker.get_logs(container_id)
-                        self._logger.debug("stdout: "+stdout)
-                        self._logger.debug("stderr: "+stderr)
+                        #UNCOMMENT TO SEE DEBUG LOGS FOR GRADING CONTAINERS
+                        #self._logger.debug("Grading container " + container_id + " stdout: \n" + stdout + "\n" + " stderr: " + stderr + "\n" + " retval: " + str(retval)+ "\n")
                         self._create_safe_task(self.handle_job_closing(container_id, retval))
-
                     elif container_id in self._student_containers_running:
+                        stdout,stderr = await self._docker.get_logs(container_id)
+                        #UNCOMMENT TO SEE DEBUG LOGS FOR STUDENT CONTAINERS
+                        #self._logger.debug("Student container " + container_id + " stdout: \n" + stdout + "\n" + " stderr: " + stderr + "\n" + " retval: " + str(retval)+ "\n")
                         self._create_safe_task(self.handle_student_job_closing(container_id, retval))
                 elif i["Type"] == "container" and i["status"] == "oom":
                     container_id = i["id"]
@@ -368,7 +370,7 @@ class DockerAgent(Agent):
         :param write_stream: asyncio write stream to the stdin of the container
         :param message: dict to be msgpacked and sent
         """
-        msg = msgpack.dumps(message, encoding="utf8", use_bin_type=True)
+        msg = msgpack.dumps(message, use_bin_type=True)
         self._logger.debug("Sending %i bytes to container", len(msg))
         write_stream.write(struct.pack('!I', len(msg)))
         write_stream.write(msg)

@@ -90,13 +90,25 @@ try:
         if i not in uncatchable:
             try:
                 signum = getattr(signal, i)
-                signal.signal(signum, receive_signal)
+                signal.signal(signum, lambda x, _: receive_signal)
             except:
                 pass
 
     # Wait for everything to end
-    message = msgpack.loads(zmq_socket.recv(), use_list=False)
+    message = None
+    msg_type = None
+    stdout_file = os.fdopen(sys.stdout.fileno(), 'wb')
+    stderr_file = os.fdopen(sys.stderr.fileno(), 'wb')
+    while msg_type != "run_student_retval":
+        message = msgpack.loads(zmq_socket.recv(), use_list=False, strict_map_key=False)
+        msg_type = message["type"]
+        if msg_type == "stdout":
+            stdout_file.write(message["message"])
+            stdout_file.flush()
 
+        if msg_type == "stderr":
+            stderr_file.write(message["message"])
+            stderr_file.flush()
     # Unlink uneeded files
     try:
         os.unlink(socket_path)

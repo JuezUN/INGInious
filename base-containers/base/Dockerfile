@@ -7,6 +7,7 @@ ENV LC_ALL en_US.UTF-8
 
 RUN     dnf clean metadata && \
         dnf -y install langpacks-en && \
+        dnf -y install glibc-langpack-en && \
         dnf -y install epel-release && \
         dnf -y upgrade && \
         dnf -y install python39 python39-pip python39-devel zip unzip tar sed openssh-server openssl bind-utils iproute file jq procps-ng nano && \
@@ -33,7 +34,7 @@ RUN     groupadd --gid 4242 worker && \
         useradd --uid 4242 --gid 4242 worker --home-dir /task
 
 # Set locale params for SSH debug
-RUN     echo -e "LANG=en_US.UTF-8\nLANGUAGE=en_US:en\nLC_ALL=en_US.UTF-8" >> /etc/environment
+RUN     echo -e "export LANG=en_US.UTF-8\nexport LANGUAGE=en_US:en\nexport LC_ALL=en_US.UTF-8\n" > /etc/profile
 RUN     sed -i.bak '/^AcceptEnv/ d' /etc/ssh/sshd_config
 
 # Set proxy vars in case the agent is behind a proxy
