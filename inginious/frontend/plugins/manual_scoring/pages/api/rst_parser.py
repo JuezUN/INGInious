@@ -20,7 +20,7 @@ def _transform_rst_content(content):
 
     if not content:
         content = "**There is not content yet**\n============================"
-    comment = ParsableText(content)
+    comment = ParsableText(content,"rst")
     return comment.parse()
 
 

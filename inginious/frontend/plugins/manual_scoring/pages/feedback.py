@@ -33,7 +33,7 @@ class FeedbackPage(INGIniousAuthPage):
             "summary": get_dict_value(submission, "custom", "custom_summary_result"),
             "grade": score,
             "language": get_dict_value(submission, "input", problem_id + '/language'),
-            "comment": ParsableText(comment),
+            "comment": ParsableText(comment,submission.get("response_type","rst")),
             "score": get_dict_value(submission, "grade"),
             "task_name": task.get_name_or_id(self.user_manager.session_language()),
             "result": submission['result'],

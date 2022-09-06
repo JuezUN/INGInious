@@ -140,7 +140,7 @@ class GraderResult(IntEnum):
 class ParsableText(object):
     """Allow to parse a string with different parsers"""
 
-    def __init__(self, content, mode="rst", show_everything=False, translation=gettext.NullTranslations(),options={}):
+    def __init__(self, content, mode="json", show_everything=False, translation=gettext.NullTranslations(),options={}):
         """
             content             The string to be parsed.
             mode                The parser to be used. Currently, only rst(reStructuredText) and HTML are supported.
