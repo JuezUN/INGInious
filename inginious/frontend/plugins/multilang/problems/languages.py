@@ -3,9 +3,8 @@ from collections import OrderedDict
 
 def get_all_available_languages():
     _available_language = {
-        "java7": "Java 7",
         "java8": "Java 8",
-        "python3": "Python 3.6",
+        "python3": "Python 3.9",
         "cpp": "C++",
         "cpp11": "C++11",
         "c": "C",
