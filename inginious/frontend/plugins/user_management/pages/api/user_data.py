@@ -193,7 +193,10 @@ class UserDataAPI(SuperadminAPI):
         collections_manager = CollectionsManagerSingleton.get_instance()
         user_basic_data = self.database.users.find_one({'username': username, 'email': email})
         #find in the aggregations table all documents in which the username appears inside the students array
-        user_courses = self.get_user_courses(self.database.aggregations.find({'students': username}))
+        aggregations = self.database.aggregations.find({'students': username})
+        user_courses = {}
+        if aggregations.count() > 0:
+            user_courses = self.get_user_courses(aggregations)
         if user_basic_data:
             collection_data, unknown_collections = get_count_username_occurrences(user_basic_data["username"],
                                                                                   collections_manager)
