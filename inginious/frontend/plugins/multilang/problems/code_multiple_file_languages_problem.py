@@ -43,7 +43,7 @@ class DisplayableCodeFileMultipleLanguagesProblem(CodeFileMultipleLanguagesProbl
         return renderer.file_multilang_edit(key, get_all_available_languages())
 
     def show_input(self, template_helper, language, seed):
-        allowed_languages = {language: get_all_available_languages()[language] for language in self._languages}
+        allowed_languages = { language : get_all_available_languages()[language] for language in self._languages if language in get_all_available_languages() }
         allowed_languages = OrderedDict([(lang, allowed_languages[lang]) for lang in sorted(allowed_languages.keys())])
         dropdown_id = self.get_id() + "/language"
         custom_input_id = self.get_id() + "/input"
