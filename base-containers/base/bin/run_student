@@ -57,14 +57,14 @@ try:
     zmq_socket.send(msgpack.dumps({"type": "run_student", "environment": args.container,
                                "time_limit": args.time, "hard_time_limit": args.hard_time,
                                "memory_limit": args.memory, "share_network": args.share_network,
-                               "socket_id": socket_id}, encoding="utf8", use_bin_type=True))
+                               "socket_id": socket_id}, use_bin_type=True))
 
     # Check if the container was correctly started
-    message = msgpack.loads(zmq_socket.recv(), encoding="utf8", use_list=False)
+    message = msgpack.loads(zmq_socket.recv(), use_list=False, strict_map_key=False)
     assert message["type"] == "run_student_started"
 
     # Send a dummy message to ask for retval
-    zmq_socket.send(msgpack.dumps({"type": "run_student_ask_retval", "socket_id": socket_id}, encoding="utf8", use_bin_type=True))
+    zmq_socket.send(msgpack.dumps({"type": "run_student_ask_retval", "socket_id": socket_id}, use_bin_type=True))
 
     # Serve one and only one connection
     connection, addr = server.accept()
@@ -76,8 +76,8 @@ try:
     # send the fds and the command/workdir
     connection.sendmsg([b'S'],
                        [(socket.SOL_SOCKET, socket.SCM_RIGHTS, array.array("i", [sys.stdin.fileno(), sys.stdout.fileno(), sys.stderr.fileno()]))])
-    connection.send(msgpack.dumps({"command": ' '.join(args.cmd), "working_dir": os.getcwd()}, encoding="utf8"))
-
+    connection.send(msgpack.dumps({"command": ' '.join(args.cmd), "working_dir": os.getcwd()}))
+    
 
     # Catch every signal, and send it to the remote process
     def receive_signal(signum_s, _):
@@ -90,13 +90,25 @@ try:
         if i not in uncatchable:
             try:
                 signum = getattr(signal, i)
-                signal.signal(signum, receive_signal)
+                signal.signal(signum, lambda x, _: receive_signal)
             except:
                 pass
 
     # Wait for everything to end
-    message = msgpack.loads(zmq_socket.recv(), encoding="utf8", use_list=False)
+    message = None
+    msg_type = None
+    stdout_file = os.fdopen(sys.stdout.fileno(), 'wb')
+    stderr_file = os.fdopen(sys.stderr.fileno(), 'wb')
+    while msg_type != "run_student_retval":
+        message = msgpack.loads(zmq_socket.recv(), use_list=False, strict_map_key=False)
+        msg_type = message["type"]
+        if msg_type == "stdout":
+            stdout_file.write(message["message"])
+            stdout_file.flush()
 
+        if msg_type == "stderr":
+            stderr_file.write(message["message"])
+            stderr_file.flush()
     # Unlink uneeded files
     try:
         os.unlink(socket_path)

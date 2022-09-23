@@ -4002,7 +4002,11 @@ msgstr "No hay datos que modificar"
 msgid "Superadmin can not modify its own data"
 msgstr "El superadministrador no puede modificar sus propios datos"
 
+<<<<<<< HEAD
 #: inginious/frontend/plugins/user_management/pages/api/user_data.py:212
+=======
+#: inginious/frontend/plugins/user_management/pages/api/user_data.py:211
+>>>>>>> master
 msgid "User no found"
 msgstr "Usuario no encontrado"
 
