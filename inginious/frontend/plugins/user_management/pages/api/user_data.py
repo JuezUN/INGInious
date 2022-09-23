@@ -196,7 +196,7 @@ class UserDataAPI(SuperadminAPI):
         aggregations = None
         aggregations = self.database.aggregations.find({'students': username})
         user_courses = {}
-        if aggregations != None:
+        if aggregations is not None:
             user_courses = self.get_user_courses(aggregations)
         if user_basic_data:
             collection_data, unknown_collections = get_count_username_occurrences(user_basic_data["username"],
