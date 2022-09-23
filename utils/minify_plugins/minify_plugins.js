@@ -202,6 +202,11 @@ function minifyMultilangPlugin() {
         return getCssFilePath(cssFilesPath, name);
     });
     minifyCssFiles(cssFiles, cssFilesPath, "multilang");
+
+    jsFiles = ["notebook_renderer"].map((name) => {
+        return getJSFilePath(jsFilesPath, name);
+    });
+    minifyJSFiles(jsFiles, jsFilesPath, "notebook_renderer");
 }
 
 function minifyGraderGeneratorPlugin() {

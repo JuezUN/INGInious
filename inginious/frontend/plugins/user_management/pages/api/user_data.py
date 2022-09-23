@@ -193,7 +193,6 @@ class UserDataAPI(SuperadminAPI):
         collections_manager = CollectionsManagerSingleton.get_instance()
         user_basic_data = self.database.users.find_one({'username': username, 'email': email})
         #find in the aggregations table all documents in which the username appears inside the students array
-        aggregations = None
         aggregations = self.database.aggregations.find({'students': username})
         user_courses = {}
         if aggregations is not None:
