@@ -242,7 +242,7 @@
     nb.Cell.prototype.renderers = {
         markdown: function () {
             var el = makeElement("div", [ "cell", "markdown-cell" ]);
-            el.innerHTML = nb.markdown(joinText(this.raw.source));
+            el.innerHTML = nb.markdown.marked(joinText(this.raw.source));
 
             /* Requires to render KaTeX
             'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js',
