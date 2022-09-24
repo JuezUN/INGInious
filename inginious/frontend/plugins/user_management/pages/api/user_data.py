@@ -195,7 +195,7 @@ class UserDataAPI(SuperadminAPI):
         #find in the aggregations table all documents in which the username appears inside the students array
         aggregations = self.database.aggregations.find({'students': username})
         user_courses = {}
-        if aggregations.count() > 0:
+        if aggregations is not None:
             user_courses = self.get_user_courses(aggregations)
         if user_basic_data:
             collection_data, unknown_collections = get_count_username_occurrences(user_basic_data["username"],
