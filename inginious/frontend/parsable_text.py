@@ -9,7 +9,7 @@ import json
 from enum import IntEnum
 import gettext
 from datetime import datetime
-
+import collections
 import tidylib
 from docutils import core, nodes, utils
 from docutils.parsers.rst import directives, Directive
@@ -372,7 +372,8 @@ class ParsableText(object):
             if test_custom_feedback:
                 template_info['custom_feedback'] = test_custom_feedback
                 result_html.append(test_custom_feedback_template_html)
-            for i, case_debug_info in cases_debug_info.items():
+            cases_debug_info_sorted = collections.OrderedDict(sorted(cases_debug_info.items()))
+            for i, case_debug_info in cases_debug_info_sorted.items():
                 debug_info = []
                 if case_debug_info["is_runtime_error"]:
                     debug_info.append(test_case_error_template_html.format(case_error=case_debug_info["error"]).
