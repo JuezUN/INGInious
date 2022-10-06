@@ -32,7 +32,8 @@ class GraderForm:
 
         # Parse checkboxes
         self.task_data["treat_non_zero_as_runtime_error"] = "treat_non_zero_as_runtime_error" in self.task_data
-
+        self.task_data["enable_all_diff_for_staff"] = "enable_all_diff_for_staff" in self.task_data
+        
     def validate(self):
         # Check if grader problem was set
         if 'grader_problem_id' not in self.task_data:

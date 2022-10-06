@@ -67,6 +67,22 @@ $#
         </label></div>
     </div>
 </div>
+<div class="form-group">
+    <label for="enable_all_diff_for_staff" class="col-sm-4 control-label">
+        $:_("Show all differences for staff")
+        <i class="fa fa-question-circle"
+           title=$:_("\"In case it is not checked, the student's result is either ACCEPTED or WRONG_ANSWER. If checked, it shows additional errors like RUNTIME_ERROR or TIME_LIMIT_EXCEEDED.\"")
+           data-toggle="tooltip"></i>
+    </label>
+    <div class="col-sm-8">
+        <div class="checkbox"><label>
+            <input type="checkbox" id="enable_all_diff_for_staff" name="enable_all_diff_for_staff"
+                $if task_data.get('enable_all_diff_for_staff', True):
+                    checked="checked"
+            />&nbsp;
+        </label></div>
+    </div>
+</div>
 
 <div class="grader_form" id="multilang_grader_form">
     <div class="form-group">

@@ -118,6 +118,7 @@ class MultilangForm(GraderForm):
                       for test_case in self.task_data["grader_test_cases"]]
         weights = [test_case["weight"] for test_case in self.task_data["grader_test_cases"]]
         time = self.task_data["time_limit_test_case"]
+        enable_all_diff_for_staff = self.task_data["enable_all_diff_for_staff"]
         # Set output limit in Bytes
         output_limit = (2 ** 20) * self.task_data["output_limit_test_case"]
         output_diff_for = [test_case["input_file"] for test_case in self.task_data["grader_test_cases"] if
@@ -128,6 +129,8 @@ class MultilangForm(GraderForm):
             "diff_context_lines": self.task_data["grader_diff_context_lines"],
             "output_diff_for": [test_case["input_file"] for test_case in self.task_data["grader_test_cases"]
                                 if test_case["diff_shown"]],
+            "output_diff_for_staff": [test_case["input_file"] for test_case in self.task_data["grader_test_cases"]
+                                        if not test_case["diff_shown"]] if enable_all_diff_for_staff else [],
             "custom_feedback": {test_case["input_file"]: test_case["custom_feedback"] for test_case in
                                 self.task_data["grader_test_cases"] if
                                 test_case["custom_feedback"] and test_case["diff_shown"]},

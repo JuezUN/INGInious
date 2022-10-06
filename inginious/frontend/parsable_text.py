@@ -159,13 +159,21 @@ class ParsableText(object):
         self.diff_max_lines = options.get("diff_max_lines", 100)
         self.diff_context_lines = options.get("diff_context_lines", 3)
         self.output_diff_for = set(options.get("output_diff_for", []))
+        self.output_diff_for_staff = set(options.get("output_diff_for_staff", []))
         self.custom_feedback = options.get("custom_feedback", {})
         self.show_input = options.get('show_input', False)
+        
+        
         
         self.toggle_debug_info_template = ["""<ul><li><strong>Test {test_id}: {result_name} </strong>
                                     <a class="btn btn-default btn-link btn-xs" role="button" data-toggle="collapse" 
                                     href="#{panel_id}" aria-expanded="false" aria-controls="{panel_id}">""" +
                                            _("Toggle diff") + """</a> <div class="collapse" id="{panel_id}">""",
+                                           """</div></li></ul>"""]
+        self.toggle_debug_info_staff_template = ["""<ul><li><strong>Test {test_id}: {result_name} </strong>
+                                    <a class="btn btn-default btn-link btn-xs" role="button" data-toggle="collapse" 
+                                    href="#{panel_id}" aria-expanded="false" aria-controls="{panel_id}">""" +
+                                           _("Toggle diff  (only for staff)") + """</a> <div class="collapse" id="{panel_id}">""",
                                            """</div></li></ul>"""]
         self.input_template = _("""<p>Input preview: {title_input}</p>
                                   <pre class="input-area" id="{block_id}-input">{input_text}</pre>
@@ -231,7 +239,7 @@ class ParsableText(object):
         # [ feedback_obj_test_cases , options_for_feedback , debug_info ]
         debug_info = feedback.pop(-1)
         options = feedback.pop(-1)
-
+        
         self.diff_max_lines = options.get("diff_max_lines", 100)
         self.diff_context_lines = options.get("diff_context_lines", 3)
         self.output_diff_for = set(options.get("output_diff_for", []))
@@ -247,6 +255,7 @@ class ParsableText(object):
                 input_sample = case["input_sample"]
                 test = case["test_case"]
                 if container_type == "multilang":
+                    print(self.output_diff_for_staff)
                     feed_list.append(self.to_html_block(i, result, test, input_sample, debug_info))
                 elif container_type == "hdl":
                     feed_list.append(self.hdl_to_html_block(i, result, test, input_sample, debug_info))
@@ -280,15 +289,17 @@ class ParsableText(object):
             a single test case.
         """
         input_filename = test_case[0]
-        if result in [GraderResult.ACCEPTED, GraderResult.INTERNAL_ERROR] or input_filename not in self.output_diff_for:
+        if result in [GraderResult.ACCEPTED, GraderResult.INTERNAL_ERROR] or (input_filename not in self.output_diff_for and input_filename not in self.output_diff_for_staff):
             text = self.not_debug_info_template.format(
                 test_id + 1, result.name)
-            
+            print(self.output_diff_for)
             return text
 
         diff_result = debug_info.get("files_feedback", {}).get(input_filename, {}).get("diff", None)
+        diff_available_for_staff = debug_info.get("files_feedback", {}).get(input_filename, {}).get("diff_only_staff", False)
+       
         stderr = debug_info.get("files_feedback", {}).get(input_filename, {}).get("stderr", "")
-        diff_available = diff_result is not None
+        diff_available_for_students = diff_result is not None and not diff_available_for_staff
         input_text = input_sample
         template_info = {
             "test_id": test_id + 1,
@@ -299,18 +310,20 @@ class ParsableText(object):
             "input_text": input_text,
             "title_input": test_case[0]
         }
-        template = [self.toggle_debug_info_template[0]]
+        initial_template = self.toggle_debug_info_staff_template[0] if diff_available_for_staff else self.toggle_debug_info_template[0]
+        template = [initial_template] 
 
         if input_filename in self.custom_feedback:
             template_info["custom_feedback"] = self.custom_feedback[input_filename]
             template.append(self.custom_feedback_template)
 
-        if self.show_input:
+        if self.show_input or diff_available_for_staff:
             template.append(self.input_template)
 
-        if diff_available:
+        if diff_available_for_students or diff_available_for_staff:
             template_info["diff_result"] = self.escape_text(diff_result)
             template.append(self.diff_template)
+        
 
         if GraderResult.RUNTIME_ERROR == result:
             template_info["stderr"] = stderr
