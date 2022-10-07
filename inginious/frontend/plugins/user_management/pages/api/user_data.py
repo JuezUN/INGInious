@@ -145,7 +145,11 @@ class UserDataAPI(SuperadminAPI):
         try:
             user_data = self.get_user_data(username, email)
         except api.APIError as error:
+            print(error.return_value)
             return error.status_code, {"error": error.return_value}
+        except Exception as error:
+            print(error)
+            return 500, {"error": "Exception catched on back"}
         return 200, user_data
 
     def API_POST(self):
@@ -195,8 +199,11 @@ class UserDataAPI(SuperadminAPI):
         #find in the aggregations table all documents in which the username appears inside the students array
         aggregations = self.database.aggregations.find({'students': username})
         user_courses = {}
-        if aggregations is not None:
+        if aggregations.count() > 0:
             user_courses = self.get_user_courses(aggregations)
+        else:
+            #raise api.APIError(400, _("User without courses related"))
+            raise Exception
         if user_basic_data:
             collection_data, unknown_collections = get_count_username_occurrences(user_basic_data["username"],
                                                                                   collections_manager)
@@ -216,8 +223,11 @@ class UserDataAPI(SuperadminAPI):
         """
         courses_ids = []
         courses_names = []
-        for doc in associated_aggregations:
-            courses_ids.append(doc["courseid"])
-            courses_names.append(self.app.course_factory.get_course(doc["courseid"]).get_name(None))
-        zip_iterator = zip(courses_ids, courses_names)
-        return dict(zip_iterator)
+        if associated_aggregations:
+            for doc in associated_aggregations:
+                courses_ids.append(doc["courseid"])
+                courses_names.append(self.app.course_factory.get_course(doc["courseid"]).get_name(None))
+            zip_iterator = zip(courses_ids, courses_names)
+            return dict(zip_iterator)
+        else:
+            return {}
