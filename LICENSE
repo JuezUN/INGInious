@@ -1,11 +1,3 @@
-
-  Most of the files in INGInious are distributed under the GNU AGPL v3 licence,
-which follows.
-
-  If it is not the case, this is clearly indicated in the files.
-
--------------------------------------------------------------------------------
-
                     GNU AFFERO GENERAL PUBLIC LICENSE
                        Version 3, 19 November 2007
 
@@ -13,6 +5,13 @@ which follows.
  Everyone is permitted to copy and distribute verbatim copies
  of this license document, but changing it is not allowed.
 
+-------------------------------------------------------------------------------
+Most of the files in INGInious are distributed under the GNU AGPL v3 licence,
+which follows.
+
+  If it is not the case, this is clearly indicated in the files.
+
+-------------------------------------------------------------------------------
                             Preamble
 
   The GNU Affero General Public License is a free, copyleft license for
