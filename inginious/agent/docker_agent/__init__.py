@@ -135,11 +135,11 @@ class DockerAgent(Agent):
                     
                     if container_id in self._containers_running:
                         #UNCOMMENT TO SEE DEBUG LOGS FOR GRADING CONTAINERS
-                        self._logger.debug("Grading container " + container_id + " stdout: \n" + stdout + "\n" + " stderr: " + stderr + "\n" + " retval: " + str(retval)+ "\n")
+                        #self._logger.debug("Grading container " + container_id + " stdout: \n" + stdout + "\n" + " stderr: " + stderr + "\n" + " retval: " + str(retval)+ "\n")
                         self._create_safe_task(self.handle_job_closing(container_id, retval))
                     elif container_id in self._student_containers_running:
                         #UNCOMMENT TO SEE DEBUG LOGS FOR STUDENT CONTAINERS
-                        self._logger.debug("Student container " + container_id + " stdout: \n" + stdout + "\n" + " stderr: " + stderr + "\n" + " retval: " + str(retval)+ "\n")
+                        #self._logger.debug("Student container " + container_id + " stdout: \n" + stdout + "\n" + " stderr: " + stderr + "\n" + " retval: " + str(retval)+ "\n")
                         self._create_safe_task(self.handle_student_job_closing(container_id, retval))
                 elif i["Type"] == "container" and i["status"] == "oom":
                     container_id = i["id"]
