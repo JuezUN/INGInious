@@ -145,11 +145,7 @@ class UserDataAPI(SuperadminAPI):
         try:
             user_data = self.get_user_data(username, email)
         except api.APIError as error:
-            print(error.return_value)
             return error.status_code, {"error": error.return_value}
-        except Exception as error:
-            print(error)
-            return 500, {"error": "Exception catched on back"}
         return 200, user_data
 
     def API_POST(self):
@@ -198,15 +194,18 @@ class UserDataAPI(SuperadminAPI):
         user_basic_data = self.database.users.find_one({'username': username, 'email': email})
         #find in the aggregations table all documents in which the username appears inside the students array
         aggregations = self.database.aggregations.find({'students': username})
-        user_courses = {}
-        if aggregations.count() > 0:
-            user_courses = self.get_user_courses(aggregations)
-        else:
-            #raise api.APIError(400, _("User without courses related"))
-            raise Exception
+        
+        user_courses = self.get_user_courses(aggregations) if aggregations.count() > 0 else {}
+        
         if user_basic_data:
-            collection_data, unknown_collections = get_count_username_occurrences(user_basic_data["username"],
-                                                                                  collections_manager)
+            try: 
+                #This is only if the try/except clause on get_aggregation_result
+                #on user_information does not work properly
+                collection_data, unknown_collections = get_count_username_occurrences(user_basic_data["username"],
+                                                                                        collections_manager)
+            except: # In that case, we don't want to raise an exception because the info of the user is still available
+                collection_data, unknown_collections = {},[]
+            
             data = {"username": user_basic_data["username"],
                     "name": user_basic_data["realname"],
                     "email": user_basic_data["email"],
