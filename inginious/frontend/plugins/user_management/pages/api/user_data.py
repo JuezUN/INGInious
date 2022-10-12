@@ -194,12 +194,18 @@ class UserDataAPI(SuperadminAPI):
         user_basic_data = self.database.users.find_one({'username': username, 'email': email})
         #find in the aggregations table all documents in which the username appears inside the students array
         aggregations = self.database.aggregations.find({'students': username})
-        user_courses = {}
-        if aggregations is not None:
-            user_courses = self.get_user_courses(aggregations)
+        
+        user_courses = self.get_user_courses(aggregations) if aggregations.count() > 0 else {}
+        
         if user_basic_data:
-            collection_data, unknown_collections = get_count_username_occurrences(user_basic_data["username"],
-                                                                                  collections_manager)
+            try: 
+                #This is only if the try/except clause on get_aggregation_result
+                #on user_information does not work properly
+                collection_data, unknown_collections = get_count_username_occurrences(user_basic_data["username"],
+                                                                                        collections_manager)
+            except: # In that case, we don't want to raise an exception because the info of the user is still available
+                collection_data, unknown_collections = {},[]
+            
             data = {"username": user_basic_data["username"],
                     "name": user_basic_data["realname"],
                     "email": user_basic_data["email"],
@@ -216,8 +222,11 @@ class UserDataAPI(SuperadminAPI):
         """
         courses_ids = []
         courses_names = []
-        for doc in associated_aggregations:
-            courses_ids.append(doc["courseid"])
-            courses_names.append(self.app.course_factory.get_course(doc["courseid"]).get_name(None))
-        zip_iterator = zip(courses_ids, courses_names)
-        return dict(zip_iterator)
+        if associated_aggregations:
+            for doc in associated_aggregations:
+                courses_ids.append(doc["courseid"])
+                courses_names.append(self.app.course_factory.get_course(doc["courseid"]).get_name(None))
+            zip_iterator = zip(courses_ids, courses_names)
+            return dict(zip_iterator)
+        else:
+            return {}
