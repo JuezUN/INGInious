@@ -17,7 +17,7 @@ install_requires = [
     "docker==4.0.2",
     "docutils==0.16",
     "pymongo==3.9.0",
-    "PyYAML>=3.11",
+    "PyYAML==5.1",
     "web.py==0.40",
     "lti==0.9.4",
     "oauth2==1.9.0.post1",
