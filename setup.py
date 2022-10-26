@@ -14,21 +14,21 @@ import inginious
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 install_requires = [
-    "docker>=2.5.0",
+    "docker==4.0.2",
     "docutils==0.16",
-    "pymongo>=3.2.2",
-    "PyYAML>=3.11",
+    "pymongo==3.9.0",
+    "PyYAML==5.1.2",
     "web.py==0.40",
-    "lti>=0.9.0",
-    "oauth2>=1.9.0.post1",
-    "httplib2>=0.9",
-    "watchdog >= 0.8.3",
-    "msgpack-python >= 0.4.7",
-    "pyzmq >= 15.3.0",
-    "natsort >= 5.0.1",
-    "psutil >= 4.4.2",
-    "zipstream >= 1.1.4",
-    "textdistance >= 4.2.0",
+    "lti==0.9.4",
+    "oauth2==1.9.0.post1",
+    "httplib2==0.14.0",
+    "watchdog == 0.9.0",
+    "msgpack-python == 0.5.6",
+    "pyzmq == 18.1.0",
+    "natsort == 6.0.0",
+    "psutil == 5.6.3",
+    "zipstream == 1.1.4",
+    "textdistance == 4.2.0",
 ]
 
 test_requires = [
