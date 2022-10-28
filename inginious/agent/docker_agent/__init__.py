@@ -131,7 +131,8 @@ class DockerAgent(Agent):
                     except:
                         self._logger.exception("Cannot parse exitCode for container %s", container_id)
                         retval = -1
-                    stdout, stderr = await self._docker.get_logs(container_id)
+                    #UNCOMMENT TO SEE DEBUG LOGS
+                    #stdout, stderr = await self._docker.get_logs(container_id)
                     
                     if container_id in self._containers_running:
                         #UNCOMMENT TO SEE DEBUG LOGS FOR GRADING CONTAINERS
@@ -643,10 +644,10 @@ class DockerAgent(Agent):
     async def run(self):
         await self._init_clean()
 
-        # Init Docker events watcher
-        watcher_docker_event = self._create_safe_task(self._watch_docker_events())
-
         try:
+            # Init Docker events watcher
+            watcher_docker_event = self._create_safe_task(self._watch_docker_events())
+            
             await super(DockerAgent, self).run()
         except:
             await self._end_clean()

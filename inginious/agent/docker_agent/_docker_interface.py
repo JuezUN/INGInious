@@ -151,8 +151,12 @@ class DockerInterface(object):  # pragma: no cover
 
     def get_logs(self, container_id):
         """ Return the full stdout/stderr of a container"""
-        stdout = self._docker.containers.get(container_id).logs(stdout=True, stderr=False).decode('utf8')
-        stderr = self._docker.containers.get(container_id).logs(stdout=False, stderr=True).decode('utf8')
+        try:
+            stdout = self._docker.containers.get(container_id).logs(stdout=True, stderr=False).decode('utf8')
+            stderr = self._docker.containers.get(container_id).logs(stdout=False, stderr=True).decode('utf8')
+        except Exception as e:
+            stdout = ""
+            stderr = "Container not found, error:\n" + str(e)
         return stdout, stderr
 
     def get_stats(self, container_id):
