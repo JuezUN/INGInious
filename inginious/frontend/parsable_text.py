@@ -161,11 +161,17 @@ class ParsableText(object):
         self.output_diff_for = set(options.get("output_diff_for", []))
         self.custom_feedback = options.get("custom_feedback", {})
         self.show_input = options.get('show_input', False)
+        self.is_staff = options.get("is_staff", False)
         
         self.toggle_debug_info_template = ["""<ul><li><strong>Test {test_id}: {result_name} </strong>
                                     <a class="btn btn-default btn-link btn-xs" role="button" data-toggle="collapse" 
                                     href="#{panel_id}" aria-expanded="false" aria-controls="{panel_id}">""" +
                                            _("Toggle diff") + """</a> <div class="collapse" id="{panel_id}">""",
+                                           """</div></li></ul>"""]
+        self.toggle_debug_info_template_for_staff = ["""<ul><li><strong>Test {test_id}: {result_name} </strong>
+                                    <a class="btn btn-default btn-link btn-xs" role="button" data-toggle="collapse" 
+                                    href="#{panel_id}" aria-expanded="false" aria-controls="{panel_id}">""" +
+                                           _("Toggle diff (only for staff)") + """</a> <div class="collapse" id="{panel_id}">""",
                                            """</div></li></ul>"""]
         self.input_template = _("""<p>Input preview: {title_input}</p>
                                   <pre class="input-area" id="{block_id}-input">{input_text}</pre>
@@ -238,6 +244,7 @@ class ParsableText(object):
         self.custom_feedback = options.get("custom_feedback", {})
         self.show_input = options.get('show_input', False)
         container_type = options.get("container_type","")
+        self.is_staff = options.get("is_staff", False)
         
         feed_list = []
         for case in feedback:
@@ -247,7 +254,7 @@ class ParsableText(object):
                 input_sample = case["input_sample"]
                 test = case["test_case"]
                 if container_type == "multilang":
-                    feed_list.append(self.to_html_block(i, result, test, input_sample, debug_info))
+                    feed_list.append(self.to_html_block(i, result, test, input_sample, debug_info, self.is_staff))
                 elif container_type == "hdl":
                     feed_list.append(self.hdl_to_html_block(i, result, test, input_sample, debug_info))
             elif container_type == "notebook":
@@ -255,7 +262,7 @@ class ParsableText(object):
                 weights = case["weights"]
                 show_debug_info = case["show_debug_info"]
                 test_custom_feedback = case["test_custom_feedback"]
-                feed_list.append(self.notebook_result_to_html_block(i, test_result, weights, show_debug_info, test_custom_feedback))
+                feed_list.append(self.notebook_result_to_html_block(i, test_result, weights, show_debug_info, test_custom_feedback,self.is_staff))
                 
                     
         feedback_str = '\n\n'.join(feed_list) 
@@ -265,7 +272,7 @@ class ParsableText(object):
     def escape_text(self, text):
         return text.replace('\\', "\\\\").replace('`', "\\`").replace('\n', "\\n").replace("$", "\\$").replace('\t', "\\t")
    
-    def to_html_block(self, test_id, result, test_case, input_sample, debug_info):
+    def to_html_block(self, test_id, result, test_case, input_sample, debug_info, is_staff):
         """
         This method creates a html block for a single test case.
 
@@ -280,7 +287,7 @@ class ParsableText(object):
             a single test case.
         """
         input_filename = test_case[0]
-        if result in [GraderResult.ACCEPTED, GraderResult.INTERNAL_ERROR] or input_filename not in self.output_diff_for:
+        if result in [GraderResult.ACCEPTED, GraderResult.INTERNAL_ERROR] or input_filename not in self.output_diff_for and not self.is_staff:
             text = self.not_debug_info_template.format(
                 test_id + 1, result.name)
             
@@ -289,6 +296,7 @@ class ParsableText(object):
         diff_result = debug_info.get("files_feedback", {}).get(input_filename, {}).get("diff", None)
         stderr = debug_info.get("files_feedback", {}).get(input_filename, {}).get("stderr", "")
         diff_available = diff_result is not None
+        
         input_text = input_sample
         template_info = {
             "test_id": test_id + 1,
@@ -299,7 +307,7 @@ class ParsableText(object):
             "input_text": input_text,
             "title_input": test_case[0]
         }
-        template = [self.toggle_debug_info_template[0]]
+        template = [self.toggle_debug_info_template[0]] if not is_staff else [self.toggle_debug_info_template_for_staff[0]]
 
         if input_filename in self.custom_feedback:
             template_info["custom_feedback"] = self.custom_feedback[input_filename]
@@ -318,7 +326,6 @@ class ParsableText(object):
 
         template.append(self.toggle_debug_info_template[1])
         diff_html = "".join(template).format(**template_info)
-
         return diff_html
 
     def hdl_to_html_block(self, test_id, result, test_case, input_sample, debug_info):
@@ -327,7 +334,7 @@ class ParsableText(object):
             html_block = html_block.replace("updateDiffBlock", "updateWaveDromBlock")
         return html_block
 
-    def notebook_result_to_html_block(self, test_id, test_result, weight, show_debug_info, test_custom_feedback):
+    def notebook_result_to_html_block(self, test_id, test_result, weight, show_debug_info, test_custom_feedback, is_staff):
         cases_debug_info = test_result["cases"]
 
         template_info = {
@@ -351,6 +358,13 @@ class ParsableText(object):
             """</a><div class="collapse" id="{panel_id}">""",
             "</div>"
         ]
+        test_results_template_for_staff_html = [
+            """<a class="btn btn-default btn-link btn-xs" role="button"
+            data-toggle="collapse" href="#{panel_id}" aria-expanded="false" aria-controls="{panel_id}">""" +
+            _("Expand test results (only for staff)") +
+            """</a><div class="collapse" id="{panel_id}">""",
+            "</div>"
+        ]
 
         test_custom_feedback_template_html = _("""<br><strong>Custom feedback:</strong><br><pre>{custom_feedback}</pre>""")
 
@@ -362,13 +376,18 @@ class ParsableText(object):
             href="#{case_panel_id}" aria-expanded="false"aria-controls="{case_panel_id}">Show debug info</a>
             <div class="collapse" id="{case_panel_id}">{debug_info}</div></li></ul>
             """)
+        test_case_debug_info_template_for_staff_html = _("""<ul class="list_disc" style="font-size:12px; list-style-type: square;"><li>
+            <strong>Case {case_id}:</strong><a class="btn btn-default btn-link btn-xs" role="button" data-toggle="collapse" 
+            href="#{case_panel_id}" aria-expanded="false"aria-controls="{case_panel_id}">Show debug info (only for staff)</a>
+            <div class="collapse" id="{case_panel_id}">{debug_info}</div></li></ul>
+            """)
         test_case_executed_code = _('<strong>Executed code:</strong><pre class="language-python"><code ' +
                                     'class="language-python" data-language="python">{case_code}</code></pre>' +
                                     '<script>highlight_code();</script>')
 
         result_html = [test_name_template_html[0]]
         if cases_debug_info and show_debug_info:
-            result_html.append(test_results_template_html[0])
+            result_html.append(test_results_template_html[0] if not is_staff else test_results_template_for_staff_html[0])
             if test_custom_feedback:
                 template_info['custom_feedback'] = test_custom_feedback
                 result_html.append(test_custom_feedback_template_html)
@@ -391,8 +410,8 @@ class ParsableText(object):
                     "case_panel_id": "collapse_debug_test_%s_case_%s" % (str(test_id), str(i)),
                     "debug_info": ''.join(debug_info).replace("{", "{{").replace("}", "}}")
                 }
-                result_html.append(test_case_debug_info_template_html.format(**case_data))
-            result_html.append(test_results_template_html[1])
+                result_html.append(test_case_debug_info_template_html.format(**case_data) if not is_staff else test_case_debug_info_template_for_staff_html.format(**case_data))
+            result_html.append(test_results_template_html[1] if not is_staff else test_results_template_for_staff_html[1])
 
         result_html.append(test_name_template_html[1])
         result_html = ''.join(result_html).format(**template_info)

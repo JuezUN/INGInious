@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-11 20:02-0500\n"
+"POT-Creation-Date: 2022-11-12 18:12-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -36,11 +36,15 @@ msgstr ""
 " a esta página y actualiza la tarea enviada  para consultar toda la "
 "retroalimentación."
 
-#: inginious/frontend/parsable_text.py:168
+#: inginious/frontend/parsable_text.py:169
 msgid "Toggle diff"
 msgstr "Alternar panel de diferencias"
 
-#: inginious/frontend/parsable_text.py:170
+#: inginious/frontend/parsable_text.py:174
+msgid "Toggle diff (only for staff)"
+msgstr ""
+
+#: inginious/frontend/parsable_text.py:176
 msgid ""
 "<p>Input preview: {title_input}</p>\n"
 "                                  <pre class=\"input-area\" "
@@ -60,15 +64,15 @@ msgstr ""
 "<script>createDownloadLink(\"{title_input}\");</script>\n"
 "                                  "
 
-#: inginious/frontend/parsable_text.py:177
+#: inginious/frontend/parsable_text.py:183
 msgid "<p>Custom feedback</p><pre>{custom_feedback}</pre><br>"
 msgstr "<p>Retroalimentación personalizada</p><pre>{custom_feedback}</pre><br>"
 
-#: inginious/frontend/parsable_text.py:196
+#: inginious/frontend/parsable_text.py:202
 msgid "<b>Parsing failed</b>: <pre>{}</pre>"
 msgstr "<b>El parsing ha fallado</b>: <pre>{}</pre>"
 
-#: inginious/frontend/parsable_text.py:224
+#: inginious/frontend/parsable_text.py:230
 msgid ""
 "**Compilation error**:\n"
 "\n"
@@ -76,7 +80,7 @@ msgstr ""
 "**Error en compilación**:\n"
 "\n"
 
-#: inginious/frontend/parsable_text.py:226
+#: inginious/frontend/parsable_text.py:232
 msgid ""
 "<br><strong>{}:</strong> There was an error while running your notebook: "
 "<br><pre>{}</pre><br>"
@@ -84,17 +88,22 @@ msgstr ""
 "<br><strong>{}:</strong> Hubo un error mientras se ejecutaba el notebook:"
 " <br><pre>{}</pre><br>"
 
-#: inginious/frontend/parsable_text.py:350
+#: inginious/frontend/parsable_text.py:357
 msgid "Expand test results"
 msgstr "Expandir resultados del test"
 
-#: inginious/frontend/parsable_text.py:355
+#: inginious/frontend/parsable_text.py:364
+#, fuzzy
+msgid "Expand test results (only for staff)"
+msgstr "Expandir resultados del test"
+
+#: inginious/frontend/parsable_text.py:369
 msgid "<br><strong>Custom feedback:</strong><br><pre>{custom_feedback}</pre>"
 msgstr ""
 "<br><strong>Retroalimentación "
 "personalizada:</strong><br><pre>{custom_feedback}</pre>"
 
-#: inginious/frontend/parsable_text.py:358
+#: inginious/frontend/parsable_text.py:372
 msgid ""
 "\n"
 "                                            <br><strong>Output "
@@ -104,7 +113,7 @@ msgstr ""
 "                                        <br><strong>Diferencia en la "
 "salida estándar:</strong><pre>{case_output_diff}</pre><br>"
 
-#: inginious/frontend/parsable_text.py:360
+#: inginious/frontend/parsable_text.py:374
 msgid ""
 "<ul class=\"list_disc\" style=\"font-size:12px; list-style-type: "
 "square;\"><li>\n"
@@ -126,7 +135,30 @@ msgstr ""
 "id=\"{case_panel_id}\">{debug_info}</div></li></ul>\n"
 "        "
 
-#: inginious/frontend/parsable_text.py:365
+#: inginious/frontend/parsable_text.py:379
+#, fuzzy
+msgid ""
+"<ul class=\"list_disc\" style=\"font-size:12px; list-style-type: "
+"square;\"><li>\n"
+"            <strong>Case {case_id}:</strong><a class=\"btn btn-default "
+"btn-link btn-xs\" role=\"button\" data-toggle=\"collapse\" \n"
+"            href=\"#{case_panel_id}\" aria-expanded=\"false\"aria-"
+"controls=\"{case_panel_id}\">Show debug info (only for staff)</a>\n"
+"            <div class=\"collapse\" "
+"id=\"{case_panel_id}\">{debug_info}</div></li></ul>\n"
+"            "
+msgstr ""
+"<ul class=\"list_disc\" style=\"font-size:12px; list-style-type: "
+"square;\"><li>\n"
+"        <strong>Caso {case_id}:</strong><a class=\"btn btn-default btn-"
+"link btn-xs\" role=\"button\" data-toggle=\"collapse\" \n"
+"        href=\"#{case_panel_id}\" aria-expanded=\"false\"aria-"
+"controls=\"{case_panel_id}\">Mostrar información de depuración</a>\n"
+"        <div class=\"collapse\" "
+"id=\"{case_panel_id}\">{debug_info}</div></li></ul>\n"
+"        "
+
+#: inginious/frontend/parsable_text.py:384
 msgid ""
 "<strong>Executed code:</strong><pre class=\"language-python\"><code class"
 "=\"language-python\" data-"
