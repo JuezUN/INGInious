@@ -198,8 +198,7 @@ class ParsableText(object):
                     self._parsed = self.from_json(self._content, self._show_everything, self._translation)
                 else:
                     self._parsed = self.rst(self._content, self._show_everything, self._translation)
-            except Exception as e:
-                print(e)
+            except:
                 self._parsed = self._translation.gettext("<b>Parsing failed</b>: <pre>{}</pre>").format(html.escape(self._content))
         return self._parsed
 
