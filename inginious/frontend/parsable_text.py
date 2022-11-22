@@ -256,7 +256,7 @@ class ParsableText(object):
                 if container_type == "multilang":
                     feed_list.append(self.to_html_block(i, result, test, input_sample, debug_info, self.is_staff))
                 elif container_type == "hdl":
-                    feed_list.append(self.hdl_to_html_block(i, result, test, input_sample, debug_info))
+                    feed_list.append(self.hdl_to_html_block(i, result, test, input_sample, debug_info, self.is_staff))
             elif container_type == "notebook":
                 test_result = case["test_result"]
                 weights = case["weights"]
@@ -328,8 +328,8 @@ class ParsableText(object):
         diff_html = "".join(template).format(**template_info)
         return diff_html
 
-    def hdl_to_html_block(self, test_id, result, test_case, input_sample, debug_info):
-        html_block = self.to_html_block(test_id, result, test_case, input_sample, debug_info)
+    def hdl_to_html_block(self, test_id, result, test_case, input_sample, debug_info, is_staff):
+        html_block = self.to_html_block(test_id, result, test_case, input_sample, debug_info, is_staff)
         if html_block.find("updateDiffBlock") != -1:
             html_block = html_block.replace("updateDiffBlock", "updateWaveDromBlock")
         return html_block
