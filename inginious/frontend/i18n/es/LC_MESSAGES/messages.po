@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-12 18:12-0500\n"
+"POT-Creation-Date: 2022-11-21 20:07-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -93,9 +93,8 @@ msgid "Expand test results"
 msgstr "Expandir resultados del test"
 
 #: inginious/frontend/parsable_text.py:364
-#, fuzzy
 msgid "Expand test results (only for staff)"
-msgstr "Expandir resultados del test"
+msgstr "Expandir resultados del test (solo para administradores o tutores)"
 
 #: inginious/frontend/parsable_text.py:369
 msgid "<br><strong>Custom feedback:</strong><br><pre>{custom_feedback}</pre>"
@@ -136,7 +135,6 @@ msgstr ""
 "        "
 
 #: inginious/frontend/parsable_text.py:379
-#, fuzzy
 msgid ""
 "<ul class=\"list_disc\" style=\"font-size:12px; list-style-type: "
 "square;\"><li>\n"
@@ -153,7 +151,8 @@ msgstr ""
 "        <strong>Caso {case_id}:</strong><a class=\"btn btn-default btn-"
 "link btn-xs\" role=\"button\" data-toggle=\"collapse\" \n"
 "        href=\"#{case_panel_id}\" aria-expanded=\"false\"aria-"
-"controls=\"{case_panel_id}\">Mostrar información de depuración</a>\n"
+"controls=\"{case_panel_id}\">Mostrar información de depuración (solo para"
+" administradores o tutores)</a>\n"
 "        <div class=\"collapse\" "
 "id=\"{case_panel_id}\">{debug_info}</div></li></ul>\n"
 "        "
