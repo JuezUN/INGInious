@@ -99,7 +99,7 @@ def _put_configuration_defaults(config):
     :return: the same dict, but with defaults for some unfilled parameters
     """
     if 'allowed_file_extensions' not in config:
-        config['allowed_file_extensions'] = [".c", ".cpp", ".java", ".oz", ".zip", ".tar.gz", ".tar.bz2", ".txt"]
+        config['allowed_file_extensions'] = [".zip", ".tar.gz", ".tar.bz2"]
     if 'max_file_size' not in config:
         config['max_file_size'] = 1024 * 1024
     return config
