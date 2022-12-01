@@ -189,11 +189,21 @@ $#
                 <div class="col-xs-6">
                     <div><label for="testbench_file_name" class="control-label">$:_("Testbench")</label></div>
                     <select class="form-control" id="testbench_file_name" name="testbench_file_name">
+                        <option value="${task_data.get('testbench_file_name', '')}"
+                                selected="selected"
+                                id="testbench_file_name_selected">
+                        ${task_data.get('testbench_file_name', '')}
+                        </option>
                     </select>
                 </div>
                 <div class="col-xs-6">
                     <div><label for="hdl_expected_output" class="control-label">$:_("Golden Model")</label></div>
                     <select class="form-control" id="hdl_expected_output" name="hdl_expected_output">
+                        <option value="${task_data.get('hdl_expected_output', '')}"
+                                selected="selected"
+                                id="hdl_expected_output_file_name_selected">
+                        ${task_data.get('hdl_expected_output', '')}
+                        </option>
                     </select>
                 </div>
             </div>
