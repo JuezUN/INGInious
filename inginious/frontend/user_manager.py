@@ -94,6 +94,30 @@ class UserManager:
         self._logger = logging.getLogger("inginious.webapp.users")
         self._plugin_manager = plugin_manager
 
+    def user_roles(self, course):
+        """
+        Get user roles in a course
+        :param course: a Course object
+        :return: a list of user roles
+        """
+
+        roles = []
+        username = self._session.username
+
+        course_admins = course.get_admins()
+        course_tutors = course.get_tutors()
+        course_students = self.get_course_registered_users(
+            course, with_admins=False)
+
+        if username in course_admins:
+            roles.append("admin")
+        if username in course_tutors:
+            roles.append("tutor")
+        if username in course_students:
+            roles.append("student")
+
+        return roles
+
     ##############################################
     #           User session management          #
     ##############################################
