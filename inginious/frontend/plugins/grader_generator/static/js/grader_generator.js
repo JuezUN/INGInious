@@ -169,6 +169,9 @@ function studio_set_initial_problem(initialProblemId) {
 
 function studio_update_grader_files() {
     const container_name = $("#environment").val();
+    const testbench_file_name = $("#testbench_file_name_selected").val();
+    const hdl_expected_output_file_name = $("#hdl_expected_output_file_name_selected").val();
+
     if (container_name === "Notebook") return;
 
     $.get('/api/grader_generator/test_file_api', {
@@ -192,6 +195,28 @@ function studio_update_grader_files() {
 
             // Do not set run file as an option.
             if (file.complete_name === 'run') {
+                return;
+            }
+            // Select the option that is currently selected on hdl form
+            if (file.complete_name === testbench_file_name) {
+                let entry = $("<option>", {
+                    "value": file.complete_name,
+                    "text": file.complete_name,
+                });
+                hdlOutputFileSelect.append(entry.clone());
+                entry.prop('id', 'testbench_file_name_selected')
+                testbechFileSelect.append(entry.prop('selected', 'selected'));
+                return;
+            }
+
+            if (file.complete_name === hdl_expected_output_file_name) {
+                let entry = $("<option>", {
+                    "value": file.complete_name,
+                    "text": file.complete_name,
+                });
+                testbechFileSelect.append(entry.clone());
+                entry.prop('id', 'hdl_expected_output_file_name_selected')
+                hdlOutputFileSelect.append(entry.prop('selected', 'selected'));
                 return;
             }
 

@@ -191,12 +191,17 @@ class WebAppSubmissionManager:
             submission["username"] = [username]
             submission["submitted_on"] = datetime.now()
             inputdata["@username"] = username
+            #Replay the old submission as a new submission of the staff user
+            #is_staff is sent to the container to calculate the diffs without modify the grader
+            inputdata["is_staff"] = True #self._user_manager.has_staff_rights_on_course()
             inputdata["@lang"] = self._user_manager.session_language()
             submission["input"] = self._gridfs.put(bson.BSON.encode(inputdata))
             submission["tests"] = {} # Be sure tags are reinitialized
             submission["is_late_submission"] = False  # It does not count for admins or tutors
             submissionid = self._database.submissions.insert(submission)
-
+    
+            
+           
         jobid = self._client.new_job(task, inputdata,
                                      (lambda result, grade, problems, tests, custom, archive, stdout, stderr:
                                       self._job_done_callback(submissionid, task, result, grade, problems, tests, custom, archive, stdout, stderr, copy)),

@@ -38,11 +38,12 @@ class SubmissionPage(INGIniousAdminPage):
     def POST_AUTH(self, submissionid):  # pylint: disable=arguments-differ
         course, task, submission = self.fetch_submission(submissionid)
         is_admin = self.user_manager.has_admin_rights_on_course(course)
+        is_staff = self.user_manager.has_staff_rights_on_course(course)
 
         webinput = web.input()
         if "replay" in webinput and is_admin:
             self.submission_manager.replay_job(task, submission)
-        elif "replay-copy" in webinput:  # Authorized for tutors
+        elif "replay-copy" in webinput and is_staff:  # Authorized for tutors
             self.submission_manager.replay_job(task, submission, True)
             web.seeother(self.app.get_homepath() + "/course/" + course.get_id() + "/" + task.get_id())
         elif "replay-debug" in webinput and is_admin:
