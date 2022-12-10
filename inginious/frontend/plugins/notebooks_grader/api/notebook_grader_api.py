@@ -2,19 +2,17 @@
 #
 # This file is part of UNCode. See the LICENSE and the COPYRIGHTS files for
 # more information about the licensing of this file.
+"""Notebooks grader serverless module"""
 
 import inginious.frontend.pages.api._api_page as api
 from inginious.frontend.plugins.utils import get_mandatory_parameter
-
-from inginious.common.exceptions import CourseNotFoundException
+from hashlib import sha512
+import datetime
 
 import web
 
-"""Notebooks grader serverless module"""
-
 class NotebookGradingAPI(api.APIAuthenticatedPage):
     """API definition for get and set grader of a test"""
-
 
     def API_GET(self): # pylint: disable=arguments-differ
         request_params = web.input()
@@ -47,7 +45,6 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
 
     def API_POST(self): # pylint: disable=arguments-differ
         request_params = web.input()
-
         course_id = get_mandatory_parameter(request_params, "course_id")
         task_id = get_mandatory_parameter(request_params, "task_id")
         test_id = get_mandatory_parameter(request_params, "test_id")
@@ -84,9 +81,7 @@ class TestNotebookSubmissionAPI(api.APIAuthenticatedPage):
     """API definition for do a task submission"""
     
 
-    def API_POST(self): # pylint: disable=arguments-differ 
-        from hashlib import sha512
-        import datetime
+    def API_POST(self): # pylint: disable=arguments-differ
         username = self.user_manager.session_username()
         request_params = web.input()
         key_pair = (21145511420371257813590140607336605957103837517313322171470569706522561078664828667841325420528210362468905108841125312669175005069500260639399524062088068077504886974238207595257939432080569521137929147283808065912176990793482520433509116193089755149147387487723390391027270618541358331177840776511466141865612694492886915003526250148237699853388470861789974698225599828490908590893420408349423232934532594271550334201111542866305882684250049655689974023238891768700417170450261796942657506147044880425518280799814370090400325636947828503138490220047142351466235659660318214368333513255579788205983539615293773042251,65537)
@@ -142,7 +137,7 @@ class TestNotebookSubmissionAPI(api.APIAuthenticatedPage):
 
 class UserRolesAPI(api.APIAuthenticatedPage):
     """API definition for get user auth roles"""
-    def API_GET(self): # pylint: disable=arguments-differ 
+    def API_GET(self): # pylint: disable=arguments-differ
         request_params = web.input()
         course_id = get_mandatory_parameter(request_params, "course_id")
         try:
