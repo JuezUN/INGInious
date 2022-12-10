@@ -59,8 +59,8 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
 
         try:
             course = self.course_factory.get_course(course_id)
-        except CourseNotFoundException:
-            raise api.APIError(500, _("Course not found."))
+        except:
+            raise api.APINotFound("Course not found")
 
         course_staff = course.get_staff()
 
@@ -76,8 +76,7 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
                 "variables_names_to_evaluate": variables_names_to_evaluate,
             })
         else:
-            raise api.APIError(
-                403, _("You are not authorized to access this resource"))
+            raise api.APIError(403,"You are not authorized to access this resource")
         return 200, "ok"
 
 
@@ -115,7 +114,7 @@ class TestNotebookSubmissionAPI(api.APIAuthenticatedPage):
 
         try:
             course = self.course_factory.get_course(course_id)
-        except CourseNotFoundException:
+        except:
             raise api.APINotFound("Course not found")
 
         course_staff = course.get_staff()
@@ -148,7 +147,7 @@ class UserRolesAPI(api.APIAuthenticatedPage):
         course_id = get_mandatory_parameter(request_params, "course_id")
         try:
             course = self.course_factory.get_course(course_id)
-        except CourseNotFoundException:
-            raise api.APIError(500, _("Course not found."))
+        except:
+            raise api.APINotFound("Course not found")
         roles = self.user_manager.user_roles(course)
         return 200, {"roles": roles}
