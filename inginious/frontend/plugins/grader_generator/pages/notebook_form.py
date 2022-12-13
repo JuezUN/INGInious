@@ -134,14 +134,14 @@ class NotebookForm(GraderForm):
         if self.task_data["notebook_time_limit_test_case"] < 1:
             raise InvalidGraderError(_("Grader: Time limit for test cases must be positive and integer."))
 
-        if self.task_data["notebook_time_limit_test_case"] > 30:
-            raise InvalidGraderError(_("Grader: Time limit exceeds the maximum allowed (30 s.)."))
+        if self.task_data["notebook_time_limit_test_case"] > 45:
+            raise InvalidGraderError(_("Grader: Time limit exceeds the maximum allowed (45 s.)."))
 
         if self.task_data["notebook_memory_limit_test_case"] < 1:
             raise InvalidGraderError(_("Grader: Memory limit for test cases must be positive and integer"))
 
-        if self.task_data["notebook_memory_limit_test_case"] > 600:
-            raise InvalidGraderError(_("Grader: Memory limit exceeds the maximum allowed (600 MBs)."))
+        if self.task_data["notebook_memory_limit_test_case"] > 700:
+            raise InvalidGraderError(_("Grader: Memory limit exceeds the maximum allowed (700 MBs)."))
 
         for test_index, test in enumerate(self.task_data["grader_test_cases"]):
             if not _is_python_syntax_code_right(test["setup_code"]):
