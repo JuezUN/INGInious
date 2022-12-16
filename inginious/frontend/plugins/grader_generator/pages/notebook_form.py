@@ -140,8 +140,8 @@ class NotebookForm(GraderForm):
         if self.task_data["notebook_memory_limit_test_case"] < 1:
             raise InvalidGraderError(_("Grader: Memory limit for test cases must be positive and integer"))
 
-        if self.task_data["notebook_memory_limit_test_case"] > 700:
-            raise InvalidGraderError(_("Grader: Memory limit exceeds the maximum allowed (700 MBs)."))
+        if self.task_data["notebook_memory_limit_test_case"] > 1000:
+            raise InvalidGraderError(_("Grader: Memory limit exceeds the maximum allowed (1000 MBs)."))
 
         for test_index, test in enumerate(self.task_data["grader_test_cases"]):
             if not _is_python_syntax_code_right(test["setup_code"]):
