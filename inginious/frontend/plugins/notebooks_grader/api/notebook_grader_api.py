@@ -47,8 +47,6 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
                     "variables_names_to_evaluate": task_grader_info['variables_names_to_evaluate'], }
             return 200, data
 
-        raise api.APIError(403, "You are not authorized to access this resource")
-
     def API_POST(self): # pylint: disable=arguments-differ
         """POST: API set grader of a test of a task
             params: course_id
@@ -87,8 +85,6 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
                 "functions_names_to_evaluate": functions_names_to_evaluate,
                 "variables_names_to_evaluate": variables_names_to_evaluate,
             })
-        else:
-            raise api.APIError(403, "You are not authorized to access this resource")
         return 200, "ok"
 
 
@@ -163,7 +159,6 @@ def notebook_submission(public_key):
                     "username": [username]
                     })
                 return 200, "ok"
-            raise api.APIError(403, "You are not authorized to access this resource")
 
     return TestNotebookSubmissionAPI
 
