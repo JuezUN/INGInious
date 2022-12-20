@@ -15,6 +15,12 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
     """API definition for get and set grader of a test"""
 
     def API_GET(self): # pylint: disable=arguments-differ
+        """GET: API get grader from a test of a task
+            params: course_id
+                    task_id
+                    test_id
+            returns: 200 and task grader, functions names to evaluate and variables names to evaluate
+        """
         request_params = web.input()
 
         course_id = get_mandatory_parameter(request_params, "course_id")
@@ -44,6 +50,15 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
         raise api.APIError(403, "You are not authorized to access this resource")
 
     def API_POST(self): # pylint: disable=arguments-differ
+        """POST: API set grader of a test of a task
+            params: course_id
+                    task_id
+                    test_id
+                    grader(encrypted)
+                    functions_names_to_evaluate
+                    variables_names_to_evaluate
+            returns: 200 and ok
+        """
         request_params = web.input()
         course_id = get_mandatory_parameter(request_params, "course_id")
         task_id = get_mandatory_parameter(request_params, "task_id")
@@ -92,6 +107,19 @@ def notebook_submission(public_key):
 
 
         def API_POST(self): # pylint: disable=arguments-differ
+            """POST: API send submission
+            params: course_id
+                    task_id
+                    test_id
+                    test_grade
+                    result
+                    status
+                    test_grade_message
+                    functions_source_code
+                    variables_source_code
+                    signature
+            returns: 200 and ok
+            """
             username = self.user_manager.session_username()
             request_params = web.input()
             course_id = get_mandatory_parameter(request_params, "course_id")
@@ -143,6 +171,10 @@ def notebook_submission(public_key):
 class UserRolesAPI(api.APIAuthenticatedPage):
     """API definition for get user auth roles"""
     def API_GET(self): # pylint: disable=arguments-differ
+        """GET: API get roles from authenticated user of a course
+            params: course_id
+            returns: 200 and a list of roles 
+        """
         request_params = web.input()
         course_id = get_mandatory_parameter(request_params, "course_id")
         try:
