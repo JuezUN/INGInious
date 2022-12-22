@@ -203,6 +203,7 @@ class PlagiarismManagerSingleton(object):
             data["submissions"] = self._get_submissions_data(course, task,
                                                              LANGUAGE_PLAGIARISM_LANG_MAP[data['language']])
         except Exception as e:
+            print(e)
             return True, str(e)
 
         try:
@@ -221,6 +222,7 @@ class PlagiarismManagerSingleton(object):
             plagiarism_thread.start()
             # Do not use `.join()` as this process may finish before the thread process finishes.
         except Exception as e:
+            print(e)
             return True, str(e)
 
         return False, None
