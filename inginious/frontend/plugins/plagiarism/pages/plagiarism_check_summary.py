@@ -29,7 +29,7 @@ class PlagiarismCheckSummary(INGIniousAdminPage):
         task_name = plagiarism_check["container_name"] if 'container_name' in plagiarism_check else plagiarism_check[
             "task_name"]
         language = AVAILABLE_PLAGIARISM_LANGUAGES[
-            plagiarism_check['language']] if 'language' in plagiarism_check else "Unknown"
+            plagiarism_check['language']] if 'language' in plagiarism_check else "Unknown or deprecated language"
         file_list = []
         return_code = 0
         stdout = ""
