@@ -91,20 +91,20 @@ $#
                 <label for="time_limit_test_case" class="control-label">
                     $:_("Time limit test cases (s)")
                     <i class="fa fa-question-circle"
-                       title=$:_("\"Time limit for each test case in seconds. (Max. 30s)\"")
+                       title=$:_("\"Time limit for each test case in seconds. (Max. 45s)\"")
                        data-toggle="tooltip"></i>
                 </label>
-                <input type="number" class="form-control" id="time_limit_test_case" min="0" step="1" max="30"
+                <input type="number" class="form-control" id="time_limit_test_case" min="0" step="1" max="45"
                     name="time_limit_test_case" value="${task_data.get('time_limit_test_case', '2')}">
             </div>
             <div class="col-xs-4">
                 <label for="memory_limit_test_case" class="control-label">
                     $:_("Memory limit test cases (MB)")
                     <i class="fa fa-question-circle"
-                       title=$:_("\"Memory limit for each test case in MBs. (Max. 500 MBs)\"")
+                       title=$:_("\"Memory limit for each test case in MBs. (Max. 600 MBs)\"")
                        data-toggle="tooltip"></i>
                 </label>
-                <input type="number" class="form-control" id="memory_limit_test_case" min="0" step="1" max="500"
+                <input type="number" class="form-control" id="memory_limit_test_case" min="0" step="1" max="600"
                        name="memory_limit_test_case" value="${task_data.get('memory_limit_test_case', '50')}">
             </div>
             <div class="col-xs-4">
@@ -241,21 +241,21 @@ $#
             <div class="col-sm-6">
                 <label for="notebook_time_limit_test_case" class="control-label">
                     $:_("Time limit test cases (s)")
-                    <i class="fa fa-question-circle" title=$:_("\"Time limit for each test case in seconds. (Max. 30 s)\"")
+                    <i class="fa fa-question-circle" title=$:_("\"Time limit for each test case in seconds. (Max. 45 s)\"")
                     data-toggle="tooltip"></i>
                 </label>
-                <input type="number" class="form-control" id="notebook_time_limit_test_case" min="0" step="1" max="30"
+                <input type="number" class="form-control" id="notebook_time_limit_test_case" min="0" step="1" max="45"
                        name="notebook_time_limit_test_case"
                        value="${task_data.get('notebook_time_limit_test_case', '5')}">
             </div>
             <div class="col-sm-6">
                 <label for="notebook_memory_limit_test_case" class="control-label">
                     $:_("Memory limit test cases (MB)")
-                    <i class="fa fa-question-circle" title=$:_("\"Memory limit for each test case in MBs. (Max 600 MBs)\"")
+                    <i class="fa fa-question-circle" title=$:_("\"Memory limit for each test case in MBs. (Max 700 MBs)\"")
                     data-toggle="tooltip"></i>
                 </label>
                 <input type="number" class="form-control" id="notebook_memory_limit_test_case" min="0" step="1"
-                       max="600"
+                       max="700"
                        name="notebook_memory_limit_test_case"
                        value="${task_data.get('notebook_memory_limit_test_case', '100')}">
             </div>
