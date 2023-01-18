@@ -28,9 +28,8 @@ LANGUAGE_PLAGIARISM_LANG_MAP = {
 ALLOWED_ENVIRONMENTS = {'multiple_languages', 'Notebook', 'Data Science', 'HDL'}
 
 AVAILABLE_PLAGIARISM_LANGUAGES = OrderedDict(sorted([
-    ("java7", "Java 7"),
     ("java8", "Java 8"),
-    ("python3", "Python 3.6"),
+    ("python3", "Python 3.9"),
     ("cpp", "C++/C++11"),
     ("c", "C/C11"),
     ("verilog", "Verilog"),

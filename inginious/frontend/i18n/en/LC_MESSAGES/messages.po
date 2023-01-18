@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-12-20 17:59-0500\n"
+"POT-Creation-Date: 2022-12-24 09:14-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -1917,11 +1917,11 @@ msgid "The sum of all weights must be grater than zero"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:105
-msgid "Grader: Memory limit exceeds the maximum allowed (500 MBs)."
+msgid "Grader: Memory limit exceeds the maximum allowed (600 MBs)."
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:108
-msgid "Grader: Time limit exceeds the maximum allowed (30 s)."
+msgid "Grader: Time limit exceeds the maximum allowed (45 s)."
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/multilang_form.py:111
@@ -1965,7 +1965,7 @@ msgid "Grader: Time limit for test cases must be positive and integer."
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:138
-msgid "Grader: Time limit exceeds the maximum allowed (30 s.)."
+msgid "Grader: Time limit exceeds the maximum allowed (45 s.)."
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:141
@@ -1973,7 +1973,7 @@ msgid "Grader: Memory limit for test cases must be positive and integer"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:144
-msgid "Grader: Memory limit exceeds the maximum allowed (600 MBs)."
+msgid "Grader: Memory limit exceeds the maximum allowed (700 MBs)."
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/notebook_form.py:148
@@ -2046,7 +2046,7 @@ msgid "Time limit test cases (s)"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:94
-msgid "\"Time limit for each test case in seconds. (Max. 30s)\""
+msgid "\"Time limit for each test case in seconds. (Max. 45s)\""
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:102
@@ -2055,7 +2055,7 @@ msgid "Memory limit test cases (MB)"
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:104
-msgid "\"Memory limit for each test case in MBs. (Max. 500 MBs)\""
+msgid "\"Memory limit for each test case in MBs. (Max. 600 MBs)\""
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:112
@@ -2155,11 +2155,11 @@ msgid ""
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:244
-msgid "\"Time limit for each test case in seconds. (Max. 30 s)\""
+msgid "\"Time limit for each test case in seconds. (Max. 45 s)\""
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:254
-msgid "\"Memory limit for each test case in MBs. (Max 600 MBs)\""
+msgid "\"Memory limit for each test case in MBs. (Max 700 MBs)\""
 msgstr ""
 
 #: inginious/frontend/plugins/grader_generator/pages/templates/grader.html:269
@@ -7790,5 +7790,20 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Are the task's responses written in HTML instead of restructuredText?"
+#~ msgstr ""
+
+#~ msgid "Grader: Memory limit exceeds the maximum allowed (500 MBs)."
+#~ msgstr ""
+
+#~ msgid "Grader: Time limit exceeds the maximum allowed (30 s)."
+#~ msgstr ""
+
+#~ msgid "Grader: Time limit exceeds the maximum allowed (30 s.)."
+#~ msgstr ""
+
+#~ msgid "\"Time limit for each test case in seconds. (Max. 30s)\""
+#~ msgstr ""
+
+#~ msgid "\"Time limit for each test case in seconds. (Max. 30 s)\""
 #~ msgstr ""
 
