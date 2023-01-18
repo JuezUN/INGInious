@@ -38,7 +38,7 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
 
         username = self.user_manager.session_username()
 
-        if username in course_students and username not in course_staff:
+        if username in course_students or username in course_staff:
             task_grader_info = self.database.tasks_graders.find_one(
                 {"courseid": course_id, "taskid": task_id, "testid": test_id})
 
@@ -46,6 +46,8 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
                     "functions_names_to_evaluate": task_grader_info['functions_names_to_evaluate'],
                     "variables_names_to_evaluate": task_grader_info['variables_names_to_evaluate'], }
             return 200, data
+
+        raise api.APIError(403, "You are not authorized to access this resource")
 
     def API_POST(self): # pylint: disable=arguments-differ
         """POST: API set grader of a test of a task
@@ -85,14 +87,18 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
                 "functions_names_to_evaluate": functions_names_to_evaluate,
                 "variables_names_to_evaluate": variables_names_to_evaluate,
             })
-        return 200, "ok"
+            return 200, "ok"
 
+        raise api.APIError(403, "You are not authorized to access this resource")
 
 def notebook_submission(public_key):
+    """Task submission using the public key info for security assurance"""
+
     class TestNotebookSubmissionAPI(api.APIAuthenticatedPage):
         """API definition for do a task submission"""
 
         def __validate_signature(self, username, test_id, signature):
+            """Validates signature using public key info"""
             msg = 'UNCode_notebook_grader.'+username+'.'+test_id
             msg = str.encode(msg, encoding='utf-8')
             hash_msg = int.from_bytes(sha512(msg).digest(), byteorder='big')
@@ -100,7 +106,6 @@ def notebook_submission(public_key):
 
             if hash_msg != hash_from_signature:
                 raise api.APIError(502, "Signature is invalid")
-
 
         def API_POST(self): # pylint: disable=arguments-differ
             """POST: API send submission
@@ -134,7 +139,6 @@ def notebook_submission(public_key):
                 request_params, "signature")
 
             self.__validate_signature(username, test_id, signature)
-            
             try:
                 course = self.course_factory.get_course(course_id)
             except CourseNotFoundException as course_not_found:
@@ -144,7 +148,7 @@ def notebook_submission(public_key):
             course_students = self.user_manager.get_course_registered_users(
                 course, with_admins=False)
 
-            if username in course_students and username not in course_staff:
+            if username in course_students or username in course_staff:
                 self.database.submissions.insert({
                     "courseid": course_id,
                     "taskid": task_id,
@@ -159,6 +163,8 @@ def notebook_submission(public_key):
                     "username": [username]
                     })
                 return 200, "ok"
+            
+            raise api.APIError(403, "You are not authorized to access this resource")
 
     return TestNotebookSubmissionAPI
 
@@ -168,7 +174,7 @@ class UserRolesAPI(api.APIAuthenticatedPage):
     def API_GET(self): # pylint: disable=arguments-differ
         """GET: API get roles from authenticated user of a course
             params: course_id
-            returns: 200 and a list of roles 
+            returns: 200 and a list of roles
         """
         request_params = web.input()
         course_id = get_mandatory_parameter(request_params, "course_id")

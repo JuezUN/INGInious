@@ -7,7 +7,7 @@
 from .api.notebook_grader_api import NotebookGradingAPI, UserRolesAPI, notebook_submission
 
 
-def init(plugin_manager, _ , __, plugin_config):
+def init(plugin_manager, _, __, plugin_config):
     """
         Init the plugin.
         Available configuration in configuration.yaml:
