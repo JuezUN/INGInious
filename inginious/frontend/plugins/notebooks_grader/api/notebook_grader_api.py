@@ -163,7 +163,6 @@ def notebook_submission(public_key):
                     "username": [username]
                     })
                 return 200, "ok"
-            
             raise api.APIError(403, "You are not authorized to access this resource")
 
     return TestNotebookSubmissionAPI
