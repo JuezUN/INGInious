@@ -28,7 +28,7 @@ install_requires = [
     "natsort >= 5.0.1",
     "psutil >= 4.4.2",
     "zipstream >= 1.1.4",
-    "textdistance >= 4.2.0",
+    "textdistance==4.2.0",
 ]
 
 test_requires = [
