@@ -230,7 +230,7 @@ class ParsableText(object):
             feed_list.append(self.client_grader_result_to_html_block(grader_results[test]))
 
         feedback_str = '\n\n'.join(feed_list) 
-    
+
         return feedback_str
 
     def from_json(self, string, show_everything=False, translation=gettext.NullTranslations()):
@@ -351,9 +351,10 @@ class ParsableText(object):
         return html_block
 
     def client_grader_result_to_html_block(self, test):
+        """Parse each test of client grader submissions into html"""
 
-        test_functions = json.loads(test["functions"].replace("'", "\""), strict = False)
-        test_variables = json.loads(test["variables"].replace("'", "\""), strict = False)
+        test_functions = json.loads(test["functions"].replace("'", "\""), strict=False)
+        test_variables = json.loads(test["variables"].replace("'", "\""), strict=False)
 
         id_num = ""
         for i in range(0, len(test["id"])):
@@ -368,24 +369,22 @@ class ParsableText(object):
             "panel_id": "collapseDebug" + str(test["id"][-1]),
         }
         test_name_template_html = [
-            """<ul class="list_disc" style="font-size:12px;"><li>
-            <strong style="font-size:15px"> Test{test_id}: </strong><i> - YOUR GRADE = {test_grade} / 100 </i>""",
+            _("""<ul class="list_disc" style="font-size:12px;"><li>
+            <strong style="font-size:15px"> Test{test_id}: </strong><i> - YOUR GRADE = {test_grade} / 100 </i>"""),
             "</li></ul>"
         ]
         test_results_template_html = [
-            """<a class="btn btn-default btn-link btn-xs" role="button"
-            data-toggle="collapse" href="#{panel_id}" aria-expanded="false" aria-controls="{panel_id}">""" +
-            _("View Details") +
-            """</a><div class="collapse" id="{panel_id}">
-            <pre>{test_message}</pre> <br>
-            <ul class="list_disc" style="font-size:13px;">""",
+            _("""<a class="btn btn-default btn-link btn-xs" role="button"
+            data-toggle="collapse" href="#{panel_id}" aria-expanded="false" aria-controls="{panel_id}">
+            View Details </a><div class="collapse" id="{panel_id}"> <pre>{test_message}</pre> <br>
+            <ul class="list_disc" style="font-size:13px;">"""),
             "</ul></div>"
         ]
         test_functions_template_html = [
-            """<li><strong style="font-size:14px"> FUNCTIONS </strong> <br>""", "</li>"
+            _("""<li><strong style="font-size:14px"> FUNCTIONS </strong> <br>"""), "</li>"
         ]
         test_variables_template_html = [
-            """<li><strong style="font-size:14px"> VARIABLES </strong> <br>""", "</li>"
+            _("""<li><strong style="font-size:14px"> VARIABLES </strong> <br>"""), "</li>"
         ]
         
 
@@ -395,16 +394,16 @@ class ParsableText(object):
         if len(test_functions) > 0:
             result_html.append(test_functions_template_html[0])
             for function in test_functions:
-                function_def = "<strong>" + function + """: </strong><pre class="language-python"><code
-                class="language-python" data-language="python">""" + test_functions[function] + """</code></pre><script>highlight_code();</script>"""
+                function_def = _("<strong>" + function + """: </strong><pre class="language-python"><code
+                class="language-python" data-language="python">""" + test_functions[function] + """</code></pre><script>highlight_code();</script>""")
                 result_html.append(function_def)
             result_html.append(test_functions_template_html[1])
 
         if len(test_variables) > 0:
             result_html.append(test_variables_template_html[0])
             for variable in test_variables:
-                variable_def = "<strong>" + variable + """: </strong><pre class="language-python"><code
-                class="language-python" data-language="python">""" + test_variables[variable] + """</code></pre><script>highlight_code();</script>"""
+                variable_def = _("<strong>" + variable + """: </strong><pre class="language-python"><code
+                class="language-python" data-language="python">""" + test_variables[variable] + """</code></pre><script>highlight_code();</script>""")
                 result_html.append(variable_def)
             result_html.append(test_variables_template_html[1])
 
