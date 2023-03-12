@@ -147,7 +147,7 @@ class ParsableText(object):
             show_everything     Shows things that are normally hidden, such as the hidden-util directive.
         """
         mode = mode.lower()
-        if mode not in ["rst", "html", "json"]:
+        if mode not in ["rst", "html", "json", "dict"]:
             raise Exception("Unknown text parser: " + mode)
         self._content = content
         self._parsed = None
@@ -196,6 +196,8 @@ class ParsableText(object):
                     self._parsed = self.html(self._content, self._show_everything, self._translation)
                 elif self._mode == "json":
                     self._parsed = self.from_json(self._content, self._show_everything, self._translation)
+                elif self._mode == "dict":
+                    self._parsed = self.from_dict(self._content, self._show_everything, self._translation)
                 else:
                     self._parsed = self.rst(self._content, self._show_everything, self._translation)
             except:
@@ -216,7 +218,21 @@ class ParsableText(object):
         out, _ = tidylib.tidy_fragment(string)
         return out
     
+    def from_dict(self, dictionary, show_everything=False, translation=gettext.NullTranslations()):
+        """Parses DICT"""
+        # Load object
+
+        grader_results = dictionary["grader_results"]
+
+        feed_list = []
+
+        for test in grader_results:
+            feed_list.append(self.client_grader_result_to_html_block(grader_results[test]))
+
+        feedback_str = '\n\n'.join(feed_list) 
     
+        return feedback_str
+
     def from_json(self, string, show_everything=False, translation=gettext.NullTranslations()):
         """Parses JSON"""
         # Load json object
@@ -333,6 +349,70 @@ class ParsableText(object):
         if html_block.find("updateDiffBlock") != -1:
             html_block = html_block.replace("updateDiffBlock", "updateWaveDromBlock")
         return html_block
+
+    def client_grader_result_to_html_block(self, test):
+
+        test_functions = json.loads(test["functions"].replace("'", "\""), strict = False)
+        test_variables = json.loads(test["variables"].replace("'", "\""), strict = False)
+
+        id_num = ""
+        for i in range(0, len(test["id"])):
+            if test["id"][i].isdigit():
+                id_num += " " + test["id"][i:]
+                break
+
+        template_info = {
+            "test_id": id_num,
+            "test_grade": test["test_grade"],
+            "test_message": test["test_message"],
+            "panel_id": "collapseDebug" + str(test["id"][-1]),
+        }
+        test_name_template_html = [
+            """<ul class="list_disc" style="font-size:12px;"><li>
+            <strong style="font-size:15px"> Test{test_id}: </strong><i> - YOUR GRADE = {test_grade} / 100 </i>""",
+            "</li></ul>"
+        ]
+        test_results_template_html = [
+            """<a class="btn btn-default btn-link btn-xs" role="button"
+            data-toggle="collapse" href="#{panel_id}" aria-expanded="false" aria-controls="{panel_id}">""" +
+            _("View Details") +
+            """</a><div class="collapse" id="{panel_id}">
+            <pre>{test_message}</pre> <br>
+            <ul class="list_disc" style="font-size:13px;">""",
+            "</ul></div>"
+        ]
+        test_functions_template_html = [
+            """<li><strong style="font-size:14px"> FUNCTIONS </strong> <br>""", "</li>"
+        ]
+        test_variables_template_html = [
+            """<li><strong style="font-size:14px"> VARIABLES </strong> <br>""", "</li>"
+        ]
+        
+
+        result_html = [test_name_template_html[0]]
+        result_html.append(test_results_template_html[0])
+
+        if len(test_functions) > 0:
+            result_html.append(test_functions_template_html[0])
+            for function in test_functions:
+                function_def = "<strong>" + function + """: </strong><pre class="language-python"><code
+                class="language-python" data-language="python">""" + test_functions[function] + """</code></pre><script>highlight_code();</script>"""
+                result_html.append(function_def)
+            result_html.append(test_functions_template_html[1])
+
+        if len(test_variables) > 0:
+            result_html.append(test_variables_template_html[0])
+            for variable in test_variables:
+                variable_def = "<strong>" + variable + """: </strong><pre class="language-python"><code
+                class="language-python" data-language="python">""" + test_variables[variable] + """</code></pre><script>highlight_code();</script>"""
+                result_html.append(variable_def)
+            result_html.append(test_variables_template_html[1])
+
+        result_html.append(test_results_template_html[1])
+        result_html.append(test_name_template_html[1])
+        result_html = ''.join(result_html).format(**template_info)
+
+        return result_html
 
     def notebook_result_to_html_block(self, test_id, test_result, weight, show_debug_info, test_custom_feedback, is_staff):
         cases_debug_info = test_result["cases"]
