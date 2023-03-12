@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-12-24 09:14-0500\n"
+"POT-Creation-Date: 2023-03-12 18:06-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -68,11 +68,11 @@ msgstr ""
 msgid "<p>Custom feedback</p><pre>{custom_feedback}</pre><br>"
 msgstr "<p>Retroalimentación personalizada</p><pre>{custom_feedback}</pre><br>"
 
-#: inginious/frontend/parsable_text.py:202
+#: inginious/frontend/parsable_text.py:204
 msgid "<b>Parsing failed</b>: <pre>{}</pre>"
 msgstr "<b>El parsing ha fallado</b>: <pre>{}</pre>"
 
-#: inginious/frontend/parsable_text.py:230
+#: inginious/frontend/parsable_text.py:246
 msgid ""
 "**Compilation error**:\n"
 "\n"
@@ -80,7 +80,7 @@ msgstr ""
 "**Error en compilación**:\n"
 "\n"
 
-#: inginious/frontend/parsable_text.py:232
+#: inginious/frontend/parsable_text.py:248
 msgid ""
 "<br><strong>{}:</strong> There was an error while running your notebook: "
 "<br><pre>{}</pre><br>"
@@ -88,21 +88,58 @@ msgstr ""
 "<br><strong>{}:</strong> Hubo un error mientras se ejecutaba el notebook:"
 " <br><pre>{}</pre><br>"
 
-#: inginious/frontend/parsable_text.py:357
+#: inginious/frontend/parsable_text.py:372
+msgid ""
+"<ul class=\"list_disc\" style=\"font-size:12px;\"><li>\n"
+"            <strong style=\"font-size:15px\"> Test{test_id}: </strong><i>"
+" - YOUR GRADE = {test_grade} / 100 </i>"
+msgstr ""
+
+#: inginious/frontend/parsable_text.py:377
+msgid ""
+"<a class=\"btn btn-default btn-link btn-xs\" role=\"button\"\n"
+"            data-toggle=\"collapse\" href=\"#{panel_id}\" aria-"
+"expanded=\"false\" aria-controls=\"{panel_id}\">\n"
+"            View Details </a><div class=\"collapse\" id=\"{panel_id}\"> "
+"<pre>{test_message}</pre> <br>\n"
+"            <ul class=\"list_disc\" style=\"font-size:13px;\">"
+msgstr ""
+
+#: inginious/frontend/parsable_text.py:384
+msgid "<li><strong style=\"font-size:14px\"> FUNCTIONS </strong> <br>"
+msgstr ""
+
+#: inginious/frontend/parsable_text.py:387
+msgid "<li><strong style=\"font-size:14px\"> VARIABLES </strong> <br>"
+msgstr ""
+
+#: inginious/frontend/parsable_text.py:397
+#: inginious/frontend/parsable_text.py:405
+#, fuzzy
+msgid ""
+"<strong>: </strong><pre class=\"language-python\"><code\n"
+"                class=\"language-python\" data-"
+"language=\"python\"></code></pre><script>highlight_code();</script>"
+msgstr ""
+"<strong>Código ejecutado:</strong><pre class=\"language-python\"><code "
+"class=\"language-python\" data-"
+"language=\"python\">{case_code}</code></pre><script>highlight_code();</script>"
+
+#: inginious/frontend/parsable_text.py:436
 msgid "Expand test results"
 msgstr "Expandir resultados del test"
 
-#: inginious/frontend/parsable_text.py:364
+#: inginious/frontend/parsable_text.py:443
 msgid "Expand test results (only for staff)"
 msgstr "Expandir resultados del test (solo para administradores o tutores)"
 
-#: inginious/frontend/parsable_text.py:369
+#: inginious/frontend/parsable_text.py:448
 msgid "<br><strong>Custom feedback:</strong><br><pre>{custom_feedback}</pre>"
 msgstr ""
 "<br><strong>Retroalimentación "
 "personalizada:</strong><br><pre>{custom_feedback}</pre>"
 
-#: inginious/frontend/parsable_text.py:372
+#: inginious/frontend/parsable_text.py:451
 msgid ""
 "\n"
 "                                            <br><strong>Output "
@@ -112,7 +149,7 @@ msgstr ""
 "                                        <br><strong>Diferencia en la "
 "salida estándar:</strong><pre>{case_output_diff}</pre><br>"
 
-#: inginious/frontend/parsable_text.py:374
+#: inginious/frontend/parsable_text.py:453
 msgid ""
 "<ul class=\"list_disc\" style=\"font-size:12px; list-style-type: "
 "square;\"><li>\n"
@@ -134,7 +171,7 @@ msgstr ""
 "id=\"{case_panel_id}\">{debug_info}</div></li></ul>\n"
 "        "
 
-#: inginious/frontend/parsable_text.py:379
+#: inginious/frontend/parsable_text.py:458
 msgid ""
 "<ul class=\"list_disc\" style=\"font-size:12px; list-style-type: "
 "square;\"><li>\n"
@@ -157,7 +194,7 @@ msgstr ""
 "id=\"{case_panel_id}\">{debug_info}</div></li></ul>\n"
 "        "
 
-#: inginious/frontend/parsable_text.py:384
+#: inginious/frontend/parsable_text.py:463
 msgid ""
 "<strong>Executed code:</strong><pre class=\"language-python\"><code class"
 "=\"language-python\" data-"
