@@ -391,7 +391,7 @@ class WebAppSubmissionManager:
             submission["text"] = ParsableText(submission["text"], submission.get("response_type", "rst"), show_everything, translation).parse()
 
         if "grader_results" in submission:
-            submission["text"] = ParsableText(submission, submission.get("response_type"), show_everything, translation).parse()
+            submission["text"] = ParsableText(submission, submission.get("response_type","dict"), show_everything, translation).parse()
 
         if "problems" in submission:
             for problem in submission["problems"]:

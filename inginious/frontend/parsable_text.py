@@ -222,7 +222,7 @@ class ParsableText(object):
         """Parses DICT"""
         # Load object
 
-        grader_results = dictionary["grader_results"]
+        grader_results = dictionary.get("grader_results",{})
 
         feed_list = []
 
@@ -356,17 +356,11 @@ class ParsableText(object):
         test_functions = json.loads(test["functions"].replace("'", "\""), strict=False)
         test_variables = json.loads(test["variables"].replace("'", "\""), strict=False)
 
-        id_num = ""
-        for i in range(0, len(test["id"])):
-            if test["id"][i].isdigit():
-                id_num += " " + test["id"][i:]
-                break
-
         template_info = {
-            "test_id": id_num,
+            "test_id": test["id"],
             "test_grade": test["test_grade"],
             "test_message": test["test_message"],
-            "panel_id": "collapseDebug" + str(test["id"][-1]),
+            "panel_id": "collapseDebug" + test["id"],
         }
         test_name_template_html = [
             _("""<ul class="list_disc" style="font-size:12px;"><li>

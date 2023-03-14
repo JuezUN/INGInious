@@ -92,7 +92,7 @@ msgstr ""
 msgid ""
 "<ul class=\"list_disc\" style=\"font-size:12px;\"><li>\n"
 "            <strong style=\"font-size:15px\"> Test{test_id}: </strong><i>"
-" - YOUR GRADE = {test_grade} / 100 </i>"
+" - Calificación = {test_grade} / 100 </i>"
 msgstr ""
 
 #: inginious/frontend/parsable_text.py:377
@@ -100,13 +100,13 @@ msgid ""
 "<a class=\"btn btn-default btn-link btn-xs\" role=\"button\"\n"
 "            data-toggle=\"collapse\" href=\"#{panel_id}\" aria-"
 "expanded=\"false\" aria-controls=\"{panel_id}\">\n"
-"            View Details </a><div class=\"collapse\" id=\"{panel_id}\"> "
+"            Ver detalles </a><div class=\"collapse\" id=\"{panel_id}\"> "
 "<pre>{test_message}</pre> <br>\n"
 "            <ul class=\"list_disc\" style=\"font-size:13px;\">"
 msgstr ""
 
 #: inginious/frontend/parsable_text.py:384
-msgid "<li><strong style=\"font-size:14px\"> FUNCTIONS </strong> <br>"
+msgid "<li><strong style=\"font-size:14px\"> FUNCIONES </strong> <br>"
 msgstr ""
 
 #: inginious/frontend/parsable_text.py:387
