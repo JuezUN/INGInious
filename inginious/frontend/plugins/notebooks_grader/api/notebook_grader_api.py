@@ -46,7 +46,7 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
                 "grader": task_grader_info['grader'],
                 "functions_names_to_evaluate": task_grader_info['functions_names_to_evaluate'],
                 "variables_names_to_evaluate": task_grader_info['variables_names_to_evaluate'],
-                "updated_on": task_grader_info['updated_on'].strftime("%Y_%m_%d"),
+                "updated_on": task_grader_info['updated_on'].strftime("%Y_%m_%d_%H_%M_%S"),
             }
             return 200, data
 
@@ -71,6 +71,7 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
             request_params, "functions_names_to_evaluate")
         variables_names_to_evaluate = get_mandatory_parameter(
             request_params, "variables_names_to_evaluate")
+        weight = get_mandatory_parameter(request_params, "weight")
 
         try:
             course = self.course_factory.get_course(course_id)
@@ -98,6 +99,7 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
                     "grader": grader,
                     "functions_names_to_evaluate": functions_names_to_evaluate,
                     "variables_names_to_evaluate": variables_names_to_evaluate,
+                    "weight": float(weight),
                     "updated_on": datetime.datetime.utcnow(),
                 }}
                 self.database.tasks_graders.update_one({
@@ -113,6 +115,7 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
                     "grader": grader,
                     "functions_names_to_evaluate": functions_names_to_evaluate,
                     "variables_names_to_evaluate": variables_names_to_evaluate,
+                    "weight": float(weight),
                     "updated_on": datetime.datetime.utcnow(),
                 })
             return 200, "ok"
@@ -177,7 +180,21 @@ def notebook_submission(public_key):
 
             if hash_msg != hash_from_signature:
                 raise api.APIError(502, "Signature is invalid")
-        
+            
+        def __get_tests_weights(self, course_id, task_id):
+            """
+            Get the weights of the tests of the given task
+            A dictionary, keyed by the test_id, and value the weight
+            """
+            try:
+                task_graders = self.database.tasks_graders.find({
+                    "courseid": course_id, 
+                    "taskid": task_id
+                })
+            except:
+                raise api.APIError(500, "Server failed finding graders")
+            return { grader["testid"]: grader["weight"] for grader in task_graders}
+            
         def API_GET(self):
             """
             GET: API run test, just validate the signature
@@ -224,9 +241,14 @@ def notebook_submission(public_key):
                 test = results[test_id]
                 self.__validate_signature(username, test["id"], test["signature"])
             #We calculate the submissions grade based on the test grades, 
-            #for now every test has the same weight
-            grades = [results[test_id]["test_grade"] for test_id in results]
-            submission_grade = sum(grades) / len(grades)
+            #we calculate weighted average
+            tests_weights = self.__get_tests_weights(course_id,task_id)
+            #grades is a list of tuples containing (grade, weight)
+            grades = [(results[test_id]["test_grade"], tests_weights[test_id]) for test_id in results]
+            
+            submission_grade = sum([grade[0]*grade[1] for grade in grades]) / sum([tests_weights[test_id] for test_id in results])
+            #only two decimal
+            submission_grade = round(submission_grade,2)
             #Retrieve course
             try:
                 course = self.course_factory.get_course(course_id)
@@ -235,9 +257,12 @@ def notebook_submission(public_key):
             #Retrieve course users
             course_staff = course.get_staff()
             course_students = self.user_manager.get_course_registered_users(course, with_admins=False)
-
+            task = course.get_task(task_id)
             if username in course_students or username in course_staff:
-                self.database.submissions.insert({
+                user_can_submit = self.user_manager.task_can_user_submit(task, username)
+                       
+                #submission information
+                submission_info = {
                     "courseid": course_id,
                     "taskid": task_id,
                     "grade": submission_grade,
@@ -245,9 +270,28 @@ def notebook_submission(public_key):
                     "status": status,
                     "grader_results": results,
                     "submitted_on": datetime.datetime.utcnow(),
-                    "username": [username]
-                })
-                return 200, "{}%".format(submission_grade)
+                    "username": [username],
+                    "custom": {
+                        "custom_summary_result": "ACCEPTED" if submission_grade == 100.0 else "WRONG_ANSWER",
+                    },
+                    "response_type": "dict"
+                }
+                if user_can_submit:
+                    #insert submission
+                    submission = self.database.submissions.insert(submission_info)
+                    #Update user stats
+                    self.user_manager.update_user_stats(
+                        username, 
+                        task,
+                        submission_info, 
+                        result, 
+                        submission_grade, 
+                        newsub=True)
+                    return 200, "{}%".format(submission_grade)
+                else:
+                    msg = "not allowed to submit task, deadline reached or limit on number of submissions exceeded"
+                    raise api.APIError(400, "{}".format(msg))
+                    
             raise api.APIError(403, "You are not authorized to access this resource")
 
     return TestNotebookSubmissionAPI
