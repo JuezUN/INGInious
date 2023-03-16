@@ -193,7 +193,7 @@ def notebook_submission(public_key):
                 })
             except:
                 raise api.APIError(500, "Server failed finding graders")
-            return { grader["testid"]: grader["weight"] for grader in task_graders}
+            return { grader["testid"]: grader.get("weight", 1) for grader in task_graders}
             
         def API_GET(self):
             """
