@@ -367,6 +367,9 @@ class WebAppSubmissionManager:
             Get the input of a submission. If only_input is False, returns the full submissions with a dictionnary object at the key "input".
             Else, returns only the dictionnary.
         """
+        if "grader_results" in submission:
+            return submission
+        
         inp = bson.BSON.decode(self._gridfs.get(submission['input']).read())
         if only_input:
             return inp
@@ -383,8 +386,13 @@ class WebAppSubmissionManager:
         """
         if only_feedback:
             submission = {"text": submission.get("text", None), "problems": dict(submission.get("problems", {}))}
+        
         if "text" in submission:
             submission["text"] = ParsableText(submission["text"], submission.get("response_type", "rst"), show_everything, translation).parse()
+
+        if "grader_results" in submission:
+            submission["text"] = ParsableText(submission, submission.get("response_type","dict"), show_everything, translation).parse()
+
         if "problems" in submission:
             for problem in submission["problems"]:
                 if isinstance(submission["problems"][problem], str):  # fallback for old-style submissions
