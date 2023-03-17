@@ -245,8 +245,11 @@ def notebook_submission(public_key):
             tests_weights = self.__get_tests_weights(course_id,task_id)
             #grades is a list of tuples containing (grade, weight)
             grades = [(results[test_id]["test_grade"], tests_weights[test_id]) for test_id in results]
-            
-            submission_grade = sum([grade[0]*grade[1] for grade in grades]) / sum([tests_weights[test_id] for test_id in results])
+            #We ensure that the sum of weights is greater than zero
+            sum_of_weights = sum([tests_weights[test_id] for test_id in results])
+            sum_of_weights = sum_of_weights if sum_of_weights > 0 else 1
+            #Calculate the grade
+            submission_grade = sum([grade[0]*grade[1] for grade in grades]) / sum_of_weights
             #only two decimal
             submission_grade = round(submission_grade,2)
             #Retrieve course
