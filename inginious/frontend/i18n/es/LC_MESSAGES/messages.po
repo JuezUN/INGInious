@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-14 16:42-0500\n"
+"POT-Creation-Date: 2023-03-16 22:10-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -124,15 +124,14 @@ msgstr "<li><strong style=\"font-size:14px\"> VARIABLES </strong> <br>"
 
 #: inginious/frontend/parsable_text.py:391
 #: inginious/frontend/parsable_text.py:399
-#, fuzzy
 msgid ""
 "<strong>: </strong><pre class=\"language-python\"><code\n"
 "                class=\"language-python\" data-"
 "language=\"python\"></code></pre><script>highlight_code();</script>"
 msgstr ""
-"<strong>Código ejecutado:</strong><pre class=\"language-python\"><code "
-"class=\"language-python\" data-"
-"language=\"python\">{case_code}</code></pre><script>highlight_code();</script>"
+"<strong>: </strong><pre class=\"language-python\"><code\n"
+"                class=\"language-python\" data-"
+"language=\"python\"></code></pre><script>highlight_code();</script>"
 
 #: inginious/frontend/parsable_text.py:430
 msgid "Expand test results"
