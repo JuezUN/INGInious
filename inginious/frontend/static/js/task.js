@@ -709,8 +709,10 @@ function loadOldFeedback(data)
 //Load data from input into the form inputs
 function load_input(submissionid, input)
 {
-    for(var key in problems_types) {
-        window["load_input_" + problems_types[key]](submissionid, key, input);
+    if(input_can_load){
+        for(var key in problems_types) {
+            window["load_input_" + problems_types[key]](submissionid, key, input);
+        }
     }
 }
 

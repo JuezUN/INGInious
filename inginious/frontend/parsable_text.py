@@ -364,7 +364,7 @@ class ParsableText(object):
         }
         test_name_template_html = [
             _("""<ul class="list_disc" style="font-size:12px;"><li>
-            <strong style="font-size:15px"> Test{test_id}: </strong><i> - YOUR GRADE = {test_grade} / 100 </i>"""),
+            <strong style="font-size:15px"> Test {test_id}: </strong><i> - YOUR GRADE = {test_grade} / 100 </i>"""),
             "</li></ul>"
         ]
         test_results_template_html = [
