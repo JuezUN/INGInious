@@ -361,13 +361,13 @@ class UserRolesAPI(api.APIAuthenticatedPage):
 class UserCoursesAPI(APICourses):
     def API_GET(self):  # pylint: disable=arguments-differ
         """
-            List courses available to the connected client. Returns a dict in the form
+            List courses available to the connected client including the LTI courses
+            Returns a dict in the form
             ::
                 {
                     "courseid1":
                     {
                         "name": "Name of the course",     #the name of the course
-                        "require_password": False,        #indicates if this course requires a password or not
                         "is_registered": False,           #indicates if the user is registered to this course or not
                         "tasks":                          #only appears if is_registered is True
                         {
@@ -379,8 +379,6 @@ class UserCoursesAPI(APICourses):
                     }
                     #...
                 }
-
-            If you use the endpoint /api/v0/courses/the_course_id, this dict will contain one entry or the page will return 404 Not Found.
         """
         output = []
 
