@@ -9,11 +9,15 @@ import datetime
 import web
 import json
 import inginious.frontend.pages.api._api_page as api
+from inginious.frontend.pages.api.courses import APICourses
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from inginious.common.course_factory import CourseNotFoundException
 
 class NotebookGradingAPI(api.APIAuthenticatedPage):
-    """API definition for get and set grader of a test"""
+    """
+    API definition for get, set and delete grader of a test,
+     
+    """
     def API_GET(self): # pylint: disable=arguments-differ
         """GET: API get grader from a test of a task
             params: course_id: str
@@ -41,7 +45,8 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
         if username in course_students or username in course_staff:
             task_grader_info = self.database.tasks_graders.find_one(
                 {"courseid": course_id, "taskid": task_id, "testid": test_id})
-
+            if task_grader_info is None:
+                raise api.APIError(404, "Grader not found")
             data = {
                 "grader": task_grader_info['grader'],
                 "functions_names_to_evaluate": task_grader_info['functions_names_to_evaluate'],
@@ -122,6 +127,43 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
 
         raise api.APIError(403, "You are not authorized to access this resource")
 
+    def API_DELETE(self):
+        """DELETE: API delete grader of a test of a task
+            params: course_id
+                    task_id
+                    test_id
+            returns: 200 and ok
+        """
+        request_params = web.input()
+        course_id = get_mandatory_parameter(request_params, "course_id")
+        task_id = get_mandatory_parameter(request_params, "task_id")
+        test_id = get_mandatory_parameter(request_params, "test_id")
+        
+
+        try:
+            course = self.course_factory.get_course(course_id)
+        except CourseNotFoundException as course_not_found:
+            raise api.APINotFound("Course not found") from course_not_found
+
+        course_staff = course.get_staff()
+
+        username = self.user_manager.session_username()
+
+        if username in course_staff:
+            #Delete the test
+            try:
+                self.database.tasks_graders.delete_one({
+                    "courseid": course_id,
+                    "taskid": task_id,
+                    "testid": test_id,
+                })
+            except:
+                raise api.APIError(500, "Server error")
+            
+            return 200, "ok"
+
+        raise api.APIError(403, "You are not authorized to access this resource")
+        
 class NotebookGradersAPI(api.APIAuthenticatedPage):
     def API_GET(self): # pylint: disable=arguments-differ
         """
@@ -197,7 +239,7 @@ def notebook_submission(public_key):
             
         def API_GET(self):
             """
-            GET: API run test, just validate the signature
+            GET: API run test, just validate the signature, ensure test exists
             params: test_id: str
                     signature: int
             returns: 200 and ok
@@ -315,3 +357,54 @@ class UserRolesAPI(api.APIAuthenticatedPage):
             raise api.APINotFound("Course not found") from course_not_found
         roles = self.user_manager.user_roles(course)
         return 200, {"roles": roles}
+    
+class UserCoursesAPI(APICourses):
+    def API_GET(self):  # pylint: disable=arguments-differ
+        """
+            List courses available to the connected client including the LTI courses
+            Returns a dict in the form
+            ::
+                {
+                    "courseid1":
+                    {
+                        "name": "Name of the course",     #the name of the course
+                        "is_registered": False,           #indicates if the user is registered to this course or not
+                        "tasks":                          #only appears if is_registered is True
+                        {
+                            "taskid1": "name of task1",
+                            "taskid2": "name of task2"
+                            #...
+                        },
+                        "grade": 0.0                      #the current grade in the course. Only appears if is_registered is True
+                    }
+                    #...
+                }
+        """
+        output = []
+
+        courses = self.course_factory.get_all_courses()
+        
+        username = self.user_manager.session_username()
+        user_info = self.database.users.find_one({"username": username})
+
+        for courseid, course in courses.items():
+            if self.user_manager.course_is_open_to_user(course, username, False):
+                data = {
+                    "id": courseid,
+                    "name": course.get_name(self.user_manager.session_language()),
+                    "is_registered": self.user_manager.course_is_open_to_user(course, username, False)
+                }
+                data["tasks"] = {taskid: task.get_name(self.user_manager.session_language()) for taskid, task in course.get_tasks().items()}
+                data["grade"] = self.user_manager.get_course_cache(username, course)["grade"]
+                output.append(data)
+            elif self.user_manager.course_is_open_to_user(course, username, True):#LTI courses
+                data = {
+                    "id": courseid,
+                    "name": course.get_name(self.user_manager.session_language()),
+                    "is_registered": self.user_manager.course_is_open_to_user(course, username, True)
+                }
+                data["tasks"] = {taskid: task.get_name(self.user_manager.session_language()) for taskid, task in course.get_tasks().items()}
+                data["grade"] = self.user_manager.get_course_cache(username, course)["grade"]
+                output.append(data)
+        return 200, output
+
