@@ -9,6 +9,7 @@ $var title: $:task.get_name_or_id(user_manager.session_language()) - $:course.ge
 
 $ registered = user_manager.course_is_user_registered(course)
 $ staff = user_manager.has_staff_rights_on_course(course)
+$ show_form = (task.get_environment() != "Notebook (External grading)")
 $# Left column content
 $def ColumnF():
     <h3>$:_("Information")</h3>
@@ -309,74 +310,75 @@ $if is_lti():
 $else:
     $ action = "/course/" + course.get_id() + "/" + task.get_id()
 
-<form id="task" action="$(get_homepath() + action)" method="post" enctype="multipart/form-data"
-    $for submission in submissions:
-        $if submission["status"] == "waiting":
-            data-wait-submission="$submission['_id']"
-            $break
->
-    $# Hide input random in form
-    $ i = 0
-    $for elem in input_random_list:
-        <input type="hidden" name="@random_$i" id="random_input" value="$elem"/>
-        $ i = i+1
-    <input type="hidden" name="@action" value="submit"/>
-    $for key, problem in enumerate(task.get_problems()):
-        <div class="panel panel-default problem">
-            $if len(task.get_problems()) != 1 or problem.get_name(user_manager.session_language()) != "":
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        $if len(task.get_problems()) != 1:
-                            $:_("Question ")
-                            $:"{}".format(str(key+1)):
-                        $problem.get_name(user_manager.session_language())
-                    </h3>
+$if show_form:
+    <form id="task" action="$(get_homepath() + action)" method="post" enctype="multipart/form-data"
+        $for submission in submissions:
+            $if submission["status"] == "waiting":
+                data-wait-submission="$submission['_id']"
+                $break
+    >
+        $# Hide input random in form
+        $ i = 0
+        $for elem in input_random_list:
+            <input type="hidden" name="@random_$i" id="random_input" value="$elem"/>
+            $ i = i+1
+        <input type="hidden" name="@action" value="submit"/>
+        $for key, problem in enumerate(task.get_problems()):
+            <div class="panel panel-default problem">
+                $if len(task.get_problems()) != 1 or problem.get_name(user_manager.session_language()) != "":
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            $if len(task.get_problems()) != 1:
+                                $:_("Question ")
+                                $:"{}".format(str(key+1)):
+                            $problem.get_name(user_manager.session_language())
+                        </h3>
+                    </div>
+                <div class="panel-body">
+                    $:problem.show_input(template_helper, user_manager.session_language(), user_manager.session_username())
                 </div>
-            <div class="panel-body">
-                $:problem.show_input(template_helper, user_manager.session_language(), user_manager.session_username())
             </div>
-        </div>
 
-    $# no need to check with lti=True/False here as it was already checked by the calling python script.
-    $ groups_ok = user_manager.task_can_user_submit(task, user_manager.session_username(), 'groups')
-    $ tokens_ok = user_manager.task_can_user_submit(task, user_manager.session_username(), 'tokens')
-    $if not registered:
-        <button type="submit" class="btn btn-default btn-lg btn-block center-block" disabled="disabled">$:_("Please enroll in the course to submit.")</button>
-    $elif groups_ok and tokens_ok:
-        $if user_manager.has_admin_rights_on_course(course):
-            <input type="hidden" name="@debug-mode" id="task-debug-mode" value=""/>
-            <div class="row">
-                <div class="col-xs-9 col-md-10">
-                    <button type="submit" class="btn btn-default btn-lg btn-block center-block" id="task-submit">$:_("Submit")</button>
+        $# no need to check with lti=True/False here as it was already checked by the calling python script.
+        $ groups_ok = user_manager.task_can_user_submit(task, user_manager.session_username(), 'groups')
+        $ tokens_ok = user_manager.task_can_user_submit(task, user_manager.session_username(), 'tokens')
+        $if not registered:
+            <button type="submit" class="btn btn-default btn-lg btn-block center-block" disabled="disabled">$:_("Please enroll in the course to submit.")</button>
+        $elif groups_ok and tokens_ok:
+            $if user_manager.has_admin_rights_on_course(course):
+                <input type="hidden" name="@debug-mode" id="task-debug-mode" value=""/>
+                <div class="row">
+                    <div class="col-xs-9 col-md-10">
+                        <button type="submit" class="btn btn-default btn-lg btn-block center-block" id="task-submit">$:_("Submit")</button>
+                    </div>
+                    <div class="col-xs-3 col-md-2">
+                        <button type="button" class="btn btn-info btn-lg btn-block center-block" id="task-submit-debug" data-toggle="tooltip"
+                                data-placement="top" title=$:_('"Start remote SSH console with this input"')>
+                            <i class="fa fa-terminal"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="col-xs-3 col-md-2">
-                    <button type="button" class="btn btn-info btn-lg btn-block center-block" id="task-submit-debug" data-toggle="tooltip"
-                            data-placement="top" title=$:_('"Start remote SSH console with this input"')>
-                        <i class="fa fa-terminal"></i>
-                    </button>
-                </div>
-            </div>
-        $elif not user_manager.has_staff_rights_on_course(course) and task.can_submit_after_deadline():
-            <button type="submit" class="btn btn-default btn-lg btn-block center-block" late-submission id="task-submit">
-                $:_("Submit (After deadline)")
+            $elif not user_manager.has_staff_rights_on_course(course) and task.can_submit_after_deadline():
+                <button type="submit" class="btn btn-default btn-lg btn-block center-block" late-submission id="task-submit">
+                    $:_("Submit (After deadline)")
+                </button>
+            $else:
+                <button type="submit" class="btn btn-default btn-lg btn-block center-block" id="task-submit">$:_("Submit")</button>
+        $elif not task.get_accessible_time().is_open():
+            <button type="submit" class="btn btn-default btn-lg btn-block center-block" disabled="disabled">$:_("The deadline is over, you cannot submit anymore")</button>
+        $elif task.is_group_task() and not groups_ok:
+            <a href="$get_homepath()/aggregation/$course.get_id()" class="btn btn-default btn-lg btn-block center-block">$(_('Please register in a group') if course.use_classrooms() else _('Please register in a team'))</a>
+        $elif not tokens_ok:
+            <button type="submit" class="btn btn-default btn-lg btn-block center-block" disabled="disabled">
+                $(_('You have reached the submission limit.') if not task.is_group_task() else _('Your group have reached the submission limit.') if course.use_classrooms() else _('Your team have reached the submission limit.'))
+            $if task.get_submission_limit()["period"] > 0:
+                <br/> $:_("It will be refilled within the next ")
+                    $:"{}".format(task.get_submission_limit()["period"])
+                    $:_(" hour(s)")
             </button>
         $else:
-            <button type="submit" class="btn btn-default btn-lg btn-block center-block" id="task-submit">$:_("Submit")</button>
-    $elif not task.get_accessible_time().is_open():
-        <button type="submit" class="btn btn-default btn-lg btn-block center-block" disabled="disabled">$:_("The deadline is over, you cannot submit anymore")</button>
-    $elif task.is_group_task() and not groups_ok:
-        <a href="$get_homepath()/aggregation/$course.get_id()" class="btn btn-default btn-lg btn-block center-block">$(_('Please register in a group') if course.use_classrooms() else _('Please register in a team'))</a>
-    $elif not tokens_ok:
-        <button type="submit" class="btn btn-default btn-lg btn-block center-block" disabled="disabled">
-            $(_('You have reached the submission limit.') if not task.is_group_task() else _('Your group have reached the submission limit.') if course.use_classrooms() else _('Your team have reached the submission limit.'))
-        $if task.get_submission_limit()["period"] > 0:
-            <br/> $:_("It will be refilled within the next ")
-                  $:"{}".format(task.get_submission_limit()["period"])
-                  $:_(" hour(s)")
-        </button>
-    $else:
-        <button type="submit" class="btn btn-default btn-lg btn-block center-block" disabled="disabled">$:_("You are not allowed to submit")</button>
-</form>
+            <button type="submit" class="btn btn-default btn-lg btn-block center-block" disabled="disabled">$:_("You are not allowed to submit")</button>
+    </form>
 
 <!-- Modals -->
 $ auth_methods = user_manager.get_auth_methods()
@@ -400,6 +402,9 @@ $ auth_methods = user_manager.get_auth_methods()
 <script type="text/javascript">
 $ pdict = {problem.get_id(): problem.get_type() for problem in task.get_problems()}
 var problems_types = $:pdict
+
+// Avoids parsing errors when there's no form where the input can load in.
+var input_can_load = !!$:str(show_form).lower()
 
 $$(document).ready(function() {
     init_task_page("$task.get_evaluate()");

@@ -18,6 +18,7 @@ $#
     </div>
     <ul class="list-group checked-list-box">
         $for taskid, task in tasks:
+        $if task.get_environment() != "Notebook (External grading)":
             <li class="list-group-item" data-value="$taskid" data-name="tasks"
                 $if taskid in checked_tasks:
                     data-checked="true"
