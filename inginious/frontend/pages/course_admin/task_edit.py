@@ -46,6 +46,8 @@ class CourseEditTask(INGIniousAdminPage):
             environments = list(environments)
             environments.remove("multiple_languages")
             environments.insert(0,"multiple_languages")
+            #Add external grading environment
+            environments.append("Notebook (External grading)")
             environments = tuple(environments)
         
         
@@ -219,12 +221,13 @@ class CourseEditTask(INGIniousAdminPage):
             file_ext = data["@filetype"]
             del data["@filetype"]
 
+            client_grader_str = "Notebook (External grading)"
             # Parse and order the problems (also deletes @order from the result)
-            if problems is None:
+            if problems is None and data["environment"] != client_grader_str:
                 return json.dumps({"status": "error", "message": _("You cannot create a task without subproblems")})
 
             data["problems"] = OrderedDict([(key, self.parse_problem(val))
-                                            for key, val in sorted(iter(problems.items()), key=lambda x: int(x[1]['@order']))])
+                                            for key, val in sorted(iter(problems.items()), key=lambda x: int(x[1]['@order']))]) if data["environment"] != client_grader_str else {}
 
             # Task limits
             data["limits"] = limits
