@@ -48,10 +48,13 @@ jQuery(document).ready(function () {
     }
 
     function addTaskResultLegendButton() {
-        let taskAlert = $("#task_alert");
-        const legendModalButton = `<a href='#' type='button' data-toggle='modal' data-target='#task_result_legend_modal'>
-            <i class='fa fa-question-circle'>  ${legend_label}</a>`;
-        taskAlert.before(legendModalButton);
+        // This condition will hide "Understading your results" in client grader tasks.
+        if(input_can_load){
+            let taskAlert = $("#task_alert");
+            const legendModalButton = `<a href='#' type='button' data-toggle='modal' data-target='#task_result_legend_modal'>
+                <i class='fa fa-question-circle'>  ${legend_label}</a>`;
+            taskAlert.before(legendModalButton);
+        }
     }
 
     function updateUNCodeURL() {

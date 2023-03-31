@@ -7,6 +7,7 @@ $#
 
 $ username = submission['username'][0]
 $ user_realname= user_manager.get_user_realname(username)
+$ show_form = (task.get_environment() != "Notebook (External grading)")
 $var title: $:task.get_name_or_id(user_manager.session_language()) - $:user_realname - $:course.get_name(user_manager.session_language())
 $ is_admin = user_manager.has_admin_rights_on_course(course)
 $var Column: $:template_helper.call('course_admin_menu',course=course,current='students')
@@ -43,35 +44,35 @@ $var Navbar: $:NavbarF()
                     <i class="fa fa-filter fa-fw"></i> $:_("Click here to hide/display context information")
                 </a>
             </div>
-            $if "result"  in submission:
-                <div class="col-md-12" style="margin:2px 0px 2px 0px;">
-                    <a href="$get_homepath()/admin/$course.get_id()/download?submission=$submission['_id']" class="btn btn-sm btn-block btn-primary">
-                        <i class="fa fa-download fa-fw"></i> $:_("Download full submission")
-                    </a>
-                </div>
-
-            $if is_admin:
-                <div class="col-md-4" style="margin:2px 0px 2px 0px;">
-                    <button type="submit" name="replay" class="btn btn-sm btn-block btn-primary">
-                        <i class="fa fa-refresh fa-fw"></i> $:_("Replay submission")
-                    </button>
-                </div>
-            <div class="col-md-$('4' if is_admin else '12')" style="margin:2px 0px 2px 0px;">
-                <button type="submit" name="replay-copy" class="btn btn-sm btn-block btn-primary">
-                    <i class="fa fa-copy fa-fw"></i> 
-                    $:_("Replay as ")
-                    $:"{}".format(user_manager.session_realname())
-                </button>
-            </div>
-            $if is_admin:
-                <div class="col-md-4" style="margin:2px 0px 2px 0px;">
-                    <button type="submit" name="replay-debug" class="btn btn-sm btn-block btn-primary">
-                        <i class="fa fa-terminal fa-fw"></i>
-                        $:_("Replay/debug as ")
+            $#Hide download/replay submissions buttons for client grader tasks
+            $if show_form:
+                $if "result"  in submission:
+                    <div class="col-md-12" style="margin:2px 0px 2px 0px;">
+                        <a href="$get_homepath()/admin/$course.get_id()/download?submission=$submission['_id']" class="btn btn-sm btn-block btn-primary">
+                            <i class="fa fa-download fa-fw"></i> $:_("Download full submission")
+                        </a>
+                    </div>
+                $if is_admin:
+                    <div class="col-md-4" style="margin:2px 0px 2px 0px;">
+                        <button type="submit" name="replay" class="btn btn-sm btn-block btn-primary">
+                            <i class="fa fa-refresh fa-fw"></i> $:_("Replay submission")
+                        </button>
+                    </div>
+                <div class="col-md-$('4' if is_admin else '12')" style="margin:2px 0px 2px 0px;">
+                    <button type="submit" name="replay-copy" class="btn btn-sm btn-block btn-primary">
+                        <i class="fa fa-copy fa-fw"></i> 
+                        $:_("Replay as ")
                         $:"{}".format(user_manager.session_realname())
                     </button>
                 </div>
-
+                $if is_admin:
+                    <div class="col-md-4" style="margin:2px 0px 2px 0px;">
+                        <button type="submit" name="replay-debug" class="btn btn-sm btn-block btn-primary">
+                            <i class="fa fa-terminal fa-fw"></i>
+                            $:_("Replay/debug as ")
+                            $:"{}".format(user_manager.session_realname())
+                        </button>
+                    </div>
         </div>
     </form>
 </div>
@@ -98,31 +99,35 @@ $if (len(visible_tags) > 0) or (len(visible_misconception_tags) > 0) or user_man
 
 <div id="task_alert"></div>
 
-$ task_problems = {problem.get_id(): problem for problem in task.get_problems()}
-$for key, problem in enumerate(to_display):
-    <div class="panel panel-default problem">
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                Question ${key+1}: $problem["name"]
-                <a href="$get_homepath()/course/$course.get_id()/$task.get_id()?submissionid=$submission['_id']&questionid=$problem['id']" class="btn btn-default btn-xs" title=$:_('"Download as file"')
-                   data-toggle="tooltip" data-placement="bottom">
-                    <i class="fa fa-download"></i>
-                </a>
-            </h3>
+$if show_form:
+    $ task_problems = {problem.get_id(): problem for problem in task.get_problems()}
+    $for key, problem in enumerate(to_display):
+        <div class="panel panel-default problem">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Question ${key+1}: $problem["name"]
+                    <a href="$get_homepath()/course/$course.get_id()/$task.get_id()?submissionid=$submission['_id']&questionid=$problem['id']" class="btn btn-default btn-xs" title=$:_('"Download as file"')
+                    data-toggle="tooltip" data-placement="bottom">
+                        <i class="fa fa-download"></i>
+                    </a>
+                </h3>
+            </div>
+            <div class="panel-body">
+                $if problem["id"] in task_problems:
+                    $:task_problems[problem["id"]].show_input(template_helper, user_manager.session_language(), username)
+                $elif not problem["defined"]:
+                    <span class="text-warning">$:_("This problem id is not defined in the task.")</span>
+                $else:
+                    <span class="text-warning">$:_("This problem is not present in the submission.")</span>
+            </div>
         </div>
-        <div class="panel-body">
-            $if problem["id"] in task_problems:
-                $:task_problems[problem["id"]].show_input(template_helper, user_manager.session_language(), username)
-            $elif not problem["defined"]:
-                <span class="text-warning">$:_("This problem id is not defined in the task.")</span>
-            $else:
-                <span class="text-warning">$:_("This problem is not present in the submission.")</span>
-        </div>
-    </div>
 </form>
 <script type="text/javascript">
 $ pdict = {problem.get_id(): problem.get_type() for problem in task.get_problems()}
 var problems_types = $:pdict
+
+// Avoids parsing errors when there's no form where the input can load in.
+var input_can_load = !!$:str(show_form).lower()
 
 $$(document).ready(function() {
     loadOldSubmissionInput("$submission['_id']", false);
