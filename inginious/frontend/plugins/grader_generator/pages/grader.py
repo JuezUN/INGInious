@@ -16,8 +16,8 @@ def on_task_editor_submit(course, taskid, task_data, task_fs):
     Returns: None if successful otherwise a str
     """
 
-    problem_id = list(task_data['problems'])[0]
-    problem_type = task_data['problems'][problem_id]["type"]
+    problem_id = list(task_data['problems'])[0] if len(task_data['problems']) > 0 else None
+    problem_type = task_data['problems'][problem_id]["type"] if problem_id else None
 
     grader_environment = task_data['environment']
     if problem_type in ['code_multiple_languages', 'code_file_multiple_languages']:
