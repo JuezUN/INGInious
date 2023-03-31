@@ -9,7 +9,7 @@ $var title: $:task.get_name_or_id(user_manager.session_language()) - $:course.ge
 
 $ registered = user_manager.course_is_user_registered(course)
 $ staff = user_manager.has_staff_rights_on_course(course)
-$ show_form = (task.get_environment() != "Notebook")
+$ show_form = (task.get_environment() != "Notebook (External grading)")
 $# Left column content
 $def ColumnF():
     <h3>$:_("Information")</h3>

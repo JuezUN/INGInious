@@ -11,6 +11,12 @@ $var Column: $:template_helper.call('course_admin_menu',course=course,current='s
 $ is_admin = user_manager.has_admin_rights_on_course(course)
 $ use_classrooms = course.use_classrooms()
 
+$ can_replay = True
+$for submission in data:
+    $if submission.get("response_type","") == "dict":
+        $ can_replay = False
+        $ break
+
 $def NavbarF():
     <ol class="nav navbar-nav nav-breadcrumb">
         <li><a href="$get_homepath()/course/$course.get_id()">$course.get_name(user_manager.session_language())</a></li>
@@ -275,11 +281,19 @@ $if statistics != None and len(data) > 0:
                 <!-- the 73px is there to force horizontal button-group. The btn-group may becomes vertical without this. -->
                 <div class="btn-group" role="group" style="width:73px">
                     <button class="btn btn-info btn-xs" type="submit" name="csv" formmethod="post" title=$:_('"Download CSV"') data-toggle="tooltip" data-placement="bottom"><i class="fa fa-table"></i></button>
-                    <div class="btn btn-danger btn-xs" data-toggle="modal" data-target="#download_modal">
-                        <div data-toggle="tooltip" data-placement="top" title=$:_('"Download current selection"')><i class="fa fa-download"></i></div>
-                    </div>
+                    $if can_replay:
+                        <div class="btn btn-danger btn-xs" data-toggle="modal" data-target="#download_modal">
+                            <div data-toggle="tooltip" data-placement="top" title=$:_('"Download current selection"')><i class="fa fa-download"></i></div>
+                        </div>
+                    $else:
+                        <div class="btn btn-danger btn-xs" disabled>
+                            <div data-toggle="tooltip" data-placement="top" title=$:_('"Download current selection"')><i class="fa fa-download"></i></div>
+                        </div>
                     $if is_admin:
-                        <button class="btn btn-warning btn-xs" type="submit" name="replay" formmethod="post" title=$:_('"Replay current selection"') data-toggle="tooltip" data-placement="bottom"><i class="fa fa-refresh"></i></button>
+                        $if can_replay:
+                            <button class="btn btn-warning btn-xs" type="submit" name="replay" formmethod="post" title=$:_('"Replay current selection"') data-toggle="tooltip" data-placement="bottom"><i class="fa fa-refresh"></i></button>
+                        $else:
+                            <button class="btn btn-warning btn-xs" title=$:_('"Replay current selection"') data-toggle="tooltip" data-placement="bottom" disabled><i class="fa fa-refresh"></i></button>
                 </div>
             </th>
         </tr>
@@ -332,11 +346,19 @@ $if statistics != None and len(data) > 0:
                     <a href="$get_homepath()/submission/$submission['_id']"
                        class="btn btn-default btn-xs" title=$:_('"View submission"') data-toggle="tooltip" data-placement="bottom"><i class="fa
                        fa-search"></i></a>
-                    <a href="$get_homepath()/admin/${course.get_id()}/download$submission['url']" class="btn btn-default btn-xs" title=$:_('"Download submission"') data-toggle="tooltip"
-                       data-placement="bottom"><i class="fa fa-download"></i></a>
+                    $if submission.get("response_type","") != "dict":
+                        <a href="$get_homepath()/admin/${course.get_id()}/download$submission['url']" class="btn btn-default btn-xs" title=$:_('"Download submission"') data-toggle="tooltip"
+                           data-placement="bottom"><i class="fa fa-download"></i></a>
+                    $else:
+                        <a class="btn btn-default btn-xs" title=$:_('"Download submission"') data-toggle="tooltip"
+                           data-placement="bottom" disabled><i class="fa fa-download"></i></a>
                     $if is_admin:
-                        <a class="replay btn btn-default btn-xs" title=$:_('"Replay submission"') data-toggle="tooltip" data-submissionid="$submission['_id']"
-                           data-placement="bottom"><i class="fa fa-refresh"></i></a>
+                        $if submission.get("response_type","") != "dict":
+                            <a class="replay btn btn-default btn-xs" title=$:_('"Replay submission"') data-toggle="tooltip" data-submissionid="$submission['_id']"
+                               data-placement="bottom"><i class="fa fa-refresh"></i></a>
+                        $else:
+                            <a class="btn btn-default btn-xs" title=$:_('"Replay submission"') data-toggle="tooltip" data-submissionid="$submission['_id']"
+                               data-placement="bottom" disabled><i class="fa fa-refresh"></i></a>
                 </div>
             </td>
         </tr>

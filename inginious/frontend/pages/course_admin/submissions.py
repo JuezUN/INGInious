@@ -59,7 +59,7 @@ class CourseSubmissionsPage(INGIniousAdminPage):
         
         user_input = self.get_input()
         # Retrieve submissions data required for display the table
-        fields_for_table = ["username","best","result","submitted_on","grade","status","taskid"]
+        fields_for_table = ["username","best","result","submitted_on","grade","status","taskid","response_type"]
         data_table, classroom = self.get_submissions(course, user_input,fields_for_table)
         if len(data_table) == 0 and not self.show_collapse(user_input):
             msgs.append(_("No submissions found"))

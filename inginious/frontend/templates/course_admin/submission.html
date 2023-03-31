@@ -7,7 +7,7 @@ $#
 
 $ username = submission['username'][0]
 $ user_realname= user_manager.get_user_realname(username)
-$ show_form = (task.get_environment() != "Notebook")
+$ show_form = (task.get_environment() != "Notebook (External grading)")
 $var title: $:task.get_name_or_id(user_manager.session_language()) - $:user_realname - $:course.get_name(user_manager.session_language())
 $ is_admin = user_manager.has_admin_rights_on_course(course)
 $var Column: $:template_helper.call('course_admin_menu',course=course,current='students')
@@ -52,7 +52,6 @@ $var Navbar: $:NavbarF()
                             <i class="fa fa-download fa-fw"></i> $:_("Download full submission")
                         </a>
                     </div>
-
                 $if is_admin:
                     <div class="col-md-4" style="margin:2px 0px 2px 0px;">
                         <button type="submit" name="replay" class="btn btn-sm btn-block btn-primary">
@@ -100,8 +99,8 @@ $if (len(visible_tags) > 0) or (len(visible_misconception_tags) > 0) or user_man
 
 <div id="task_alert"></div>
 
-$ task_problems = {problem.get_id(): problem for problem in task.get_problems()}
 $if show_form:
+    $ task_problems = {problem.get_id(): problem for problem in task.get_problems()}
     $for key, problem in enumerate(to_display):
         <div class="panel panel-default problem">
             <div class="panel-heading">
