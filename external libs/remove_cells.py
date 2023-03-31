@@ -1,4 +1,5 @@
 def prepare_notebook(notebook_path, notebook_result_path, colab=False):
+    locations = []
     if colab:
         import requests
         import urllib.parse
@@ -49,13 +50,17 @@ def prepare_notebook(notebook_path, notebook_result_path, colab=False):
     import nbformat
     nb = nbformat.read(notebook_path, as_version=nbformat.NO_CONVERT)
 
-    for i, cell in enumerate(nb.cells):
+    new_cells = []
+    for cell in nb.cells:
+        outputs = []
         if "## TEACHER" in cell.source or "##TEACHER" in cell.source:
-            nb.cells.pop(i)
             continue
         
-        if "## KEEPOUTPUT" not in cell.source or "##KEEPOUTPUT" not in cell.source:
-            nb.cells[i].outputs = []
+        if "## KEEPOUTPUT" in cell.source or "##KEEPOUTPUT" in cell.source:
+            outputs = cell["outputs"]
+        cell["outputs"] = outputs
+        new_cells.append(cell)
+    nb.cells = new_cells
 
     nbformat.write(nb, notebook_result_path)
     print("Student Notebook saved on ".format(locations[0] if locations else notebook_result_path))
