@@ -45,16 +45,19 @@ class TrialsAndBestGradeApi(UserApi):
                 "$project":
                     {
                         "_id": 0,
-                        "result": "$submission.custom.custom_summary_result",
+                        "result": {
+                            "$ifNull": [
+                                "$submission.custom.custom_summary_result",
+                                {"$cond": [
+                                    {"$eq": ["$submission.result", "success"]},
+                                    "ACCEPTED",
+                                    "WRONG_ANSWER"
+                                ]}
+                            ]
+                        },
                         "taskid": 1,
                         "tried": 1,
                         "grade": 1
-                    }
-            },
-            {
-                "$match":
-                    {
-                        "result": {"$ne": None}
                     }
             }
         ])

@@ -2,7 +2,7 @@ import collections
 import web
 
 from .admin_api import AdminApi
-from .utils import project_detail_user_tasks
+from .utils import project_detail_best_user_tasks
 
 
 class BestSubmissionsByVerdictStatisticsDetailApi(AdminApi):
@@ -37,18 +37,13 @@ class BestSubmissionsByVerdictStatisticsDetailApi(AdminApi):
                     }
             },
             {
-                "$match": {
-                    "submission.custom.custom_summary_result": summary_result
-                }
-            },
-            {
                 "$sort": collections.OrderedDict([
                     ("submission.submitted_on", -1),
                     ("username", 1)
                 ])
             }
         ])
-        return project_detail_user_tasks(user_tasks)
+        return project_detail_best_user_tasks(user_tasks, summary_result)
 
     def API_GET(self):
         parameters = web.input()

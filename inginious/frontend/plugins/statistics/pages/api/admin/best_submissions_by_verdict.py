@@ -34,8 +34,18 @@ class BestSubmissionsByVerdictApi(AdminApi):
             },
             {
                 "$group": {
-                    "_id": {"summary_result": "$submission.custom.custom_summary_result",
-                            "taskid": "$taskid"},
+                    "_id": {
+                            "summary_result": {
+                                "$ifNull": [
+                                    "$submission.custom.custom_summary_result",
+                                    {"$cond": [
+                                        {"$eq": ["$submission.result", "success"]},
+                                        "ACCEPTED",
+                                        "WRONG_ANSWER"
+                                    ]}
+                            ]},
+                            "taskid": "$taskid"
+                        },
                     "count": {"$sum": 1}
                 }
             },
@@ -46,12 +56,6 @@ class BestSubmissionsByVerdictApi(AdminApi):
                     "summary_result": "$_id.summary_result",
                     "count": 1
                 }
-            },
-            {
-                "$match":
-                    {
-                        "summary_result": {"$ne": None}
-                    }
             }
         ])
 

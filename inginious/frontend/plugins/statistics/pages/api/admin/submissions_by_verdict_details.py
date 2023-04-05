@@ -19,7 +19,6 @@ class SubmissionsByVerdictDetailsApi(AdminApi):
             {"$match":
                 {
                     "courseid": course_id,
-                    "custom.custom_summary_result": summary_result,
                     "taskid": task_id,
                     "username": {"$nin": admins},
                     "is_late_submission": late_submissions_filter
@@ -39,7 +38,7 @@ class SubmissionsByVerdictDetailsApi(AdminApi):
             }
         ])
 
-        return task_submissions_detail(submissions)
+        return task_submissions_detail(submissions, summary_result)
 
     def API_GET(self):
         parameters = web.input()
