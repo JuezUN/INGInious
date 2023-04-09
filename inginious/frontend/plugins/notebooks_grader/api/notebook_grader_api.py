@@ -305,7 +305,12 @@ def notebook_submission(public_key):
             task = course.get_task(task_id)
             if username in course_students or username in course_staff:
                 user_can_submit = self.user_manager.task_can_user_submit(task, username)
-                       
+                
+                #and check no periods on keys
+                keys = list(results.keys())
+                for test_id in keys:
+                    test_id_no_period = test_id.replace(".", "")
+                    results[test_id_no_period] = results.pop(test_id)   
                 #submission information
                 submission_info = {
                     "courseid": course_id,

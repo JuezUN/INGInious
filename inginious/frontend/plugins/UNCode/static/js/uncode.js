@@ -159,6 +159,18 @@ jQuery(document).ready(function () {
         }
     }
 
+    function check_options_for_external_grading() {
+        const environmentSelectElement = $("#environment");
+        let environmentValue = environmentSelectElement.val();
+        if (environmentValue === "Notebook (External grading)"){
+            hiddenTabs();
+            hiddenContainerTabLabels();
+        }else{
+            showTabs();
+            showContainerTabLabels();
+        }
+    }
+
     updateTemplate();
     addTaskContextTemplate();
     addTaskContextHelp();
@@ -167,6 +179,7 @@ jQuery(document).ready(function () {
     stopSideBar();
     remove_unused_subproblem_types();
     remove_unused_grader_environments();
+    check_options_for_external_grading();
     rewrite_task_title();
     updateUNCodeURL();
     addHomePathLTI();

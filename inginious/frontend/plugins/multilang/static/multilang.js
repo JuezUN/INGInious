@@ -317,6 +317,16 @@ function setupGradingEnvironmentView() {
                 configEnvironmentView();
             }
         });
+        environmentSelectElement.on('change', function () {
+            let environmentValue = environmentSelectElement.val();
+            if (environmentValue === "Notebook (External grading)"){
+                hiddenTabs();
+                hiddenContainerTabLabels();
+            }else{
+                showTabs();
+                showContainerTabLabels();
+            }
+        });
     }
     
     $('#change_environment').on('click', function () {
@@ -327,6 +337,13 @@ function setupGradingEnvironmentView() {
 
     $('#change_grading_environment').on('hidden.bs.modal', function(){
         environmentSelectElement.val(environmentValue);
+        if (environmentValue === "Notebook (External grading)"){
+            hiddenTabs();
+            hiddenContainerTabLabels();
+        }else{
+            showTabs();
+            showContainerTabLabels();
+        }
     });
 
     configEnvironmentView(false);
@@ -341,6 +358,54 @@ function taskAlreadyHasASubproblem(){
         return true;
     }
     return false;
+}
+
+
+function hiddenTabs(){
+
+    const tabsElements = $("#edit_task_tabs").children();
+    
+    for (var i = 0; i < tabsElements.length; i++) {
+        var tab = $(tabsElements[i]);
+        if(tab.attr('id')==="basic_tab" || tab.attr('id')==="container_tab") {
+            continue;
+        }
+        tab.hide();
+    }
+}
+
+function hiddenContainerTabLabels(){
+    const containerElements = $("#tab_container").children();
+    
+    for (var i = 0; i < containerElements.length; i++) {
+        var ele = $(containerElements[i]);
+        if(ele.attr('id')==="environment_label") {
+            continue;
+        }
+        ele.hide();
+    }
+}
+
+function showContainerTabLabels(){
+    const containerElements = $("#tab_container").children();
+    
+    for (var i = 0; i < containerElements.length; i++) {
+        var ele = $(containerElements[i]);
+        if(ele.attr('id')==="change_grading_environment") {
+            continue;
+        }
+        ele.show();
+    }
+}
+
+function showTabs(){
+
+    const tabsElements = $("#edit_task_tabs").children();
+    
+    for (var i = 0; i < tabsElements.length; i++) {
+        var tab = $(tabsElements[i]);      
+        tab.show();
+    }
 }
 
 function deleteProblem(){
