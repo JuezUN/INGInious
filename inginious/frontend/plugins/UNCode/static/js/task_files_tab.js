@@ -2,7 +2,6 @@ const _this = this;
 const environmentName = $("#environment");
 const isMultiLang = environmentName.val() === "multiple_languages";
 const isDataScience = environmentName.val() === "Data Science";
-const isExternal = environmentName.val() === "Notebook (External grading)";
 
 function isRoot(path) {
     const rootFilenameFormat = /^\/[^.\n\/]+\.[a-z0-9_]+$/i;
