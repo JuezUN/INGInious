@@ -1,4 +1,7 @@
 jQuery(document).ready(function () {
+
+    input_can_load = typeof(input_can_load) == 'undefined' ? true : input_can_load;
+
     function updateFooter() {
         // Update footer with new information.
         const footer = $("#footer");

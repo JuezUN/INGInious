@@ -19,7 +19,6 @@ class BarSubmissionsPerTasksApi(UserApi):
                     {
                         "username": [username],
                         "courseid": course_id,
-                        "custom.custom_summary_result": {"$ne": None},
                         "is_late_submission": late_submissions_filter
                     }
             },
@@ -27,7 +26,15 @@ class BarSubmissionsPerTasksApi(UserApi):
                 "$group": {
                     "_id":
                         {
-                            "summary_result": "$custom.custom_summary_result",
+                            "summary_result": {
+                                "$ifNull": [
+                                    "$custom.custom_summary_result",
+                                    {"$cond": [
+                                        {"$eq": ["$result", "success"]},
+                                        "ACCEPTED",
+                                        "WRONG_ANSWER"
+                                    ]}
+                            ]},
                             "task_id": "$taskid"
                         },
                     "count": {"$sum": 1}
