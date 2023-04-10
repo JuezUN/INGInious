@@ -7,6 +7,7 @@ $#
 
 $var title: $:(_("Edit ") + "{}".format(taskid))
 
+$ show_form = (task_data.get('environment') != "Notebook (External grading)")
 $def ColumnF():
     $:template_helper.call('course_admin_menu',course=course,current='tasks')
     <a href="#task_edit_submit_status" class="btn btn-primary btn-block task_edit_submit_button" type="button" onclick="studio_submit()"><i class="fa fa-save"></i> Save changes</a>
@@ -47,10 +48,10 @@ $var Navbar: $:NavbarF()
     
     <div role="tabpanel">
         <ul class="nav nav-tabs" id="edit_task_tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#tab_basic" aria-controls="basicinfo" role="tab" data-toggle="tab"><i class="fa
+            <li id="basic_tab" role="presentation" class="active"><a href="#tab_basic" aria-controls="basicinfo" role="tab" data-toggle="tab"><i class="fa
                 fa-cog fa-fw"></i>&nbsp; $:_("Basic settings")</a></li>
-            <li role="presentation"><a href="#tab_container" aria-controls="container" role="tab" data-toggle="tab"><i class="fa
-                fa-cube fa-fw"></i>&nbsp; $:_("Container setup")</a></li>
+            <li id="container_tab" role="presentation"><a href="#tab_container" aria-controls="container" role="tab" data-toggle="tab"><i class="fa
+                fa-cube fa-fw"></i>&nbsp; $:_("Container setup")</a></li>            
             <li role="presentation"><a href="#tab_subproblems" aria-controls="subproblems" role="tab" data-toggle="tab"><i class="fa
                 fa-list-ul fa-fw"></i>&nbsp; $:_("Subproblems")</a></li>
             <li role="presentation"><a href="#tab_tags" aria-controls="tags" role="tab" data-toggle="tab"><i class="fa
@@ -167,6 +168,8 @@ $:include.course_admin.edit_tabs.file_modals()
 
 <!-- Init the javascript for the subproblem tab -->
 <script type="text/javascript">
+    // Avoids parsing errors when there's no form where the input can load in.
+    var input_can_load = !!$:str(show_form).lower()
     delete_subproblem_message = '$:_("Are you sure that you want to delete this subproblem?")';
     problem_data = $:json(problemdata);
     $$ (function(){ studio_load(problem_data); });

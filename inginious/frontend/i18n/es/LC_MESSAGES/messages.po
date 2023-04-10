@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-05 13:07-0500\n"
+"POT-Creation-Date: 2023-04-10 11:10-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -1284,7 +1284,7 @@ msgstr "¿Estás seguro de que quieres eliminar todos los archivos?"
 #: inginious/frontend/templates/course_admin/danger_zone.html:163
 #: inginious/frontend/templates/course_admin/student_list_table.html:86
 #: inginious/frontend/templates/course_admin/submissions.html:233
-#: inginious/frontend/templates/course_admin/task_edit.html:116
+#: inginious/frontend/templates/course_admin/task_edit.html:117
 #: inginious/frontend/templates/course_admin/teams_edit.html:60
 #: inginious/frontend/templates/lti_bind.html:40
 #: inginious/frontend/templates/unregister_button.html:24
@@ -1924,7 +1924,7 @@ msgstr "Es necesario un correo electrónico válido"
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:24
 #: inginious/frontend/templates/course_admin/edit_tabs/tags.html:89
 #: inginious/frontend/templates/course_admin/settings.html:29
-#: inginious/frontend/templates/course_admin/task_edit.html:152
+#: inginious/frontend/templates/course_admin/task_edit.html:153
 #: inginious/frontend/templates/queue.html:29
 #: inginious/frontend/templates/queue.html:59
 msgid "Name"
@@ -3395,7 +3395,7 @@ msgstr "Banco de problemas"
 #: inginious/frontend/templates/course_admin/student_list.html:15
 #: inginious/frontend/templates/course_admin/submission.html:19
 #: inginious/frontend/templates/course_admin/submissions.html:23
-#: inginious/frontend/templates/course_admin/task_edit.html:18
+#: inginious/frontend/templates/course_admin/task_edit.html:19
 #: inginious/frontend/templates/course_admin/task_info.html:18
 #: inginious/frontend/templates/course_admin/task_list.html:22
 #: inginious/frontend/templates/course_admin/teams_edit.html:17
@@ -4301,7 +4301,7 @@ msgstr "No hay tareas enviadas"
 #: inginious/frontend/templates/course_admin/student_list.html:19
 #: inginious/frontend/templates/course_admin/submission.html:30
 #: inginious/frontend/templates/course_admin/submissions.html:25
-#: inginious/frontend/templates/course_admin/task_edit.html:26
+#: inginious/frontend/templates/course_admin/task_edit.html:27
 #: inginious/frontend/templates/course_admin/task_list.html:24
 #: inginious/frontend/templates/course_admin/teams_edit.html:21
 #: inginious/frontend/templates/index.html:13
@@ -4917,7 +4917,7 @@ msgid " submissions"
 msgstr " envíos"
 
 #: inginious/frontend/templates/course_admin/submission.html:89
-#: inginious/frontend/templates/course_admin/task_edit.html:57
+#: inginious/frontend/templates/course_admin/task_edit.html:58
 #: inginious/frontend/templates/task.html:102
 msgid "Tags"
 msgstr "Etiquetas"
@@ -5373,7 +5373,7 @@ msgid "\"Student username\""
 msgstr "Estudiante"
 
 #: inginious/frontend/templates/course_admin/classroom_edit.html:111
-#: inginious/frontend/templates/course_admin/task_edit.html:51
+#: inginious/frontend/templates/course_admin/task_edit.html:52
 msgid "Basic settings"
 msgstr "Configuración básica"
 
@@ -5754,8 +5754,8 @@ msgstr ""
 "LMS)."
 
 #: inginious/frontend/templates/course_admin/settings.html:294
-#: inginious/frontend/templates/course_admin/task_edit.html:38
-#: inginious/frontend/templates/course_admin/task_edit.html:97
+#: inginious/frontend/templates/course_admin/task_edit.html:39
+#: inginious/frontend/templates/course_admin/task_edit.html:98
 msgid "Save changes"
 msgstr "Guardar cambios"
 
@@ -6045,58 +6045,58 @@ msgstr ""
 msgid "Edit "
 msgstr "Editar "
 
-#: inginious/frontend/templates/course_admin/task_edit.html:20
+#: inginious/frontend/templates/course_admin/task_edit.html:21
 #: inginious/frontend/templates/course_admin/task_info.html:20
 msgid "\"Tasks\""
 msgstr "\"Tareas\""
 
-#: inginious/frontend/templates/course_admin/task_edit.html:24
-#: inginious/frontend/templates/course_admin/task_edit.html:35
+#: inginious/frontend/templates/course_admin/task_edit.html:25
+#: inginious/frontend/templates/course_admin/task_edit.html:36
 msgid "Edit task "
 msgstr "Editar tarea "
 
-#: inginious/frontend/templates/course_admin/task_edit.html:39
+#: inginious/frontend/templates/course_admin/task_edit.html:40
 msgid "View task"
 msgstr "Ver tarea"
 
-#: inginious/frontend/templates/course_admin/task_edit.html:53
+#: inginious/frontend/templates/course_admin/task_edit.html:54
 msgid "Container setup"
 msgstr "Configuración del contenedor"
 
-#: inginious/frontend/templates/course_admin/task_edit.html:55
+#: inginious/frontend/templates/course_admin/task_edit.html:56
 msgid "Subproblems"
 msgstr "Subproblemas"
 
-#: inginious/frontend/templates/course_admin/task_edit.html:59
+#: inginious/frontend/templates/course_admin/task_edit.html:60
 msgid "Task files"
 msgstr "Archivos de la tarea"
 
-#: inginious/frontend/templates/course_admin/task_edit.html:84
+#: inginious/frontend/templates/course_admin/task_edit.html:85
 msgid "File list"
 msgstr "Lista de archivos"
 
 #: inginious/frontend/templates/course_admin/edit_tabs/basic.html:15
-#: inginious/frontend/templates/course_admin/task_edit.html:105
-#: inginious/frontend/templates/course_admin/task_edit.html:117
+#: inginious/frontend/templates/course_admin/task_edit.html:106
+#: inginious/frontend/templates/course_admin/task_edit.html:118
 msgid "Delete task"
 msgstr "Borrar tarea"
 
-#: inginious/frontend/templates/course_admin/task_edit.html:108
+#: inginious/frontend/templates/course_admin/task_edit.html:109
 msgid "This will <b>permanently</b> remove the task and its files from UNCode."
 msgstr ""
 "<p>Esta acción <b>eliminará permanentemente</b> el curso y toda su "
 "información (incluyendo las tareas y los respaldos) de UNCode. ¿Esta "
 "seguro de realizar esta acción?</p>"
 
-#: inginious/frontend/templates/course_admin/task_edit.html:111
+#: inginious/frontend/templates/course_admin/task_edit.html:112
 msgid "Wipe all submissions"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/task_edit.html:137
+#: inginious/frontend/templates/course_admin/task_edit.html:138
 msgid "Problem id:"
 msgstr "ID del problema"
 
-#: inginious/frontend/templates/course_admin/task_edit.html:154
+#: inginious/frontend/templates/course_admin/task_edit.html:155
 msgid "\"A title for this question\""
 msgstr ""
 
