@@ -389,7 +389,7 @@ class ParsableText(object):
             result_html.append(test_functions_template_html[0])
             for function in test_functions:
                 function_def = _("<strong>" + function + """: </strong><pre class="language-python"><code
-                class="language-python" data-language="python">""" + test_functions[function] + """</code></pre><script>highlight_code();</script>""")
+                class="language-python" data-language="python">""" + test_functions[function] + """</code></pre>""")
                 result_html.append(function_def)
             result_html.append(test_functions_template_html[1])
 
@@ -397,7 +397,7 @@ class ParsableText(object):
             result_html.append(test_variables_template_html[0])
             for variable in test_variables:
                 variable_def = _("<strong>" + variable + """: </strong><pre class="language-python"><code
-                class="language-python" data-language="python">""" + test_variables[variable] + """</code></pre><script>highlight_code();</script>""")
+                class="language-python" data-language="python">""" + test_variables[variable] + """</code></pre>""")
                 result_html.append(variable_def)
             result_html.append(test_variables_template_html[1])
 
