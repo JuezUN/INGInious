@@ -12,6 +12,8 @@ import inginious.frontend.pages.api._api_page as api
 from inginious.frontend.pages.api.courses import APICourses
 from inginious.frontend.plugins.utils import get_mandatory_parameter
 from inginious.common.course_factory import CourseNotFoundException
+from inginious.frontend.plugins.analytics.analytics_collection_manager import AnalyticsCollectionManagerSingleton
+from inginious.frontend.plugins.analytics.services_collection_manager import ServicesCollectionManagerSingleton
 
 class NotebookGradingAPI(api.APIAuthenticatedPage):
     """
@@ -337,6 +339,19 @@ def notebook_submission(public_key):
                         result, 
                         submission_grade, 
                         newsub=True)
+                    
+                    #Add Sumbission Analytic
+                    analytics_manager = AnalyticsCollectionManagerSingleton.get_instance()
+                    services_manager = ServicesCollectionManagerSingleton.get_instance()
+                    service = {
+                        "key": "notebook_client_grader",
+                        "name": "Notebook (External Grading) Submissions"
+                    }
+                    session_id = self.user_manager.session_id()
+                    date = datetime.datetime.now()
+                    analytics_manager.add_visit(service, username, date, session_id, course_id)
+                    services_manager.add_service(service)
+                    
                     return 200, "{}%".format(submission_grade)
                 else:
                     msg = "not allowed to submit task, deadline reached or limit on number of submissions exceeded"
