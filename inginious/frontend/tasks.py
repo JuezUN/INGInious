@@ -141,3 +141,6 @@ class WebAppTask(Task):
 
     def can_submit_after_deadline(self):
         return self._data.get("allow_late_submission", False) and self._accessible.after_deadline()
+    
+    def is_external(self):
+        return self._data.get("environment", "") == "Notebook (External grading)"
