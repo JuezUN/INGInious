@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-12 18:30-0500\n"
+"POT-Creation-Date: 2023-04-19 20:24-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -222,7 +222,7 @@ msgstr "Sua conta já está vinculada a esse contexto."
 msgid "Error while validating LTI request"
 msgstr "Erro ao validar a solicitação LTI"
 
-#: inginious/frontend/pages/lti.py:191
+#: inginious/frontend/pages/lti.py:191 inginious/frontend/pages/lti.py:211
 msgid ""
 "In order to send grade back to the TC, UNCode needs the parameters "
 "lis_outcome_service_url and lis_outcome_result_id in the LTI basic-"
@@ -232,7 +232,7 @@ msgstr ""
 "lis_outcome_service_url e lis_outcome_result_id na solicitação básica de "
 "inicialização do LTI. Por favor, entre em contato com seu administrador."
 
-#: inginious/frontend/pages/lti.py:211
+#: inginious/frontend/pages/lti.py:250
 msgid "Couldn't validate LTI request"
 msgstr "Não foi possível validar a solicitação de LTI"
 
