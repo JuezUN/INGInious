@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-21 09:29-0500\n"
+"POT-Creation-Date: 2023-04-21 11:32-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -75,14 +75,14 @@ msgid ""
 "<br><pre>{}</pre><br>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:366
+#: inginious/frontend/parsable_text.py:372
 msgid ""
 "<ul class=\"list_disc\" style=\"font-size:12px;\"><li>\n"
 "            <strong style=\"font-size:15px\"> Test {test_id}: "
 "</strong><i> - YOUR GRADE = {test_grade} / 100 </i>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:371
+#: inginious/frontend/parsable_text.py:377
 msgid ""
 "<a class=\"btn btn-default btn-link btn-xs\" role=\"button\"\n"
 "            data-toggle=\"collapse\" href=\"#{panel_id}\" aria-"
@@ -92,42 +92,42 @@ msgid ""
 "            <ul class=\"list_disc\" style=\"font-size:13px;\">"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:378
+#: inginious/frontend/parsable_text.py:384
 msgid "<li><strong style=\"font-size:14px\"> FUNCTIONS </strong> <br>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:381
+#: inginious/frontend/parsable_text.py:387
 msgid "<li><strong style=\"font-size:14px\"> VARIABLES </strong> <br>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:391
-#: inginious/frontend/parsable_text.py:399
+#: inginious/frontend/parsable_text.py:397
+#: inginious/frontend/parsable_text.py:405
 msgid ""
 "<strong>: </strong><pre class=\"language-python\"><code\n"
 "                class=\"language-python\" data-"
 "language=\"python\"></code></pre>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:430
+#: inginious/frontend/parsable_text.py:436
 msgid "Expand test results"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:437
+#: inginious/frontend/parsable_text.py:443
 msgid "Expand test results (only for staff)"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:442
+#: inginious/frontend/parsable_text.py:448
 msgid "<br><strong>Custom feedback:</strong><br><pre>{custom_feedback}</pre>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:445
+#: inginious/frontend/parsable_text.py:451
 msgid ""
 "\n"
 "                                            <br><strong>Output "
 "difference:</strong><pre>{case_output_diff}</pre><br>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:447
+#: inginious/frontend/parsable_text.py:453
 msgid ""
 "<ul class=\"list_disc\" style=\"font-size:12px; list-style-type: "
 "square;\"><li>\n"
@@ -140,7 +140,7 @@ msgid ""
 "            "
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:452
+#: inginious/frontend/parsable_text.py:458
 msgid ""
 "<ul class=\"list_disc\" style=\"font-size:12px; list-style-type: "
 "square;\"><li>\n"
@@ -153,7 +153,7 @@ msgid ""
 "            "
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:457
+#: inginious/frontend/parsable_text.py:463
 msgid ""
 "<strong>Executed code:</strong><pre class=\"language-python\"><code class"
 "=\"language-python\" data-"
@@ -222,7 +222,7 @@ msgstr "Sua conta já está vinculada a esse contexto."
 msgid "Error while validating LTI request"
 msgstr "Erro ao validar a solicitação LTI"
 
-#: inginious/frontend/pages/lti.py:191
+#: inginious/frontend/pages/lti.py:191 inginious/frontend/pages/lti.py:211
 msgid ""
 "In order to send grade back to the TC, UNCode needs the parameters "
 "lis_outcome_service_url and lis_outcome_result_id in the LTI basic-"
@@ -232,7 +232,7 @@ msgstr ""
 "lis_outcome_service_url e lis_outcome_result_id na solicitação básica de "
 "inicialização do LTI. Por favor, entre em contato com seu administrador."
 
-#: inginious/frontend/pages/lti.py:211
+#: inginious/frontend/pages/lti.py:250
 msgid "Couldn't validate LTI request"
 msgstr "Não foi possível validar a solicitação de LTI"
 
