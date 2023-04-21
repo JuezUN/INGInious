@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-21 09:19-0500\n"
+"POT-Creation-Date: 2023-04-21 09:29-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -88,7 +88,7 @@ msgstr ""
 "<br><strong>{}:</strong> Hubo un error mientras se ejecutaba el notebook:"
 " <br><pre>{}</pre><br>"
 
-#: inginious/frontend/parsable_text.py:372
+#: inginious/frontend/parsable_text.py:366
 #, fuzzy
 msgid ""
 "<ul class=\"list_disc\" style=\"font-size:12px;\"><li>\n"
@@ -99,7 +99,7 @@ msgstr ""
 "            <strong style=\"font-size:15px\"> Test{test_id}: </strong><i>"
 " - Calificación = {test_grade} / 100 </i>"
 
-#: inginious/frontend/parsable_text.py:377
+#: inginious/frontend/parsable_text.py:371
 msgid ""
 "<a class=\"btn btn-default btn-link btn-xs\" role=\"button\"\n"
 "            data-toggle=\"collapse\" href=\"#{panel_id}\" aria-"
@@ -115,16 +115,16 @@ msgstr ""
 "<pre>{test_message}</pre> <br>\n"
 "            <ul class=\"list_disc\" style=\"font-size:13px;\">"
 
-#: inginious/frontend/parsable_text.py:384
+#: inginious/frontend/parsable_text.py:378
 msgid "<li><strong style=\"font-size:14px\"> FUNCTIONS </strong> <br>"
 msgstr "<li><strong style=\"font-size:14px\"> FUNCIONES </strong> <br>"
 
-#: inginious/frontend/parsable_text.py:387
+#: inginious/frontend/parsable_text.py:381
 msgid "<li><strong style=\"font-size:14px\"> VARIABLES </strong> <br>"
 msgstr "<li><strong style=\"font-size:14px\"> VARIABLES </strong> <br>"
 
-#: inginious/frontend/parsable_text.py:397
-#: inginious/frontend/parsable_text.py:405
+#: inginious/frontend/parsable_text.py:391
+#: inginious/frontend/parsable_text.py:399
 msgid ""
 "<strong>: </strong><pre class=\"language-python\"><code\n"
 "                class=\"language-python\" data-"
@@ -134,21 +134,21 @@ msgstr ""
 "                class=\"language-python\" data-"
 "language=\"python\"></code></pre>"
 
-#: inginious/frontend/parsable_text.py:436
+#: inginious/frontend/parsable_text.py:430
 msgid "Expand test results"
 msgstr "Expandir resultados del test"
 
-#: inginious/frontend/parsable_text.py:443
+#: inginious/frontend/parsable_text.py:437
 msgid "Expand test results (only for staff)"
 msgstr "Expandir resultados del test (solo para administradores o tutores)"
 
-#: inginious/frontend/parsable_text.py:448
+#: inginious/frontend/parsable_text.py:442
 msgid "<br><strong>Custom feedback:</strong><br><pre>{custom_feedback}</pre>"
 msgstr ""
 "<br><strong>Retroalimentación "
 "personalizada:</strong><br><pre>{custom_feedback}</pre>"
 
-#: inginious/frontend/parsable_text.py:451
+#: inginious/frontend/parsable_text.py:445
 msgid ""
 "\n"
 "                                            <br><strong>Output "
@@ -158,7 +158,7 @@ msgstr ""
 "                                        <br><strong>Diferencia en la "
 "salida estándar:</strong><pre>{case_output_diff}</pre><br>"
 
-#: inginious/frontend/parsable_text.py:453
+#: inginious/frontend/parsable_text.py:447
 msgid ""
 "<ul class=\"list_disc\" style=\"font-size:12px; list-style-type: "
 "square;\"><li>\n"
@@ -180,7 +180,7 @@ msgstr ""
 "id=\"{case_panel_id}\">{debug_info}</div></li></ul>\n"
 "        "
 
-#: inginious/frontend/parsable_text.py:458
+#: inginious/frontend/parsable_text.py:452
 msgid ""
 "<ul class=\"list_disc\" style=\"font-size:12px; list-style-type: "
 "square;\"><li>\n"
@@ -203,7 +203,7 @@ msgstr ""
 "id=\"{case_panel_id}\">{debug_info}</div></li></ul>\n"
 "        "
 
-#: inginious/frontend/parsable_text.py:463
+#: inginious/frontend/parsable_text.py:457
 msgid ""
 "<strong>Executed code:</strong><pre class=\"language-python\"><code class"
 "=\"language-python\" data-"
