@@ -354,13 +354,19 @@ class ParsableText(object):
         """Parse each test of client grader submissions into html"""
 
         test_functions = json.loads(test["functions"].replace("'", "\""), strict=False)
-        test_variables = json.loads(test["variables"].replace("'", "\""), strict=False)
+        
+        variables_dict = test["variables"]
+
+        if (variables_dict != "{}"):
+            variables_dict = variables_dict.replace(": ", ": '").replace(", ", "',").replace("}", "'}")
+
+        test_variables = json.loads(variables_dict.replace("'", "\""), strict=False)
 
         template_info = {
             "test_id": test["id"],
             "test_grade": test["test_grade"],
             "test_message": test["test_message"],
-            "panel_id": "collapseDebug" + test["id"],
+            "panel_id": "collapseDebug" + test["id"].replace(".", ""),
         }
         test_name_template_html = [
             _("""<ul class="list_disc" style="font-size:12px;"><li>
