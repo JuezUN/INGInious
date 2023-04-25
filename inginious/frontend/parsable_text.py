@@ -15,6 +15,7 @@ from docutils import core, nodes, utils
 from docutils.parsers.rst import directives, Directive
 from docutils.statemachine import StringList
 from docutils.writers import html4css1
+import ast
 
 from inginious.frontend.accessible_time import parse_date
 
@@ -353,30 +354,19 @@ class ParsableText(object):
     def client_grader_result_to_html_block(self, test):
         """Parse each test of client grader submissions into html"""
 
-        test_functions = json.loads(test["functions"].replace("'", "\""), strict=False)
+        test_functions = ast.literal_eval(test["functions"])
         
-        variables_dict = test["variables"]
+        test_variables = ast.literal_eval(test["variables"])
 
-        if (variables_dict != "{}"):
-            variables_dict = variables_dict.replace(": ", ": '").replace(", ", "',").replace("}", "'}")
-
-        test_variables = json.loads(variables_dict.replace("'", "\""), strict=False)
-
-        template_info = {
-            "test_id": test["id"],
-            "test_grade": test["test_grade"],
-            "test_message": test["test_message"],
-            "panel_id": "collapseDebug" + test["id"].replace(".", ""),
-        }
         test_name_template_html = [
             _("""<ul class="list_disc" style="font-size:12px;"><li>
-            <strong style="font-size:15px"> Test {test_id}: </strong><i> - YOUR GRADE = {test_grade} / 100 </i>"""),
+            <strong style="font-size:15px"> Test """ + str(test["id"]) + """: </strong><i> - YOUR GRADE = """ + str(test["test_grade"]) + """ / 100 </i>"""),
             "</li></ul>"
         ]
         test_results_template_html = [
             _("""<a class="btn btn-default btn-link btn-xs" role="button"
-            data-toggle="collapse" href="#{panel_id}" aria-expanded="false" aria-controls="{panel_id}">
-            View Details </a><div class="collapse" id="{panel_id}"> <pre>{test_message}</pre> <br>
+            data-toggle="collapse" href="#collapseDebug""" + str(''.join(test["id"].replace(".", "_").split())) + """" aria-expanded="false" aria-controls="collapseDebug""" + str(''.join(test["id"].replace(".", "_").split())) + """">
+            View Details </a><div class="collapse" id="collapseDebug""" + str(''.join(test["id"].replace(".", "_").split())) + """"> <pre>""" + str(test["test_message"]) + """</pre> <br>
             <ul class="list_disc" style="font-size:13px;">"""),
             "</ul></div>"
         ]
@@ -394,22 +384,22 @@ class ParsableText(object):
         if len(test_functions) > 0:
             result_html.append(test_functions_template_html[0])
             for function in test_functions:
-                function_def = _("<strong>" + function + """: </strong><pre class="language-python"><code
-                class="language-python" data-language="python">""" + test_functions[function] + """</code></pre>""")
+                function_def = _("<strong>" + str(function) + """: </strong><pre class="language-python"><code
+                class="language-python" data-language="python">""" + str(test_functions[function]) + """</code></pre>""")
                 result_html.append(function_def)
             result_html.append(test_functions_template_html[1])
 
         if len(test_variables) > 0:
             result_html.append(test_variables_template_html[0])
             for variable in test_variables:
-                variable_def = _("<strong>" + variable + """: </strong><pre class="language-python"><code
-                class="language-python" data-language="python">""" + test_variables[variable] + """</code></pre>""")
+                variable_def = _("<strong>" + str(variable) + """: </strong><pre class="language-python"><code
+                class="language-python" data-language="python">""" + str(test_variables[variable]) + """</code></pre>""")
                 result_html.append(variable_def)
             result_html.append(test_variables_template_html[1])
 
         result_html.append(test_results_template_html[1])
         result_html.append(test_name_template_html[1])
-        result_html = ''.join(result_html).format(**template_info)
+        result_html = ''.join(result_html)
 
         return result_html
 
