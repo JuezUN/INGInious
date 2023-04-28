@@ -353,11 +353,11 @@ def notebook_submission(public_key):
                                 "task_id": task_id
                             })
                         except:
-                            self.logger.debug("Error retrieving lti session from database for student: {} in course {} in task {}".format(
+                            self.logger.info("Error retrieving lti session from database for student: {} in course {} in task {}".format(
                                 username, course_id, task_id
                             ))
                         if lti_session is None:
-                            self.logger.debug("LTI Info missing for student: {} in course {} in task {}".format(
+                            self.logger.info("LTI Info missing for student: {} in course {} in task {}".format(
                                 username, course_id, task_id
                             ))
                             if course.lti_send_back_grade():
@@ -370,7 +370,7 @@ def notebook_submission(public_key):
                             outcome_result_id = lti_session["outcome_result_id"]
                             outcome_consumer_key = lti_session["consumer_key"]
                             
-                            self.logger.debug("Grade of client grader submission sent to LMS, user: {}, course: {}, task: {}".format(
+                            self.logger.info("Grade of client grader submission sent to LMS, user: {}, course: {}, task: {}".format(
                                 username, course_id, task_id
                             ))
                             

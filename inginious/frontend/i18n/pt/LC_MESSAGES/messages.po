@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-24 23:07-0500\n"
+"POT-Creation-Date: 2023-04-28 10:21-0500\n"
 "PO-Revision-Date: 2019-11-01 17:05+0000\n"
 "Last-Translator: Rosana Veroneze <rveroneze@gmail.com>\n"
 "Language: pt\n"
@@ -202,27 +202,7 @@ msgstr "Você não tem permissão para mudar de grupo."
 msgid "You're not registered in a group."
 msgstr "Você não está registrado em um grupo."
 
-#: inginious/frontend/pages/lti.py:48 inginious/frontend/pages/lti.py:60
-msgid "Missing LTI session id"
-msgstr "ID de sessão LTI ausente"
-
-#: inginious/frontend/pages/lti.py:53 inginious/frontend/pages/lti.py:65
-msgid "Invalid LTI session id"
-msgstr "ID de sessão LTI inválido"
-
-#: inginious/frontend/pages/lti.py:72
-msgid "Invalid LTI data"
-msgstr "Dados de LTI inválidos"
-
-#: inginious/frontend/pages/lti.py:92
-msgid "Your account is already bound with this context."
-msgstr "Sua conta já está vinculada a esse contexto."
-
-#: inginious/frontend/pages/lti.py:173
-msgid "Error while validating LTI request"
-msgstr "Erro ao validar a solicitação LTI"
-
-#: inginious/frontend/pages/lti.py:191 inginious/frontend/pages/lti.py:211
+#: inginious/frontend/pages/lti.py:35 inginious/frontend/pages/lti.py:239
 msgid ""
 "In order to send grade back to the TC, UNCode needs the parameters "
 "lis_outcome_service_url and lis_outcome_result_id in the LTI basic-"
@@ -232,7 +212,27 @@ msgstr ""
 "lis_outcome_service_url e lis_outcome_result_id na solicitação básica de "
 "inicialização do LTI. Por favor, entre em contato com seu administrador."
 
-#: inginious/frontend/pages/lti.py:250
+#: inginious/frontend/pages/lti.py:96 inginious/frontend/pages/lti.py:108
+msgid "Missing LTI session id"
+msgstr "ID de sessão LTI ausente"
+
+#: inginious/frontend/pages/lti.py:101 inginious/frontend/pages/lti.py:113
+msgid "Invalid LTI session id"
+msgstr "ID de sessão LTI inválido"
+
+#: inginious/frontend/pages/lti.py:120
+msgid "Invalid LTI data"
+msgstr "Dados de LTI inválidos"
+
+#: inginious/frontend/pages/lti.py:140
+msgid "Your account is already bound with this context."
+msgstr "Sua conta já está vinculada a esse contexto."
+
+#: inginious/frontend/pages/lti.py:221
+msgid "Error while validating LTI request"
+msgstr "Erro ao validar a solicitação LTI"
+
+#: inginious/frontend/pages/lti.py:260
 msgid "Couldn't validate LTI request"
 msgstr "Não foi possível validar a solicitação de LTI"
 

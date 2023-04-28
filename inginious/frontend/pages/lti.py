@@ -17,9 +17,57 @@ class LTITaskPage(INGIniousAuthPage):
 
     def GET_AUTH(self):
         data = self.user_manager.session_lti_info()
+        username = self.user_manager.session_username()
         if data is None:
             raise web.notfound()
         (courseid, taskid) = data['task']
+        
+        course = self.course_factory.get_course(courseid)
+        task = course.get_task(taskid)
+        lis_outcome_service_url = data['outcome_service_url']
+        outcome_result_id = data['outcome_result_id']
+        consumer_key = data['consumer_key']
+        
+        #Saving LTI information in database for external tasks
+        if course.lti_send_back_grade() and task.is_external():
+            if lis_outcome_service_url is None or outcome_result_id is None:
+                self.logger.info('Error: lis_outcome_service_url is None but lti_send_back_grade is True')
+                raise web.forbidden(_("In order to send grade back to the TC, UNCode needs the parameters lis_outcome_service_url and "
+                                        "lis_outcome_result_id in the LTI basic-launch-request. Please contact your administrator."))
+               
+            if task.is_external():
+                data = {
+                    "username": username,
+                    "course_id": courseid,
+                    "task_id": taskid,
+                    "outcome_service_url": lis_outcome_service_url,
+                    "outcome_result_id": outcome_result_id,
+                    "consumer_key": consumer_key, 
+                }
+                #If the document already exist we update it, otherwise we create it
+                try:
+                    lti_session = self.database.external_lti_sessions.find({
+                        "username": username,
+                        "course_id": courseid,
+                        "task_id": taskid,  
+                    })
+                except:
+                    self.logger.info('Error: error retrieving lti session from database')
+
+                
+                if lti_session.count() > 0:
+                    new_values = { "$set": {
+                        "outcome_service_url": lis_outcome_service_url,
+                        "outcome_result_id": outcome_result_id,
+                        "consumer_key": consumer_key,
+                    }}
+                    self.database.external_lti_sessions.update_one({
+                        "username": username,
+                        "course_id": courseid,
+                        "task_id": taskid,
+                    }, new_values)
+                else:
+                    self.database.external_lti_sessions.insert(data)
 
         return BaseTaskPage(self).GET(courseid, taskid, True)
 
@@ -205,44 +253,6 @@ class LTILaunchPage(INGIniousPage):
                                                               context_title, context_label)
             loggedin = self.user_manager.attempt_lti_login()
 
-            if course.lti_send_back_grade():
-                if lis_outcome_service_url is None or outcome_result_id is None:
-                    self.logger.info('Error: lis_outcome_service_url is None but lti_send_back_grade is True')
-                    raise web.forbidden(_("In order to send grade back to the TC, UNCode needs the parameters lis_outcome_service_url and "
-                                        "lis_outcome_result_id in the LTI basic-launch-request. Please contact your administrator."))
-                task = course.get_task(taskid)
-                if task.is_external():
-                    print("Saving LTI session for external grading")
-                    data = {
-                        "username": username,
-                        "course_id": courseid,
-                        "task_id": taskid,
-                        "outcome_service_url": lis_outcome_service_url,
-                        "outcome_result_id": outcome_result_id,
-                        "consumer_key": consumer_key, 
-                    }
-                    try:
-                        lti_session = self.database.external_lti_sessions.find({
-                            "username": username,
-                            "course_id": courseid,
-                            "task_id": taskid,  
-                        })
-                    except:
-                        print("Pymongo database error")
-                    
-                    if lti_session.count() > 0:
-                        new_values = { "$set": {
-                            "outcome_service_url": lis_outcome_service_url,
-                            "outcome_result_id": outcome_result_id,
-                            "consumer_key": consumer_key,
-                        }}
-                        self.database.external_lti_sessions.update_one({
-                            "username": username,
-                            "course_id": courseid,
-                            "task_id": taskid,
-                        }, new_values)
-                    else:
-                        self.database.external_lti_sessions.insert(data)
             
             return session_id, loggedin
         else:
