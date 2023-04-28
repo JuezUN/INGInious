@@ -28,6 +28,7 @@ class LTITaskPage(INGIniousAuthPage):
         outcome_result_id = data['outcome_result_id']
         consumer_key = data['consumer_key']
         
+        #Saving LTI information in database for external tasks
         if course.lti_send_back_grade() and task.is_external():
             if lis_outcome_service_url is None or outcome_result_id is None:
                 self.logger.info('Error: lis_outcome_service_url is None but lti_send_back_grade is True')
@@ -43,6 +44,7 @@ class LTITaskPage(INGIniousAuthPage):
                     "outcome_result_id": outcome_result_id,
                     "consumer_key": consumer_key, 
                 }
+                #If the document already exist we update it, otherwise we create it
                 try:
                     lti_session = self.database.external_lti_sessions.find({
                         "username": username,
