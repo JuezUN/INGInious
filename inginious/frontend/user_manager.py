@@ -662,8 +662,8 @@ class UserManager:
 
                 enough_tokens = reduce(lambda old,user_task: old and check_tokens_for_user_task(user_task), user_tasks, True)
 
-        return (course_registered and task_accessible and
-                group_filter and enough_tokens) or staff_right or submit_after_deadline
+        return ((course_registered and (task_accessible or submit_after_deadline)) and
+                (group_filter and enough_tokens)) or staff_right 
 
     def get_course_aggregations(self, course):
         """ Returns a list of the course aggregations"""

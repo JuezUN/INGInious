@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-21 09:29-0500\n"
+"POT-Creation-Date: 2023-04-28 16:29-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "The accessibility end date must be greater than the start date."
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:49
+#: inginious/frontend/parsable_text.py:50
 msgid "The feedback below will be hidden to the students until {}."
 msgstr "L'évaluation ci-dessous ne sera pas affichée aux étudiants avant le {}."
 
-#: inginious/frontend/parsable_text.py:63
+#: inginious/frontend/parsable_text.py:64
 msgid ""
 "A part of this feedback is hidden until {}. Please come back later and "
 "reload the submission to see the full feedback."
@@ -33,15 +33,15 @@ msgstr ""
 "Une partie de cette évaluation est masquée jusqu'au {}. Rechargez la "
 "soumission ultérieurement pour voir l'évaluation complète"
 
-#: inginious/frontend/parsable_text.py:169
+#: inginious/frontend/parsable_text.py:170
 msgid "Toggle diff"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:174
+#: inginious/frontend/parsable_text.py:175
 msgid "Toggle diff (only for staff)"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:176
+#: inginious/frontend/parsable_text.py:177
 msgid ""
 "<p>Input preview: {title_input}</p>\n"
 "                                  <pre class=\"input-area\" "
@@ -53,79 +53,79 @@ msgid ""
 "                                  "
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:183
+#: inginious/frontend/parsable_text.py:184
 msgid "<p>Custom feedback</p><pre>{custom_feedback}</pre><br>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:204
+#: inginious/frontend/parsable_text.py:205
 msgid "<b>Parsing failed</b>: <pre>{}</pre>"
 msgstr "<b>L'analyse a échoué<b>: <pre{}</pre>"
 
-#: inginious/frontend/parsable_text.py:246
+#: inginious/frontend/parsable_text.py:247
 msgid ""
 "**Compilation error**:\n"
 "\n"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:248
+#: inginious/frontend/parsable_text.py:249
 msgid ""
 "<br><strong>{}:</strong> There was an error while running your notebook: "
 "<br><pre>{}</pre><br>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:366
+#: inginious/frontend/parsable_text.py:363
 msgid ""
 "<ul class=\"list_disc\" style=\"font-size:12px;\"><li>\n"
-"            <strong style=\"font-size:15px\"> Test {test_id}: "
-"</strong><i> - YOUR GRADE = {test_grade} / 100 </i>"
+"            <strong style=\"font-size:15px\"> Test : </strong><i> - YOUR "
+"GRADE =  / 100 </i>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:371
+#: inginious/frontend/parsable_text.py:369
 msgid ""
 "<a class=\"btn btn-default btn-link btn-xs\" role=\"button\"\n"
-"            data-toggle=\"collapse\" href=\"#{panel_id}\" aria-"
-"expanded=\"false\" aria-controls=\"{panel_id}\">\n"
-"            View Details </a><div class=\"collapse\" id=\"{panel_id}\"> "
-"<pre>{test_message}</pre> <br>\n"
+"            data-toggle=\"collapse\" href=\"#collapseDebug\" aria-"
+"expanded=\"false\" aria-controls=\"collapseDebug\">\n"
+"            View Details </a><div class=\"collapse\" "
+"id=\"collapseDebug\"> <pre></pre> <br>\n"
 "            <ul class=\"list_disc\" style=\"font-size:13px;\">"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:378
+#: inginious/frontend/parsable_text.py:374
 msgid "<li><strong style=\"font-size:14px\"> FUNCTIONS </strong> <br>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:381
+#: inginious/frontend/parsable_text.py:377
 msgid "<li><strong style=\"font-size:14px\"> VARIABLES </strong> <br>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:391
-#: inginious/frontend/parsable_text.py:399
+#: inginious/frontend/parsable_text.py:388
+#: inginious/frontend/parsable_text.py:396
 msgid ""
 "<strong>: </strong><pre class=\"language-python\"><code\n"
 "                class=\"language-python\" data-"
 "language=\"python\"></code></pre>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:430
+#: inginious/frontend/parsable_text.py:426
 msgid "Expand test results"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:437
+#: inginious/frontend/parsable_text.py:433
 msgid "Expand test results (only for staff)"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:442
+#: inginious/frontend/parsable_text.py:438
 msgid "<br><strong>Custom feedback:</strong><br><pre>{custom_feedback}</pre>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:445
+#: inginious/frontend/parsable_text.py:441
 msgid ""
 "\n"
 "                                            <br><strong>Output "
 "difference:</strong><pre>{case_output_diff}</pre><br>"
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:447
+#: inginious/frontend/parsable_text.py:443
 msgid ""
 "<ul class=\"list_disc\" style=\"font-size:12px; list-style-type: "
 "square;\"><li>\n"
@@ -138,7 +138,7 @@ msgid ""
 "            "
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:452
+#: inginious/frontend/parsable_text.py:448
 msgid ""
 "<ul class=\"list_disc\" style=\"font-size:12px; list-style-type: "
 "square;\"><li>\n"
@@ -151,7 +151,7 @@ msgid ""
 "            "
 msgstr ""
 
-#: inginious/frontend/parsable_text.py:457
+#: inginious/frontend/parsable_text.py:453
 msgid ""
 "<strong>Executed code:</strong><pre class=\"language-python\"><code class"
 "=\"language-python\" data-"
@@ -200,27 +200,7 @@ msgstr "Vous ne pouvez pas changer de groupe."
 msgid "You're not registered in a group."
 msgstr "Vous n'êtes enregistré dans aucun groupe."
 
-#: inginious/frontend/pages/lti.py:48 inginious/frontend/pages/lti.py:60
-msgid "Missing LTI session id"
-msgstr "Identifiant de session LTI manquant"
-
-#: inginious/frontend/pages/lti.py:53 inginious/frontend/pages/lti.py:65
-msgid "Invalid LTI session id"
-msgstr "Identifiant de session LTI invalide"
-
-#: inginious/frontend/pages/lti.py:72
-msgid "Invalid LTI data"
-msgstr "Données LTI invalides"
-
-#: inginious/frontend/pages/lti.py:92
-msgid "Your account is already bound with this context."
-msgstr "Votre compte est déjà lié à ce contexte."
-
-#: inginious/frontend/pages/lti.py:173
-msgid "Error while validating LTI request"
-msgstr "Une erreur s'est produite lors de la validation de la requête LTI."
-
-#: inginious/frontend/pages/lti.py:191
+#: inginious/frontend/pages/lti.py:35 inginious/frontend/pages/lti.py:239
 msgid ""
 "In order to send grade back to the TC, UNCode needs the parameters "
 "lis_outcome_service_url and lis_outcome_result_id in the LTI basic-"
@@ -230,7 +210,27 @@ msgstr ""
 "lis_outcome_service_urlet lis_outcome_result_id doivent être fournis à "
 "UNCode. Contactez l'administrateuren cas de doute."
 
-#: inginious/frontend/pages/lti.py:211
+#: inginious/frontend/pages/lti.py:96 inginious/frontend/pages/lti.py:108
+msgid "Missing LTI session id"
+msgstr "Identifiant de session LTI manquant"
+
+#: inginious/frontend/pages/lti.py:101 inginious/frontend/pages/lti.py:113
+msgid "Invalid LTI session id"
+msgstr "Identifiant de session LTI invalide"
+
+#: inginious/frontend/pages/lti.py:120
+msgid "Invalid LTI data"
+msgstr "Données LTI invalides"
+
+#: inginious/frontend/pages/lti.py:140
+msgid "Your account is already bound with this context."
+msgstr "Votre compte est déjà lié à ce contexte."
+
+#: inginious/frontend/pages/lti.py:221
+msgid "Error while validating LTI request"
+msgstr "Une erreur s'est produite lors de la validation de la requête LTI."
+
+#: inginious/frontend/pages/lti.py:260
 msgid "Couldn't validate LTI request"
 msgstr "Impossible de valider la requête LTI"
 
@@ -447,7 +447,7 @@ msgstr ""
 
 #: inginious/frontend/pages/tasks.py:362
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:68
-#: inginious/frontend/templates/course_admin/submissions.html:317
+#: inginious/frontend/templates/course_admin/submissions.html:318
 #: inginious/frontend/templates/task.html:211
 msgid "\"Late submission: it does not affect the grade.\""
 msgstr ""
@@ -4539,7 +4539,7 @@ msgstr "Pas encore essayé"
 
 #: inginious/frontend/templates/course_admin/aggregation_info.html:72
 #: inginious/frontend/templates/course_admin/student_info.html:69
-#: inginious/frontend/templates/course_admin/submissions.html:336
+#: inginious/frontend/templates/course_admin/submissions.html:337
 #: inginious/frontend/templates/course_admin/task_info.html:83
 #: inginious/frontend/templates/course_admin/task_info.html:152
 #: inginious/frontend/templates/task.html:36
@@ -4552,7 +4552,7 @@ msgstr "En attente de correction"
 
 #: inginious/frontend/templates/course_admin/aggregation_info.html:74
 #: inginious/frontend/templates/course_admin/student_info.html:72
-#: inginious/frontend/templates/course_admin/submissions.html:340
+#: inginious/frontend/templates/course_admin/submissions.html:341
 #: inginious/frontend/templates/course_admin/task_info.html:85
 #: inginious/frontend/templates/course_admin/task_info.html:154
 #: inginious/frontend/templates/task.html:46
@@ -4959,7 +4959,7 @@ msgstr ""
 #: inginious/frontend/templates/course_admin/aggregation_list.html:83
 #: inginious/frontend/templates/course_admin/student_info.html:46
 #: inginious/frontend/templates/course_admin/student_list_table.html:26
-#: inginious/frontend/templates/course_admin/submissions.html:283
+#: inginious/frontend/templates/course_admin/submissions.html:284
 #: inginious/frontend/templates/course_admin/task_info.html:119
 #: inginious/frontend/templates/course_admin/task_list.html:51
 msgid "\"Download CSV\""
@@ -5630,64 +5630,64 @@ msgstr ""
 msgid "Submissions statistics"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:269
+#: inginious/frontend/templates/course_admin/submissions.html:270
 msgid "student name"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:271
+#: inginious/frontend/templates/course_admin/submissions.html:272
 msgid "username"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:273
+#: inginious/frontend/templates/course_admin/submissions.html:274
 #: inginious/frontend/templates/course_admin/task_list.html:41
 msgid "task name"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:275
+#: inginious/frontend/templates/course_admin/submissions.html:276
 msgid "taskid"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:277
+#: inginious/frontend/templates/course_admin/submissions.html:278
 msgid "id"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:278
+#: inginious/frontend/templates/course_admin/submissions.html:279
 msgid "submitted on"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:279
+#: inginious/frontend/templates/course_admin/submissions.html:280
 msgid "result"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:286
-#: inginious/frontend/templates/course_admin/submissions.html:290
+#: inginious/frontend/templates/course_admin/submissions.html:287
+#: inginious/frontend/templates/course_admin/submissions.html:291
 msgid "\"Download current selection\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:294
-#: inginious/frontend/templates/course_admin/submissions.html:296
+#: inginious/frontend/templates/course_admin/submissions.html:295
+#: inginious/frontend/templates/course_admin/submissions.html:297
 msgid "\"Replay current selection\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:338
+#: inginious/frontend/templates/course_admin/submissions.html:339
 msgid "Waiting"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:347
+#: inginious/frontend/templates/course_admin/submissions.html:348
 msgid "\"View submission\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:350
-#: inginious/frontend/templates/course_admin/submissions.html:353
+#: inginious/frontend/templates/course_admin/submissions.html:351
+#: inginious/frontend/templates/course_admin/submissions.html:354
 msgid "\"Download submission\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:357
-#: inginious/frontend/templates/course_admin/submissions.html:360
+#: inginious/frontend/templates/course_admin/submissions.html:358
+#: inginious/frontend/templates/course_admin/submissions.html:361
 msgid "\"Replay submission\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:379
+#: inginious/frontend/templates/course_admin/submissions.html:381
 msgid "\"Waiting\""
 msgstr ""
 
@@ -5799,23 +5799,23 @@ msgstr "\"Éditer l'exercice\""
 msgid "\"View results\""
 msgstr "\"Voir les résultats\""
 
-#: inginious/frontend/templates/course_admin/task_list.html:88
+#: inginious/frontend/templates/course_admin/task_list.html:89
 msgid "\"New task id\""
 msgstr "\"Nouvel identifiant d'exercice\""
 
-#: inginious/frontend/templates/course_admin/task_list.html:89
+#: inginious/frontend/templates/course_admin/task_list.html:90
 msgid "Create new task"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/task_list.html:93
+#: inginious/frontend/templates/course_admin/task_list.html:94
 msgid "Errors while loading tasks"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/task_list.html:96
+#: inginious/frontend/templates/course_admin/task_list.html:97
 msgid "task id"
 msgstr "identifiant"
 
-#: inginious/frontend/templates/course_admin/task_list.html:97
+#: inginious/frontend/templates/course_admin/task_list.html:98
 msgid "error"
 msgstr ""
 
@@ -7829,5 +7829,23 @@ msgstr "Extensions autorisées:"
 #~ "<strong>: </strong><pre class=\"language-python\"><code\n"
 #~ "                class=\"language-python\" data-"
 #~ "language=\"python\"></code></pre><script>highlight_code();</script>"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "<ul class=\"list_disc\" style=\"font-size:12px;\"><li>\n"
+#~ "            <strong style=\"font-size:15px\"> "
+#~ "Test {test_id}: </strong><i> - YOUR "
+#~ "GRADE = {test_grade} / 100 </i>"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "<a class=\"btn btn-default btn-link btn-xs\" role=\"button\"\n"
+#~ "            data-toggle=\"collapse\" "
+#~ "href=\"#{panel_id}\" aria-expanded=\"false\" "
+#~ "aria-controls=\"{panel_id}\">\n"
+#~ "            View Details </a><div "
+#~ "class=\"collapse\" id=\"{panel_id}\"> "
+#~ "<pre>{test_message}</pre> <br>\n"
+#~ "            <ul class=\"list_disc\" style=\"font-size:13px;\">"
 #~ msgstr ""
 

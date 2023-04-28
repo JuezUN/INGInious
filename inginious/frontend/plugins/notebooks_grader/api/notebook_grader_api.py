@@ -307,7 +307,7 @@ def notebook_submission(public_key):
             task = course.get_task(task_id)
             if username in course_students or username in course_staff:
                 user_can_submit = self.user_manager.task_can_user_submit(task, username)
-                
+                course_is_lti = course.is_lti()
                 #and check no periods on keys
                 keys = list(results.keys())
                 for test_id in keys:
@@ -339,6 +339,48 @@ def notebook_submission(public_key):
                         result, 
                         submission_grade, 
                         newsub=True)
+                    
+                    self.logger.debug("Submission made externally, user: {}, course: {}, task: {}".format(
+                        username, course_id, task_id
+                    ))
+                    
+                    if course_is_lti:
+                        #Retrieve lti session info from database
+                        try:
+                            lti_session = self.database.external_lti_sessions.find_one({
+                                "username": username,
+                                "course_id": course_id,
+                                "task_id": task_id
+                            })
+                        except:
+                            self.logger.info("Error retrieving lti session from database for student: {} in course {} in task {}".format(
+                                username, course_id, task_id
+                            ))
+                        if lti_session is None:
+                            self.logger.info("LTI Info missing for student: {} in course {} in task {}".format(
+                                username, course_id, task_id
+                            ))
+                            if course.lti_send_back_grade():
+                                msg = "LTI Info missing, open the task from LMS platform in order to send back the grade"
+                                raise api.APIError(404, "{}".format(msg))
+                        #Sending grade to LMS
+                        if lti_session is not None and course.lti_send_back_grade():
+                            lms_username = lti_session["username"]
+                            outcome_service_url = lti_session["outcome_service_url"]
+                            outcome_result_id = lti_session["outcome_result_id"]
+                            outcome_consumer_key = lti_session["consumer_key"]
+                            
+                            self.logger.info("Grade of client grader submission sent to LMS, user: {}, course: {}, task: {}".format(
+                                username, course_id, task_id
+                            ))
+                            
+                            self.lti_outcome_manager.add(lms_username,
+                                                        course_id,
+                                                        task_id,
+                                                        outcome_consumer_key,
+                                                        outcome_service_url,
+                                                        outcome_result_id)
+                            
                     
                     #Add Sumbission Analytic
                     analytics_manager = AnalyticsCollectionManagerSingleton.get_instance()
