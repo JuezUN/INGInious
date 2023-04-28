@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-28 10:21-0500\n"
+"POT-Creation-Date: 2023-04-28 16:29-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -505,7 +505,7 @@ msgstr ""
 
 #: inginious/frontend/pages/tasks.py:362
 #: inginious/frontend/plugins/manual_scoring/pages/templates/student_submissions.html:68
-#: inginious/frontend/templates/course_admin/submissions.html:317
+#: inginious/frontend/templates/course_admin/submissions.html:318
 #: inginious/frontend/templates/task.html:211
 msgid "\"Late submission: it does not affect the grade.\""
 msgstr "\"Envío después de la fecha límite: no afecta la calificación.\""
@@ -4864,7 +4864,7 @@ msgstr "La tarea no se ha intentado"
 
 #: inginious/frontend/templates/course_admin/aggregation_info.html:72
 #: inginious/frontend/templates/course_admin/student_info.html:69
-#: inginious/frontend/templates/course_admin/submissions.html:336
+#: inginious/frontend/templates/course_admin/submissions.html:337
 #: inginious/frontend/templates/course_admin/task_info.html:83
 #: inginious/frontend/templates/course_admin/task_info.html:152
 #: inginious/frontend/templates/task.html:36
@@ -4877,7 +4877,7 @@ msgstr "Esperando la verificación"
 
 #: inginious/frontend/templates/course_admin/aggregation_info.html:74
 #: inginious/frontend/templates/course_admin/student_info.html:72
-#: inginious/frontend/templates/course_admin/submissions.html:340
+#: inginious/frontend/templates/course_admin/submissions.html:341
 #: inginious/frontend/templates/course_admin/task_info.html:85
 #: inginious/frontend/templates/course_admin/task_info.html:154
 #: inginious/frontend/templates/task.html:46
@@ -5291,7 +5291,7 @@ msgstr "Número de tareas que has intentado"
 #: inginious/frontend/templates/course_admin/aggregation_list.html:83
 #: inginious/frontend/templates/course_admin/student_info.html:46
 #: inginious/frontend/templates/course_admin/student_list_table.html:26
-#: inginious/frontend/templates/course_admin/submissions.html:283
+#: inginious/frontend/templates/course_admin/submissions.html:284
 #: inginious/frontend/templates/course_admin/task_info.html:119
 #: inginious/frontend/templates/course_admin/task_list.html:51
 msgid "\"Download CSV\""
@@ -5979,64 +5979,64 @@ msgstr "descargar"
 msgid "Submissions statistics"
 msgstr "Estadísticas del curso"
 
-#: inginious/frontend/templates/course_admin/submissions.html:269
+#: inginious/frontend/templates/course_admin/submissions.html:270
 msgid "student name"
 msgstr "Mostrar nombre del estudiante"
 
-#: inginious/frontend/templates/course_admin/submissions.html:271
+#: inginious/frontend/templates/course_admin/submissions.html:272
 msgid "username"
 msgstr "Nombre de usuario"
 
-#: inginious/frontend/templates/course_admin/submissions.html:273
+#: inginious/frontend/templates/course_admin/submissions.html:274
 #: inginious/frontend/templates/course_admin/task_list.html:41
 msgid "task name"
 msgstr "Mostrar nombre de la tarea"
 
-#: inginious/frontend/templates/course_admin/submissions.html:275
+#: inginious/frontend/templates/course_admin/submissions.html:276
 msgid "taskid"
 msgstr "id de la Tarea"
 
-#: inginious/frontend/templates/course_admin/submissions.html:277
+#: inginious/frontend/templates/course_admin/submissions.html:278
 msgid "id"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:278
+#: inginious/frontend/templates/course_admin/submissions.html:279
 msgid "submitted on"
 msgstr "Envío realizado el"
 
-#: inginious/frontend/templates/course_admin/submissions.html:279
+#: inginious/frontend/templates/course_admin/submissions.html:280
 msgid "result"
 msgstr "resultados"
 
-#: inginious/frontend/templates/course_admin/submissions.html:286
-#: inginious/frontend/templates/course_admin/submissions.html:290
+#: inginious/frontend/templates/course_admin/submissions.html:287
+#: inginious/frontend/templates/course_admin/submissions.html:291
 msgid "\"Download current selection\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:294
-#: inginious/frontend/templates/course_admin/submissions.html:296
+#: inginious/frontend/templates/course_admin/submissions.html:295
+#: inginious/frontend/templates/course_admin/submissions.html:297
 msgid "\"Replay current selection\""
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:338
+#: inginious/frontend/templates/course_admin/submissions.html:339
 msgid "Waiting"
 msgstr ""
 
-#: inginious/frontend/templates/course_admin/submissions.html:347
+#: inginious/frontend/templates/course_admin/submissions.html:348
 msgid "\"View submission\""
 msgstr "Ver tareas"
 
-#: inginious/frontend/templates/course_admin/submissions.html:350
-#: inginious/frontend/templates/course_admin/submissions.html:353
+#: inginious/frontend/templates/course_admin/submissions.html:351
+#: inginious/frontend/templates/course_admin/submissions.html:354
 msgid "\"Download submission\""
 msgstr "\"Descargar las tareas enviadas\""
 
-#: inginious/frontend/templates/course_admin/submissions.html:357
-#: inginious/frontend/templates/course_admin/submissions.html:360
+#: inginious/frontend/templates/course_admin/submissions.html:358
+#: inginious/frontend/templates/course_admin/submissions.html:361
 msgid "\"Replay submission\""
 msgstr "\"Reenviar a las tareas enviadas\""
 
-#: inginious/frontend/templates/course_admin/submissions.html:379
+#: inginious/frontend/templates/course_admin/submissions.html:381
 msgid "\"Waiting\""
 msgstr ""
 
@@ -6151,23 +6151,23 @@ msgstr "\"Editar tarea\""
 msgid "\"View results\""
 msgstr "\"Ver resultados\""
 
-#: inginious/frontend/templates/course_admin/task_list.html:88
+#: inginious/frontend/templates/course_admin/task_list.html:89
 msgid "\"New task id\""
 msgstr "\"ID de la tarea nueva\""
 
-#: inginious/frontend/templates/course_admin/task_list.html:89
+#: inginious/frontend/templates/course_admin/task_list.html:90
 msgid "Create new task"
 msgstr "Crear una nueva tarea"
 
-#: inginious/frontend/templates/course_admin/task_list.html:93
+#: inginious/frontend/templates/course_admin/task_list.html:94
 msgid "Errors while loading tasks"
 msgstr "Un error interno ocurrió mientras las tareas eran copiadas."
 
-#: inginious/frontend/templates/course_admin/task_list.html:96
+#: inginious/frontend/templates/course_admin/task_list.html:97
 msgid "task id"
 msgstr "id de la Tarea"
 
-#: inginious/frontend/templates/course_admin/task_list.html:97
+#: inginious/frontend/templates/course_admin/task_list.html:98
 msgid "error"
 msgstr ""
 

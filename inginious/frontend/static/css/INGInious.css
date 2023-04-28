@@ -309,6 +309,36 @@ body {
 .footer_push .navbar {
   margin-bottom: 0;
 }
+@media screen and (max-width: 767px) {
+  #footer,
+  .footer_push {
+    height: 115px;
+  }
+}
+@media screen and (max-width: 399px) {
+  #footer,
+  .footer_push {
+    height: 136px;
+  }
+}
+@media screen and (max-width: 376px) {
+  #footer,
+  .footer_push {
+    height: 156px;
+  }
+}
+@media screen and (max-width: 240px) {
+  #footer,
+  .footer_push {
+    height: 172px;
+  }
+}
+@media screen and (max-width: 235px) {
+  #footer,
+  .footer_push {
+    height: 194px;
+  }
+}
 /* Checked list group */
 ul.checked-list-box {
   max-height: 315px;
