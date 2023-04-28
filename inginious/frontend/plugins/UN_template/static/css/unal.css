@@ -1070,7 +1070,6 @@ footer .logos a img {
 
     #unalTop .navigation {
         height: auto;
-        position: absolute;
         max-height: 5000px;
         width: 100%;
         background: url(/UN_template/static/images/navigationBack_small.png);
