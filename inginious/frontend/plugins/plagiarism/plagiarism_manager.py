@@ -12,6 +12,8 @@ import pymongo
 import shutil
 import threading
 
+
+import traceback as tb
 from datetime import datetime
 from bson.objectid import ObjectId
 
@@ -97,6 +99,7 @@ class PlagiarismManagerSingleton(object):
         """From the submission input_data get the problem id"""
         problem_id = filter(lambda x: '/' not in x, input_data.keys())
         problem_id = filter(lambda x: '@' not in x, problem_id)
+        problem_id = filter(lambda x: 'is_staff' not in x, problem_id)
         problem_id = list(problem_id)[0]
         return problem_id
 
@@ -203,7 +206,8 @@ class PlagiarismManagerSingleton(object):
             data["submissions"] = self._get_submissions_data(course, task,
                                                              LANGUAGE_PLAGIARISM_LANG_MAP[data['language']])
         except Exception as e:
-            return True, str(e)
+            traceback_string = ''.join(tb.format_exception(None, e, e.__traceback__))
+            return True, traceback_string
 
         try:
 
@@ -221,7 +225,8 @@ class PlagiarismManagerSingleton(object):
             plagiarism_thread.start()
             # Do not use `.join()` as this process may finish before the thread process finishes.
         except Exception as e:
-            return True, str(e)
+            traceback_string = ''.join(tb.format_exception(None, e, e.__traceback__))
+            return True, traceback_string
 
         return False, None
 

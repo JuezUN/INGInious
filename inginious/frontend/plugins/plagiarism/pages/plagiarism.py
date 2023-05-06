@@ -40,8 +40,8 @@ class PlagiarismPage(INGIniousAdminPage):
                 plagiarism_check["task_name"],
                 "id": str(plagiarism_check["_id"]),
                 "submitted_on": plagiarism_check["submitted_on"],
-                "language": AVAILABLE_PLAGIARISM_LANGUAGES[
-                    plagiarism_check['language']] if 'language' in plagiarism_check else "Unknown or deprecated language",
+                "language": AVAILABLE_PLAGIARISM_LANGUAGES.get(
+                    plagiarism_check['language'], "Unknown or deprecated language") if 'language' in plagiarism_check else "Unknown or deprecated language",
                 "status": status
             }
 

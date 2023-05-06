@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-28 16:29-0500\n"
+"POT-Creation-Date: 2023-05-06 11:30-0500\n"
 "PO-Revision-Date: 2019-11-07 17:05+0000\n"
 "Last-Translator: Cristian González <crdgonzalezca@unal.edu.co>\n"
 "Language: es\n"
@@ -3253,11 +3253,11 @@ msgstr "¡Probar código!"
 msgid "Visualize your code!"
 msgstr "¡Visualizar código!"
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:73
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:75
 msgid "An error occurred while retrieving submission from task {}."
 msgstr "Un error ocurrió mientras se cargaban los submissions de la tarea {}."
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:92
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:94
 msgid ""
 "There are not enough submissions for the selected language in the task: "
 "{}. At least 2 students must have submitted to compare."
@@ -3265,11 +3265,11 @@ msgstr ""
 "No hay suficientes submissions para el lenguaje seleccionado en la tarea:"
 " {}. Al menos dos estudiantes deben haber enviado código a evaluar."
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:178
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:181
 msgid "An error occurred while generating the plagiarism check."
 msgstr "Un error ocurrió mientras se generaba el chequeo de plagio."
 
-#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:200
+#: inginious/frontend/plugins/plagiarism/plagiarism_manager.py:203
 msgid ""
 "Task environment is not available for plagiarism check: {}. Check the "
 "task is correctly configured."

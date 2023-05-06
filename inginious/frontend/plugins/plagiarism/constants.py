@@ -17,7 +17,6 @@ LANGUAGE_PLAGIARISM_LANG_MAP = {
     'cpp': 'c/c++',
     'c11': 'c/c++',
     'c': 'c/c++',
-    'java7': 'java17',
     'java8': 'java17',
     'python3': 'python3',
     'vhdl': 'text',
