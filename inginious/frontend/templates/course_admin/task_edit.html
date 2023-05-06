@@ -10,7 +10,7 @@ $var title: $:(_("Edit ") + "{}".format(taskid))
 $ show_form = (task_data.get('environment') != "Notebook (External grading)")
 $def ColumnF():
     $:template_helper.call('course_admin_menu',course=course,current='tasks')
-    <a href="#task_edit_submit_status" class="btn btn-primary btn-block task_edit_submit_button" type="button" onclick="studio_submit()"><i class="fa fa-save"></i> Save changes</a>
+    <a href="#task_edit_submit_status" class="btn btn-primary btn-block task_edit_submit_button" type="button" onclick="studio_submit();update()"><i class="fa fa-save"></i> Save changes</a>
 $var Column: $:ColumnF()
 
 $def NavbarF():
@@ -36,7 +36,7 @@ $var Navbar: $:NavbarF()
         $:(_("Edit task ") + "\"{}\"".format(taskid))
         <div class="pull-right">
             <div class="btn-group">
-                <button class="btn btn-primary btn-success btn-sm task_edit_submit_button" type="button" onclick="studio_submit()"><i class="fa fa-save"></i> $:_("Save changes")</button>
+                <button class="btn btn-primary btn-success btn-sm task_edit_submit_button" type="button" onclick="studio_submit();update()"><i class="fa fa-save"></i> $:_("Save changes")</button>
                 <a id="switch" class="btn-sm btn btn-info" href="$get_homepath()/course/$course.get_id()/$taskid"><i class="fa fa-search"></i> $:_("View task")</a>
             </div>
         </div>
@@ -95,7 +95,7 @@ $var Navbar: $:NavbarF()
                 </div>
         </div>
     </div>
-    <a href="#task_edit_submit_status" class="btn btn-primary btn-block task_edit_submit_button" type="button" onclick="studio_submit()"><i class="fa fa-save"></i> $:_("Save changes")</a>
+    <a href="#task_edit_submit_status" class="btn btn-primary btn-block task_edit_submit_button" type="button" onclick="studio_submit();update()"><i class="fa fa-save"></i> $:_("Save changes")</a>
 </form>
 <div id="delete_modal" class="modal fade">
     <div class="modal-dialog">
@@ -173,4 +173,17 @@ $:include.course_admin.edit_tabs.file_modals()
     delete_subproblem_message = '$:_("Are you sure that you want to delete this subproblem?")';
     problem_data = $:json(problemdata);
     $$ (function(){ studio_load(problem_data); });
+
+    function update(){
+        /*
+        Create an array with tasks ids, i.e. ["task=id1", "task=id2", ...]
+        Then, use .join to get string "task=id1&task=id2&...".
+        
+        These params are going to be retrieved by web.input(task=[]) as
+        an array in task_list.py when calling POST.
+
+        This function updates tasks order to avoid improper statistics arrangement.
+        */
+        $$.post("/admin/$:course.get_id()/tasks?" + ($:["task="+str(key) for key, value in course.get_tasks().items()]).join("&"));
+    }
 </script>
