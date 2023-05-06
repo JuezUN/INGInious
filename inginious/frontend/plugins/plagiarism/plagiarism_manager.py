@@ -207,7 +207,7 @@ class PlagiarismManagerSingleton(object):
                                                              LANGUAGE_PLAGIARISM_LANG_MAP[data['language']])
         except Exception as e:
             traceback_string = ''.join(tb.format_exception(None, e, e.__traceback__))
-            return True, str(e)
+            return True, traceback_string
 
         try:
 
