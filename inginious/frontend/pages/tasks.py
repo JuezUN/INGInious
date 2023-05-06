@@ -418,7 +418,19 @@ class TaskPageStaticDownload(INGIniousPage):
 
             path_norm = posixpath.normpath(urllib.parse.unquote(path))
 
-            public_folder = task.get_fs().from_subfolder("public")
+            username = self.user_manager.session_username()
+            
+            '''
+            Since hidden files are not stored on "public" folder, this directory
+            is set as "/" for staff. Therefore, admins can download all files when
+            submissions are replayed.
+            '''
+            
+            public_folder = None
+            if(self.user_manager.has_staff_rights_on_course(course, username)):
+                public_folder = task.get_fs().from_subfolder("")
+            else:
+                public_folder = task.get_fs().from_subfolder("public")
             (method, mimetype_or_none, file_or_url) = public_folder.distribute(path_norm, False)
 
             if method == "local":
