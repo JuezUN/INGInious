@@ -321,7 +321,7 @@ def notebook_submission(public_key):
                     "result": result,
                     "status": status,
                     "grader_results": results,
-                    "submitted_on": datetime.datetime.utcnow(),
+                    "submitted_on": datetime.datetime.now(),
                     "username": [username],
                     "custom": {
                         "custom_summary_result": "ACCEPTED" if submission_grade == 100.0 else "WRONG_ANSWER",
@@ -340,7 +340,7 @@ def notebook_submission(public_key):
                         submission_grade, 
                         newsub=True)
                     
-                    self.logger.debug("Submission made externally, user: {}, course: {}, task: {}".format(
+                    self.logger.info("Submission made externally, user: {}, course: {}, task: {}".format(
                         username, course_id, task_id
                     ))
                     
