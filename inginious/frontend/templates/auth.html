@@ -23,9 +23,9 @@ $# Start content
                     <label>$:_("Username or email")</label> <input type="text" class="form-control" name="login" placeholder="$:_('Username or email')">
                 </div>
                 <div class="form-group">
-                    <label>$:_("Password") <a href="$get_homepath()/register#lostpasswd">$:_("Lost password?")</a></label> <input type="password" class="form-control" name="password" placeholder="$:_('Password')">
+                    <label>$:_("Password") <a href="$get_homepath()/register#lostpasswd">$:_("Lost password?")</a></label> <input id="password" type="password" class="form-control" name="password" placeholder="$:_('Password')">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">$:_("Sign in")</button>
+                <button id="auth_button" type="submit" class="btn btn-primary btn-block">$:_("Sign in")</button>
             </form>
 
         $ auth_meths = auth_methods.items()
@@ -57,3 +57,10 @@ $# Start content
                 $ authid += 1
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js">
+</script>
+<script>
+    $$("#auth_button").click( function(){
+        document.getElementById('password').value = CryptoJS.SHA512(document.getElementById('password').value)
+    })
+</script>

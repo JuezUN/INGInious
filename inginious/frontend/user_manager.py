@@ -290,14 +290,13 @@ class UserManager:
         :param password: User password
         :return: Returns a dict represrnting the user
         """
-        password_hash = hashlib.sha512(password.encode("utf-8")).hexdigest()
         #Find user based on username
         user = self._database.users.find_one(
-            {"username": identifier, "password": password_hash, "activate": {"$exists": False}})
+            {"username": identifier, "password": password, "activate": {"$exists": False}})
         #Find user based on email
         if user is None:
             user = self._database.users.find_one(
-                {"email": identifier, "password": password_hash, "activate": {"$exists": False}})
+                {"email": identifier, "password": password, "activate": {"$exists": False}})
 
         return user if user is not None and self.connect_user(user["username"], user["realname"], user["email"], user["language"]) else None
 
