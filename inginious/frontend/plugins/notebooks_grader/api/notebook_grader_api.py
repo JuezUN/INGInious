@@ -107,7 +107,7 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
                     "functions_names_to_evaluate": functions_names_to_evaluate,
                     "variables_names_to_evaluate": variables_names_to_evaluate,
                     "weight": float(weight),
-                    "updated_on": datetime.datetime.utcnow(),
+                    "updated_on": datetime.datetime.now(),
                 }}
                 self.database.tasks_graders.update_one({
                     "courseid": course_id,
@@ -123,7 +123,7 @@ class NotebookGradingAPI(api.APIAuthenticatedPage):
                     "functions_names_to_evaluate": functions_names_to_evaluate,
                     "variables_names_to_evaluate": variables_names_to_evaluate,
                     "weight": float(weight),
-                    "updated_on": datetime.datetime.utcnow(),
+                    "updated_on": datetime.datetime.now(),
                 })
             return 200, "ok"
 
@@ -251,12 +251,24 @@ def notebook_submission(public_key):
             request_params = web.input()
             test_id = get_mandatory_parameter(request_params, "test_id")
             signature = get_mandatory_parameter(request_params, "signature")
+            course_id = get_mandatory_parameter(request_params, "course_id")
             
+        
             try:
-                self.__validate_signature(username, test_id, signature)
-            except:
-                raise api.APIError(502, "Signature is invalid")
-            return 200, "signature ok"
+                course = self.course_factory.get_course(course_id)
+            except CourseNotFoundException as course_not_found:
+                raise api.APINotFound("Course not found") from course_not_found
+
+            course_staff = course.get_staff()
+            course_students = self.user_manager.get_course_registered_users(course, with_admins=False)
+
+            if username in course_students or username in course_staff:
+                try:
+                    self.__validate_signature(username, test_id, signature)
+                except:
+                    raise api.APIError(502, "Signature is invalid")
+                return 200, "signature ok"
+            raise api.APIError(403, "You are not authorized to access this resource")
 
         def API_POST(self): # pylint: disable=arguments-differ
             """POST: API send submission, verify signature of each test, calculate the
