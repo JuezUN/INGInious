@@ -1,5 +1,6 @@
 import web
 import uuid
+import datetime
 
 import inginious.frontend.pages.api._api_page as api
 from inginious.frontend.plugins.utils.admin_api import AdminApi
@@ -43,6 +44,19 @@ class CopyTaskApi(AdminApi):
 
         try:
             target_fs.copy_to(task.get_fs().prefix, copy_id)
+
+            if task.get_environment() == "Notebook (External grading)":
+                task_graders = self.database.tasks_graders.find({
+                    "courseid": bank_id, 
+                    "taskid": task_id
+                })
+
+                for grader in task_graders:
+                    del grader["_id"]
+                    grader["courseid"] = target_id
+                    grader["taskid"] = copy_id
+                    grader["updated_on"] = datetime.datetime.now()
+                    self.database.tasks_graders.insert(grader)
 
             if "tasks_cache" in self.database.collection_names():
                 task_to_copy = self.database.tasks_cache.find_one({"course_id": bank_id, "task_id": task_id})
