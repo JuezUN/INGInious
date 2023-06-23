@@ -269,7 +269,7 @@ function minifyManualScoringPlugin() {
     const cssFilesPath = _MANUAL_SCORING_PATH + "/css/";
     const jsFilesPath = _MANUAL_SCORING_PATH + "/js/";
 
-    const commonJsFiles = ["manual_scoring_constants", "code_area", "message_box", "rubric"].map((name) => {
+    const commonJsFiles = ["manual_scoring_constants", "code_area", "rubric"].map((name) => {
         return getJSFilePath(jsFilesPath, name);
     });
     const manualScoringJsFiles = ["manual_scoring_main"].map((name) => {
@@ -279,7 +279,7 @@ function minifyManualScoringPlugin() {
         return getJSFilePath(jsFilesPath, name);
     });
 
-    const courseTaskListJsFiles = ["message_box", "task_list_main"].map((name) => {
+    const courseTaskListJsFiles = ["task_list_main"].map((name) => {
         return getJSFilePath(jsFilesPath, name);
     });
 
@@ -316,7 +316,7 @@ function minifyContactPagePlugin() {
         return getCssFilePath(cssFilesPath, name);
     });
 
-    const jsFiles = ["message_box", "contact_page_form", "contact_page_main"].map((name) => {
+    const jsFiles = ["contact_page_form", "contact_page_main"].map((name) => {
         return getJSFilePath(jsFilesPath, name);
     });
 

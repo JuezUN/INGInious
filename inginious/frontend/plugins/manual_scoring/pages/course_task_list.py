@@ -112,5 +112,5 @@ class CourseTaskListPage(INGIniousAdminPage):
             self.template_helper.add_javascript("/manual_scoring/static/js/course_task_list.min.js")
         else:
             self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.css")
-            self.template_helper.add_javascript("/manual_scoring/static/js/message_box.js")
+            self.template_helper.add_javascript("/static/js/message_box.js")
             self.template_helper.add_javascript("/manual_scoring/static/js/task_list_main.js")

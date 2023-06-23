@@ -13,7 +13,7 @@ class UserManagementPage(SuperadminAuthPage):
 
     def add_css_and_js_files(self):
         """ add the ccs and js files """
-        self.template_helper.add_javascript("/contact_page/static/js/message_box.js")
+        self.template_helper.add_javascript("/static/js/message_box.js")
         if get_use_minified():
             self.template_helper.add_css("/user_management/static/css/user_management.min.css")
             self.template_helper.add_javascript("/user_management/static/js/user_management.min.js")

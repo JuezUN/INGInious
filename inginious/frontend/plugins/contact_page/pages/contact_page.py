@@ -81,5 +81,5 @@ class ContactPage(INGIniousPage):
         else:
             self.template_helper.add_javascript("/contact_page/static/js/contact_page_main.js")
             self.template_helper.add_javascript("/contact_page/static/js/contact_page_form.js")
-            self.template_helper.add_javascript("/contact_page/static/js/message_box.js")
+            self.template_helper.add_javascript("/static/js/message_box.js")
             self.template_helper.add_css("/contact_page/static/css/contact_page.css")
