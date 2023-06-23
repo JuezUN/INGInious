@@ -23,7 +23,8 @@ module.exports = function(grunt)
                         '../../inginious/frontend/static/js/jquery-sortable.min.js',
                         '../../inginious/frontend/static/js/webapp.js',
                         '../../inginious/frontend/static/js/studio.js',
-                        '../../inginious/frontend/static/js/aggregations.js'
+                        '../../inginious/frontend/static/js/aggregations.js',
+                        '../../inginious/frontend/static/js/message_box.js'
                     ]
                 }
             }

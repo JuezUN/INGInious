@@ -9,10 +9,11 @@ class CustomAlert extends React.Component {
         this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
     }
 
+    // TODO: Review this functions.
     handleAlertDismiss() {
         clearTimeout(this.timer);
         const updateParent = this.props.callbackParent;
-        updateParent(false);
+        //updateParent(false);
 
         this.forceUpdate();
     }

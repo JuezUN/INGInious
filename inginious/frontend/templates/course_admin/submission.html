@@ -133,4 +133,7 @@ $$(document).ready(function() {
     loadOldSubmissionInput("$submission['_id']", false);
     waitForSubmission("$submission['_id']");
 });
+function is_lti() {
+    return "$is_lti()" === 'True';
+}
 </script>

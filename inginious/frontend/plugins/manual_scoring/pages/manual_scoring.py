@@ -169,7 +169,7 @@ class ManualScoringPage(INGIniousAdminPage):
         else:
             self.template_helper.add_css("/manual_scoring/static/css/manual_scoring.css")
             self.template_helper.add_javascript("/manual_scoring/static/js/code_area.js")
-            self.template_helper.add_javascript("/manual_scoring/static/js/message_box.js")
+            self.template_helper.add_javascript("/static/js/message_box.js")
             self.template_helper.add_javascript("/manual_scoring/static/js/rubric.js")
             self.template_helper.add_javascript("/manual_scoring/static/js/manual_scoring_constants.js")
             self.template_helper.add_javascript("/manual_scoring/static/js/manual_scoring_main.js")
