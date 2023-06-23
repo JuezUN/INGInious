@@ -251,10 +251,12 @@ function sendTestNotebookAnalytics() {
 $(document).ready(function () {
     let lastValidSelection = null;
     $("#select_test").change(function (event) {
-        if ($(this).val().length > 3) {
-            $(this).val(lastValidSelection);
-        } else {
-            lastValidSelection = $(this).val();
+        if ($(this).val() != null) {
+            if ($(this).val().length > 3) {
+                $(this).val(lastValidSelection);
+            } else {
+                lastValidSelection = $(this).val();
+            }
         }
     });
 });

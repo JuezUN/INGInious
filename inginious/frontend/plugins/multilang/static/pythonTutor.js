@@ -1,4 +1,8 @@
 var PythonTutor = (function () {
+
+    var plimit = 85000;
+    var jlimit = 11000;
+
     function PythonTutor(problemId, language) {
         this.defaultVisualServer = getDefaultVisualServerURL();
         this.javaVisualServer = "https://cscircles.cemc.uwaterloo.ca/";
@@ -23,7 +27,12 @@ var PythonTutor = (function () {
 
     PythonTutor.prototype.createIFrameFromCode = function () {
         var iframe = document.createElement('iframe');
-        iframe.src = this.generateVisualizerUrl();
+        var res = this.generateVisualizerUrl();
+        if (res.slice(1,6) == "limit"){
+            iframe.srcdoc = "<div style=\"color:red\"> Error! your code is around " + res.slice(6) + " URL-encoded bytes, which is too long for this tool. Shorten your code to less than " + eval(res.slice(0,6)) + " bytes and re-try.</div>"
+        } else {
+            iframe.src = res;
+        }
         iframe.height = "400px";
         iframe.width = "100%";
         iframe.frameborder = "0";
@@ -46,6 +55,13 @@ var PythonTutor = (function () {
     };
 
     PythonTutor.prototype.generateJavaUrl = function () {
+
+        var codeToURI = window.encodeURIComponent(this.code);
+        
+        if (codeToURI.length > jlimit){
+            return "jlimit" + codeToURI.length
+        }
+
         var data = {
             "user_script": this.code,
             "options":{"showStringsAsValues":true,"showAllFields":false},
@@ -71,6 +87,13 @@ var PythonTutor = (function () {
 
     PythonTutor.prototype.generateGenericUrl = function () {
         var codeToURI = window.encodeURIComponent(this.code);
+        
+        if (codeToURI.length > jlimit && this.language != 'python3'){
+            return "jlimit" + codeToURI.length
+        }
+        if (codeToURI.length > plimit && this.language == 'python3'){
+            return "plimit" + codeToURI.length
+        }
         var url = this.serverResource()
             + codeToURI
             + "&mode=edit"
