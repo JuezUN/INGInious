@@ -5,7 +5,7 @@ from pymongo.errors import DuplicateKeyError
 
 
 class LTIValidator(RequestValidator):  # pylint: disable=abstract-method
-    enforce_ssl = True
+    enforce_ssl = False
     client_key_length = (1, 30)
     nonce_length = (20, 64)
     realms = [""]
