@@ -23,7 +23,7 @@ jobs:
   check-i18n-files:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v3
         with:
           python-version: '3.5.10'
           architecture: 'x64'
