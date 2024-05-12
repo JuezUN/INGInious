@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-06-23 09:20-0500\n"
+"POT-Creation-Date: 2024-05-12 16:11-0500\n"
 "PO-Revision-Date: 2017-08-10 14:37+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -200,7 +200,7 @@ msgstr "Vous ne pouvez pas changer de groupe."
 msgid "You're not registered in a group."
 msgstr "Vous n'êtes enregistré dans aucun groupe."
 
-#: inginious/frontend/pages/lti.py:35 inginious/frontend/pages/lti.py:239
+#: inginious/frontend/pages/lti.py:35 inginious/frontend/pages/lti.py:242
 msgid ""
 "In order to send grade back to the TC, UNCode needs the parameters "
 "lis_outcome_service_url and lis_outcome_result_id in the LTI basic-"
@@ -226,11 +226,11 @@ msgstr "Données LTI invalides"
 msgid "Your account is already bound with this context."
 msgstr "Votre compte est déjà lié à ce contexte."
 
-#: inginious/frontend/pages/lti.py:221
+#: inginious/frontend/pages/lti.py:224
 msgid "Error while validating LTI request"
 msgstr "Une erreur s'est produite lors de la validation de la requête LTI."
 
-#: inginious/frontend/pages/lti.py:260
+#: inginious/frontend/pages/lti.py:267
 msgid "Couldn't validate LTI request"
 msgstr "Impossible de valider la requête LTI"
 
