@@ -10,7 +10,9 @@ import hashlib
 from web import utils
 import web
 from web.session import SessionExpired
+import logging
 
+logger = logging.getLogger("inginious.webapp.session")
 
 class CookieLessCompatibleApplication(web.application):
     def __init__(self, session_storage):
@@ -203,13 +205,16 @@ class CookieLessCompatibleSession(object):
             if self._config.ignore_expiry:
                 self._data["session_id"] = None
             else:
+                logger.debug("Session expired on check expiry")
                 return self.expired()
 
     def _validate_ip(self):
         # check for change of IP
         if self._data["session_id"] and self.get('ip', None) != web.ctx.ip:
             if not self._config.ignore_change_ip or self._data["cookieless"] is True:
-                return self.expired()
+                logger.debug("Session expired on ip validation: session ip: " + self.get('ip', "None") + " request ip: " + web.ctx.ip)
+                if not self._data["cookieless"]:
+                    return self.expired()
 
     def _save_cookieless(self):
         if not self._data.get('_killed') and self._data["session_id"] is not None:
