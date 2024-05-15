@@ -118,6 +118,89 @@ pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
     }
 ```
 
+- Cristian D. González-Carrillo, F. Restrepo-Calle, J.J. Ramírez-Echeverry, F.A. Gonzalez. "[Automatic Grading Tool for Jupyter Notebooks in Artificial Intelligence Courses][https://www.mdpi.com/2071-1050/13/21/12050]". Sustainability 2021, 13, 12050. doi.org/10.3390/su132112050
+
+```
+    @Article{Gonzalez2021AutomaticCourses,
+        AUTHOR = {González-Carrillo, Cristian D. and Restrepo-Calle, Felipe and Ramírez-Echeverry, Jhon J. and González, Fabio A.},
+        TITLE = {Automatic Grading Tool for Jupyter Notebooks in Artificial Intelligence Courses},
+        JOURNAL = {Sustainability},
+        VOLUME = {13},
+        YEAR = {2021},
+        NUMBER = {21},
+        ARTICLE-NUMBER = {12050},
+        URL = {https://www.mdpi.com/2071-1050/13/21/12050},
+        ISSN = {2071-1050},
+        DOI = {10.3390/su132112050}
+    }
+```
+
+- Edna Chaparro, Felipe Restrepo-Calle and Jhon Jairo Ramírez-Echeverry. "[Learning analytics in computer programming courses][https://ceur-ws.org/Vol-3059/paper8.pdf]". In Proceedings of the LALA'21: IV Latin American Conference on Learning Analytics, October 19–21, 2021, Arequipa, Perú. URL: https://ceur-ws.org/Vol-3059/paper8.pdf
+
+```
+    @InProceedings{Chaparro2021,
+        author = {Chaparro, Edna and Restrepo-Calle, Felipe and Ram{\'{i}}rez-Echeverry, Jhon Jairo},
+        title = {{Learning analytics in computer programming courses}},
+        series = {CEUR Workshop Proceedings},
+        booktitle = {Proceedings of the LALA'21: IV Latin American Conference on Learning Analytics},
+        issn = {1613-0073},
+        url = {https://ceur-ws.org/Vol-3059/paper8.pdf},
+        publisher = {CEUR-WS},
+        location = {Arequipa, Perú},
+        month = {October 19–21},
+        year = {2021},
+        pages = {78-87}
+    }
+```
+
+- J.J. Ramírez-Echeverry, F. Restrepo-Calle, F.A. González, “[A case study in technology-enhanced learning in an introductory computer programming course][http://www.wiete.com.au/journals/GJEE/Publish/vol24no1/10-Restrepo-Calle-F.pdf],” Glob. J. Eng. Educ., vol. 24, no. 1, pp. 65–71, 2022.
+
+```
+    @article{Ramirez-Echaverry2022,
+        author = {Ram{\'{i}}rez-Echeverry, Jhon Jairo and Restrepo-Calle, Felipe and Gonz{\'{a}}lez, Fabio A},
+        journal = {Global Journal of Engineering Education},
+        keywords = {Computer programming, technology-enhanced learning, computer science education},
+        number = {1},
+        pages = {65--71},
+        title = {{A case study in technology-enhanced learning in an introductory computer programming course}},
+        volume = {24},
+        url = {http://www.wiete.com.au/journals/GJEE/Publish/vol24no1/10-Restrepo-Calle-F.pdf},
+        year = {2022}
+    }
+```
+
+- Edna Johanna Chaparro Amaya, Felipe Restrepo-Calle, Jhon J Ramírez-Echeverry, “[Discovering Insights in Learning Analytics Through a Mixed-Methods Framework: Application to Computer Programming Education][https://doi.org/10.28945/5182],” Journal of Information Technology Education: Research, Vol. 22, pp. 339-372, 2023.
+
+```
+    @article{Chaparro2023,
+        author = {Chaparro Amaya, Edna Johanna and Restrepo-Calle, Felipe and Ram{\'{i}}rez-Echeverry, Jhon Jairo},
+        journal = {Journal of Information Technology Education: Research},
+        keywords = {learning analytics, mixed methods, computer programming, correlation analysis, content analysis},
+        pages = {339--372},
+        title = {{Discovering Insights in Learning Analytics Through a Mixed-Methods Framework: Application to Computer Programming Education}},
+        volume = {22},
+        doi = {https://doi.org/10.28945/5182},
+        month={Aug.},
+        year = {2023}
+    }
+```
+
+- Corso Pinzón, A.F., Ramírez-Echeverry, J.J. and Restrepo-Calle, F. 2024. [Automated grading software tool with feedback process to support learning of hardware description languages][https://doi.org/10.58459/rptel.2024.19015]. Research and Practice in Technology Enhanced Learning. 19, (Jan. 2024), 015. DOI:https://doi.org/10.58459/rptel.2024.19015.
+
+```
+    @article{Corso2024,
+        author = {Corso Pinzón, Andrés Francisco and Ramírez-Echeverry, Jhon J. and Restrepo-Calle, Felipe},
+        journal = {Research and Practice in Technology Enhanced Learning},
+        pages = {015},
+        title = {{Automated grading software tool with feedback process to support learning of hardware description languages}},
+        volume = {19},
+        url={https://rptel.apsce.net/index.php/RPTEL/article/view/2024-19015},
+        doi = {https://doi.org/10.58459/rptel.2024.19015},
+        month={Jan.},
+        year = {2024}
+    }
+```
+
 
 [uncode_url]: https://uncode.unal.edu.co/courselist
 [license_url]: https://github.com/JuezUN/INGInious/blob/master/LICENSE
