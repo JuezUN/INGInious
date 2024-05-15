@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   check-minified-files:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/setup-node@v2
         with: 
@@ -21,7 +21,7 @@ jobs:
           fi
         working-directory: utils/minify_plugins/
   check-i18n-files:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/setup-python@v3
         with:
