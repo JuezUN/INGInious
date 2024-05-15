@@ -118,7 +118,7 @@ pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
     }
 ```
 
-- Cristian D. González-Carrillo, F. Restrepo-Calle, J.J. Ramírez-Echeverry, F.A. Gonzalez. "[Automatic Grading Tool for Jupyter Notebooks in Artificial Intelligence Courses][https://www.mdpi.com/2071-1050/13/21/12050]". Sustainability 2021, 13, 12050. doi.org/10.3390/su132112050
+- Cristian D. González-Carrillo, F. Restrepo-Calle, J.J. Ramírez-Echeverry, F.A. Gonzalez. "[Automatic Grading Tool for Jupyter Notebooks in Artificial Intelligence Courses][uncode_publication_gonzalez_2021_url]". Sustainability 2021, 13, 12050. doi.org/10.3390/su132112050
 
 ```
     @Article{Gonzalez2021AutomaticCourses,
@@ -135,7 +135,7 @@ pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
     }
 ```
 
-- Edna Chaparro, Felipe Restrepo-Calle and Jhon Jairo Ramírez-Echeverry. "[Learning analytics in computer programming courses][https://ceur-ws.org/Vol-3059/paper8.pdf]". In Proceedings of the LALA'21: IV Latin American Conference on Learning Analytics, October 19–21, 2021, Arequipa, Perú. URL: https://ceur-ws.org/Vol-3059/paper8.pdf
+- Edna Chaparro, Felipe Restrepo-Calle and Jhon Jairo Ramírez-Echeverry. "[Learning analytics in computer programming courses][uncode_publication_lala_2021_url]". In Proceedings of the LALA'21: IV Latin American Conference on Learning Analytics, October 19–21, 2021, Arequipa, Perú. URL: https://ceur-ws.org/Vol-3059/paper8.pdf
 
 ```
     @InProceedings{Chaparro2021,
@@ -153,7 +153,7 @@ pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
     }
 ```
 
-- J.J. Ramírez-Echeverry, F. Restrepo-Calle, F.A. González, “[A case study in technology-enhanced learning in an introductory computer programming course][http://www.wiete.com.au/journals/GJEE/Publish/vol24no1/10-Restrepo-Calle-F.pdf],” Glob. J. Eng. Educ., vol. 24, no. 1, pp. 65–71, 2022.
+- J.J. Ramírez-Echeverry, F. Restrepo-Calle, F.A. González, “[A case study in technology-enhanced learning in an introductory computer programming course][uncode_publication_gjee_2022_url],” Glob. J. Eng. Educ., vol. 24, no. 1, pp. 65–71, 2022.
 
 ```
     @article{Ramirez-Echaverry2022,
@@ -169,7 +169,7 @@ pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
     }
 ```
 
-- Edna Johanna Chaparro Amaya, Felipe Restrepo-Calle, Jhon J Ramírez-Echeverry, “[Discovering Insights in Learning Analytics Through a Mixed-Methods Framework: Application to Computer Programming Education][https://doi.org/10.28945/5182],” Journal of Information Technology Education: Research, Vol. 22, pp. 339-372, 2023.
+- Edna Johanna Chaparro Amaya, Felipe Restrepo-Calle, Jhon J Ramírez-Echeverry, “[Discovering Insights in Learning Analytics Through a Mixed-Methods Framework: Application to Computer Programming Education][uncode_publication_jite_2023_url],” Journal of Information Technology Education: Research, Vol. 22, pp. 339-372, 2023.
 
 ```
     @article{Chaparro2023,
@@ -185,7 +185,7 @@ pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
     }
 ```
 
-- Corso Pinzón, A.F., Ramírez-Echeverry, J.J. and Restrepo-Calle, F. 2024. [Automated grading software tool with feedback process to support learning of hardware description languages][https://doi.org/10.58459/rptel.2024.19015]. Research and Practice in Technology Enhanced Learning. 19, (Jan. 2024), 015. DOI:https://doi.org/10.58459/rptel.2024.19015.
+- Corso Pinzón, A.F., Ramírez-Echeverry, J.J. and Restrepo-Calle, F. 2024. [Automated grading software tool with feedback process to support learning of hardware description languages][uncode_publication_rptel_2024_url]. Research and Practice in Technology Enhanced Learning. 19, (Jan. 2024), 015. DOI:https://doi.org/10.58459/rptel.2024.19015.
 
 ```
     @article{Corso2024,
@@ -222,3 +222,9 @@ pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
 [contributing_url]: https://github.com/JuezUN/INGInious/blob/master/CONTRIBUTING.md
 [uncode_publication_2018_url]: https://library.iated.org/view/RESTREPOCALLE2018UNC
 [uncode_publication_2020_url]: http://www.wiete.com.au/journals/GJEE/Publish/vol22no3/06-Echeverry-J.pdf
+[uncode_publication_gonzalez_2021_url]: https://www.mdpi.com/2071-1050/13/21/12050
+[uncode_publication_lala_2021_url]: https://ceur-ws.org/Vol-3059/paper8.pdf
+[uncode_publication_gjee_2022_url]: http://www.wiete.com.au/journals/GJEE/Publish/vol24no1/10-Restrepo-Calle-F.pdf
+[uncode_publication_jite_2023_url]: https://doi.org/10.28945/5182
+[uncode_publication_rptel_2024_url]: https://doi.org/10.58459/rptel.2024.19015
+
