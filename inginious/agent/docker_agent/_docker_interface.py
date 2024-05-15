@@ -85,8 +85,8 @@ class DockerInterface(object):  # pragma: no cover
             memswap_limit=str(mem_limit) + "M",
             mem_swappiness=0,
             oom_kill_disable=True,
-            network_mode=("bridge" if (network_grading or ssh_port is not None) else 'none'),
-            ports= {22: ssh_port} if ssh_port is not None else {},
+            network_mode=("host" if (network_grading or ssh_port is not None) else 'none'),
+            ports= {22: ssh_port} if ((ssh_port is not None) and (not network_grading)) else {},
             volumes={
                 task_path: {'bind': '/task'},
                 sockets_path: {'bind': '/sockets'},
