@@ -18,5 +18,5 @@ class LTIWebPyToolProvider(ToolProvider):
                         k.upper().startswith('HTTP_') or
                         k.upper().startswith('CONTENT_')])
 
-        url = web.ctx.home + web.ctx.fullpath
+        url = "https://" + web.ctx.host + web.ctx.fullpath
         return cls.from_unpacked_request(secret, params, url, headers)

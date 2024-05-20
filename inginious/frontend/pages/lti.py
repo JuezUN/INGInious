@@ -214,11 +214,9 @@ class LTILaunchPage(INGIniousPage):
         try:
             test = LTIWebPyToolProvider.from_webpy_request()
             validator = LTIValidator(self.database.nonce, course.lti_keys())
-            verified, request = test.is_valid_request(validator)
+            verified = test.is_valid_request(validator)
         except Exception as e:
             self.logger.debug("Exception on _parse_lti_data: " + str(e))
-            self.logger.debug("Request object: " + str(request))
-            self.logger.debug("Request signature method: " + str(request.signature_method))
             self.logger.exception("...")
             self.logger.info("Error while validating LTI request for %s", str(post_input))
             raise web.forbidden(_("Error while validating LTI request"))
@@ -256,13 +254,9 @@ class LTILaunchPage(INGIniousPage):
                                                               context_title, context_label)
             loggedin = self.user_manager.attempt_lti_login()
 
-            self.logger.info("REQUEST: " + str(request))
-            self.logger.info("REQUEST: " + str(request.signature_method))
             
             return session_id, loggedin
         else:
-            self.logger.info("REQUEST: " + str(request))
-            self.logger.info("REQUEST: " + str(request.signature_method))
             self.logger.info("Couldn't validate LTI request")
             raise web.forbidden(_("Couldn't validate LTI request"))
 
