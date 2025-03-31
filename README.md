@@ -218,7 +218,7 @@ pp. 6888-6898. doi: 10.21125/edulearn.2018.1632.
 [libzmq_url]: https://zeromq.org/
 [deployment_url]: https://github.com/JuezUN/Deployment
 [install_locally_url]: https://inginious.readthedocs.io/en/v0.5/install_doc/installation.html
-[project_url]: https://github.com/orgs/JuezUN/projects/3
+[project_url]: https://github.com/JuezUN/INGInious/issues
 [contributing_url]: https://github.com/JuezUN/INGInious/blob/master/CONTRIBUTING.md
 [uncode_publication_2018_url]: https://library.iated.org/view/RESTREPOCALLE2018UNC
 [uncode_publication_2020_url]: http://www.wiete.com.au/journals/GJEE/Publish/vol22no3/06-Echeverry-J.pdf
